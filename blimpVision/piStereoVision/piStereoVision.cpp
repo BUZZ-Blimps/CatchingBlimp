@@ -212,6 +212,7 @@ int main(int argc, char** argv) {
 	establishBlimpID();
 
     vector<float> recentMotorCommands;
+    float barometerData = 0;
 
     clock_t lastCycle = 0;
     clock_t lastHeartbeat = 0;
@@ -290,6 +291,7 @@ int main(int argc, char** argv) {
 				if(flag == "A"){
 					autonomous = true;
 				}else if(flag == "M"){
+					cout << "M" << endl;
 					char first = readIn.at(0);
 					if(isdigit(first)){
 						autonomous = false;
@@ -316,6 +318,15 @@ int main(int argc, char** argv) {
 							if(recentMotorCommands.size() <= i) recentMotorCommands.push_back(0);
 							recentMotorCommands[i] = motorData;
 						}
+					}
+				}else if(flag == "B"){
+					//Barometer reading
+					try {
+						barometerData = stof(readIn);
+						//cout << "Barodata: " << barometerData << endl;
+					}
+					catch(std::invalid_argument& e) {
+						cout << "Invalid barometer data received." << endl;
 					}
 				}else if(flag == "P"){
 					char first = readIn.at(0);
