@@ -39,13 +39,15 @@
 #include <wiringPi.h>
 #include <wiringSerial.h>
 
+#include "Teleplot.h"
+
 
 
 //==================== CONSTANTS ====================
 //Communication
 #define UDP_IP				"239.255.255.250"
 #define UDP_PORT			1900
-#define UDPTimeout			54
+#define UDPTimeout			5
 
 
 //Camera
@@ -66,7 +68,7 @@
 
 #define PRE_FILTER_SIZE	7
 #define PRE_FILTER_CAP	2
-#define UNIQUENESS_RATIO	5
+#define UNIQUENESS_RATIO	15
 
 
 #define LAMBDA			17.8
@@ -100,8 +102,8 @@
 #define MIN_AREA		50
 #define SIZE_RATIO		3
 
-#define AVOID_DIST		35
-#define AVOID_AREA		1000
+#define AVOID_DIST		25
+#define AVOID_AREA		6000
 
 
 using namespace std;
@@ -189,8 +191,14 @@ bool debugMode = false;
 String msgTemp = "";
 int mode = searching;
 
+float barometerData = 0;
+
 string outputVideo_fileName = "outputVideo.avi";
 double outputVideo_fps = 30;
+
+float lastBaroMessageTime = 0.0;
+
+Teleplot teleplot("127.0.0.1");
 
 //==================== MAIN ====================
 
@@ -201,7 +209,7 @@ int main(int argc, char** argv) {
 
 	VideoCapture cap = openCamera(0, CAMERA_WIDTH, CAMERA_HEIGHT);
 
-	framesLeftToRecord = 300;
+	framesLeftToRecord = 9000;
 	int moreFramesPerTrigger = 30 * 10;
 
 	//bool successfulPythonInit = initPython();
@@ -212,7 +220,6 @@ int main(int argc, char** argv) {
 	establishBlimpID();
 
     vector<float> recentMotorCommands;
-    float barometerData = 0;
 
     clock_t lastCycle = 0;
     clock_t lastHeartbeat = 0;
@@ -290,8 +297,10 @@ int main(int argc, char** argv) {
 				//cout << "Received: \"" << readIn << "\"" << endl;
 				if(flag == "A"){
 					autonomous = true;
+					lastUDPReceived = clock();
 				}else if(flag == "M"){
-					cout << "M" << endl;
+					//cout << "M" << endl;
+					lastUDPReceived = clock();
 					char first = readIn.at(0);
 					if(isdigit(first)){
 						autonomous = false;
@@ -321,13 +330,23 @@ int main(int argc, char** argv) {
 					}
 				}else if(flag == "B"){
 					//Barometer reading
+					bool isBaroDataGood = false;
 					try {
 						barometerData = stof(readIn);
 						//cout << "Barodata: " << barometerData << endl;
+						isBaroDataGood = true;
 					}
 					catch(std::invalid_argument& e) {
 						cout << "Invalid barometer data received." << endl;
+						isBaroDataGood = false;
 					}
+					
+					if (isBaroDataGood) {
+						//reset timer
+						clock_t now = clock();
+						lastBaroMessageTime = now/(float)CLOCKS_PER_SEC;
+					}
+					
 				}else if(flag == "P"){
 					char first = readIn.at(0);
 					if(first == 'C'){
@@ -338,14 +357,18 @@ int main(int argc, char** argv) {
 					cout << "Received kill command. Killing..." << endl;
 					return 0;
 				}
-				lastUDPReceived = clock();
+				
 				//cout << "UDPReceived: \"" << readIn << "\" sent to \"" << target << "\"" << endl;
 			}
 		}
 
 		//benchmark("GetFrame");
-
-
+		
+		if (clock()/((float)CLOCKS_PER_SEC) - lastBaroMessageTime > 10) {
+			barometerData = -10000;
+			cout << "Baro data not current" << endl;
+		}
+		
 
 		//image processing-----------------------------------------------------------------------------------------------------
 
@@ -468,8 +491,29 @@ int main(int argc, char** argv) {
 			quad = 3*(yy-1)+xx;
 		}
 
-		cout << "Area: " << largestArea << endl;
+		//cout << "Area: " << largestArea << endl;
 		cout << "Quad: " << quad << endl;
+		
+		/*
+		//recording frames-----------------------------------------
+		Mat tempRecord;
+		cvtColor(temp, tempRecord, COLOR_GRAY2BGR);
+		//cout << "TempNewType: " << tempRecord.type() << ", NewSize: " << tempRecord.size() << endl;
+		cvtColor(bMask, tempRecord, COLOR_GRAY2BGR);
+		//cout << "BMaskNewType: " << tempRecord.type() << ", NewSize: " << tempRecord.size() << endl;
+		//drawContours(tempRecord, contours, i, Scalar(125), 4, 8, hierarchy);
+		//cout << "GoodType: " << imgL_rect.type() << ", GoodSize: " << imgL_rect.size() << endl;
+		//cout << "NewType: " << tempRecord.type() << ", NewSize: " << tempRecord.size() << endl;
+
+		
+		tempRecord = 0.5*tempRecord + 0.5*left_correct;
+		*/
+		
+		if(framesLeftToRecord > 0){
+			framesLeftToRecord--;
+			saveToVideo(left_correct);
+			cout << "Recording video." << endl;
+		}
 
 
 		benchmark("find target");
@@ -517,26 +561,7 @@ int main(int argc, char** argv) {
 									ellipse(temp, smallEllipse, Scalar(255), -1);
 									bitwise_and(temp, close, temp);
 
-									//recording frames-----------------------------------------
-									Mat tempRecord;
-									cvtColor(temp, tempRecord, COLOR_GRAY2BGR);
-									//cout << "TempNewType: " << tempRecord.type() << ", NewSize: " << tempRecord.size() << endl;
-									cvtColor(bMask, tempRecord, COLOR_GRAY2BGR);
-									//cout << "BMaskNewType: " << tempRecord.type() << ", NewSize: " << tempRecord.size() << endl;
-									//drawContours(tempRecord, contours, i, Scalar(125), 4, 8, hierarchy);
-									//cout << "GoodType: " << imgL_rect.type() << ", GoodSize: " << imgL_rect.size() << endl;
-									//cout << "NewType: " << tempRecord.type() << ", NewSize: " << tempRecord.size() << endl;
-
-									tempRecord = 0.5*tempRecord + 0.5*left_correct;
-
-									if(framesLeftToRecord > 0){
-										framesLeftToRecord--;
-										saveToVideo(tempRecord);
-										cout << "Recording video." << endl;
-									}
-
-
-
+									
 									Mat mean, stddev;
 									cv::meanStdDev(z*CONVERSION, mean, stddev, temp);
 
@@ -693,13 +718,14 @@ int main(int argc, char** argv) {
 									//cout << "inner detected" << innerDetect << endl;
 									//cout << "goal total" << areaG << endl;
 									//cout << "goal detected" << goalDetect<< endl;temp
+									
 									Mat depthMask;
-									//cout << "Crash 1" << endl;
+									
 									bitwise_and(tempSingle, close, depthMask);
 
 									float confidence = 1-innerDetect;
 									if (confidence > 0.5) {
-											//cout << "condfidence:" << confidence << endl;
+											cout << "condfidence:" << confidence << endl;
 											std::vector<float> goal;
 
 											Point2f center;
@@ -817,7 +843,7 @@ int main(int argc, char** argv) {
 			//build message
 			if (autonomous) {
 				message = "A&";
-				message += to_string(quad) + "&";
+				message += to_string(quad) + "&" + to_string(barometerData) + "&";
 				if (target.size() > 0) {
 					for (unsigned int i = 0; i < 4; i++) {
 						message += to_string(target[0][i]);
@@ -828,7 +854,7 @@ int main(int argc, char** argv) {
 				message += "#\n";
 			} else {
 				message = "M";
-				message += "&" + to_string(quad);
+				message += "&" + to_string(quad) + "&" + to_string(barometerData);
 				for(int i=0; i<recentMotorCommands.size(); i++){
 					message += "&" + to_string(recentMotorCommands[i]).substr(0,4);
 					if(i == recentMotorCommands.size()-1){
@@ -863,6 +889,12 @@ int main(int argc, char** argv) {
 			String blimpString = "";
 			String goalString = "";
 			int counter = 0;
+			
+			std::vector<String> teensyKeys;
+			std::vector<String> teensyValues;
+			
+			String tempKey = "";
+			String tempValue = "";
 
 			if (c != 0) {
 				//byte read was valid
@@ -871,21 +903,43 @@ int main(int argc, char** argv) {
 					if (c == '#') {
 
 						//update mode
-						try {;
+						try {
 
 							for (int i = 0; i < msgTemp.length(); i++) {
 
 								if (msgTemp[i] == ':') {
+									if (counter % 2 == 1 && counter > 2) {
+										
+										teensyKeys.push_back(tempKey);
+										tempKey = "";
+									} else if (counter > 2) {
+									
+										teensyValues.push_back(tempValue);
+										tempValue = "";
+									}
 									counter++;
 									continue;
 								}
-								if (msgTemp[i] >= 48 && msgTemp[i] <= 57) {
-									if (counter == 0) {
-										modeString.push_back(msgTemp[i]);
-									} else if (counter == 1) {
-										blimpString.push_back(msgTemp[i]);
-									} else if (counter == 2) {
-										goalString.push_back(msgTemp[i]);
+								
+								if (counter <= 2) {
+									if (msgTemp[i] >= 48 && msgTemp[i] <= 57) {
+										if (counter == 0) {
+											modeString.push_back(msgTemp[i]);
+										} else if (counter == 1) {
+											blimpString.push_back(msgTemp[i]);
+										} else if (counter == 2) {
+											goalString.push_back(msgTemp[i]);
+										}
+									}
+								}
+								
+								if (counter > 2) {
+									if (counter % 2 == 1) {
+										//cout << msgTemp[i] << endl;
+										tempKey.push_back(msgTemp[i]);
+									} else {
+										//cout << msgTemp[i] << endl;
+										tempValue.push_back(msgTemp[i]);
 									}
 								}
 							}
@@ -912,6 +966,14 @@ int main(int argc, char** argv) {
 					c = readSerial();
 				}
 			}
+			
+			cout << endl;
+			if (teensyKeys.size() == teensyValues.size()) {
+				for (int i = 0; i < teensyKeys.size(); i++) {
+					cout << teensyKeys[i] << ": " << teensyValues[i] << endl;
+				}
+			}
+			cout << endl;
 
 
 			/*
@@ -958,8 +1020,8 @@ int main(int argc, char** argv) {
 			//benchmarkPrint();
 		}
 
-		benchmark("Last");
-		benchmarkPrint();
+		//benchmark("Last");
+		//benchmarkPrint();
 	}
 
 	cout << "DONE" << endl;
