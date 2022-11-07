@@ -12,14 +12,17 @@
 #define CAMERA_WIDTH            2560   //px
 #define CAMERA_HEIGHT           960    //px
 
-#define CAMERA_READ_WIDTH       1280
-#define CAMERA_READ_HEIGHT      960
+#define CAMERA_READ_WIDTH       640
+#define CAMERA_READ_HEIGHT      480
 
-#define RECT_WIDTH              320
-#define RECT_HEIGHT             240
+#define RECT_WIDTH              640
+#define RECT_HEIGHT             480
 
-#define DISP_WIDTH              80
-#define DISP_HEIGHT             60
+#define DISPLAY_H				320
+#define DISPLAY_W				240
+
+#define DISP_WIDTH              160
+#define DISP_HEIGHT             120
 
 #define LAB_MAP_ADDRESS         "stereo_rectify_maps.xml"
 #define HOME_MAP_ADDRESS        "stereo_rectify_maps.xml"
@@ -120,8 +123,11 @@ void takeStereoImages(bool autoCap = false) {
                 if (frame.rows <= 0 || frame.cols <= 0) {
                         continue;
                 }
+                
+                Mat frame2;
+                resize(frame, frame2, Size(DISPLAY_W*2, DISPLAY_H), INTER_LINEAR);
 
-                imshow("Camera Footage", frame);
+                imshow("Camera Footage", frame2);
                 
 
                 //split frame into two images
@@ -230,9 +236,14 @@ void undistortCamerasCalibrateStereo(bool autoCap = false) {
                         cout << "No more images found" << endl;
                         break;
                 }
+                
+                Mat imgL2;
+                Mat imgR2;
+                resize(imgL, imgL2, Size(DISPLAY_W, DISPLAY_H), INTER_LINEAR);
+                resize(imgR, imgR2, Size(DISPLAY_W, DISPLAY_H), INTER_LINEAR);
 
-                imshow("Left Frame", imgL);
-                imshow("Right Frame", imgR);
+                imshow("Left Frame", imgL2);
+                imshow("Right Frame", imgR2);
 
                 //find boards in both images
                 cv::cvtColor(imgL,grayL,cv::COLOR_BGR2GRAY);
@@ -260,7 +271,9 @@ void undistortCamerasCalibrateStereo(bool autoCap = false) {
                         }
 
                         cv::drawChessboardCorners(imgL, cv::Size(CHECKERBOARD[0], CHECKERBOARD[1]), corner_ptsL, successL);
-                        imshow("Left Frame", imgL);
+                        Mat imgL3;
+                        resize(imgL, imgL3, Size(DISPLAY_W, DISPLAY_H), INTER_LINEAR);
+                        imshow("Left Frame", imgL3);
 
                         
 
@@ -305,7 +318,9 @@ void undistortCamerasCalibrateStereo(bool autoCap = false) {
                         }
 
                         cv::drawChessboardCorners(imgR, cv::Size(CHECKERBOARD[0], CHECKERBOARD[1]), corner_ptsR, successR);
-                        imshow("Right Frame", imgR);
+                        Mat imgR3
+                        resize(imgR, imgR3, Size(DISPLAY_W, DISPLAY_H), INTER_LINEAR);
+                        imshow("Right Frame", imgR3);
 
                         if (!useAll) {
                                 int c = waitKey(0);
@@ -520,6 +535,7 @@ void undistortCamerasCalibrateStereo(bool autoCap = false) {
 
         Mat dstCalib;
         cv::hconcat(dstL, dstR, dstCalib);
+        resize(dstCalib, dstCalib, Size(DISPLAY_W*2, DISPLAY_H), INTER_LINEAR);
         imshow("Camera Calibration of Stereo Pair", dstCalib);
         
         //cout << "Press any key to continue" << endl;
@@ -631,10 +647,12 @@ void undistortCamerasCalibrateStereo(bool autoCap = false) {
         }
         Mat stereoImages;
         cv::hconcat(left_correct, right_correct, stereoImages);
+        resize(stereoImages, stereoImages, Size(DISPLAY_W*2, DISPLAY_H), INTER_LINEAR);
         imshow("Corrected Stereo Pair", stereoImages);
         
         Mat original;
         cv::hconcat(imgL_rect, imgR_rect, original);
+        resize(original, original, Size(DISPLAY_W*2, DISPLAY_H), INTER_LINEAR);
         imshow("Original Stereo Pair", original);
 
 
@@ -696,16 +714,13 @@ void testStereoLab() {
         cv_file2.release();
 
 
-        int disp = 2;
-
-        int pOne = 4;
-        int pTwo = 32;
-        int disp12MaxDiff = 0;
-        int preFilterCap = 0;
-        int uniquness = 5;
-        int speckleWindowSize = 0;
-        int speckleRange = 0;
-        int block = 5;
+        int preFilterSize = 0;
+        int preFilterCap = 30;
+        int uniqunessRatio = 0;
+        int textureThreshold = 0;
+        int speckleRange = 2;
+        int speckleWindowSize = 10;
+        int disp12Diff = 0;
 
         int lambda = 178;
         int sigma = 50;
@@ -724,19 +739,17 @@ void testStereoLab() {
 
         namedWindow("Track");
         if (!CORRECT_COLOR) {
-                createTrackbar("lambda", "Track", &lambda, 100);
-                createTrackbar("sigma", "Track", &sigma, 100);
+                createTrackbar("lambda", "Track", &lambda, 500);
+                createTrackbar("sigma", "Track", &sigma, 500);
                 createTrackbar("vis mult", "Track", &vis_mult, 100);
 
-                createTrackbar("P1", "Track", &pOne, 1000);
-                createTrackbar("P2", "Track", &pTwo, 2000);
-                createTrackbar("disp12MaxDiff", "Track", &disp12MaxDiff, 200);
-                createTrackbar("preFilterCap", "Track", &preFilterCap, 300);
-                createTrackbar("uniquness", "Track", &uniquness, 100);
-                createTrackbar("speckleWindowSize", "Track", &speckleWindowSize, 250);
-                createTrackbar("speckleRange", "Track", &speckleRange, 5);
-                createTrackbar("disp", "Track", &disp, 10);
-                createTrackbar("block", "Track", &block, 75);
+                createTrackbar("preFilterSize", "Track", &preFilterSize, 50);
+                createTrackbar("preFilterCap", "Track", &preFilterCap, 62);
+                createTrackbar("disp12MaxDiff", "Track", &disp12Diff, 50);
+                createTrackbar("uniquness", "Track", &uniqunessRatio, 100);
+                createTrackbar("speckleWindowSize", "Track", &speckleWindowSize, 50);
+                createTrackbar("speckleRange", "Track", &speckleRange, 100);
+                createTrackbar("texture", "Track", &textureThreshold, 100);
         } else {
                 createTrackbar("blue", "Track", &blue, 100);
                 createTrackbar("green", "Track", &green, 100);
@@ -753,12 +766,16 @@ void testStereoLab() {
 
         clock_t last = 0;
 
+        Ptr<StereoBM > left_matcher = StereoBM::create(16, 13);
         
+        Ptr<ximgproc::DisparityWLSFilter> wls_filter = ximgproc::createDisparityWLSFilter(left_matcher);
+        Ptr<StereoMatcher> right_matcher = ximgproc::createRightMatcher(left_matcher);
 
 	while (true) {
-                int minDisp = -8*disp;
-                int numDisp = 16*disp;
 
+                cout << Q << endl << endl;
+
+                /*
                 Ptr< StereoSGBM > left_matcher = StereoSGBM::create(minDisp,                            //min disparities
                                                 numDisp,                                 //num disparities
                                                 block,                                     //block size
@@ -770,19 +787,34 @@ void testStereoLab() {
                                                 speckleWindowSize,                                      //speckleWindowSize
                                                 speckleRange,                                     //speckleRange
                                                 StereoSGBM::MODE_HH4);
-                Ptr<ximgproc::DisparityWLSFilter> wls_filter = ximgproc::createDisparityWLSFilter(left_matcher);
+                */
+                left_matcher->setPreFilterType(1);
+                left_matcher->setPreFilterSize(preFilterSize*2+5);
+                left_matcher->setPreFilterCap(preFilterCap+1);
+                left_matcher->setUniquenessRatio(uniqunessRatio);
+                left_matcher->setTextureThreshold(textureThreshold);
+                left_matcher->setSpeckleRange(speckleRange);
+                left_matcher->setSpeckleWindowSize(speckleWindowSize);
+                left_matcher->setDisp12MaxDiff(disp12Diff);
+                left_matcher->setMinDisparity(-8);
+
                 Ptr<StereoMatcher> right_matcher = ximgproc::createRightMatcher(left_matcher);
+                
 
                 if (!CORRECT_COLOR) {
-                        cout << "P1 " << pOne << endl;
-                        cout << pTwo << endl;
-                        cout << disp12MaxDiff << endl;
-                        cout << preFilterCap << endl;
-                        cout << uniquness << endl;
-                        cout << speckleWindowSize << endl;
-                        cout << "speckleRange " << speckleRange << endl;
-                        cout << "disp" << disp << endl;
-                        cout << "block" << block << endl;
+                        
+                        cout << preFilterSize << " Pre filter size" << endl;
+                        cout << preFilterCap << " pre filter cap" << endl;
+                        cout << uniqunessRatio << " uniqunessRatio" << endl;
+                        cout << textureThreshold << " textureThreshold" << endl;
+                        cout << speckleRange << " speckleRange" << endl;
+                        cout << speckleWindowSize << " speckleWindowSize" << endl;
+                        cout << disp12Diff << " disp12Diff" << endl;
+
+                        cout << endl;
+                        cout << "Lambda: " << lambda << endl;
+                        cout << "Sigma: " << sigma << endl;
+                        cout << endl;
                 } else {
                         cout << "Min H: " << minInt <<endl;
                         cout << "Min S: " << mina <<endl;
@@ -839,12 +871,11 @@ void testStereoLab() {
                         INTERPOLATION,
                         BORDER_CONSTANT,
                         0);
-
-                //imshow("Correct Right", right_correct);
-                //imshow("Correct Left", left_correct);
                 
                 Mat left_small_correct;
                 Mat right_small_correct;
+
+                imshow("left correct", left_correct);
                 resize(left_correct, left_small_correct, Size(DISP_WIDTH, DISP_HEIGHT), INTER_LINEAR);
                 resize(right_correct, right_small_correct, Size(DISP_WIDTH, DISP_HEIGHT), INTER_LINEAR);
 
@@ -858,8 +889,8 @@ void testStereoLab() {
                 right_matcher->compute(right_correct_sg, left_correct_sg, right_disp);
 
                 Mat filtered_disp;
-                wls_filter->setLambda(17.8);
-                wls_filter->setSigmaColor(5.0);
+                wls_filter->setLambda(lambda/10.0);
+                wls_filter->setSigmaColor(sigma/10.0);
                 wls_filter->filter(left_disp,left_correct_sg,filtered_disp,right_disp);
 
                 Mat filtered_disp_vis, left_disp_vis;
@@ -877,18 +908,76 @@ void testStereoLab() {
                 cout << Q << endl << endl;
                 Mat XYZ[3];
                 Mat x,y,depth;
-		split(xyz, XYZ);
-		depth = XYZ[2];
+                split(xyz, XYZ);
+                depth = XYZ[2];
                 x = XYZ[0];
                 y = XYZ[1];
 
+                Mat BGR;
+                cvtColor(depth/1500.0,  BGR, cv::COLOR_GRAY2BGR);
+
+
                 Mat close;
-                inRange(depth*0.15, Scalar(0), Scalar(30), close);
+                int dist = 50;
+                inRange(depth*0.15, Scalar(0), Scalar(dist), close);
                 Mat mean1, stddev1;
                 cv::meanStdDev(depth*0.15, mean1, stddev1, close);
                 float tz = mean1.at<double>(0,0);
                 cout << "TZ: " << tz << endl;
                 imshow("close", close);
+
+                //object avoidence
+                Mat objectMask;
+                inRange(depth*0.15, Scalar(0), Scalar(dist), objectMask);
+                Mat avoidence;
+                left_correct.copyTo(avoidence, objectMask);
+                imshow("Avoid", avoidence);
+
+                vector<vector<Point> > contoursA;
+                vector<Vec4i> hierarchyA;
+
+                findContours(objectMask, contoursA, hierarchyA, RETR_TREE, CHAIN_APPROX_SIMPLE);
+
+                bool avoid = false;
+
+                vector<Point> largestContour;
+                float largestArea = 0;
+
+                for (unsigned int i = 0; i < contoursA.size(); i++) {
+                        //perfom initial area filter
+                        double area = contourArea(contoursA[i]);
+                        if (hierarchyA[i][3] == -1 && (area > AVOIDENCE_SIZE)) {
+                        
+                                if (area > largestArea) {
+                                        largestArea = area;
+                                        largestContour = contoursA[i];
+                                }
+                        }
+                }
+
+                int quad = 10;
+
+                if (largestArea > 0) {
+                        cout << "Avoid Area: " << largestArea << endl;
+                                        
+                        Moments moment = moments(largestContour);
+                        double cx = moment.m10 / moment.m00; //int(M['m10']/M['m00'])
+                        double cy = moment.m01 / moment.m00; //int(M['m01']/M['m00'])
+
+                        cout << "XX: " << cx/(float)RECT_WIDTH << endl;
+                        cout << "YY: " << cy/(float)RECT_HEIGHT << endl;
+                        
+                        int xx = (int)((cx/((float)RECT_WIDTH))*3.0)+1;
+                        int yy = (int)((cy/((float)RECT_HEIGHT))*3.0)+1;
+
+                        cout << "xx: " << xx << endl;
+                        cout << "yy: " << yy << endl;
+
+                        quad = 3*(yy-1)+(xx);
+                        
+                }
+
+                cout << "Quad: " << quad << endl;
 
                 //Detect Goal
                 if (mode == detectGoal) {
@@ -994,11 +1083,7 @@ void testStereoLab() {
                                                 //set as optical flow mask
                                                 tempSingle = goalSingle;
                                                 //bitwise_or(debug, tempSingle, debug);
-
-                                                float depthConversion = 16.923;
-                                                Mat mean, stddev;
-                                                cv::meanStdDev(depth, mean, stddev, goalSingleThin);
-                                                float distance = mean.at<double>(0,0)*depthConversion;
+                                                
 
                                                 //get area of each goal mask
                                                 //float areaI = contourArea(outScaled[0]);
@@ -1014,10 +1099,20 @@ void testStereoLab() {
                                                 double innerDetect = ((double)countNonZero(innerSingleBit))/areaI;
                                                 double goalDetect = ((double)countNonZero(goalSingleBit))/areaG;
 
+                                                imshow("goal", innerSingle);
+
                                                 //cout << "inner total" << areaI << endl;
-                                                //cout << "inner detected" << innerDetect << endl;
+                                                cout << "inner detected" << innerDetect << endl;
                                                 //cout << "goal total" << areaG << endl;
                                                 //cout << "goal detected" << goalDetect<< endl;
+
+                                                Mat depthSingle;
+                                                bitwise_and(goalSingleThin, close, depthSingle);
+
+                                                float depthConversion = 0.15;
+                                                Mat mean, stddev;
+                                                cv::meanStdDev(depth, mean, stddev, depthSingle);
+                                                float distance = mean.at<double>(0,0)*depthConversion;
 
                                                 float confidence = 1-innerDetect;
                                                 if (confidence > GOAL_CONFIDENCE) {
@@ -1025,6 +1120,11 @@ void testStereoLab() {
                                                         cout << area << endl;
                                                         cout << "Distance: " << distance << endl << endl;
                                                         //add goal data to info
+                                                }
+                                                cout << "Goal dectect: " << countNonZero(goalSingleBit) << endl;
+
+                                                if (countNonZero(goalSingleBit)  <= GOAL_CONFIRM) {
+                                                        distance = 1000;
                                                 }
 
 
@@ -1042,12 +1142,12 @@ void testStereoLab() {
 
                                                 for (unsigned int i = 0; i < outApprox.size(); i++) {
                                                         if (confidence > GOAL_CONFIDENCE) {
-                                                                //drawContours(BGR, outApprox, i, Scalar(0,255,0), LINE_4, 8);
-                                                                //drawContours(BGR, outScaled, i, Scalar(0,0,255), LINE_4, 8);
+                                                                drawContours(BGR, outApprox, i, Scalar(0,255,0), LINE_4, 8);
+                                                                drawContours(BGR, outScaled, i, Scalar(0,0,255), LINE_4, 8);
                                                         }
                                                 }
 
-                                                //imshow("Targets", BGR);
+                                                imshow("Targets", BGR);
 
                                         }
                                 }
@@ -1117,7 +1217,8 @@ void testStereoLab() {
                                                 RotatedRect smallEllipse = fitEllipse(smallcnt);
 
                                                 ellipse(temp, smallEllipse, Scalar(255), -1);
-                                                //ellipse(BGR, smallEllipse, Scalar(0,255,0), 3);
+                                                ellipse(BGR, smallEllipse, Scalar(0,255,0), 2);
+                                                bitwise_and(temp, close, temp);
 
                                                 Mat mean, stddev;
                                                 cv::meanStdDev(depth, mean, stddev, temp);
@@ -1152,537 +1253,6 @@ void testStereoLab() {
                                         }
                                 }
                         }
-                        //imshow("Targets", BGR);
-                } else {
-
-                }
-
-                int c = waitKey(WAIT);
-                if (c % 256 == 27) {
-                        break;
-                } else if (c % 256 == 32) {
-                        if (mode == detectBall) {
-                                mode = detectGoal;
-                        } else {
-                                mode = detectBall;
-                        }
-                }
-
-                cout << "MODE----------------->" << mode << endl;
-
-                clock_t now = clock();
-                float time = (float)(now - last)/(float)CLOCKS_PER_SEC;
-                cout << "Stereo Compute Time: " << time << "s" << endl;
-                cout << "Stereo compute rate: " << 1/time << "Hz" << endl;
-                last = now;
-	}
-}
-
-
-void testStereoHOME() {
-
-        VideoCapture inputVideo(CAMERA_INDEX);
-
-        inputVideo.set(CAP_PROP_FRAME_WIDTH, CAMERA_READ_WIDTH);
-        inputVideo.set(CAP_PROP_FRAME_HEIGHT, CAMERA_READ_HEIGHT);
-
-        //Make sure camera is connected
-        if (!inputVideo.isOpened()) {
-                CV_Assert("Cam open failed");
-                cout << "camera failed to open" << endl;
-                return;
-        }
-
-        //test stereo implementations here
-
-        //read in stereo rectification data
-        Mat Left_Stereo_Map1, Left_Stereo_Map2;
-        Mat Right_Stereo_Map1, Right_Stereo_Map2;
-        Mat Q;
-        
-
-        cv::FileStorage cv_file2 = cv::FileStorage(HOME_MAP_ADDRESS, cv::FileStorage::READ);
-        cv_file2["Left_Stereo_Map_x"] >> Left_Stereo_Map1;
-        cv_file2["Left_Stereo_Map_y"] >> Left_Stereo_Map2;
-        cv_file2["Right_Stereo_Map_x"] >> Right_Stereo_Map1;
-        cv_file2["Right_Stereo_Map_y"] >> Right_Stereo_Map2;
-        cv_file2["Q"] >> Q;
-        cv_file2.release();
-
-
-        int disp = 2;
-
-        int pOne = 8;
-        int pTwo = 64;
-        int disp12MaxDiff = 100;
-        int preFilterCap = 0;
-        int uniquness = 25;
-        int speckleWindowSize = 0;
-        int speckleRange = 0;
-        int block = 1;
-
-        int lambda = 178;
-        int sigma = 50;
-        int vis_mult = 20;
-
-        int blue = 0;
-        int green = 0;
-        int red = 0;
-
-        int minb = 0;
-        int maxb = 255;
-        int maxInt = 255;
-        int minInt = 0;
-        int maxa= 255;
-        int mina = 0;
-
-        namedWindow("Track");
-        if (!CORRECT_COLOR) {
-                createTrackbar("lambda", "Track", &lambda, 100);
-                createTrackbar("sigma", "Track", &sigma, 100);
-                createTrackbar("vis mult", "Track", &vis_mult, 100);
-
-                createTrackbar("P1", "Track", &pOne, 1000);
-                createTrackbar("P2", "Track", &pTwo, 2000);
-                createTrackbar("disp12MaxDiff", "Track", &disp12MaxDiff, 200);
-                createTrackbar("preFilterCap", "Track", &preFilterCap, 300);
-                createTrackbar("uniquness", "Track", &uniquness, 100);
-                createTrackbar("speckleWindowSize", "Track", &speckleWindowSize, 250);
-                createTrackbar("speckleRange", "Track", &speckleRange, 5);
-                createTrackbar("disp", "Track", &disp, 10);
-                createTrackbar("block", "Track", &block, 75);
-        } else {
-                createTrackbar("blue", "Track", &blue, 100);
-                createTrackbar("green", "Track", &green, 100);
-                createTrackbar("red", "Track", &red, 100);
-
-                createTrackbar("Min H", "Track", &minInt, 255);
-                createTrackbar("Max H", "Track", &maxInt, 255);
-                createTrackbar("Min S", "Track", &mina, 255);
-                createTrackbar("Max S", "Track", &maxa, 255);
-                createTrackbar("Min V", "Track", &minb, 255);
-                createTrackbar("Max V", "Track", &maxb, 255);
-        }
-        
-
-        clock_t last = 0;
-
-        
-
-	while (true) {
-                int minDisp = -8*disp;
-                int numDisp = 16*disp;
-
-                Ptr< StereoSGBM > left_matcher = StereoSGBM::create(minDisp,                            //min disparities
-                                                numDisp,                                 //num disparities
-                                                block,                                     //block size
-                                                pOne,                                    //P1
-                                                pTwo,                                    //P2
-                                                disp12MaxDiff,                                      //disp12MaxDiff
-                                                preFilterCap,                                     //preFilterCap
-                                                uniquness,                                      //uniquenessRatio
-                                                speckleWindowSize,                                      //speckleWindowSize
-                                                speckleRange,                                     //speckleRange
-                                                StereoSGBM::MODE_HH4);
-                Ptr<ximgproc::DisparityWLSFilter> wls_filter = ximgproc::createDisparityWLSFilter(left_matcher);
-                Ptr<StereoMatcher> right_matcher = ximgproc::createRightMatcher(left_matcher);
-
-                if (!CORRECT_COLOR) {
-                        cout << "P1 " << pOne << endl;
-                        cout << pTwo << endl;
-                        cout << disp12MaxDiff << endl;
-                        cout << preFilterCap << endl;
-                        cout << uniquness << endl;
-                        cout << speckleWindowSize << endl;
-                        cout << "speckleRange " << speckleRange << endl;
-                        cout << "disp" << disp << endl;
-                        cout << "block" << block << endl;
-                } else {
-                        cout << "Min H: " << minInt <<endl;
-                        cout << "Min S: " << mina <<endl;
-                        cout << "Min V: " << minb <<endl<<endl;
-
-                        cout << "Max H: " << maxInt <<endl;      
-                        cout << "Max S: " << maxa <<endl;
-                        cout << "Max V: " << maxb <<endl;
-
-                        cout << "Blue: " << blue <<endl;
-                        cout << "Green: " << green <<endl;
-                        cout << "Red: " << red <<endl;
-                }
-
-                Mat frame;
-
-                inputVideo >> frame;
-
-                if (frame.rows <= 0 || frame.cols <= 0) {
-                        continue;
-                }
-
-                //split frame into two images
-                Mat imgL, imgR;
-               
-                Rect left_roi(0, 0, frame.cols/2, frame.rows);
-                Rect right_roi (frame.cols/2, 0, frame.cols/2, frame.rows);
-
-                Mat crop_left(frame, left_roi);
-                Mat crop_right (frame, right_roi);
-
-                crop_left.copyTo(imgL);
-                crop_right.copyTo(imgR);
-                
-                Mat imgL_rect, imgR_rect;
-                resize(imgL, imgL_rect, Size(RECT_WIDTH, RECT_HEIGHT), INTER_LINEAR);
-                resize(imgR, imgR_rect, Size(RECT_WIDTH, RECT_HEIGHT), INTER_LINEAR);
-
-                //undistort images
-                Mat left_correct, right_correct;
-
-                remap(imgL_rect,
-                        left_correct,
-                        Left_Stereo_Map1,
-                        Left_Stereo_Map2,
-                        INTERPOLATION,
-                        BORDER_CONSTANT,
-                        0);
-
-                remap(imgR_rect,
-                        right_correct,
-                        Right_Stereo_Map1,
-                        Right_Stereo_Map2,
-                        INTERPOLATION,
-                        BORDER_CONSTANT,
-                        0);
-
-                //imshow("Correct Right", right_correct);
-                //imshow("Correct Left", left_correct);
-                
-                Mat left_small_correct;
-                Mat right_small_correct;
-                resize(left_correct, left_small_correct, Size(DISP_WIDTH, DISP_HEIGHT), INTER_LINEAR);
-                resize(right_correct, right_small_correct, Size(DISP_WIDTH, DISP_HEIGHT), INTER_LINEAR);
-
-                Mat left_correct_sg, right_correct_sg;
-                cvtColor(left_small_correct, left_correct_sg, cv::COLOR_BGR2GRAY);
-                cvtColor(right_small_correct, right_correct_sg, cv::COLOR_BGR2GRAY);
-
-                //compute disparity
-                Mat left_disp, right_disp;
-                double matching_time = (double)getTickCount();
-                left_matcher-> compute(left_correct_sg, right_correct_sg,left_disp);
-                right_matcher->compute(right_correct_sg, left_correct_sg, right_disp);
-                matching_time = ((double)getTickCount() - matching_time)/getTickFrequency();
-                cout << "Matching Time: " << matching_time << "s" << endl;
-
-                Mat filtered_disp;
-                wls_filter->setLambda((float)lambda/10.0);
-                wls_filter->setSigmaColor((float)sigma/10.0);
-                double filtering_time = (double)getTickCount();
-                wls_filter->filter(left_disp,left_correct_sg,filtered_disp,right_disp);
-                filtering_time = ((double)getTickCount() - filtering_time)/getTickFrequency();
-                cout << "Filtering Time: " << matching_time << "s" << endl;
-
-                cout << lambda/10.0 << endl;
-                cout << sigma/10.0 << endl;
-                cout << vis_mult << endl;
-
-                Mat filtered_disp_vis, left_disp_vis;
-                ximgproc::getDisparityVis(left_disp, left_disp_vis, vis_mult);
-                ximgproc::getDisparityVis(filtered_disp,filtered_disp_vis,vis_mult);
-                namedWindow("filtered disparity", WINDOW_AUTOSIZE);
-                imshow("filtered disparity", filtered_disp_vis);
-                imshow("unfiltered disparity", left_disp_vis);
-
-                filtered_disp.convertTo(filtered_disp,CV_32F, 1.0);
-
-                //remove invalid disparities and set them to zero
-                Mat zero = Mat::zeros(filtered_disp.size(), CV_32F);
-                Mat a = (zero < filtered_disp) & 1;
-                Mat b = (zero > filtered_disp) & 1;
-                Mat valid;
-                addWeighted(a, 1.0, b, 0.0, 0.0, valid, CV_32F);
-                filtered_disp = filtered_disp.mul(valid);
-
-                ximgproc::getDisparityVis(filtered_disp,filtered_disp_vis,vis_mult);
-                //imshow("Adjusted Disp", filtered_disp_vis);
-
-                //compute depth from disparity (shift is to add a small number to zeros)
-                Mat addshift;
-                addshift = Mat::zeros(filtered_disp.size(),  CV_32F);
-                addshift = addshift+0.01;
-                Mat depth2;
-                depth2 = (BASELINE*FOCAL*Mat::ones(filtered_disp.size(), CV_32F))/(filtered_disp+addshift);
-                resize(depth2, depth2, Size(RECT_WIDTH, RECT_HEIGHT), INTER_LINEAR);
-                //imshow("Depth", depth2/3500.0);
-
-
-                Mat BGR;
-                Mat hsv;
-                depth2 = depth2/3500.0;
-                cvtColor(depth2, BGR, cv::COLOR_GRAY2BGR);
-
-                BGR.convertTo(BGR, CV_8U, 255);
-
-                //hsv only
-                Mat XYZc[3];
-                split(BGR, XYZc);
-                XYZc[1].setTo(255);
-                XYZc[2].setTo(255);
-                //cout << HSV[0] << endl;
-                vector<Mat> channelsxyz;
-                for (int i = 0; i<3; i++) {
-                        channelsxyz.push_back(XYZc[i]);
-                }
-                Mat hsvdepth;
-                merge(channelsxyz, hsvdepth);
-                cvtColor(hsvdepth, hsvdepth, COLOR_HSV2BGR);
-                //imshow("color depth", hsvdepth);
-
-
-                //object avoidence
-                Mat objectMask;
-                int dist = 25;
-                inRange(BGR, Scalar(0, 0, 0), Scalar(dist, dist, dist), objectMask);
-                bitwise_not(objectMask, objectMask);
-                //imshow("Objects to avoid", objectMask);
-
-
-                //Detect Goal
-                if (mode == detectGoal) {
-                        Mat bMask;
-
-                        Mat imgGhsv;
-                        Mat GoalCorrected;
-                        Mat GoalCorrectM = Mat::zeros(left_correct.size(), left_correct.type());
-                        if (CORRECT_COLOR) {
-                                GoalCorrectM.setTo(Scalar(blue,green,red));
-                        } else {
-                                GoalCorrectM.setTo(G_CORRECTION);
-                        }
-                        add(left_correct,GoalCorrectM, GoalCorrected);
-
-                        cvtColor(GoalCorrected, imgGhsv, cv::COLOR_BGR2HSV);
-
-                        if (CORRECT_COLOR) {
-                                inRange(imgGhsv, Scalar(minInt,mina,minb), Scalar(maxInt,maxa,maxb), bMask);
-                        } else {
-                                inRange(imgGhsv, G_MIN, G_MAX, bMask);
-                        }
-
-                        Mat HSV[3];
-                        split(imgGhsv, HSV);
-                        HSV[1].setTo(255);
-                        HSV[2].setTo(255);
-                        vector<Mat> channels;
-                        for (int i = 0; i<3; i++) {
-                                channels.push_back(HSV[i]);
-                        }
-                        Mat onlyH;
-                        merge(channels, onlyH);
-                        cvtColor(onlyH, onlyH, COLOR_HSV2BGR);
-                        //imshow("onlyH", onlyH);
-
-                        Mat erosionElem = getStructuringElement(MORPH_ELLIPSE, Size(2*E_SIZE+1,2*E_SIZE+1),Point(E_SIZE, E_SIZE));
-                        Mat dilationElem = getStructuringElement(MORPH_ELLIPSE, Size(2*D_SIZE+1,2*D_SIZE+1),Point(D_SIZE, D_SIZE));
-
-                        erode(bMask, bMask, erosionElem, Point(-1,-1), 0);
-                        dilate(bMask, bMask, dilationElem, Point(-1,-1), D_ITER+GOAL_DILATION_ADJUST);
-
-                        //imshow("Goal Mask", bMask);
-
-                        vector<vector<Point> > contours;
-                        vector<Vec4i> hierarchy;
-
-                        findContours(bMask, contours, hierarchy, RETR_TREE, CHAIN_APPROX_SIMPLE);
-
-                        for (unsigned int i = 0; i < contours.size(); i++) {
-                                //perfom initial area filter
-                                double area = contourArea(contours[i]);
-                                if (hierarchy[i][3] == -1 && (area > 1000)) {
-
-                                        //temp matrix for drawing
-                                        Mat temp = Mat::zeros(bMask.rows, bMask.cols, CV_8UC3);
-                                        Mat tempSingle;
-
-                                        unsigned int indexOfInner = i;
-
-                                        vector<Point> approx;
-                                        vector<vector<Point>> outApprox;
-                                        vector<vector<Point>> outScaled;
-
-                                        if (true) {
-                                                //do approx poly to close contours and smooth them
-                                                double epsilon = G_POLY_APPROX_E*cv::arcLength(contours[i],true);
-                                                cv::approxPolyDP(contours[i], approx, epsilon,true);
-                                                outApprox.push_back(approx);
-                                                //scale contour
-                                                outScaled.push_back(scaleContour(approx, GOAL_INNER_CONTOUR_SCALE));
-
-                                                Mat innerSingle, goalSingle;
-                                                Mat innerSingleThin, goalSingleThin;
-                                                Mat innerSingleBit, goalSingleBit;
-
-                                                Mat inner = Mat::zeros(bMask.rows, bMask.cols, CV_8UC3);
-                                                Mat goal = Mat::zeros(bMask.rows, bMask.cols, CV_8UC3);
-                                                Mat innerThin = Mat::zeros(bMask.rows, bMask.cols, CV_8UC3);
-                                                Mat goalThin = Mat::zeros(bMask.rows, bMask.cols, CV_8UC3);
-
-                                                drawContours(inner, outScaled, 0, Scalar(255, 255, 255), FILLED, 8);
-                                                drawContours(goal, contours, i, Scalar(255, 255, 255), FILLED, 8, hierarchy);
-
-                                                //get thin goal
-                                                vector<vector<Point> > thinOutScaled;
-                                                vector<vector<Point> > thinGoal;
-                                                thinOutScaled.push_back(scaleContour(outScaled[0], 1.15));
-                                                thinGoal.push_back(scaleContour(contours[i], 0.85));
-
-                                                drawContours(innerThin, thinOutScaled, 0, Scalar(255, 255, 255), FILLED, 8);
-                                                drawContours(goalThin, thinGoal, 0, Scalar(255, 255, 255), FILLED, 8);
-
-                                                cvtColor(inner, innerSingle, COLOR_BGR2GRAY);
-                                                cvtColor(goal, goalSingle, COLOR_BGR2GRAY);
-                                                cvtColor(innerThin, innerSingleThin, COLOR_BGR2GRAY);
-                                                cvtColor(goalThin, goalSingleThin, COLOR_BGR2GRAY);
-
-                                                //get just the goal detected
-                                                bitwise_xor(goalSingle, goalSingle, goalSingle, innerSingle);
-                                                bitwise_xor(goalSingleThin, goalSingleThin, goalSingleThin, innerSingleThin);
-
-                                                //set as optical flow mask
-                                                tempSingle = goalSingle;
-                                                //bitwise_or(debug, tempSingle, debug);
-
-                                                float depthConversion = 16.923;
-                                                Mat mean, stddev;
-                                                cv::meanStdDev(depth2, mean, stddev, goalSingleThin);
-                                                float distance = mean.at<double>(0,0)*depthConversion;
-
-                                                //get area of each goal mask
-                                                //float areaI = contourArea(outScaled[0]);
-                                                //float areaG = contourArea(approx)-areaI;
-
-                                                double areaI = (double)countNonZero(innerSingle);
-                                                double areaG = (double)countNonZero(tempSingle);
-
-                                                //get the pixels detected in each region
-                                                bitwise_and(innerSingle, bMask, innerSingleBit);
-                                                bitwise_and(tempSingle, bMask, goalSingleBit);
-
-                                                double innerDetect = ((double)countNonZero(innerSingleBit))/areaI;
-                                                double goalDetect = ((double)countNonZero(goalSingleBit))/areaG;
-
-                                                //cout << "inner total" << areaI << endl;
-                                                //cout << "inner detected" << innerDetect << endl;
-                                                //cout << "goal total" << areaG << endl;
-                                                //cout << "goal detected" << goalDetect<< endl;
-
-                                                float confidence = 1-innerDetect;
-                                                if (confidence > GOAL_CONFIDENCE) {
-                                                        cout << "condfidence:" << confidence << endl;
-                                                        cout << area << endl;
-                                                        cout << "Distance: " << distance << endl << endl;
-                                                        //add goal data to info
-                                                }
-
-
-                                                if (confidence > GOAL_CONFIDENCE) {
-                                                        drawContours(BGR, contours, i, Scalar(255,0,0), LINE_4, 8, hierarchy);
-
-                                                        //do approx poly to close contours and smooth them
-                                                        double epsilon = G_POLY_APPROX_E*cv::arcLength(contours[i],true);
-                                                        cv::approxPolyDP(contours[i], approx, epsilon,true);
-                                                        outApprox.push_back(approx);
-                                                        //scale contour
-                                                        outScaled.push_back(scaleContour(approx, GOAL_INNER_CONTOUR_SCALE));
-                                                        //imshow("Goal", goalSingleThin);
-                                                }
-
-                                                for (unsigned int i = 0; i < outApprox.size(); i++) {
-                                                        if (confidence > GOAL_CONFIDENCE) {
-                                                                drawContours(BGR, outApprox, i, Scalar(0,255,0), LINE_4, 8);
-                                                                drawContours(BGR, outScaled, i, Scalar(0,0,255), LINE_4, 8);
-                                                        }
-                                                }
-
-                                                imshow("Targets", BGR);
-
-                                        }
-                                }
-                        }
-                } else if (mode == detectBall) {
-                        Mat bMask;
-                        Mat imgLhsv;
-
-                        Mat balloonCorrected;
-                        Mat balloonCorrectM = Mat::zeros(imgL_rect.size(), imgL_rect.type());
-                        balloonCorrectM.setTo(B_CORRECTION);
-                        add(imgL_rect,balloonCorrectM, balloonCorrected);
-
-                        cvtColor(balloonCorrected, imgLhsv, cv::COLOR_BGR2HSV);
-
-                        inRange(imgLhsv, B_MIN, B_MAX, bMask);
-
-                        vector<vector<Point> > contours;
-                        vector<Vec4i> hierarchy;
-
-                        findContours(bMask, contours, hierarchy, RETR_TREE, CHAIN_APPROX_SIMPLE);
-
-                        std::vector<vector<float> > balloons;
-
-                        //cout << "Number of contours: " << contours.size() << endl;
-
-                        // iterate through all the top-level contours,
-                        // draw each connected component with its own random color
-                        for (unsigned int i = 0; i < contours.size(); i++) {
-                                //perfom initial area filter
-                                double area = contourArea(contours[i]);
-                                if (hierarchy[i][3] == -1 && (area > MIN_AREA) && (contours[i].size() > 5)) {
-
-                                        RotatedRect objEllipse = fitEllipse(contours[i]);
-
-                                        Mat temp = Mat::zeros(BGR.rows, BGR.cols, CV_8UC1);
-
-                                        if (objEllipse.size.width/objEllipse.size.height > 1/(float)SIZE_RATIO && objEllipse.size.width/objEllipse.size.height < SIZE_RATIO) {
-                                                //compute distance from depth map
-
-                                                vector<Point> smallcnt = scaleContour(contours[i], 1.0);
-                                                RotatedRect smallEllipse = fitEllipse(smallcnt);
-
-                                                ellipse(temp, smallEllipse, Scalar(255), -1);
-                                                ellipse(BGR, smallEllipse, Scalar(0,255,0), 3);
-
-                                                Mat mean, stddev;
-                                                cv::meanStdDev(depth2, mean, stddev, temp);
-
-                                                double conversion = 0.246666;
-
-                                                float x = objEllipse.center.x;
-                                                float y = objEllipse.center.y;
-                                                float z = mean.at<double>(0,0)*conversion;
-
-                                                if (z < 0 ) {
-                                                        z = z * -1;
-                                                }
-
-                                                if (z == 0) {
-                                                        z = 10000;
-                                                }
-
-                                                cout << "Distance: " << z << endl;
-
-                                                //add to vector
-                                                std::vector<float> balloon;
-                                                balloon.push_back(x);
-                                                balloon.push_back(y);
-                                                balloon.push_back(z);
-                                                balloon.push_back(area);
-                                                balloons.push_back(balloon);
-
-                                                ellipse(imgL_rect, objEllipse, Scalar(0,0,255), 3);
-                                                //cout << "Depth of object: " << z << "in\tstd: " << stddev.at<double>(0,0)*conversion << endl;
-                                        }
-                                }
-                        }
                         imshow("Targets", BGR);
                 } else {
 
@@ -1709,6 +1279,10 @@ void testStereoHOME() {
 	}
 }
 
+
+
+
+
 //Display camera feed
 int main(int argc, char** argv) {
 
@@ -1732,8 +1306,11 @@ int main(int argc, char** argv) {
         }
 
         Mat frame;
+        Mat frame2;
         inputVideo >> frame;
-        imshow("Camera Footage", frame);
+        namedWindow("Camera Footage", CV_WINDOW_AUTOSIZE);
+        resizeWindow("Camera Footage", DISPLAY_W*2, DISPLAY_H);
+        imshow("Camera Footage", frame2);
         inputVideo.release();
 
         while (true) {
@@ -1743,8 +1320,7 @@ int main(int argc, char** argv) {
                 cout << "1. Take Chessboard Photos" << endl;
                 cout << "2. Undistort Cameras and Calibrate Stereo" << endl;
                 cout << "3. Test Stereo Lab" << endl;
-                cout << "4. Test Stereo Home" << endl;
-                cout << "5. Exit Program" << endl << endl;
+                cout << "4. Exit Program" << endl << endl;
 
                 int mode = waitKey(0);
 
@@ -1759,9 +1335,6 @@ int main(int argc, char** argv) {
                                 testStereoLab();
                         break;
                         case 52: //4
-                                testStereoHOME();
-                        break;
-                        case 53: //5
                                 cout << "Exiting Program" << endl;
                                 // Closes all the frames
                                 destroyAllWindows();

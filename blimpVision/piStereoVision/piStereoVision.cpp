@@ -163,6 +163,7 @@ void sendUDPRaw(string target, string source, string flag, string message);
 void sendUDP(string flag, string message);
 void sendUDP(string message);
 void establishBlimpID();
+void plotUDP(string varName, float varValue);
 
 
 //==================== HELPER FUNCTION HEADERS ====================
@@ -241,7 +242,7 @@ int main(int argc, char** argv) {
 	Mat Q;
 
 	cout << "Read Stereo Camera Parameters" << endl;
-	FileStorage cv_file2 = FileStorage("/home/pi/piStereoVision/stereo_rectify_maps.xml",FileStorage::READ);
+	FileStorage cv_file2 = FileStorage("/home/pi/piStereoVision/stereo_rectify_maps240p.xml",FileStorage::READ);
 	cv_file2["Left_Stereo_Map_x"] >> Left_Stereo_Map1;
 	cv_file2["Left_Stereo_Map_y"] >> Left_Stereo_Map2;
 	cv_file2["Right_Stereo_Map_x"] >> Right_Stereo_Map1;
@@ -284,82 +285,86 @@ int main(int argc, char** argv) {
 			string target;
 			string flag;
 			bool success = readUDP(&readIn, &target, nullptr, &flag);
-			int id = -1;
-			try {
-				id = stoi(target);
-			}
-			catch(std::invalid_argument& e) {
-				cout << "invalid blimp id: " << target << endl;
-			}
+			
 			if(!success){
 				reading = false;
-			}else if(id == blimpID){
-				//cout << "Received: \"" << readIn << "\"" << endl;
-				if(flag == "A"){
-					autonomous = true;
-					lastUDPReceived = clock();
-				}else if(flag == "M"){
-					//cout << "M" << endl;
-					lastUDPReceived = clock();
-					char first = readIn.at(0);
-					if(isdigit(first)){
-						autonomous = false;
+			}else{
+				int id = -1;
+				try {
+					id = stoi(target);
+				}
+				catch(std::invalid_argument& e) {
+					cout << "invalid blimp id: \"" << target << "\", \"" << readIn << "\"" << endl;
+				}
+				if(id == blimpID){
+					//cout << "Received: \"" << readIn << "\"" << endl;
+					if(flag == "A"){
+						autonomous = true;
+						lastUDPReceived = clock();
+					}else if(flag == "M"){
+						//cout << "M" << endl;
+						lastUDPReceived = clock();
+						char first = readIn.at(0);
+						if(isdigit(first)){
+							autonomous = false;
 
-						int equalIndex = readIn.find("=");
+							int equalIndex = readIn.find("=");
 
-						int numMotors = -1;
-						String motorString = readIn.substr(0,equalIndex);
+							int numMotors = -1;
+							String motorString = readIn.substr(0,equalIndex);
 
+							try {
+								numMotors = stoi(motorString);
+							}
+							catch(std::invalid_argument& e) {
+								cout << "invalid number of motors: " << numMotors << endl;
+							}
+
+							int startIndex = readIn.find("=");
+							for(int i=0; i<numMotors; i++){
+								int endIndex = readIn.find(",",startIndex+1);
+								string motorString = readIn.substr(startIndex+1,endIndex-startIndex-1);
+								float motorData = stof(motorString);
+								startIndex = endIndex;
+
+								if(recentMotorCommands.size() <= i) recentMotorCommands.push_back(0);
+								recentMotorCommands[i] = motorData;
+							}
+						}
+					}else if(flag == "B"){
+						//Barometer reading
+						bool isBaroDataGood = false;
 						try {
-							numMotors = stoi(motorString);
+							barometerData = stof(readIn);
+							//cout << "Barodata: " << barometerData << endl;
+							isBaroDataGood = true;
 						}
 						catch(std::invalid_argument& e) {
-							cout << "invalid number of motors: " << numMotors << endl;
+							cout << "Invalid barometer data received." << endl;
+							isBaroDataGood = false;
 						}
-
-						int startIndex = readIn.find("=");
-						for(int i=0; i<numMotors; i++){
-							int endIndex = readIn.find(",",startIndex+1);
-							string motorString = readIn.substr(startIndex+1,endIndex-startIndex-1);
-							float motorData = stof(motorString);
-							startIndex = endIndex;
-
-							if(recentMotorCommands.size() <= i) recentMotorCommands.push_back(0);
-							recentMotorCommands[i] = motorData;
+						
+						if (isBaroDataGood) {
+							//reset timer
+							clock_t now = clock();
+							lastBaroMessageTime = now/(float)CLOCKS_PER_SEC;
 						}
-					}
-				}else if(flag == "B"){
-					//Barometer reading
-					bool isBaroDataGood = false;
-					try {
-						barometerData = stof(readIn);
-						//cout << "Barodata: " << barometerData << endl;
-						isBaroDataGood = true;
-					}
-					catch(std::invalid_argument& e) {
-						cout << "Invalid barometer data received." << endl;
-						isBaroDataGood = false;
+						
+					}else if(flag == "P"){
+						char first = readIn.at(0);
+						if(first == 'C'){
+							cout << "Start recording." << endl;
+							framesLeftToRecord += moreFramesPerTrigger;
+						}
+					}else if(flag == "K"){
+						cout << "Received kill command. Killing..." << endl;
+						return 0;
 					}
 					
-					if (isBaroDataGood) {
-						//reset timer
-						clock_t now = clock();
-						lastBaroMessageTime = now/(float)CLOCKS_PER_SEC;
-					}
-					
-				}else if(flag == "P"){
-					char first = readIn.at(0);
-					if(first == 'C'){
-						cout << "Start recording." << endl;
-						framesLeftToRecord += moreFramesPerTrigger;
-					}
-				}else if(flag == "K"){
-					cout << "Received kill command. Killing..." << endl;
-					return 0;
+					//cout << "UDPReceived: \"" << readIn << "\" sent to \"" << target << "\"" << endl;
 				}
-				
-				//cout << "UDPReceived: \"" << readIn << "\" sent to \"" << target << "\"" << endl;
 			}
+			
 		}
 
 		//benchmark("GetFrame");
@@ -493,6 +498,7 @@ int main(int argc, char** argv) {
 
 		//cout << "Area: " << largestArea << endl;
 		cout << "Quad: " << quad << endl;
+		plotUDP("Quad",quad);
 		
 		/*
 		//recording frames-----------------------------------------
@@ -825,14 +831,14 @@ int main(int argc, char** argv) {
 
 		//Debuging
 		//print target
-		/*
+		
 		for (int i = 0; i < target.size(); i++) {
 			cout << "X: " << target[i][0] << endl;
 			cout << "Y: " << target[i][1] << endl;
 			cout << "Z: " << target[i][2] << endl;
 			cout << "Area: " << target[i][3] << endl;
 		}
-		*/
+		
 		//benchmark("Create message");
 
 		//Print serial data-----------------------------------------------------------------------------------------------------
@@ -1020,7 +1026,7 @@ int main(int argc, char** argv) {
 			//benchmarkPrint();
 		}
 
-		//benchmark("Last");
+		benchmark("Last");
 		//benchmarkPrint();
 	}
 
@@ -1173,6 +1179,8 @@ bool readUDP(string* retMessage, string* target, string* source, string* flag){
 				if(source != nullptr) *source = sourceString;
 				if(flag != nullptr) *flag = flagString;
 				return true;
+			}else{
+				cout << "Comma or Colons not found: " << comma << ", " << firstColon << ", " << secondColon << endl;
 			}
 		}
 	}
@@ -1221,6 +1229,12 @@ void establishBlimpID(){
 	}
 	cout << "Received blimp ID: " << blimpID << endl;
 }
+
+void plotUDP(string varName, float varValue){
+	string message = varName + "=" + to_string(varValue);
+	sendUDP("T",message);
+}
+
 
 //==================== VISION HELPER FUNCTIONS ===================
 
