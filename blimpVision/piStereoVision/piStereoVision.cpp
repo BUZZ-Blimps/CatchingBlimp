@@ -301,36 +301,90 @@ int main(int argc, char** argv) {
 					if(flag == "A"){
 						autonomous = true;
 						lastUDPReceived = clock();
+						
+						int firstSemiColon = readIn.find(";");
+						int secondSemiColon = readIn.find(";",firstSemiColon+1);
+						
+						//Barometer data
+						bool isBaroDataGood = false;
+						try {
+							barometerData = stof(readIn.substr(0,firstSemiColon));
+							//cout << "Barodata: " << barometerData << endl;
+							isBaroDataGood = true;
+						}
+						catch(std::invalid_argument& e) {
+							cout << "Invalid barometer data received." << endl;
+							isBaroDataGood = false;
+						}
+						if (isBaroDataGood) {
+							//reset timer
+							clock_t now = clock();
+							lastBaroMessageTime = now/(float)CLOCKS_PER_SEC;
+						}
+						
+						//TargetGoal data
+						string targetGoalData = readIn.substr(firstSemiColon+1,secondSemiColon-firstSemiColon-1);
+						if(targetGoalData == "O"){
+							goalColor = orange;
+						}else if(targetGoalData == "Y"){
+							goalColor = yellow;
+						}
+						
+						//Disregard the rest
+						
 					}else if(flag == "M"){
 						//cout << "M" << endl;
 						lastUDPReceived = clock();
-						char first = readIn.at(0);
-						if(isdigit(first)){
-							autonomous = false;
+						autonomous = false;
+						
+						//MotorInput data
+						int startIndex = -1;
+						for(int i=0; i<6; i++){
+							int endIndex = readIn.find(",",startIndex+1);
+							string motorString = readIn.substr(startIndex+1,endIndex-startIndex-1);
+							float motorData = stof(motorString);
+							startIndex = endIndex;
 
-							int equalIndex = readIn.find("=");
-
-							int numMotors = -1;
-							String motorString = readIn.substr(0,equalIndex);
-
-							try {
-								numMotors = stoi(motorString);
-							}
-							catch(std::invalid_argument& e) {
-								cout << "invalid number of motors: " << numMotors << endl;
-							}
-
-							int startIndex = readIn.find("=");
-							for(int i=0; i<numMotors; i++){
-								int endIndex = readIn.find(",",startIndex+1);
-								string motorString = readIn.substr(startIndex+1,endIndex-startIndex-1);
-								float motorData = stof(motorString);
-								startIndex = endIndex;
-
-								if(recentMotorCommands.size() <= i) recentMotorCommands.push_back(0);
-								recentMotorCommands[i] = motorData;
-							}
+							if(recentMotorCommands.size() <= i) recentMotorCommands.push_back(0);
+							recentMotorCommands[i] = motorData;
 						}
+						
+						int firstSemiColon = readIn.find(";");
+						int secondSemiColon = readIn.find(";",firstSemiColon+1);
+						int thirdSemiColon = readIn.find(";",secondSemiColon+1);
+						
+						//Barometer data
+						bool isBaroDataGood = false;
+						try {
+							barometerData = stof(readIn.substr(firstSemiColon+1,secondSemiColon-firstSemiColon-1));
+							//cout << "Barodata: " << barometerData << endl;
+							isBaroDataGood = true;
+						}
+						catch(std::invalid_argument& e) {
+							cout << "Invalid barometer data received: \"" << readIn.substr(firstSemiColon+1,secondSemiColon-firstSemiColon-1) << "\"" << endl;
+							isBaroDataGood = false;
+						}
+						if (isBaroDataGood) {
+							//reset timer
+							clock_t now = clock();
+							lastBaroMessageTime = now/(float)CLOCKS_PER_SEC;
+						}
+						
+						//TargetGoal data
+						string targetGoalData = readIn.substr(secondSemiColon+1,thirdSemiColon-secondSemiColon-1);
+						if(targetGoalData == "O"){
+							goalColor = orange;
+						}else if(targetGoalData == "Y"){
+							goalColor = yellow;
+						}
+						
+						//cout << "Manual Mode:" << endl;
+						//cout << recentMotorCommands[0] << ", " << recentMotorCommands[1] << ", " << recentMotorCommands[2] << ", " << recentMotorCommands[3] << ", " << recentMotorCommands[4] << ", " << recentMotorCommands[5] << endl;
+						//cout << "Barometer: " << barometerData << endl;
+						//cout << "TargetGoal: " << goalColor << endl;
+						
+						//Disregard the rest
+						
 					}else if(flag == "B"){
 						//Barometer reading
 						bool isBaroDataGood = false;
@@ -359,6 +413,12 @@ int main(int argc, char** argv) {
 					}else if(flag == "K"){
 						cout << "Received kill command. Killing..." << endl;
 						return 0;
+					}else if(flag == "TG"){
+						if(readIn == "O"){
+							goalColor = orange;
+						}else if(readIn == "Y"){
+							goalColor = yellow;
+						}
 					}
 					
 					//cout << "UDPReceived: \"" << readIn << "\" sent to \"" << target << "\"" << endl;
@@ -498,7 +558,8 @@ int main(int argc, char** argv) {
 
 		//cout << "Area: " << largestArea << endl;
 		cout << "Quad: " << quad << endl;
-		plotUDP("Quad",quad);
+		cout << "Targeting Goal: " << goalColor << endl;
+		//plotUDP("Quad",quad);
 		
 		/*
 		//recording frames-----------------------------------------
@@ -952,7 +1013,7 @@ int main(int argc, char** argv) {
 
 							mode = stoi(modeString);
 							blimpColor = stoi(blimpString);
-							goalColor = stoi(goalString);
+							//goalColor = stoi(goalString);
 
 						}
 						catch(std::invalid_argument& e) {
