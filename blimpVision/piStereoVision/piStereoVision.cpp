@@ -68,7 +68,7 @@
 
 #define PRE_FILTER_SIZE	7
 #define PRE_FILTER_CAP	2
-#define UNIQUENESS_RATIO	15
+#define UNIQUENESS_RATIO	5
 
 
 #define LAMBDA			17.8
@@ -102,7 +102,7 @@
 #define MIN_AREA		50
 #define SIZE_RATIO		3
 
-#define AVOID_DIST		25
+#define AVOID_DIST		70
 #define AVOID_AREA		6000
 
 
