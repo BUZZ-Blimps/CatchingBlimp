@@ -5,6 +5,7 @@
 #include <ctime>
 #include <iostream>
 #include <list>
+#include <unordered_map>
 #include <opencv2/opencv.hpp>
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/features2d.hpp>
@@ -204,6 +205,17 @@ Teleplot teleplot("127.0.0.1");
 //==================== MAIN ====================
 
 int main(int argc, char** argv) {
+
+	for(int i=0; i<argc; i++) cout << "Arg[" << i << "] = \"" << argv[i] << "\"" << endl;
+
+	if (argc != 2) {
+		fprintf(stderr, "Error: ID not provided.\n");
+		return -1;
+	}
+
+	blimpID = atoi(argv[1]);
+	cout << "I. Am. Blimp. " << blimpID << "." << endl;
+
 	clock_t currentTime = clock();
 
 	initSerial();
@@ -218,7 +230,7 @@ int main(int argc, char** argv) {
 
 	initUDPReceiver();
 	initUDPSender();
-	establishBlimpID();
+	//establishBlimpID();
 
     vector<float> recentMotorCommands;
 
@@ -264,6 +276,7 @@ int main(int argc, char** argv) {
 	wls_filter->setSigmaColor(SIGMA);
 
 	while(true) {
+		cout << "Blimp ID: " << blimpID << endl;
 		clock_t currentTime = clock();
 		double cycleTime = double(currentTime - lastCycle)/CLOCKS_PER_SEC;
 		lastCycle = currentTime;
@@ -1263,7 +1276,6 @@ void sendUDP(string message){
 }
 
 void establishBlimpID(){
-	cout << "Waiting for Blimp ID..." << endl;
 	while(blimpID == -1){
 		sendUDPRaw("0","N","N","N");
 		delay(0.25);
