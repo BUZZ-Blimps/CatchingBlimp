@@ -1,0 +1,16 @@
+[Unit]
+Description=Pi vision service
+Requires=network.target
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/bin/sh /home/pi/scripts/pi_vision_start.sh
+WorkingDirectory=/home/pi/piOffboardStereoVision/build
+User=pi
+StandardOutput=syslog
+StandardError=syslog
+
+[Install]
+WantedBy=multi-user.target
+
