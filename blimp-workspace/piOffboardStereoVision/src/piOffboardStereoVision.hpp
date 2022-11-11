@@ -8,12 +8,14 @@
 #define PIOFFBOARDSTEREOVISION_HPP_
 
 #include <semaphore.h>
+#include "json.hpp"
+using json = nlohmann::json;
 
 //==================== CONSTANTS ====================
 #define HEARTBEAT_PERIOD    0.1
 
 //Video streaming
-const char* stream_server_ip = "192.168.0.220";
+const char* stream_server_ip = "192.168.0.200";
 //const char* stream_server_ip = "127.0.0.1";
 const int   stream_server_port = 12345;
 
@@ -84,12 +86,23 @@ const char *stereo_cal_path = "/home/pi/piOffboardStereoVision/stereo_rectify_ma
 #define AVOID_DIST		70
 #define AVOID_AREA		6000
 
+#define ML_CLASS_BALLOON		0
+#define ML_CLASS_ORANGEGOAL		1
+#define ML_CLASS_YELLOWGOAL		2
+
 //==================== GLOBAL VARIABLES (GOD FORBID) ====================//
 int blimpID = -1;
 int cap_device_id = 0;
 int teensyState;
 bool program_running = true;
 bool autonomous = false;
+
+json lastReceivedTargets;
+clock_t lastReceivedTargetsTime;
+json lastReceivedTargetsCopy;
+clock_t lastReceivedTargetsTimeCopy;
+bool lastReceivedIsNew = false;
+double receivedTargetTimeout = 1; //seconds
 
 bool scoreInOrange = false;
 bool selfIsBlue = false;
@@ -100,6 +113,7 @@ bool verboseMode = false;
 bool streamOnlyMode = false;
 bool annotatedMode = false;
 bool disableSerialMode = false;
+bool printJSONMode = false;
 
 cv::Mat annotatedFrame;
 bool annotatedFrameReady = false;
@@ -113,6 +127,7 @@ std::vector<float> recentMotorCommands;
 sem_t cap_sem;
 pthread_mutex_t benchmarkMutex;
 pthread_mutex_t annotatedFrameMutex;
+pthread_mutex_t receivedTargetsMutex;
 
 //Low res frames for stereo processing
 cv::Mat lt_frame_lowres, rt_frame_lowres;

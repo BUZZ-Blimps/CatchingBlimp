@@ -52,12 +52,9 @@
 //Libraries
 #include <wiringPi.h>
 #include <wiringSerial.h>
-#include "json.hpp"
 #include "Teleplot.h"
 
 #include "piOffboardStereoVision.hpp"
-
-using json = nlohmann::json;
 
 using namespace std;
 using namespace cv;
@@ -390,7 +387,12 @@ void *stream_fb_check(void *thread_id) {
 			}
 			sanitized_buffer[m] = '\0';
 
-			json ex1 = json::parse(sanitized_buffer);
+			pthread_mutex_lock(&receivedTargetsMutex);
+			lastReceivedTargets = json::parse(sanitized_buffer);
+			//cout << "Json: \"" << lastReceivedTargets << "\"" << endl;
+			lastReceivedTargetsTime = clock();
+			lastReceivedIsNew = true;
+			pthread_mutex_unlock(&receivedTargetsMutex);
 
 			//std::cout << "x: " << ex1["x"] << ", y: " << ex1["y"] << std::endl;
 		}
@@ -715,6 +717,9 @@ int main(int argc, char** argv) {
 		} else if ((strcmp(argv[i], "-ds") == 0) || (strcmp(argv[i], "--disable-serial") == 0)){
 			disableSerialMode = true;
 			std::cout << "Disable Serial mode enabled." << std::endl;
+		}else if((strcmp(argv[i], "-j") == 0) || (strcmp(argv[i], "--json") == 0)){
+			printJSONMode = true;
+			std::cout << "Print JSON mode enabled." << std::endl;
 		} else if ((strcmp(argv[i], "-h") == 0) || (strcmp(argv[i], "--help") == 0)) {
 			//Print help info and return
 			std::string helpText;
@@ -723,6 +728,7 @@ int main(int argc, char** argv) {
 			helpText += "opt -c, --cap-id {cap_dev_id}: Set Capture Device ID\n";
 			helpText += "opt -s --stream: Enable Stream-Only Mode\n";
 			helpText += "-a --annotate: Enable Annotated Mode\n";
+			helpText += "-j --json: Enable JSON Print Mode\n";
 			helpText += "-ds --disable-serial: Disable Serial Mode\n";
 			fprintf(stderr, "%s\n", helpText.c_str());
 			return 0;
@@ -1202,6 +1208,7 @@ int main(int argc, char** argv) {
 		}
 
 		//get largest balloon or goal depending on state
+		//mode = goalSearch;
 		if (mode == searching || mode == approach || mode == catching) {
 			//send back balloon data
 			float area = 0;
@@ -1214,6 +1221,7 @@ int main(int argc, char** argv) {
 			}
 
 			if (index != -1) {
+				if(printJSONMode) cout << "Balloon seen with computer vision." << endl;
 				target.push_back(balloons[index]);
 				if (annotatedMode) {
 					float radius = sqrt(balloons[index][3]/3.14159f);
@@ -1235,6 +1243,7 @@ int main(int argc, char** argv) {
 							1.0);
 				}
 			} else{
+				//No balloons found
 				if (annotatedMode) {
 					cv::putText(annotatedFrame,
 							":(",
@@ -1243,6 +1252,51 @@ int main(int argc, char** argv) {
 							2,
 							CV_RGB(118, 185, 0),
 							2);
+				}
+
+				//Check machine learning
+				if(lastReceivedIsNew){
+					lastReceivedIsNew = false;
+					pthread_mutex_lock(&receivedTargetsMutex);
+					lastReceivedTargetsCopy = lastReceivedTargets;
+					lastReceivedTargetsTimeCopy = lastReceivedTargetsTime;
+					pthread_mutex_unlock(&receivedTargetsMutex);
+				}
+
+				if((clock() - lastReceivedTargetsTimeCopy)/CLOCKS_PER_SEC < receivedTargetTimeout){
+					//parse through array, looking for best balloon
+					//cout << "json balloon: \"" << lastReceivedTargetsCopy << "\"" << endl;
+
+					double bestX;
+					double bestY;
+					double bestZ;
+					double bestArea = -1;
+					for (json::iterator it = lastReceivedTargetsCopy.begin(); it != lastReceivedTargetsCopy.end(); ++it) {
+						json target = *it;
+						float currentArea = target["Area"];
+						bool correctTargetType = target["class"] == ML_CLASS_BALLOON;
+						if(correctTargetType && bestArea < currentArea){
+							bestX = target["xCenter"];
+							bestY = target["yCenter"];
+							bestZ = 10000;
+							bestArea = currentArea;
+						}
+					}
+
+					if(bestArea != -1){
+						if(printJSONMode) cout << "Balloon seen with machine vision." << endl;
+						//Use machine learning balloon info!
+						vector<float> targetInfo;
+						targetInfo.push_back(bestX); // x
+						targetInfo.push_back(bestY); // y
+						targetInfo.push_back(bestZ); // z
+						targetInfo.push_back(bestArea); // area
+						target.push_back(targetInfo);
+					}else{
+						if(printJSONMode) cout << "Balloon not seen." << endl;
+					}
+				}else{
+					if(printJSONMode) cout << "Balloon not seen." << endl;
 				}
 			}
 
@@ -1258,7 +1312,60 @@ int main(int argc, char** argv) {
 			}
 
 			if (index != -1) {
+				if(printJSONMode) cout << "Goal seen with computer vision." << endl;
 				target.push_back(goals[index]);
+			}else{
+				//No goals found
+				//Check machine learning
+				if(lastReceivedIsNew){
+					//cout << "JSON copied." << endl;
+					lastReceivedIsNew = false;
+					pthread_mutex_lock(&receivedTargetsMutex);
+					lastReceivedTargetsCopy = lastReceivedTargets;
+					lastReceivedTargetsTimeCopy = lastReceivedTargetsTime;
+					pthread_mutex_unlock(&receivedTargetsMutex);
+				}else{
+					//cout << "No new JSON to copy." << endl;
+				}
+
+				if((clock() - lastReceivedTargetsTimeCopy)/CLOCKS_PER_SEC < receivedTargetTimeout){
+					//parse through array, looking for best balloon
+					//cout << "json goal: \"" << lastReceivedTargetsCopy << "\"" << endl;
+
+					double bestX;
+					double bestY;
+					double bestZ;
+					double bestArea = -1;
+					//cout << "JSON:" << endl;
+					for (json::iterator it = lastReceivedTargetsCopy.begin(); it != lastReceivedTargetsCopy.end(); ++it) {
+						json target = *it;
+						//cout << "" << target << endl;
+						float currentArea = target["Area"];
+						bool correctTargetType = (goalColor == orange && target["class"] == ML_CLASS_ORANGEGOAL) || (goalColor == yellow && target["class"] == ML_CLASS_YELLOWGOAL);
+						//cout << "Area: " << currentArea << ", CorrectTargetType: " << correctTargetType << ", Class: " << target["class"] << endl;
+						if(correctTargetType && bestArea < currentArea){
+							bestX = target["xCenter"];
+							bestY = target["yCenter"];
+							bestZ = 10000;
+							bestArea = currentArea;
+						}
+					}
+
+					if(bestArea != -1){
+						if(printJSONMode) cout << "Goal seen with machine vision." << endl;
+						//Use machine learning balloon info!
+						vector<float> targetInfo;
+						targetInfo.push_back(bestX); // x
+						targetInfo.push_back(bestY); // y
+						targetInfo.push_back(bestZ); // z
+						targetInfo.push_back(bestArea); // area
+						target.push_back(targetInfo);
+					}else{
+						if(printJSONMode) cout << "Goal not seen." << endl;
+					}
+				}else{
+					if(printJSONMode) cout << "Goal not seen." << endl;
+				}
 			}
 		}
 
