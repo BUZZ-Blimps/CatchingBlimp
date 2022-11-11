@@ -12,12 +12,10 @@
 //==================== CONSTANTS ====================
 #define HEARTBEAT_PERIOD    0.1
 
-
 //Video streaming
-//const char* stream_server_ip = "192.168.0.220";
-const char* stream_server_ip = "127.0.0.1";
+const char* stream_server_ip = "192.168.0.220";
+//const char* stream_server_ip = "127.0.0.1";
 const int   stream_server_port = 12345;
-
 
 //Communication
 #define UDP_IP				"239.255.255.250"
@@ -27,8 +25,8 @@ const int   stream_server_port = 12345;
 const int MAX_DGRAM = pow(2, 16);
 const int MAX_IMAGE_DGRAM = MAX_DGRAM - 64;
 
-//const char *stereo_cal_path = "/home/pi/piOffboardStereoVision/stereo_rectify_maps240p.xml";
-const char *stereo_cal_path = "/home/willie/CatchingBlimp/blimp-workspace/piOffboardStereoVision/src/stereo_rectify_maps240p.xml";
+const char *stereo_cal_path = "/home/pi/piOffboardStereoVision/stereo_rectify_maps240p.xml";
+//const char *stereo_cal_path = "/home/willie/CatchingBlimp/blimp-workspace/piOffboardStereoVision/src/stereo_rectify_maps240p.xml";
 
 #define MAXLINE 1024
 
@@ -100,6 +98,11 @@ bool selfIsBlue = false;
 bool debugMode = false;
 bool verboseMode = false;
 bool streamOnlyMode = false;
+bool annotatedMode = false;
+bool disableSerialMode = false;
+
+cv::Mat annotatedFrame;
+bool annotatedFrameReady = false;
 
 std::string msgTemp = "";
 
@@ -107,7 +110,9 @@ float barometerData = 0;
 
 std::vector<float> recentMotorCommands;
 
-sem_t cap_mutex;
+sem_t cap_sem;
+pthread_mutex_t benchmarkMutex;
+pthread_mutex_t annotatedFrameMutex;
 
 //Low res frames for stereo processing
 cv::Mat lt_frame_lowres, rt_frame_lowres;

@@ -2,8 +2,9 @@
 if [ "$1" != "" ]; then
 	hostname=$1
 	
-	# Check if device is online (1 second timeout)
-	ping $hostname -c 1 -W 1 > /dev/null
+	# Check if device is online
+	timeout=2
+	ping $hostname -c 1 -W $timeout > /dev/null
 	if [ $? == 0 ]; then
 		echo ">>Copying workspace source code files to pi@$hostname"
 		ssh pi@$hostname 'mkdir -p /home/pi/piOffboardStereoVision/build'

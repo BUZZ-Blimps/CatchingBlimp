@@ -73,7 +73,7 @@ void stop_program(int signal) {
 	pthread_join(stream_fb_thread, NULL);
 
 	//DESTROY the capture mutex
-	sem_destroy(&cap_mutex);
+	sem_destroy(&cap_sem);
 
 	//Close all open sockets
 	if (stream_socket_fd) {
@@ -92,10 +92,10 @@ void stop_program(int signal) {
 	exit(EXIT_SUCCESS);
 }
 
-//Ground station comms thread
+//Base station comms thread
 void *bs_udp_comms(void *thread_id) {
 	int t_id = (int)pthread_self();
-	fprintf(stdout, "Ground station communication thread (%d) successfully started.\n", t_id);
+	fprintf(stdout, "Base station communication thread (%d) successfully started.\n", t_id);
 
     clock_t lastCycle = 0;
     clock_t lastHeartbeat = 0;
@@ -104,8 +104,9 @@ void *bs_udp_comms(void *thread_id) {
 	framesLeftToRecord = 9000;
 	int moreFramesPerTrigger = 30 * 10;
 
+	fprintf(stdout, "Connecting to base station. Blimp ID: %d.\n", blimpID);
+
 	while (program_running) {
-		if (verboseMode) cout << "Blimp ID: " << blimpID << endl;
 		clock_t currentTime = clock();
 		double cycleTime = double(currentTime - lastCycle)/CLOCKS_PER_SEC;
 		lastCycle = currentTime;
@@ -269,11 +270,13 @@ void *bs_udp_comms(void *thread_id) {
 
 		if (clock()/((float)CLOCKS_PER_SEC) - lastBaroMessageTime > 10) {
 			barometerData = -10000;
-			cout << "Baro data not current" << endl;
+
+			if (verboseMode)
+				cerr << "Baro data not current" << endl;
 		}
 	}
 
-	fprintf(stdout, "Ground station communication thread (%d) successfully stopped.\n", t_id);
+	fprintf(stdout, "Base station communication thread (%d) successfully stopped.\n", t_id);
 	pthread_exit((void *) 0);
 }
 
@@ -298,7 +301,7 @@ void send_frame(cv::Mat image) {
     	//Convert the subvector buffer to an unsigned char array
     	unsigned int send_buf_len = packet_buf.size() + 1;
     	unsigned char send_buf[send_buf_len];
-    	send_buf[0] = (unsigned char)packet_count; //First element is always the packet number
+    	send_buf[0] = (unsigned char)packet_count; //First element is always the # of remaining packets
     	for (int i = 0; i < (int)packet_buf.size(); i++) {
     		send_buf[i+1] = packet_buf[i];
     	}
@@ -332,10 +335,6 @@ void *stream_video(void *thread_id) {
 	cap.set(cv::CAP_PROP_FRAME_HEIGHT, 720);
 
 	while (program_running) {
-
-		//Remove this after testing
-//		sleep(1.0);
-
 		//Read image off stereo cam
 		if (cap.grab()) {
 			cap.retrieve(image);
@@ -351,10 +350,19 @@ void *stream_video(void *thread_id) {
 			resize(rt_frame_maxres, rt_frame_lowres, Size(RECT_WIDTH, RECT_HEIGHT), INTER_LINEAR);
 
 		    //Signal to main thread that a new frame is available
-		    sem_post(&cap_mutex);
+		    sem_post(&cap_sem);
 
 			//Stream left frame to offboard server
-			send_frame(lt_frame_maxres);
+			if(!annotatedMode) send_frame(lt_frame_maxres);
+		}
+
+		if (annotatedMode && annotatedFrameReady){
+			annotatedFrameReady = false;
+			Mat annotatedFrameToSend;
+			pthread_mutex_lock(&annotatedFrameMutex);
+			annotatedFrame.copyTo(annotatedFrameToSend);
+			pthread_mutex_unlock(&annotatedFrameMutex);
+			send_frame(annotatedFrameToSend);
 		}
 	}
 
@@ -593,18 +601,24 @@ float getFPS(){
 }
 
 void benchmarkFirst(string flag){
+	pthread_mutex_lock(&benchmarkMutex);
 	times.clear();
 	flags.clear();
 	times.push_back(clock());
 	flags.push_back(flag);
+	pthread_mutex_unlock(&benchmarkMutex);
 }
 
-void benchmark(string flag){
+void benchmark(string flag) {
+	pthread_mutex_lock(&benchmarkMutex);
 	times.push_back(clock());
 	flags.push_back(flag);
+	pthread_mutex_unlock(&benchmarkMutex);
 }
 
-void benchmarkPrint(){
+void benchmarkPrint() {
+	pthread_mutex_lock(&benchmarkMutex);
+
 	if(times.size() < 2) return;
 	double deltaTotal = double(times[times.size()-1] - times[0]) / CLOCKS_PER_SEC;
 	for (int i=1; i<(int)times.size(); i++) {
@@ -618,6 +632,8 @@ void benchmarkPrint(){
 		cout << percentString << "%, " << flags[i-1] << "->" << flags[i] << ": " << deltaTime << endl;
 	}
 	cout << "Total: " << 1.0/deltaTotal << "Hz" << endl;
+
+	pthread_mutex_unlock(&benchmarkMutex);
 }
 
 void delay(double delaySeconds){
@@ -634,7 +650,7 @@ void saveToVideo(Mat frame){
 
 	if(!frame.empty()){
 		outputVideo.write(frame);
-	}else{
+	} else{
 		cout << "Attempted to write empty frame." << endl;
 	}
 }
@@ -693,10 +709,22 @@ int main(int argc, char** argv) {
 				validUsage = false;
 				break;
 			}
+		} else if ((strcmp(argv[i], "-a") == 0) || (strcmp(argv[i], "--annotate") == 0)){
+			annotatedMode = true;
+			std::cout << "Annotated mode enabled." << std::endl;
+		} else if ((strcmp(argv[i], "-ds") == 0) || (strcmp(argv[i], "--disable-serial") == 0)){
+			disableSerialMode = true;
+			std::cout << "Disable Serial mode enabled." << std::endl;
 		} else if ((strcmp(argv[i], "-h") == 0) || (strcmp(argv[i], "--help") == 0)) {
 			//Print help info and return
-			const char *helpText = "req -i --id {blimp_id}: Set Blimp ID Number\nopt -v, --verbose: Enable Verbose Mode\nopt -c, --cap-id {cap_dev_id}: Set Capture Device ID\nopt -s --stream: Enable Stream-Only Mode\n";
-			fprintf(stderr, "%s\n", helpText);
+			std::string helpText;
+			helpText += "req -i --id {blimp_id}: Set Blimp ID Number\n";
+			helpText += "opt -v, --verbose: Enable Verbose Mode\n";
+			helpText += "opt -c, --cap-id {cap_dev_id}: Set Capture Device ID\n";
+			helpText += "opt -s --stream: Enable Stream-Only Mode\n";
+			helpText += "-a --annotate: Enable Annotated Mode\n";
+			helpText += "-ds --disable-serial: Disable Serial Mode\n";
+			fprintf(stderr, "%s\n", helpText.c_str());
 			return 0;
 		} else {
 			fprintf(stderr, "Invalid argument given: \"%s\"\n", argv[i]);
@@ -729,7 +757,10 @@ int main(int argc, char** argv) {
 
 	if (!streamOnlyMode) {
 		//Initialize serial and UDP comms
-//		initSerial();
+		if (!disableSerialMode) {
+			initSerial();
+		}
+
 		initUDPReceiver();
 		initUDPSender();
 	}
@@ -738,7 +769,7 @@ int main(int argc, char** argv) {
 	init_udp_streamer();
 
 	//Initialize semaphore
-	sem_init(&cap_mutex, 0, 0);
+	sem_init(&cap_sem, 0, 0);
 
     //Initialize video streaming threads
     if (pthread_create(&stream_thread, NULL, stream_video, (void *)stream_thread_id) < 0) {
@@ -766,8 +797,14 @@ int main(int argc, char** argv) {
 	Mat Right_Stereo_Map1, Right_Stereo_Map2;
 	Mat Q;
 
-	if (verboseMode) cout << "Read Stereo Camera Parameters" << endl;
+	if (verboseMode) cout << "Reading Stereo Camera Parameters" << endl;
 	FileStorage cv_file2 = FileStorage(stereo_cal_path, FileStorage::READ);
+
+	if (!cv_file2.isOpened()) {
+		fprintf(stderr, "Error: Failed to open stereo parameter file %s\n", stereo_cal_path);
+		stop_program(0);
+	}
+
 	cv_file2["Left_Stereo_Map_x"] >> Left_Stereo_Map1;
 	cv_file2["Left_Stereo_Map_y"] >> Left_Stereo_Map2;
 	cv_file2["Right_Stereo_Map_x"] >> Right_Stereo_Map1;
@@ -794,7 +831,7 @@ int main(int argc, char** argv) {
 
     while (program_running) {
 
-		sem_wait(&cap_mutex);
+		sem_wait(&cap_sem);
 
 		//Copy L/R frames to avoid race conditions
 		cv::Mat imgL, imgR;
@@ -1159,6 +1196,11 @@ int main(int argc, char** argv) {
 		//Select target for blimp depending on state:
 		std::vector<std::vector<float> > target;
 
+		if (annotatedMode) {
+			pthread_mutex_lock(&annotatedFrameMutex);
+			left_correct.copyTo(annotatedFrame);
+		}
+
 		//get largest balloon or goal depending on state
 		if (mode == searching || mode == approach || mode == catching) {
 			//send back balloon data
@@ -1173,7 +1215,37 @@ int main(int argc, char** argv) {
 
 			if (index != -1) {
 				target.push_back(balloons[index]);
+				if (annotatedMode) {
+					float radius = sqrt(balloons[index][3]/3.14159f);
+					circle(annotatedFrame, Point(balloons[index][0],balloons[index][1]), radius, Scalar(255,255,255));
+					cv::putText(annotatedFrame,
+							"THIS IS THE FUTURE",
+							cv::Point(10.0, 20.0),
+							cv::FONT_HERSHEY_COMPLEX,
+							0.75,
+							CV_RGB(118, 185, 0),
+							2);
+
+					cv::putText(annotatedFrame,
+							"z: " + to_string(balloons[index][2]),
+							Point(balloons[index][0], balloons[index][1]+radius+5.0),
+							cv::FONT_HERSHEY_PLAIN,
+							1.0,
+							Scalar(255,255,255),
+							1.0);
+				}
+			} else{
+				if (annotatedMode) {
+					cv::putText(annotatedFrame,
+							":(",
+							cv::Point(10.0, 50.0),
+							cv::FONT_HERSHEY_COMPLEX,
+							2,
+							CV_RGB(118, 185, 0),
+							2);
+				}
 			}
+
 		} else if (mode == goalSearch || mode == approachGoal || mode == scoringStart) {
 			//send back goal data
 			float area = 0;
@@ -1188,6 +1260,11 @@ int main(int argc, char** argv) {
 			if (index != -1) {
 				target.push_back(goals[index]);
 			}
+		}
+
+		if (annotatedMode) {
+			pthread_mutex_unlock(&annotatedFrameMutex);
+			annotatedFrameReady = true;
 		}
 
 		//Debuging
@@ -1230,8 +1307,8 @@ int main(int argc, char** argv) {
 				message += "#\n";
 			}
 
-			//imlement lost state
-			if((clock()-lastUDPReceived)/CLOCKS_PER_SEC > UDPTimeout) {
+			//Implement lost state
+			if ((clock()-lastUDPReceived)/CLOCKS_PER_SEC > UDPTimeout) {
 				//UDP Timed-out
 				message = "L&#\n";
 			}
@@ -1240,14 +1317,14 @@ int main(int argc, char** argv) {
 
 			//benchmark("Send message");
 			//send message
-			if (!streamOnlyMode) {
+			if (!streamOnlyMode && !disableSerialMode) {
 				sendSerial(message);
 			}
 
 			//benchmark("Output2");
 
 			//ignores timeouts for serial communication
-			if(debugMode) continue;
+			if (debugMode || disableSerialMode) continue;
 
 			//benchmark("Listen from teensy");
 			//read state data from teensy
