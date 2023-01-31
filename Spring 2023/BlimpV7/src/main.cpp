@@ -424,8 +424,8 @@ void loop() {
     xekf.updateOptical(x_opt);
     yekf.updateOptical(y_opt);
 
-    //Serial.print(">X Velocity:");
-    //Serial.println(Flow.x_motion_comp);
+    // Serial.print(">X Velocity:");
+    // Serial.println(Flow.x_motion_comp);
 
     //accelGCorrection.updateData(BerryIMU.AccXraw, BerryIMU.AccYraw, BerryIMU.AccZraw, pitch, roll);
 
@@ -451,15 +451,14 @@ void loop() {
     float upCom = 0.0;
     float yawCom = 0.0;
     float translationCom = 0.0;
-
-
+  
 
     //compute state machine
     if (state == manual) {
       //Serial.println("Manual");
       //get manual data
       std::vector<double> manualComs = piData.getManualComs();
-
+      
       //all motor commands are between -1 and 1
 
       //check to make sure 4 motor commands and two grabber commands are recieved
@@ -501,12 +500,31 @@ void loop() {
     Serial.print(">z com:");
     Serial.println(translationCom);
 
+
+
     //PID controllers
     float upMotor = verticalPID.calculate(upCom, kf.v, dt);
-    float yawMotor = yawPID.calculate(yawCom, yawRateFilter.last, dt);
-    float forwardMotor = forwardPID.calculate(forwardCom, xekf.v, dt);
-    float translationMotor = translationPID.calculate(translationCom, yekf.v, dt);
+    //float upMotor = 250*upCom;
 
+    
+    //hyperbolic tan for yaw "filtering"
+    float yawMotor = 0.0;
+         double deadband = 1.0; //deadband for filteration
+         yawMotor = yawPID.calculate(yawCom, yawRateFilter.last, dt);  
+
+         if (abs(yawCom-yawRateFilter.last) < deadband) {
+             yawMotor = 0;
+         } else {
+             yawMotor = tanh(yawMotor)*abs(yawMotor);
+         }
+
+
+
+    float forwardMotor = forwardPID.calculate(forwardCom, xekf.v, dt);
+    //float forwardMotor = 250*forwardCom
+
+    float translationMotor = translationPID.calculate(translationCom, yekf.v, dt);
+    //float translationMotor = 100*translationCom;
 
     if (micros()/MICROS_TO_SEC < 10 + firstMessageTime) {
       //filter base station data
