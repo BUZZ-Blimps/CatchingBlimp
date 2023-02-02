@@ -137,10 +137,23 @@ void Gimbal::updateGimbal(bool debug, bool motors_off, double roll, double pitch
 
   phiPos1 = filter*phi + (1-filter)*phiPos1;
   
-  if (abs(thrustf) >= deadband/2.0) {
+  if (abs(thrustf) >= deadband/2.0){
     yawServo.write(thetaPos);
     pitchServo.write(phi);
-    if (!motors_off) motor.write(motorCom(thrustf));
+    if (!motors_off) {
+      double newCom = motorCom(thrustf);
+      //prevent overpowering
+      if (newCom > 2000){
+        newCom = 2000; //max out
+      } else if (newCom < 1000){
+        newCom = 1000; //max out
+      }
+      motor.write(newCom);
+      Serial.println("Motor command");
+      Serial.println(thrustf);
+      Serial.println("Adjusted command");
+      Serial.println(newCom);
+    }
   } else {
     motor.write(motorCom(0));
   }

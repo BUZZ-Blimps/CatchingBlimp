@@ -29,7 +29,7 @@
 
 //optional controllers
 #define USE_Z_VELOCITY_IN_MANUAL  false
-#define USE_OBJECT_AVOIDENCE      true
+#define USE_OBJECT_AVOIDENCE      false
 
 //catch search time after one
 #define MAX_SEARCH_WAIT_AFTER_ONE     80
@@ -199,7 +199,7 @@ float lastBaroLoopTick = 0.0;
 float lastOpticalLoopTick = 0.0;
 
 //global variables
-int state = manual;
+int state = lost;
 int mode = searching;
 
 //blimp game parameters
@@ -252,8 +252,8 @@ double lastCatch = 0.0;
 
 //grabber data
 int catches = 0;
-int shoot=0;
-int grab=0;
+int shoot = 0;
+int grab = 0;
 
 //interupt pin setup at timing for long range ultrasonic
 volatile unsigned long pulseInTimeBegin = micros();
@@ -494,22 +494,22 @@ void loop() {
         upCom = -0.5;
     }
 
-    Serial.print(">z v:");
-    Serial.println(-yekf.v);
+    //translation velocity and command
+    // Serial.print(">z v:");
+    // Serial.println(-yekf.v);
 
-    Serial.print(">z com:");
-    Serial.println(translationCom);
+    // Serial.print(">z com:");
+    // Serial.println(translationCom);
 
 
 
     //PID controllers
     float upMotor = verticalPID.calculate(upCom, kf.v, dt);
-    //float upMotor = 250*upCom;
 
     
     //hyperbolic tan for yaw "filtering"
     float yawMotor = 0.0;
-         double deadband = 1.0; //deadband for filteration
+         float deadband = 1.0; //deadband for filteration
          yawMotor = yawPID.calculate(yawCom, yawRateFilter.last, dt);  
 
          if (abs(yawCom-yawRateFilter.last) < deadband) {
@@ -519,29 +519,33 @@ void loop() {
          }
 
 
-
     float forwardMotor = forwardPID.calculate(forwardCom, xekf.v, dt);
-    //float forwardMotor = 250*forwardCom
 
     float translationMotor = translationPID.calculate(translationCom, yekf.v, dt);
-    //float translationMotor = 100*translationCom;
 
     if (micros()/MICROS_TO_SEC < 10 + firstMessageTime) {
       //filter base station data
       baroOffset.filter(baseBaro-BerryIMU.alt);
       rollOffset.filter(BerryIMU.gyr_rateXraw);
 
+      //zero motors while filters converge and esc arms
       motorControl.update(0, 0, 0, 0, 0);
       leftGimbal.updateGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, motorControl.yawLeft, motorControl.upLeft, motorControl.forwardLeft);
       rightGimbal.updateGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, motorControl.yawRight, motorControl.upRight, motorControl.forwardRight);
-    } else {
+    } else if (state == manual && !MOTORS_OFF){
       //forward, translation, up, yaw, roll
       if (!ZERO_MODE) motorControl.update(forwardMotor, -translationMotor, upMotor, yawMotor, 0);
       //Serial.println("Controlable");
       //if (ZERO_MODE) motorControl.update(10, 0, 0, 0, 0);
       leftGimbal.updateGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, motorControl.yawLeft, motorControl.upLeft, motorControl.forwardLeft);
       rightGimbal.updateGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, motorControl.yawRight, motorControl.upRight, motorControl.forwardRight);
+
     }
+    else {
+        motorControl.update(0,0,0,0,0);
+        leftGimbal.updateGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, 0, 0, 0);
+        rightGimbal.updateGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, 0, 0, 0);
+      }
   }
 }
 
