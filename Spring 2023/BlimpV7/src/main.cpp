@@ -13,6 +13,7 @@
 #include "BangBang.h"
 #include "optical_ekf.h"
 #include "gyro_ekf.h"
+#include "tripleBallGrabber.h"
 
 #include "Gimbal.h"
 
@@ -36,7 +37,7 @@
 #define GAME_BALL_WAIT_TIME_PENALTY   20
 
 //number of catches attempted
-#define TOTAL_ATTEMPTS            1
+#define TOTAL_ATTEMPTS            4
 #define MAX_ATTEMPTS              5
 
 //flight area parameters
@@ -53,41 +54,41 @@
 #define BALL_CATCH_TRIGGER        27
 
 //object avoidence motor coms
-#define FORWARD_AVOID             180
+#define FORWARD_AVOID             0.72
 #define YAW_AVOID                 10
-#define UP_AVOID                  0.3
+#define UP_AVOID                  0.0015
 
 //autonomy tunning parameters
 #define GAME_BALL_YAW_SEARCH      -20
-#define GAME_BALL_FORWARD_SEARCH  15
-#define GAME_BALL_VERTICAL_SEARCH 0.4
+#define GAME_BALL_FORWARD_SEARCH  0.06
+#define GAME_BALL_VERTICAL_SEARCH 0.0016
 
-#define GAME_BALL_CLOSURE_COM     30
-#define GAME_BALL_APPROACH_ANGLE  3
+#define GAME_BALL_CLOSURE_COM     0.12
+#define GAME_BALL_APPROACH_ANGLE  0.012
 #define GAME_BaLL_X_OFFSET        10
 
-#define CATCHING_FORWARD_COM      150
-#define CATCHING_UP_COM           0.6
+#define CATCHING_FORWARD_COM      0.6
+#define CATCHING_UP_COM           0.0025
 
-#define CAUGHT_FORWARD_COM        -230
-#define CAUGHT_UP_COM             -0.1
+#define CAUGHT_FORWARD_COM        -0.92
+#define CAUGHT_UP_COM             -0.0004
 
 #define GOAL_YAW_SEARCH           6
-#define GOAL_FORWARD_SEARCH       35
-#define GOAL_UP_VELOCITY          0.7
+#define GOAL_FORWARD_SEARCH       0.14
+#define GOAL_UP_VELOCITY          0.0028
 
-#define GOAL_CLOSURE_COM          25
+#define GOAL_CLOSURE_COM          0.1
 #define GOAL_APPROACH_ANGLE       0
 
 #define SCORING_YAW_COM           0
-#define SCORING_FORWARD_COM       40
-#define SCORING_UP_COM            0.5
+#define SCORING_FORWARD_COM       0.18
+#define SCORING_UP_COM            0.002
 
-#define SHOOTING_FORWARD_COM      150
-#define SHOOTING_UP_COM           0.25
+#define SHOOTING_FORWARD_COM      0.6
+#define SHOOTING_UP_COM           0.0012
 
-#define SCORED_FORWARD_COM        -150
-#define SCORED_UP_COM             -0.4
+#define SCORED_FORWARD_COM        -0.6
+#define SCORED_UP_COM             -0.0015
 
 //sensor and controller rates
 #define FAST_SENSOR_LOOP_FREQ           100.0
@@ -145,6 +146,13 @@ PID yawPID(20.0, 0, 0);
 PID forwardPID(970, 0, 0);
 PID translationPID(1370, 0, 0);
 
+//Auto PID control (output fed into manual controller)
+PID yPixelPID(0.0075,0,0);
+PID xPixelPID(0.162,0,0);
+
+//Goal positioning controller
+BangBang goalPositionHold(GOAL_HEIGHT_DEADBAND, GOAL_UP_VELOCITY); //Dead band, velocity to center itself
+
 //pre process for accel before vertical kalman filter
 EMAFilter verticalAccelFilter(0.05);
 
@@ -153,10 +161,20 @@ EMAFilter yawRateFilter(0.2);
 
 EMAFilter rollRateFilter(0.5);
 
+//Low pass filter for computer vision parameters
+EMAFilter xPixFilter(0.5);
+EMAFilter yPixFilter(0.5);
+EMAFilter zPixFilter(0.5);
+EMAFilter areaFilter(0.5);
+
+
 //baro offset computation from base station value
 EMAFilter baroOffset(0.5);
-
+//roll offset computation from imu
 EMAFilter rollOffset(0.5);
+
+//ball grabber object
+TripleBallGrabber ballGrabber(GRABBER_PIN,4);
 
 //-----States for blimp and grabber-----
 enum autoState {
@@ -165,7 +183,7 @@ enum autoState {
   catching,
   caught,
   goalSearch,
-  approachGoal,
+  approachGoal,  //To Do: add goal aligntment (PID) in if, or add another state "align"
   scoringStart,
   shooting,
   scored,
@@ -190,6 +208,12 @@ enum blimpType {
 enum goalType {
   orange,
   yellow
+};
+
+//to Do: make two type of game ball color tracking
+enum gameballType{
+  green,
+  pink
 };
 
 //timing global variables for each update loop
@@ -452,6 +476,63 @@ void loop() {
     float yawCom = 0.0;
     float translationCom = 0.0;
   
+    //object avoidence commands to overide search and computer vition
+    float forwardA = 0.0;
+    float upA = 0.0;
+    float yawA = 0.0;
+
+      //set avoidence command based on quadrant that contains object to avoid
+    switch (quad) {
+      case 1:
+        forwardA = -FORWARD_AVOID;
+        upA = -UP_AVOID;
+        yawA = -YAW_AVOID;
+      break;
+      case 2:
+        forwardA = -FORWARD_AVOID;
+        upA = -UP_AVOID;
+        yawA = 0;
+      break;
+      case 3:
+        forwardA = -FORWARD_AVOID;
+        upA = -UP_AVOID;
+        yawA = YAW_AVOID;
+      break;
+      case 4:
+        forwardA = -FORWARD_AVOID;
+        upA = 0;
+        yawA = -YAW_AVOID;
+      break;
+      case 5:
+        forwardA = -FORWARD_AVOID;
+        upA = 0;
+        yawA = 0;
+      break;
+      case 6:
+        forwardA = -FORWARD_AVOID;
+        upA = 0;
+        yawA = YAW_AVOID;
+      break;
+      case 7:
+        forwardA = -FORWARD_AVOID;
+        upA = UP_AVOID;
+        yawA = -YAW_AVOID;
+      break;
+      case 8:
+        forwardA = -FORWARD_AVOID;
+        upA = UP_AVOID;
+        yawA = 0;
+      break;
+      case 9:
+        forwardA = -FORWARD_AVOID;
+        upA = UP_AVOID;
+        yawA = YAW_AVOID;
+      break;
+      default:
+
+      break;
+    }
+
 
     //compute state machine
     if (state == manual) {
@@ -483,7 +564,272 @@ void loop() {
       //Serial.print(">up:");
       //Serial.println(upCom);
       
-    } else {
+    } else if (state == autonomous){
+        //get auto data
+      std::vector<std::vector<double>> target = piData.target;
+
+      //filter target data
+      float tx = 0;
+      float ty = 0;
+      float tz = 200;
+      float area = 0;
+
+      //update target data if target exists
+      if (target.size() > 0 && target[0].size() == 4) {
+        float rawZ = target[0][2];
+        //if distance is too large, cap distance value
+        if (rawZ > 300) {
+          rawZ = 300;
+        }
+
+        //update filtered target coordinates (3D space, with center of camera as (0,0,0))
+        tx = xPixFilter.filter(-target[0][0]);
+        ty = yPixFilter.filter(-target[0][1]);
+        tz = zPixFilter.filter(rawZ);
+        area = areaFilter.filter(target[0][3]);
+        
+      } else {
+        //no target, set to default value
+        xPixFilter.filter(0);
+        yPixFilter.filter(0);
+        zPixFilter.filter(300);
+        areaFilter.filter(0);
+      }
+      //modes for autonomous behavior
+      switch (mode) {
+        case searching:
+          //check if goal scoring should be attempted
+          if (catches >= 1 && micros()/MICROS_TO_SEC - lastCatch >= MAX_SEARCH_WAIT_AFTER_ONE - (catches-1)*(GAME_BALL_WAIT_TIME_PENALTY)) {
+            catches = TOTAL_ATTEMPTS;
+            mode = goalSearch;
+            break;
+          }
+
+
+          if (catches >= TOTAL_ATTEMPTS) {
+            mode = goalSearch;
+            break;
+          }
+
+          //begin search pattern spinning around at different heights
+          if (target.size() == 0) {
+            //search behavoir
+            //spin in a small circle looking for a game ball
+            yawCom = GAME_BALL_YAW_SEARCH;
+            upCom = 0;    //is overriden later, defined here as a safety net
+            forwardCom = GAME_BALL_FORWARD_SEARCH;
+
+            //keep ball grabber closed
+            ballGrabber.closeGrabber();
+
+            //use object avoidence
+            if (quad != 10 && USE_OBJECT_AVOIDENCE) {
+              //overide search commands
+              //yawCom = yawA;
+              forwardCom = forwardA;
+            }
+
+            //move up and down within the set boundry
+            if (actualBaro > CEIL_HEIGHT || !wasUp) {
+              if (wasUp) wasUp = false;
+              upCom = -GAME_BALL_VERTICAL_SEARCH;
+            }
+            if (actualBaro < FLOOR_HEIGHT || wasUp) {
+              if (!wasUp) wasUp = true;
+              upCom = GAME_BALL_VERTICAL_SEARCH;
+            }
+            print("up", upCom);
+
+          } else {
+            //move to approaching game ball
+            mode = approach;
+          }
+
+          break;
+        case approach:
+          //check if target is still valid
+          if (target.size() > 0 && target[0].size() == 4) {
+
+            if (catches >= 1 && micros()/MICROS_TO_SEC - lastCatch >= MAX_SEARCH_WAIT_AFTER_ONE - (catches-1)*(GAME_BALL_WAIT_TIME_PENALTY)) {
+              catches = TOTAL_ATTEMPTS;
+              mode = goalSearch;
+              break;
+            }
+
+            if (catches >= TOTAL_ATTEMPTS) {
+              mode = goalSearch;
+            }
+            //move toward the balloon
+            yawCom = xPixelPID.calculate(tx, GAME_BaLL_X_OFFSET, dt/1000);
+            upCom = yPixelPID.calculate(ty, GAME_BALL_APPROACH_ANGLE, dt/1000);
+            forwardCom = GAME_BALL_CLOSURE_COM;
+            
+            //check if the gate should be opened
+            if (tz < BALL_GATE_OPEN_TRIGGER) {
+              ballGrabber.openGrabber();
+
+              //check if the catching mode should be triggered
+              if (tz < BALL_CATCH_TRIGGER) {
+                mode = catching;
+                
+                //start catching timer
+                catchTimeStart = millis();
+              }
+            } else {
+              //make sure grabber is closed, no game ball is close enough to catch
+              ballGrabber.closeGrabber();
+            }
+            
+          } else {
+            //no target, look for another
+            mode = searching;
+          }
+
+          break;
+        case catching:
+          if (true) {
+
+            forwardCom = CATCHING_FORWARD_COM;
+            upCom = CATCHING_UP_COM;
+            yawCom = 0;
+    
+            if (catchTimeStart < millis() - catchTime) {
+              //catching ended, start caught timer
+
+              mode = caught;
+              caughtTimeStart = millis();
+              ballGrabber.closeGrabber();
+
+              //increment number of catches
+              catches = catches + 1;
+
+              //start catch timmer
+              lastCatch = micros()/MICROS_TO_SEC;
+            }
+          }
+        
+          break;
+        case caught:
+          if (catches > 0) {
+
+            if (target.size() > 0 && target[0].size() == 4) {
+              //approach next game ball if visible
+              if (catches < TOTAL_ATTEMPTS) {
+                mode = searching;
+              }
+            }
+    
+            if (caughtTimeStart < millis() - caughtTime) {
+              if (catches >= TOTAL_ATTEMPTS) {
+                mode = goalSearch;
+              } else {
+                mode = searching;
+              }
+            }
+          
+            forwardCom = CAUGHT_FORWARD_COM;
+            upCom = CAUGHT_UP_COM;
+            yawCom = 0;
+            
+          } else {
+            mode = searching;
+          }
+
+          break;
+        case goalSearch:
+          if (catches >= TOTAL_ATTEMPTS) {
+            yawCom = GOAL_YAW_SEARCH*goalYawDirection;
+            upCom = goalPositionHold.calculate(GOAL_HEIGHT, actualBaro);
+            forwardCom = GOAL_FORWARD_SEARCH;
+            ballGrabber.closeGrabber();
+
+            //implement avoidence here
+            if (quad != 10 && USE_OBJECT_AVOIDENCE) {
+              yawCom = yawA;
+              forwardCom = forwardA;
+              goalYawDirection = random(0, 9);
+              if (yawCom > 0) {
+                goalYawDirection = 1;
+              } else if (yawA < 0) {
+                goalYawDirection = -1;
+              }
+            }
+            
+            if (target.size() > 0) {
+              mode = approachGoal;
+            }
+          } else {
+            mode = searching;
+          }
+          break;
+        case approachGoal:
+          if (target.size() > 0 && catches >= TOTAL_ATTEMPTS) {
+            yawCom = xPixelPID.calculate(tx, 0, dt);
+            upCom = yPixelPID.calculate(ty, GOAL_APPROACH_ANGLE, dt);
+            forwardCom = GOAL_CLOSURE_COM;
+
+            Serial.println(tz);
+            print("tz", tz);
+
+            if (tz < GOAL_DISTANCE_TRIGGER) {
+              mode = scoringStart;
+              scoreTimeStart = millis();
+            }
+          } else {
+            mode = goalSearch;
+          }
+          break;
+        case scoringStart:
+        if (true) {
+          yawCom = SCORING_YAW_COM;
+          forwardCom = SCORING_FORWARD_COM;
+          upCom = SCORING_UP_COM;
+  
+          if (scoreTimeStart < millis() - scoreTime) {
+            mode = shooting;     //change this to add shooting mode
+            shootingTimeStart = millis();
+            break;
+          }
+        }
+          break;
+        case shooting:
+        if (true) {
+          yawCom = 0;
+          forwardCom = SHOOTING_FORWARD_COM;
+          upCom = SHOOTING_UP_COM;
+
+          ballGrabber.shoot();
+          catches = 0;
+  
+          if (shootingTimeStart < millis() - shootingTime) {
+            ballGrabber.closeGrabber();
+            scoredTimeStart = millis();
+            mode = scored;
+            break;
+          }
+        }
+        break;
+        case scored:
+        if (true) {
+
+          ballGrabber.closeGrabber();
+
+          yawCom = 0;
+          forwardCom = SCORED_FORWARD_COM;
+          upCom = SCORED_UP_COM;
+  
+          if (scoredTimeStart < millis() - scoredTime) {
+            mode = searching;
+            break;
+          }
+        }
+        default:
+          yawCom = 0;
+          forwardCom = 0;
+          upCom = 0;
+          break;
+      }
+    }else {
         //not a valid state
         forwardCom = 0.0;
         upCom = 0.0;
@@ -502,11 +848,9 @@ void loop() {
     // Serial.println(translationCom);
 
 
-
     //PID controllers
     float upMotor = verticalPID.calculate(upCom, kf.v, dt);
 
-    
     //hyperbolic tan for yaw "filtering"
     float yawMotor = 0.0;
          float deadband = 1.0; //deadband for filteration
@@ -532,20 +876,25 @@ void loop() {
       motorControl.update(0, 0, 0, 0, 0);
       leftGimbal.updateGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, motorControl.yawLeft, motorControl.upLeft, motorControl.forwardLeft);
       rightGimbal.updateGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, motorControl.yawRight, motorControl.upRight, motorControl.forwardRight);
-    } else if (state == manual && !MOTORS_OFF){
+    } else {
+      
+      if (state == manual && !MOTORS_OFF){
       //forward, translation, up, yaw, roll
       if (!ZERO_MODE) motorControl.update(forwardMotor, -translationMotor, upMotor, yawMotor, 0);
-      //Serial.println("Controlable");
-      //if (ZERO_MODE) motorControl.update(10, 0, 0, 0, 0);
-      leftGimbal.updateGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, motorControl.yawLeft, motorControl.upLeft, motorControl.forwardLeft);
-      rightGimbal.updateGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, motorControl.yawRight, motorControl.upRight, motorControl.forwardRight);
-
-    }
-    else {
+        //Serial.println("Controlable");
+        //if (ZERO_MODE) motorControl.update(10, 0, 0, 0, 0);
+        leftGimbal.updateGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, motorControl.yawLeft, motorControl.upLeft, motorControl.forwardLeft);
+        rightGimbal.updateGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, motorControl.yawRight, motorControl.upRight, motorControl.forwardRight);
+       } else if (state == autonomous && !MOTORS_OFF) {
+         motorControl.update(forwardMotor, -translationMotor, upMotor, yawMotor, 0);
+         leftGimbal.updateGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, motorControl.yawLeft, motorControl.upLeft, motorControl.forwardLeft);
+         rightGimbal.updateGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, motorControl.yawRight, motorControl.upRight, motorControl.forwardRight); 
+       } else {
         motorControl.update(0,0,0,0,0);
         leftGimbal.updateGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, 0, 0, 0);
         rightGimbal.updateGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, 0, 0, 0);
       }
+    }
   }
 }
 

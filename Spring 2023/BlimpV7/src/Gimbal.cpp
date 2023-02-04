@@ -141,21 +141,23 @@ void Gimbal::updateGimbal(bool debug, bool motors_off, double roll, double pitch
     yawServo.write(thetaPos);
     pitchServo.write(phi);
     if (!motors_off) {
-      double newCom = motorCom(thrustf);
+      double newCom = motorCom(thrustf); //mator mapping 
       //prevent overpowering
       if (newCom > 2000){
         newCom = 2000; //max out
       } else if (newCom < 1000){
         newCom = 1000; //max out
       }
-      motor.write(newCom);
-      Serial.println("Motor command");
-      Serial.println(thrustf);
-      Serial.println("Adjusted command");
-      Serial.println(newCom);
+      motor.write(newCom); //bounded thrust to motor
+
+      // Serial.println("Motor command");
+      // Serial.println(thrustf);
+      // Serial.println("Adjusted command");
+      // Serial.println(newCom);
+
     }
   } else {
-    motor.write(motorCom(0));
+    motor.write(motorCom(0)); //write 1500
   }
 }
 
