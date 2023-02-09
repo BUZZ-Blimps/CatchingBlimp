@@ -1,10 +1,12 @@
 #pragma once
-#include "Servo.h"
+#include "ServoWrapper.h"
+
 
 class Gimbal {
     public:
     Gimbal(int yawPin, int pitchPin, int motorPin,double newDeadband, double newTurnOnCom, double newMinCom, double newMaxCom, double newPhiOffset, double filter);
-    void updateGimbal(bool debug, bool motors_off, double roll, double pitch, double yaw, double up, double forward);
+    bool 
+    void readyGimbal(bool debug, bool motors_off, double roll, double pitch, double yaw, double up, double forward);
 
     private:
     double motorCom(double command);
@@ -17,9 +19,9 @@ class Gimbal {
     double filter;
 
     //attach to pin
-    Servo yawServo;
-    Servo pitchServo;
-    Servo motor;
+    ServoWrapper yawServo;
+    ServoWrapper pitchServo;
+    ServoWrapper motor;
 
     double thetaPos;
     double phiPos1;

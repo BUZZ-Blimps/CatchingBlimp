@@ -13,6 +13,8 @@ Gimbal::Gimbal(int yawPin, int pitchPin, int motorPin,double newDeadband, double
 
   phiPos1 = phiOffset;
   thetaPos = 0;
+
+  servoThreshold=15; // (degrees) Defines how close servos must be for brushless motors to activate
   
   //attach to pin
   yawServo.attach(yawPin);
@@ -25,7 +27,7 @@ Gimbal::Gimbal(int yawPin, int pitchPin, int motorPin,double newDeadband, double
   motor.write(1500);
 }
 
-void Gimbal::updateGimbal(bool debug, bool motors_off, double roll, double pitch, double yaw, double up, double forward) {
+bool Gimbal::readyGimbal(bool debug, bool motors_off, double roll, double pitch, double yaw, double up, double forward) {
 
   if (debug) Serial.println("Corrected Inputs");
   if (debug) Serial.print("Forward: ");
@@ -137,27 +139,36 @@ void Gimbal::updateGimbal(bool debug, bool motors_off, double roll, double pitch
 
   phiPos1 = filter*phi + (1-filter)*phiPos1;
   
-  if (abs(thrustf) >= deadband/2.0){
+  if (abs(thrustf) >= deadband/2.0){ // Turn on motors
     yawServo.write(thetaPos);
     pitchServo.write(phi);
+
     if (!motors_off) {
-      double newCom = motorCom(thrustf); //mator mapping 
+      nextMotorCom = motorCom(thrustf); //mator mapping 
       //prevent overpowering
-      if (newCom > 2000){
-        newCom = 2000; //max out
-      } else if (newCom < 1000){
-        newCom = 1000; //max out
+      if (nextMotorCom > 2000){
+        nextMotorCom = 2000; //max out
+      } else if (nextMotorCom < 1000){
+        nextMotorCom = 1000; //max out
       }
-      motor.write(newCom); //bounded thrust to motor
-
-      // Serial.println("Motor command");
-      // Serial.println(thrustf);
-      // Serial.println("Adjusted command");
-      // Serial.println(newCom);
-
+    }else{
+      nextMotorCom=motorCom(0);
+      motor.write(motorCom(0)); //write 1500
     }
+    return (abs(yawServo.getServo()-thetaPos)<servoThreshold) && (abs(pitchServo.getServo()-phi)<servoThreshold); 
+  
   } else {
+    nextMotorCom=motorCom(0);
     motor.write(motorCom(0)); //write 1500
+    return true; // Anti blocking mechanism
+  }
+}
+
+void Gimbal::updateGimbal(bool ready){ // Actual turn on command for brushless motors
+  if (ready){
+    motor.write(nextMotorCom); 
+  }else {
+    motor.write(motorCom(0));
   }
 }
 

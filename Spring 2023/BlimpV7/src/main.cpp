@@ -874,25 +874,34 @@ void loop() {
 
       //zero motors while filters converge and esc arms
       motorControl.update(0, 0, 0, 0, 0);
-      leftGimbal.updateGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, motorControl.yawLeft, motorControl.upLeft, motorControl.forwardLeft);
-      rightGimbal.updateGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, motorControl.yawRight, motorControl.upRight, motorControl.forwardRight);
+      bool leftReady = leftGimbal.readyGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, motorControl.yawLeft, motorControl.upLeft, motorControl.forwardLeft);
+      bool rightReady = rightGimbal.readyGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, motorControl.yawRight, motorControl.upRight, motorControl.forwardRight);
+      leftGimbal.updateGimbal(leftReady && rightReady);
+      rightGimbal.updateGimbal(leftReady && rightReady);
     } else {
       
       if (state == manual && !MOTORS_OFF){
-      //forward, translation, up, yaw, roll
-      if (!ZERO_MODE) motorControl.update(forwardMotor, -translationMotor, upMotor, yawMotor, 0);
+        //forward, translation, up, yaw, roll
+        if (!ZERO_MODE) motorControl.update(forwardMotor, -translationMotor, upMotor, yawMotor, 0);
+        
         //Serial.println("Controlable");
         //if (ZERO_MODE) motorControl.update(10, 0, 0, 0, 0);
-        leftGimbal.updateGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, motorControl.yawLeft, motorControl.upLeft, motorControl.forwardLeft);
-        rightGimbal.updateGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, motorControl.yawRight, motorControl.upRight, motorControl.forwardRight);
-       } else if (state == autonomous && !MOTORS_OFF) {
-         motorControl.update(forwardMotor, -translationMotor, upMotor, yawMotor, 0);
-         leftGimbal.updateGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, motorControl.yawLeft, motorControl.upLeft, motorControl.forwardLeft);
-         rightGimbal.updateGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, motorControl.yawRight, motorControl.upRight, motorControl.forwardRight); 
-       } else {
+        bool leftReady = leftGimbal.readyGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, motorControl.yawLeft, motorControl.upLeft, motorControl.forwardLeft);
+        bool rightReady = rightGimbal.readyGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, motorControl.yawRight, motorControl.upRight, motorControl.forwardRight);
+        leftGimbal.updateGimbal(leftReady && rightReady);
+        rightGimbal.updateGimbal(leftReady && rightReady);
+      } else if (state == autonomous && !MOTORS_OFF) {
+        motorControl.update(forwardMotor, -translationMotor, upMotor, yawMotor, 0);
+        bool leftReady = leftGimbal.readyGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, motorControl.yawLeft, motorControl.upLeft, motorControl.forwardLeft);
+        bool rightReady = rightGimbal.readyGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, motorControl.yawRight, motorControl.upRight, motorControl.forwardRight); 
+        leftGimbal.updateGimbal(leftReady && rightReady);
+        rightGimbal.updateGimbal(leftReady && rightReady);
+      } else {
         motorControl.update(0,0,0,0,0);
-        leftGimbal.updateGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, 0, 0, 0);
-        rightGimbal.updateGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, 0, 0, 0);
+        bool leftReady = leftGimbal.readyGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, 0, 0, 0);
+        bool rightReady = rightGimbal.readyGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, 0, 0, 0);
+        leftGimbal.updateGimbal(leftReady && rightReady);
+        rightGimbal.updateGimbal(leftReady && rightReady);
       }
     }
   }
