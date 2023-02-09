@@ -3,9 +3,10 @@
 
 class ServoWrapper{
     public:
-    ServoWrapper(int servoPin);
+    void attach(int servoPin);
     void write(double motorValue);
     double getServo();
+    void updateApproximation();
     double motorSpeed;
 
     private:
@@ -15,6 +16,7 @@ class ServoWrapper{
     double minMotorPos;
     double maxMotorPos;
     double targetMotorPos;
+    double currentMotorPos;
 
     Servo motor;
 

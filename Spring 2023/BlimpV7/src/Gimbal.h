@@ -16,6 +16,9 @@ class Gimbal {
     double maxCom;
     double phiOffset;
     double filter;
+    double servoThreshold;
+    double nextMotorCom;
+
 
     //attach to pin
     ServoWrapper yawServo;

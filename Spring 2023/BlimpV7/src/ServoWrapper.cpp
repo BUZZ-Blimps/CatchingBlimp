@@ -4,7 +4,7 @@
 void ServoWrapper::attach(int servoPin){
     lastMotorPos=0; // degrees from start
     lastValueTime=0;
-    motorSpeed=200; // (degrees/s) Taken from data sheet -- 60 degrees in 0.3 seconds
+    motorSpeed=675; // (degrees/s) manually estimated
     minMotorPos=0;
     maxMotorPos=180; // Subject to change with the addition of the 270 degree servos
     targetMotorPos=90; // arbitrary startup target
@@ -17,26 +17,47 @@ void ServoWrapper::write(double motorValue){
     updateApproximation();
     motor.write(motorValue);
     targetMotorPos=motorValue;
+    //Serial.print("New motor value: ");
+    //Serial.println(String(motorValue));
 }
 
 void ServoWrapper::updateApproximation(){
-    double currentTime=micros()/1000;
+    double currentTime=micros()/1000000.0;
     double deltaTime=currentTime-lastValueTime; // Time since last time check
     double errorPos=targetMotorPos-lastMotorPos;
-    double currentPos;
     if(errorPos>0){
-        currentPos=lastMotorPos+deltaTime*motorSpeed; // Predictive model positive direction
-        if(currentPos>targetMotorPos) currentPos=targetMotorPos;
+        currentMotorPos=lastMotorPos+deltaTime*motorSpeed; // Predictive model positive direction
+        if(currentMotorPos>targetMotorPos) currentMotorPos=targetMotorPos;
+        /*
+        Serial.print("Error>0: LastPos=");
+        Serial.print(lastMotorPos);
+        Serial.print(" CurrentMotorPos=");
+        Serial.print(currentMotorPos);
+        Serial.print(" deltaTime=");
+        Serial.print(deltaTime);
+        Serial.print(" deltaPos=");
+        Serial.println(deltaTime*motorSpeed);
+        */
     }else if(errorPos<0){
-        currentPos=lastMotorPos-deltaTime*motorSpeed; // Predictive model negative direction
-        if(currentPos<targetMotorPos) currentPos=targetMotorPos;
+        currentMotorPos=lastMotorPos-deltaTime*motorSpeed; // Predictive model negative direction
+        if(currentMotorPos<targetMotorPos) currentMotorPos=targetMotorPos;
+        /*
+        Serial.print("Error<0: LastPos=");
+        Serial.print(lastMotorPos);
+        Serial.print(" CurrentMotorPos=");
+        Serial.print(currentMotorPos);
+        Serial.print(" deltaTime=");
+        Serial.print(deltaTime);
+        Serial.print(" deltaPos=");
+        Serial.println(-deltaTime*motorSpeed);
+        */
     }else{
-        currentPos=lastMotorPos;
+        currentMotorPos=lastMotorPos;
     }
     lastValueTime=currentTime;
-    lastMotorPos=currentPos;
+    lastMotorPos=currentMotorPos;
 }
 double ServoWrapper::getServo(){
     updateApproximation();
-    return currentPos;
+    return currentMotorPos;
 }
