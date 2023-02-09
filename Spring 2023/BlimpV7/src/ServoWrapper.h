@@ -15,7 +15,6 @@ class ServoWrapper{
     double minMotorPos;
     double maxMotorPos;
     double targetMotorPos;
-    double targetTime;
 
     Servo motor;
 

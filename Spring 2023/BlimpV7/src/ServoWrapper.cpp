@@ -2,13 +2,14 @@
 #include <Arduino.h>
 
 void ServoWrapper::attach(int servoPin){
-    motor.attach(servoPin);
     lastMotorPos=0; // degrees from start
     lastValueTime=0;
     motorSpeed=200; // (degrees/s) Taken from data sheet -- 60 degrees in 0.3 seconds
     minMotorPos=0;
     maxMotorPos=180; // Subject to change with the addition of the 270 degree servos
     targetMotorPos=90; // arbitrary startup target
+
+    motor.attach(servoPin);
     write(targetMotorPos); // arbitrary initial position
 }
 
@@ -16,7 +17,6 @@ void ServoWrapper::write(double motorValue){
     updateApproximation();
     motor.write(motorValue);
     targetMotorPos=motorValue;
-    targetTime=micros()/1000;
 }
 
 void ServoWrapper::updateApproximation(){

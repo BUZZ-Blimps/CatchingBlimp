@@ -175,7 +175,6 @@ void Gimbal::updateGimbal(bool ready){ // Actual turn on command for brushless m
 double Gimbal::motorCom(double command) {
     //input from -1000, to 1000 is expected from controllers
     double adjustedCom = 1500;
-
     
     if (abs(command) <= deadband/2.0) {
         adjustedCom = 1500;
