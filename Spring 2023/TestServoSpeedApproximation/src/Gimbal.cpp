@@ -140,8 +140,8 @@ bool Gimbal::readyGimbal(bool debug, bool motors_off, double roll, double pitch,
   phiPos1 = filter*phi + (1-filter)*phiPos1;
   
   if (abs(thrustf) >= deadband/2.0){ // Turn on motors
-    yawServo.write(thetaPos);
-    pitchServo.write(phiPos1);
+    yawServo.write(theta);
+    pitchServo.write(phi);
     //Serial.print("Setting pitch servo to: ");
     //Serial.println(String(phi));
 

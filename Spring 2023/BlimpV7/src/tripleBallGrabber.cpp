@@ -5,25 +5,25 @@ TripleBallGrabber::TripleBallGrabber(int servoPin, int motorPin) {
   this->servo.attach(servoPin);
   this->motor.attach(motorPin);
   
-  this->servo.write(15);
+  this->servo.write(83);
   this->motor.write(1500);
   Serial.println("Setup Comlete");
 }
 
 void TripleBallGrabber::openGrabber() {
-  this->servo.write(83);
+  this->servo.write(15);
   this->motor.write(1500);
   this->state = 1;
 }
 
 void TripleBallGrabber::closeGrabber() {
-  this->servo.write(15);
+  this->servo.write(83);
   this->motor.write(1500);
   this->state = 0;
 }
 
 void TripleBallGrabber::shoot() {
-  this->servo.write(83);
+  this->servo.write(15);
   this->motor.write(1850);
   this->state = 2;
 }

@@ -59,33 +59,34 @@
 #define UP_AVOID                  0.0015
 
 //autonomy tunning parameters
-#define GAME_BALL_YAW_SEARCH      -20
-#define GAME_BALL_FORWARD_SEARCH  0.06
-#define GAME_BALL_VERTICAL_SEARCH 0.0016
+// the inputs are bounded from -2 to 2, yaw is maxed out at 120 deg/s
+#define GAME_BALL_YAW_SEARCH      -20  
+#define GAME_BALL_FORWARD_SEARCH  0.6  //0.6 = 30% 
+#define GAME_BALL_VERTICAL_SEARCH 0.2
 
-#define GAME_BALL_CLOSURE_COM     0.12
-#define GAME_BALL_APPROACH_ANGLE  0.012
-#define GAME_BaLL_X_OFFSET        10
+#define GAME_BALL_CLOSURE_COM     0.4  //appraoching at 20% throttle
+#define GAME_BALL_APPROACH_ANGLE  0.1  //descend or ascend at 5% throttle
+#define GAME_BaLL_X_OFFSET        10   //adjusting yaw at 10 deg/s
 
-#define CATCHING_FORWARD_COM      0.6
-#define CATCHING_UP_COM           0.0025
+#define CATCHING_FORWARD_COM      1.3  //catching at 65% throttle 
+#define CATCHING_UP_COM           0.1
 
-#define CAUGHT_FORWARD_COM        -0.92
-#define CAUGHT_UP_COM             -0.0004
+#define CAUGHT_FORWARD_COM        -0.82  //go back so that the game ball gets to the back 
+#define CAUGHT_UP_COM             -0.2
 
-#define GOAL_YAW_SEARCH           6
-#define GOAL_FORWARD_SEARCH       0.14
-#define GOAL_UP_VELOCITY          0.0028
+#define GOAL_YAW_SEARCH           10   
+#define GOAL_FORWARD_SEARCH       0.8  //40% throttle
+#define GOAL_UP_VELOCITY          0.2  
 
-#define GOAL_CLOSURE_COM          0.1
+#define GOAL_CLOSURE_COM          0.3 
 #define GOAL_APPROACH_ANGLE       0
 
 #define SCORING_YAW_COM           0
 #define SCORING_FORWARD_COM       0.18
-#define SCORING_UP_COM            0.002
+#define SCORING_UP_COM            0.1
 
 #define SHOOTING_FORWARD_COM      0.6
-#define SHOOTING_UP_COM           0.0012
+#define SHOOTING_UP_COM           0.2
 
 #define SCORED_FORWARD_COM        -0.6
 #define SCORED_UP_COM             -0.0015
@@ -563,6 +564,45 @@ void loop() {
 
       //Serial.print(">up:");
       //Serial.println(upCom);
+
+
+        //check if shooting should be engaged
+        //this block switches the state to the oposite that it is currently in
+          if (shoot != manualComs[5]) {
+          shoot = manualComs[5];
+          //change shoot state
+          if (ballGrabber.state == 2) {
+            //stop shooting
+            ballGrabber.closeGrabber();
+          } else {
+            //start shooting
+            ballGrabber.shoot();
+
+            //reset catch counter
+            catches=0;
+          }
+
+        //check if grabbing should be engaged
+        //this block switches the state to the oposite that it is currently in
+        } else if (grab != manualComs[4]) {
+          grab = manualComs[4];
+
+          //change grab state
+          if (ballGrabber.state == 0) {
+            ballGrabber.openGrabber();
+          } else {
+            ballGrabber.closeGrabber();
+
+            //increase catch counter
+            catches++;
+
+            //start catch timmer
+            if (catches >= 1) {
+              lastCatch = micros()/MICROS_TO_SEC;
+            }
+          }
+
+        }
       
     } else if (state == autonomous){
         //get auto data
