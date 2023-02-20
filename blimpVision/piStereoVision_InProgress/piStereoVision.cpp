@@ -5,6 +5,7 @@
 #include <ctime>
 #include <iostream>
 #include <list>
+#include <vector>
 #include <unordered_map>
 #include <opencv2/opencv.hpp>
 #include <opencv2/highgui/highgui.hpp>
@@ -37,18 +38,13 @@
 #include <time.h>
 #include <stdlib.h>
 
-#include <wiringPi.h>
-#include <wiringSerial.h>
-
 #include "Teleplot.h"
-
+#include "EnumUtil.h"
+#include "PiComm.h"
 
 
 //==================== CONSTANTS ====================
 //Communication
-#define UDP_IP				"239.255.255.250"
-#define UDP_PORT			1900
-#define UDPTimeout			5
 
 
 //Camera
@@ -111,42 +107,9 @@ using namespace std;
 using namespace cv;
 using namespace chrono;
 
-enum object {
-    balloon,
-    blimpB,
-    blimpR,
-    goalO,
-    goalY,
-    first = balloon,
-    last = goalY
-};
-
-enum autoState{
-	searching,
-	approach,
-	catching,
-	caught,
-	goalSearch,
-	approachGoal,
-	scoringStart,
-	shooting,
-	scored
-};
-
-enum blimpType{
-	blue,
-	red
-};
-
-enum goalType{
-	orange,
-	yellow
-};
-
 
 //==================== FUNCTION HEADERS ====================
 VideoCapture openCamera(int camIndex, int camWidth, int camHeight);
-bool parseArguments(int argc, char** argv);
 vector<Point> scaleContour(vector<Point> contour, float scale);
 vector<vector<float> > getObjects(int type, Mat mask);
 //bool initPython();
@@ -154,18 +117,7 @@ vector<vector<float> > getObjects(int type, Mat mask);
 
 
 //==================== COMMUNICATION FUNCTION HEADERS ====================
-void initSerial();
-void sendSerial(string message);
-char readSerial();
-void initUDPReceiver();
-void initUDPSender();
-bool readUDP(string* retMessage = nullptr, string* target = nullptr, string* source = nullptr, string* flag = nullptr);
-void sendUDPRaw(string target, string source, string flag, string message);
-void sendUDP(string flag, string message);
-void sendUDP(string message);
 void establishBlimpID();
-void plotUDP(string varName, float varValue);
-
 
 //==================== HELPER FUNCTION HEADERS ====================
 float getFPS();
@@ -202,10 +154,13 @@ float lastBaroMessageTime = 0.0;
 
 Teleplot teleplot("127.0.0.1");
 
+PiComm piComm;
+
 //==================== MAIN ====================
 
 int main(int argc, char** argv) {
 
+	// Parse arguments
 	for(int i=0; i<argc; i++) cout << "Arg[" << i << "] = \"" << argv[i] << "\"" << endl;
 
 	if (argc != 2) {
@@ -213,12 +168,14 @@ int main(int argc, char** argv) {
 		return -1;
 	}
 
+	// Determine blimp ID
 	blimpID = atoi(argv[1]);
 	cout << "I. Am. Blimp. " << blimpID << "." << endl;
+	piComm.setBlimpID(blimpID);
 
 	clock_t currentTime = clock();
 
-	initSerial();
+	piComm.initSerial();
 
 	VideoCapture cap = openCamera(0, CAMERA_WIDTH, CAMERA_HEIGHT);
 
@@ -228,8 +185,8 @@ int main(int argc, char** argv) {
 	//bool successfulPythonInit = initPython();
 	//if(!successfulPythonInit) return 0;
 
-	initUDPReceiver();
-	initUDPSender();
+	piComm.initUDPReceiver();
+	piComm.initUDPSender();
 	//establishBlimpID();
 
     vector<float> recentMotorCommands;
@@ -288,7 +245,7 @@ int main(int argc, char** argv) {
 		if(double(currentTime - lastHeartbeat)/CLOCKS_PER_SEC > 0.1){
 			lastHeartbeat = currentTime;
 			//sendUDP("H");
-			sendUDP("S",to_string(mode));
+			piComm.sendUDP("S",to_string(mode));
 		}
 		//benchmark("UDP");
 		//Receive UDP messages
@@ -297,7 +254,7 @@ int main(int argc, char** argv) {
 			string readIn;
 			string target;
 			string flag;
-			bool success = readUDP(&readIn, &target, nullptr, &flag);
+			bool success = piComm.readUDP(&readIn, &target, nullptr, &flag);
 			
 			if(!success){
 				reading = false;
@@ -1123,157 +1080,9 @@ VideoCapture openCamera(int camIndex, int camWidth, int camHeight){
 	return cap;
 }
 
-//Returns true on success, false on failure
-bool parseArguments(int argc, char** argv){
-	//Parse arguments for blimp/goal type
-	cout << argc << endl;
-
-	if (argc < 3 || argc > 3) {
-		cout << "Error: Incorrect argument size" << endl;
-		return false;
-	}
-
-	if (argv[1][0] == 'b') {
-		cout << "Blimp is blue" << endl;
-		selfIsBlue = true;
-	} else if (argv[1][0] == 'r') {
-		cout << "Blimp is red" << endl;
-		selfIsBlue = false;
-	} else {
-		cout << "Invalid Argument, Exiting Program" << endl;
-		return false;
-	}
-
-	if (argv[2][0] == 'o') {
-		cout << "Blimp should score in orange goals" << endl;
-		scoreInOrange = true;
-	} else if (argv[2][0] == 'y') {
-		cout << "Blimp should score in yellow goals" << endl;
-		scoreInOrange = false;
-	} else {
-		cout << "Invalid Argument, Exiting Program" << endl;
-		return false;
-	}
-	return true;
-}
-
 //==================== COMMUNICATION FUNCTION HEADERS ====================
-int serial;
 
-void initSerial(){
-	while ((serial = serialOpen ("/dev/ttyS0", 115200)) < 0) {
-		cout << "Unable to open serial port." << endl;
-		delay(1.0);
-	}
-}
 
-void sendSerial(string message){
-	char* sendBuffer = &message[0];
-	serialPuts(serial, sendBuffer);
-	//cout << "Serial sending: " << message << endl << endl;
-}
-
-char readSerial() {
-	char byte = 0;
-
-	int bytesReceived = serialDataAvail(serial);
-
-	if (bytesReceived > 0) {
-		//Read a pending byte into the buffer
-			byte = (char)serialGetchar(serial);
-	}
-
-	//cout << (int)byte << "\t" << bytesReceived << endl;
-
-	return byte;
-}
-
-string groupAddress = UDP_IP;
-char* group = &groupAddress[0];
-int port = 	UDP_PORT;
-
-int sockRec;
-struct sockaddr_in addrRec;
-int sockSend;
-struct sockaddr_in addrSend;
-
-void initUDPReceiver(){
-	sockRec = socket(AF_INET, SOCK_DGRAM, 0);
-
-	u_int yes = 1;
-	setsockopt(sockRec, SOL_SOCKET, SO_REUSEADDR, (char*) &yes, sizeof(yes));
-
-	memset(&addrRec, 0, sizeof(addrRec));
-	addrRec.sin_family = AF_INET;
-	addrRec.sin_addr.s_addr = htonl(INADDR_ANY); // differs from sender
-	addrRec.sin_port = htons(port);
-	bind(sockRec, (struct sockaddr*) &addrRec, sizeof(addrRec));
-
-	struct ip_mreq mreq;
-	mreq.imr_multiaddr.s_addr = inet_addr(group);
-	mreq.imr_interface.s_addr = htonl(INADDR_ANY);
-	setsockopt(sockRec, IPPROTO_IP, IP_ADD_MEMBERSHIP, (char*) &mreq, sizeof(mreq));
-
-	fcntl(sockRec, F_SETFL, O_NONBLOCK);
-}
-
-void initUDPSender(){
-	sockSend = socket(AF_INET, SOCK_DGRAM, 0);
-	memset(&addrSend, 0, sizeof(addrSend));
-	addrSend.sin_family = AF_INET;
-	addrSend.sin_addr.s_addr = inet_addr(group);
-	addrSend.sin_port = htons(port);
-}
-
-bool readUDP(string* retMessage, string* target, string* source, string* flag){
-	int bufferSize = 1024;
-	char buffer[bufferSize];
-	memset(&buffer, 0, bufferSize);
-	unsigned int addrLen = sizeof(addrRec);
-	int numbytes = recvfrom(sockRec, &buffer, bufferSize, 0,(struct sockaddr *) &addrRec, &addrLen);
-	if (numbytes > 0) {
-		if(numbytes > bufferSize-1){
-			buffer[bufferSize-1] = '\0';
-		}else{
-			buffer[numbytes] = '\0';
-		}
-		string message(buffer);
-		if(message.substr(0,2) == ":)"){
-			int comma = message.find(",");
-			int firstColon = message.find(":",comma+1);
-			int secondColon = message.find(":",firstColon+1);
-			if(comma != string::npos && firstColon != string::npos && secondColon != string::npos){
-				string targetString = message.substr(2,comma-2);
-				string sourceString = message.substr(comma+1,firstColon-comma-1);
-				string flagString = message.substr(firstColon+1,secondColon-firstColon-1);
-				string messageString = message.substr(secondColon+1);
-
-				if(retMessage != nullptr) *retMessage = messageString;
-				if(target != nullptr) *target = targetString;
-				if(source != nullptr) *source = sourceString;
-				if(flag != nullptr) *flag = flagString;
-				return true;
-			}else{
-				cout << "Comma or Colons not found: " << comma << ", " << firstColon << ", " << secondColon << endl;
-			}
-		}
-	}
-	return false;
-}
-
-void sendUDPRaw(string target, string source, string flag, string message){
-	string combined = ":)" + target + "," + source + ":" + flag + ":" + message;
-	char* messageBuff = &combined[0];
-	int numbytes = sendto(sockSend, messageBuff, strlen(messageBuff), 0, (struct sockaddr*) &addrSend, sizeof(addrSend));
-}
-
-void sendUDP(string flag, string message){
-	sendUDPRaw("0",to_string(blimpID),flag,message);
-}
-
-void sendUDP(string message){
-	sendUDPRaw("0",to_string(blimpID),"D",message);
-}
 
 void establishBlimpID(){
 	while(blimpID == -1){
@@ -1303,10 +1112,6 @@ void establishBlimpID(){
 	cout << "Received blimp ID: " << blimpID << endl;
 }
 
-void plotUDP(string varName, float varValue){
-	string message = varName + "=" + to_string(varValue);
-	sendUDP("T",message);
-}
 
 
 //==================== VISION HELPER FUNCTIONS ===================
