@@ -11,7 +11,7 @@ TripleBallGrabber::TripleBallGrabber(int servoPin, int motorPin) {
 }
 
 void TripleBallGrabber::openGrabber() {
-  this->servo.write(15);
+  this->servo.write(15);  //15 or 151
   this->motor.write(1500);
   this->state = 1;
 }
@@ -23,7 +23,7 @@ void TripleBallGrabber::closeGrabber() {
 }
 
 void TripleBallGrabber::shoot() {
-  this->servo.write(15);
+  this->servo.write(15);  //15 or 151
   this->motor.write(1850);
   this->state = 2;
 }

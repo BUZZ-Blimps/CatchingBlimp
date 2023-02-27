@@ -145,6 +145,7 @@ bool Gimbal::readyGimbal(bool debug, bool motors_off, double roll, double pitch,
 
     if (!motors_off) {
       nextMotorCom = motorCom(thrustf); //mator mapping 
+      
       //prevent overpowering
       if (nextMotorCom > 2000){
         nextMotorCom = 2000; //max out

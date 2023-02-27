@@ -79,13 +79,14 @@ void Optical_Flow::update_flow(float roll_rate, float pitch_rate, float Z_distan
               x_motion = (((uint16_t)x_motion_LB << 8) | x_motion_HB);
               y_motion = (((uint16_t)y_motion_LB << 8) | y_motion_HB);
 
-              /*
+              
               //Serial.print(x_motion);
               //Serial.print(",");
               //Serial.println(y_motion);
               //Serial.print(",");
               //Serial.println(surface_quality);
 
+              
               //Optical Flow Sensor Specs
               float FOV = 42;
               float sensor_res = 1225;
@@ -128,7 +129,7 @@ void Optical_Flow::update_flow(float roll_rate, float pitch_rate, float Z_distan
               //Serial.println(y_motion_comp);
               
               break;
-              */
+            
             }
           }
         }
