@@ -29,7 +29,7 @@
 #define MOTORS_OFF                false
 
 //optional controllers
-#define USE_Z_VELOCITY_IN_MANUAL  false
+#define USE_EST_VELOCITY_IN_MANUAL  true
 #define USE_OBJECT_AVOIDENCE      false
 
 //catch search time after one
@@ -37,8 +37,8 @@
 #define GAME_BALL_WAIT_TIME_PENALTY   20
 
 //number of catches attempted
-#define TOTAL_ATTEMPTS            4
-#define MAX_ATTEMPTS              5
+#define TOTAL_ATTEMPTS            100
+#define MAX_ATTEMPTS              100
 
 //flight area parameters
 #define CEIL_HEIGHT               8      //m
@@ -50,33 +50,33 @@
 
 //distance triggers
 #define GOAL_DISTANCE_TRIGGER     75
-#define BALL_GATE_OPEN_TRIGGER    30
-#define BALL_CATCH_TRIGGER        27
+#define BALL_GATE_OPEN_TRIGGER    22 //30
+#define BALL_CATCH_TRIGGER        19 //27
 
 //object avoidence motor coms
-#define FORWARD_AVOID             0.72
+#define FORWARD_AVOID             0.5
 #define YAW_AVOID                 10
-#define UP_AVOID                  0.0015
+#define UP_AVOID                  0.015
 
 //autonomy tunning parameters
 // the inputs are bounded from -2 to 2, yaw is maxed out at 120 deg/s
 #define GAME_BALL_YAW_SEARCH      -20  
-#define GAME_BALL_FORWARD_SEARCH  0.6  //0.6 = 30% 
-#define GAME_BALL_VERTICAL_SEARCH 0.2
+#define GAME_BALL_FORWARD_SEARCH  0.4  //0.4 = 20% 
+#define GAME_BALL_VERTICAL_SEARCH 0.15
 
-#define GAME_BALL_CLOSURE_COM     0.4  //appraoching at 20% throttle
+#define GAME_BALL_CLOSURE_COM     0.2  //approaching at 20% throttle
 #define GAME_BALL_APPROACH_ANGLE  0.1  //descend or ascend at 5% throttle
 #define GAME_BaLL_X_OFFSET        10   //adjusting yaw at 10 deg/s
 
-#define CATCHING_FORWARD_COM      1.3  //catching at 65% throttle 
-#define CATCHING_UP_COM           0.1
+#define CATCHING_FORWARD_COM      0.8  //catching at 40% throttle 
+#define CATCHING_UP_COM           0.2
 
 #define CAUGHT_FORWARD_COM        -0.82  //go back so that the game ball gets to the back 
 #define CAUGHT_UP_COM             -0.2
 
-#define GOAL_YAW_SEARCH           10   
-#define GOAL_FORWARD_SEARCH       0.8  //40% throttle
-#define GOAL_UP_VELOCITY          0.2  
+#define GOAL_YAW_SEARCH           15   
+#define GOAL_FORWARD_SEARCH       0.4  //20% throttle
+#define GOAL_UP_VELOCITY          0.1  
 
 #define GOAL_CLOSURE_COM          0.3 
 #define GOAL_APPROACH_ANGLE       0
@@ -111,10 +111,10 @@
 #define TEENSY_WAIT_TIME          0.5
 
 //init pins
-#define LSPIN                     6
-#define RSPIN                     7
-#define LMPIN                     2
-#define RMPIN                     5
+// #define LSPIN                     7
+// #define RSPIN                     10
+// #define LMPIN                     2
+// #define RMPIN                     5
 
 #define GRABBER_PIN               8
 
@@ -142,9 +142,9 @@ Gimbal leftGimbal(7, 6, 2, 25, 30, 1000, 2000, 45, 0.2);
 Gimbal rightGimbal(10, 9, 5, 25, 30, 1000, 2000, 135, 0.2);
 
 //Manual PID control
-PID verticalPID(970, 0, 0);
+PID verticalPID(950, 0, 0);  //can be tuned down 
 PID yawPID(20.0, 0, 0);
-PID forwardPID(970, 0, 0);
+PID forwardPID(970, 0, 0);  
 PID translationPID(1370, 0, 0);
 
 //Auto PID control (output fed into manual controller)
@@ -260,7 +260,7 @@ double catchTimeStart = 0;
 double catchTime = 2300;        //ms
 
 double caughtTimeStart = 0;
-double caughtTime = 5000;       //ms
+double caughtTime = 3000;       //ms
 
 double scoreTimeStart = 0;
 double scoreTime = 1000;        //ms
@@ -364,6 +364,7 @@ void loop() {
     yekf.predict(dt);
     gyroEKF.predict(dt);
 
+
     //pre filter accel before updating vertical velocity kalman filter
     verticalAccelFilter.filter(-accelGCorrection.agz);
 
@@ -386,32 +387,31 @@ void loop() {
     yekf.updateGyroX(gyroEKF.rollRate - gyroEKF.rollRateB);
     yekf.updateGyroZ(BerryIMU.gyr_rateZraw);
 
-    /*
-    Serial.print(">Z:");
-    Serial.println(xekf.z);
+    
+    // Serial.print(">Z:");
+    // Serial.println(xekf.z);
 
-    Serial.print(">Opt:");
-    Serial.println(xekf.opt);
+    // Serial.print(">Opt:");
+    // Serial.println(xekf.opt);
 
-    Serial.print(">gyro x:");
-    Serial.println(xekf.gyrox);
+    // Serial.print(">gyro x:");
+    // Serial.println(xekf.gyrox);
 
-    Serial.print(">Ax:");
-    Serial.println(xekf.ax);
+    // Serial.print(">Ax:");
+    // Serial.println(xekf.ax);
 
-    Serial.print(">Velocity:");
-    Serial.println(xekf.v);
-    */
+    // Serial.print(">Velocity:");
+    // Serial.println(xekf.v);
+    
     
 
     //print("Yrate", yawRateFilter.last);
 
     //print("zVel", kf.v);
 
-    /*
+    
     kal_vel.predict_vel();
     kal_vel.update_vel_acc(-accelGCorrection.agx/9.81, -accelGCorrection.agy/9.81);
-    */
   }
 
 
@@ -449,15 +449,15 @@ void loop() {
     xekf.updateOptical(x_opt);
     yekf.updateOptical(y_opt);
 
-    // Serial.print(">X Velocity:");
-    // Serial.println(Flow.x_motion_comp);
+    Serial.print(">X Velocity:");
+    Serial.println(Flow.x_motion_comp);
 
-    //accelGCorrection.updateData(BerryIMU.AccXraw, BerryIMU.AccYraw, BerryIMU.AccZraw, pitch, roll);
+    // accelGCorrection.updateData(BerryIMU.AccXraw, BerryIMU.AccYraw, BerryIMU.AccZraw, pitch, roll);
 
-    //kal_vel.update_vel_optical(Flow.x_motion_comp, Flow.y_motion_comp);
+    kal_vel.update_vel_optical(Flow.x_motion_comp, Flow.y_motion_comp);
 
-    //Serial.print(">X Velocity est:");
-    //Serial.println(kal_vel.x_vel_est);
+    Serial.print(">X Velocity est:");
+    Serial.println(kal_vel.x_vel_est);
 
   }
   
@@ -547,12 +547,22 @@ void loop() {
       if (manualComs.size() == 6) {
         //Serial.println("Set Commands");
         //set max yaw command to 120 deg/s
-        yawCom = -manualComs[0]*120;
-        upCom = manualComs[1]*2.0;
-        forwardCom = manualComs[3]*2.0;
-        translationCom = manualComs[2]*2.0;
-      
+        
 
+        yawCom = -manualComs[0]*120;
+
+        if (USE_EST_VELOCITY_IN_MANUAL == true){
+          //set max velocities 2 m/s
+          upCom = manualComs[1]*2.0;
+          forwardCom = manualComs[3]*2.0;
+          translationCom = manualComs[2]*2.0;
+        }else{
+          //normal mapping using max esc command 
+          upCom = manualComs[1]*500.0;
+          forwardCom = manualComs[3]*500.0;
+          translationCom = manualComs[2]*500.0;
+        }
+      
       } else {
         Serial.println(manualComs.size());
         //data is not valid, set motors to zero
@@ -639,6 +649,7 @@ void loop() {
       switch (mode) {
         case searching:
           //check if goal scoring should be attempted
+
           if (catches >= 1 && micros()/MICROS_TO_SEC - lastCatch >= MAX_SEARCH_WAIT_AFTER_ONE - (catches-1)*(GAME_BALL_WAIT_TIME_PENALTY)) {
             catches = TOTAL_ATTEMPTS;
             mode = goalSearch;
@@ -678,11 +689,12 @@ void loop() {
               if (!wasUp) wasUp = true;
               upCom = GAME_BALL_VERTICAL_SEARCH;
             }
-            print("up", upCom);
 
           } else {
             //move to approaching game ball
             mode = approach;
+            //start approaching timer
+                approachTimeStart = millis();
           }
 
           break;
@@ -699,10 +711,12 @@ void loop() {
             if (catches >= TOTAL_ATTEMPTS) {
               mode = goalSearch;
             }
+
             //move toward the balloon
             yawCom = xPixelPID.calculate(tx, GAME_BaLL_X_OFFSET, dt/1000);
             upCom = yPixelPID.calculate(ty, GAME_BALL_APPROACH_ANGLE, dt/1000);
             forwardCom = GAME_BALL_CLOSURE_COM;
+            translationCom = 0;
             
             //check if the gate should be opened
             if (tz < BALL_GATE_OPEN_TRIGGER) {
@@ -714,6 +728,9 @@ void loop() {
                 
                 //start catching timer
                 catchTimeStart = millis();
+
+                //turn motors off
+                motorControl.update(0,0,0,0,0);
               }
             } else {
               //make sure grabber is closed, no game ball is close enough to catch
@@ -732,6 +749,7 @@ void loop() {
             forwardCom = CATCHING_FORWARD_COM;
             upCom = CATCHING_UP_COM;
             yawCom = 0;
+            translationCom = 0;
     
             if (catchTimeStart < millis() - catchTime) {
               //catching ended, start caught timer
@@ -819,6 +837,8 @@ void loop() {
             mode = goalSearch;
           }
           break;
+          //after correction, we can do goal alignment with a yaw and a translation 
+
         case scoringStart:
         if (true) {
           yawCom = SCORING_YAW_COM;
@@ -903,9 +923,21 @@ void loop() {
          }
 
 
-    float forwardMotor = forwardPID.calculate(forwardCom, xekf.v, dt);
+    //float forwardMotor = forwardPID.calculate(forwardCom, xekf.v, dt);  
+    float forwardMotor = forwardPID.calculate(forwardCom, kal_vel.x_vel_est, dt);
 
-    float translationMotor = translationPID.calculate(translationCom, yekf.v, dt);
+    //float translationMotor = translationPID.calculate(translationCom, yekf.v, dt);
+    float translationMotor = translationPID.calculate(translationCom, kal_vel.y_vel_est, dt);  //
+
+    //Serial.print(">up current:");
+    //Serial.println(kf.v);
+    //float yawCurrent =  (float)yawRateFilter.last;
+    //Serial.print(">yaw current");
+    //Serial.println(yawCurrent);
+    //Serial.print(">forward current:");
+    //Serial.println(xekf.v);
+    // Serial.print(">translation current:");
+    //Serial.println(yekf.v);
 
     if (micros()/MICROS_TO_SEC < 10 + firstMessageTime) {
       //filter base station data
