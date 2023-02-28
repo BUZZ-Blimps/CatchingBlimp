@@ -1,25 +1,34 @@
 #include <opencv2/opencv.hpp>
 #include <opencv2/highgui/highgui.hpp>
 #include "opencv2/ximgproc.hpp"
+#include <opencv2/viz.hpp>
 
 #include <iostream>
 #include <vector>
 #include <string>
 #include <ctime>
+#include <chrono>
 
 //<-----------Constants------------->
-#define CAMERA_INDEX			2
+#define CAMERA_INDEX	        2
 #define CAMERA_WIDTH            2560   //px
 #define CAMERA_HEIGHT           960    //px
+#define CAMERA_API              CAP_V4L2
 
 #define CAMERA_READ_WIDTH       640
 #define CAMERA_READ_HEIGHT      480
 
+#define AVOIDENCE_SIZE          30
+
+#define GOAL_CONFIRM            50
+
+#define CV_WINDOW_AUTOSIZE      cv::WINDOW_NORMAL
+
 #define RECT_WIDTH              640
 #define RECT_HEIGHT             480
 
-#define DISPLAY_H				320
-#define DISPLAY_W				240
+#define DISPLAY_H		240
+#define DISPLAY_W		320
 
 #define DISP_WIDTH              160
 #define DISP_HEIGHT             120
@@ -36,7 +45,7 @@
 #define ALPHA_CAMERA            0.0
 #define ALPHA_STEREO            0.0
 
-#define WAIT                    250
+#define WAIT                    10 //250
 
 #define BASELINE                50.0      //mm
 #define FOCAL                   650.0     //mm
@@ -45,11 +54,19 @@
 #define SIGMA                   0.5
 #define VIS_MULT                255.0
 
+//Size of squares in mm (I think?)
 #define CHECKERBOARD_SIZE_WIDTH         30.0*0.9
-#define CHECKERBOARD_SIZE_HEIGHT        30.0*0.9 
+#define CHECKERBOARD_SIZE_HEIGHT        30.0*0.9
 
-#define PATHL                   "takeImagesCalibrate/tempImages/imgL"
-#define PATHR                   "takeImagesCalibrate/tempImages/imgR"
+//Number of interior corners
+//Small squares = 13x18, Big squares = 9x13
+#define CHECKERBOARD_NUM_HORIZONTAL             18
+#define CHECKERBOARD_NUM_VERTICAL               13
+
+//#define PATHL                   "takeImagesCalibrate/tempImages/imgL"
+//#define PATHR                   "takeImagesCalibrate/tempImages/imgR"
+#define PATHL                   "tempImages/imgL"
+#define PATHR                   "tempImages/imgR"
 #define IMGEXTENSION            ".jpg"
 
 #define CORRECT_COLOR           false
@@ -88,6 +105,8 @@ using namespace std;
 vector<Point> scaleContour(vector<Point> contour, double scale);
 string type2str(int type);
 
+bool render3DProjection = false;
+
 enum modes {
         detectBall,
         detectGoal
@@ -95,10 +114,14 @@ enum modes {
 
 int mode = detectBall;
 
-int CHECKERBOARD[2]{13,9};
+int CHECKERBOARD[2]{CHECKERBOARD_NUM_HORIZONTAL,CHECKERBOARD_NUM_VERTICAL};
+
+void benchmarkFirst(string flag);
+void benchmark(string flag);
+void benchmarkPrint();
 
 void takeStereoImages(bool autoCap = false) {
-	VideoCapture inputVideo(CAMERA_INDEX);
+	VideoCapture inputVideo(CAMERA_INDEX,CAMERA_API);
 
 	inputVideo.set(CAP_PROP_FRAME_WIDTH, CAMERA_WIDTH);
 	inputVideo.set(CAP_PROP_FRAME_HEIGHT, CAMERA_HEIGHT);
@@ -158,6 +181,8 @@ void takeStereoImages(bool autoCap = false) {
                                 cout << "Colm: " << frame.cols << endl;
                                 imwrite(pathL, imgL);
                                 imwrite(pathR, imgR);
+                                cout << "Attempted save." << endl;
+                                cout << imgL.size() << endl;
                         } else if (c % 256 == 27) {
                                 cout << "Exiting Camera" << endl;
                                 break;
@@ -189,6 +214,12 @@ void takeStereoImages(bool autoCap = false) {
 }
 
 void undistortCamerasCalibrateStereo(bool autoCap = false) {
+
+        cout << "Starting picture selection." << endl;
+        cout << "For a given photo, if prompted:" << endl;
+        cout << "\tPress 'y' for yes" << endl;
+        cout << "\tPress 'n' for no" << endl;
+        cout << "\tPress 'a' to select all found board pairs" << endl;
 
         int count = 0;
 
@@ -318,7 +349,7 @@ void undistortCamerasCalibrateStereo(bool autoCap = false) {
                         }
 
                         cv::drawChessboardCorners(imgR, cv::Size(CHECKERBOARD[0], CHECKERBOARD[1]), corner_ptsR, successR);
-                        Mat imgR3
+                        Mat imgR3;
                         resize(imgR, imgR3, Size(DISPLAY_W, DISPLAY_H), INTER_LINEAR);
                         imshow("Right Frame", imgR3);
 
@@ -521,7 +552,7 @@ void undistortCamerasCalibrateStereo(bool autoCap = false) {
 
         new_mtxR = cv::getOptimalNewCameraMatrix(mtxR,distR,cv::Size(RECT_WIDTH, RECT_HEIGHT),ALPHA_CAMERA,cv::Size(RECT_WIDTH, RECT_HEIGHT),&roiR);
 
-        cout << "Final Rigth Camera Calibration" << endl;
+        cout << "Final Right Camera Calibration" << endl;
         cout << "RMS: " << er << endl;
         cout << "cameraMatrix : " << mtxR << endl << endl;
         cout << distR << endl << endl;
@@ -677,6 +708,7 @@ void undistortCamerasCalibrateStereo(bool autoCap = false) {
         cout << "Percentage of StereoPairs: " << (float)numStereoPair/(float)totalStereoPair*100.0 << endl;
         cout << endl;
 
+        cout << "Press any key to continue." << endl;
         waitKey(0);
 
 
@@ -685,7 +717,7 @@ void undistortCamerasCalibrateStereo(bool autoCap = false) {
 
 void testStereoLab() {
 
-        VideoCapture inputVideo(CAMERA_INDEX);
+        VideoCapture inputVideo(CAMERA_INDEX,CAMERA_API);
 
         inputVideo.set(CAP_PROP_FRAME_WIDTH, CAMERA_READ_WIDTH);
         inputVideo.set(CAP_PROP_FRAME_HEIGHT, CAMERA_READ_HEIGHT);
@@ -737,32 +769,33 @@ void testStereoLab() {
         int maxa= 255;
         int mina = 0;
 
-        namedWindow("Track");
-        if (!CORRECT_COLOR) {
-                createTrackbar("lambda", "Track", &lambda, 500);
-                createTrackbar("sigma", "Track", &sigma, 500);
-                createTrackbar("vis mult", "Track", &vis_mult, 100);
+        if(!render3DProjection){
+                namedWindow("Track");
+                if (!CORRECT_COLOR) {
+                        createTrackbar("lambda", "Track", &lambda, 500);
+                        createTrackbar("sigma", "Track", &sigma, 500);
+                        createTrackbar("vis mult", "Track", &vis_mult, 100);
 
-                createTrackbar("preFilterSize", "Track", &preFilterSize, 50);
-                createTrackbar("preFilterCap", "Track", &preFilterCap, 62);
-                createTrackbar("disp12MaxDiff", "Track", &disp12Diff, 50);
-                createTrackbar("uniquness", "Track", &uniqunessRatio, 100);
-                createTrackbar("speckleWindowSize", "Track", &speckleWindowSize, 50);
-                createTrackbar("speckleRange", "Track", &speckleRange, 100);
-                createTrackbar("texture", "Track", &textureThreshold, 100);
-        } else {
-                createTrackbar("blue", "Track", &blue, 100);
-                createTrackbar("green", "Track", &green, 100);
-                createTrackbar("red", "Track", &red, 100);
+                        createTrackbar("preFilterSize", "Track", &preFilterSize, 50);
+                        createTrackbar("preFilterCap", "Track", &preFilterCap, 62);
+                        createTrackbar("disp12MaxDiff", "Track", &disp12Diff, 50);
+                        createTrackbar("uniquness", "Track", &uniqunessRatio, 100);
+                        createTrackbar("speckleWindowSize", "Track", &speckleWindowSize, 50);
+                        createTrackbar("speckleRange", "Track", &speckleRange, 100);
+                        createTrackbar("texture", "Track", &textureThreshold, 100);
+                } else {
+                        createTrackbar("blue", "Track", &blue, 100);
+                        createTrackbar("green", "Track", &green, 100);
+                        createTrackbar("red", "Track", &red, 100);
 
-                createTrackbar("Min H", "Track", &minInt, 255);
-                createTrackbar("Max H", "Track", &maxInt, 255);
-                createTrackbar("Min S", "Track", &mina, 255);
-                createTrackbar("Max S", "Track", &maxa, 255);
-                createTrackbar("Min V", "Track", &minb, 255);
-                createTrackbar("Max V", "Track", &maxb, 255);
+                        createTrackbar("Min H", "Track", &minInt, 255);
+                        createTrackbar("Max H", "Track", &maxInt, 255);
+                        createTrackbar("Min S", "Track", &mina, 255);
+                        createTrackbar("Max S", "Track", &maxa, 255);
+                        createTrackbar("Min V", "Track", &minb, 255);
+                        createTrackbar("Max V", "Track", &maxb, 255);
+                }
         }
-        
 
         clock_t last = 0;
 
@@ -771,9 +804,15 @@ void testStereoLab() {
         Ptr<ximgproc::DisparityWLSFilter> wls_filter = ximgproc::createDisparityWLSFilter(left_matcher);
         Ptr<StereoMatcher> right_matcher = ximgproc::createRightMatcher(left_matcher);
 
-	while (true) {
+        viz::Viz3d myWindow("Coordinate Frame");
+        //myWindow.showWidget("Coordinate Widget",viz::WCoordinateSystem());
 
-                cout << Q << endl << endl;
+
+
+	while (true) {
+                benchmarkFirst("Start");
+
+                //cout << Q << endl << endl;
 
                 /*
                 Ptr< StereoSGBM > left_matcher = StereoSGBM::create(minDisp,                            //min disparities
@@ -786,7 +825,7 @@ void testStereoLab() {
                                                 uniquness,                                      //uniquenessRatio
                                                 speckleWindowSize,                                      //speckleWindowSize
                                                 speckleRange,                                     //speckleRange
-                                                StereoSGBM::MODE_HH4);
+                                                StereoSGBM::MAVOIDEODE_HH4);
                 */
                 left_matcher->setPreFilterType(1);
                 left_matcher->setPreFilterSize(preFilterSize*2+5);
@@ -800,7 +839,7 @@ void testStereoLab() {
 
                 Ptr<StereoMatcher> right_matcher = ximgproc::createRightMatcher(left_matcher);
                 
-
+                /*
                 if (!CORRECT_COLOR) {
                         
                         cout << preFilterSize << " Pre filter size" << endl;
@@ -809,7 +848,7 @@ void testStereoLab() {
                         cout << textureThreshold << " textureThreshold" << endl;
                         cout << speckleRange << " speckleRange" << endl;
                         cout << speckleWindowSize << " speckleWindowSize" << endl;
-                        cout << disp12Diff << " disp12Diff" << endl;
+                   Affine3d(Mat::zeros(1,3,CV_32F),Vec3f(0,0,0))     cout << disp12Diff << " disp12Diff" << endl;
 
                         cout << endl;
                         cout << "Lambda: " << lambda << endl;
@@ -827,7 +866,7 @@ void testStereoLab() {
                         cout << "Blue: " << blue <<endl;
                         cout << "Green: " << green <<endl;
                         cout << "Red: " << red <<endl;
-                }
+                }*/
 
                 Mat frame;
 
@@ -837,6 +876,7 @@ void testStereoLab() {
                         continue;
                 }
 
+                benchmark("Start getting frames");
                 //split frame into two images
                 Mat imgL, imgR;
                
@@ -852,6 +892,8 @@ void testStereoLab() {
                 Mat imgL_rect, imgR_rect;
                 resize(imgL, imgL_rect, Size(RECT_WIDTH, RECT_HEIGHT), INTER_LINEAR);
                 resize(imgR, imgR_rect, Size(RECT_WIDTH, RECT_HEIGHT), INTER_LINEAR);
+
+                benchmark("Got frames");
 
                 //undistort images
                 Mat left_correct, right_correct;
@@ -872,46 +914,69 @@ void testStereoLab() {
                         BORDER_CONSTANT,
                         0);
                 
+                benchmark("Remapped frames");
+
                 Mat left_small_correct;
                 Mat right_small_correct;
-
-                imshow("left correct", left_correct);
+                
+                
+                //imshow("right correct", right_correct);
                 resize(left_correct, left_small_correct, Size(DISP_WIDTH, DISP_HEIGHT), INTER_LINEAR);
                 resize(right_correct, right_small_correct, Size(DISP_WIDTH, DISP_HEIGHT), INTER_LINEAR);
+                if(!render3DProjection){
+                        imshow("left correct", left_correct);
+                        imshow("left small", left_small_correct);
+                        imshow("right small", right_small_correct);
+                }
 
                 Mat left_correct_sg, right_correct_sg;
                 cvtColor(left_small_correct, left_correct_sg, cv::COLOR_BGR2GRAY);
                 cvtColor(right_small_correct, right_correct_sg, cv::COLOR_BGR2GRAY);
 
+                benchmark("Pre-compute disparity");
                 //compute disparity
                 Mat left_disp, right_disp;
                 left_matcher-> compute(left_correct_sg, right_correct_sg,left_disp);
                 right_matcher->compute(right_correct_sg, left_correct_sg, right_disp);
+                benchmark("Computed disparity");
 
                 Mat filtered_disp;
                 wls_filter->setLambda(lambda/10.0);
                 wls_filter->setSigmaColor(sigma/10.0);
                 wls_filter->filter(left_disp,left_correct_sg,filtered_disp,right_disp);
+                benchmark("Used WLS-filter");
 
                 Mat filtered_disp_vis, left_disp_vis;
                 ximgproc::getDisparityVis(left_disp, left_disp_vis, vis_mult);
                 ximgproc::getDisparityVis(filtered_disp,filtered_disp_vis,vis_mult);
                 namedWindow("filtered disparity", WINDOW_AUTOSIZE);
-                imshow("filtered disparity", filtered_disp_vis);
-                imshow("unfiltered disparity", left_disp_vis);
+                if(!render3DProjection){
+                        imshow("filtered disparity", filtered_disp_vis);
+                        imshow("unfiltered disparity", left_disp_vis);
+                }
 
                 Mat xyz;
                 resize(filtered_disp, filtered_disp, Size(RECT_WIDTH, RECT_HEIGHT), INTER_LINEAR);
 
+                
                 reprojectImageTo3D(filtered_disp, xyz, Q, true, -1);
-                cout << "Q:" << endl;
-                cout << Q << endl << endl;
+                cout << "XYZ size " << xyz.size() << "; type = " << type2str(xyz.type()) << endl;
+                benchmark("Reprojected");
+                //cout << "Q:" << endl;
+                //cout << Q << endl << endl;
                 Mat XYZ[3];
                 Mat x,y,depth;
                 split(xyz, XYZ);
                 depth = XYZ[2];
                 x = XYZ[0];
                 y = XYZ[1];
+                /*
+                viz::WCloud cloud(xyz);
+                myWindow.showWidget("Cloud Widget",cloud);
+                //Mat rot_mat = Mat::zeros(1,3,CV_32F);
+                //Affine3d pose(rot_mat, Vec3f(0.0f, 0.0f, 0.0f));
+                //myWindow.setWidgetPose("Cloud Widget", pose);
+                myWindow.spin();*/
 
                 Mat BGR;
                 cvtColor(depth/1500.0,  BGR, cv::COLOR_GRAY2BGR);
@@ -923,15 +988,19 @@ void testStereoLab() {
                 Mat mean1, stddev1;
                 cv::meanStdDev(depth*0.15, mean1, stddev1, close);
                 float tz = mean1.at<double>(0,0);
-                cout << "TZ: " << tz << endl;
-                imshow("close", close);
+                //cout << "TZ: " << tz << endl;
+                if(!render3DProjection){
+                        imshow("close", close);
+                }
 
                 //object avoidence
                 Mat objectMask;
                 inRange(depth*0.15, Scalar(0), Scalar(dist), objectMask);
                 Mat avoidence;
                 left_correct.copyTo(avoidence, objectMask);
-                imshow("Avoid", avoidence);
+                if(!render3DProjection){
+                        imshow("Avoid", avoidence);
+                }
 
                 vector<vector<Point> > contoursA;
                 vector<Vec4i> hierarchyA;
@@ -958,26 +1027,26 @@ void testStereoLab() {
                 int quad = 10;
 
                 if (largestArea > 0) {
-                        cout << "Avoid Area: " << largestArea << endl;
+                        //cout << "Avoid Area: " << largestArea << endl;
                                         
                         Moments moment = moments(largestContour);
                         double cx = moment.m10 / moment.m00; //int(M['m10']/M['m00'])
                         double cy = moment.m01 / moment.m00; //int(M['m01']/M['m00'])
 
-                        cout << "XX: " << cx/(float)RECT_WIDTH << endl;
-                        cout << "YY: " << cy/(float)RECT_HEIGHT << endl;
+                        //cout << "XX: " << cx/(float)RECT_WIDTH << endl;
+                        //cout << "YY: " << cy/(float)RECT_HEIGHT << endl;
                         
                         int xx = (int)((cx/((float)RECT_WIDTH))*3.0)+1;
                         int yy = (int)((cy/((float)RECT_HEIGHT))*3.0)+1;
 
-                        cout << "xx: " << xx << endl;
-                        cout << "yy: " << yy << endl;
+                        //cout << "xx: " << xx << endl;
+                        //cout << "yy: " << yy << endl;
 
                         quad = 3*(yy-1)+(xx);
                         
                 }
 
-                cout << "Quad: " << quad << endl;
+                //cout << "Quad: " << quad << endl;
 
                 //Detect Goal
                 if (mode == detectGoal) {
@@ -1012,7 +1081,9 @@ void testStereoLab() {
                         Mat onlyH;
                         merge(channels, onlyH);
                         cvtColor(onlyH, onlyH, COLOR_HSV2BGR);
-                        imshow("onlyH", onlyH);
+                        if(!render3DProjection){
+                                imshow("onlyH", onlyH);
+                        }
 
                         Mat erosionElem = getStructuringElement(MORPH_ELLIPSE, Size(2*E_SIZE+1,2*E_SIZE+1),Point(E_SIZE, E_SIZE));
                         Mat dilationElem = getStructuringElement(MORPH_ELLIPSE, Size(2*D_SIZE+1,2*D_SIZE+1),Point(D_SIZE, D_SIZE));
@@ -1020,7 +1091,9 @@ void testStereoLab() {
                         erode(bMask, bMask, erosionElem, Point(-1,-1), 0);
                         dilate(bMask, bMask, dilationElem, Point(-1,-1), D_ITER+GOAL_DILATION_ADJUST);
 
-                        imshow("Goal Mask", bMask);
+                        if(!render3DProjection){
+                                imshow("Goal Mask", bMask);
+                        }
 
                         vector<vector<Point> > contours;
                         vector<Vec4i> hierarchy;
@@ -1099,10 +1172,12 @@ void testStereoLab() {
                                                 double innerDetect = ((double)countNonZero(innerSingleBit))/areaI;
                                                 double goalDetect = ((double)countNonZero(goalSingleBit))/areaG;
 
-                                                imshow("goal", innerSingle);
+                                                if(!render3DProjection){
+                                                        imshow("goal", innerSingle);
+                                                }
 
                                                 //cout << "inner total" << areaI << endl;
-                                                cout << "inner detected" << innerDetect << endl;
+                                                //cout << "inner detected" << innerDetect << endl;
                                                 //cout << "goal total" << areaG << endl;
                                                 //cout << "goal detected" << goalDetect<< endl;
 
@@ -1116,7 +1191,7 @@ void testStereoLab() {
 
                                                 float confidence = 1-innerDetect;
                                                 if (confidence > GOAL_CONFIDENCE) {
-                                                        cout << "condfidence:" << confidence << endl;
+                                                        //cout << "condfidence:" << confidence << endl;
                                                         cout << area << endl;
                                                         cout << "Distance: " << distance << endl << endl;
                                                         //add goal data to info
@@ -1146,8 +1221,9 @@ void testStereoLab() {
                                                                 drawContours(BGR, outScaled, i, Scalar(0,0,255), LINE_4, 8);
                                                         }
                                                 }
-
-                                                imshow("Targets", BGR);
+                                                if(!render3DProjection){
+                                                        imshow("Targets", BGR);
+                                                }
 
                                         }
                                 }
@@ -1184,13 +1260,15 @@ void testStereoLab() {
                         Mat onlyH;
                         merge(channels, onlyH);
                         cvtColor(onlyH, onlyH, COLOR_HSV2BGR);
-                        imshow("onlyH", onlyH);
+                        if(!render3DProjection){
+                                imshow("onlyH", onlyH);
+                        }
 
                         vector<vector<Point> > contours;
                         vector<Vec4i> hierarchy;
-
-                        imshow("Ball Mask", bMask);
-
+                        if(!render3DProjection){
+                                imshow("Ball Mask", bMask);
+                        }
                         findContours(bMask, contours, hierarchy, RETR_TREE, CHAIN_APPROX_SIMPLE);
 
                         std::vector<vector<float> > balloons;
@@ -1222,7 +1300,7 @@ void testStereoLab() {
 
                                                 Mat mean, stddev;
                                                 cv::meanStdDev(depth, mean, stddev, temp);
-                                                cout << type2str(mean.type()) << endl;
+                                                //cout << type2str(mean.type()) << endl;
 
                                                 double conversion = 0.15;
 
@@ -1238,7 +1316,7 @@ void testStereoLab() {
                                                         z = 10000;
                                                 }
 
-                                                cout << "Distance: " << z << endl;
+                                                //cout << "Distance: " << z << endl;
 
                                                 //add to vector
                                                 std::vector<float> balloon;
@@ -1249,15 +1327,17 @@ void testStereoLab() {
                                                 balloons.push_back(balloon);
 
                                                 ellipse(imgL_rect, objEllipse, Scalar(0,0,255), 3);
-                                                cout << "Depth of object: " << z << "in\tstd: " << stddev.at<double>(0,0)*conversion << endl;
+                                                //cout << "Depth of object: " << z << "in\tstd: " << stddev.at<double>(0,0)*conversion << endl;
                                         }
                                 }
                         }
-                        imshow("Targets", BGR);
+                        if(!render3DProjection){
+                                imshow("Targets", BGR);
+                        }
                 } else {
 
                 }
-
+                benchmark("Everything else");
                 int c = waitKey(WAIT);
                 if (c % 256 == 27) {
                         break;
@@ -1269,32 +1349,42 @@ void testStereoLab() {
                         }
                 }
 
-                cout << "MODE----------------->" << mode << endl;
+                //cout << "MODE----------------->" << mode << endl;
 
                 clock_t now = clock();
                 float time = (float)(now - last)/(float)CLOCKS_PER_SEC;
-                cout << "Stereo Compute Time: " << time << "s" << endl;
-                cout << "Stereo compute rate: " << 1/time << "Hz" << endl;
+                //cout << "Stereo Compute Time: " << time << "s" << endl;
+                //cout << "Stereo Compute Rate: " << 1/time << "Hz" << endl; //Inaccurate
                 last = now;
+                benchmark("Last");
+                //benchmarkPrint();
 	}
 }
-
-
-
-
 
 //Display camera feed
 int main(int argc, char** argv) {
 
+        /*
         if (argc > 1) {
                 //begin automatic calibration
+                cout << "Automatic calibration." << endl;
                 takeStereoImages(true);
                 undistortCamerasCalibrateStereo(true);
                 return 0;
-        }
+        }*/
 
-        VideoCapture inputVideo(CAMERA_INDEX);
+        /*
+        viz::Viz3d myWindow("Coordinate Frame");
+        myWindow.showWidget("Coordinate Widget", viz::WCoordinateSystem());
+        Mat xyz = Mat::zeros(Size(3,3),CV_32FC3);
+        viz::WCloud cloud(xyz);
+        myWindow.showWidget("Cloud", cloud);
+        myWindow.spinOnce();
 
+        return 0;*/
+
+        VideoCapture inputVideo(CAMERA_INDEX,CAMERA_API);
+        
         inputVideo.set(CAP_PROP_FRAME_WIDTH, CAMERA_WIDTH);
         inputVideo.set(CAP_PROP_FRAME_HEIGHT, CAMERA_HEIGHT);
 
@@ -1304,25 +1394,30 @@ int main(int argc, char** argv) {
                 cout << "camera failed to open" << endl;
                 return 0;
         }
-
-        Mat frame;
-        Mat frame2;
-        inputVideo >> frame;
-        namedWindow("Camera Footage", CV_WINDOW_AUTOSIZE);
-        resizeWindow("Camera Footage", DISPLAY_W*2, DISPLAY_H);
-        imshow("Camera Footage", frame2);
-        inputVideo.release();
+        if(!render3DProjection){
+                Mat frame;
+                inputVideo >> frame;
+                namedWindow("Camera Footage", CV_WINDOW_AUTOSIZE);
+                resizeWindow("Camera Footage", DISPLAY_W*2, DISPLAY_H);
+                imshow("Camera Footage", frame);
+        }
+        inputVideo.release();        
 
         while (true) {
                 //Print menu
                 waitKey(10);
+                cout << "Select an open window and press key for program input." << endl;
                 cout << "Stereo Calibration" << endl;
                 cout << "1. Take Chessboard Photos" << endl;
                 cout << "2. Undistort Cameras and Calibrate Stereo" << endl;
                 cout << "3. Test Stereo Lab" << endl;
                 cout << "4. Exit Program" << endl << endl;
-
-                int mode = waitKey(0);
+                int mode;
+                if(render3DProjection){
+                        mode = 51;
+                }else{
+                        mode = waitKey(0);
+                }
 
                 switch(mode) {
                         case 49: //1
@@ -1381,4 +1476,41 @@ string type2str(int type) {
   r += (chans+'0');
 
   return r;
+}
+
+vector<chrono::system_clock::time_point> times;
+vector<string> flags;
+
+void benchmarkFirst(string flag){
+	times.clear();
+	flags.clear();
+	times.push_back(chrono::system_clock::now());
+	flags.push_back(flag);
+}
+
+void benchmark(string flag){
+	times.push_back(chrono::system_clock::now());
+	flags.push_back(flag);
+}
+
+double timeDiff(chrono::system_clock::time_point a, chrono::system_clock::time_point b){
+        chrono::duration<double> elapsedTime = a-b; //For some reason, this is required to output as seconds
+        return elapsedTime.count();
+}
+
+void benchmarkPrint(){
+	if(times.size() < 2) return;
+        
+	double deltaTotal = timeDiff(times[times.size()-1],times[0]);
+	for(int i=1; i<times.size(); i++){
+                double deltaTime = timeDiff(times[i],times[i-1]);
+		float percentTime = deltaTime / deltaTotal * 100;
+		percentTime = round(percentTime * 100) / 100;
+		string percentString = to_string(percentTime);
+		if(percentString.at(1) == '.') percentString = " " + percentString;
+		percentString = percentString.substr(0,5);
+
+		cout << percentString << "%, " << flags[i-1] << "->" << flags[i] << ": " << deltaTime << endl;
+	}
+	cout << "Total: " << 1.0/deltaTotal << "Hz" << endl;
 }
