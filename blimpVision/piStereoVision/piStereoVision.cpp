@@ -52,6 +52,7 @@
 
 
 //Camera
+#define CAMERA_ID		0
 #define CAMERA_WIDTH	320
 #define CAMERA_HEIGHT	240
 
@@ -220,7 +221,7 @@ int main(int argc, char** argv) {
 
 	initSerial();
 
-	VideoCapture cap = openCamera(0, CAMERA_WIDTH, CAMERA_HEIGHT);
+	VideoCapture cap = openCamera(CAMERA_ID, CAMERA_WIDTH, CAMERA_HEIGHT);
 
 	framesLeftToRecord = 9000;
 	int moreFramesPerTrigger = 30 * 10;
@@ -1187,7 +1188,7 @@ char readSerial() {
 
 	return byte;
 }
-
+//cout << "establish blimp ID->i";
 string groupAddress = UDP_IP;
 char* group = &groupAddress[0];
 int port = 	UDP_PORT;
@@ -1210,6 +1211,7 @@ void initUDPReceiver(){
 	bind(sockRec, (struct sockaddr*) &addrRec, sizeof(addrRec));
 
 	struct ip_mreq mreq;
+	//cout << "establish blimp ID->i";
 	mreq.imr_multiaddr.s_addr = inet_addr(group);
 	mreq.imr_interface.s_addr = htonl(INADDR_ANY);
 	setsockopt(sockRec, IPPROTO_IP, IP_ADD_MEMBERSHIP, (char*) &mreq, sizeof(mreq));
@@ -1241,6 +1243,7 @@ bool readUDP(string* retMessage, string* target, string* source, string* flag){
 		if(message.substr(0,2) == ":)"){
 			int comma = message.find(",");
 			int firstColon = message.find(":",comma+1);
+			//cout << "establish blimp ID->i";
 			int secondColon = message.find(":",firstColon+1);
 			if(comma != string::npos && firstColon != string::npos && secondColon != string::npos){
 				string targetString = message.substr(2,comma-2);

@@ -104,8 +104,9 @@ using namespace std;
 
 vector<Point> scaleContour(vector<Point> contour, double scale);
 string type2str(int type);
+void delay(double delaySeconds);
 
-bool render3DProjection = false;
+bool render3DProjection = true;
 
 enum modes {
         detectBall,
@@ -806,8 +807,7 @@ void testStereoLab() {
 
         viz::Viz3d myWindow("Coordinate Frame");
         //myWindow.showWidget("Coordinate Widget",viz::WCoordinateSystem());
-
-
+        myWindow.spinOnce();
 
 	while (true) {
                 benchmarkFirst("Start");
@@ -923,11 +923,10 @@ void testStereoLab() {
                 //imshow("right correct", right_correct);
                 resize(left_correct, left_small_correct, Size(DISP_WIDTH, DISP_HEIGHT), INTER_LINEAR);
                 resize(right_correct, right_small_correct, Size(DISP_WIDTH, DISP_HEIGHT), INTER_LINEAR);
-                if(!render3DProjection){
-                        imshow("left correct", left_correct);
-                        imshow("left small", left_small_correct);
-                        imshow("right small", right_small_correct);
-                }
+                imshow("left correct", left_correct);
+                imshow("left small", left_small_correct);
+                imshow("right small", right_small_correct);
+
 
                 Mat left_correct_sg, right_correct_sg;
                 cvtColor(left_small_correct, left_correct_sg, cv::COLOR_BGR2GRAY);
@@ -950,15 +949,12 @@ void testStereoLab() {
                 ximgproc::getDisparityVis(left_disp, left_disp_vis, vis_mult);
                 ximgproc::getDisparityVis(filtered_disp,filtered_disp_vis,vis_mult);
                 namedWindow("filtered disparity", WINDOW_AUTOSIZE);
-                if(!render3DProjection){
-                        imshow("filtered disparity", filtered_disp_vis);
-                        imshow("unfiltered disparity", left_disp_vis);
-                }
+                imshow("filtered disparity", filtered_disp_vis);
+                imshow("unfiltered disparity", left_disp_vis);
 
                 Mat xyz;
                 resize(filtered_disp, filtered_disp, Size(RECT_WIDTH, RECT_HEIGHT), INTER_LINEAR);
 
-                
                 reprojectImageTo3D(filtered_disp, xyz, Q, true, -1);
                 cout << "XYZ size " << xyz.size() << "; type = " << type2str(xyz.type()) << endl;
                 benchmark("Reprojected");
@@ -970,13 +966,24 @@ void testStereoLab() {
                 depth = XYZ[2];
                 x = XYZ[0];
                 y = XYZ[1];
-                /*
-                viz::WCloud cloud(xyz);
+
+                Mat copied = Mat(Size(640,480),CV_32FC3);
+                cout << "Copying... ";
+                for(int x=0; x<640; x++){
+                        for(int y=0; y<480; y++){
+                                copied.at<Vec3f>(Point(x,y)) = xyz.at<Vec3f>(Point(x,y));
+                        }
+                }
+                cout << "Done!" << endl;
+                imshow("Copied",copied);
+                while(true){
+                        waitKey(1);
+                        delay(0.1);
+                }
+
+                viz::WCloud cloud(copied);
                 myWindow.showWidget("Cloud Widget",cloud);
-                //Mat rot_mat = Mat::zeros(1,3,CV_32F);
-                //Affine3d pose(rot_mat, Vec3f(0.0f, 0.0f, 0.0f));
-                //myWindow.setWidgetPose("Cloud Widget", pose);
-                myWindow.spin();*/
+                myWindow.spinOnce(); // Throws seg fault
 
                 Mat BGR;
                 cvtColor(depth/1500.0,  BGR, cv::COLOR_GRAY2BGR);
@@ -1364,19 +1371,21 @@ void testStereoLab() {
 //Display camera feed
 int main(int argc, char** argv) {
 
-        /*
-        if (argc > 1) {
-                //begin automatic calibration
-                cout << "Automatic calibration." << endl;
-                takeStereoImages(true);
-                undistortCamerasCalibrateStereo(true);
-                return 0;
-        }*/
+        delay(0.2);
+        cout << "Attempting... ";
 
-        /*
+        waitKey(1);
+        delay(2);
+        return 0;
+
+        
         viz::Viz3d myWindow("Coordinate Frame");
-        myWindow.showWidget("Coordinate Widget", viz::WCoordinateSystem());
-        Mat xyz = Mat::zeros(Size(3,3),CV_32FC3);
+        myWindow.spinOnce();
+        cout << "Done!" << endl;
+        delay(5);
+        //myWindow.showWidget("Coordinate Widget", viz::WCoordinateSystem());
+        
+        /*Mat xyz = Mat::zeros(Size(3,3),CV_32FC3);
         viz::WCloud cloud(xyz);
         myWindow.showWidget("Cloud", cloud);
         myWindow.spinOnce();
@@ -1513,4 +1522,9 @@ void benchmarkPrint(){
 		cout << percentString << "%, " << flags[i-1] << "->" << flags[i] << ": " << deltaTime << endl;
 	}
 	cout << "Total: " << 1.0/deltaTotal << "Hz" << endl;
+}
+
+void delay(double delaySeconds){
+	clock_t start = clock();
+	while(double(clock() - start)/CLOCKS_PER_SEC < delaySeconds);
 }

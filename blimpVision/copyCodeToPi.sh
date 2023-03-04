@@ -1,6 +1,10 @@
 #!/bin/bash
 if [ "$1" != "" ]; then
 	hostname=$1
+	
+	echo ">>Removing old workspace from pi@$hostname"
+	ssh pi@$hostname 'rm -rf /home/pi/piStereoVision'
+	
 	echo ">>Copying workspace source code files to pi@$hostname"
 	scp -r ./piStereoVision pi@$hostname:/home/pi/
 	
