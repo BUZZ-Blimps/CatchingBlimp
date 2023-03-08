@@ -13,7 +13,7 @@ import sys
 
 MAX_DGRAM = 2**16
 
-serverAddr = "192.168.0.92"
+serverAddr = "192.168.0.202"
 #serverAddr = "127.0.0.1"
 
 serverPort = 12345

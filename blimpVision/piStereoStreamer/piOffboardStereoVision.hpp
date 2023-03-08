@@ -11,7 +11,7 @@
 #define HEARTBEAT_PERIOD    0.1
 
 //Video streaming
-const char* stream_server_ip = "192.168.0.220";
+const char* stream_server_ip = "192.168.0.202";
 const int   stream_server_port = 12345;
 
 //Communication
