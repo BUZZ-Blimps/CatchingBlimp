@@ -13,5 +13,5 @@ message(STATUS "    version: ${OpenCV_VERSION}")
 message(STATUS "    config: ${OpenCV_DIR}")
 message(STATUS "    include path: ${OpenCV_INCLUDE_DIRS}")
 
-add_executable(piStereoVision piStereoVision.cpp)
+add_executable(piStereoVision piStereoVision.cpp serialib.cpp)
 target_link_libraries(piStereoVision ${OpenCV_LIBS} wiringPi v4l1 v4l2)

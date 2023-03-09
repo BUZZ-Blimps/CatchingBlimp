@@ -37,8 +37,10 @@
 #include <time.h>
 #include <stdlib.h>
 
-#include <wiringPi.h>
-#include <wiringSerial.h>
+//#include <wiringPi.h>
+//#include <wiringSerial.h>
+
+#include "serialib.h"
 
 #include "Teleplot.h"
 
@@ -202,6 +204,8 @@ double outputVideo_fps = 30;
 float lastBaroMessageTime = 0.0;
 
 Teleplot teleplot("127.0.0.1");
+
+serialib serial;
 
 //==================== MAIN ====================
 
@@ -1159,30 +1163,41 @@ bool parseArguments(int argc, char** argv){
 }
 
 //==================== COMMUNICATION FUNCTION HEADERS ====================
-int serial;
+//int serial;
 
 void initSerial(){
-	while ((serial = serialOpen ("/dev/ttyS0", 115200)) < 0) {
+	if (serial.openDevice("/dev/ttyS0", 115200)!=1){
 		cout << "Unable to open serial port." << endl;
 		delay(1.0);
 	}
+	/*
+	while ((serial = serialOpen ("/dev/ttyS0", 115200)) < 0) {
+		cout << "Unable to open serial port." << endl;
+		delay(1.0);
+	}*/
 }
 
 void sendSerial(string message){
-	char* sendBuffer = &message[0];
-	serialPuts(serial, sendBuffer);
+	serial.writeString(message.c_str());
+	//char* sendBuffer = &message[0];
+	//serialPuts(serial, sendBuffer);
 	//cout << "Serial sending: " << message << endl << endl;
 }
 
 char readSerial() {
 	char byte = 0;
 
+	if(serial.available() > 0){
+		return serial.readBytes(&byte, 1);
+	}
+
+	/*
 	int bytesReceived = serialDataAvail(serial);
 
 	if (bytesReceived > 0) {
 		//Read a pending byte into the buffer
 			byte = (char)serialGetchar(serial);
-	}
+	}*/
 
 	//cout << (int)byte << "\t" << bytesReceived << endl;
 
