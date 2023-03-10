@@ -29,34 +29,34 @@
 #define MOTORS_OFF                false
 
 //optional controllers
-#define USE_EST_VELOCITY_IN_MANUAL  true
-#define USE_OBJECT_AVOIDENCE      false
+#define USE_EST_VELOCITY_IN_MANUAL  false    //use false to turn off the velosity control to see the blimp's behavior 
+#define USE_OBJECT_AVOIDENCE      false     //use false to turn off the obstacle avoidance 
 
 //catch search time after one
-#define MAX_SEARCH_WAIT_AFTER_ONE     80
-#define GAME_BALL_WAIT_TIME_PENALTY   20
+#define MAX_SEARCH_WAIT_AFTER_ONE     80    //max searching 
+#define GAME_BALL_WAIT_TIME_PENALTY   0    //should be set to 20, every catch assumed to be 20 seconds long  
 
 //number of catches attempted
-#define TOTAL_ATTEMPTS            100
-#define MAX_ATTEMPTS              100
+#define TOTAL_ATTEMPTS            100    // attempts at catching 
+#define MAX_ATTEMPTS              100    //should be set to 5
 
 //flight area parameters
 #define CEIL_HEIGHT               8      //m
 #define FLOOR_HEIGHT              2.5    //m
 
-#define MAX_HEIGHT                10.7    //m
-#define GOAL_HEIGHT               10.0    //m
+#define MAX_HEIGHT                8    //m
+#define GOAL_HEIGHT               5.0    //m
 #define GOAL_HEIGHT_DEADBAND      0.3       //m
 
 //distance triggers
-#define GOAL_DISTANCE_TRIGGER     75
-#define BALL_GATE_OPEN_TRIGGER    22 //30
-#define BALL_CATCH_TRIGGER        19 //27
+#define GOAL_DISTANCE_TRIGGER     65  //unscaled distance for blimp to trigger goal score 
+#define BALL_GATE_OPEN_TRIGGER    22 //30 unscaled distance for blimp to open the gate
+#define BALL_CATCH_TRIGGER        19 //27 unscaled distance for blimp to start the open-loop control 
 
 //object avoidence motor coms
-#define FORWARD_AVOID             0.5
+#define FORWARD_AVOID             0.5 
 #define YAW_AVOID                 10
-#define UP_AVOID                  0.015
+#define UP_AVOID                  0.1
 
 //autonomy tunning parameters
 // the inputs are bounded from -2 to 2, yaw is maxed out at 120 deg/s
@@ -111,12 +111,16 @@
 #define TEENSY_WAIT_TIME          0.5
 
 //init pins
-// #define LSPIN                     7
-// #define RSPIN                     10
+
+// #define LYSPIN                     7
+// #define LPSPIN                     6
 // #define LMPIN                     2
+// #define RYSPIN                     10
+// #define RPSPIN                     9
 // #define RMPIN                     5
 
 #define GRABBER_PIN               8
+#define SHOOTER_PIN               4
 
 //Print info (for sending variable data to the rasberry pi)
 #define MAX_NUM_VARIABLES         4
@@ -142,10 +146,10 @@ Gimbal leftGimbal(7, 6, 2, 25, 30, 1000, 2000, 45, 0.2);
 Gimbal rightGimbal(10, 9, 5, 25, 30, 1000, 2000, 135, 0.2);
 
 //Manual PID control
-PID verticalPID(950, 0, 0);  //can be tuned down 
+PID verticalPID(500, 0, 0);  //can be tuned down 
 PID yawPID(20.0, 0, 0);
-PID forwardPID(970, 0, 0);  
-PID translationPID(1370, 0, 0);
+PID forwardPID(500, 0, 0);  
+PID translationPID(500, 0, 0);
 
 //Auto PID control (output fed into manual controller)
 PID yPixelPID(0.0075,0,0);
@@ -175,7 +179,7 @@ EMAFilter baroOffset(0.5);
 EMAFilter rollOffset(0.5);
 
 //ball grabber object
-TripleBallGrabber ballGrabber(GRABBER_PIN,4);
+TripleBallGrabber ballGrabber(GRABBER_PIN,SHOOTER_PIN);
 
 //-----States for blimp and grabber-----
 enum autoState {
@@ -449,15 +453,15 @@ void loop() {
     xekf.updateOptical(x_opt);
     yekf.updateOptical(y_opt);
 
-    Serial.print(">X Velocity:");
-    Serial.println(Flow.x_motion_comp);
+    // Serial.print(">X Velocity:");
+    // Serial.println(Flow.x_motion_comp);
 
     // accelGCorrection.updateData(BerryIMU.AccXraw, BerryIMU.AccYraw, BerryIMU.AccZraw, pitch, roll);
 
-    kal_vel.update_vel_optical(Flow.x_motion_comp, Flow.y_motion_comp);
+    // kal_vel.update_vel_optical(Flow.x_motion_comp, Flow.y_motion_comp);
 
-    Serial.print(">X Velocity est:");
-    Serial.println(kal_vel.x_vel_est);
+    // Serial.print(">X Velocity est:");
+    // Serial.println(kal_vel.x_vel_est);
 
   }
   
@@ -558,7 +562,7 @@ void loop() {
           translationCom = manualComs[2]*2.0;
         }else{
           //normal mapping using max esc command 
-          upCom = manualComs[1]*500.0;
+          upCom = manualComs[1]*2.0; //PID used and maxed out at 2m/s
           forwardCom = manualComs[3]*500.0;
           translationCom = manualComs[2]*500.0;
         }
@@ -745,6 +749,8 @@ void loop() {
           break;
         case catching:
           if (true) {
+            //wait for 0.3 second
+            delay(300);
 
             forwardCom = CATCHING_FORWARD_COM;
             upCom = CATCHING_UP_COM;
@@ -909,10 +915,13 @@ void loop() {
 
 
     //PID controllers
-    float upMotor = verticalPID.calculate(upCom, kf.v, dt);
-
-    //hyperbolic tan for yaw "filtering"
+    
     float yawMotor = 0.0;
+    float upMotor = 0.0;
+    float forwardMotor = 0.0;
+    float translationMotor = 0.0;
+    
+    //hyperbolic tan for yaw "filtering"
          float deadband = 1.0; //deadband for filteration
          yawMotor = yawPID.calculate(yawCom, yawRateFilter.last, dt);  
 
@@ -922,12 +931,19 @@ void loop() {
              yawMotor = tanh(yawMotor)*abs(yawMotor);
          }
 
+    upMotor = verticalPID.calculate(upCom, kf.v, dt); //up velocity from barometer
 
-    //float forwardMotor = forwardPID.calculate(forwardCom, xekf.v, dt);  
-    float forwardMotor = forwardPID.calculate(forwardCom, kal_vel.x_vel_est, dt);
-
-    //float translationMotor = translationPID.calculate(translationCom, yekf.v, dt);
-    float translationMotor = translationPID.calculate(translationCom, kal_vel.y_vel_est, dt);  //
+    if (USE_EST_VELOCITY_IN_MANUAL == true){
+      //using kalman filters for the current velosity feedback for full-state feeback PID controllers
+    forwardMotor = forwardPID.calculate(forwardCom, xekf.v, dt);  //extended filter
+    //float forwardMotor = forwardPID.calculate(forwardCom, kal_vel.x_vel_est, dt);
+    translationMotor = translationPID.calculate(translationCom, yekf.v, dt); //extended filter
+    //float translationMotor = translationPID.calculate(translationCom, kal_vel.y_vel_est, dt); 
+    }else{
+      //without PID
+      forwardMotor = forwardCom;
+      translationMotor = translationCom;
+    }
 
     //Serial.print(">up current:");
     //Serial.println(kf.v);
@@ -968,7 +984,13 @@ void loop() {
         bool rightReady = rightGimbal.readyGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, motorControl.yawRight, motorControl.upRight, motorControl.forwardRight); 
         leftGimbal.updateGimbal(leftReady && rightReady);
         rightGimbal.updateGimbal(leftReady && rightReady);
-      } else {
+      } else if(MOTORS_OFF){
+        motorControl.update(forwardMotor, -translationMotor, upMotor, yawMotor, 0);
+        bool leftReady = leftGimbal.readyGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, motorControl.yawLeft, motorControl.upLeft, motorControl.forwardLeft);
+        bool rightReady = rightGimbal.readyGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, motorControl.yawRight, motorControl.upRight, motorControl.forwardRight); 
+        leftGimbal.updateGimbal(leftReady && rightReady);
+        rightGimbal.updateGimbal(leftReady && rightReady);
+      }else {
         motorControl.update(0,0,0,0,0);
         bool leftReady = leftGimbal.readyGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, 0, 0, 0);
         bool rightReady = rightGimbal.readyGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, 0, 0, 0);

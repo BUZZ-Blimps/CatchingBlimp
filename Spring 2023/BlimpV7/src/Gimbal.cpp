@@ -14,7 +14,7 @@ Gimbal::Gimbal(int yawPin, int pitchPin, int motorPin,double newDeadband, double
   phiPos1 = phiOffset;
   thetaPos = 0;
 
-  servoThreshold = 40; // (degrees) Defines how close servos must be for brushless motors to activate
+  servoThreshold = 80; // (degrees) Defines how close servos must be for brushless motors to activate
   
   //attach to pin
   yawServo.attach(yawPin);
@@ -156,6 +156,7 @@ bool Gimbal::readyGimbal(bool debug, bool motors_off, double roll, double pitch,
       nextMotorCom=motorCom(0);
       motor.write(motorCom(0)); //write 1500
     }
+
     return (abs(yawServo.getServo()-thetaPos)<servoThreshold) && (abs(pitchServo.getServo()-phi)<servoThreshold); 
   
   } else {
@@ -168,6 +169,7 @@ bool Gimbal::readyGimbal(bool debug, bool motors_off, double roll, double pitch,
 void Gimbal::updateGimbal(bool ready){ // Actual turn on command for brushless motors
   if (ready){
     motor.write(nextMotorCom); 
+    Serial.println(nextMotorCom);
   }else {
     motor.write(motorCom(0));
   }

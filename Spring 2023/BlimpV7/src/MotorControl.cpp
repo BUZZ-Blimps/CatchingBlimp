@@ -6,5 +6,6 @@ void MotorControl::update(double forward, double translation, double up, double 
   this->upLeft = -(up + roll);
   this->upRight = (up - roll);
   this->yawLeft = translation;
+  
   this->yawRight = translation;
 }
