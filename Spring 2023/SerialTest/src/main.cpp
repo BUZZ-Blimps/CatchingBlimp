@@ -9,16 +9,17 @@ void setup() {
   Serial.begin(115200);
   Serial1.begin(115200);
   startTime = micros();
-  lastTime = micros();
+  lastTime = micros()/1000000.0;
   msg = "";
 }
 
 
 void loop() {
-  double elapsedTime = (micros() - lastTime) / 1000000.0; // seconds
+  double currentTime = micros()/1000000.0;
+  double elapsedTime = currentTime - lastTime; // seconds
   if(elapsedTime > printDelay){
-    lastTime = micros();
-    String message = "Hi! Time=" + String(elapsedTime);
+    lastTime = currentTime;
+    String message = "Hi! Time=" + String(currentTime);
     Serial1.println(message);
     Serial.println(message);
     String msg2 = "Received: " + msg;
