@@ -1,0 +1,28 @@
+PI PASSWORD (if prompted): raspberry
+Working directory on computer: /home/corelab-laptop2/GitHub/CatchingBlimp/blimpVision
+
+Connecting to pi:
+"ssh pi@192.168.0.10#" where # is pi ID
+
+pushing code to pi:
+"./copyCodeToPi.sh 192.168.0.10#" where # is pi ID 
+
+check bashrc of pi
+- ssh into pi
+nano ~/.bashrc
+
+
+TWO WAYS TO START PROGRAM:
+	start the program on pi:
+		- s-sh into pi
+		- navigate to piStereoVision/build
+		"./piStereoVision #" where # is blimp ID
+
+
+		potential errors:
+		- "ID not provided." -> provide it an ID! pass the program its ID as the first argument
+		- "can't open camera by index" -> likely that the camera is not plugged in. program won't run without camera. plug in the camera
+
+	to start a blimp from the computer:
+		"./restartProgram.sh 192.168.0.10# #" where # is pi/blimp ID
+		make sure you use BOTH arguments, first is IP of pi, second is blimp ID

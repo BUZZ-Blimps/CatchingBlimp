@@ -6,13 +6,15 @@
 
 #IncludeRegexTransform: 
 
-/home/corelab-laptop2/opencv-workspace/blimpVision/takeImagesCalibrate/takeImagesCalibrate.cpp
+/home/corelab-laptop2/GitHub/CatchingBlimp/blimpVision/takeImagesCalibrate/takeImagesCalibrate.cpp
 opencv2/opencv.hpp
 -
 opencv2/highgui/highgui.hpp
 -
 opencv2/ximgproc.hpp
-/home/corelab-laptop2/opencv-workspace/blimpVision/takeImagesCalibrate/opencv2/ximgproc.hpp
+/home/corelab-laptop2/GitHub/CatchingBlimp/blimpVision/takeImagesCalibrate/opencv2/ximgproc.hpp
+opencv2/viz.hpp
+-
 iostream
 -
 vector
@@ -20,6 +22,8 @@ vector
 string
 -
 ctime
+-
+chrono
 -
 
 /usr/include/opencv4/opencv2/calib3d.hpp

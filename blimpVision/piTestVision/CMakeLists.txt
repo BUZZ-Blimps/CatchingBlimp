@@ -14,4 +14,4 @@ message(STATUS "    config: ${OpenCV_DIR}")
 message(STATUS "    include path: ${OpenCV_INCLUDE_DIRS}")
 
 add_executable(piTestVision piTestVision.cpp)
-target_link_libraries(piTestVision ${OpenCV_LIBS} wiringPi v4l1 v4l2)
+target_link_libraries(piTestVision ${OpenCV_LIBS} v4l1 v4l2)
