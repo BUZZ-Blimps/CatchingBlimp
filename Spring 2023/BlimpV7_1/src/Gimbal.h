@@ -6,6 +6,7 @@ class Gimbal {
     Gimbal(int yawPin, int pitchPin, int motorPin,double newDeadband, double newTurnOnCom, double newMinCom, double newMaxCom, double newPhiOffset, double filter);
     bool readyGimbal(bool debug, bool motors_off, double roll, double pitch, double yaw, double up, double forward);
     void updateGimbal(bool ready);
+    void motorTest();
 
     private:
     double motorCom(double command);

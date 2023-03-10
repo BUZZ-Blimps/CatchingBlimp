@@ -14,6 +14,23 @@
 #include "optical_ekf.h"
 #include "gyro_ekf.h"
 #include "tripleBallGrabber.h"
+#include <Arduino.h>
+#include <vector>
+#include <SerialData.h>
+#include "MotorControl.h"
+#include "BerryIMU_v3.h"
+#include "Madgwick_Filter.h"
+#include "baro_acc_kf.h"
+#include "accelGCorrection.h"
+#include "PID.h"
+#include "EMAFilter.h"
+#include "Optical_Flow.h"
+#include "Kalman_Filter_Tran_Vel_Est.h"
+#include "BangBang.h"
+#include "optical_ekf.h"
+#include "gyro_ekf.h"
+#include "tripleBallGrabber.h"
+#include "PMW3901.h"
 
 #include "Gimbal.h"
 
@@ -116,6 +133,26 @@
 // #define LMPIN                     2
 // #define RMPIN                     5
 
+//**************** TEENSY PINOUT ****************//
+#define L_Pitch                   2                    
+#define L_Yaw                     3              
+#define R_Pitch                   4                
+#define R_Yaw                     5              
+                                   
+#define L_Pitch_FB                23                    
+#define L_Yaw_FB                  22                  
+#define R_Pitch_FB                21                    
+#define R_Yaw_FB                  20                  
+                                  
+#define GATE_S                    15                
+                                  
+#define PWM_L                     6              
+#define PWM_G                     9              
+#define PWM_R                     14              
+                                  
+#define OF_CS                     10              
+//***********************************************//
+
 #define GRABBER_PIN               8
 
 //Print info (for sending variable data to the rasberry pi)
@@ -135,11 +172,12 @@ Kalman_Filter_Tran_Vel_Est kal_vel;
 OpticalEKF xekf(DIST_CONSTANT, GYRO_X_CONSTANT, GYRO_YAW_CONSTANT);
 OpticalEKF yekf(DIST_CONSTANT, GYRO_Y_CONSTANT, 0);
 GyroEKF gyroEKF;
+PMW3901 OpticalFlow(OF_CS);
 
 //Gimbal leftGimbal(yawPin, pitchPin, motorPin, newDeadband, newTurnOnCom, newMinCom, newMaxCom);
 MotorControl motorControl;
-Gimbal leftGimbal(7, 6, 2, 25, 30, 1000, 2000, 45, 0.2);
-Gimbal rightGimbal(10, 9, 5, 25, 30, 1000, 2000, 135, 0.2);
+Gimbal leftGimbal(L_Yaw, L_Pitch, PWM_L, 25, 30, 1000, 2000, 45, 0.2);
+Gimbal rightGimbal(R_Yaw, R_Pitch, PWM_R, 25, 30, 1000, 2000, 135, 0.2);
 
 //Manual PID control
 PID verticalPID(950, 0, 0);  //can be tuned down 
@@ -175,7 +213,7 @@ EMAFilter baroOffset(0.5);
 EMAFilter rollOffset(0.5);
 
 //ball grabber object
-TripleBallGrabber ballGrabber(GRABBER_PIN,4);
+TripleBallGrabber ballGrabber(GRABBER_PIN, PWM_G);
 
 //-----States for blimp and grabber-----
 enum autoState {
@@ -301,6 +339,9 @@ float actualBaro = 0.0;
 
 float goalYawDirection = -1;
 
+//Optical Flow
+int16_t deltaX1, deltaY1;
+
 //telemetry data to pi
 std::vector<String> piVariables;
 std::vector<float> piValues;
@@ -324,6 +365,19 @@ void setup() {
     delay(100);
   }
 
+  if (!OpticalFlow.begin()) {
+    Serial.println("Initialization of the flow sensor failed");
+    while(1) { }
+  }
+
+  //while (1)
+  //{
+  //  Serial.print("Loop");
+  //  delay(3000);
+  //  leftGimbal.motorTest();
+  //  rightGimbal.motorTest();
+  //}
+
   firstMessageTime = micros()/MICROS_TO_SEC;
 
   Serial.println("Starting Program");
@@ -333,9 +387,6 @@ void loop() {
   //check for a message from the pi, done as fast as possible
   piListen();
 
-  //read buffer for optical flow
-  Flow.read_buffer();
-
   //compute accel, gyro, madwick loop time at the set freqency
   float dt = micros()/MICROS_TO_SEC-lastSensorFastLoopTick;
   if (dt >= 1.0/FAST_SENSOR_LOOP_FREQ) {
@@ -343,6 +394,8 @@ void loop() {
 
     //read sensor values and update madgwick
     BerryIMU.IMU_read();
+    BerryIMU.IMU_Flip_Axis();
+
     madgwick.Madgwick_Update(BerryIMU.gyr_rateXraw,
                              BerryIMU.gyr_rateYraw,
                              BerryIMU.gyr_rateZraw,
@@ -422,6 +475,7 @@ void loop() {
 
     //get most current imu values
     BerryIMU.IMU_read();
+    BerryIMU.IMU_Flip_Axis();
     
     //update kalman with uncorreced barometer data
     kf.updateBaro(BerryIMU.alt);
@@ -440,24 +494,19 @@ void loop() {
   if (dt > 1.0/OPTICAL_LOOP_FREQ) {
     lastOpticalLoopTick = micros()/MICROS_TO_SEC;
   
-    Flow.update_flow(BerryIMU.gyr_rateXraw, BerryIMU.gyr_rateYraw, 1);
-
-    //change to blimp coordinates
-    float x_opt = (float)Flow.y_motion/dt;
-    float y_opt = (float)Flow.x_motion/dt;
+    OpticalFlow.readMotionCount(&deltaX1, &deltaY1, 1, BerryIMU.gyr_rateXraw, BerryIMU.gyr_rateYraw);
+    float x_opt = (float)deltaX1/dt;
+    float y_opt = (float)deltaY1/dt;
 
     xekf.updateOptical(x_opt);
     yekf.updateOptical(y_opt);
 
-    Serial.print(">X Velocity:");
-    Serial.println(Flow.x_motion_comp);
-
     // accelGCorrection.updateData(BerryIMU.AccXraw, BerryIMU.AccYraw, BerryIMU.AccZraw, pitch, roll);
 
-    kal_vel.update_vel_optical(Flow.x_motion_comp, Flow.y_motion_comp);
+    kal_vel.update_vel_optical(OpticalFlow.x_motion_comp, OpticalFlow.y_motion_comp);
 
-    Serial.print(">X Velocity est:");
-    Serial.println(kal_vel.x_vel_est);
+    //Serial.print(">X Velocity est:");
+    //Serial.println(kal_vel.x_vel_est);
 
   }
   
@@ -926,17 +975,29 @@ void loop() {
     //float forwardMotor = forwardPID.calculate(forwardCom, xekf.v, dt);  
     float forwardMotor = forwardPID.calculate(forwardCom, kal_vel.x_vel_est, dt);
 
+    //Serial.print("Forward Motor Signal ");
+    //Serial.println(forwardMotor);
+
+    //Serial.print("Forward Com Signal ");
+    //Serial.println(forwardCom);
+
+    //Serial.print("X = ");
+    //Serial.println(kal_vel.x_vel_est);
+
+    //Serial.print("Y = ");
+    //Serial.println(kal_vel.y_vel_est);
+
     //float translationMotor = translationPID.calculate(translationCom, yekf.v, dt);
     float translationMotor = translationPID.calculate(translationCom, kal_vel.y_vel_est, dt);  //
-
+    
+    //float yawCurrent =  (float)yawRateFilter.last; 
     //Serial.print(">up current:");
     //Serial.println(kf.v);
-    //float yawCurrent =  (float)yawRateFilter.last;
     //Serial.print(">yaw current");
     //Serial.println(yawCurrent);
     //Serial.print(">forward current:");
     //Serial.println(xekf.v);
-    // Serial.print(">translation current:");
+    //Serial.print(">translation current:");
     //Serial.println(yekf.v);
 
     if (micros()/MICROS_TO_SEC < 10 + firstMessageTime) {
@@ -948,8 +1009,13 @@ void loop() {
       motorControl.update(0, 0, 0, 0, 0);
       bool leftReady = leftGimbal.readyGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, motorControl.yawLeft, motorControl.upLeft, motorControl.forwardLeft);
       bool rightReady = rightGimbal.readyGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, motorControl.yawRight, motorControl.upRight, motorControl.forwardRight);
+      
+      //Serial.print("Left ");
       leftGimbal.updateGimbal(leftReady && rightReady);
+
+      //Serial.print("Right ");
       rightGimbal.updateGimbal(leftReady && rightReady);
+
     } else {
       
       if (state == manual && !MOTORS_OFF){
@@ -962,18 +1028,21 @@ void loop() {
         bool rightReady = rightGimbal.readyGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, motorControl.yawRight, motorControl.upRight, motorControl.forwardRight);
         leftGimbal.updateGimbal(leftReady && rightReady);
         rightGimbal.updateGimbal(leftReady && rightReady);
+
       } else if (state == autonomous && !MOTORS_OFF) {
         motorControl.update(forwardMotor, -translationMotor, upMotor, yawMotor, 0);
         bool leftReady = leftGimbal.readyGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, motorControl.yawLeft, motorControl.upLeft, motorControl.forwardLeft);
         bool rightReady = rightGimbal.readyGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, motorControl.yawRight, motorControl.upRight, motorControl.forwardRight); 
         leftGimbal.updateGimbal(leftReady && rightReady);
         rightGimbal.updateGimbal(leftReady && rightReady);
+
       } else {
         motorControl.update(0,0,0,0,0);
         bool leftReady = leftGimbal.readyGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, 0, 0, 0);
         bool rightReady = rightGimbal.readyGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, 0, 0, 0);
         leftGimbal.updateGimbal(leftReady && rightReady);
         rightGimbal.updateGimbal(leftReady && rightReady);
+
       }
     }
   }
@@ -990,7 +1059,7 @@ bool piListen() {
       //Serial.print(c);
       if (c == '#') {
         //process message
-        Serial.println(msgTemp);
+        //Serial.println(msgTemp);
         retVal = processSerial(msgTemp);
 
         //update last message time
@@ -1079,7 +1148,7 @@ bool processSerial(String msg) {
     quad = (int)splitData[1].toFloat();
 
     if (splitData[2].toFloat() < -1000) {
-      Serial.println("Baro Data Not Current");
+      //Serial.println("Baro Data Not Current");
     } else {
       baseBaro = splitData[2].toFloat();
       //Serial.println("Baro Data is Current");

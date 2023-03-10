@@ -27,6 +27,23 @@ Gimbal::Gimbal(int yawPin, int pitchPin, int motorPin,double newDeadband, double
   motor.write(1500);
 }
 
+void Gimbal::motorTest(){
+  //2000 = full
+  //1500 = zero
+  //1000 = negative full
+  
+  motor.write(2000);
+
+  delay(2000);
+
+  motor.write(1000);
+
+  delay(2000);
+
+  motor.write(1500);
+}
+
+
 bool Gimbal::readyGimbal(bool debug, bool motors_off, double roll, double pitch, double yaw, double up, double forward) {
 
   if (debug) Serial.println("Corrected Inputs");
@@ -195,7 +212,10 @@ double Gimbal::motorCom(double command) {
         //should never happen, but write 1500 anyway for safety
         adjustedCom = 1500;
     }
+
     //Serial.println(adjustedCom);
+    Serial.println(command);
+
     this->motor.write(adjustedCom);
     return adjustedCom;
 }

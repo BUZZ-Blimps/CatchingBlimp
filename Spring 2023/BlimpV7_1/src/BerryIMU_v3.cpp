@@ -221,6 +221,35 @@ void BerryIMU_v3::IMU_read(){
   //---------------------------------------------------------------------------------------
 }
 
+void BerryIMU_v3::IMU_Flip_Axis()
+{
+  //Raw member variable format
+  //Y = 0
+  //X = 1
+  //Z = 2
+  float temp = 0;
+
+  temp = accRaw[0];
+  accRaw[0] = accRaw[1];
+  accRaw[1] = -temp;
+
+  temp = gyrRaw[0];
+  gyrRaw[0] = gyrRaw[1];
+  gyrRaw[1] = -temp;
+
+  temp = magRaw[0];
+  magRaw[0] = magRaw[1];
+  magRaw[1] = -temp;
+
+  temp = this->AccYraw;
+  this->AccYraw = this->AccXraw;
+  this->AccXraw = -temp;
+
+  temp = this->gyr_rateYraw;
+  this->gyr_rateYraw = this->gyr_rateXraw;
+  this->gyr_rateXraw = -temp;
+}
+
 float BerryIMU_v3::temp_compensation(float raw_temperature) {
   float partial_data1 = raw_temperature - PAR_T1;
   float partial_data2 = partial_data1 * PAR_T2;
