@@ -34,7 +34,7 @@ using namespace std;
 class PiComm{
     private:
         // Blimp ID
-        int blimpID;
+        string blimpID;
 
         // Serial communication
         serialib serial;
@@ -50,7 +50,8 @@ class PiComm{
         struct sockaddr_in addrSend;
 
     public:
-        void setBlimpID(int newBlimpID);
+        void setBlimpID(string newBlimpID);
+        string getIPAddress();
 
         // ============================== SERIAL ==============================
         void initSerial();

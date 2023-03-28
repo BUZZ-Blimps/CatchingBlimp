@@ -14,15 +14,27 @@ nano ~/.bashrc
 
 TWO WAYS TO START PROGRAM:
 	start the program on pi:
-		- s-sh into pi
+		- ssh into pi
 		- navigate to piStereoVision/build
-		"./piStereoVision #" where # is blimp ID
-
+		"./piStereoVision"
 
 		potential errors:
-		- "ID not provided." -> provide it an ID! pass the program its ID as the first argument
 		- "can't open camera by index" -> likely that the camera is not plugged in. program won't run without camera. plug in the camera
 
 	to start a blimp from the computer:
-		"./restartProgram.sh 192.168.0.10# #" where # is pi/blimp ID
+		"./restartProgram.sh 192.168.0.10#" where # is pi/blimp ID
 		make sure you use BOTH arguments, first is IP of pi, second is blimp ID
+
+BLIMP IDs:
+	Raspberry Pis get their local IP address and use it as their blimp ID, by default.
+	If desired, you can pass in an optional argument to the Pis code, which will override the blimp ID.
+	
+	Example - Default ID: 
+		./piStereoVision
+		OR
+		./restartProgram.sh 192.168.0.10#
+
+	Example - Override ID:
+		./piStereoVision [ID]
+		OR
+		./restartProgram.sh 192.168.0.10# [ID]

@@ -67,7 +67,7 @@ void saveToVideo(Mat frame);
 void printMode(bool autonomous, autoState mode);
 
 //==================== GLOBAL VARIABLES ====================
-int blimpID = -1;
+string blimpID = "";
 int teensyState;
 bool autonomous = false;
 
@@ -103,13 +103,14 @@ int main(int argc, char** argv) {
 	// Parse arguments
 	for(int i=0; i<argc; i++) cout << "Arg[" << i << "] = \"" << argv[i] << "\"" << endl;
 
-	if (argc != 2) {
-		fprintf(stderr, "Error: ID not provided.\n");
-		return -1;
-	}
-
 	// Determine blimp ID
-	blimpID = atoi(argv[1]);
+	if(argc == 2){
+		// Use argument to override blimpID
+		blimpID = string(argv[1]);
+	}else{
+		// DEFAULT, Use IP Address as blimpID
+		blimpID = piComm.getIPAddress();
+	}
 	cout << "I. Am. Blimp. " << blimpID << "." << endl;
 	piComm.setBlimpID(blimpID);
 

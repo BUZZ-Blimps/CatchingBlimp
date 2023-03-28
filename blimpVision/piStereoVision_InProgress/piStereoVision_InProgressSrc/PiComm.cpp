@@ -17,13 +17,58 @@
 #include <string.h>
 #include <time.h>
 #include <chrono>
+#include <netdb.h>
+#include <ifaddrs.h>
+#include <linux/if_link.h>
 
 using namespace std;
 
 // ============================== CLASS ==============================
 
-void PiComm::setBlimpID(int newBlimpID){
+void PiComm::setBlimpID(string newBlimpID){
 	blimpID = newBlimpID;
+}
+
+string PiComm::getIPAddress(){
+	string IPAddress = "";
+	string targetIfaName = "wlan0";
+	int targetIfaFamily = AF_INET;
+	string failureReturn = "";
+
+	// Code from: https://man7.org/linux/man-pages/man3/getifaddrs.3.html
+	struct ifaddrs *ifaddr;
+	int s;
+	char host[NI_MAXHOST];
+
+	if (getifaddrs(&ifaddr) == -1) {
+		cout << "Unable to get local IP addresses." << endl;
+		return failureReturn;
+	}
+
+	/* Walk through linked list, maintaining head pointer so we
+		can free list later. */
+
+	for (struct ifaddrs *ifa = ifaddr; ifa != NULL; ifa = ifa->ifa_next) {
+		if (ifa->ifa_addr == NULL)
+			continue;
+
+		string ifaName = ifa->ifa_name;
+		int ifaFamily = ifa->ifa_addr->sa_family;
+
+		if(ifaName == targetIfaName && ifaFamily == targetIfaFamily){
+			// getnameinfo ONLY IF: ifaFamily == AF_INET || ifaFamily == AF_INET6
+			s = getnameinfo(ifa->ifa_addr, sizeof(struct sockaddr_in), host, NI_MAXHOST, NULL, 0, NI_NUMERICHOST);
+			if (s != 0) {
+				cout << "getnameinfo() failed." << endl;
+			}else{
+				IPAddress = string(host);
+				//cout << "Identified IP Address: " << IPAddress << endl;
+			}
+		}
+	}
+
+	freeifaddrs(ifaddr);
+	return IPAddress;
 }
 
 // ============================== SERIAL ==============================
@@ -124,21 +169,15 @@ void PiComm::sendUDPRaw(string target, string source, string flag, string messag
 }
 
 void PiComm::sendUDP(string flag, string message){
-	sendUDPRaw("0",to_string(blimpID),flag,message);
+	sendUDPRaw("0",blimpID,flag,message);
 }
 
 void PiComm::sendUDP(string message){
-	sendUDPRaw("0",to_string(blimpID),"D",message);
+	sendUDPRaw("0",blimpID,"D",message);
 }
 
 bool PiComm::validTarget(string targetID){
-	int id = -1;
-	try {
-		id = stoi(targetID);
-	} catch(std::invalid_argument& e) {
-		//cout << "Received message with invalid blimp ID." << endl;
-	}
-	return id == blimpID;
+	return targetID == blimpID;
 }
 
 //Expected format for message: baroData;targetGoal;targetEnemy
