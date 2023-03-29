@@ -11,6 +11,10 @@
 #include "json.hpp"
 using json = nlohmann::json;
 
+#include "ComputerVision.h"
+#include "PiComm.h"
+#include "EnumUtil.h"
+
 //==================== CONSTANTS ====================
 #define HEARTBEAT_PERIOD    0.1
 
@@ -26,9 +30,6 @@ const int   stream_server_port = 12345;
 
 const int MAX_DGRAM = pow(2, 16);
 const int MAX_IMAGE_DGRAM = MAX_DGRAM - 64;
-
-const char *stereo_cal_path = "/home/pi/piOffboardStereoVision_InProgress/stereo_rectify_maps240p.xml";
-//const char *stereo_cal_path = "/home/willie/CatchingBlimp/blimp-workspace/piOffboardStereoVision/src/stereo_rectify_maps240p.xml";
 
 #define MAXLINE 1024
 
@@ -48,9 +49,6 @@ const char *stereo_cal_path = "/home/pi/piOffboardStereoVision_InProgress/stereo
 
 #define CONVERSION		0.15
 
-#define PRE_FILTER_SIZE	7
-#define PRE_FILTER_CAP	2
-#define UNIQUENESS_RATIO	5
 
 
 #define LAMBDA			17.8
@@ -91,7 +89,7 @@ const char *stereo_cal_path = "/home/pi/piOffboardStereoVision_InProgress/stereo
 #define ML_CLASS_YELLOWGOAL		2
 
 //==================== GLOBAL VARIABLES (GOD FORBID) ====================//
-int blimpID = -1;
+string blimpID = "";
 int cap_device_id = 0;
 int teensyState;
 bool program_running = true;
@@ -161,63 +159,21 @@ int port = 	UDP_PORT;
 int recSocketFD, sendSocketFD;
 struct sockaddr_in addrRec, addrSend;
 
-//State machine enums
-enum object {
-    balloon,
-    blimpB,
-    blimpR,
-    goalO,
-    goalY,
-    first = balloon,
-    last = goalY
-};
+//Objects
+ComputerVision computerVision;
+PiComm piComm;
 
-enum autoState {
-	searching,
-	approach,
-	catching,
-	caught,
-	goalSearch,
-	approachGoal,
-	scoringStart,
-	shooting,
-	scored
-};
-
-enum blimpType {
-	blue,
-	red
-};
-
-enum goalType {
-	orange,
-	yellow
-};
-
-int blimpColor = blue;
-int goalColor = orange;
-int mode = searching;
+blimpType blimpColor = blue;
+goalType goalColor = orange;
+autoState mode = searching;
 
 //==================== FUNCTION HEADERS ====================
-cv::VideoCapture openCamera(int camIndex, int camWidth, int camHeight);
 bool parseArguments(int argc, char** argv);
-std::vector<cv::Point> scaleContour(std::vector<cv::Point> contour, float scale);
-std::vector<std::vector<float> > getObjects(int type, cv::Mat mask);
 
 //bool initPython();
 //string runYolo(Mat& frame);
 
 //==================== COMMUNICATION FUNCTION HEADERS ====================
-void initSerial();
-void sendSerial(std::string message);
-char readSerial();
-void initUDPReceiver();
-void initUDPSender();
-bool readUDP(std::string* retMessage = nullptr, std::string* target = nullptr, std::string* source = nullptr, std::string* flag = nullptr);
-void sendUDPRaw(std::string target, std::string source, std::string flag, std::string message);
-void sendUDP(std::string flag, std::string message);
-void sendUDP(std::string message);
-void establishBlimpID();
 void plotUDP(std::string varName, float varValue);
 
 //==================== HELPER FUNCTION HEADERS ====================

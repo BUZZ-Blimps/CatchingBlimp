@@ -1,7 +1,7 @@
 //============================================================================
 // Name        : piOffboardStereoVision.cpp
 // Author      : Aidan Amstutz, Adam Pooley, Willie Warke
-// Version     : 2.0
+// Version     : 3.0
 // Copyright   : Copyright 2022 SWAMP INCORPORATED
 // Description : SWAMP Blimps Pi C++ Codebase
 //============================================================================
@@ -50,8 +50,6 @@
 #include <opencv2/ximgproc/disparity_filter.hpp>
 
 //Libraries
-#include <wiringPi.h>
-#include <wiringSerial.h>
 #include "Teleplot.h"
 
 #include "piOffboardStereoVision.hpp"
@@ -101,20 +99,20 @@ void *bs_udp_comms(void *thread_id) {
 	framesLeftToRecord = 9000;
 	int moreFramesPerTrigger = 30 * 10;
 
-	fprintf(stdout, "Connecting to base station. Blimp ID: %d.\n", blimpID);
+	fprintf(stdout, "Connecting to base station. Blimp ID: %s.\n", blimpID.c_str());
 
 	while (program_running) {
 		clock_t currentTime = clock();
 		double cycleTime = double(currentTime - lastCycle)/CLOCKS_PER_SEC;
 		lastCycle = currentTime;
 		//cout << "Cycle Time (s): " << cycleTime << endl;
-		benchmarkFirst("Heart");
+		//benchmarkFirst("Heart");
 
 		//Send heartbeat
 		if (double(currentTime - lastHeartbeat)/CLOCKS_PER_SEC > HEARTBEAT_PERIOD) {
 			lastHeartbeat = currentTime;
 			//sendUDP("H");
-			sendUDP("S", to_string(mode));
+			piComm.sendUDP("S", to_string(mode));
 		}
 
 		//Receive UDP messages
@@ -123,145 +121,71 @@ void *bs_udp_comms(void *thread_id) {
 			string readIn;
 			string target;
 			string flag;
-			bool messageReceived = readUDP(&readIn, &target, nullptr, &flag);
-			if (!messageReceived) {
+			bool success = piComm.readUDP(&readIn, &target, nullptr, &flag);
+			
+			if(!success){
+				// No more messages, stop reading for now
 				reading = false;
-			} else {
-				int id = -1;
-				try {
-					id = stoi(target);
-				}
-				catch(std::invalid_argument& e) {
-					cout << "invalid blimp id: \"" << target << "\", \"" << readIn << "\"" << endl;
-				}
-				if (id == blimpID){
-					//cout << "Received: \"" << readIn << "\"" << endl;
-					if (flag == "A") {
-						autonomous = true;
-						lastUDPReceived = clock();
 
-						int firstSemiColon = readIn.find(";");
-						int secondSemiColon = readIn.find(";",firstSemiColon+1);
+			}else{
+				// If we are not the target for this message, skip message
+				if(!piComm.validTarget(target)) continue;
 
-						//Barometer data
-						bool isBaroDataGood = false;
-						try {
-							barometerData = stof(readIn.substr(0,firstSemiColon));
-							//cout << "Barodata: " << barometerData << endl;
-							isBaroDataGood = true;
-						}
-						catch (std::invalid_argument& e) {
-							cout << "Invalid barometer data received." << endl;
-							isBaroDataGood = false;
-						}
+				lastUDPReceived = clock();
+				//cout << "Received: \"" << readIn << "\"" << endl;
+				
+				if(flag == FLAG_AUTONOMOUS){
+					autonomous = true;
 
-						if (isBaroDataGood) {
-							//reset timer
-							clock_t now = clock();
-							lastBaroMessageTime = now/(float)CLOCKS_PER_SEC;
-						}
-
-						//TargetGoal data
-						string targetGoalData = readIn.substr(firstSemiColon+1,secondSemiColon-firstSemiColon-1);
-						if (targetGoalData == "O") {
-							goalColor = orange;
-						} else if (targetGoalData == "Y") {
-							goalColor = yellow;
-						}
-
-						//Disregard the rest
-
-					} else if (flag == "M") {
-						//cout << "M" << endl;
-						lastUDPReceived = clock();
-						autonomous = false;
-
-						//MotorInput data
-						int startIndex = -1;
-						for(int i=0; i<6; i++){
-							int endIndex = readIn.find(",",startIndex+1);
-							string motorString = readIn.substr(startIndex+1,endIndex-startIndex-1);
-							float motorData = stof(motorString);
-							startIndex = endIndex;
-
-							if (recentMotorCommands.size() <= i) recentMotorCommands.push_back(0);
-							recentMotorCommands[i] = motorData;
-						}
-
-						int firstSemiColon = readIn.find(";");
-						int secondSemiColon = readIn.find(";",firstSemiColon+1);
-						int thirdSemiColon = readIn.find(";",secondSemiColon+1);
-
-						//Barometer data
-						bool isBaroDataGood = false;
-						try {
-							barometerData = stof(readIn.substr(firstSemiColon+1,secondSemiColon-firstSemiColon-1));
-							//cout << "Barodata: " << barometerData << endl;
-							isBaroDataGood = true;
-						}
-						catch(std::invalid_argument& e) {
-							cout << "Invalid barometer data received: \"" << readIn.substr(firstSemiColon+1,secondSemiColon-firstSemiColon-1) << "\"" << endl;
-							isBaroDataGood = false;
-						}
-						if (isBaroDataGood) {
-							//reset timer
-							clock_t now = clock();
-							lastBaroMessageTime = now/(float)CLOCKS_PER_SEC;
-						}
-
-						//TargetGoal data
-						string targetGoalData = readIn.substr(secondSemiColon+1,thirdSemiColon-secondSemiColon-1);
-						if (targetGoalData == "O") {
-							goalColor = orange;
-						} else if (targetGoalData == "Y") {
-							goalColor = yellow;
-						}
-
-						//cout << "Manual Mode:" << endl;
-						//cout << recentMotorCommands[0] << ", " << recentMotorCommands[1] << ", " << recentMotorCommands[2] << ", " << recentMotorCommands[3] << ", " << recentMotorCommands[4] << ", " << recentMotorCommands[5] << endl;
-						//cout << "Barometer: " << barometerData << endl;
-						//cout << "TargetGoal: " << goalColor << endl;
-
-						//Disregard the rest
-
-					} else if(flag == "B") {
-						//Barometer reading
-						bool isBaroDataGood = false;
-						try {
-							barometerData = stof(readIn);
-							//cout << "Barodata: " << barometerData << endl;
-							isBaroDataGood = true;
-						}
-						catch(std::invalid_argument& e) {
-							cout << "Invalid barometer data received." << endl;
-							isBaroDataGood = false;
-						}
-
-						if (isBaroDataGood) {
-							//reset timer
-							clock_t now = clock();
-							lastBaroMessageTime = now/(float)CLOCKS_PER_SEC;
-						}
-
-					} else if (flag == "P") {
-						char first = readIn.at(0);
-						if(first == 'C'){
-							cout << "Start recording." << endl;
-							framesLeftToRecord += moreFramesPerTrigger;
-						}
-					} else if (flag == "K") {
-						cout << "Received kill command. Killing..." << endl;
-						stop_program(0);
-						pthread_exit((void *) 0);
-					} else if (flag == "TG") {
-						if (readIn == "O") {
-							goalColor = orange;
-						} else if (readIn == "Y") {
-							goalColor = yellow;
-						}
+					bool newBaroDataValid;
+					bool parseSuccess = piComm.parseAutonomousMessage(readIn, &newBaroDataValid, &barometerData, &goalColor);
+					
+					if(parseSuccess && newBaroDataValid){
+						//reset timer
+						clock_t now = clock();
+						lastBaroMessageTime = now/(float)CLOCKS_PER_SEC;
 					}
-					//cout << "UDPReceived: \"" << readIn << "\" sent to \"" << target << "\"" << endl;
+					
+				}else if(flag == FLAG_MANUAL){
+					autonomous = false;
+					
+					bool newBaroDataValid;
+					bool parseSuccess = piComm.parseManualMessage(readIn, &recentMotorCommands, &newBaroDataValid, &barometerData, &goalColor);
+
+					if(parseSuccess && newBaroDataValid){
+						//reset timer
+						clock_t now = clock();
+						lastBaroMessageTime = now/(float)CLOCKS_PER_SEC;
+					}
+					
+				}else if(flag == FLAG_BAROMETER){
+					bool newBaroDataValid = piComm.parseBarometer(readIn, &barometerData);
+					
+					if (newBaroDataValid) {
+						//reset timer
+						clock_t now = clock();
+						lastBaroMessageTime = now/(float)CLOCKS_PER_SEC;
+					}
+					
+				}else if(flag == FLAG_PARAMETER){
+					char first = readIn.at(0);
+					if(first == 'C'){
+						cout << "Start recording." << endl;
+						framesLeftToRecord += moreFramesPerTrigger;
+					}
+
+				}else if(flag == FLAG_KILL){
+					cout << "Received kill command. Killing..." << endl;
+					return 0;
+
+				}else if(flag == FLAG_TARGETGOAL){
+					if(readIn == "O"){
+						goalColor = orange;
+					}else if(readIn == "Y"){
+						goalColor = yellow;
+					}
 				}
+			
 			}
 		} //end while (reading loop)
 
@@ -320,7 +244,7 @@ void *stream_video(void *thread_id) {
     //Set up video capture
 	cv::VideoCapture cap;
 
-	int cap_api_id = cv::CAP_ANY;
+	int cap_api_id = cv::CAP_V4L; //cv::CAP_ANY;
     cap.open(cap_device_id, cap_api_id);
     if (!cap.isOpened()) {
         std::cerr << "ERROR! Unable to open camera\n";
@@ -423,174 +347,11 @@ void init_udp_streamer() {
     stream_server_addr.sin_addr.s_addr = (in_addr_t)addr.s_addr;
 }
 
-//==================== FUNCTION HEADERS ====================
-//VideoCapture openCamera(int camIndex, int camWidth, int camHeight){
-//	VideoCapture cap(camIndex);
-//	if (!cap.isOpened()) {
-//		CV_Assert("Cam open failed");
-//	}
-//
-//	//cap.set(CAP_PROP_FPS, 120);
-//	cap.set(CAP_PROP_FRAME_WIDTH, camWidth);
-//	cap.set(CAP_PROP_FRAME_HEIGHT, camHeight);
-//	return cap;
-//}
-
 //==================== COMMUNICATION FUNCTION HEADERS ====================
-int serial;
-void initSerial() {
-	do {
-		serial = serialOpen ("/dev/ttyS0", 115200);
-		sleep(1);
-	} while (serial < 0);
-}
-
-void sendSerial(string message){
-	char* sendBuffer = &message[0];
-	serialPuts(serial, sendBuffer);
-	//cout << "Serial sending: " << message << endl << endl;
-}
-
-char readSerial() {
-	char byte = 0;
-
-	int bytesReceived = serialDataAvail(serial);
-
-	if (bytesReceived > 0) {
-		//Read a pending byte into the buffer
-		byte = (char)serialGetchar(serial);
-	}
-
-	//cout << (int)byte << "\t" << bytesReceived << endl;
-
-	return byte;
-}
-
-void initUDPReceiver(){
-	recSocketFD = socket(AF_INET, SOCK_DGRAM, 0);
-
-	u_int yes = 1;
-	setsockopt(recSocketFD, SOL_SOCKET, SO_REUSEADDR, (char*) &yes, sizeof(yes));
-
-	memset(&addrRec, 0, sizeof(addrRec));
-	addrRec.sin_family = AF_INET;
-	addrRec.sin_addr.s_addr = htonl(INADDR_ANY); // differs from sender
-	addrRec.sin_port = htons(port);
-	bind(recSocketFD, (struct sockaddr*) &addrRec, sizeof(addrRec));
-
-	struct ip_mreq mreq;
-	mreq.imr_multiaddr.s_addr = inet_addr(group);
-	mreq.imr_interface.s_addr = htonl(INADDR_ANY);
-	setsockopt(recSocketFD, IPPROTO_IP, IP_ADD_MEMBERSHIP, (char*) &mreq, sizeof(mreq));
-
-	fcntl(recSocketFD, F_SETFL, O_NONBLOCK);
-}
-
-void initUDPSender(){
-	sendSocketFD = socket(AF_INET, SOCK_DGRAM, 0);
-	memset(&addrSend, 0, sizeof(addrSend));
-	addrSend.sin_family = AF_INET;
-	addrSend.sin_addr.s_addr = inet_addr(group);
-	addrSend.sin_port = htons(port);
-}
-
-bool readUDP(string* retMessage, string* target, string* source, string* flag){
-	int bufferSize = 1024;
-	char buffer[bufferSize];
-	memset(&buffer, 0, bufferSize);
-	unsigned int addrLen = sizeof(addrRec);
-	int numbytes = recvfrom(recSocketFD, &buffer, bufferSize, 0,(struct sockaddr *) &addrRec, &addrLen);
-	if (numbytes > 0) {
-		if(numbytes > bufferSize-1){
-			buffer[bufferSize-1] = '\0';
-		}else{
-			buffer[numbytes] = '\0';
-		}
-		string message(buffer);
-		if(message.substr(0,2) == ":)"){
-			int comma = message.find(",");
-			int firstColon = message.find(":",comma+1);
-			int secondColon = message.find(":",firstColon+1);
-			if(comma != string::npos && firstColon != string::npos && secondColon != string::npos){
-				string targetString = message.substr(2,comma-2);
-				string sourceString = message.substr(comma+1,firstColon-comma-1);
-				string flagString = message.substr(firstColon+1,secondColon-firstColon-1);
-				string messageString = message.substr(secondColon+1);
-
-				if(retMessage != nullptr) *retMessage = messageString;
-				if(target != nullptr) *target = targetString;
-				if(source != nullptr) *source = sourceString;
-				if(flag != nullptr) *flag = flagString;
-				return true;
-			}else{
-				cout << "Comma or Colons not found: " << comma << ", " << firstColon << ", " << secondColon << endl;
-			}
-		}
-	}
-	return false;
-}
-
-void sendUDPRaw(string target, string source, string flag, string message){
-	string combined = ":)" + target + "," + source + ":" + flag + ":" + message;
-	char* messageBuff = &combined[0];
-	int numbytes = sendto(sendSocketFD, messageBuff, strlen(messageBuff), 0, (struct sockaddr*) &addrSend, sizeof(addrSend));
-}
-
-void sendUDP(string flag, string message){
-	sendUDPRaw("0",to_string(blimpID),flag,message);
-}
-
-void sendUDP(string message){
-	sendUDPRaw("0",to_string(blimpID),"D",message);
-}
-
-void establishBlimpID(){
-	while(blimpID == -1){
-		sendUDPRaw("0","N","N","N");
-		sleep(0.25);
-		bool reading = true;
-		while(reading){
-			string message;
-			string target;
-			string source;
-			string flag;
-			bool success = readUDP(&message, &target, &source, &flag);
-			if(!success){
-				reading = false;
-			}else{
-				if(target == "N" && source == "0" && flag == "N"){
-					try {
-						blimpID = stoi(message);
-					}
-					catch (std::invalid_argument& e) {
-						cout << "establish blimp ID->invalid blimp id: " << message << endl;
-					}
-				}
-			}
-		}
-	}
-	cout << "Received blimp ID: " << blimpID << endl;
-}
 
 void plotUDP(string varName, float varValue){
 	string message = varName + "=" + to_string(varValue);
-	sendUDP("T",message);
-}
-
-//==================== VISION HELPER FUNCTIONS ===================
-
-vector<Point> scaleContour(vector<Point> contour, float scale) {
-    Moments moment = moments(contour);
-    double cx = moment.m10 / moment.m00; //int(M['m10']/M['m00'])
-    double cy = moment.m01 / moment.m00; //int(M['m01']/M['m00'])
-
-    //shift all points
-    for (unsigned int i = 0; i < contour.size(); i++) {
-        contour[i].x = ((contour[i].x-cx)*scale)+cx;
-        contour[i].y = ((contour[i].y-cy)*scale)+cy;
-    }
-
-    return contour;
+	piComm.sendUDP("T",message);
 }
 
 //==================== HELPER FUNCTIONS ====================
@@ -657,6 +418,45 @@ void saveToVideo(Mat frame){
 	}
 }
 
+void printMode(bool autonomous, autoState mode){
+	if (autonomous) {
+		switch (mode) {
+		case searching:
+			cout << "Mode: Searching" << endl;
+			break;
+		case approach:
+			cout << "Mode: Approach Game Ball" << endl;
+			break;
+		case catching:
+			cout << "Mode: Catching Game Ball" << endl;
+			break;
+		case caught:
+			cout << "Mode: Ball Caught, Resetting Search" << endl;
+			break;
+		case goalSearch:
+			cout << "Mode: Goal Search" << endl;
+			break;
+		case approachGoal:
+			cout << "Mode: Approach Goal" << endl;
+			break;
+		case scoringStart:
+			cout << "Mode: Positioning For Scoring" << endl;
+			break;
+		case shooting:
+			cout << "Mode: Shooting" << endl;
+			break;
+		case scored:
+			cout << "Mode: Scored, Reseting Search" << endl;
+			break;
+		default:
+			cout << "Mode: Invalid" << endl;
+			break;
+		}
+	} else {
+		cout << "Mode: Manual" << endl;
+	}
+}
+
 //==================== MAIN THREAD ====================//
 int main(int argc, char** argv) {
 
@@ -668,15 +468,8 @@ int main(int argc, char** argv) {
 		if ((strcmp(argv[i], "-i") == 0) || (strcmp(argv[i], "--id") == 0)) {
 			//Make sure second argument was provided
 			if (i+1 < argc) {
-				try {
-					blimpID = stoi(argv[i+1]);
-				} catch (std::invalid_argument& e) {
-					fprintf(stderr, "Invalid argument \"%s\"\n", argv[i+1]);
-					validUsage = false;
-					break;
-				}
-
-				fprintf(stdout, "I. Am. Blimp. %d.\n", blimpID);
+				blimpID = argv[i+1];
+				fprintf(stdout, "I. Am. Blimp. %s.\n", blimpID);
 
 				//Increment i because we already used the next argument
 				i++;
@@ -739,12 +532,6 @@ int main(int argc, char** argv) {
 		}
 	}
 
-	//Enforce blimp ID requirement
-	if (blimpID < 0) {
-		fprintf(stderr, "Error: Blimp ID not provided.\n");
-		validUsage = false;
-	}
-
 	const char *usageMsg = "Usage: piOffboardStereoVision [-i {blimp_id}] [opt -v] [opt -c {cap_dev_id}] [opt -s]";
 	if (!validUsage) {
 		fprintf(stderr, "%s\n", usageMsg);
@@ -764,11 +551,16 @@ int main(int argc, char** argv) {
 	if (!streamOnlyMode) {
 		//Initialize serial and UDP comms
 		if (!disableSerialMode) {
-			initSerial();
+			piComm.initSerial();
 		}
 
-		initUDPReceiver();
-		initUDPSender();
+		if(blimpID == ""){
+			blimpID = piComm.getIPAddress();
+		}
+		piComm.setBlimpID(blimpID);
+		cout << "BlimpID: " << blimpID << endl;
+		piComm.initUDPReceiver();
+		piComm.initUDPSender();
 	}
 
 	//UDP video streamer
@@ -798,38 +590,15 @@ int main(int argc, char** argv) {
 //    stop_program(0);
 //    return 0;
 
-	//Read stereo calibration file
-	Mat Left_Stereo_Map1, Left_Stereo_Map2;
-	Mat Right_Stereo_Map1, Right_Stereo_Map2;
-	Mat Q;
+	computerVision.init();
 
 	if (verboseMode) cout << "Reading Stereo Camera Parameters" << endl;
-	FileStorage cv_file2 = FileStorage(stereo_cal_path, FileStorage::READ);
-
-	if (!cv_file2.isOpened()) {
-		fprintf(stderr, "Error: Failed to open stereo parameter file %s\n", stereo_cal_path);
+	bool readSuccess = computerVision.readCalibrationFiles();
+	if(!readSuccess){
+		fprintf(stderr, "Error: Failed to open stereo parameter file.\n");
 		stop_program(0);
 	}
-
-	cv_file2["Left_Stereo_Map_x"] >> Left_Stereo_Map1;
-	cv_file2["Left_Stereo_Map_y"] >> Left_Stereo_Map2;
-	cv_file2["Right_Stereo_Map_x"] >> Right_Stereo_Map1;
-	cv_file2["Right_Stereo_Map_y"] >> Right_Stereo_Map2;
-	cv_file2["Q"] >> Q;
-	cv_file2.release();
 	if (verboseMode) cout << "Read Complete" << endl;
-
-	Ptr<StereoBM> left_matcher = StereoBM::create(16, 13); //Num disp, block size
-	left_matcher->setPreFilterType(1);
-	left_matcher->setPreFilterSize(PRE_FILTER_SIZE);
-	left_matcher->setPreFilterCap(PRE_FILTER_CAP);
-	left_matcher->setUniquenessRatio(UNIQUENESS_RATIO);
-
-	Ptr<ximgproc::DisparityWLSFilter> wls_filter = cv::ximgproc::createDisparityWLSFilter(left_matcher);
-	Ptr<StereoMatcher> right_matcher = cv::ximgproc::createRightMatcher(left_matcher);
-
-	wls_filter->setLambda(LAMBDA);
-	wls_filter->setSigmaColor(SIGMA);
 
 	//for serial in case teensy restarts
 	clock_t lastMsgTime = clock();
@@ -843,351 +612,8 @@ int main(int argc, char** argv) {
 		cv::Mat imgL, imgR;
 		lt_frame_lowres.copyTo(imgL);
 		rt_frame_lowres.copyTo(imgR);
-
-		//remap images for stereo
-		Mat left_correct, right_correct;
-
-		benchmark("Remap");
-		remap(imgL,
-				left_correct,
-				Left_Stereo_Map1,
-				Left_Stereo_Map2,
-				INTER_AREA,
-				BORDER_CONSTANT,
-				0);
-
-		remap(imgR,
-				right_correct,
-				Right_Stereo_Map1,
-				Right_Stereo_Map2,
-				INTER_AREA,
-				BORDER_CONSTANT,
-				0);
-
-		//shrink to disparity size
-		Mat left_small_correct, right_small_correct;
-		resize(left_correct, left_small_correct, Size(DISP_WIDTH, DISP_HEIGHT), INTER_LINEAR);
-		resize(right_correct, right_small_correct, Size(DISP_WIDTH, DISP_HEIGHT), INTER_LINEAR);
-
-		Mat left_correct_sg, right_correct_sg;
-		cvtColor(left_small_correct, left_correct_sg, cv::COLOR_BGR2GRAY);
-		cvtColor(right_small_correct, right_correct_sg, cv::COLOR_BGR2GRAY);
-
-		//benchmark("Compute Disparity");
-		//compute stereo and filter
-		Mat left_disp, right_disp;
-		left_matcher->compute(left_correct_sg, right_correct_sg, left_disp);
-		//benchmark("Left Disp");
-		right_matcher->compute(right_correct_sg, left_correct_sg, right_disp);
-		//benchmark("Right Disp");
-
-		Mat filtered_disp;
-		wls_filter->filter(left_disp, left_correct_sg, filtered_disp, right_disp);
-		benchmark("WLS");
-
-		//benchmark("Compute Depth");
-		Mat xyz;
-		reprojectImageTo3D(filtered_disp, xyz, Q, true, -1);
-		Mat XYZ[3];
-		Mat x, y, z;
-		split(xyz, XYZ);
-		z = XYZ[2];
-
-		resize(z, z, Size(RECT_WIDTH, RECT_HEIGHT), INTER_LINEAR);
-
-		//benchmark("remove inf");
-		//infinite value removal
-		Mat close;
-		inRange(z*0.15, Scalar(0), Scalar(200), close);
-
-		//add object avoidence detection here
-		Mat objectMask;
-		inRange(z*0.15, Scalar(0), Scalar(AVOID_DIST),  objectMask);
-
-		vector<vector<Point> > contoursA;
-		vector<Vec4i> heirarchyA;
-
-		findContours(objectMask, contoursA, heirarchyA, RETR_TREE, CHAIN_APPROX_SIMPLE);
-
-		vector<Point> largestContour;
-		float largestArea = 0;
-
-		for (unsigned int i = 0; i < contoursA.size(); i++) {
-			double area = contourArea(contoursA[i]);
-			if (heirarchyA[i][3] == -1 && (area > AVOID_AREA)) {
-
-				if (area > largestArea) {
-					largestArea = area;
-					largestContour = contoursA[i];
-				}
-			}
-		}
-
-		int quad = 10;
-
-		if (largestArea > 0) {
-			Moments moment = moments(largestContour);
-			float cx = moment.m10/moment.m00;
-			float cy = moment.m01/moment.m00;
-
-			int xx = (int)((cx/((float)RECT_WIDTH))*3.0)+1;
-			int yy = (int)((cy/((float)RECT_HEIGHT))*3.0)+1;
-
-			quad = 3*(yy-1)+xx;
-		}
-
-		if (verboseMode) {
-			//cout << "Area: " << largestArea << endl;
-			cout << "Quad: " << quad << endl;
-			cout << "Targeting Goal: " << goalColor << endl;
-    	}
-
-		//I disabled frame recording for now to avoid possible race conditions.
-		//Offboard recording will be happening soon anyways, so DONWORRYBOUTIT.
-		//--Willie
-//		if(framesLeftToRecord > 0){
-//			framesLeftToRecord--;
-//			saveToVideo(left_correct);
-//			cout << "Recording video." << endl;
-//		}
-
-		benchmark("find target");
-		std::vector<vector<float> > balloons;
-		std::vector<vector<float> > goals;
-
-		if (mode == searching || mode == approach || mode == catching) {
-			//perform colorvision
-			Mat bMask;
-			Mat imgLhsv;
-
-			Mat balloonCorrected;
-			Mat balloonCorrectM = Mat::zeros(left_correct.size(), left_correct.type());
-			balloonCorrectM.setTo(B_CORRECTION);
-			add(left_correct,balloonCorrectM, balloonCorrected);
-
-			cvtColor(balloonCorrected, imgLhsv, cv::COLOR_BGR2HSV);
-
-			inRange(imgLhsv, B_MIN, B_MAX, bMask);
-
-			vector<vector<Point> > contours;
-			vector<Vec4i> hierarchy;
-
-			findContours(bMask, contours, hierarchy, RETR_TREE, CHAIN_APPROX_SIMPLE);
-
-			//cout << "Number of contours: " << contours.size() << endl;
-
-			// iterate through all the top-level contours,
-			// draw each connected component with its own random color
-			for (unsigned int i = 0; i < contours.size(); i++) {
-				//perfom initial area filter
-				double area = contourArea(contours[i]);
-				if (hierarchy[i][3] == -1 && (area > MIN_AREA) && (contours[i].size() > 5)) {
-					RotatedRect objEllipse = fitEllipse(contours[i]);
-
-					Mat temp = Mat::zeros(z.rows, z.cols, CV_8UC1);
-
-					if (objEllipse.size.width/objEllipse.size.height > 1/(float)SIZE_RATIO && objEllipse.size.width/objEllipse.size.height < SIZE_RATIO) {
-						//compute distance from depth map
-
-						vector<Point> smallcnt = scaleContour(contours[i], 1.0);
-						RotatedRect smallEllipse = fitEllipse(smallcnt);
-
-						ellipse(temp, smallEllipse, Scalar(255), -1);
-						bitwise_and(temp, close, temp);
-
-						Mat mean, stddev;
-						cv::meanStdDev(z*CONVERSION, mean, stddev, temp);
-
-						float x = objEllipse.center.x;
-						float y = objEllipse.center.y;
-						float pz = mean.at<double>(0,0);
-						//cout << "BallDistance: " << pz << endl;
-
-						if (pz < 0) {
-							pz = pz*-1;
-						}
-
-						if (pz == 0) {
-							pz = 10000;
-						}
-
-						if (pz > 10000) {
-							pz = 10000;
-						}
-
-						//add to vector
-						std::vector<float> balloon;
-						balloon.push_back(x);
-						balloon.push_back(y);
-						balloon.push_back(pz);
-						balloon.push_back(area);
-						balloons.push_back(balloon);
-						//cout << "Depth of object: " << pz << "in\tstd: " << stddev.at<double>(0,0)*conversion << endl;
-					}
-				}
-			}
-		} else if (mode == goalSearch || mode == approachGoal || mode == scoringStart) {
-			Mat bMask;
-			Mat imgLhsv;
-
-			Mat imgGhsv;
-			Mat GoalCorrected;
-			Mat GoalCorrectM = Mat::zeros(left_correct.size(), left_correct.type());
-
-			if (goalColor == orange) {
-				GoalCorrectM.setTo(ORANGE_G_CORRECTION);
-			} else {
-				GoalCorrectM.setTo(YELLOW_G_CORRECTION);
-			}
-
-			add(left_correct,GoalCorrectM, GoalCorrected);
-
-			cvtColor(GoalCorrected, imgGhsv, cv::COLOR_BGR2HSV);
-
-			if (goalColor == orange) {
-				inRange(imgGhsv, ORANGE_G_MIN, ORANGE_G_MAX, bMask);
-			} else {
-				inRange(imgGhsv, YELLOW_G_MIN, YELLOW_G_MAX, bMask);
-			}
-
-			Mat erosionElem = getStructuringElement(MORPH_ELLIPSE, Size(2*E_SIZE+1,2*E_SIZE+1),Point(E_SIZE, E_SIZE));
-			Mat dilationElem = getStructuringElement(MORPH_ELLIPSE, Size(2*D_SIZE+1,2*D_SIZE+1),Point(D_SIZE, D_SIZE));
-
-			erode(bMask, bMask, erosionElem, Point(-1,-1), 0);
-			dilate(bMask, bMask, dilationElem, Point(-1,-1), D_ITER+GOAL_DILATION_ADJUST);
-
-			//imshow("Goal Mask", bMask);
-
-			vector<vector<Point> > contours;
-			vector<Vec4i> hierarchy;
-
-			findContours(bMask, contours, hierarchy, RETR_TREE, CHAIN_APPROX_SIMPLE);
-
-			for (unsigned int i = 0; i < contours.size(); i++) {
-				//perfom initial area filter
-				double area = contourArea(contours[i]);
-				if (hierarchy[i][3] == -1 && (area > 1000)) {
-					//temp matrix for drawing
-					Mat temp = Mat::zeros(bMask.rows, bMask.cols, CV_8UC3);
-					Mat tempSingle;
-
-					unsigned int indexOfInner = i;
-
-					vector<Point> approx;
-					vector<vector<Point>> outApprox;
-					vector<vector<Point>> outScaled;
-
-					if (true) {
-						//do approx poly to close contours and smooth them
-						double epsilon = G_POLY_APPROX_E*cv::arcLength(contours[i],true);
-						cv::approxPolyDP(contours[i], approx, epsilon,true);
-						outApprox.push_back(approx);
-						//scale contour
-						outScaled.push_back(scaleContour(approx, GOAL_INNER_CONTOUR_SCALE));
-
-						Mat innerSingle, goalSingle;
-						Mat innerSingleBit, goalSingleBit;
-						Mat inner = Mat::zeros(bMask.rows, bMask.cols, CV_8UC3);
-						Mat goal = Mat::zeros(bMask.rows, bMask.cols, CV_8UC3);
-
-						drawContours(inner, outScaled, 0, Scalar(255, 255, 255), FILLED, 8);
-						drawContours(goal, contours, i, Scalar(255, 255, 255), FILLED, 8, hierarchy);
-
-						cvtColor(inner, innerSingle, COLOR_BGR2GRAY);
-						cvtColor(goal, goalSingle, COLOR_BGR2GRAY);
-
-						//get just the goal detected
-						bitwise_xor(goalSingle, goalSingle, goalSingle, innerSingle);
-
-						//set as optical flow mask
-						tempSingle = goalSingle;
-						//bitwise_or(debug, tempSingle, debug);
-
-						//imshow("goal", goalSingle);
-
-						Mat debug = Mat::zeros(bMask.rows, bMask.cols, CV_8UC3);
-
-						for (unsigned int i = 0; i < contours.size(); i++) {
-							if (hierarchy[i][3] == -1) {
-								drawContours(debug, contours, i, Scalar(255,0,0), LINE_4, 8, hierarchy);
-
-								//do approx poly to close contours and smooth them
-								double epsilon = G_POLY_APPROX_E*cv::arcLength(contours[i],true);
-								cv::approxPolyDP(contours[i], approx, epsilon,true);
-								outApprox.push_back(approx);
-								//scale contour
-								outScaled.push_back(scaleContour(approx, GOAL_INNER_CONTOUR_SCALE));
-							}
-						}
-
-						for (unsigned int i = 0; i < outApprox.size(); i++) {
-							drawContours(debug, outApprox, i, Scalar(0,255,0), LINE_4, 8);
-							drawContours(debug, outScaled, i, Scalar(0,0,255), LINE_4, 8);
-						}
-
-						//imshow("orange goal contours", debug);
-
-						//get area of each goal mask
-						//float areaI = contourArea(outScaled[0]);
-						//float areaG = contourArea(approx)-areaI;
-
-						double areaI = (double)countNonZero(innerSingle);
-						double areaG = (double)countNonZero(tempSingle);
-
-						//get the pixels detected in each region
-						bitwise_and(innerSingle, bMask, innerSingleBit);
-						bitwise_and(tempSingle, bMask, goalSingleBit);
-
-						double innerDetect = ((double)countNonZero(innerSingleBit))/areaI;
-						double goalDetect = ((double)countNonZero(goalSingleBit))/areaG;
-
-						//cout << "inner total" << areaI << endl;
-						//cout << "inner detected" << innerDetect << endl;
-						//cout << "goal total" << areaG << endl;
-						//cout << "goal detected" << goalDetect<< endl;temp
-
-						Mat depthMask;
-
-						bitwise_and(tempSingle, close, depthMask);
-
-						float confidence = 1-innerDetect;
-						if (confidence > 0.5) {
-							cout << "condfidence: " << confidence << endl;
-							std::vector<float> goal;
-
-							Point2f center;
-							float radius;
-							minEnclosingCircle(contours[i], center, radius);
-							//cout <<"Crash 2" << endl;
-							Mat mean, stddev;
-							cv::meanStdDev(z, mean, stddev, depthMask);
-
-							//cout << "Crash 3" << endl;
-							float pz = (float)mean.at<double>(0,0)*CONVERSION;
-
-							if (countNonZero(depthMask) < GOAL_CONFIRM) {
-								pz = 10000;
-							}
-
-							if (pz < 0) {
-								pz = pz*-1;
-							}
-
-							if (pz == 0) {
-								pz = 10000;
-							}
-							//cout << "Goal Distance: " << pz << endl;
-
-							goal.push_back(center.x);
-							goal.push_back(center.y);
-							goal.push_back(pz);
-							goal.push_back(area);
-							goals.push_back(goal);
-						}
-					}
-				}
-			}
-		}
+		computerVision.update(imgL, imgR, mode, goalColor, verboseMode);
+		int quad = computerVision.getQuad();
 
 		clock_t now = clock();
 		float time = (float)(now-last)/(float)CLOCKS_PER_SEC;
@@ -1204,28 +630,20 @@ int main(int argc, char** argv) {
 
 		if (annotatedMode) {
 			pthread_mutex_lock(&annotatedFrameMutex);
-			left_correct.copyTo(annotatedFrame);
+			computerVision.left_correct.copyTo(annotatedFrame);
 		}
 
 		//get largest balloon or goal depending on state
 		//mode = goalSearch;
 		if (mode == searching || mode == approach || mode == catching) {
-			//send back balloon data
-			float area = 0;
-			int index = -1;
-			for (unsigned int i = 0; i < balloons.size(); i++) {
-				if (area < balloons[i][3]) {
-					area = balloons[i][3];
-					index = i;
-				}
-			}
+			target = computerVision.getTargetBalloon();
 
-			if (index != -1) {
+			if(target.size() > 0){
+				vector<float> balloon = target[0];
 				if(printJSONMode) cout << "Balloon seen with computer vision." << endl;
-				target.push_back(balloons[index]);
 				if (annotatedMode) {
-					float radius = sqrt(balloons[index][3]/3.14159f);
-					circle(annotatedFrame, Point(balloons[index][0],balloons[index][1]), radius, Scalar(255,255,255));
+					float radius = sqrt(balloon[3]/3.14159f);
+					circle(annotatedFrame, Point(balloon[0],balloon[1]), radius, Scalar(255,255,255));
 					cv::putText(annotatedFrame,
 							"THIS IS THE FUTURE",
 							cv::Point(10.0, 20.0),
@@ -1235,8 +653,8 @@ int main(int argc, char** argv) {
 							2);
 
 					cv::putText(annotatedFrame,
-							"z: " + to_string(balloons[index][2]),
-							Point(balloons[index][0], balloons[index][1]+radius+5.0),
+							"z: " + to_string(balloon[2]),
+							Point(balloon[0], balloon[1]+radius+5.0),
 							cv::FONT_HERSHEY_PLAIN,
 							1.0,
 							Scalar(255,255,255),
@@ -1301,19 +719,10 @@ int main(int argc, char** argv) {
 			}
 
 		} else if (mode == goalSearch || mode == approachGoal || mode == scoringStart) {
-			//send back goal data
-			float area = 0;
-			int index = -1;
-			for (unsigned int i = 0; i < goals.size(); i++) {
-				if (area < goals[i][3]) {
-					area = goals[i][3];
-					index = i;
-				}
-			}
+			target = computerVision.getTargetGoal();
 
-			if (index != -1) {
+			if (target.size() > 0) {
 				if(printJSONMode) cout << "Goal seen with computer vision." << endl;
-				target.push_back(goals[index]);
 			}else{
 				//No goals found
 				//Check machine learning
@@ -1425,7 +834,7 @@ int main(int argc, char** argv) {
 			//benchmark("Send message");
 			//send message
 			if (!streamOnlyMode && !disableSerialMode) {
-				sendSerial(message);
+				piComm.sendSerial(message);
 			}
 
 			//benchmark("Output2");
@@ -1435,7 +844,7 @@ int main(int argc, char** argv) {
 
 			//benchmark("Listen from teensy");
 			//read state data from teensy
-			char c = readSerial();
+			char c = piComm.readSerial();
 			String modeString = "";
 			String blimpString = "";
 			String goalString = "";
@@ -1494,8 +903,8 @@ int main(int argc, char** argv) {
 								}
 							}
 
-							mode = stoi(modeString);
-							blimpColor = stoi(blimpString);
+							mode = static_cast<autoState>(stoi(modeString));
+							blimpColor = static_cast<blimpType>(stoi(blimpString));
 							//goalColor = stoi(goalString);
 						}
 						catch(std::invalid_argument& e) {
@@ -1512,7 +921,7 @@ int main(int argc, char** argv) {
 						break;
 					}
 
-					c = readSerial();
+					c = piComm.readSerial();
 				}
 			}
 
@@ -1525,50 +934,12 @@ int main(int argc, char** argv) {
 				cout << endl;
 			}
 
-			/*
-			//print mode
-			if (autonomous) {
-				switch (mode) {
-				case searching:
-					cout << "Mode: Searching" << endl;
-					break;
-				case approach:
-					cout << "Mode: Approach Game Ball" << endl;
-					break;
-				case catching:
-					cout << "Mode: Catching Game Ball" << endl;
-					break;
-				case caught:
-					cout << "Mode: Ball Caught, Resetting Search" << endl;
-					break;
-				case goalSearch:
-					cout << "Mode: Goal Search" << endl;
-					break;
-				case approachGoal:
-					cout << "Mode: Approach Goal" << endl;
-					break;
-				case scoringStart:
-					cout << "Mode: Positioning For Scoring" << endl;
-					break;
-				case shooting:
-					cout << "Mode: Shooting" << endl;
-					break;
-				case scored:
-					cout << "Mode: Scored, Reseting Search" << endl;
-					break;
-				default:
-					cout << "Mode: Invalid" << endl;
-					break;
-				}
-			} else {
-				cout << "Mode: Manual" << endl;
-			}
-			*/
+			//printMode(autonomous, mode);
 
 			//benchmarkPrint();
 		}
 
-		benchmark("Last");
+		//benchmark("Last");
 
     } //end while (main program loop)
 

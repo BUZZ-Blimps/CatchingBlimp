@@ -9,6 +9,10 @@
 #include <iostream>
 #include <string>
 
+//Lawson Code:
+#include "EnumUtil.h"
+#include "ComputerVision.h"
+
 using namespace std;
 
 string getIPAddress(){
@@ -53,11 +57,55 @@ string getIPAddress(){
 	return IPAddress;
 }
 
+// Lawson Code:
+ComputerVision computerVision;
+
+autoState mode = searching;
+
+//Variables
+goalType goalColor = orange;
+
 int main() {
 	cout << "Hello World!" << endl;
 
 	string IPAddress = getIPAddress();
 	cout << "IP Address: " << IPAddress << endl;
+
+	// Lawson Code:
+
+	//initialization
+	computerVision.init();
+	computerVision.readCalibrationFiles();
+
+	// Loop
+	while(true){
+		//==================== OLD ====================
+		//Update
+		computerVision.update(mode, goalColor);
+
+		//Select target for blimp depending on state:
+		std::vector<std::vector<float> > target;
+
+		//get largest balloon or goal depending on state
+		if (mode == searching || mode == approach || mode == catching) {
+			target = computerVision.getTargetBalloon();
+		} else if (mode == goalSearch || mode == approachGoal || mode == scoringStart) {
+			target = computerVision.getTargetGoal();
+		}
+
+		//Debugging
+		//print target
+		for (int i = 0; i < target.size(); i++) {
+			cout << "X: " << target[i][0] << endl;
+			cout << "Y: " << target[i][1] << endl;
+			cout << "Z: " << target[i][2] << endl;
+			cout << "Area: " << target[i][3] << endl;
+		}
+		
+
+		//==================== NEW ====================
+	}
+
 	
 	return 0;
 }

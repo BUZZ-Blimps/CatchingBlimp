@@ -2,14 +2,14 @@
 if [ "$1" != "" ]; then
 	hostname=$1
 	echo "Killing program."
-	ssh pi@$hostname 'sudo killall -9 piStereoVision'
+	ssh pi@$hostname 'sudo killall -9 piOffboardStereoVision'
 	echo "Waiting 6 seconds before restarting..."
 	sleep 6
 	echo "Starting program."
 	if [ "$2" == "" ]; then
-		ssh pi@$hostname "./piStereoVision_InProgressSrc/build/piStereoVision"
+		ssh pi@$hostname "./piOffboardStereoVisionSrc/build/piOffboardStereoVision"
 	else
-		ssh pi@$hostname "./piStereoVision_InProgressSrc/build/piStereoVision $2"
+		ssh pi@$hostname "./piOffboardStereoVisionSrc/build/piOffboardStereoVision -i $2"
 	fi
 else
 	echo "Usage: restartProgram.sh [hostname] <blimpID>"

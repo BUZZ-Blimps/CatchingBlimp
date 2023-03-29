@@ -7,15 +7,12 @@ if [ "$1" != "" ]; then
 	ping $hostname -c 1 -W $timeout > /dev/null
 	if [ $? == 0 ]; then
 		echo ">>Copying workspace source code files to pi@$hostname"
-		ssh pi@$hostname 'mkdir -p /home/pi/piOffboardStereoVision/build'
+		ssh pi@$hostname 'mkdir -p /home/pi/piOffboardStereoVisionSrc/build'
 		
-		scp -r ../src/* pi@$hostname:/home/pi/piOffboardStereoVision/
-		
-		#echo "Killing program."
-		#ssh pi@$hostname 'sudo killall -9 piStereoVision'
+		scp -r ./src/* pi@$hostname:/home/pi/piOffboardStereoVisionSrc/
 		
 		echo "Compiling code."
-		ssh pi@$hostname 'make -C /home/pi/piOffboardStereoVision'
+		ssh pi@$hostname 'make -C /home/pi/piOffboardStereoVisionSrc'
 		
 		echo ">>Done."
 	else
