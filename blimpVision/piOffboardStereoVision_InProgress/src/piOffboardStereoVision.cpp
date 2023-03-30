@@ -203,6 +203,7 @@ void *bs_udp_comms(void *thread_id) {
 
 //Helper function for video streaming thread
 void send_frame(cv::Mat image) {
+	if(verboseMode) fprintf(stdout, "Starting to send video frame.\n");
     //Compress image into vector buffer
     std::vector<uchar> buf;
     cv::imencode(".jpg", image, buf);
@@ -212,6 +213,7 @@ void send_frame(cv::Mat image) {
 
     unsigned int array_pos_start = 0;
     while (packet_count > 0) {
+		if(verboseMode) fprintf(stdout, "%d, ", packet_count);
 
     	//Grab the next subvector to populate the current data packet
     	int array_pos_end = std::min(size, array_pos_start + MAX_IMAGE_DGRAM);
@@ -232,6 +234,7 @@ void send_frame(cv::Mat image) {
         array_pos_start = array_pos_end;
         packet_count--;
     }
+	if(verboseMode) fprintf(stdout, "\nSent video frame.\n");
 }
 
 //Video streaming thread
@@ -245,11 +248,21 @@ void *stream_video(void *thread_id) {
 	cv::VideoCapture cap;
 
 	int cap_api_id = cv::CAP_V4L; //cv::CAP_ANY;
+	if(cap_device_id == -1){
+		cap_device_id = CAMERA_INDEX;
+	}
+	bool cameraOpened = false;
     cap.open(cap_device_id, cap_api_id);
-    if (!cap.isOpened()) {
-        std::cerr << "ERROR! Unable to open camera\n";
-        return NULL;
-    }
+	if(!cap.isOpened()){
+		cap.open(CAMERA_INDEX_BACKUP, cap_api_id);
+		if(cap.isOpened()){
+			cap_device_id = CAMERA_INDEX_BACKUP;
+		}else{
+			std::cerr << "ERROR! Unable to open camera\n";
+			return NULL;
+		}
+	}
+	fprintf(stdout, "Successfully opened camera (index=%d).\n");
 
     //Set the stereo cam to full resolution
 	cap.set(cv::CAP_PROP_FRAME_WIDTH, 1280);

@@ -14,6 +14,7 @@ using namespace cv;
 
 // ============================== DEFINES ==============================
 #define CAMERA_INDEX       0
+#define CAMERA_INDEX_BACKUP 1
 #define CAMERA_WIDTH	320
 #define CAMERA_HEIGHT	240
 

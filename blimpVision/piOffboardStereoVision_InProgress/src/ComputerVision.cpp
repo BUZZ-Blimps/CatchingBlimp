@@ -147,7 +147,7 @@ void ComputerVision::update(Mat imgL, Mat imgR, autoState mode, goalType goalCol
         quad = 3*(yy-1)+xx;
     }
 
-    if (verboseMode) {
+    if (verboseMode && false) {
         //cout << "Area: " << largestArea << endl;
         cout << "Quad: " << quad << endl;
         cout << "Targeting Goal: " << goalColor << endl;

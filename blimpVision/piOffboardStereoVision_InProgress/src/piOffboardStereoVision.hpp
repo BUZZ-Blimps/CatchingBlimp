@@ -19,7 +19,8 @@ using json = nlohmann::json;
 #define HEARTBEAT_PERIOD    0.1
 
 //Video streaming
-const char* stream_server_ip = "192.168.0.202";
+//const char* stream_server_ip = "192.168.0.202";
+const char* stream_server_ip = "192.168.0.200";
 //const char* stream_server_ip = "127.0.0.1";
 const int   stream_server_port = 12345;
 
@@ -90,7 +91,7 @@ const int MAX_IMAGE_DGRAM = MAX_DGRAM - 64;
 
 //==================== GLOBAL VARIABLES (GOD FORBID) ====================//
 string blimpID = "";
-int cap_device_id = 0;
+int cap_device_id = -1;
 int teensyState;
 bool program_running = true;
 bool autonomous = false;
