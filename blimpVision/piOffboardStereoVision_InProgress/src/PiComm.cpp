@@ -21,7 +21,13 @@
 #include <ifaddrs.h>
 #include <linux/if_link.h>
 
+#include <opencv2/opencv.hpp>
+#include <opencv2/highgui/highgui.hpp>
+#include <opencv2/features2d.hpp>
+#include <opencv2/ximgproc.hpp>
+
 using namespace std;
+using namespace cv;
 
 // ============================== CLASS ==============================
 
@@ -345,3 +351,113 @@ void PiComm::establishBlimpID(){ // EXTREMELY DEPRECATED
 	cout << "Received blimp ID: " << blimpID << endl;
 }
 */
+
+// ============================== STREAMING ==============================
+void PiComm::initStreamSocket(){
+	//Create UDP socket
+	stream_socket_fd = socket(AF_INET, SOCK_DGRAM, 0);
+    if (stream_socket_fd < 0) {
+        perror("socket");
+        exit(EXIT_FAILURE);
+    }
+
+    //Configure socket to be non-blocking
+    fcntl(stream_socket_fd, F_SETFL, O_NONBLOCK);
+
+    //Configure socket
+    memset(&stream_server_addr, 0, sizeof(stream_server_addr));
+    stream_server_addr.sin_family = AF_INET;
+    stream_server_addr.sin_port = htons(stream_server_port);
+
+    in_addr addr;
+    inet_aton(stream_server_ip, &addr);
+    stream_server_addr.sin_addr.s_addr = (in_addr_t)addr.s_addr;
+}
+
+void PiComm::setStreamFrame(Mat frame){
+	// Copy image to shared memory
+	pthread_mutex_lock(&mutex_frameToStream);
+	frameToStream = frame;
+	pthread_mutex_unlock(&mutex_frameToStream);
+	pthread_mutex_lock(&mutex_newFrameNum);
+	newFrameNum++;
+	pthread_mutex_unlock(&mutex_newFrameNum);
+}
+
+BSFeedbackData PiComm::getBSFeedback(){
+	BSFeedbackData BSFeedbackCopied;
+	pthread_mutex_lock(&mutex_BSFeedback);
+	BSFeedbackCopied = BSFeedback;
+	pthread_mutex_unlock(&mutex_BSFeedback);
+	return BSFeedbackCopied;
+}
+
+MLFeedbackData PiComm::getMLData(){
+	MLFeedbackData MLFeedbackCopied;
+	pthread_mutex_lock(&mutex_MLFeedback);
+	MLFeedbackCopied = MLFeedback;
+	pthread_mutex_unlock(&mutex_MLFeedback);
+	return MLFeedbackCopied;
+}
+
+// Static functions to run thread member functions
+// https://cplusplus.com/forum/unices/138864/
+void* PiComm::staticStreamingThread_start(void* arg){
+    static_cast<PiComm*>(arg)->streamingThread_loop();
+}
+
+void* PiComm::staticBSFeedbackThread_start(void* arg){
+    static_cast<PiComm*>(arg)->BSFeedbackThread_loop();
+}
+
+void* PiComm::staticMLFeedbackThread_loop(void* arg){
+    static_cast<PiComm*>(arg)->MLFeedbackThread_loop();
+}
+
+void PiComm::streamingThread_loop(){
+
+}
+
+//Helper function for video streaming thread
+void PiComm::send_frame(cv::Mat image) {
+	if(verboseMode) fprintf(stdout, "Starting to send video frame.\n");
+    //Compress image into vector buffer
+    std::vector<uchar> buf;
+    cv::imencode(".jpg", image, buf);
+
+    unsigned int size = (unsigned int)buf.size();
+    unsigned int packet_count = ceil((double)size/(double)MAX_IMAGE_DGRAM);
+
+    unsigned int array_pos_start = 0;
+    while (packet_count > 0) {
+		if(verboseMode) fprintf(stdout, "%d, ", packet_count);
+
+    	//Grab the next subvector to populate the current data packet
+    	int array_pos_end = std::min(size, array_pos_start + MAX_IMAGE_DGRAM);
+    	std::vector<uchar>::const_iterator first = buf.begin() + array_pos_start;
+    	std::vector<uchar>::const_iterator last = buf.begin() + array_pos_end;
+    	std::vector<uchar> packet_buf(first, last);
+
+    	//Convert the subvector buffer to an unsigned char array
+    	unsigned int send_buf_len = packet_buf.size() + 1;
+    	unsigned char send_buf[send_buf_len];
+    	send_buf[0] = (unsigned char)packet_count; //First element is always the # of remaining packets
+    	for (int i = 0; i < (int)packet_buf.size(); i++) {
+    		send_buf[i+1] = packet_buf[i];
+    	}
+
+        sendto(stream_socket_fd, (const unsigned char *)send_buf, send_buf_len, MSG_CONFIRM, (const struct sockaddr *) &stream_server_addr, sizeof(stream_server_addr));
+
+        array_pos_start = array_pos_end;
+        packet_count--;
+    }
+	if(verboseMode) fprintf(stdout, "\nSent video frame.\n");
+}
+
+void PiComm::BSFeedbackThread_loop(){
+
+}
+
+void PiComm::MLFeedbackThread_loop(){
+
+}

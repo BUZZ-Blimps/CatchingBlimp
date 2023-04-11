@@ -13,7 +13,7 @@ using json = nlohmann::json;
 
 #include "ComputerVision.h"
 #include "PiComm.h"
-#include "EnumUtil.h"
+#include "Util.h"
 
 //==================== CONSTANTS ====================
 #define HEARTBEAT_PERIOD    0.1

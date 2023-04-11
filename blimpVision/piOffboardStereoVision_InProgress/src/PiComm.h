@@ -11,7 +11,7 @@
 #include <vector>
 
 #include "serialib.h"
-#include "EnumUtil.h"
+#include "Util.h"
 
 using namespace std;
 
@@ -39,7 +39,7 @@ class PiComm{
         // Serial communication
         serialib serial;
 
-        //UDP communication
+        // UDP communication
         string groupAddress = UDP_IP;
         char* group = &groupAddress[0];
         int port = 	UDP_PORT;
@@ -48,6 +48,30 @@ class PiComm{
         struct sockaddr_in addrRec;
         int sockSend;
         struct sockaddr_in addrSend;
+
+        // Streaming
+        pthread_t streaming_thread, BSFeedback_thread, MLFeedback_thread;
+
+        int stream_socket_fd;
+        struct sockaddr_in stream_server_addr;
+            //const char* stream_server_ip = "192.168.0.202";
+        const char* stream_server_ip = "192.168.0.200";
+            //const char* stream_server_ip = "127.0.0.1";
+        const int   stream_server_port = 12345;
+
+        Mat frameToStream;
+        pthread_mutex_t mutex_frameToStream;
+        unsigned int newFrameNum;
+        pthread_mutex_t mutex_newFrameNum;
+        unsigned int prevFrameNum;
+        void send_frame(Mat image);
+
+        BSFeedbackData BSFeedback;
+        pthread_mutex_t mutex_BSFeedback;
+        
+        MLFeedbackData MLFeedback;
+        pthread_mutex_t mutex_MLFeedback; 
+
 
     public:
         void setBlimpID(string newBlimpID);
@@ -71,6 +95,18 @@ class PiComm{
         bool parseAutonomousMessage(string message, bool* newBaroDataValid, float* newBaroData, goalType* newGoalColor);
         bool parseManualMessage(string message, vector<float>* motorCommands, bool* newBaroDataValid, float* newBaroData, goalType* newGoalColor);
         bool parseBarometer(string message, float* newBaroData);
-
         //void establishBlimpID(); //EXTREMELY DEPRECATED
+
+        // ============================== STREAMING ==============================
+        void initStreamSocket();
+        void setStreamFrame(Mat frame);
+        BSFeedbackData getBSFeedback();
+        MLFeedbackData getMLData();
+
+        void* staticStreamingThread_start(void* arg); 
+        void* staticBSFeedbackThread_start(void* arg);
+        void* staticMLFeedbackThread_loop(void* arg);
+        void streamingThread_loop();
+        void BSFeedbackThread_loop();
+        void MLFeedbackThread_loop();
 };

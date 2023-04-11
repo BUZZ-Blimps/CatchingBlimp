@@ -31,3 +31,11 @@ enum goalType{
 	orange,
 	yellow
 };
+
+struct BSFeedbackData{
+
+};
+
+struct MLFeedbackData{
+
+};

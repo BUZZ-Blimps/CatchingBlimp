@@ -1,8 +1,8 @@
 //============================================================================
 // Name        : piOffboardStereoVision.cpp
-// Author      : Aidan Amstutz, Adam Pooley, Willie Warke
+// Author      : Adam Pooley, Aidan Amstutz, Willie Warke
 // Version     : 3.0
-// Copyright   : Copyright 2022 SWAMP INCORPORATED
+// Copyright   : Copyright 2023 SWAMP INCORPORATED
 // Description : SWAMP Blimps Pi C++ Codebase
 //============================================================================
 

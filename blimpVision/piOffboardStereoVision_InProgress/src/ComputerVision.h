@@ -7,7 +7,7 @@
 #include <opencv2/ximgproc.hpp>
 #include <vector>
 
-#include "EnumUtil.h"
+#include "Util.h"
 
 using namespace std;
 using namespace cv;
