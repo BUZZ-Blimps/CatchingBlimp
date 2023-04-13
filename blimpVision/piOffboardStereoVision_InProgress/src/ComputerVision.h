@@ -95,10 +95,11 @@ class ComputerVision {
 
         vector<Point> scaleContour(vector<Point> contour, float scale);
 
+        ProgramData* programData;
 
     public:
-        void init();
-        bool readCalibrationFiles();
+        void init(ProgramData* programData);
+        void readCalibrationFiles();
         void update(Mat imgL, Mat imgR, autoState mode, goalType goalColor, bool verboseMode); // Big image processing function
         vector<vector<float>> getTargetBalloon();
         vector<vector<float>> getTargetGoal();

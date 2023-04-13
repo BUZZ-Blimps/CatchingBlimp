@@ -11,6 +11,7 @@
 #include "json.hpp"
 using json = nlohmann::json;
 
+#include "CameraHandler.h"
 #include "ComputerVision.h"
 #include "PiComm.h"
 #include "Util.h"
@@ -161,6 +162,7 @@ int recSocketFD, sendSocketFD;
 struct sockaddr_in addrRec, addrSend;
 
 //Objects
+CameraHandler cameraHandler;
 ComputerVision computerVision;
 PiComm piComm;
 

@@ -8,18 +8,13 @@ using namespace std;
 
 // ============================== CLASS ==============================
 
-void ComputerVision::init(){
-    // Init video capture
-    /*
-    cap.open(CAMERA_INDEX, CAP_V4L);
-    if (!cap.isOpened()) {
-		CV_Assert("Cam open failed");
+void ComputerVision::init(ProgramData* programData){
+    // Check that program is still running
+	if(!programData->program_running){
+		fprintf(stdout, "ComputerVision initialized with program_running=false. Stopping.\n");
+		return;
 	}
 
-	//cap.set(CAP_PROP_FPS, 120);
-	cap.set(CAP_PROP_FRAME_WIDTH, CAMERA_WIDTH);
-	cap.set(CAP_PROP_FRAME_HEIGHT, CAMERA_HEIGHT);
-    */
     // Init stereo matcher
     left_matcher = StereoBM::create(16, 13); //Num disp, block size
 	left_matcher->setPreFilterType(1);
@@ -32,12 +27,24 @@ void ComputerVision::init(){
 
 	wls_filter->setLambda(LAMBDA);
 	wls_filter->setSigmaColor(SIGMA);
+
+    readCalibrationFiles();
 }
 
-bool ComputerVision::readCalibrationFiles(){
-	//cout << "Reading Stereo Camera Parameters" << endl;
+void ComputerVision::readCalibrationFiles(){
+    // Check that program is still running
+	if(!programData->program_running){
+		fprintf(stdout, "ComputerVision trying to read calibration files with program_running=false. Stopping.\n");
+		return;
+	}
+
+    if(programData->verboseMode) fprintf(stdout, "Reading Stereo Camera Parameters.\n");
 	FileStorage cv_file2 = FileStorage(STEREO_CAL_PATH, FileStorage::READ);
-	if(!cv_file2.isOpened()) return false;
+	if(!cv_file2.isOpened()){
+        fprintf(stderr, "Error: Failed to open stereo parameter file.\n");
+        programData->program_running = false;
+        return;
+    }
 
     cv_file2["Left_Stereo_Map_x"] >> Left_Stereo_Map1;
 	cv_file2["Left_Stereo_Map_y"] >> Left_Stereo_Map2;
@@ -45,15 +52,12 @@ bool ComputerVision::readCalibrationFiles(){
 	cv_file2["Right_Stereo_Map_y"] >> Right_Stereo_Map2;
 	cv_file2["Q"] >> Q;
 	cv_file2.release();
-	//cout << "Read Complete" << endl;
-    return true;
+
+    if(programData->verboseMode) fprintf(stdout, "Read complete.\n");
 }
 
 // Big image processing function
 void ComputerVision::update(Mat imgL, Mat imgR, autoState mode, goalType goalColor, bool verboseMode){
-    //send left image to base
-    //TO BE COMPLETED
-
     //reduce image size for rectification
     Mat imgL_rect, imgR_rect;
     resize(imgL, imgL_rect, Size(RECT_WIDTH, RECT_HEIGHT), INTER_LINEAR);

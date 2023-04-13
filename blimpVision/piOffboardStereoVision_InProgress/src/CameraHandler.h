@@ -7,6 +7,7 @@
 #include <opencv2/ximgproc.hpp>
 
 #include "PiComm.h"
+#include "Util.h"
 
 using namespace std;
 using namespace cv;
@@ -32,9 +33,8 @@ class CameraHandler {
         unsigned int prevFrameNum;
 
         PiComm* piComm;
-        bool streamFrames;
 
-        bool* program_running;
+        ProgramData* programData;
 
         pthread_mutex_t mutex_newFrame;
         pthread_mutex_t mutex_newFrameNum;
@@ -44,7 +44,7 @@ class CameraHandler {
         void captureThread_loop();
 
     public:
-        void init(PiComm* piComm, bool streamFrames, bool* program_running, int cap_device_id = -1);
+        void init(PiComm* piComm, ProgramData* programData);
         bool getRecentFrames(Mat* leftFrame, Mat* rightFrame);
 
 };

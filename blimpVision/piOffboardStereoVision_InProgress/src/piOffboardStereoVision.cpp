@@ -470,61 +470,58 @@ void printMode(bool autonomous, autoState mode){
 	}
 }
 
-//==================== MAIN THREAD ====================//
-int main(int argc, char** argv) {
-
-	bool validUsage = true;
-
+bool parseCommandLineArgs(int argc, char** argv, ProgramData* programData){
 	//Parse commandline args
 	for (int i = 1; i < argc; i++) {
 		//Blimp ID setting
 		if ((strcmp(argv[i], "-i") == 0) || (strcmp(argv[i], "--id") == 0)) {
 			//Make sure second argument was provided
 			if (i+1 < argc) {
-				blimpID = argv[i+1];
+				programData->setBlimpID = true;
+				programData->customBlimpID = argv[i+1];
 				fprintf(stdout, "I. Am. Blimp. %s.\n", blimpID);
 
 				//Increment i because we already used the next argument
 				i++;
 			} else {
-				validUsage = false;
-				break;
+				return false;
 			}
 		} else if ((strcmp(argv[i], "-v") == 0) || (strcmp(argv[i], "--verbose") == 0)) {
 			//Verbose logging mode setting
-			verboseMode = true;
+			programData->verboseMode = true;
 			std::cout << "Verbose logging mode enabled." << std::endl;
 		} else if ((strcmp(argv[i], "-s") == 0) || (strcmp(argv[i], "--stream") == 0)) {
-			streamOnlyMode = true;
+			programData->streamOnlyMode = true;
 			std::cout << "Stream-only mode enabled." << std::endl;
 		} else if ((strcmp(argv[i], "-c") == 0) || (strcmp(argv[i], "--cap-id") == 0)) {
 			//Change capture ID setting
 			//Make sure second argument was provided
 			if (i+1 < argc) {
+				int customCaptureIDTemp;
 				try {
-					cap_device_id = stoi(argv[i+1]);
+					customCaptureIDTemp = stoi(argv[i+1]);
 				} catch (std::invalid_argument& e) {
 					fprintf(stderr, "Invalid argument \"%s\"\n", argv[i+1]);
-					validUsage = false;
-					break;
+					return false;
 				}
 
+				programData->setCaptureID = true;
+				programData->customCaptureID = customCaptureIDTemp;
 				fprintf(stdout, "Capture device ID set to %d\n", cap_device_id);
 
 				//Increment i because we already used the next argument
 				i++;
 			} else {
-				validUsage = false;
-				break;
+				return false;
 			}
 		} else if ((strcmp(argv[i], "-a") == 0) || (strcmp(argv[i], "--annotate") == 0)){
-			annotatedMode = true;
+			programData->annotatedMode = true;
 			std::cout << "Annotated mode enabled." << std::endl;
 		} else if ((strcmp(argv[i], "-ds") == 0) || (strcmp(argv[i], "--disable-serial") == 0)){
-			disableSerialMode = true;
+			programData->disableSerialMode = true;
 			std::cout << "Disable Serial mode enabled." << std::endl;
 		}else if((strcmp(argv[i], "-j") == 0) || (strcmp(argv[i], "--json") == 0)){
-			printJSONMode = true;
+			programData->printJSONMode = true;
 			std::cout << "Print JSON mode enabled." << std::endl;
 		} else if ((strcmp(argv[i], "-h") == 0) || (strcmp(argv[i], "--help") == 0)) {
 			//Print help info and return
@@ -537,16 +534,26 @@ int main(int argc, char** argv) {
 			helpText += "-j --json: Enable JSON Print Mode\n";
 			helpText += "-ds --disable-serial: Disable Serial Mode\n";
 			fprintf(stderr, "%s\n", helpText.c_str());
-			return 0;
+			return false;
 		} else {
 			fprintf(stderr, "Invalid argument given: \"%s\"\n", argv[i]);
-			validUsage = false;
-			break;
+			return false;
 		}
 	}
+}
 
-	const char *usageMsg = "Usage: piOffboardStereoVision [-i {blimp_id}] [opt -v] [opt -c {cap_dev_id}] [opt -s]";
+//==================== MAIN THREAD ====================//
+int main(int argc, char** argv) {
+	// Create struct to hold parameters set as command line arguments
+	ProgramData programData;
+	programData.program_running = true;
+
+	// Parse command line input
+	bool validUsage = parseCommandLineArgs(argc, argv, &programData);
+	
+	// Confirm valid usage of command line arguments
 	if (!validUsage) {
+		const char *usageMsg = "Usage: piOffboardStereoVision [-i {blimp_id}] [opt -v] [opt -c {cap_dev_id}] [opt -s]";
 		fprintf(stderr, "%s\n", usageMsg);
 		return EXIT_FAILURE;
 	}
@@ -558,74 +565,28 @@ int main(int argc, char** argv) {
     signal(SIGTERM, stop_program);
     signal(SIGTSTP, stop_program);
 
+
+	// START COMMUNICATION
+	piComm.init(&programData);
+
+	// INIT CAMERA
+	cameraHandler.init(&piComm, &programData);
+
+	// INIT COMPUTER VISION
+	computerVision.init(&programData);
+
 	clock_t currentTime = clock();
 	clock_t last = clock();
-
-	if (!streamOnlyMode) {
-		//Initialize serial and UDP comms
-		if (!disableSerialMode) {
-			piComm.initSerial();
-		}
-
-		if(blimpID == ""){
-			blimpID = piComm.getIPAddress();
-		}
-		piComm.setBlimpID(blimpID);
-		cout << "BlimpID: " << blimpID << endl;
-		piComm.initUDPReceiver();
-		piComm.initUDPSender();
-	}
-
-	//UDP video streamer
-	init_udp_streamer();
-
-	//Initialize semaphore
-	sem_init(&cap_sem, 0, 0);
-
-    //Initialize video streaming threads
-    if (pthread_create(&stream_thread, NULL, stream_video, (void *)stream_thread_id) < 0) {
-        perror("Stream pthread_create");
-        exit(EXIT_FAILURE);
-    }
-
-    if (pthread_create(&stream_fb_thread, NULL, stream_fb_check, (void *)stream_fb_thread_id) < 0) {
-        perror("Stream feedback pthread_create");
-        exit(EXIT_FAILURE);
-    }
-
-    if (!streamOnlyMode) {
-        if (pthread_create(&bs_udp_thread, NULL, bs_udp_comms, (void *)bs_udp_thread_id) < 0) {
-            perror("Base station UDP comms pthread_create");
-            exit(EXIT_FAILURE);
-        }
-    }
-//    sleep(5.0);
-//    stop_program(0);
-//    return 0;
-
-	computerVision.init();
-
-	if (verboseMode) cout << "Reading Stereo Camera Parameters" << endl;
-	bool readSuccess = computerVision.readCalibrationFiles();
-	if(!readSuccess){
-		fprintf(stderr, "Error: Failed to open stereo parameter file.\n");
-		stop_program(0);
-	}
-	if (verboseMode) cout << "Read Complete" << endl;
 
 	//for serial in case teensy restarts
 	clock_t lastMsgTime = clock();
 	clock_t lastSerial = 0;
 
     while (program_running) {
+		// Get recent frames
+		cameraHandler.getRecentFrames(&lt_frame_lowres, &rt_frame_lowres);
 
-		sem_wait(&cap_sem);
-
-		//Copy L/R frames to avoid race conditions
-		cv::Mat imgL, imgR;
-		lt_frame_lowres.copyTo(imgL);
-		rt_frame_lowres.copyTo(imgR);
-		computerVision.update(imgL, imgR, mode, goalColor, verboseMode);
+		computerVision.update(lt_frame_lowres, rt_frame_lowres, mode, goalColor, verboseMode);
 		int quad = computerVision.getQuad();
 
 		clock_t now = clock();

@@ -11,28 +11,44 @@ using namespace cv;
 // ============================== CLASS ==============================
 
 // Store pointer to piComm, open camera
-void CameraHandler::init(PiComm* piComm, bool streamFrames, bool* program_running, int cap_device_id){
+void CameraHandler::init(PiComm* piComm, ProgramData* programData){
     this->piComm = piComm;
-    this->streamFrames = streamFrames;
-    this->program_running = program_running;
+    this->programData = programData;
+
+    // Check that program is still running
+	if(!programData->program_running){
+		fprintf(stdout, "CameraHandler initialized with program_running=false. Stopping.\n");
+		return;
+	}
 
     // Set up video capture
 	cv::VideoCapture cap;
 
-	if(cap_device_id == -1){
-		cap_device_id = CAMERA_INDEX;
-	}
-    cap.open(cap_device_id, CAMERA_API);
-	if(!cap.isOpened()){
-		cap.open(CAMERA_INDEX_BACKUP, CAMERA_API);
-		if(cap.isOpened()){
-			cap_device_id = CAMERA_INDEX_BACKUP;
-		}else{
-			fprintf(stderr, "ERROR! Unable to open camera\n");
-            exit(EXIT_FAILURE);
-		}
-	}
-	fprintf(stdout, "Successfully opened camera (index=%d).\n");
+    int capID;
+    if(programData->setCaptureID){
+        capID = programData->customCaptureID;
+        cap.open(capID, CAMERA_API);
+        if(!cap.isOpened()){
+			fprintf(stderr, "Unable to open camera (index=%d).\n", capID);
+            programData->program_running = false;
+            return;
+        }
+    }else{
+        capID = CAMERA_INDEX;
+        cap.open(capID, CAMERA_API);
+        if(!cap.isOpened()){
+			fprintf(stderr, "Unable to open camera (index=%d).\n", capID);
+            
+            capID = CAMERA_INDEX_BACKUP;
+            cap.open(capID, CAMERA_API);
+            if(!cap.isOpened()){
+                fprintf(stderr, "Unable to open camera (index=%d).\n", capID);
+                programData->program_running = false;
+                return;
+            }
+        }
+    }
+	fprintf(stdout, "Successfully opened camera (index=%d).\n", capID);
 
     // Set the stereo cam to full resolution
 	cap.set(cv::CAP_PROP_FRAME_WIDTH, CAMERA_WIDTH);
@@ -56,7 +72,7 @@ void* CameraHandler::staticCaptureThread_start(void* arg){
 }
 
 void CameraHandler::captureThread_loop(){
-    while(*program_running){
+    while(programData->program_running){
         // If no frame is available, continue
         if(!cap.grab()) continue;
         
@@ -83,7 +99,7 @@ void CameraHandler::captureThread_loop(){
         newFrameNum++;
         pthread_mutex_unlock(&mutex_newFrameNum);
 
-        if(streamFrames){
+        if(!programData->annotatedMode){
             piComm->setStreamFrame(leftFrame_lowres);
         }
     }

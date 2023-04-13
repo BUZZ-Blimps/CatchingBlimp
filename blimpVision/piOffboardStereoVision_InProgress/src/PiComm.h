@@ -29,6 +29,11 @@ using namespace std;
 #define FLAG_KILL               "K"
 #define FLAG_TARGETGOAL         "TG"
 
+#define HEARTBEAT_PERIOD        0.2
+
+#define MAXLINE                 1024
+
+
 // ============================== CLASS ==============================
 
 class PiComm{
@@ -49,6 +54,9 @@ class PiComm{
         int sockSend;
         struct sockaddr_in addrSend;
 
+        // General
+        ProgramData* programData;
+
         // Streaming
         pthread_t streaming_thread, BSFeedback_thread, MLFeedback_thread;
 
@@ -57,7 +65,7 @@ class PiComm{
             //const char* stream_server_ip = "192.168.0.202";
         const char* stream_server_ip = "192.168.0.200";
             //const char* stream_server_ip = "127.0.0.1";
-        const int   stream_server_port = 12345;
+        const int stream_server_port = 12345;
 
         Mat frameToStream;
         pthread_mutex_t mutex_frameToStream;
@@ -70,11 +78,24 @@ class PiComm{
         pthread_mutex_t mutex_BSFeedback;
         
         MLFeedbackData MLFeedback;
-        pthread_mutex_t mutex_MLFeedback; 
+        pthread_mutex_t mutex_MLFeedback;
 
+        const int MAX_DGRAM = pow(2, 16);
+        const int MAX_IMAGE_DGRAM = MAX_DGRAM - 64;
+
+        // Base station communication
+        autoState mode;
+        pthread_mutex_t mutex_mode;
+
+
+        // UDP
+        bool readUDP(string* retMessage = nullptr, string* target = nullptr, string* source = nullptr, string* flag = nullptr);
+        void sendUDPRaw(string target, string source, string flag, string message);
+        void sendUDP(string flag, string message);
+        void sendUDP(string message);
 
     public:
-        void setBlimpID(string newBlimpID);
+        void init(ProgramData* programData);
         string getIPAddress();
 
         // ============================== SERIAL ==============================
@@ -85,16 +106,12 @@ class PiComm{
         // ============================== UDP ==============================
         void initUDPReceiver();
         void initUDPSender();
-        bool readUDP(string* retMessage = nullptr, string* target = nullptr, string* source = nullptr, string* flag = nullptr);
-        void sendUDPRaw(string target, string source, string flag, string message);
-        void sendUDP(string flag, string message);
-        void sendUDP(string message);
         
         // Protocol
         bool validTarget(string targetID);
-        bool parseAutonomousMessage(string message, bool* newBaroDataValid, float* newBaroData, goalType* newGoalColor);
-        bool parseManualMessage(string message, vector<float>* motorCommands, bool* newBaroDataValid, float* newBaroData, goalType* newGoalColor);
-        bool parseBarometer(string message, float* newBaroData);
+        void parseAutonomousMessage(string message, BSFeedbackData* BSFB);
+        void parseManualMessage(string message, BSFeedbackData* BSFB);
+        void parseBarometer(string message, BSFeedbackData* BSFB);
         //void establishBlimpID(); //EXTREMELY DEPRECATED
 
         // ============================== STREAMING ==============================
@@ -103,10 +120,12 @@ class PiComm{
         BSFeedbackData getBSFeedback();
         MLFeedbackData getMLData();
 
-        void* staticStreamingThread_start(void* arg); 
-        void* staticBSFeedbackThread_start(void* arg);
-        void* staticMLFeedbackThread_loop(void* arg);
+        static void* staticStreamingThread_start(void* arg); 
+        static void* staticBSFeedbackThread_start(void* arg);
+        static void* staticMLFeedbackThread_start(void* arg);
         void streamingThread_loop();
         void BSFeedbackThread_loop();
         void MLFeedbackThread_loop();
+
+        void setMode(autoState newMode);
 };
