@@ -1374,15 +1374,15 @@ int main(int argc, char** argv) {
         delay(0.2);
         cout << "Attempting... ";
 
-        waitKey(1);
-        delay(2);
-        return 0;
+        //waitKey(1);
+        //delay(2);
+        //return 0;
 
         
-        viz::Viz3d myWindow("Coordinate Frame");
-        myWindow.spinOnce();
-        cout << "Done!" << endl;
-        delay(5);
+        //viz::Viz3d myWindow("Coordinate Frame");
+        //myWindow.spinOnce();
+        //cout << "Done!" << endl;
+        //delay(5);
         //myWindow.showWidget("Coordinate Widget", viz::WCoordinateSystem());
         
         /*Mat xyz = Mat::zeros(Size(3,3),CV_32FC3);
@@ -1403,13 +1403,14 @@ int main(int argc, char** argv) {
                 cout << "camera failed to open" << endl;
                 return 0;
         }
+        /*
         if(!render3DProjection){
                 Mat frame;
                 inputVideo >> frame;
                 namedWindow("Camera Footage", CV_WINDOW_AUTOSIZE);
                 resizeWindow("Camera Footage", DISPLAY_W*2, DISPLAY_H);
                 imshow("Camera Footage", frame);
-        }
+        }*/
         inputVideo.release();        
 
         while (true) {
@@ -1421,12 +1422,14 @@ int main(int argc, char** argv) {
                 cout << "2. Undistort Cameras and Calibrate Stereo" << endl;
                 cout << "3. Test Stereo Lab" << endl;
                 cout << "4. Exit Program" << endl << endl;
-                int mode;
+                int mode = waitKey(0);
+                cout << "Mode: " << mode << endl;
+                /*
                 if(render3DProjection){
                         mode = 51;
                 }else{
                         mode = waitKey(0);
-                }
+                }*/
 
                 switch(mode) {
                         case 49: //1

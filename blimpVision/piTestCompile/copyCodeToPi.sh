@@ -9,7 +9,7 @@ if [ "$1" != "" ]; then
 	scp -r ./piTestCompileSrc pi@$hostname:/home/pi/
 	
 	echo "Killing program."
-	ssh pi@$hostname 'sudo killall -9 piTestCompile'
+	ssh pi@$hostname 'sudo killall -9 piTest'
 	
 	echo "Compiling code."
 	ssh pi@$hostname 'make -C /home/pi/piTestCompileSrc'

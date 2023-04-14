@@ -95,6 +95,8 @@ int main() {
 
 		//Debugging
 		//print target
+		cout << mode << endl;
+
 		for (int i = 0; i < target.size(); i++) {
 			cout << "X: " << target[i][0] << endl;
 			cout << "Y: " << target[i][1] << endl;
