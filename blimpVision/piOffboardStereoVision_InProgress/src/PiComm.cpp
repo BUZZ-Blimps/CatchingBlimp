@@ -89,11 +89,11 @@ void PiComm::init(ProgramData* programData){
 	}
 }
 
-PiComm::~PiComm(){
+void PiComm::end(){
     // If nullptr, never initialized
     if(programData == nullptr) return;
 	
-	fprintf(stdout, "Destructing PiComm.\n");
+	fprintf(stdout, "Ending PiComm.\n");
 
 	programData->program_running = false;
 
@@ -106,6 +106,10 @@ PiComm::~PiComm(){
 	if(stream_socket_fd){
 		close(stream_socket_fd);
 	}
+
+    // Release programData
+    programData = nullptr;
+	//fprintf(stdout, "PiComm ended.\n");
 }
 
 string PiComm::getIPAddress(){
@@ -439,6 +443,7 @@ void PiComm::setStreamFrame(Mat frame){
 	pthread_mutex_unlock(&mutex_frameToStream);
 	pthread_mutex_lock(&mutex_newFrameNum);
 	newFrameNum++;
+	fprintf(stdout, "Set Stream Frame, newFrameNum=%d\n", newFrameNum);
 	pthread_mutex_unlock(&mutex_newFrameNum);
 }
 
@@ -484,7 +489,8 @@ void PiComm::streamingThread_loop(){
 		pthread_mutex_lock(&mutex_newFrameNum);
 		tempFrameNum = newFrameNum;
 		pthread_mutex_unlock(&mutex_newFrameNum);
-		if(prevFrameNum > tempFrameNum){
+		if(tempFrameNum > prevFrameNum){
+			fprintf(stdout, "Streaming frame, prevFrameNum=%d\n",prevFrameNum);
 			// Current frame has not been streamed, get it and stream it
 			prevFrameNum = tempFrameNum;
 			Mat frameToStreamTemp;
@@ -625,7 +631,7 @@ void PiComm::BSFeedbackThread_loop(){
 		if (clock()/((float)CLOCKS_PER_SEC) - BSFeedbackTemp.lastBaroMessageTime > 10) {
 			BSFeedbackTemp.barometerData = -10000;
 
-			if (programData->verboseMode) cerr << "Baro data not current" << endl;
+			//if (programData->verboseMode) cerr << "Baro data not current" << endl;
 		}
 
 		// Store current basestation feedback into shared memory

@@ -20,6 +20,7 @@
 PiComm piComm;
 ComputerVision computerVision;
 CameraHandler cameraHandler;
+ProgramData programData;
 
 // Constants
 double receivedTargetTimeout = 1; //seconds

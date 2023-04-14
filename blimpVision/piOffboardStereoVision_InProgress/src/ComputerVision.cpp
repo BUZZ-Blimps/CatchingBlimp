@@ -8,8 +8,9 @@ using namespace std;
 
 // ============================== CLASS ==============================
 
-void ComputerVision::init(ProgramData* programData){
+void ComputerVision::init(ProgramData* programData, string srcDir){
     this->programData = programData;
+    this->srcDir = srcDir;
 
     // Check that program is still running
 	if(!programData->program_running){
@@ -41,7 +42,9 @@ void ComputerVision::readCalibrationFiles(){
 	}
 
     if(programData->verboseMode) fprintf(stdout, "Reading Stereo Camera Parameters.\n");
-	FileStorage cv_file2 = FileStorage(STEREO_CAL_PATH, FileStorage::READ);
+    string stereo_cal_path = srcDir + "/" + STEREO_CAL_FILENAME;
+    if(programData->verboseMode) fprintf(stdout, "Stereo Camera Parameter File Path: %s\n", stereo_cal_path.c_str());
+	FileStorage cv_file2 = FileStorage(stereo_cal_path, FileStorage::READ);
 	if(!cv_file2.isOpened()){
         fprintf(stderr, "Error: Failed to open stereo parameter file.\n");
         programData->program_running = false;
@@ -60,7 +63,6 @@ void ComputerVision::readCalibrationFiles(){
 
 // Big image processing function
 void ComputerVision::update(Mat imgL, Mat imgR, autoState mode, goalType goalColor){
-    cout << "F1" << endl;
     //reduce image size for rectification
     Mat imgL_rect, imgR_rect;
     resize(imgL, imgL_rect, Size(RECT_WIDTH, RECT_HEIGHT), INTER_LINEAR);

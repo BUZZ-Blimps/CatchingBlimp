@@ -21,9 +21,6 @@ void CameraHandler::init(PiComm* piComm, ProgramData* programData){
 		return;
 	}
 
-    // Set up video capture
-	cv::VideoCapture cap;
-
     int capID;
     if(programData->setCaptureID){
         capID = programData->customCaptureID;
@@ -65,11 +62,11 @@ void CameraHandler::init(PiComm* piComm, ProgramData* programData){
     }
 }
 
-CameraHandler::~CameraHandler(){
+void CameraHandler::end(){
     // If nullptr, never initialized
     if(programData == nullptr) return;
 
-	fprintf(stdout, "Destructing CameraHandler.\n");
+	fprintf(stdout, "Ending CameraHandler.\n");
 
 	programData->program_running = false;
 
@@ -78,6 +75,9 @@ CameraHandler::~CameraHandler(){
 
 	// Close video capture
     cap.release();
+
+    // Release programData
+    programData = nullptr;
 }
 
 // Static function to run thread member function
@@ -92,9 +92,8 @@ void CameraHandler::captureThread_loop(){
 	fprintf(stdout, "CameraHandler capture thread (%d) successfully started.\n", t_id);
 	
     while(programData->program_running){
-        // If no frame is available, continue
         if(!cap.grab()) continue;
-        
+
         Mat rawFrame;
         cap.retrieve(rawFrame);
 
@@ -121,6 +120,9 @@ void CameraHandler::captureThread_loop(){
         if(!programData->annotatedMode){
             piComm->setStreamFrame(leftFrame_lowres);
         }
+
+        //imshow("leftFrame_lowres", leftFrame_lowres);
+        //waitKey(1);
     }
 
 	fprintf(stdout, "CameraHandler capture thread (%d) successfully stopped.\n", t_id);
@@ -134,7 +136,7 @@ bool CameraHandler::getRecentFrames(Mat* leftFrame, Mat* rightFrame){
     tempFrameNum = newFrameNum;
     pthread_mutex_unlock(&mutex_newFrameNum);
 
-    if(prevFrameNum > tempFrameNum){
+    if(tempFrameNum > prevFrameNum){
         // Current frame has not been acquired, get and return it
         prevFrameNum = tempFrameNum;
         Mat leftFrameTemp, rightFrameTemp;

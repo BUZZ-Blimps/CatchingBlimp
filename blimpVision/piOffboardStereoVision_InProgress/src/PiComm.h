@@ -97,7 +97,7 @@ class PiComm{
 
     public:
         void init(ProgramData* programData);
-        ~PiComm();
+        void end();
 
         string getIPAddress();
 

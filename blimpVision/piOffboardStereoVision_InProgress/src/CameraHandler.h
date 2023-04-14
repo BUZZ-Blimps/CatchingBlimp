@@ -40,7 +40,7 @@ class CameraHandler {
 
     public:
         void init(PiComm* piComm, ProgramData* programData);
-        ~CameraHandler();
+        void end();
         bool getRecentFrames(Mat* leftFrame, Mat* rightFrame);
 
 };

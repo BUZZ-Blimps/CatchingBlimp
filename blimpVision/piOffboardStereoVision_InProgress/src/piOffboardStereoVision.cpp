@@ -104,7 +104,7 @@ bool parseCommandLineArgs(int argc, char** argv, ProgramData* programData){
 			if (i+1 < argc) {
 				programData->setBlimpID = true;
 				programData->customBlimpID = argv[i+1];
-				fprintf(stdout, "I. Am. Blimp. %s.\n", programData->customBlimpID );
+				fprintf(stdout, "I. Am. Blimp. %s.\n", programData->customBlimpID.c_str());
 
 				//Increment i because we already used the next argument
 				i++;
@@ -168,6 +168,29 @@ bool parseCommandLineArgs(int argc, char** argv, ProgramData* programData){
 	return true;
 }
 
+string findSourceDir(char** argv){
+	// Find current working directory
+	int cwdBufSize = 200;
+    char cwdBuf[cwdBufSize];
+	getcwd(cwdBuf, cwdBufSize);
+	string cwd(cwdBuf);
+
+	// Find executable path
+	string exePath(argv[0]);
+	int lastSlash = exePath.find_last_of('/');
+	exePath = exePath.substr(1, lastSlash-1); // Only want everything between the leading period and the final slash ("/")
+
+	// Find total path
+	string srcDirPath = cwd + exePath + "/..";
+	return srcDirPath;
+}
+
+void stop_program(int signal){
+	programData.program_running = false;
+	piComm.end();
+	cameraHandler.end();
+}
+
 //==================== MAIN THREAD ====================//
 int main(int argc, char** argv) {
 	// Create struct to hold parameters set as command line arguments
@@ -184,6 +207,13 @@ int main(int argc, char** argv) {
 		return EXIT_FAILURE;
 	}
 
+	// Assign interrupt signals
+	signal(SIGINT, stop_program);
+	signal(SIGABRT, stop_program);
+	signal(SIGKILL, stop_program);
+	signal(SIGTERM, stop_program);
+	signal(SIGTSTP, stop_program);
+
 	// START COMMUNICATION
 	piComm.init(&programData);
 
@@ -191,7 +221,8 @@ int main(int argc, char** argv) {
 	cameraHandler.init(&piComm, &programData);
 
 	// INIT COMPUTER VISION
-	computerVision.init(&programData);
+	string srcDir = findSourceDir(argv); // Required for reading calibration files
+	computerVision.init(&programData, srcDir);
 
 	clock_t currentTime = clock();
 	clock_t last = clock();
@@ -205,6 +236,7 @@ int main(int argc, char** argv) {
 		BSFeedbackData BSFeedback = piComm.getBSFeedback();
 		goalType goalColor = BSFeedback.goalColor;
 		bool autonomous = BSFeedback.autonomous;
+
 
 		// Get recent frames
 		Mat lt_frame_lowres, rt_frame_lowres;
@@ -506,5 +538,6 @@ int main(int argc, char** argv) {
 
     } //end while (main program loop)
 
+	stop_program(0);
     return 0;
 }

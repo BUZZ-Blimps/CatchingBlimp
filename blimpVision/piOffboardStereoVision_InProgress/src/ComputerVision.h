@@ -22,7 +22,8 @@ using namespace cv;
 #define DISP_WIDTH		    160
 #define DISP_HEIGHT		    120
 
-#define STEREO_CAL_PATH     "/home/pi/piOffboardStereoVisionSrc/stereo_rectify_maps240p.xml"
+//#define STEREO_CAL_PATH     "/home/pi/piOffboardStereoVisionSrc/stereo_rectify_maps240p.xml"
+#define STEREO_CAL_FILENAME     "stereo_rectify_maps240p.xml"
 
 #define PRE_FILTER_SIZE	    7
 #define PRE_FILTER_CAP	    2
@@ -91,9 +92,10 @@ class ComputerVision {
         vector<Point> scaleContour(vector<Point> contour, float scale);
 
         ProgramData* programData;
+        string srcDir;
 
     public:
-        void init(ProgramData* programData);
+        void init(ProgramData* programData, string srcDir);
         void readCalibrationFiles();
         void update(Mat imgL, Mat imgR, autoState mode, goalType goalColor); // Big image processing function
         vector<vector<float>> getTargetBalloon();
