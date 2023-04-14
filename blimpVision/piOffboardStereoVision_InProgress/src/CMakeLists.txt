@@ -15,5 +15,5 @@ message(STATUS "    version: ${OpenCV_VERSION}")
 message(STATUS "    config: ${OpenCV_DIR}")
 message(STATUS "    include path: ${OpenCV_INCLUDE_DIRS}")
 
-add_executable(piOffboardStereoVision piOffboardStereoVision.cpp ComputerVision.cpp PiComm.cpp serialib.cpp)
+add_executable(piOffboardStereoVision piOffboardStereoVision.cpp ComputerVision.cpp PiComm.cpp serialib.cpp CameraHandler.cpp)
 target_link_libraries(piOffboardStereoVision ${OpenCV_LIBS} pthread v4l1 v4l2)

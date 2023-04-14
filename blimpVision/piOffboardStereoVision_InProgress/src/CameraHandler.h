@@ -6,6 +6,7 @@
 #include <opencv2/features2d.hpp>
 #include <opencv2/ximgproc.hpp>
 
+#include "ComputerVision.h"
 #include "PiComm.h"
 #include "Util.h"
 
@@ -13,15 +14,9 @@ using namespace std;
 using namespace cv;
 
 // ============================== DEFINES ==============================
-#define CAMERA_INDEX       0
-#define CAMERA_INDEX_BACKUP 1
-#define CAMERA_API      cv::CAP_V4L
-
-#define CAMERA_WIDTH		1280 //320
-#define CAMERA_HEIGHT		720  //240
-
-#define RECT_WIDTH		320
-#define RECT_HEIGHT		240
+#define CAMERA_INDEX            0
+#define CAMERA_INDEX_BACKUP     1
+#define CAMERA_API              cv::CAP_V4L
 
 // ============================== CLASS ==============================
 
@@ -45,6 +40,7 @@ class CameraHandler {
 
     public:
         void init(PiComm* piComm, ProgramData* programData);
+        ~CameraHandler();
         bool getRecentFrames(Mat* leftFrame, Mat* rightFrame);
 
 };

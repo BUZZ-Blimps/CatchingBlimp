@@ -89,6 +89,22 @@ void PiComm::init(ProgramData* programData){
 	}
 }
 
+PiComm::~PiComm(){
+	fprintf(stdout, "Destructing PiComm.\n");
+
+	programData->program_running = false;
+
+	// Close all threads
+	pthread_join(streaming_thread, NULL);
+	pthread_join(BSFeedback_thread, NULL);
+	pthread_join(MLFeedback_thread, NULL);
+
+	// Close socket
+	if(stream_socket_fd){
+		close(stream_socket_fd);
+	}
+}
+
 string PiComm::getIPAddress(){
 	string IPAddress = "";
 	string targetIfaName = "wlan0";
@@ -443,14 +459,17 @@ MLFeedbackData PiComm::getMLData(){
 // https://cplusplus.com/forum/unices/138864/
 void* PiComm::staticStreamingThread_start(void* arg){
     static_cast<PiComm*>(arg)->streamingThread_loop();
+	return NULL;
 }
 
 void* PiComm::staticBSFeedbackThread_start(void* arg){
     static_cast<PiComm*>(arg)->BSFeedbackThread_loop();
+	return NULL;
 }
 
 void* PiComm::staticMLFeedbackThread_start(void* arg){
     static_cast<PiComm*>(arg)->MLFeedbackThread_loop();
+	return NULL;
 }
 
 void PiComm::streamingThread_loop(){

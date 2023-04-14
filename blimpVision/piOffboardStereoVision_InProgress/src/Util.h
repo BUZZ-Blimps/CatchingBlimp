@@ -1,5 +1,6 @@
 #pragma once
 
+#include <string>
 #include <vector>
 #include "json.hpp"
 using json = nlohmann::json;
@@ -46,17 +47,15 @@ struct BSFeedbackData{
 	goalType goalColor;
 
 	// Creates new BSFeedbackData but carries over all old times
-	BSFeedbackData cloneTimes();
+	BSFeedbackData cloneTimes(){
+		BSFeedbackData newBSFB;
+
+		newBSFB.lastUDPReceived = this->lastUDPReceived;
+		newBSFB.lastBaroMessageTime = this->lastBaroMessageTime;
+
+		return newBSFB;
+	}
 };
-
-BSFeedbackData BSFeedbackData::cloneTimes(){
-	BSFeedbackData newBSFB;
-
-	newBSFB.lastUDPReceived = this->lastUDPReceived;
-	newBSFB.lastBaroMessageTime = this->lastBaroMessageTime;
-
-	return newBSFB;
-}
 
 struct MLFeedbackData{
 	json lastReceivedTargets;
@@ -71,7 +70,7 @@ struct ProgramData{
 	bool printJSONMode = false;
 
 	bool setBlimpID = false;
-	string customBlimpID;
+	std::string customBlimpID;
 
 	bool setCaptureID = false;
 	int customCaptureID;

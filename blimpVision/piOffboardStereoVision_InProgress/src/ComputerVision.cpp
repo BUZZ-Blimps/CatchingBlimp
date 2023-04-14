@@ -57,7 +57,7 @@ void ComputerVision::readCalibrationFiles(){
 }
 
 // Big image processing function
-void ComputerVision::update(Mat imgL, Mat imgR, autoState mode, goalType goalColor, bool verboseMode){
+void ComputerVision::update(Mat imgL, Mat imgR, autoState mode, goalType goalColor){
     //reduce image size for rectification
     Mat imgL_rect, imgR_rect;
     resize(imgL, imgL_rect, Size(RECT_WIDTH, RECT_HEIGHT), INTER_LINEAR);
@@ -151,22 +151,11 @@ void ComputerVision::update(Mat imgL, Mat imgR, autoState mode, goalType goalCol
         quad = 3*(yy-1)+xx;
     }
 
-    if (verboseMode && false) {
+    if (programData->verboseMode && false) {
         //cout << "Area: " << largestArea << endl;
         cout << "Quad: " << quad << endl;
         cout << "Targeting Goal: " << goalColor << endl;
     }
-    //plotUDP("Quad",quad);
-
-    //I disabled frame recording for now to avoid possible race conditions.
-		//Offboard recording will be happening soon anyways, so DONWORRYBOUTIT.
-		//--Willie
-    //		if(framesLeftToRecord > 0){
-    //			framesLeftToRecord--;
-    //			saveToVideo(left_correct);
-    //			cout << "Recording video." << endl;
-    //		}
-
 
     if (mode == searching || mode == approach || mode == catching) {
         //perform colorvision

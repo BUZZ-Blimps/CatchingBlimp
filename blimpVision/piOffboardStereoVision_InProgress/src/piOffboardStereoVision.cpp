@@ -49,387 +49,12 @@
 #include <opencv2/ximgproc.hpp>
 #include <opencv2/ximgproc/disparity_filter.hpp>
 
-//Libraries
-#include "Teleplot.h"
-
-#include "piOffboardStereoVision.hpp"
+#include "piOffboardStereoVision.h"
 
 using namespace std;
 using namespace cv;
 
-void stop_program(int signal) {
-	fprintf(stdout, "\nInterrupt received - exiting program.\n");
-
-	//Send all threads a termination flag
-	program_running = false;
-
-	//Wait for running threads to exit
-	pthread_join(stream_thread, NULL);
-	pthread_join(stream_fb_thread, NULL);
-
-	//DESTROY the capture mutex
-	sem_destroy(&cap_sem);
-
-	//Close all open sockets
-	if (stream_socket_fd) {
-		close(stream_socket_fd);
-	}
-
-	if (recSocketFD) {
-		close(recSocketFD);
-	}
-
-	if (sendSocketFD) {
-		close(sendSocketFD);
-	}
-
-	//Exit successfully
-	exit(EXIT_SUCCESS);
-}
-
-//Base station comms thread
-void *bs_udp_comms(void *thread_id) {
-	int t_id = (int)pthread_self();
-	fprintf(stdout, "Base station communication thread (%d) successfully started.\n", t_id);
-
-    clock_t lastCycle = 0;
-    clock_t lastHeartbeat = 0;
-
-	//Recording variables
-	framesLeftToRecord = 9000;
-	int moreFramesPerTrigger = 30 * 10;
-
-	fprintf(stdout, "Connecting to base station. Blimp ID: %s.\n", blimpID.c_str());
-
-	while (program_running) {
-		clock_t currentTime = clock();
-		double cycleTime = double(currentTime - lastCycle)/CLOCKS_PER_SEC;
-		lastCycle = currentTime;
-		//cout << "Cycle Time (s): " << cycleTime << endl;
-		//benchmarkFirst("Heart");
-
-		//Send heartbeat
-		if (double(currentTime - lastHeartbeat)/CLOCKS_PER_SEC > HEARTBEAT_PERIOD) {
-			lastHeartbeat = currentTime;
-			//sendUDP("H");
-			piComm.sendUDP("S", to_string(mode));
-		}
-
-		//Receive UDP messages
-		bool reading = true;
-		while(reading) {
-			string readIn;
-			string target;
-			string flag;
-			bool success = piComm.readUDP(&readIn, &target, nullptr, &flag);
-			
-			if(!success){
-				// No more messages, stop reading for now
-				reading = false;
-
-			}else{
-				// If we are not the target for this message, skip message
-				if(!piComm.validTarget(target)) continue;
-
-				lastUDPReceived = clock();
-				//cout << "Received: \"" << readIn << "\"" << endl;
-				
-				if(flag == FLAG_AUTONOMOUS){
-					autonomous = true;
-
-					bool newBaroDataValid;
-					bool parseSuccess = piComm.parseAutonomousMessage(readIn, &newBaroDataValid, &barometerData, &goalColor);
-					
-					if(parseSuccess && newBaroDataValid){
-						//reset timer
-						clock_t now = clock();
-						lastBaroMessageTime = now/(float)CLOCKS_PER_SEC;
-					}
-					
-				}else if(flag == FLAG_MANUAL){
-					autonomous = false;
-					
-					bool newBaroDataValid;
-					bool parseSuccess = piComm.parseManualMessage(readIn, &recentMotorCommands, &newBaroDataValid, &barometerData, &goalColor);
-
-					if(parseSuccess && newBaroDataValid){
-						//reset timer
-						clock_t now = clock();
-						lastBaroMessageTime = now/(float)CLOCKS_PER_SEC;
-					}
-					
-				}else if(flag == FLAG_BAROMETER){
-					bool newBaroDataValid = piComm.parseBarometer(readIn, &barometerData);
-					
-					if (newBaroDataValid) {
-						//reset timer
-						clock_t now = clock();
-						lastBaroMessageTime = now/(float)CLOCKS_PER_SEC;
-					}
-					
-				}else if(flag == FLAG_PARAMETER){
-					char first = readIn.at(0);
-					if(first == 'C'){
-						cout << "Start recording." << endl;
-						framesLeftToRecord += moreFramesPerTrigger;
-					}
-
-				}else if(flag == FLAG_KILL){
-					cout << "Received kill command. Killing..." << endl;
-					return 0;
-
-				}else if(flag == FLAG_TARGETGOAL){
-					if(readIn == "O"){
-						goalColor = orange;
-					}else if(readIn == "Y"){
-						goalColor = yellow;
-					}
-				}
-			
-			}
-		} //end while (reading loop)
-
-		if (clock()/((float)CLOCKS_PER_SEC) - lastBaroMessageTime > 10) {
-			barometerData = -10000;
-
-			if (verboseMode)
-				cerr << "Baro data not current" << endl;
-		}
-	}
-
-	fprintf(stdout, "Base station communication thread (%d) successfully stopped.\n", t_id);
-	pthread_exit((void *) 0);
-}
-
-//Helper function for video streaming thread
-void send_frame(cv::Mat image) {
-	if(verboseMode) fprintf(stdout, "Starting to send video frame.\n");
-    //Compress image into vector buffer
-    std::vector<uchar> buf;
-    cv::imencode(".jpg", image, buf);
-
-    unsigned int size = (unsigned int)buf.size();
-    unsigned int packet_count = ceil((double)size/(double)MAX_IMAGE_DGRAM);
-
-    unsigned int array_pos_start = 0;
-    while (packet_count > 0) {
-		if(verboseMode) fprintf(stdout, "%d, ", packet_count);
-
-    	//Grab the next subvector to populate the current data packet
-    	int array_pos_end = std::min(size, array_pos_start + MAX_IMAGE_DGRAM);
-    	std::vector<uchar>::const_iterator first = buf.begin() + array_pos_start;
-    	std::vector<uchar>::const_iterator last = buf.begin() + array_pos_end;
-    	std::vector<uchar> packet_buf(first, last);
-
-    	//Convert the subvector buffer to an unsigned char array
-    	unsigned int send_buf_len = packet_buf.size() + 1;
-    	unsigned char send_buf[send_buf_len];
-    	send_buf[0] = (unsigned char)packet_count; //First element is always the # of remaining packets
-    	for (int i = 0; i < (int)packet_buf.size(); i++) {
-    		send_buf[i+1] = packet_buf[i];
-    	}
-
-        sendto(stream_socket_fd, (const unsigned char *)send_buf, send_buf_len, MSG_CONFIRM, (const struct sockaddr *) &stream_server_addr, sizeof(stream_server_addr));
-
-        array_pos_start = array_pos_end;
-        packet_count--;
-    }
-	if(verboseMode) fprintf(stdout, "\nSent video frame.\n");
-}
-
-//Video streaming thread
-void *stream_video(void *thread_id) {
-	int t_id = (int)pthread_self();
-	fprintf(stdout, "Video streaming thread (%d) successfully started.\n", t_id);
-
-	cv:: Mat image;
-
-    //Set up video capture
-	cv::VideoCapture cap;
-
-	int cap_api_id = cv::CAP_V4L; //cv::CAP_ANY;
-	if(cap_device_id == -1){
-		cap_device_id = CAMERA_INDEX;
-	}
-	bool cameraOpened = false;
-    cap.open(cap_device_id, cap_api_id);
-	if(!cap.isOpened()){
-		cap.open(CAMERA_INDEX_BACKUP, cap_api_id);
-		if(cap.isOpened()){
-			cap_device_id = CAMERA_INDEX_BACKUP;
-		}else{
-			std::cerr << "ERROR! Unable to open camera\n";
-			return NULL;
-		}
-	}
-	fprintf(stdout, "Successfully opened camera (index=%d).\n");
-
-    //Set the stereo cam to full resolution
-	cap.set(cv::CAP_PROP_FRAME_WIDTH, 1280);
-	cap.set(cv::CAP_PROP_FRAME_HEIGHT, 720);
-
-	while (program_running) {
-		//Read image off stereo cam
-		if (cap.grab()) {
-			cap.retrieve(image);
-
-		    //Crop the left and right images
-		    cv::Rect left_roi(0, 0, image.cols/2, image.rows);
-		    cv::Rect right_roi(image.cols/2, 0, image.cols/2, image.rows);
-			cv::Mat lt_frame_maxres(image, left_roi);
-			cv::Mat rt_frame_maxres(image, right_roi);
-
-			//Reduce image size for rectification
-			resize(lt_frame_maxres, lt_frame_lowres, Size(RECT_WIDTH, RECT_HEIGHT), INTER_LINEAR);
-			resize(rt_frame_maxres, rt_frame_lowres, Size(RECT_WIDTH, RECT_HEIGHT), INTER_LINEAR);
-
-		    //Signal to main thread that a new frame is available
-		    sem_post(&cap_sem);
-
-			//Stream left frame to offboard server
-			if(!annotatedMode) send_frame(lt_frame_maxres);
-		}
-
-		if (annotatedMode && annotatedFrameReady){
-			annotatedFrameReady = false;
-			Mat annotatedFrameToSend;
-			pthread_mutex_lock(&annotatedFrameMutex);
-			annotatedFrame.copyTo(annotatedFrameToSend);
-			pthread_mutex_unlock(&annotatedFrameMutex);
-			send_frame(annotatedFrameToSend);
-		}
-	}
-
-	fprintf(stdout, "Video streaming thread (%d) successfully stopped.\n", t_id);
-	pthread_exit((void *) 0);
-	return NULL;
-}
-
-void *stream_fb_check(void *thread_id) {
-	int t_id = (int)pthread_self();
-	fprintf(stdout, "Stream feedback thread (%d) successfully started.\n", t_id);
-
-	char buffer[MAXLINE];
-	char sanitized_buffer[MAXLINE];
-	unsigned int len = sizeof(stream_server_addr);
-	while (program_running) {
-		int n = recvfrom(stream_socket_fd, (char *)buffer, MAXLINE, MSG_WAITALL, (struct sockaddr *) &stream_server_addr, &len);
-		if (n > 0) {
-			int m = 0;
-			for (int i = 0; i < n; i++) {
-				//Sanitize the JSON buffer
-				if (buffer[i] != '\1' && buffer[i] != '\10') {
-					sanitized_buffer[m++] = buffer[i];
-				}
-			}
-			sanitized_buffer[m] = '\0';
-
-			pthread_mutex_lock(&receivedTargetsMutex);
-			lastReceivedTargets = json::parse(sanitized_buffer);
-			//cout << "Json: \"" << lastReceivedTargets << "\"" << endl;
-			lastReceivedTargetsTime = clock();
-			lastReceivedIsNew = true;
-			pthread_mutex_unlock(&receivedTargetsMutex);
-
-			//std::cout << "x: " << ex1["x"] << ", y: " << ex1["y"] << std::endl;
-		}
-	}
-	fprintf(stdout, "Stream feedback thread (%d) successfully stopped.\n", t_id);
-	pthread_exit((void *) 0);
-	return NULL;
-}
-
-void init_udp_streamer() {
-    //Create UDP socket
-	stream_socket_fd = socket(AF_INET, SOCK_DGRAM, 0);
-    if (stream_socket_fd < 0) {
-        perror("socket");
-        exit(EXIT_FAILURE);
-    }
-
-    //Configure socket to be non-blocking
-    fcntl(stream_socket_fd, F_SETFL, O_NONBLOCK);
-
-    //Configure socket
-    memset(&stream_server_addr, 0, sizeof(stream_server_addr));
-    stream_server_addr.sin_family = AF_INET;
-    stream_server_addr.sin_port = htons(stream_server_port);
-
-    in_addr addr;
-    inet_aton(stream_server_ip, &addr);
-    stream_server_addr.sin_addr.s_addr = (in_addr_t)addr.s_addr;
-}
-
-//==================== COMMUNICATION FUNCTION HEADERS ====================
-
-void plotUDP(string varName, float varValue){
-	string message = varName + "=" + to_string(varValue);
-	piComm.sendUDP("T",message);
-}
-
-//==================== HELPER FUNCTIONS ====================
-//Timing
-float getFPS(){
-	clock_t currentTP = clock();
-	double deltaTime = double(currentTP - lastTP) / CLOCKS_PER_SEC;
-	lastTP = currentTP;
-	return 1.0/deltaTime;
-}
-
-void benchmarkFirst(string flag){
-	pthread_mutex_lock(&benchmarkMutex);
-	times.clear();
-	flags.clear();
-	times.push_back(clock());
-	flags.push_back(flag);
-	pthread_mutex_unlock(&benchmarkMutex);
-}
-
-void benchmark(string flag) {
-	pthread_mutex_lock(&benchmarkMutex);
-	times.push_back(clock());
-	flags.push_back(flag);
-	pthread_mutex_unlock(&benchmarkMutex);
-}
-
-void benchmarkPrint() {
-	pthread_mutex_lock(&benchmarkMutex);
-
-	if(times.size() < 2) return;
-	double deltaTotal = double(times[times.size()-1] - times[0]) / CLOCKS_PER_SEC;
-	for (int i=1; i<(int)times.size(); i++) {
-		double deltaTime = double(times[i] - times[i-1]) / CLOCKS_PER_SEC;
-		float percentTime = deltaTime / deltaTotal * 100;
-		percentTime = round(percentTime * 100) / 100;
-		string percentString = to_string(percentTime);
-		if(percentString.at(1) == '.') percentString = " " + percentString;
-		percentString = percentString.substr(0,5);
-
-		cout << percentString << "%, " << flags[i-1] << "->" << flags[i] << ": " << deltaTime << endl;
-	}
-	cout << "Total: " << 1.0/deltaTotal << "Hz" << endl;
-
-	pthread_mutex_unlock(&benchmarkMutex);
-}
-
-void delay(double delaySeconds){
-	clock_t start = clock();
-	while(double(clock() - start)/CLOCKS_PER_SEC < delaySeconds);
-}
-
-VideoWriter outputVideo;
-void saveToVideo(Mat frame){
-	while(!outputVideo.isOpened()){
-		cout << "Opening output video." << endl;
-		outputVideo.open(outputVideo_fileName, cv::VideoWriter::fourcc('M','J','P','G'), outputVideo_fps, frame.size(), true);
-	}
-
-	if(!frame.empty()){
-		outputVideo.write(frame);
-	} else{
-		cout << "Attempted to write empty frame." << endl;
-	}
-}
+//==================== HELPER FUNCTIONS ====================//
 
 void printMode(bool autonomous, autoState mode){
 	if (autonomous) {
@@ -479,7 +104,7 @@ bool parseCommandLineArgs(int argc, char** argv, ProgramData* programData){
 			if (i+1 < argc) {
 				programData->setBlimpID = true;
 				programData->customBlimpID = argv[i+1];
-				fprintf(stdout, "I. Am. Blimp. %s.\n", blimpID);
+				fprintf(stdout, "I. Am. Blimp. %s.\n", programData->customBlimpID );
 
 				//Increment i because we already used the next argument
 				i++;
@@ -507,7 +132,7 @@ bool parseCommandLineArgs(int argc, char** argv, ProgramData* programData){
 
 				programData->setCaptureID = true;
 				programData->customCaptureID = customCaptureIDTemp;
-				fprintf(stdout, "Capture device ID set to %d\n", cap_device_id);
+				fprintf(stdout, "Capture device ID set to %d\n", programData->customCaptureID);
 
 				//Increment i because we already used the next argument
 				i++;
@@ -540,6 +165,7 @@ bool parseCommandLineArgs(int argc, char** argv, ProgramData* programData){
 			return false;
 		}
 	}
+	return true;
 }
 
 //==================== MAIN THREAD ====================//
@@ -558,14 +184,6 @@ int main(int argc, char** argv) {
 		return EXIT_FAILURE;
 	}
 
-    //Assign interrupt signals
-    signal(SIGINT, 	stop_program);
-    signal(SIGABRT, stop_program);
-    signal(SIGKILL, stop_program);
-    signal(SIGTERM, stop_program);
-    signal(SIGTSTP, stop_program);
-
-
 	// START COMMUNICATION
 	piComm.init(&programData);
 
@@ -582,12 +200,22 @@ int main(int argc, char** argv) {
 	clock_t lastMsgTime = clock();
 	clock_t lastSerial = 0;
 
-    while (program_running) {
+    while (programData.program_running) {
+		// Get feedback from basestation
+		BSFeedbackData BSFeedback = piComm.getBSFeedback();
+		goalType goalColor = BSFeedback.goalColor;
+		bool autonomous = BSFeedback.autonomous;
+
 		// Get recent frames
+		Mat lt_frame_lowres, rt_frame_lowres;
 		cameraHandler.getRecentFrames(&lt_frame_lowres, &rt_frame_lowres);
 
-		computerVision.update(lt_frame_lowres, rt_frame_lowres, mode, goalColor, verboseMode);
+		// Do computer vision
+		computerVision.update(lt_frame_lowres, rt_frame_lowres, mode, goalColor);
 		int quad = computerVision.getQuad();
+
+		// Get feedback from machine learning
+		MLFeedbackData MLFeedback = piComm.getMLData();
 
 		clock_t now = clock();
 		float time = (float)(now-last)/(float)CLOCKS_PER_SEC;
@@ -595,27 +223,20 @@ int main(int argc, char** argv) {
 		//cout << "Vision Compute Rate: " << 1/time << endl;
 		last = now;
 
-		//get data from base and combine with color vision
-
-		//waitKey(1);
-
-		//Select target for blimp depending on state:
-		std::vector<std::vector<float> > target;
-
-		if (annotatedMode) {
-			pthread_mutex_lock(&annotatedFrameMutex);
+		if (programData.annotatedMode) {
 			computerVision.left_correct.copyTo(annotatedFrame);
 		}
 
-		//get largest balloon or goal depending on state
-		//mode = goalSearch;
+		//Select largest target for blimp depending on state:
+		std::vector<std::vector<float> > target;
+
 		if (mode == searching || mode == approach || mode == catching) {
 			target = computerVision.getTargetBalloon();
 
 			if(target.size() > 0){
 				vector<float> balloon = target[0];
-				if(printJSONMode) cout << "Balloon seen with computer vision." << endl;
-				if (annotatedMode) {
+				if(programData.printJSONMode) fprintf(stdout, "Balloon seen with computer vision.\n");
+				if (programData.annotatedMode) {
 					float radius = sqrt(balloon[3]/3.14159f);
 					circle(annotatedFrame, Point(balloon[0],balloon[1]), radius, Scalar(255,255,255));
 					cv::putText(annotatedFrame,
@@ -636,7 +257,7 @@ int main(int argc, char** argv) {
 				}
 			} else{
 				//No balloons found
-				if (annotatedMode) {
+				if (programData.annotatedMode) {
 					cv::putText(annotatedFrame,
 							":(",
 							cv::Point(10.0, 50.0),
@@ -646,24 +267,13 @@ int main(int argc, char** argv) {
 							2);
 				}
 
-				//Check machine learning
-				if(lastReceivedIsNew){
-					lastReceivedIsNew = false;
-					pthread_mutex_lock(&receivedTargetsMutex);
-					lastReceivedTargetsCopy = lastReceivedTargets;
-					lastReceivedTargetsTimeCopy = lastReceivedTargetsTime;
-					pthread_mutex_unlock(&receivedTargetsMutex);
-				}
-
-				if((clock() - lastReceivedTargetsTimeCopy)/CLOCKS_PER_SEC < receivedTargetTimeout){
+				if((clock() - MLFeedback.lastReceivedTargetsTime)/CLOCKS_PER_SEC < receivedTargetTimeout){
 					//parse through array, looking for best balloon
-					//cout << "json balloon: \"" << lastReceivedTargetsCopy << "\"" << endl;
-
 					double bestX;
 					double bestY;
 					double bestZ;
 					double bestArea = -1;
-					for (json::iterator it = lastReceivedTargetsCopy.begin(); it != lastReceivedTargetsCopy.end(); ++it) {
+					for (json::iterator it = MLFeedback.lastReceivedTargets.begin(); it != MLFeedback.lastReceivedTargets.end(); ++it) {
 						json target = *it;
 						float currentArea = target["Area"];
 						bool correctTargetType = target["class"] == ML_CLASS_BALLOON;
@@ -676,7 +286,7 @@ int main(int argc, char** argv) {
 					}
 
 					if(bestArea != -1){
-						if(printJSONMode) cout << "Balloon seen with machine vision." << endl;
+						if(programData.printJSONMode) fprintf(stdout, "Balloon seen with machine vision.\n");
 						//Use machine learning balloon info!
 						vector<float> targetInfo;
 						targetInfo.push_back(bestX); // x
@@ -685,10 +295,10 @@ int main(int argc, char** argv) {
 						targetInfo.push_back(bestArea); // area
 						target.push_back(targetInfo);
 					}else{
-						if(printJSONMode) cout << "Balloon not seen." << endl;
+						if(programData.printJSONMode) cout << "Balloon not seen." << endl;
 					}
 				}else{
-					if(printJSONMode) cout << "Balloon not seen." << endl;
+					if(programData.printJSONMode) cout << "Balloon not seen." << endl;
 				}
 			}
 
@@ -696,31 +306,19 @@ int main(int argc, char** argv) {
 			target = computerVision.getTargetGoal();
 
 			if (target.size() > 0) {
-				if(printJSONMode) cout << "Goal seen with computer vision." << endl;
+				if(programData.printJSONMode) cout << "Goal seen with computer vision." << endl;
 			}else{
 				//No goals found
-				//Check machine learning
-				if(lastReceivedIsNew){
-					//cout << "JSON copied." << endl;
-					lastReceivedIsNew = false;
-					pthread_mutex_lock(&receivedTargetsMutex);
-					lastReceivedTargetsCopy = lastReceivedTargets;
-					lastReceivedTargetsTimeCopy = lastReceivedTargetsTime;
-					pthread_mutex_unlock(&receivedTargetsMutex);
-				}else{
-					//cout << "No new JSON to copy." << endl;
-				}
 
-				if((clock() - lastReceivedTargetsTimeCopy)/CLOCKS_PER_SEC < receivedTargetTimeout){
+				if((clock() - MLFeedback.lastReceivedTargetsTime)/CLOCKS_PER_SEC < receivedTargetTimeout){
 					//parse through array, looking for best balloon
-					//cout << "json goal: \"" << lastReceivedTargetsCopy << "\"" << endl;
 
 					double bestX;
 					double bestY;
 					double bestZ;
 					double bestArea = -1;
 					//cout << "JSON:" << endl;
-					for (json::iterator it = lastReceivedTargetsCopy.begin(); it != lastReceivedTargetsCopy.end(); ++it) {
+					for (json::iterator it = MLFeedback.lastReceivedTargets.begin(); it != MLFeedback.lastReceivedTargets.end(); ++it) {
 						json target = *it;
 						//cout << "" << target << endl;
 						float currentArea = target["Area"];
@@ -735,7 +333,7 @@ int main(int argc, char** argv) {
 					}
 
 					if(bestArea != -1){
-						if(printJSONMode) cout << "Goal seen with machine vision." << endl;
+						if(programData.printJSONMode) cout << "Goal seen with machine vision." << endl;
 						//Use machine learning balloon info!
 						vector<float> targetInfo;
 						targetInfo.push_back(bestX); // x
@@ -744,22 +342,22 @@ int main(int argc, char** argv) {
 						targetInfo.push_back(bestArea); // area
 						target.push_back(targetInfo);
 					}else{
-						if(printJSONMode) cout << "Goal not seen." << endl;
+						if(programData.printJSONMode) cout << "Goal not seen." << endl;
 					}
 				}else{
-					if(printJSONMode) cout << "Goal not seen." << endl;
+					if(programData.printJSONMode) cout << "Goal not seen." << endl;
 				}
 			}
 		}
 
-		if (annotatedMode) {
-			pthread_mutex_unlock(&annotatedFrameMutex);
-			annotatedFrameReady = true;
+		// If annotated mode, stream the annotated frame
+		if (programData.annotatedMode) {
+			piComm.setStreamFrame(annotatedFrame);
 		}
 
 		//Debuging
 		//Print target for debugging
-		if (verboseMode) {
+		if (programData.verboseMode) {
 			for (int i = 0; i < target.size(); i++) {
 				cout << "X: " << target[i][0] << endl;
 				cout << "Y: " << target[i][1] << endl;
@@ -774,9 +372,9 @@ int main(int argc, char** argv) {
 			String message;
 
 			//build message
-			if (autonomous) {
+			if (BSFeedback.autonomous) {
 				message = "A&";
-				message += to_string(quad) + "&" + to_string(barometerData) + "&";
+				message += to_string(quad) + "&" + to_string(BSFeedback.barometerData) + "&";
 				if (target.size() > 0) {
 					for (unsigned int i = 0; i < 4; i++) {
 						message += to_string(target[0][i]);
@@ -787,10 +385,10 @@ int main(int argc, char** argv) {
 				message += "#\n";
 			} else {
 				message = "M";
-				message += "&" + to_string(quad) + "&" + to_string(barometerData);
-				for (int i=0; i < (int)recentMotorCommands.size(); i++) {
-					message += "&" + to_string(recentMotorCommands[i]).substr(0,4);
-					if (i == (int)recentMotorCommands.size()-1) {
+				message += "&" + to_string(quad) + "&" + to_string(BSFeedback.barometerData);
+				for (int i=0; i < (int)BSFeedback.recentMotorCommands.size(); i++) {
+					message += "&" + to_string(BSFeedback.recentMotorCommands[i]).substr(0,4);
+					if (i == (int)BSFeedback.recentMotorCommands.size()-1) {
 						message += "&";
 					}
 				}
@@ -798,23 +396,18 @@ int main(int argc, char** argv) {
 			}
 
 			//Implement lost state
-			if ((clock()-lastUDPReceived)/CLOCKS_PER_SEC > UDPTimeout) {
+			if ((clock()-BSFeedback.lastUDPReceived)/CLOCKS_PER_SEC > UDPTimeout) {
 				//UDP Timed-out
 				message = "L&#\n";
 			}
 
-			//cout << message << endl << endl;
-
-			//benchmark("Send message");
-			//send message
-			if (!streamOnlyMode && !disableSerialMode) {
+			//Send message over serial
+			if (!programData.streamOnlyMode && !programData.disableSerialMode) {
 				piComm.sendSerial(message);
 			}
 
-			//benchmark("Output2");
-
-			//ignores timeouts for serial communication
-			if (debugMode || disableSerialMode) continue;
+			//Ignores timeouts for serial communication
+			if (programData.disableSerialMode) continue;
 
 			//benchmark("Listen from teensy");
 			//read state data from teensy
@@ -878,7 +471,7 @@ int main(int argc, char** argv) {
 							}
 
 							mode = static_cast<autoState>(stoi(modeString));
-							blimpColor = static_cast<blimpType>(stoi(blimpString));
+							//blimpColor = static_cast<blimpType>(stoi(blimpString));
 							//goalColor = stoi(goalString);
 						}
 						catch(std::invalid_argument& e) {
@@ -899,7 +492,7 @@ int main(int argc, char** argv) {
 				}
 			}
 
-			if (verboseMode) {
+			if (programData.verboseMode) {
 				if (teensyKeys.size() == teensyValues.size()) {
 					for (int i = 0; i < (int)teensyKeys.size(); i++) {
 						cout << teensyKeys[i] << ": " << teensyValues[i] << endl;
@@ -908,15 +501,9 @@ int main(int argc, char** argv) {
 				cout << endl;
 			}
 
-			//printMode(autonomous, mode);
-
-			//benchmarkPrint();
 		}
-
-		//benchmark("Last");
 
     } //end while (main program loop)
 
-    stop_program(0); //never called
     return 0;
 }

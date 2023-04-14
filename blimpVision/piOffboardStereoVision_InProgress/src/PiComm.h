@@ -9,18 +9,19 @@
 #include <time.h>
 #include <stdlib.h>
 #include <vector>
+#include <opencv2/opencv.hpp>
 
 #include "serialib.h"
 #include "Util.h"
 
 using namespace std;
+using namespace cv;
 
 // ============================== DEFINES ==============================
 #define SERIAL_ATTEMPT_DELAY    1 //second
 
 #define UDP_IP				    "239.255.255.250"
 #define UDP_PORT			    1900
-#define UDPTimeout			    5
 
 #define FLAG_AUTONOMOUS         "A"
 #define FLAG_MANUAL             "M"
@@ -96,6 +97,8 @@ class PiComm{
 
     public:
         void init(ProgramData* programData);
+        ~PiComm();
+
         string getIPAddress();
 
         // ============================== SERIAL ==============================

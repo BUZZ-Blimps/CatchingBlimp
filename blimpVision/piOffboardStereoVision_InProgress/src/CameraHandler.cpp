@@ -65,10 +65,23 @@ void CameraHandler::init(PiComm* piComm, ProgramData* programData){
     }
 }
 
+CameraHandler::~CameraHandler(){
+	fprintf(stdout, "Destructing CameraHandler.\n");
+
+	programData->program_running = false;
+
+	// Close all threads
+	pthread_join(capture_thread, NULL);
+
+	// Close video capture
+    cap.release();
+}
+
 // Static function to run thread member function
 // https://cplusplus.com/forum/unices/138864/
 void* CameraHandler::staticCaptureThread_start(void* arg){
     static_cast<CameraHandler*>(arg)->captureThread_loop();
+    return NULL;
 }
 
 void CameraHandler::captureThread_loop(){
