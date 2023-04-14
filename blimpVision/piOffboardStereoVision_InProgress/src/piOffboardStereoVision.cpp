@@ -222,7 +222,7 @@ int main(int argc, char** argv) {
 
 	// INIT COMPUTER VISION
 	string srcDir = findSourceDir(argv); // Required for reading calibration files
-	computerVision.init(&programData, srcDir);
+	computerVision.init(&programData, srcDir, &piComm);
 
 	clock_t currentTime = clock();
 	clock_t last = clock();
@@ -380,6 +380,7 @@ int main(int argc, char** argv) {
 		// If annotated mode, stream the annotated frame
 		if (programData.annotatedMode || true) {
 			piComm.setStreamFrame(annotatedFrame, "Annotated");
+			piComm.setStreamFrame(annotatedFrame, "Annotated1");
 		}
 
 		//Debuging
@@ -524,8 +525,8 @@ int main(int argc, char** argv) {
 					for (int i = 0; i < (int)teensyKeys.size(); i++) {
 						cout << teensyKeys[i] << ": " << teensyValues[i] << endl;
 					}
+					if(teensyKeys.size() > 0) cout << endl;
 				}
-				cout << endl;
 			}
 
 		}

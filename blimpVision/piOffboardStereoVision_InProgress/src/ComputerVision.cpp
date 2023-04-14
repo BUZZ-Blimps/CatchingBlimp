@@ -8,9 +8,10 @@ using namespace std;
 
 // ============================== CLASS ==============================
 
-void ComputerVision::init(ProgramData* programData, string srcDir){
+void ComputerVision::init(ProgramData* programData, string srcDir, PiComm* piComm){
     this->programData = programData;
     this->srcDir = srcDir;
+    this->piComm = piComm;
 
     // Check that program is still running
 	if(!programData->program_running){
@@ -175,6 +176,7 @@ void ComputerVision::update(Mat imgL, Mat imgR, autoState mode, goalType goalCol
         cvtColor(balloonCorrected, imgLhsv, cv::COLOR_BGR2HSV);
 
         inRange(imgLhsv, B_MIN, B_MAX, bMask);
+        piComm->setStreamFrame(bMask, "bMask");
 
         vector<vector<Point> > contours;
         vector<Vec4i> hierarchy;

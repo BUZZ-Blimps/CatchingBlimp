@@ -162,6 +162,12 @@ string PiComm::getIPAddress(){
 	return IPAddress;
 }
 
+float PiComm::chronoDiff(std::chrono::system_clock::time_point timeA, std::chrono::system_clock::time_point timeB){
+	std::chrono::duration<double> chronoDiff = timeA - timeB;
+	double timeDiff = chronoDiff.count(); // seconds
+	return (float)timeDiff;
+}
+
 // ============================== SERIAL ==============================
 
 void PiComm::initSerial(){
@@ -471,16 +477,6 @@ void PiComm::setStreamFrame(Mat frame, string frameNameRaw){
 	}
 	mapFrameNameToNewFrameNum[frameName] += 1;
 	pthread_mutex_unlock(&mutex_mapFrameNameToNewFrameNum);
-
-	/*
-	// Copy image to shared memory
-	pthread_mutex_lock(&mutex_frameToStream);
-	frameToStream = frame;
-	pthread_mutex_unlock(&mutex_frameToStream);
-	pthread_mutex_lock(&mutex_newFrameNum);
-	newFrameNum++;
-	pthread_mutex_unlock(&mutex_newFrameNum);
-	*/
 }
 
 BSFeedbackData PiComm::getBSFeedback(){
@@ -521,10 +517,25 @@ void PiComm::streamingThread_loop(){
 	fprintf(stdout, "PiComm streaming thread (%d) successfully started.\n", t_id);
 	
 	while(programData->program_running){
+		// Get current time in clocks
+		chrono::system_clock::time_point currentTime = chrono::system_clock::now();
+
+		// Get number of unique frames streamed "recently" (within the last timeDelayRecentStream amount of time)
+		int numFramesStreamedRecently = mapFrameNameToLastStreamTime.size();
+
+		// Determine appropriate FPS throttle based on number of frames streamed recently
+		float FPS; // Hz
+		if(numFramesStreamedRecently <= 4){
+			FPS = 30;
+		}else{
+			FPS = 10;
+		}
+		float delayFPS = 1.0/FPS; // seconds
+
 		vector<NamedMatPtr> framesToStream;
 
-		// Iterate through maps, find which frames need to be streamed
 		pthread_mutex_lock(&mutex_mapFrameNameToNewFrameNum);
+		// Iterate through maps, find which frames are ready to be streamed
 		map<string, unsigned int>::iterator iter;
 		for(iter = mapFrameNameToNewFrameNum.begin(); iter != mapFrameNameToNewFrameNum.end(); iter++){
 			string frameName = iter->first;
@@ -537,38 +548,52 @@ void PiComm::streamingThread_loop(){
 				}
 			}
 			// Frame is either new or not streamed yet
+			
+			// Check time last streamed
+			if(mapFrameNameToLastStreamTime.find(frameName) != mapFrameNameToLastStreamTime.end()){
+				// Existing frame name
+				chrono::system_clock::time_point lastStreamTime = mapFrameNameToLastStreamTime[frameName];
+				float lastStreamDelay = chronoDiff(currentTime, lastStreamTime);
+				if(lastStreamDelay < delayFPS){
+					// Frame streamed too recently, skip...
+					continue;
+				}else{
+					//fprintf(stdout, "%s, last=%.2f, curr=%.2f\n", frameName.c_str(), lastStreamTime, currentTime);
+				}
+			}
+			// Frame is either new or not streamed too recently
+
+			// Frame is ready to stream!
 			mapFrameNameToPrevFrameNum[frameName] = newFrameNum;
+			mapFrameNameToLastStreamTime[frameName] = currentTime;
+
 			// Get frame pointer
 			pthread_mutex_lock(&mutex_mapFrameNameToFrame);
 			Mat* framePtr = mapFrameNameToFrame[frameName];
 			pthread_mutex_unlock(&mutex_mapFrameNameToFrame);
+
 			// Push back to vector of frames to stream
 			framesToStream.push_back(NamedMatPtr(framePtr, frameName));
 		}
 		pthread_mutex_unlock(&mutex_mapFrameNameToNewFrameNum);
 
+		// Iterate through recent frames, remove frames NOT streamed recently
+		map<string, chrono::system_clock::time_point>::iterator iterStreamTime = mapFrameNameToLastStreamTime.begin();
+		while(iterStreamTime != mapFrameNameToLastStreamTime.end()){
+			string frameName = iterStreamTime->first;
+			chrono::system_clock::time_point lastStreamTime = iterStreamTime->second;
+			iterStreamTime++;
+			// Check if "recent"
+			float lastStreamDelay = chronoDiff(currentTime, lastStreamTime);
+			if(lastStreamDelay >= timeDelayRecentStream){
+				mapFrameNameToLastStreamTime.erase(frameName);
+			}
+		}
+
 		// Iterate through frames to stream and stream them!
 		for(int i=0; i<framesToStream.size(); i++){
 			send_frame(framesToStream[i]);
 		}
-
-		/*
-		unsigned int tempFrameNum;
-		pthread_mutex_lock(&mutex_newFrameNum);
-		tempFrameNum = newFrameNum;
-		pthread_mutex_unlock(&mutex_newFrameNum);
-		if(tempFrameNum > prevFrameNum){
-			fprintf(stdout, "Streaming frame, prevFrameNum=%d\n",prevFrameNum);
-			// Current frame has not been streamed, get it and stream it
-			prevFrameNum = tempFrameNum;
-			Mat frameToStreamTemp;
-			pthread_mutex_lock(&mutex_frameToStream);
-			frameToStreamTemp = frameToStream;
-			pthread_mutex_unlock(&mutex_frameToStream);
-
-			send_frame(frameToStreamTemp);
-		}
-		*/
 	}
 
 	fprintf(stdout, "PiComm streaming thread (%d) successfully stopped.\n", t_id);
@@ -581,7 +606,7 @@ void PiComm::streamingThread_loop(){
 // Remaining uchars = image
 // Helper function for video streaming thread
 void PiComm::send_frame(NamedMatPtr frameToStream) {
-	if(programData->verboseMode) fprintf(stdout, "Starting to send video frame (%s).\n", frameToStream.name.c_str());
+	//if(programData->verboseMode) fprintf(stdout, "Sending video frame (%s)... ", frameToStream.name.c_str());
 
 	// Create header buffer
 	vector<uchar> bufferHeader;
@@ -605,14 +630,14 @@ void PiComm::send_frame(NamedMatPtr frameToStream) {
 	buffer.insert(buffer.end(), bufferFrame.begin(), bufferFrame.end());
 
 	string earlyBuffer(buffer.begin(), buffer.begin()+5);
-	fprintf(stdout, "First 5 uchars = %s\n", earlyBuffer.c_str());
+	//fprintf(stdout, "First 5 uchars = %s\n", earlyBuffer.c_str());
 
     unsigned int size = (unsigned int)buffer.size();
     unsigned int packet_count = ceil((double)size/(double)MAX_IMAGE_DGRAM);
 
     unsigned int array_pos_start = 0;
     while (packet_count > 0) {
-		if(programData->verboseMode) fprintf(stdout, "%d, ", packet_count);
+		//if(programData->verboseMode) fprintf(stdout, "%d, ", packet_count);
 
     	//Grab the next subvector to populate the current data packet
     	int array_pos_end = std::min(size, array_pos_start + MAX_IMAGE_DGRAM);
@@ -633,7 +658,8 @@ void PiComm::send_frame(NamedMatPtr frameToStream) {
         array_pos_start = array_pos_end;
         packet_count--;
     }
-	if(programData->verboseMode) fprintf(stdout, "\nSent video frame.\n");
+	//if(programData->verboseMode) fprintf(stdout, "\n");
+	//if(programData->verboseMode) fprintf(stdout, "Done!\n");
 }
 
 void PiComm::BSFeedbackThread_loop(){

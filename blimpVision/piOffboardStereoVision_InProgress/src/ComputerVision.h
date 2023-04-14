@@ -8,6 +8,7 @@
 #include <vector>
 
 #include "Util.h"
+#include "PiComm.h"
 
 using namespace std;
 using namespace cv;
@@ -93,9 +94,10 @@ class ComputerVision {
 
         ProgramData* programData;
         string srcDir;
+        PiComm* piComm;
 
     public:
-        void init(ProgramData* programData, string srcDir);
+        void init(ProgramData* programData, string srcDir, PiComm* piComm);
         void readCalibrationFiles();
         void update(Mat imgL, Mat imgR, autoState mode, goalType goalColor); // Big image processing function
         vector<vector<float>> getTargetBalloon();

@@ -11,6 +11,7 @@
 #include <vector>
 #include <opencv2/opencv.hpp>
 #include <map>
+#include <chrono>
 
 #include "serialib.h"
 #include "Util.h"
@@ -73,9 +74,12 @@ class PiComm{
         map<string, Mat*> mapFrameNameToFrame;
         map<string, unsigned int> mapFrameNameToNewFrameNum;
         map<string, unsigned int> mapFrameNameToPrevFrameNum;
+        map<string, chrono::system_clock::time_point> mapFrameNameToLastStreamTime;
 
         pthread_mutex_t mutex_mapFrameNameToFrame;
         pthread_mutex_t mutex_mapFrameNameToNewFrameNum;
+
+        float timeDelayRecentStream = 1; // Frames are considered "recently streamed" if they were streamed within this amount of time ago
 
         Mat frameToStream;
         pthread_mutex_t mutex_frameToStream;
@@ -109,6 +113,7 @@ class PiComm{
         void end();
 
         string getIPAddress();
+        float chronoDiff(chrono::system_clock::time_point timeA, chrono::system_clock::time_point timeB);
 
         // ============================== SERIAL ==============================
         void initSerial();
