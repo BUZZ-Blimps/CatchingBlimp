@@ -208,7 +208,8 @@ int main(int argc, char** argv) {
 
 		// Get recent frames
 		Mat lt_frame_lowres, rt_frame_lowres;
-		cameraHandler.getRecentFrames(&lt_frame_lowres, &rt_frame_lowres);
+		bool recentFrames = cameraHandler.getRecentFrames(&lt_frame_lowres, &rt_frame_lowres);
+		if(!recentFrames) continue;
 
 		// Do computer vision
 		computerVision.update(lt_frame_lowres, rt_frame_lowres, mode, goalColor);

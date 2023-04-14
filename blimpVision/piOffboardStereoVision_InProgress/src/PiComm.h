@@ -56,7 +56,7 @@ class PiComm{
         struct sockaddr_in addrSend;
 
         // General
-        ProgramData* programData;
+        ProgramData* programData = nullptr;
 
         // Streaming
         pthread_t streaming_thread, BSFeedback_thread, MLFeedback_thread;

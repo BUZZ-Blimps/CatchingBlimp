@@ -9,6 +9,8 @@ using namespace std;
 // ============================== CLASS ==============================
 
 void ComputerVision::init(ProgramData* programData){
+    this->programData = programData;
+
     // Check that program is still running
 	if(!programData->program_running){
 		fprintf(stdout, "ComputerVision initialized with program_running=false. Stopping.\n");
@@ -58,6 +60,7 @@ void ComputerVision::readCalibrationFiles(){
 
 // Big image processing function
 void ComputerVision::update(Mat imgL, Mat imgR, autoState mode, goalType goalColor){
+    cout << "F1" << endl;
     //reduce image size for rectification
     Mat imgL_rect, imgR_rect;
     resize(imgL, imgL_rect, Size(RECT_WIDTH, RECT_HEIGHT), INTER_LINEAR);

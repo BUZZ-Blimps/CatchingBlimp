@@ -90,6 +90,9 @@ void PiComm::init(ProgramData* programData){
 }
 
 PiComm::~PiComm(){
+    // If nullptr, never initialized
+    if(programData == nullptr) return;
+	
 	fprintf(stdout, "Destructing PiComm.\n");
 
 	programData->program_running = false;

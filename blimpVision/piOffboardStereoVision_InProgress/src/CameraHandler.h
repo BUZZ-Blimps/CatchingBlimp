@@ -29,7 +29,7 @@ class CameraHandler {
 
         PiComm* piComm;
 
-        ProgramData* programData;
+        ProgramData* programData = nullptr;
 
         pthread_mutex_t mutex_newFrame;
         pthread_mutex_t mutex_newFrameNum;

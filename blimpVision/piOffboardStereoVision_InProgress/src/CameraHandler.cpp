@@ -66,6 +66,9 @@ void CameraHandler::init(PiComm* piComm, ProgramData* programData){
 }
 
 CameraHandler::~CameraHandler(){
+    // If nullptr, never initialized
+    if(programData == nullptr) return;
+
 	fprintf(stdout, "Destructing CameraHandler.\n");
 
 	programData->program_running = false;
@@ -85,6 +88,9 @@ void* CameraHandler::staticCaptureThread_start(void* arg){
 }
 
 void CameraHandler::captureThread_loop(){
+	int t_id = (int)pthread_self();
+	fprintf(stdout, "CameraHandler capture thread (%d) successfully started.\n", t_id);
+	
     while(programData->program_running){
         // If no frame is available, continue
         if(!cap.grab()) continue;
@@ -116,6 +122,9 @@ void CameraHandler::captureThread_loop(){
             piComm->setStreamFrame(leftFrame_lowres);
         }
     }
+
+	fprintf(stdout, "CameraHandler capture thread (%d) successfully stopped.\n", t_id);
+	pthread_exit((void *) 0);
 }
 
 bool CameraHandler::getRecentFrames(Mat* leftFrame, Mat* rightFrame){
