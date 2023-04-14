@@ -10,6 +10,7 @@
 #include <stdlib.h>
 #include <vector>
 #include <opencv2/opencv.hpp>
+#include <map>
 
 #include "serialib.h"
 #include "Util.h"
@@ -68,12 +69,20 @@ class PiComm{
             //const char* stream_server_ip = "127.0.0.1";
         const int stream_server_port = 12345;
 
+        const uchar frameNameMaxSize = 10;
+        map<string, Mat*> mapFrameNameToFrame;
+        map<string, unsigned int> mapFrameNameToNewFrameNum;
+        map<string, unsigned int> mapFrameNameToPrevFrameNum;
+
+        pthread_mutex_t mutex_mapFrameNameToFrame;
+        pthread_mutex_t mutex_mapFrameNameToNewFrameNum;
+
         Mat frameToStream;
         pthread_mutex_t mutex_frameToStream;
         unsigned int newFrameNum;
         pthread_mutex_t mutex_newFrameNum;
         unsigned int prevFrameNum;
-        void send_frame(Mat image);
+        void send_frame(NamedMatPtr frameToStream);
 
         BSFeedbackData BSFeedback;
         pthread_mutex_t mutex_BSFeedback;
@@ -119,7 +128,7 @@ class PiComm{
 
         // ============================== STREAMING ==============================
         void initStreamSocket();
-        void setStreamFrame(Mat frame);
+        void setStreamFrame(Mat frame, string frameName);
         BSFeedbackData getBSFeedback();
         MLFeedbackData getMLData();
 

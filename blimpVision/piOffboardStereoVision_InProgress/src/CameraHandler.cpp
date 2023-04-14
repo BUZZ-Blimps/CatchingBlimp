@@ -118,7 +118,7 @@ void CameraHandler::captureThread_loop(){
         pthread_mutex_unlock(&mutex_newFrameNum);
 
         if(!programData->annotatedMode){
-            piComm->setStreamFrame(leftFrame_lowres);
+            piComm->setStreamFrame(leftFrame_lowres, "Raw");
         }
 
         //imshow("leftFrame_lowres", leftFrame_lowres);

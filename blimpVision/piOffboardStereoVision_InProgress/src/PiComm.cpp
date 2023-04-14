@@ -107,6 +107,14 @@ void PiComm::end(){
 		close(stream_socket_fd);
 	}
 
+	// Delete dynamic memory
+	map<string, Mat*>::iterator iter;
+	for(iter = mapFrameNameToFrame.begin(); iter != mapFrameNameToFrame.end(); iter++){
+		Mat* framePtr = iter->second;
+		delete(framePtr);
+	}
+	mapFrameNameToFrame.clear(); // Just to be sure
+
     // Release programData
     programData = nullptr;
 	//fprintf(stdout, "PiComm ended.\n");
@@ -436,15 +444,43 @@ void PiComm::initStreamSocket(){
     stream_server_addr.sin_addr.s_addr = (in_addr_t)addr.s_addr;
 }
 
-void PiComm::setStreamFrame(Mat frame){
+void PiComm::setStreamFrame(Mat frame, string frameNameRaw){
+	if(frame.empty()) return;
+
+	// Truncate name
+	string frameName = frameNameRaw.substr(0,frameNameMaxSize);
+
+	// Get frame pointer
+	pthread_mutex_lock(&mutex_mapFrameNameToFrame);
+	// Check if new frame needs to be dynamically allocated
+	if(mapFrameNameToFrame.find(frameName) == mapFrameNameToFrame.end()){
+		// New frame name, allocate!
+		mapFrameNameToFrame[frameName] = new Mat();
+	}
+	Mat* framePtr = mapFrameNameToFrame[frameName];
+	pthread_mutex_unlock(&mutex_mapFrameNameToFrame);
+	
+	// Copy frame
+	*framePtr = frame;
+
+	// Increment newFrameNum
+	pthread_mutex_lock(&mutex_mapFrameNameToNewFrameNum);
+	if(mapFrameNameToNewFrameNum.find(frameName) == mapFrameNameToNewFrameNum.end()){
+		// New frame name, create new newFrameNum!
+		mapFrameNameToNewFrameNum[frameName] = 0;
+	}
+	mapFrameNameToNewFrameNum[frameName] += 1;
+	pthread_mutex_unlock(&mutex_mapFrameNameToNewFrameNum);
+
+	/*
 	// Copy image to shared memory
 	pthread_mutex_lock(&mutex_frameToStream);
 	frameToStream = frame;
 	pthread_mutex_unlock(&mutex_frameToStream);
 	pthread_mutex_lock(&mutex_newFrameNum);
 	newFrameNum++;
-	fprintf(stdout, "Set Stream Frame, newFrameNum=%d\n", newFrameNum);
 	pthread_mutex_unlock(&mutex_newFrameNum);
+	*/
 }
 
 BSFeedbackData PiComm::getBSFeedback(){
@@ -485,6 +521,38 @@ void PiComm::streamingThread_loop(){
 	fprintf(stdout, "PiComm streaming thread (%d) successfully started.\n", t_id);
 	
 	while(programData->program_running){
+		vector<NamedMatPtr> framesToStream;
+
+		// Iterate through maps, find which frames need to be streamed
+		pthread_mutex_lock(&mutex_mapFrameNameToNewFrameNum);
+		map<string, unsigned int>::iterator iter;
+		for(iter = mapFrameNameToNewFrameNum.begin(); iter != mapFrameNameToNewFrameNum.end(); iter++){
+			string frameName = iter->first;
+			unsigned int newFrameNum = iter->second;
+			if(mapFrameNameToPrevFrameNum.find(frameName) != mapFrameNameToPrevFrameNum.end()){
+				// Existing frame name
+				if(newFrameNum <= mapFrameNameToPrevFrameNum[frameName]){
+					// Frame already streamed for, skip...
+					continue;
+				}
+			}
+			// Frame is either new or not streamed yet
+			mapFrameNameToPrevFrameNum[frameName] = newFrameNum;
+			// Get frame pointer
+			pthread_mutex_lock(&mutex_mapFrameNameToFrame);
+			Mat* framePtr = mapFrameNameToFrame[frameName];
+			pthread_mutex_unlock(&mutex_mapFrameNameToFrame);
+			// Push back to vector of frames to stream
+			framesToStream.push_back(NamedMatPtr(framePtr, frameName));
+		}
+		pthread_mutex_unlock(&mutex_mapFrameNameToNewFrameNum);
+
+		// Iterate through frames to stream and stream them!
+		for(int i=0; i<framesToStream.size(); i++){
+			send_frame(framesToStream[i]);
+		}
+
+		/*
 		unsigned int tempFrameNum;
 		pthread_mutex_lock(&mutex_newFrameNum);
 		tempFrameNum = newFrameNum;
@@ -500,20 +568,46 @@ void PiComm::streamingThread_loop(){
 
 			send_frame(frameToStreamTemp);
 		}
+		*/
 	}
 
 	fprintf(stdout, "PiComm streaming thread (%d) successfully stopped.\n", t_id);
 	pthread_exit((void *) 0);
 }
 
-//Helper function for video streaming thread
-void PiComm::send_frame(Mat image) {
-	if(programData->verboseMode) fprintf(stdout, "Starting to send video frame.\n");
-    //Compress image into vector buffer
-    std::vector<uchar> buf;
-    cv::imencode(".jpg", image, buf);
+// STREAMING PROTOCOL:
+// First uchar = N characters in frameName
+// Next N uchars = frameName
+// Remaining uchars = image
+// Helper function for video streaming thread
+void PiComm::send_frame(NamedMatPtr frameToStream) {
+	if(programData->verboseMode) fprintf(stdout, "Starting to send video frame (%s).\n", frameToStream.name.c_str());
 
-    unsigned int size = (unsigned int)buf.size();
+	// Create header buffer
+	vector<uchar> bufferHeader;
+	// Push frameName size to header buffer
+	int frameNameLen = frameToStream.name.size();
+	bufferHeader.push_back(frameNameLen);
+	// Push frameName to header buffer
+	const char* frameName = frameToStream.name.c_str();
+	for(int i=0; i<frameNameLen; i++){
+		bufferHeader.push_back(frameName[i]); // Cast char to uchar?
+	}
+
+    // Compress image into vector buffer
+    vector<uchar> bufferFrame;
+	Mat* framePtr = frameToStream.mat;
+    cv::imencode(".jpg", *framePtr, bufferFrame);
+
+	// Combine buffers
+	vector<uchar> buffer;
+	buffer.insert(buffer.end(), bufferHeader.begin(), bufferHeader.end());
+	buffer.insert(buffer.end(), bufferFrame.begin(), bufferFrame.end());
+
+	string earlyBuffer(buffer.begin(), buffer.begin()+5);
+	fprintf(stdout, "First 5 uchars = %s\n", earlyBuffer.c_str());
+
+    unsigned int size = (unsigned int)buffer.size();
     unsigned int packet_count = ceil((double)size/(double)MAX_IMAGE_DGRAM);
 
     unsigned int array_pos_start = 0;
@@ -522,8 +616,8 @@ void PiComm::send_frame(Mat image) {
 
     	//Grab the next subvector to populate the current data packet
     	int array_pos_end = std::min(size, array_pos_start + MAX_IMAGE_DGRAM);
-    	std::vector<uchar>::const_iterator first = buf.begin() + array_pos_start;
-    	std::vector<uchar>::const_iterator last = buf.begin() + array_pos_end;
+    	std::vector<uchar>::const_iterator first = buffer.begin() + array_pos_start;
+    	std::vector<uchar>::const_iterator last = buffer.begin() + array_pos_end;
     	std::vector<uchar> packet_buf(first, last);
 
     	//Convert the subvector buffer to an unsigned char array

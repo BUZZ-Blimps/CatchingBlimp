@@ -256,9 +256,7 @@ int main(int argc, char** argv) {
 		//cout << "Vision Compute Rate: " << 1/time << endl;
 		last = now;
 
-		if (programData.annotatedMode) {
-			computerVision.left_correct.copyTo(annotatedFrame);
-		}
+		computerVision.left_correct.copyTo(annotatedFrame);
 
 		//Select largest target for blimp depending on state:
 		std::vector<std::vector<float> > target;
@@ -269,36 +267,32 @@ int main(int argc, char** argv) {
 			if(target.size() > 0){
 				vector<float> balloon = target[0];
 				if(programData.printJSONMode) fprintf(stdout, "Balloon seen with computer vision.\n");
-				if (programData.annotatedMode) {
-					float radius = sqrt(balloon[3]/3.14159f);
-					circle(annotatedFrame, Point(balloon[0],balloon[1]), radius, Scalar(255,255,255));
-					cv::putText(annotatedFrame,
-							"THIS IS THE FUTURE",
-							cv::Point(10.0, 20.0),
-							cv::FONT_HERSHEY_COMPLEX,
-							0.75,
-							CV_RGB(118, 185, 0),
-							2);
+				float radius = sqrt(balloon[3]/3.14159f);
+				circle(annotatedFrame, Point(balloon[0],balloon[1]), radius, Scalar(255,255,255));
+				cv::putText(annotatedFrame,
+						"THIS IS THE FUTURE",
+						cv::Point(10.0, 20.0),
+						cv::FONT_HERSHEY_COMPLEX,
+						0.75,
+						CV_RGB(118, 185, 0),
+						2);
 
-					cv::putText(annotatedFrame,
-							"z: " + to_string(balloon[2]),
-							Point(balloon[0], balloon[1]+radius+5.0),
-							cv::FONT_HERSHEY_PLAIN,
-							1.0,
-							Scalar(255,255,255),
-							1.0);
-				}
+				cv::putText(annotatedFrame,
+						"z: " + to_string(balloon[2]),
+						Point(balloon[0], balloon[1]+radius+5.0),
+						cv::FONT_HERSHEY_PLAIN,
+						1.0,
+						Scalar(255,255,255),
+						1.0);
 			} else{
 				//No balloons found
-				if (programData.annotatedMode) {
-					cv::putText(annotatedFrame,
-							":(",
-							cv::Point(10.0, 50.0),
-							cv::FONT_HERSHEY_COMPLEX,
-							2,
-							CV_RGB(118, 185, 0),
-							2);
-				}
+				cv::putText(annotatedFrame,
+						":(",
+						cv::Point(10.0, 50.0),
+						cv::FONT_HERSHEY_COMPLEX,
+						2,
+						CV_RGB(118, 185, 0),
+						2);
 
 				if((clock() - MLFeedback.lastReceivedTargetsTime)/CLOCKS_PER_SEC < receivedTargetTimeout){
 					//parse through array, looking for best balloon
@@ -384,8 +378,8 @@ int main(int argc, char** argv) {
 		}
 
 		// If annotated mode, stream the annotated frame
-		if (programData.annotatedMode) {
-			piComm.setStreamFrame(annotatedFrame);
+		if (programData.annotatedMode || true) {
+			piComm.setStreamFrame(annotatedFrame, "Annotated");
 		}
 
 		//Debuging

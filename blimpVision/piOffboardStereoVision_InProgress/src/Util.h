@@ -2,6 +2,7 @@
 
 #include <string>
 #include <vector>
+#include <opencv2/opencv.hpp>
 #include "json.hpp"
 using json = nlohmann::json;
 
@@ -76,4 +77,14 @@ struct ProgramData{
 	int customCaptureID;
 
 	bool program_running = true;
+};
+
+struct NamedMatPtr{
+	cv::Mat* mat;
+	std::string name;
+
+	NamedMatPtr(cv::Mat* mat, std::string name){
+		this->mat = mat;
+		this->name = name;
+	}
 };
