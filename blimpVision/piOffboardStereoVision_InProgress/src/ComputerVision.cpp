@@ -186,6 +186,7 @@ void ComputerVision::update(Mat imgL, Mat imgR, autoState mode, goalType goalCol
         //cout << "Number of contours: " << contours.size() << endl;
 
         balloons.clear();
+        goals.clear();
         // iterate through all the top-level contours,
         // draw each connected component with its own random color
         for (unsigned int i = 0; i < contours.size(); i++) {
