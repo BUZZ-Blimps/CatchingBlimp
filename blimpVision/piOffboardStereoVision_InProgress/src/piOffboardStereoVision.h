@@ -26,7 +26,6 @@ ProgramData programData;
 double receivedTargetTimeout = 1; //seconds
 
 // Variables
-autoState mode;
 Mat annotatedFrame;
 std::string msgTemp;
 

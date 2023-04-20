@@ -183,6 +183,7 @@ void PiComm::initSerial(){
 
 void PiComm::sendSerial(string message){
 	serial.writeString(message.c_str());
+	//fprintf(stdout, "Sending serial message: %s\n", message.c_str());
 }
 
 char PiComm::readSerial() {
@@ -622,7 +623,12 @@ void PiComm::send_frame(NamedMatPtr frameToStream) {
     // Compress image into vector buffer
     vector<uchar> bufferFrame;
 	Mat* framePtr = frameToStream.mat;
-    cv::imencode(".jpg", *framePtr, bufferFrame);
+	try{
+    	cv::imencode(".jpg", *framePtr, bufferFrame);
+	}catch(cv::Exception e){
+		fprintf(stdout, "IMENCODE EXCEPTION.\n");
+		return;
+	}
 
 	// Combine buffers
 	vector<uchar> buffer;
@@ -676,10 +682,6 @@ void PiComm::BSFeedbackThread_loop(){
 	fprintf(stdout, "Connecting to base station. Blimp ID: %s.\n", blimpID.c_str());
 
 	while (programData->program_running) {
-		// Init temporary struct to store current basestation feedback
-		// Shoudln't need mutex lock, since no one else should be writing to it but us
-		BSFeedbackData BSFeedbackTemp = BSFeedback.cloneTimes();
-
 		clock_t currentTime = clock();
 		double cycleTime = double(currentTime - lastCycle)/CLOCKS_PER_SEC;
 		lastCycle = currentTime;
@@ -696,6 +698,11 @@ void PiComm::BSFeedbackThread_loop(){
 			pthread_mutex_unlock(&mutex_mode);
 			sendUDP("S", to_string(modeTemp));
 		}
+
+		// Init temporary struct to store current basestation feedback
+		// Shoudln't need mutex lock, since no one else should be writing to it but us
+		BSFeedbackData BSFeedbackTemp = BSFeedback.cloneTimes();
+		bool receivedNewData = false;
 
 		//Receive UDP messages
 		bool reading = true;
@@ -714,6 +721,7 @@ void PiComm::BSFeedbackThread_loop(){
 				if(!validTarget(target)) continue;
 
 				BSFeedbackTemp.lastUDPReceived = clock();
+				receivedNewData = true;
 				
 				if(flag == FLAG_AUTONOMOUS){
 					BSFeedbackTemp.autonomous = true;
@@ -748,16 +756,18 @@ void PiComm::BSFeedbackThread_loop(){
 			}
 		} //end while (reading loop)
 
-		if (clock()/((float)CLOCKS_PER_SEC) - BSFeedbackTemp.lastBaroMessageTime > 10) {
-			BSFeedbackTemp.barometerData = -10000;
+		bool baroTimeout = clock()/((float)CLOCKS_PER_SEC) - BSFeedbackTemp.lastBaroMessageTime > 10;
 
-			//if (programData->verboseMode) cerr << "Baro data not current" << endl;
+		if(receivedNewData || baroTimeout){
+			pthread_mutex_lock(&mutex_BSFeedback);
+			if(receivedNewData){
+				BSFeedback = BSFeedbackTemp;
+			}
+			if(baroTimeout){
+				BSFeedback.barometerData = -10000;
+			}
+			pthread_mutex_unlock(&mutex_BSFeedback);
 		}
-
-		// Store current basestation feedback into shared memory
-		pthread_mutex_lock(&mutex_BSFeedback);
-		BSFeedback = BSFeedbackTemp;
-		pthread_mutex_unlock(&mutex_BSFeedback);
 	}
 
 	fprintf(stdout, "PiComm base station communication thread (%d) successfully stopped.\n", t_id);
@@ -799,4 +809,12 @@ void PiComm::setMode(autoState newMode){
 	pthread_mutex_lock(&mutex_mode);
 	mode = newMode;
 	pthread_mutex_unlock(&mutex_mode);
+}
+
+autoState PiComm::getMode(){
+	autoState modeCopied;
+	pthread_mutex_lock(&mutex_mode);
+	modeCopied = mode;
+	pthread_mutex_unlock(&mutex_mode);
+	return modeCopied;
 }

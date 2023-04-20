@@ -145,4 +145,5 @@ class PiComm{
         void MLFeedbackThread_loop();
 
         void setMode(autoState newMode);
+        autoState getMode();
 };

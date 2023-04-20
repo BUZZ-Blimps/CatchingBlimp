@@ -185,6 +185,7 @@ void ComputerVision::update(Mat imgL, Mat imgR, autoState mode, goalType goalCol
 
         //cout << "Number of contours: " << contours.size() << endl;
 
+        balloons.clear();
         // iterate through all the top-level contours,
         // draw each connected component with its own random color
         for (unsigned int i = 0; i < contours.size(); i++) {
@@ -408,6 +409,7 @@ void ComputerVision::update(Mat imgL, Mat imgR, autoState mode, goalType goalCol
 
 vector<vector<float>> ComputerVision::getTargetBalloon(){
     std::vector<std::vector<float> > target;
+    //fprintf(stdout, "BalloonsSize=%d\n", balloons.size());
     //send back balloon data
     float area = 0;
     int index = -1;

@@ -224,14 +224,15 @@ int main(int argc, char** argv) {
 	string srcDir = findSourceDir(argv); // Required for reading calibration files
 	computerVision.init(&programData, srcDir, &piComm);
 
-	clock_t currentTime = clock();
-	clock_t last = clock();
+	clock_t last = 0;
 
 	//for serial in case teensy restarts
-	clock_t lastMsgTime = clock();
+	clock_t lastMsgTime = 0;
 	clock_t lastSerial = 0;
 
     while (programData.program_running) {
+		clock_t currentTime = clock();
+
 		// Get feedback from basestation
 		BSFeedbackData BSFeedback = piComm.getBSFeedback();
 		goalType goalColor = BSFeedback.goalColor;
@@ -244,24 +245,24 @@ int main(int argc, char** argv) {
 		if(!recentFrames) continue;
 
 		// Do computer vision
-		computerVision.update(lt_frame_lowres, rt_frame_lowres, mode, goalColor);
+		computerVision.update(lt_frame_lowres, rt_frame_lowres, piComm.getMode(), goalColor);
 		int quad = computerVision.getQuad();
 
 		// Get feedback from machine learning
 		MLFeedbackData MLFeedback = piComm.getMLData();
 
-		clock_t now = clock();
-		float time = (float)(now-last)/(float)CLOCKS_PER_SEC;
+		float time = (float)(currentTime-last)/(float)CLOCKS_PER_SEC;
 		//cout << "Vision Compute Time: " << time << endl;
 		//cout << "Vision Compute Rate: " << 1/time << endl;
-		last = now;
+		last = currentTime;
 
 		computerVision.left_correct.copyTo(annotatedFrame);
 
 		//Select largest target for blimp depending on state:
 		std::vector<std::vector<float> > target;
 
-		if (mode == searching || mode == approach || mode == catching) {
+		autoState currMode = piComm.getMode();
+		if (currMode == searching || currMode == approach || currMode == catching) {
 			target = computerVision.getTargetBalloon();
 
 			if(target.size() > 0){
@@ -329,7 +330,7 @@ int main(int argc, char** argv) {
 				}
 			}
 
-		} else if (mode == goalSearch || mode == approachGoal || mode == scoringStart) {
+		} else if (currMode == goalSearch || currMode == approachGoal || currMode == scoringStart) {
 			target = computerVision.getTargetGoal();
 
 			if (target.size() > 0) {
@@ -396,6 +397,7 @@ int main(int argc, char** argv) {
 
 		//Print serial data-----------------------------------------------------------------------------------------------------
 		if (double(currentTime - lastSerial)/CLOCKS_PER_SEC > 0.1) {
+			lastSerial = currentTime;
 			//create message to send to teensy
 			String message;
 
@@ -456,6 +458,7 @@ int main(int argc, char** argv) {
 				bool reading = true;
 				while (reading) {
 					if (c == '#') {
+						fprintf(stdout, "Read from teensy: %s\n", msgTemp.c_str());
 						//update mode
 						try {
 
@@ -498,7 +501,8 @@ int main(int argc, char** argv) {
 								}
 							}
 
-							mode = static_cast<autoState>(stoi(modeString));
+							piComm.setMode(static_cast<autoState>(stoi(modeString)));
+							fprintf(stdout, "ModeString=%s, mode=%d\n", modeString.c_str(), piComm.getMode());
 							//blimpColor = static_cast<blimpType>(stoi(blimpString));
 							//goalColor = stoi(goalString);
 						}

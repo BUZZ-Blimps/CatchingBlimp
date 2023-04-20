@@ -7,6 +7,7 @@
 
 #include "json.hpp"
 using json = nlohmann::json;
+using namespace std;
 
 enum object {
     balloon,
@@ -57,6 +58,21 @@ struct BSFeedbackData{
 		newBSFB.lastBaroMessageTime = this->lastBaroMessageTime;
 
 		return newBSFB;
+	}
+
+	std::string print(){
+		std::string printString = "";
+		
+		printString += "LastUDPReceived: " + to_string(lastUDPReceived) + "\n";
+		printString += "lastBaroMsgTime: " + to_string(lastBaroMessageTime) + "\n";
+		printString += "Autonomous: " + to_string(autonomous) + "\n";
+		printString += "BaroData: " + to_string(barometerData) + "\n";
+		printString += "recentMotorCommands: ";
+		for(int i=0; i<recentMotorCommands.size(); i++) printString += to_string(recentMotorCommands[i]) + ", ";
+		printString += "\n";
+		printString += "GoalColor: " + to_string(goalColor) + "\n";
+
+		return printString;
 	}
 };
 
