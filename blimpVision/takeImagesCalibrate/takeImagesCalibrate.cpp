@@ -770,44 +770,12 @@ void testStereoLab() {
         int maxa= 255;
         int mina = 0;
 
-        if(!render3DProjection){
-                namedWindow("Track");
-                if (!CORRECT_COLOR) {
-                        createTrackbar("lambda", "Track", &lambda, 500);
-                        createTrackbar("sigma", "Track", &sigma, 500);
-                        createTrackbar("vis mult", "Track", &vis_mult, 100);
-
-                        createTrackbar("preFilterSize", "Track", &preFilterSize, 50);
-                        createTrackbar("preFilterCap", "Track", &preFilterCap, 62);
-                        createTrackbar("disp12MaxDiff", "Track", &disp12Diff, 50);
-                        createTrackbar("uniquness", "Track", &uniqunessRatio, 100);
-                        createTrackbar("speckleWindowSize", "Track", &speckleWindowSize, 50);
-                        createTrackbar("speckleRange", "Track", &speckleRange, 100);
-                        createTrackbar("texture", "Track", &textureThreshold, 100);
-                } else {
-                        createTrackbar("blue", "Track", &blue, 100);
-                        createTrackbar("green", "Track", &green, 100);
-                        createTrackbar("red", "Track", &red, 100);
-
-                        createTrackbar("Min H", "Track", &minInt, 255);
-                        createTrackbar("Max H", "Track", &maxInt, 255);
-                        createTrackbar("Min S", "Track", &mina, 255);
-                        createTrackbar("Max S", "Track", &maxa, 255);
-                        createTrackbar("Min V", "Track", &minb, 255);
-                        createTrackbar("Max V", "Track", &maxb, 255);
-                }
-        }
-
         clock_t last = 0;
 
         Ptr<StereoBM > left_matcher = StereoBM::create(16, 13);
         
         Ptr<ximgproc::DisparityWLSFilter> wls_filter = ximgproc::createDisparityWLSFilter(left_matcher);
         Ptr<StereoMatcher> right_matcher = ximgproc::createRightMatcher(left_matcher);
-
-        viz::Viz3d myWindow("Coordinate Frame");
-        //myWindow.showWidget("Coordinate Widget",viz::WCoordinateSystem());
-        myWindow.spinOnce();
 
 	while (true) {
                 benchmarkFirst("Start");
@@ -893,6 +861,7 @@ void testStereoLab() {
                 resize(imgL, imgL_rect, Size(RECT_WIDTH, RECT_HEIGHT), INTER_LINEAR);
                 resize(imgR, imgR_rect, Size(RECT_WIDTH, RECT_HEIGHT), INTER_LINEAR);
 
+                imshow("Raw Left",imgL);
                 benchmark("Got frames");
 
                 //undistort images
@@ -966,24 +935,6 @@ void testStereoLab() {
                 depth = XYZ[2];
                 x = XYZ[0];
                 y = XYZ[1];
-
-                Mat copied = Mat(Size(640,480),CV_32FC3);
-                cout << "Copying... ";
-                for(int x=0; x<640; x++){
-                        for(int y=0; y<480; y++){
-                                copied.at<Vec3f>(Point(x,y)) = xyz.at<Vec3f>(Point(x,y));
-                        }
-                }
-                cout << "Done!" << endl;
-                imshow("Copied",copied);
-                while(true){
-                        waitKey(1);
-                        delay(0.1);
-                }
-
-                viz::WCloud cloud(copied);
-                myWindow.showWidget("Cloud Widget",cloud);
-                myWindow.spinOnce(); // Throws seg fault
 
                 Mat BGR;
                 cvtColor(depth/1500.0,  BGR, cv::COLOR_GRAY2BGR);
@@ -1392,7 +1343,7 @@ int main(int argc, char** argv) {
 
         return 0;*/
 
-        VideoCapture inputVideo(CAMERA_INDEX,CAMERA_API);
+        VideoCapture inputVideo(2,CAP_V4L);
         
         inputVideo.set(CAP_PROP_FRAME_WIDTH, CAMERA_WIDTH);
         inputVideo.set(CAP_PROP_FRAME_HEIGHT, CAMERA_HEIGHT);
@@ -1411,7 +1362,11 @@ int main(int argc, char** argv) {
                 resizeWindow("Camera Footage", DISPLAY_W*2, DISPLAY_H);
                 imshow("Camera Footage", frame);
         }*/
-        inputVideo.release();        
+        Mat mat;
+        inputVideo >> mat;
+
+        imshow("Window",mat);    
+        inputVideo.release();   
 
         while (true) {
                 //Print menu
