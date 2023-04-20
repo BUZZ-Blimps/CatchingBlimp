@@ -380,8 +380,7 @@ int main(int argc, char** argv) {
 
 		// If annotated mode, stream the annotated frame
 		if (programData.annotatedMode || true) {
-			piComm.setStreamFrame(annotatedFrame, "Annotated");
-			piComm.setStreamFrame(annotatedFrame, "Annotated1");
+			//piComm.setStreamFrame(annotatedFrame, "Annotated");
 		}
 
 		//Debuging

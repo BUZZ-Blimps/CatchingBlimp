@@ -1,3 +1,4 @@
+/*
 #pragma once
 
 // ============================== INCLUDES ==============================
@@ -65,9 +66,6 @@ using namespace cv;
 #define GOAL_INNER_CONTOUR_SCALE    0.7
 #define GOAL_CONFIRM			    6000
 
-#define F               420
-#define BASELINE        0.062 //0.20341207
-
 // ============================== CLASS ==============================
 
 class ComputerVision {
@@ -92,21 +90,12 @@ class ComputerVision {
 
         // Object avoidance quadrant
         int quad;
-        
-        // Goal detection
-        double pixelDensityL = 0.2;
-        double pixelDensityR = 0.2;
-        Mat output,output_norm,output_norm_scaled;
 
         vector<Point> scaleContour(vector<Point> contour, float scale);
 
         ProgramData* programData;
         string srcDir;
         PiComm* piComm;
-
-        void getFrames(Mat &imgL, Mat &imgR);
-        bool getBall(float &X, float &Y, float &Z, float &area, Mat imgL, Mat imgR);
-        void getGoal(float &X, float &Y, float &Z, float &area, float &angle, Mat imgL, Mat imgR);
 
     public:
         void init(ProgramData* programData, string srcDir, PiComm* piComm);
@@ -120,3 +109,4 @@ class ComputerVision {
         Mat left_correct;
 
 };
+*/
