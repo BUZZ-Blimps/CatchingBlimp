@@ -91,11 +91,13 @@ void CameraHandler::captureThread_loop(){
 	int t_id = (int)pthread_self();
 	fprintf(stdout, "CameraHandler capture thread (%d) successfully started.\n", t_id);
 	
+    int frameNum = 0;
     while(programData->program_running){
         if(!cap.grab()) continue;
 
         Mat rawFrame;
         cap.retrieve(rawFrame);
+        //cap >> rawFrame;
 
         // Crop the left and right images
         Rect left_roi(0, 0, rawFrame.cols/2, rawFrame.rows);
@@ -104,21 +106,24 @@ void CameraHandler::captureThread_loop(){
         Mat rightFrame_maxres(rawFrame, right_roi);
 
         // Reduce image size for rectification
-        Mat leftFrame_lowres, rightFrame_lowres;
-        resize(leftFrame_maxres, leftFrame_lowres, Size(RECT_WIDTH, RECT_HEIGHT), INTER_LINEAR);
-        resize(rightFrame_maxres, rightFrame_lowres, Size(RECT_WIDTH, RECT_HEIGHT), INTER_LINEAR);
+        //Mat leftFrame_lowres, rightFrame_lowres;
+        //resize(leftFrame_maxres, leftFrame_lowres, Size(RECT_WIDTH, RECT_HEIGHT), INTER_LINEAR);
+        //resize(rightFrame_maxres, rightFrame_lowres, Size(RECT_WIDTH, RECT_HEIGHT), INTER_LINEAR);
 
         // Copy images to shared memory
         pthread_mutex_lock(&mutex_newFrame);
-        leftFrameCopied = leftFrame_lowres;
-        rightFrameCopied = rightFrame_lowres;
+        leftFrameCopied = leftFrame_maxres;
+        rightFrameCopied = rightFrame_maxres;
         pthread_mutex_unlock(&mutex_newFrame);
         pthread_mutex_lock(&mutex_newFrameNum);
         newFrameNum++;
         pthread_mutex_unlock(&mutex_newFrameNum);
+        //fprintf(stdout, "Retreived frame (%d).\n", frameNum++);
 
         if(!programData->annotatedMode){
-            piComm->setStreamFrame(leftFrame_lowres, "Raw");
+            piComm->setStreamFrame(rawFrame, "Raw");
+            //imshow("RawFrame", rawFrame);
+            //waitKey(1);
         }
 
         //imshow("leftFrame_lowres", leftFrame_lowres);

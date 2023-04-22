@@ -457,7 +457,7 @@ int main(int argc, char** argv) {
 				bool reading = true;
 				while (reading) {
 					if (c == '#') {
-						fprintf(stdout, "Read from teensy: %s\n", msgTemp.c_str());
+						//fprintf(stdout, "Read from teensy: %s\n", msgTemp.c_str());
 						//update mode
 						try {
 

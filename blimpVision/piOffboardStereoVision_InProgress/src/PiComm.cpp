@@ -22,6 +22,7 @@ using json = nlohmann::json;
 #include <netdb.h>
 #include <ifaddrs.h>
 #include <linux/if_link.h>
+#include <algorithm>
 
 #include <opencv2/opencv.hpp>
 #include <opencv2/highgui/highgui.hpp>
@@ -64,6 +65,8 @@ void PiComm::init(ProgramData* programData){
 
 	// Init UDP connection for streaming
 	initStreamSocket();
+
+	send_buf = new unsigned char[MAX_DGRAM];
 
 	// Start UDP base station thread
 	if(!programData->streamOnlyMode){
@@ -108,6 +111,8 @@ void PiComm::end(){
 	}
 
 	// Delete dynamic memory
+	delete[] send_buf;
+
 	map<string, Mat*>::iterator iter;
 	for(iter = mapFrameNameToFrame.begin(); iter != mapFrameNameToFrame.end(); iter++){
 		Mat* framePtr = iter->second;
@@ -635,36 +640,47 @@ void PiComm::send_frame(NamedMatPtr frameToStream) {
 	buffer.insert(buffer.end(), bufferHeader.begin(), bufferHeader.end());
 	buffer.insert(buffer.end(), bufferFrame.begin(), bufferFrame.end());
 
-	string earlyBuffer(buffer.begin(), buffer.begin()+5);
-	//fprintf(stdout, "First 5 uchars = %s\n", earlyBuffer.c_str());
-
-    unsigned int size = (unsigned int)buffer.size();
+    unsigned int size = (unsigned int)(buffer.size());
+	fprintf(stdout, "Frame %s (size = %d)\n", frameToStream.name.c_str(), size);
     unsigned int packet_count = ceil((double)size/(double)MAX_IMAGE_DGRAM);
 
+	// Packet protocol to send DATA of size N
+	// Max overhead size of M
+	// Max packet size of P
+	// Number of required packets Q = N / (P-M)
+	// Each packet = overhead + DATA
+	// Overhead = FrameName + FrameNum(mod 256?) + TotalNumberOfPackets + CurrentPacketNumber
     unsigned int array_pos_start = 0;
     while (packet_count > 0) {
-		//if(programData->verboseMode) fprintf(stdout, "%d, ", packet_count);
+		fprintf(stdout, "%d, ", packet_count);
 
     	//Grab the next subvector to populate the current data packet
     	int array_pos_end = std::min(size, array_pos_start + MAX_IMAGE_DGRAM);
     	std::vector<uchar>::const_iterator first = buffer.begin() + array_pos_start;
     	std::vector<uchar>::const_iterator last = buffer.begin() + array_pos_end;
     	std::vector<uchar> packet_buf(first, last);
+		packet_buf.insert(packet_buf.begin(), (unsigned char)packet_count);
+		unsigned int send_buf_len = packet_buf.size();
+
+		copy(packet_buf.begin(), packet_buf.end(), send_buf);
 
     	//Convert the subvector buffer to an unsigned char array
-    	unsigned int send_buf_len = packet_buf.size() + 1;
-    	unsigned char send_buf[send_buf_len];
-    	send_buf[0] = (unsigned char)packet_count; //First element is always the # of remaining packets
-    	for (int i = 0; i < (int)packet_buf.size(); i++) {
+    	//unsigned int send_buf_len = 1 + packet_buf.size();
+		//unsigned char* send_buf = new unsigned char[send_buf_len];
+    	//unsigned char send_buf[send_buf_len];
+    	//send_buf[0] = (unsigned char)packet_count; //First element is always the # of remaining packets
+    	/*
+		for (int i = 0; i < (int)packet_buf.size(); i++) {
     		send_buf[i+1] = packet_buf[i];
-    	}
+    	}*/
 
         sendto(stream_socket_fd, (const unsigned char *)send_buf, send_buf_len, MSG_CONFIRM, (const struct sockaddr *) &stream_server_addr, sizeof(stream_server_addr));
+		//delete[] send_buf;
 
         array_pos_start = array_pos_end;
         packet_count--;
     }
-	//if(programData->verboseMode) fprintf(stdout, "\n");
+	fprintf(stdout, "\n");
 	//if(programData->verboseMode) fprintf(stdout, "Done!\n");
 }
 

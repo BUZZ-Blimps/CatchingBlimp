@@ -112,9 +112,17 @@ void ComputerVision::update(Mat imgL, Mat imgR, autoState mode, goalType goalCol
   goals.clear();
   if (mode == searching || mode == approach || mode == catching) {
       // Ball Detection
-      bool detectedBall = getBall(Ballx, Bally, Ballz, ballArea, imgL, imgR);
+      bool detectedBall = false; //getBall(Ballx, Bally, Ballz, ballArea, imgL, imgR);
 
       if(detectedBall){
+        if(true){
+          //cout << "Balloon Data:" << endl;
+          //cout << "X: " << Ballx << endl;
+          //cout << "Y: " << Bally << endl;
+          cout << "Z: " << Ballz << endl;
+          //cout << "Area: " << ballArea << endl << endl;
+        }
+
         std::vector<float> balloon;
         balloon.push_back(Ballx);
         balloon.push_back(Bally);
@@ -245,20 +253,15 @@ bool ComputerVision::getBall(float &X, float &Y, float &Z, float &area, Mat imgL
   cvtColor(ball_CR, right_HSV, cv::COLOR_BGR2HSV);
 
   //Visualize only H
+  /*
   vector<Mat> HSV;
-  split(left_HSV, HSV);
-  (HSV[1]).setTo(255);
-  (HSV[2]).setTo(255);
+  split(left_HSV, HSV); // Split image into HSV channels
+  (HSV[1]).setTo(255); // Set S channel to max
+  (HSV[2]).setTo(255); // Set V channel to max
   Mat newHSV, newHSVRGB;
-  merge(HSV, newHSV);
-  cvtColor(newHSV, newHSVRGB, COLOR_HSV2BGR);
-  piComm->setStreamFrame(newHSVRGB, "Left_HSV");
-
-  Mat H = HSV[0];
-  Mat S = Mat(H.size(), H.type());
-  S.setTo(0);
-  Mat V = Mat(H.size(), H.type());
-  V.setTo(255);
+  merge(HSV, newHSV); // Merge channels back into one image
+  cvtColor(newHSV, newHSVRGB, COLOR_HSV2BGR); // Convert to RGB
+  piComm->setStreamFrame(newHSVRGB, "Left_HSV");*/
 
   //Isolate Ball
   Mat bMask_L, bMask_R;
@@ -316,19 +319,19 @@ bool ComputerVision::getBall(float &X, float &Y, float &Z, float &area, Mat imgL
   }
 
   // Exclude contours that are too small
-  if (largestArea_L < 350) {
+  if (largestArea_L < 50 || largestArea_R < 50) {
     largestContour_L.clear();
+    largestContour_R.clear();
+
+    return false;
   }
 
-  if (largestArea_R < 350) {
-    largestContour_R.clear();
-  } 
 
   // Debug draw contours
   //namedWindow("contL");
   drawContours(imgL, contoursL, index_L, Scalar(255, 255, 255), -1);
   //imshow("contL", imgL);
-  piComm->setStreamFrame(imgL, "Draw Contours");
+  //piComm->setStreamFrame(imgL, "Draw Contours");
 
   //namedWindow("contR");
   //drawContours(imgR, contoursR, index_R, Scalar(255, 255, 255), -1);
@@ -362,11 +365,13 @@ bool ComputerVision::getBall(float &X, float &Y, float &Z, float &area, Mat imgL
   bitwise_and(Left_nice, Left_nice, masked_imgL, maskL);
   bitwise_and(Right_nice, Right_nice, masked_imgR, maskR);
 
+  piComm->setStreamFrame(masked_imgL, "MaxSight");
+
   // Debug Circular Mask
   //namedWindow("imgL");
   //imshow("imgL",masked_imgL);
   //waitKey(1);
-  piComm->setStreamFrame(masked_imgL, "Circular Mask");
+  //piComm->setStreamFrame(masked_imgL, "Circular Mask");
 
   //namedWindow("imgR");
   //imshow("imgR",masked_imgR);
@@ -375,7 +380,7 @@ bool ComputerVision::getBall(float &X, float &Y, float &Z, float &area, Mat imgL
   try {
 
   // Perform ORB feature extraction and matching
-  int minHessian = 400;
+  int minHessian = 800;
   Ptr<ORB> orb = ORB::create(minHessian);
 
   vector<KeyPoint> keypointsL, keypointsR;
@@ -427,7 +432,7 @@ bool ComputerVision::getBall(float &X, float &Y, float &Z, float &area, Mat imgL
   matcher.knnMatch(descriptorsL, descriptorsR, knn_matches, 2);
 
   // Filter matches using ratio test
-  const float ratio_thresh = 0.7f;
+  const float ratio_thresh = 0.8f;
   vector<DMatch> good_matches;
   for (size_t i = 0; i < knn_matches.size(); i++) {
     if (knn_matches[i][0].distance < ratio_thresh * knn_matches[i][1].distance) {
@@ -442,6 +447,7 @@ bool ComputerVision::getBall(float &X, float &Y, float &Z, float &area, Mat imgL
   //namedWindow("ORB Matches");
   //imshow("ORB Matches", img_matches);
   //waitKey(1);
+  piComm->setStreamFrame(img_matches, "Matches");
 
   // Calculate average distance of all matched points
   double avg_distance = 0.0;
@@ -458,35 +464,36 @@ bool ComputerVision::getBall(float &X, float &Y, float &Z, float &area, Mat imgL
     }
   }
 
-
+  avg_distance /= good_matches.size();
 
   // Add RANSAC maybe?
 
+  if (isnan(avg_distance)) {
+    //Assign XYZ of ball
+    Z = 1000;
+    X = (p_L.x + p_R.x)/2;
+    Y = (p_L.y + p_R.y)/2;
+    area = (largestArea_L + largestArea_R)/2;
 
-  avg_distance /= good_matches.size();
+  } else {
+    //Assign XYZ of ball
+    Z = avg_distance;
+    X = (p_L.x + p_R.x)/2;
+    Y = (p_L.y + p_R.y)/2;
+    area = (largestArea_L + largestArea_R)/2;
 
-  //Assign XYZ of ball
-  Z = avg_distance;
-  X = (p_L.x + p_R.x)/2 - (CAMERA_WIDTH/2);
-  Y = (p_L.y + p_R.y)/2 - (CAMERA_HEIGHT/2);
-  area = (largestArea_L + largestArea_R)/2;
+  }
 
   //DEBUG READ OUTPUT
-  if(true){
-    cout << "Distance: " << Z << endl;
+  if(false){
+    cout << "Distance : " << Z << endl;
     cout << "X: " << X << endl;
     cout << "Y: " << Y << endl;
     cout << area << endl;
     cout << isnan(Z) << endl << endl;
   }
 
-  
-
-  if (isnan(Z)) {
-    return false;
-  } else {
-    return true;
-  }
+  return true;
 
   }
   catch (const cv::Exception){
