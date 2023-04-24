@@ -148,6 +148,9 @@ bool parseCommandLineArgs(int argc, char** argv, ProgramData* programData){
 		}else if((strcmp(argv[i], "-j") == 0) || (strcmp(argv[i], "--json") == 0)){
 			programData->printJSONMode = true;
 			std::cout << "Print JSON mode enabled." << std::endl;
+		}else if((strcmp(argv[i], "-b") == 0) || (strcmp(argv[i], "--barometer") == 0)){
+			programData->printBaroMode = true;
+			std::cout << "Print Barometer mode enabled." << std::endl;
 		} else if ((strcmp(argv[i], "-h") == 0) || (strcmp(argv[i], "--help") == 0)) {
 			//Print help info and return
 			std::string helpText;
@@ -155,9 +158,10 @@ bool parseCommandLineArgs(int argc, char** argv, ProgramData* programData){
 			helpText += "opt -v, --verbose: Enable Verbose Mode\n";
 			helpText += "opt -c, --cap-id {cap_dev_id}: Set Capture Device ID\n";
 			helpText += "opt -s --stream: Enable Stream-Only Mode\n";
-			helpText += "-a --annotate: Enable Annotated Mode\n";
-			helpText += "-j --json: Enable JSON Print Mode\n";
-			helpText += "-ds --disable-serial: Disable Serial Mode\n";
+			helpText += "opt -a --annotate: Enable Annotated Mode\n";
+			helpText += "opt -j --json: Enable JSON Print Mode\n";
+			helpText += "opt -ds --disable-serial: Disable Serial Mode\n";
+			helpText += "opt -b --barometer: Enable Barometer Print Mode\n";
 			fprintf(stderr, "%s\n", helpText.c_str());
 			return false;
 		} else {
@@ -257,6 +261,7 @@ int main(int argc, char** argv) {
 		last = currentTime;
 
 		computerVision.left_correct.copyTo(annotatedFrame);
+		videoSaver.writeFrame(computerVision.left_correct);
 
 		//Select largest target for blimp depending on state:
 		std::vector<std::vector<float> > target;
@@ -441,16 +446,16 @@ int main(int argc, char** argv) {
 			//benchmark("Listen from teensy");
 			//read state data from teensy
 			char c = piComm.readSerial();
-			String modeString = "";
-			String blimpString = "";
-			String goalString = "";
-			int counter = 0;
+			//String modeString = "";
+			//String blimpString = "";
+			//String goalString = "";
+			//int counter = 0;
 
-			std::vector<String> teensyKeys;
-			std::vector<String> teensyValues;
+			//std::vector<String> teensyKeys;
+			//std::vector<String> teensyValues;
 
-			String tempKey = "";
-			String tempValue = "";
+			//String tempKey = "";
+			//String tempValue = "";
 
 			if (c != 0) {
 				//byte read was valid
@@ -459,8 +464,9 @@ int main(int argc, char** argv) {
 					if (c == '#') {
 						//fprintf(stdout, "Read from teensy: %s\n", msgTemp.c_str());
 						//update mode
+						/*
 						try {
-
+							
 							for (int i = 0; i < (int)msgTemp.length(); i++) {
 
 								if (msgTemp[i] == ':') {
@@ -509,20 +515,65 @@ int main(int argc, char** argv) {
 							cout << "Invalid mode sent from Teensy!" << endl;
 							cout << msgTemp << endl;
 						}
+						*/
+						
+
+						// Parse through feedback (delimited by :)
+						vector<string> feedbackStrings;
+						char delim = ':';
+						int prevDelim = -1;
+						while(true){
+							int nextDelim = msgTemp.find_first_of(delim, prevDelim+1);
+							if(nextDelim == string::npos){
+								break;
+							}else{
+								string currentFeedback = msgTemp.substr(prevDelim+1, nextDelim-prevDelim-1);
+								feedbackStrings.push_back(currentFeedback);
+							}
+							prevDelim = nextDelim;
+						}
+
+						// Use feedback
+						//cout << "Feedbacksize: " << feedbackStrings.size() << endl;
+
+						if(false){
+							for(int i=0; i<feedbackStrings.size(); i++){
+								cout << feedbackStrings[i] << ", ";
+							}
+							cout << endl;
+						}
+
+						string modeString = feedbackStrings[0];
+						string blimpString = feedbackStrings[1];
+						string goalString = feedbackStrings[2];
+						string baroDataString = feedbackStrings[3];
+
+						try{
+							piComm.setMode(static_cast<autoState>(stoi(modeString)));
+							baroData = stof(baroDataString);
+							if(programData.printBaroMode){
+								cout << "BaroData: " << baroData << endl;
+							}
+						}catch(invalid_argument& e){	
+							cout << "Invalid mode sent from Teensy!" << endl;
+							cout << msgTemp << endl;
+						}
 
 						msgTemp = "";
-
 					} else if (c != 0) {
-						msgTemp += String(1, c);
+						//msgTemp += String(1, c);
+						msgTemp += c;
 					} else {
 						reading = false;
 						break;
 					}
 
 					c = piComm.readSerial();
+					//cout << "Read " << c << endl;
 				}
 			}
 
+			/*
 			if (programData.verboseMode) {
 				if (teensyKeys.size() == teensyValues.size()) {
 					for (int i = 0; i < (int)teensyKeys.size(); i++) {
@@ -531,7 +582,7 @@ int main(int argc, char** argv) {
 					if(teensyKeys.size() > 0) cout << endl;
 				}
 			}
-
+			*/
 		}
 
     } //end while (main program loop)

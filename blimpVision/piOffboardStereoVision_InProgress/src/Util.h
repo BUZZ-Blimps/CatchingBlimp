@@ -87,6 +87,7 @@ struct ProgramData{
 	bool annotatedMode = false;
 	bool disableSerialMode = false;
 	bool printJSONMode = false;
+	bool printBaroMode = false;
 
 	bool setBlimpID = false;
 	std::string customBlimpID;
