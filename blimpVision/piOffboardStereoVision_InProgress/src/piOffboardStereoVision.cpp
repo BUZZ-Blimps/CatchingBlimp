@@ -139,12 +139,15 @@ bool parseCommandLineArgs(int argc, char** argv, ProgramData* programData){
 			} else {
 				return false;
 			}
-		} else if ((strcmp(argv[i], "-a") == 0) || (strcmp(argv[i], "--annotate") == 0)){
+		} else if((strcmp(argv[i], "-a") == 0) || (strcmp(argv[i], "--annotate") == 0)){
 			programData->annotatedMode = true;
 			std::cout << "Annotated mode enabled." << std::endl;
-		} else if ((strcmp(argv[i], "-ds") == 0) || (strcmp(argv[i], "--disable-serial") == 0)){
+		}else if((strcmp(argv[i], "-ds") == 0) || (strcmp(argv[i], "--disable-serial") == 0)){
 			programData->disableSerialMode = true;
 			std::cout << "Disable Serial mode enabled." << std::endl;
+		}else if(strcmp(argv[i], "--disable-stream") == 0){
+			programData->disableStreamMode = true;
+			std::cout << "Disable Stream mode enabled." << std::endl;
 		}else if((strcmp(argv[i], "-j") == 0) || (strcmp(argv[i], "--json") == 0)){
 			programData->printJSONMode = true;
 			std::cout << "Print JSON mode enabled." << std::endl;
@@ -162,6 +165,7 @@ bool parseCommandLineArgs(int argc, char** argv, ProgramData* programData){
 			helpText += "opt -j --json: Enable JSON Print Mode\n";
 			helpText += "opt -ds --disable-serial: Disable Serial Mode\n";
 			helpText += "opt -b --barometer: Enable Barometer Print Mode\n";
+			helpText += "opt --disable-stream: Disable Stream Mode\n";
 			fprintf(stderr, "%s\n", helpText.c_str());
 			return false;
 		} else {
@@ -240,8 +244,7 @@ int main(int argc, char** argv) {
 		// Get feedback from basestation
 		BSFeedbackData BSFeedback = piComm.getBSFeedback();
 		goalType goalColor = BSFeedback.goalColor;
-		bool autonomous = BSFeedback.autonomous;
-
+		programData.autonomous = BSFeedback.autonomous;
 
 		// Get recent frames
 		Mat lt_frame_lowres, rt_frame_lowres;

@@ -112,7 +112,7 @@ void ComputerVision::update(Mat imgL, Mat imgR, autoState mode, goalType goalCol
   goals.clear();
   if (mode == searching || mode == approach || mode == catching) {
       // Ball Detection
-      bool detectedBall = false; //getBall(Ballx, Bally, Ballz, ballArea, imgL, imgR);
+      bool detectedBall = getBall(Ballx, Bally, Ballz, ballArea, imgL, imgR);
 
       if(detectedBall){
         if(true){
@@ -365,7 +365,7 @@ bool ComputerVision::getBall(float &X, float &Y, float &Z, float &area, Mat imgL
   bitwise_and(Left_nice, Left_nice, masked_imgL, maskL);
   bitwise_and(Right_nice, Right_nice, masked_imgR, maskR);
 
-  piComm->setStreamFrame(masked_imgL, "MaxSight");
+  //piComm->setStreamFrame(masked_imgL, "MaxSight");
 
   // Debug Circular Mask
   //namedWindow("imgL");

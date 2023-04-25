@@ -78,17 +78,21 @@ void PiComm::init(ProgramData* programData){
 	}
 
 	// Start streaming thread
-	if (pthread_create(&streaming_thread, NULL, PiComm::staticStreamingThread_start, this) < 0) {
-		perror("PiComm failed to create thread: streaming_thread");
-		programData->program_running = false;
-		return;
+	if(!programData->disableStreamMode){
+		if (pthread_create(&streaming_thread, NULL, PiComm::staticStreamingThread_start, this) < 0) {
+			perror("PiComm failed to create thread: streaming_thread");
+			programData->program_running = false;
+			return;
+		}
 	}
-
+	
 	// Start machine learning feedback thread
-	if (pthread_create(&MLFeedback_thread, NULL, PiComm::staticMLFeedbackThread_start, this) < 0) {
-		perror("PiComm failed to create thread: MLFeedback_thread");
-		programData->program_running = false;
-		return;
+	if(!programData->disableStreamMode){
+		if (pthread_create(&MLFeedback_thread, NULL, PiComm::staticMLFeedbackThread_start, this) < 0) {
+			perror("PiComm failed to create thread: MLFeedback_thread");
+			programData->program_running = false;
+			return;
+		}
 	}
 }
 
@@ -269,6 +273,7 @@ void PiComm::sendUDPRaw(string target, string source, string flag, string messag
 	string combined = ":)" + target + "," + source + ":" + flag + ":" + message;
 	char* messageBuff = &combined[0];
 	int numbytes = sendto(sockSend, messageBuff, strlen(messageBuff), 0, (struct sockaddr*) &addrSend, sizeof(addrSend));
+	//fprintf(stdout, "Sendto return: %d\n", numbytes);
 }
 
 void PiComm::sendUDP(string flag, string message){
@@ -523,6 +528,9 @@ void PiComm::streamingThread_loop(){
 	fprintf(stdout, "PiComm streaming thread (%d) successfully started.\n", t_id);
 	
 	while(programData->program_running){
+		if(!programData->autonomous){
+			continue;
+		}
 		// Get current time in clocks
 		chrono::system_clock::time_point currentTime = chrono::system_clock::now();
 
@@ -532,9 +540,9 @@ void PiComm::streamingThread_loop(){
 		// Determine appropriate FPS throttle based on number of frames streamed recently
 		float FPS; // Hz
 		if(numFramesStreamedRecently <= 4){
-			FPS = 30;
+			FPS = 5; //30
 		}else{
-			FPS = 10;
+			FPS = 5; //10
 		}
 		float delayFPS = 1.0/FPS; // seconds
 
@@ -641,7 +649,7 @@ void PiComm::send_frame(NamedMatPtr frameToStream) {
 	buffer.insert(buffer.end(), bufferFrame.begin(), bufferFrame.end());
 
     unsigned int size = (unsigned int)(buffer.size());
-	fprintf(stdout, "Frame %s (size = %d)\n", frameToStream.name.c_str(), size);
+	//fprintf(stdout, "Frame %s (size = %d)\n", frameToStream.name.c_str(), size);
     unsigned int packet_count = ceil((double)size/(double)MAX_IMAGE_DGRAM);
 
 	// Packet protocol to send DATA of size N
@@ -652,7 +660,7 @@ void PiComm::send_frame(NamedMatPtr frameToStream) {
 	// Overhead = FrameName + FrameNum(mod 256?) + TotalNumberOfPackets + CurrentPacketNumber
     unsigned int array_pos_start = 0;
     while (packet_count > 0) {
-		fprintf(stdout, "%d, ", packet_count);
+		//fprintf(stdout, "%d, ", packet_count);
 
     	//Grab the next subvector to populate the current data packet
     	int array_pos_end = std::min(size, array_pos_start + MAX_IMAGE_DGRAM);
@@ -680,7 +688,7 @@ void PiComm::send_frame(NamedMatPtr frameToStream) {
         array_pos_start = array_pos_end;
         packet_count--;
     }
-	fprintf(stdout, "\n");
+	//fprintf(stdout, "\n");
 	//if(programData->verboseMode) fprintf(stdout, "Done!\n");
 }
 

@@ -94,7 +94,7 @@ class PiComm{
         MLFeedbackData MLFeedback;
         pthread_mutex_t mutex_MLFeedback;
 
-        const int MAX_DGRAM = pow(2, 14);
+        const int MAX_DGRAM = pow(2, 16);
         const int MAX_IMAGE_DGRAM = MAX_DGRAM - 64;
 
         unsigned char* send_buf;

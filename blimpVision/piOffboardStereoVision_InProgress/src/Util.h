@@ -88,6 +88,7 @@ struct ProgramData{
 	bool disableSerialMode = false;
 	bool printJSONMode = false;
 	bool printBaroMode = false;
+	bool disableStreamMode = false;
 
 	bool setBlimpID = false;
 	std::string customBlimpID;
@@ -96,6 +97,7 @@ struct ProgramData{
 	int customCaptureID;
 
 	bool program_running = true;
+	bool autonomous = false;
 };
 
 struct NamedMatPtr{

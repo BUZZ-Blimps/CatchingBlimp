@@ -7,9 +7,9 @@ if [ "$1" != "" ]; then
 	sleep 3
 	echo "Starting program."
 	if [ "$2" == "" ]; then
-		ssh pi@$hostname "./piOffboardStereoVisionSrc/build/piOffboardStereoVision"
+		ssh pi@$hostname "./piOffboardStereoVisionSrc/build/piOffboardStereoVision -b"
 	else
-		ssh pi@$hostname "./piOffboardStereoVisionSrc/build/piOffboardStereoVision -i $2"
+		ssh pi@$hostname "./piOffboardStereoVisionSrc/build/piOffboardStereoVision -i $2 -b"
 	fi
 else
 	echo "Usage: restartProgram.sh [hostname] <blimpID>"
