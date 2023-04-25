@@ -3,8 +3,32 @@
 #include <iostream>
 #include "ComputerVision.h"
 #include <vector>
+#include <string>
 
 using namespace std;
+
+string openCVType2str(int type) {
+  string r;
+
+  uchar depth = type & CV_MAT_DEPTH_MASK;
+  uchar chans = 1 + (type >> CV_CN_SHIFT);
+
+  switch ( depth ) {
+    case CV_8U:  r = "8U"; break;
+    case CV_8S:  r = "8S"; break;
+    case CV_16U: r = "16U"; break;
+    case CV_16S: r = "16S"; break;
+    case CV_32S: r = "32S"; break;
+    case CV_32F: r = "32F"; break;
+    case CV_64F: r = "64F"; break;
+    default:     r = "User"; break;
+  }
+
+  r += "C";
+  r += (chans+'0');
+
+  return r;
+}
 
 // ============================== CLASS ==============================
 void ComputerVision::init()
@@ -49,11 +73,13 @@ void ComputerVision::setQ()
   this->Q = Q_;
 }
 
-void ComputerVision::readCalibrationFiles()
+void ComputerVision::readCalibrationFiles(string srcDir)
 {
   cout << "Reading Stereo Camera Parameters" << endl;
 	
-  FileStorage cv_file2 = FileStorage(STEREO_CAL_PATH, FileStorage::READ);
+  string stereo_cal_path = srcDir + "/" + STEREO_CAL_FILENAME;
+
+  FileStorage cv_file2 = FileStorage(stereo_cal_path, FileStorage::READ);
     if(!cv_file2.isOpened()){
         cout << "Read failed!" << endl;
         return;
@@ -1080,6 +1106,7 @@ int ComputerVision::getQuad(){
     return quad;
 }
 
+/*
 bool ComputerVision::tuneBall(float &X, float &Y, float &Z, float &area, Mat imgL, Mat imgR)
 {
   // Initialize matrix for rectified stereo images
@@ -1401,4 +1428,402 @@ bool ComputerVision::tuneBall(float &X, float &Y, float &Z, float &area, Mat img
     return false;
   }
   
+}
+*/
+
+// Single channel
+Mat absSplitMat(Mat image, float split, float max){
+  //imshow("_image", image);
+
+  Mat mask_lower, mask_upper;
+  inRange(image, 0, split, mask_lower);
+  bitwise_not(mask_lower, mask_upper);
+
+  //imshow("_mask_lower", mask_lower);
+  //imshow("_mask_upper", mask_upper);
+
+  Mat lowerSub, upperSub;
+  subtract(split, image, lowerSub, mask_lower);
+  subtract(image, split, upperSub, mask_upper);
+  //imshow("_lowerSub", lowerSub);
+  //imshow("_upperSub", upperSub);
+
+  Mat output(image.size(), image.type());
+  //cout << "F1" << endl;
+  output.setTo(Scalar(0));
+  //cout << "F2" << endl;
+
+  // handle lower domain
+  Mat lowerSub2;
+  add(lowerSub, max-split, lowerSub2);
+  //imshow("lowerSub2", lowerSub2);
+
+  // handle upper domain
+  Mat upperSub2;
+  subtract(upperSub, split, upperSub2);
+  //imshow("upperSub2", upperSub2);
+
+  //cout << "output type " << output.type() << ", " << openCVType2str(output.type()) << endl;
+  //cout << "lowerSub2 type " << lowerSub2.type() << ", " << openCVType2str(lowerSub2.type()) << endl;
+  //cout << "upperSub2 type " << upperSub2.type() << ", " << openCVType2str(upperSub2.type()) << endl;
+
+  //cout << "F3" << endl;
+  lowerSub2.copyTo(output, mask_lower);
+  upperSub2.copyTo(output, mask_upper);
+  //cout << "F4" << endl;
+
+  return output;
+}
+
+bool ComputerVision::tuneBall(float &X, float &Y, float &Z, float &area, Mat img_L, Mat img_R)
+{
+  // Initialize matrix for rectified stereo images
+  Mat rect_L, rect_R;
+
+  // Applying stereo image rectification on the left image
+  remap(img_L,
+        rect_L,
+        Left_Stereo_Map1,
+        Left_Stereo_Map2,
+        INTER_LANCZOS4,
+        BORDER_CONSTANT,
+        0);
+
+  // Applying stereo image rectification on the right image
+  remap(img_R,
+        rect_R,
+        Right_Stereo_Map1,
+        Right_Stereo_Map2,
+        INTER_LANCZOS4,
+        BORDER_CONSTANT,
+        0);
+
+  // Applying blur to reduce noise
+  //GaussianBlur(Left_nice, Left_nice, Size(5, 5), 0);
+  //GaussianBlur(Right_nice, Right_nice, Size(5, 5), 0);
+
+  // Apply sharpen with laplacian filter
+  //Mat imgSharp_L, imgSharp_R;
+  //Laplacian(imgL, imgL, CV_16S, 3);
+  //Laplacian(imgR, imgR, CV_16S, 3);
+
+  //Mat imgSharp;
+  //convertScaleAbs(imgL, imgL);
+  //convertScaleAbs(imgR, imgR);
+
+  namedWindow("Sliders");
+
+  createTrackbar("targetH", "Sliders", &targetH, 180);
+  createTrackbar("targetS", "Sliders", &targetS, 255);
+  createTrackbar("targetV", "Sliders", &targetV, 255);
+  createTrackbar("minH", "Sliders", &minH, 255);
+  createTrackbar("minS", "Sliders", &minS, 255);
+  createTrackbar("minV", "Sliders", &minV, 255);
+  createTrackbar("maxH", "Sliders", &maxH, 255);
+  createTrackbar("maxS", "Sliders", &maxS, 255);
+  createTrackbar("maxV", "Sliders", &maxV, 255);
+  waitKey(1);
+
+  Scalar minHSV = Scalar(minH, minS, minV);
+  Scalar maxHSV = Scalar(maxH, maxS, maxV);
+
+  imshow("Raw_L", rect_L);
+  imshow("Raw_R", rect_R);
+
+  Size leftSize = rect_L.size();
+
+  cout << "type: " << rect_L.type() << endl;
+  cout << "opencv type: " << openCVType2str(rect_L.type()) << endl;
+
+  // Show target HSV
+  Mat HSV_Target(leftSize, rect_L.type());
+  Scalar targetHSV(targetH, targetS, targetV);
+  HSV_Target.setTo(targetHSV);
+  cvtColor(HSV_Target, HSV_Target, COLOR_HSV2BGR);
+  imshow("Target HSV", HSV_Target);
+
+  // Split H S V
+  Mat HSV_L;
+  cvtColor(rect_L, HSV_L, COLOR_RGB2HSV);
+  vector<Mat> HSV;
+  split(HSV_L, HSV); // Split image into HSV channels
+  Mat tempS, tempV;
+  HSV[1].copyTo(tempS);
+  HSV[2].copyTo(tempV);
+  tempS.setTo(255);
+  tempV.setTo(255);
+  vector<Mat> tempHSV;
+  tempHSV.push_back(HSV[0]);
+  tempHSV.push_back(tempS);
+  tempHSV.push_back(tempV);
+  Mat newHSV, newHSVRGB;
+  merge(tempHSV, newHSV);
+  cvtColor(newHSV, newHSVRGB, cv::COLOR_HSV2BGR);
+
+  imshow("H", newHSVRGB);
+  imshow("S", HSV[1]);
+  imshow("V", HSV[2]);
+
+  // Create diffs
+  Mat diffH, diffS, diffV;
+  diffH = absSplitMat(HSV[0], targetH, 180);
+  diffS = absSplitMat(HSV[1], targetS, 255);
+  diffV = absSplitMat(HSV[2], targetS, 255);
+
+  imshow("diffH", diffH);
+  imshow("diffS", diffS);
+  imshow("diffV", diffV);
+  /*
+
+  //Apply HSV
+  Mat HSV_L, HSV_R;
+  cvtColor(rect_L, HSV_L, cv::COLOR_BGR2HSV);
+  cvtColor(rect_R, HSV_R, cv::COLOR_BGR2HSV);
+  //Isolate Ball
+  Mat bMask_L, bMask_R;
+  inRange(left_HSV, min_, max_, bMask_L);
+  inRange(right_HSV, min_, max_, bMask_R);
+
+  vector<Mat> HSV;
+  split(left_HSV, HSV); // Split image into HSV channels
+
+  namedWindow("S");
+  imshow("S", HSV[1]);
+
+  namedWindow("V");
+  imshow("V", HSV[2]);
+
+  (HSV[1]).setTo(255); // Set S channel to max
+  (HSV[2]).setTo(255); // Set V channel to max
+  Mat newHSV, newHSVRGB;
+  merge(HSV, newHSV);
+  cvtColor(newHSV, newHSVRGB, COLOR_HSV2BGR);
+
+  //Noise reduction
+  Mat kernel = getStructuringElement(MORPH_ELLIPSE, Size(5, 5));
+  Mat bMask_L_cleaned, bMask_R_cleaned;
+  morphologyEx(bMask_L, bMask_L_cleaned, MORPH_CLOSE, kernel);
+  morphologyEx(bMask_L_cleaned, bMask_L_cleaned, MORPH_OPEN, kernel);
+
+  morphologyEx(bMask_R, bMask_R_cleaned, MORPH_CLOSE, kernel);
+  morphologyEx(bMask_R_cleaned, bMask_R_cleaned, MORPH_OPEN, kernel);
+
+  //DEBUG: see mask
+  namedWindow("bMask_L");
+  imshow("bMask_L", bMask_L_cleaned);
+
+  namedWindow("bMask_R");
+  imshow("bMask_R", bMask_R_cleaned);
+
+  namedWindow("bMask_L_H");
+  imshow("bMask_L_H", newHSVRGB);
+
+
+  //Find Largest Contour (Largest Ball)
+  vector<vector<Point> > contoursL;
+  findContours(bMask_L_cleaned, contoursL, RETR_EXTERNAL, CHAIN_APPROX_SIMPLE);
+
+  vector<Point> largestContour_L;
+  float largestArea_L = 0;
+  int index_L = 0;
+
+  for (unsigned int i = 0; i < contoursL.size(); i++) {
+      double area = contourArea(contoursL[i]);
+      if (area > largestArea_L) {
+          largestArea_L = area;
+          largestContour_L = contoursL[i];
+          index_L = 0;
+      }
+  }
+
+  vector<vector<Point> > contoursR;
+  findContours(bMask_R_cleaned, contoursR, RETR_EXTERNAL, CHAIN_APPROX_SIMPLE);
+
+  vector<Point> largestContour_R;
+  float largestArea_R = 0;
+  int index_R = 0;
+
+  for (unsigned int i = 0; i < contoursR.size(); i++) {
+      double area = contourArea(contoursR[i]);
+      if (area > largestArea_R) {
+          largestArea_R = area;
+          largestContour_R = contoursR[i];
+          index_R = i;
+      }
+  }
+
+  // Exclude contours that are too small
+  if (largestArea_L < 350) {
+    largestContour_L.clear();
+  }
+
+  if (largestArea_R < 350) {
+    largestContour_R.clear();
+  } 
+
+  // Debug draw contours
+  namedWindow("contL");
+  drawContours(imgL, contoursL, index_L, Scalar(255, 255, 255), -1);
+  imshow("contL", imgL);
+
+  namedWindow("contR");
+  drawContours(imgR, contoursR, index_R, Scalar(255, 255, 255), -1);
+  imshow("contR", imgR);
+
+  // Center detection with blob centroid
+  Moments m_L = moments(largestContour_L, true);
+  Point p_L(m_L.m10/m_L.m00, m_L.m01/m_L.m00);
+
+  //cout << largestArea_R << endl;
+  //cout << largestArea_L << endl;
+
+  Moments m_R = moments(largestContour_R, true);
+  Point p_R(m_R.m10/m_R.m00, m_R.m01/m_R.m00);
+
+  // Reveal area around chosen point in original image
+  Mat maskL = Mat::zeros(imgL.size(), CV_8UC1);
+  Mat maskR = Mat::zeros(imgL.size(), CV_8UC1);
+
+  // Create Circle masks
+  int radius = 50;
+
+  circle(maskL, p_L, radius, Scalar(255, 255, 255), -1);
+  circle(maskR, p_R, radius, Scalar(255, 255, 255), -1);
+
+  threshold(maskL, maskL, 127, 255, THRESH_BINARY);
+  threshold(maskR, maskR, 127, 255, THRESH_BINARY);
+
+  // Apply mask
+  Mat masked_imgL, masked_imgR;
+  bitwise_and(Left_nice, Left_nice, masked_imgL, maskL);
+  bitwise_and(Right_nice, Right_nice, masked_imgR, maskR);
+
+  // Debug Circular Mask
+  namedWindow("imgL");
+  imshow("imgL",masked_imgL);
+  waitKey(1);
+
+  namedWindow("imgR");
+  imshow("imgR",masked_imgR);
+  waitKey(1);
+
+  try {
+
+  // Perform ORB feature extraction and matching
+  int minHessian = 400;
+  Ptr<ORB> orb = ORB::create(minHessian);
+
+  vector<KeyPoint> keypointsL, keypointsR;
+  Mat descriptorsL, descriptorsR;
+
+  // Detect keypoints in the image
+  orb->detect(masked_imgL, keypointsL);
+  orb->detect(masked_imgR, keypointsR);
+
+  //Define radius
+  float radius = 15.0f;
+
+  //Filter keypoints
+  vector<KeyPoint> kp_filt_L;
+  for (const auto& k : keypointsL)
+  {
+    //Calculate Float
+    float dist = sqrt(pow(k.pt.x - p_L.x, 2) + pow(k.pt.y - p_L.y, 2));
+
+      if (dist < radius)
+      {
+        kp_filt_L.push_back(k);
+      }
+  }
+
+  vector<KeyPoint> kp_filt_R;
+  for (const auto& k : keypointsR)
+  {
+    //Calculate Float
+    float dist = sqrt(pow(k.pt.x - p_R.x, 2) + pow(k.pt.y - p_R.y, 2));
+
+      if (dist < radius)
+      {
+        kp_filt_R.push_back(k);
+      }
+  }
+
+  //DEBUG: Filtering
+  //cout << "Number of keypoints before filtering: " << keypointsL.size() << endl;
+  //cout << "Number of keypoints after filtering: " << kp_filt_L.size() << endl;
+
+  //Compute matches
+  orb->compute(masked_imgL, kp_filt_L, descriptorsL);
+  orb->compute(masked_imgR, kp_filt_R, descriptorsR);
+
+  // Match descriptors using Brute-Force matcher
+  BFMatcher matcher(NORM_HAMMING);
+  vector<vector<DMatch>> knn_matches;
+  matcher.knnMatch(descriptorsL, descriptorsR, knn_matches, 2);
+
+  // Filter matches using ratio test
+  const float ratio_thresh = 0.7f;
+  vector<DMatch> good_matches;
+  for (size_t i = 0; i < knn_matches.size(); i++) {
+    if (knn_matches[i][0].distance < ratio_thresh * knn_matches[i][1].distance) {
+      good_matches.push_back(knn_matches[i][0]);
+    }
+  }
+
+  // Draw good matches
+  Mat img_matches;
+  drawMatches(masked_imgL, kp_filt_L, masked_imgR, kp_filt_R, knn_matches, img_matches);
+
+  namedWindow("ORB Matches");
+  imshow("ORB Matches", img_matches);
+  waitKey(1);
+
+  // Calculate average distance of all matched points
+  double avg_distance = 0.0;
+  for (const auto& matches : knn_matches) {
+    if (matches.size() < 2) continue;  // Skip if not enough matches
+    const auto& kp_L = kp_filt_L[matches[0].queryIdx];
+    const auto& kp_R1 = kp_filt_R[matches[0].trainIdx];
+    const auto& kp_R2 = kp_filt_R[matches[1].trainIdx];
+    double disparity = abs(kp_L.pt.x - kp_R1.pt.x);
+    double ratio = matches[0].distance / matches[1].distance;
+    if (ratio < ratio_thresh) {
+      double distance = (F * BASELINE) / disparity;
+      avg_distance += distance;
+    }
+  }
+
+
+
+  // Add RANSAC maybe?
+
+
+  avg_distance /= good_matches.size();
+
+  //Assign XYZ of ball
+  Z = avg_distance;
+  X = (p_L.x + p_R.x)/2;
+  Y = (p_L.y + p_R.y)/2;
+  area = (largestArea_L + largestArea_R)/2;
+
+  //DEBUG READ OUTPUT
+  cout << "Distance: " << Z << endl;
+  cout << "X: " << X << endl;
+  cout << "Y: " << Y << endl;
+  //cout << area << endl;
+  //cout << isnan(Z) << endl;
+
+  if (isnan(Z)) {
+    return false;
+  } else {
+    return true;
+  }
+
+  }
+  catch (const cv::Exception){
+    cout << "Failed" << endl;
+    return false;
+  }
+  */
+ return false;
 }

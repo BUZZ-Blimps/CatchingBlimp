@@ -63,6 +63,23 @@ string getIPAddress(){
 	return IPAddress;
 }
 
+string findSourceDir(char** argv){
+	// Find current working directory
+	int cwdBufSize = 200;
+    char cwdBuf[cwdBufSize];
+	getcwd(cwdBuf, cwdBufSize);
+	string cwd(cwdBuf);
+
+	// Find executable path
+	string exePath(argv[0]);
+	int lastSlash = exePath.find_last_of('/');
+	exePath = exePath.substr(1, lastSlash-1); // Only want everything between the leading period and the final slash ("/")
+
+	// Find total path
+	string srcDirPath = cwd + exePath + "/..";
+	return srcDirPath;
+}
+
 // Lawson Code:
 //ComputerVision computerVision;
 ComputerVision compVis;
@@ -72,7 +89,7 @@ autoState mode = searching;
 //Variables
 goalType goalColor = orange;
 
-int main() {
+int main(int argc, char** argv) {
 	cout << "Hello World!" << endl;
 
 	string IPAddress = getIPAddress();
@@ -86,7 +103,8 @@ int main() {
 
 	// New Init
 	compVis.init();
-	compVis.readCalibrationFiles();
+	string srcDir = findSourceDir(argv);
+	compVis.readCalibrationFiles(srcDir);
 
 	// Loop
 	//namedWindow("imgL");

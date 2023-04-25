@@ -727,7 +727,7 @@ void ComputerVision::getGoal(float &X, float &Y, float &Z, float &area, float &a
               }
           }
 
-          std::cout << "corners" << averaged_corners << endl;
+          std::cout << "corners:" << endl << averaged_corners << endl;
 
           // Draw circles at the averaged corners on the original image
           for (int i = 0; i < averaged_corners.size(); i++) {

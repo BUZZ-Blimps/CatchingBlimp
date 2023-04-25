@@ -47,7 +47,9 @@ using namespace cv;
 #define ORANGE_G_MAX           Scalar(28,255,255) //orange min changed to 35
 
 
-#define STEREO_CAL_PATH     "/home/corelab-laptop2/Documents/testCams/piTestCompileSrc/stereo_rectify_maps240p.xml"
+#define STEREO_CAL_FILENAME     "stereo_rectify_maps240p.xml"
+
+//#define STEREO_CAL_PATH     "/home/corelab-laptop2/Documents/testCams/piTestCompileSrc/stereo_rectify_maps240p.xml"
 
 
 
@@ -91,6 +93,7 @@ class ComputerVision {
         */
 
         // Masks purple and red
+        /*
         int correction1 = 0;
         int correction2 = 11;
         int correction3 = 33;
@@ -100,12 +103,22 @@ class ComputerVision {
         int max1 = 123;
         int max2 = 114;
         int max3 = 58;
+        */
 
+       int targetH = 0;
+       int targetS = 0;
+       int targetV = 0;
+       int minH = 0;
+       int minS = 0;
+       int minV = 0;
+       int maxH = 0;
+       int maxS = 0;
+       int maxV = 0;
 
     public:
         void init();
         void setQ();
-        void readCalibrationFiles();
+        void readCalibrationFiles(string srcDir);
         void update(autoState mode, goalType goalColor);
         void getFrames(Mat &imgL, Mat &imgR);
         bool getBall(float &X, float &Y, float &Z, float &area, Mat imgL, Mat imgR);
