@@ -187,12 +187,22 @@ bool ComputerVision::getBall(float &X, float &Y, float &Z, float &area, Mat imgL
 
   // Apply sharpen with laplacian filter
   //Mat imgSharp_L, imgSharp_R;
-  //Laplacian(imgL, imgL, CV_16S, 3);
-  //Laplacian(imgR, imgR, CV_16S, 3);
+  //Laplacian(Left_nice, Left_nice, CV_16S, 3);
+  //Laplacian(Right_nice, Right_nice, CV_16S, 3);
 
   //Mat imgSharp;
   //convertScaleAbs(imgL, imgL);
   //convertScaleAbs(imgR, imgR);
+
+  //Sharpen
+  Mat test_sharp;
+  GaussianBlur(Left_nice, test_sharp, cv::Size(0, 0), 3);
+  addWeighted(Left_nice, 2, test_sharp, -1.0, 0, test_sharp);
+
+  namedWindow("test_sharp");
+  imshow("test_sharp",test_sharp);
+  waitKey(1);
+
 
   //Apply correction
   Mat ball_CL, ball_CR;
@@ -265,11 +275,11 @@ bool ComputerVision::getBall(float &X, float &Y, float &Z, float &area, Mat imgL
   }
 
   // Exclude contours that are too small
-  if (largestArea_L < 350) {
+  if (largestArea_L < 150) {
     largestContour_L.clear();
   }
 
-  if (largestArea_R < 350) {
+  if (largestArea_R < 150) {
     largestContour_R.clear();
   } 
 
@@ -318,6 +328,19 @@ bool ComputerVision::getBall(float &X, float &Y, float &Z, float &area, Mat imgL
   namedWindow("imgR");
   imshow("imgR",masked_imgR);
   waitKey(1);
+
+  //Sharpen
+  Mat sharp_L;
+  GaussianBlur(masked_imgL, sharp_L, cv::Size(0, 0), 3);
+  addWeighted(masked_imgL, 2, sharp_L, -1.0, 0, sharp_L);
+
+  //Sharpen
+  Mat sharp_R;
+  GaussianBlur(masked_imgR, sharp_R, cv::Size(0, 0), 3);
+  addWeighted(masked_imgR, 2, sharp_R, -1.0, 0, sharp_R);
+
+  masked_imgL = sharp_L;
+  masked_imgR = sharp_R;
 
   try {
 

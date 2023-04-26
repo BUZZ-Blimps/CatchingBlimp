@@ -528,7 +528,7 @@ void PiComm::streamingThread_loop(){
 	fprintf(stdout, "PiComm streaming thread (%d) successfully started.\n", t_id);
 	
 	while(programData->program_running){
-		if(!programData->autonomous){
+		if(!programData->forceStreamMode && !programData->autonomous){
 			continue;
 		}
 		// Get current time in clocks

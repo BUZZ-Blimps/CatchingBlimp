@@ -89,6 +89,7 @@ struct ProgramData{
 	bool printJSONMode = false;
 	bool printBaroMode = false;
 	bool disableStreamMode = false;
+	bool forceStreamMode = false;
 
 	bool setBlimpID = false;
 	std::string customBlimpID;

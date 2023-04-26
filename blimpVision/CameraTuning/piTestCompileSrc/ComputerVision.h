@@ -38,9 +38,9 @@ using namespace cv;
 #define DISP_WIDTH		160
 #define DISP_HEIGHT		120
 
-#define B_CORRECTION	Scalar(29,7,15)
-#define B_MIN			Scalar(46,0,0)
-#define B_MAX			Scalar(96,74,213)
+#define B_CORRECTION	Scalar(0,19,0)
+#define B_MIN			Scalar(105,0,19)
+#define B_MAX			Scalar(171,255,255)
 
 #define ORANGE_G_CORRECTION    Scalar(0,45,0)
 #define ORANGE_G_MIN           Scalar(10,0,0) //orange min changed to 10

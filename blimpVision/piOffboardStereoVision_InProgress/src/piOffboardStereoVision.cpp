@@ -154,6 +154,9 @@ bool parseCommandLineArgs(int argc, char** argv, ProgramData* programData){
 		}else if((strcmp(argv[i], "-b") == 0) || (strcmp(argv[i], "--barometer") == 0)){
 			programData->printBaroMode = true;
 			std::cout << "Print Barometer mode enabled." << std::endl;
+		}else if((strcmp(argv[i], "-f") == 0) || (strcmp(argv[i], "--force") == 0)){
+			programData->forceStreamMode = true;
+			std::cout << "Force Stream mode enabled." << std::endl;
 		} else if ((strcmp(argv[i], "-h") == 0) || (strcmp(argv[i], "--help") == 0)) {
 			//Print help info and return
 			std::string helpText;
@@ -166,6 +169,7 @@ bool parseCommandLineArgs(int argc, char** argv, ProgramData* programData){
 			helpText += "opt -ds --disable-serial: Disable Serial Mode\n";
 			helpText += "opt -b --barometer: Enable Barometer Print Mode\n";
 			helpText += "opt --disable-stream: Disable Stream Mode\n";
+			helpText += "opt -f --force: Enable Force Stream Mode\n";
 			fprintf(stderr, "%s\n", helpText.c_str());
 			return false;
 		} else {
