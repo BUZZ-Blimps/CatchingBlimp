@@ -734,7 +734,7 @@ void ComputerVision::getGoal(float &X, float &Y, float &Z, float &area, float &a
               circle(bMask_R_cleaned, averaged_corners[i], 4, Scalar(0, 255, 0), 2);
           }
 
-          // Set the radius of the circle around each corner point
+          // Set the radius of the circle aropiComm->setStreamFrame(bMask_L_cleaned, "bMask_L");und each corner point
           int radius = 30;
 
           // Create a grayscale image mask with the same size as the original image
@@ -804,11 +804,12 @@ void ComputerVision::getGoal(float &X, float &Y, float &Z, float &area, float &a
         }      
     }
 
-    // Display the resulot
+    // Display the result
+    piComm->setStreamFrame(bMask_L_cleaned, "bMask_L");
 
     //imshow("ApproximationsL", bMask_L_cleaned);
     //waitKey(1);
-    
+    piComm->setStreamFrame(bMask_L_cleaned, "bMask_L");
     //imshow("ApproximationsR", bMask_R_cleaned);
     //waitKey(1);
 
