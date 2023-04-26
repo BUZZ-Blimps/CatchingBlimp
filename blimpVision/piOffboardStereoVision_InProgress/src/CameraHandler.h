@@ -23,7 +23,7 @@ using namespace cv;
 class CameraHandler {
     private:
         VideoCapture cap;
-        Mat leftFrameCopied, rightFrameCopied;
+        Mat rawFrameCopied, leftFrameCopied, rightFrameCopied;
         unsigned int newFrameNum;
         unsigned int prevFrameNum;
 
@@ -41,6 +41,6 @@ class CameraHandler {
     public:
         void init(PiComm* piComm, ProgramData* programData);
         void end();
-        bool getRecentFrames(Mat* leftFrame, Mat* rightFrame);
+        bool getRecentFrames(Mat* rawFrame, Mat* leftFrame, Mat* rightFrame);
 
 };

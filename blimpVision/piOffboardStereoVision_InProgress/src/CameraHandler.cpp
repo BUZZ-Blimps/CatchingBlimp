@@ -112,6 +112,7 @@ void CameraHandler::captureThread_loop(){
 
         // Copy images to shared memory
         pthread_mutex_lock(&mutex_newFrame);
+        rawFrameCopied = rawFrame;
         leftFrameCopied = leftFrame_maxres;
         rightFrameCopied = rightFrame_maxres;
         pthread_mutex_unlock(&mutex_newFrame);
@@ -134,7 +135,7 @@ void CameraHandler::captureThread_loop(){
 	pthread_exit((void *) 0);
 }
 
-bool CameraHandler::getRecentFrames(Mat* leftFrame, Mat* rightFrame){
+bool CameraHandler::getRecentFrames(Mat* rawFrame, Mat* leftFrame, Mat* rightFrame){
     // Really fast mutex
     unsigned int tempFrameNum;
     pthread_mutex_lock(&mutex_newFrameNum);
@@ -144,12 +145,14 @@ bool CameraHandler::getRecentFrames(Mat* leftFrame, Mat* rightFrame){
     if(tempFrameNum > prevFrameNum){
         // Current frame has not been acquired, get and return it
         prevFrameNum = tempFrameNum;
-        Mat leftFrameTemp, rightFrameTemp;
+        Mat rawFrameTemp, leftFrameTemp, rightFrameTemp;
         pthread_mutex_lock(&mutex_newFrame);
+        rawFrameTemp = rawFrameCopied;
         leftFrameTemp = leftFrameCopied;
         rightFrameTemp = rightFrameCopied;
         pthread_mutex_unlock(&mutex_newFrame);
         // Return frames and true
+        *rawFrame = rawFrameTemp;
         *leftFrame = leftFrameTemp;
         *rightFrame = rightFrameTemp;
         return true;

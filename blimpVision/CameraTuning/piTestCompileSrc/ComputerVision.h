@@ -14,6 +14,9 @@ using namespace std;
 using namespace cv;
 
 // ============================== DEFINES ==============================
+#define USE_VIDEO       true
+#define VIDEO_FPS       30
+
 #define CAMERA_INDEX       2
 
 #define CAMERA_WIDTH	320
@@ -57,6 +60,8 @@ using namespace cv;
 class ComputerVision {
     private:
         VideoCapture cap;
+        bool capturing = true;
+        Mat lastCaptured;
 
         // Stereo Calibration
         Mat Left_Stereo_Map1;

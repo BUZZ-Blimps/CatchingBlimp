@@ -33,11 +33,20 @@ string openCVType2str(int type) {
 // ============================== CLASS ==============================
 void ComputerVision::init()
 {
-  // Init Camera
-  cap.open(CAMERA_INDEX, CAP_V4L);
-  if (!cap.isOpened()) {
-		CV_Assert("CamL open failed");
-	}
+  // Init Camera  
+  if(USE_VIDEO){
+    // Open video
+    cap.open("/home/corelab-laptop2/GitHub/CatchingBlimp/Goals3.avi");
+    if (!cap.isOpened()) {
+      CV_Assert("CamL open failed");
+    }
+  }else{
+    // Open camera
+    cap.open(CAMERA_INDEX, CAP_V4L);
+    if (!cap.isOpened()) {
+      CV_Assert("CamL open failed");
+    }
+  }
 
   cap.set(CAP_PROP_FRAME_WIDTH, CAMERA_WIDTH);
 	cap.set(CAP_PROP_FRAME_HEIGHT, CAMERA_HEIGHT);
@@ -116,6 +125,7 @@ void ComputerVision::update(autoState mode, goalType goalColor)
   }
 
   // Ball Detection
+  mode = goalSearch;
   if (mode == searching || mode == approach || mode == catching) {
     getBall(Ballx, Bally, Ballz, ballArea, left, right);
 
@@ -143,9 +153,42 @@ void ComputerVision::update(autoState mode, goalType goalColor)
 
 void ComputerVision::getFrames(Mat &imgL, Mat &imgR)
 {
+  // 32 = space
+  // 27 = esc
+
   // Get Frame
+  if(USE_VIDEO){
+    int delay = 10;
+    if(capturing) delay = 1000.0 * 1/VIDEO_FPS;
+    
+    int key = waitKey(delay);
+    if(key == 32){
+      // Toggle video
+      capturing = !capturing;
+      if(capturing){
+        cout << "Resumed video." << endl;
+      }else{
+        cout << "Paused video." << endl;
+      }
+    }else if(key == 27){
+      //Kill program
+    }
+  }
+
   Mat frame2;
-  cap >> frame2;
+  if(capturing){
+    if(cap.grab()){
+      cap.retrieve(frame2);
+    }else{
+      cout << "VideoCapture not open. Reopening..." << endl;
+      cap.release();
+      init();
+      cap >> frame2;
+    }
+    lastCaptured = frame2;
+  }else{
+    frame2 = lastCaptured;
+  }
 
   // Split Frames
   Rect left_roi(0, 0, frame2.cols/2, frame2.rows);
@@ -201,7 +244,7 @@ bool ComputerVision::getBall(float &X, float &Y, float &Z, float &area, Mat imgL
 
   namedWindow("test_sharp");
   imshow("test_sharp",test_sharp);
-  waitKey(1);
+  //waitKey(1);
 
 
   //Apply correction
@@ -323,11 +366,11 @@ bool ComputerVision::getBall(float &X, float &Y, float &Z, float &area, Mat imgL
   // Debug Circular Mask
   namedWindow("imgL");
   imshow("imgL",masked_imgL);
-  waitKey(1);
+  //waitKey(1);
 
   namedWindow("imgR");
   imshow("imgR",masked_imgR);
-  waitKey(1);
+  //waitKey(1);
 
   //Sharpen
   Mat sharp_L;
@@ -411,7 +454,7 @@ bool ComputerVision::getBall(float &X, float &Y, float &Z, float &area, Mat imgL
 
   namedWindow("ORB Matches");
   imshow("ORB Matches", img_matches);
-  waitKey(1);
+  //waitKey(1);
 
   // Calculate average distance of all matched points
   double avg_distance = 0.0;
@@ -463,6 +506,9 @@ bool ComputerVision::getBall(float &X, float &Y, float &Z, float &area, Mat imgL
 }
 
 void ComputerVision::getGoal(float &X, float &Y, float &Z, float &area, float &angle, Mat imgL, Mat imgR){
+  //cout << "goal" << endl;
+  imshow("raw_L", imgL);
+  imshow("raw_R", imgR);
   // Applying blur to reduce noise
   Mat imgBlurredL;
   GaussianBlur(imgL, imgBlurredL, Size(5, 5), 2);
@@ -524,11 +570,11 @@ void ComputerVision::getGoal(float &X, float &Y, float &Z, float &area, float &a
   //DEBUG: see mask
   namedWindow("bMask_L");
   imshow("bMask_L", bMask_L_cleaned);
-  waitKey(1);
+  //waitKey(1);
 
   namedWindow("bMask_R");
   imshow("bMask_R", bMask_R_cleaned);
-  waitKey(1);
+  //waitKey(1);
 
   //Find Contours
   vector<vector<Point> > contoursL;
@@ -712,7 +758,7 @@ void ComputerVision::getGoal(float &X, float &Y, float &Z, float &area, float &a
 
           namedWindow("bruh");
           imshow("bruh", masked_imgL_);
-          waitKey(1);
+          //waitKey(1);
 
           double widthHeightRatioL = (double)rectL.width / rectL.height;
           double widthHeightRatioR = (double)rectR.width / rectR.height;
@@ -766,17 +812,17 @@ void ComputerVision::getGoal(float &X, float &Y, float &Z, float &area, float &a
     // Display the resulot
 
     imshow("ApproximationsL", bMask_L_cleaned);
-    waitKey(1);
+    //waitKey(1);
     
     imshow("ApproximationsR", bMask_R_cleaned);
-    waitKey(1);
+    //waitKey(1);
 
     Mat masked_imgR_;
     bitwise_and(Left_nice, Left_nice, masked_imgR_, bMask_R_cleaned);
 
     namedWindow("Test");
     imshow("Test", masked_imgR_);
-    waitKey(1);
+    //waitKey(1);
     
     /*
     //Approximate shapes
@@ -952,7 +998,7 @@ float ComputerVision::get_avg_dist_FM(Mat imgL, Mat imgR, String index)
     drawMatches(imgL, keypointsL, imgR, keypointsR, good_matches, img_matches);
 
     imshow(index, img_matches);
-    waitKey(1);
+    //waitKey(1);
 
     // Calculate average distance of all matched points
     double avg_distance = 0.0;
@@ -1006,7 +1052,7 @@ float ComputerVision::get_avg_dist_DM(Mat imgL, Mat imgR, String index)
 
     // Display the disparity map
     imshow(index, output);
-    waitKey(1);
+    //waitKey(1);
 
     // Compute the average positive disparity
     long count = 0;
@@ -1083,7 +1129,7 @@ float ComputerVision::get_avg_dist_CA(Mat imgL, Mat imgR, String index)
 
   // Show the images with the largest contours
   imshow(index, imgLContour);
-  waitKey(1);
+  //waitKey(1);
 
   // Return the average distance between the frames
   return 0.0;
@@ -1545,7 +1591,7 @@ bool ComputerVision::tuneBall(float &X, float &Y, float &Z, float &area, Mat img
   createTrackbar("maxH", "Sliders", &maxH, 255);
   createTrackbar("maxS", "Sliders", &maxS, 255);
   createTrackbar("maxV", "Sliders", &maxV, 255);
-  waitKey(1);
+  //waitKey(1);
 
   Scalar minHSV = Scalar(minH, minS, minV);
   Scalar maxHSV = Scalar(maxH, maxS, maxV);

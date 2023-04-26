@@ -108,6 +108,7 @@ int main(int argc, char** argv) {
 
 	// Loop
 	//namedWindow("imgL");
+	cout << "PRESS SPACE TO PAUSE/RESUME VIDEO." << endl;
 	while(true){
 		
 		/*
@@ -144,10 +145,11 @@ int main(int argc, char** argv) {
 		//==================== NEW ====================
 		//compVis.update(searching, goalColor);
 		// compVis.update_PI(mode, goalColor);
-		float X, Y, Z, area = 0;
+		float X, Y, Z, area, angle = 0;
 		Mat left, right;
 		compVis.getFrames(left, right);
-		compVis.getBall(X, Y, Z, area, left, right);
+		compVis.getGoal(X, Y, Z, area, angle, left, right);
+		//compVis.getBall(X, Y, Z, area, left, right);
 		//compVis.getAvoidance(left, right);
 	}
 

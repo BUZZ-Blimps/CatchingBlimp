@@ -251,9 +251,10 @@ int main(int argc, char** argv) {
 		programData.autonomous = BSFeedback.autonomous;
 
 		// Get recent frames
-		Mat frame_L, frame_R;
-		bool recentFrames = cameraHandler.getRecentFrames(&frame_L, &frame_R);
+		Mat frame_raw, frame_L, frame_R;
+		bool recentFrames = cameraHandler.getRecentFrames(&frame_raw, &frame_L, &frame_R);
 		if(!recentFrames) continue;
+		videoSaver.writeFrame(frame_raw);
 
 		// Do computer vision
 		computerVision.update(frame_L, frame_R, piComm.getMode(), goalColor);
@@ -268,7 +269,6 @@ int main(int argc, char** argv) {
 		last = currentTime;
 
 		computerVision.left_correct.copyTo(annotatedFrame);
-		videoSaver.writeFrame(frame_L);
 
 		//Select largest target for blimp depending on state:
 		std::vector<std::vector<float> > target;
