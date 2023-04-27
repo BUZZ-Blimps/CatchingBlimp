@@ -36,7 +36,7 @@ void ComputerVision::init()
   // Init Camera  
   if(USE_VIDEO){
     // Open video
-    cap.open("/home/corelab-laptop2/GitHub/CatchingBlimp/Goals3.avi");
+    cap.open("/home/corelab-laptop2/GitHub/CatchingBlimp/Goals5Yellow.avi");
     if (!cap.isOpened()) {
       CV_Assert("CamL open failed");
     }
@@ -1895,4 +1895,390 @@ bool ComputerVision::tuneBall(float &X, float &Y, float &Z, float &area, Mat img
   }
   */
  return false;
+}
+
+void ComputerVision::tuneGoal(float &X, float &Y, float &Z, float &area, float &angle, Mat imgL, Mat imgR){
+  //cout << "goal" << endl;
+  imshow("raw_L", imgL);
+  imshow("raw_R", imgR);
+  // Applying blur to reduce noise
+  Mat imgBlurredL;
+  GaussianBlur(imgL, imgBlurredL, Size(5, 5), 2);
+
+  Mat imgBlurredR;
+  GaussianBlur(imgR, imgBlurredR, Size(5, 5), 2);
+
+  // Initialize matrix for rectified stereo images
+  Mat Left_nice, Right_nice;
+
+  // Applying stereo image rectification on the left image
+  remap(imgBlurredL,
+        Left_nice,
+        Left_Stereo_Map1,
+        Left_Stereo_Map2,
+        INTER_LANCZOS4,
+        BORDER_CONSTANT,
+        0);
+
+  // Applying stereo image rectification on the right image
+  remap(imgBlurredR,
+        Right_nice,
+        Right_Stereo_Map1,
+        Right_Stereo_Map2,
+        INTER_LANCZOS4,
+        BORDER_CONSTANT,
+        0);
+  
+  namedWindow("Sliders");
+
+  createTrackbar("targetH", "Sliders", &targetH, 180);
+  createTrackbar("targetS", "Sliders", &targetS, 255);
+  createTrackbar("targetV", "Sliders", &targetV, 255);
+  createTrackbar("minH", "Sliders", &minH, 255);
+  createTrackbar("minS", "Sliders", &minS, 255);
+  createTrackbar("minV", "Sliders", &minV, 255);
+  createTrackbar("maxH", "Sliders", &maxH, 255);
+  createTrackbar("maxS", "Sliders", &maxS, 255);
+  createTrackbar("maxV", "Sliders", &maxV, 255);
+  //waitKey(1);
+
+  Scalar corr_ = Scalar(targetH, targetS, targetV);
+  Scalar minHSV = Scalar(minH, minS, minV);
+  Scalar maxHSV = Scalar(maxH, maxS, maxV);
+
+  //Apply correction
+  Mat goal_CL, goal_CR;
+  Mat balloonCorrected_L, balloonCorrected_R;
+  Mat balloonCorrect_L = Mat::zeros(Left_nice.size(), Left_nice.type());
+  Mat balloonCorrect_R = Mat::zeros(Right_nice.size(), Right_nice.type());
+  balloonCorrect_L.setTo(corr_);
+  balloonCorrect_R.setTo(corr_);
+
+  add(Left_nice, balloonCorrect_L, goal_CL);
+  add(Right_nice, balloonCorrect_R, goal_CR);
+
+  //Apply HSV
+  Mat left_HSV, right_HSV;
+  cvtColor(goal_CL, left_HSV, cv::COLOR_BGR2HSV);
+  cvtColor(goal_CR, right_HSV, cv::COLOR_BGR2HSV);
+
+  //Isolate Goal
+  Mat bMask_L, bMask_R;
+  inRange(left_HSV, minHSV, maxHSV, bMask_L);
+  inRange(right_HSV, minHSV, maxHSV, bMask_R);
+
+  //Noise reduction
+  Mat kernel = getStructuringElement(MORPH_RECT, Size(5, 5));
+  Mat bMask_L_cleaned, bMask_R_cleaned;
+  morphologyEx(bMask_L, bMask_L_cleaned, MORPH_CLOSE, kernel);
+  morphologyEx(bMask_L_cleaned, bMask_L_cleaned, MORPH_OPEN, kernel);
+
+  morphologyEx(bMask_R, bMask_R_cleaned, MORPH_CLOSE, kernel);
+  morphologyEx(bMask_R_cleaned, bMask_R_cleaned, MORPH_OPEN, kernel);
+
+  //DEBUG: see mask
+  namedWindow("bMask_L");
+  imshow("bMask_L", bMask_L_cleaned);
+  //waitKey(1);
+
+  namedWindow("bMask_R");
+  imshow("bMask_R", bMask_R_cleaned);
+  //waitKey(1);
+
+  //Find Contours
+  vector<vector<Point> > contoursL;
+  vector<vector<Point> > contoursR;
+  findContours(bMask_L_cleaned, contoursL, RETR_EXTERNAL, CHAIN_APPROX_SIMPLE);
+  findContours(bMask_R_cleaned, contoursR, RETR_EXTERNAL, CHAIN_APPROX_SIMPLE);
+
+  // Apply morphological operations to fill in the gaps and complete the rectangle
+  dilate(bMask_L_cleaned, bMask_L_cleaned, kernel);
+  erode(bMask_L_cleaned, bMask_L_cleaned, kernel);
+  dilate(bMask_R_cleaned, bMask_R_cleaned, kernel);
+  erode(bMask_R_cleaned, bMask_R_cleaned, kernel);
+  
+  // Find the bounding rectangle of the largest contour
+  Rect rectL;
+  Rect rectR;
+
+  // Try Catch for numerous failure points
+  try {
+
+    if (!contoursL.empty()) {
+      size_t maxAreaIndexL = 0;
+      for (size_t i = 1; i < contoursL.size(); i++) {
+          if (contourArea(contoursL[i]) > contourArea(contoursL[maxAreaIndexL])) {
+              maxAreaIndexL = i;
+          }
+      }
+
+      if (pixelDensityL < 0.35){
+        rectL = boundingRect(contoursL[maxAreaIndexL]);
+      } else if (pixelDensityL > 0.35 && maxAreaIndexL != 0) {
+        rectL = boundingRect(contoursL[maxAreaIndexL-1]);
+      } 
+      //std::cout << "index: " << maxAreaIndex << endl;
+    }
+
+    if (!contoursR.empty()) {
+      size_t maxAreaIndexR = 0;
+      for (size_t i = 1; i < contoursR.size(); i++) {
+          if (contourArea(contoursR[i]) > contourArea(contoursR[maxAreaIndexR])) {
+              maxAreaIndexR = i;
+          }
+      }
+
+      if (pixelDensityR < 0.35){
+        rectR = boundingRect(contoursR[maxAreaIndexR]);
+      } else if (pixelDensityR > 0.35 && maxAreaIndexR != 0) {
+        rectR = boundingRect(contoursR[maxAreaIndexR-1]);
+      } 
+      //std::cout << "index: " << maxAreaIndex << endl;
+    }
+
+    // Draw a new rectangle with the same aspect ratio and orientation
+    if (!rectL.empty() && !rectR.empty()) {
+        double aspectRatioL = (double)rectL.width / rectL.height;
+        double aspectRatioR = (double)rectR.width / rectR.height;
+
+        int newWidthL = (int)(aspectRatioL * rectL.height);
+        int newWidthR = (int)(aspectRatioR * rectR.height);
+
+        //center and 4 corners of the bounding box
+        Point centerL = Point(rectL.x + rectL.width / 2, rectL.y + rectL.height / 2);
+        Point ltCorner = Point(rectL.x, rectL.y + rectL.height);;
+        Point rtCorner = Point(rectL.x + rectL.width, rectL.y + rectL.height);
+        Point lbCorner = Point(rectL.x, rectL.y);
+        Point rbCorner = Point(rectL.x + rectL.width, rectL.y);;
+
+        Point centerR = Point(rectR.x + rectR.width / 2, rectR.y + rectR.height / 2);
+
+        //show center and 4 corners
+        circle(bMask_L_cleaned,centerL,1,Scalar(255,255,0),3,4,0);
+        // circle(bMask_L_cleaned,ltCorner,1,Scalar(255,255,0),20,4,0);
+        // circle(bMask_L_cleaned,lbCorner,1,Scalar(255,255,0),20,4,0);
+        // circle(bMask_L_cleaned,rtCorner,1,Scalar(255,255,0),20,4,0);
+        // circle(bMask_L_cleaned,rbCorner,1,Scalar(255,255,0),20,4,0);
+        circle(bMask_R_cleaned,centerR,1,Scalar(255,255,0),3,4,0);
+
+        rectL = Rect(centerL.x - newWidthL / 2, rectL.y, newWidthL, rectL.height);
+        rectR = Rect(centerR.x - newWidthR / 2, rectR.y, newWidthR, rectR.height);
+        // std::cout << "Center(Left) (x,y): " << centerL.x << ", " << centerL.y << endl;
+        // std::cout << "Center(Right) (x,y): " << centerR.x << ", " << centerR.y << endl;
+
+        Mat cropedMaskL = bMask_L_cleaned.colRange(rectL.x,rectL.x + rectL.width).rowRange(rectL.y,rectL.y + rectL.height);
+        Mat cropedMaskR = bMask_R_cleaned.colRange(rectR.x,rectR.x + rectR.width).rowRange(rectR.y,rectR.y + rectR.height);  
+
+        int whitePixelsL = countNonZero(cropedMaskL);
+        int whitePixelsR = countNonZero(cropedMaskR);
+        //std::cout << "white pixels: " << whitePixels << endl;
+
+        pixelDensityL = double(whitePixelsL)/double(rectL.width*rectL.height);
+        pixelDensityR = double(whitePixelsR)/double(rectR.width*rectR.height);
+        //std::cout << "pixel density: " << pixelDensity << endl;
+
+        if (pixelDensityL > 0.1 && pixelDensityL < 0.35 && pixelDensityR > 0.1 && pixelDensityR < 0.35 ){
+          rectangle(bMask_L_cleaned, rectL, Scalar(255), 2);
+
+          //Coners
+          vector<Point2f> corners;
+
+          output = Mat::zeros(bMask_R_cleaned.size(), CV_32FC1);
+          //cornerHarris for corner finding 
+          cornerHarris(bMask_R_cleaned,output,5,3,0.04);
+          //normalize to get the outputs 
+          normalize(output,output_norm,0,255,NORM_MINMAX,CV_32FC1, Mat());
+          convertScaleAbs(output_norm,output_norm_scaled);
+
+          
+          //draw the points on the image
+          for (int j = 0; j<output_norm.rows;j++){
+            for (int i = 0; i<output_norm.cols;i++){
+              // the threshold can be changed to filter how many points are getting pushed to coners vector
+              if ((int)output_norm.at<float>(j,i) > 150){
+                //coordiates of the corners are (i,j), they can be stored in a vector 
+                //circle(bMask_R_cleaned,Point(i,j),4,Scalar(0,0,255),2,8,0);
+                corners.push_back(Point(i,j));
+              }
+            }
+          }
+
+          // K means clustering to remove close corners
+
+          // Set the number of clusters
+          int num_clusters = 4;
+
+          // Convert the vector of corners to a matrix
+          Mat corners_mat(corners.size(), 2, CV_32F);
+          for (int i = 0; i < corners.size(); i++) {
+              corners_mat.at<float>(i, 0) = corners[i].x;
+              corners_mat.at<float>(i, 1) = corners[i].y;
+          }
+
+          // Perform k-means clustering
+          Mat labels, centers;
+          kmeans(corners_mat, num_clusters, labels, TermCriteria(TermCriteria::EPS+TermCriteria::COUNT, 10, 1.0), 3, KMEANS_PP_CENTERS, centers);
+
+          // Group the corners based on their cluster labels
+          vector<vector<Point>> corner_groups(num_clusters);
+          for (int i = 0; i < corners_mat.rows; i++) {
+              int label = labels.at<int>(i);
+              corner_groups[label].push_back(Point(corners_mat.at<float>(i, 0), corners_mat.at<float>(i, 1)));
+          }
+
+          // Compute the average of each group of corners
+          vector<Point> averaged_corners;
+          for (int i = 0; i < corner_groups.size(); i++) {
+              if (corner_groups[i].size() > 0) {
+                  int sum_x = 0, sum_y = 0;
+                  for (int j = 0; j < corner_groups[i].size(); j++) {
+                      sum_x += corner_groups[i][j].x;
+                      sum_y += corner_groups[i][j].y;
+                  }
+                  int avg_x = round(sum_x / corner_groups[i].size());
+                  int avg_y = round(sum_y / corner_groups[i].size());
+                  averaged_corners.push_back(Point(avg_x, avg_y));
+              }
+          }
+
+          std::cout << "corners" << averaged_corners << endl;
+
+          // Draw circles at the averaged corners on the original image
+          for (int i = 0; i < averaged_corners.size(); i++) {
+              circle(bMask_R_cleaned, averaged_corners[i], 4, Scalar(0, 255, 0), 2);
+          }
+
+          // Set the radius of the circle around each corner point
+          int radius = 30;
+
+          // Create a grayscale image mask with the same size as the original image
+          Mat mask(Left_nice.size(), CV_8UC1, Scalar(0));
+
+          cout << averaged_corners.size() << endl;
+
+          // Draw circles with the specified radius around each averaged corner point
+          //for (int i = 0; i < averaged_corners.size(); i++) {
+          //    circle(mask, averaged_corners[i], radius, Scalar(255), -1);
+          //}
+          
+          Mat masked_imgL_;
+          threshold(mask, mask, 127, 255, THRESH_BINARY);
+          bitwise_and(imgL, imgL, masked_imgL_, mask);
+
+          namedWindow("bruh");
+          imshow("bruh", masked_imgL_);
+          //waitKey(1);
+
+          double widthHeightRatioL = (double)rectL.width / rectL.height;
+          double widthHeightRatioR = (double)rectR.width / rectR.height;
+          //std::cout << "Ratio: " << widthHeightRatio << endl;
+          double areaL = rectL.width*rectL.height;
+          double areaR = rectR.width*rectR.height;
+          double areaRelDiff =  double((areaL-areaR)/(areaR)*100);
+
+          if (areaRelDiff < 5) {
+            //Calculate dist
+            double disparity = abs(centerL.x - centerR.x);
+
+            double distance = (F * BASELINE) / disparity;
+            
+            double distance2 = -0.000037*(areaL+areaR)/2 + 3.371;
+
+            if (distance > 5.0){
+              distance = 1000.0;
+            } 
+            
+            cout << distance2 << endl;
+            //std::cout << "Area (Left,Right): " << areaL << ", " << areaR << endl;
+
+            // Set Outputs
+            X = (centerL.x + centerR.x)/2;
+            Y = (centerL.y + centerR.y)/2;
+            Z = distance2;  // For now
+            area = (areaL + areaR)/2;
+
+            //corners 
+
+            //C = P^-1*W
+            //W = PC
+
+            float ratio = (widthHeightRatioL+widthHeightRatioR)/2;
+            //std::cout << "Ratio: " << ratio << endl;
+            angle = acosf(ratio)/3.14159*180;
+            if (ratio > 1){
+              angle = 0;
+            } 
+            std::cout << "angle" << angle << endl;
+
+          }
+
+        } else {
+          pixelDensityL = 0.2; //reinitiate
+          pixelDensityR = 0.2;
+        }      
+    }
+
+    // Display the resulot
+
+    imshow("ApproximationsL", bMask_L_cleaned);
+    //waitKey(1);
+    
+    imshow("ApproximationsR", bMask_R_cleaned);
+    //waitKey(1);
+
+    Mat masked_imgR_;
+    bitwise_and(Left_nice, Left_nice, masked_imgR_, bMask_R_cleaned);
+
+    namedWindow("Test");
+    imshow("Test", masked_imgR_);
+    //waitKey(1);
+    
+    /*
+    //Approximate shapes
+    std::vector<std::vector<cv::Point>> approximationsL(contoursL.size());
+    for (int i = 0; i < contoursL.size(); i++) {
+        approxPolyDP(contoursL[i], approximationsL[i], 50, false);
+    }
+
+    std::vector<std::vector<cv::Point>> approximationsR(contoursR.size());
+    for (int i = 0; i < contoursR.size(); i++) {
+        approxPolyDP(contoursR[i], approximationsR[i], 50, false);
+    }
+
+    // Visualize approximated contours
+    Mat approx_image = bMask_L_cleaned.clone();
+    for (int i = 0; i < approximationsL.size(); i++) {
+        cv::drawContours(bMask_L_cleaned, approximationsL, i, cv::Scalar(0, 255, 0), 2);
+    }
+
+    cv::imshow("Approximations", bMask_L_cleaned);
+    cv::waitKey(1);
+
+    std::vector<cv::Point2f> corners;
+      double qualityLevel = 0.01;
+      double minDistance = 10;
+      int blockSize = 3;
+      bool useHarrisDetector = false;
+      double k = 0.04;
+      cv::goodFeaturesToTrack(bMask_L_cleaned, corners, 500, qualityLevel, minDistance, cv::Mat(), blockSize, useHarrisDetector, k);
+
+      for (size_t i = 0; i < corners.size(); i++)
+      {
+          cv::circle(bMask_L_cleaned, corners[i], 5, cv::Scalar(255), -1);
+      }
+
+    cv::imshow("Corners", bMask_L_cleaned);
+    cv::waitKey(1);
+
+    // Show image with detected incomplete rectangles
+    imshow("Detected rectangles", bMask_L_cleaned);
+    waitKey(1);
+
+    */
+
+  }
+  catch (const cv::Exception){
+    cout << "Failed" << endl;
+    return;
+  }
 }

@@ -148,7 +148,7 @@ int main(int argc, char** argv) {
 		float X, Y, Z, area, angle = 0;
 		Mat left, right;
 		compVis.getFrames(left, right);
-		compVis.getGoal(X, Y, Z, area, angle, left, right);
+		compVis.tuneGoal(X, Y, Z, area, angle, left, right);
 		//compVis.getBall(X, Y, Z, area, left, right);
 		//compVis.getAvoidance(left, right);
 	}

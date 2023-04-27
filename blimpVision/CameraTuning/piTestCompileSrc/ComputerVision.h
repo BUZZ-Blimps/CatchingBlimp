@@ -46,8 +46,8 @@ using namespace cv;
 #define B_MAX			Scalar(171,255,255)
 
 #define ORANGE_G_CORRECTION    Scalar(0,45,0)
-#define ORANGE_G_MIN           Scalar(10,0,0) //orange min changed to 10
-#define ORANGE_G_MAX           Scalar(28,255,255) //orange min changed to 35
+#define ORANGE_G_MIN           Scalar(15,0,0) //orange min changed to 10
+#define ORANGE_G_MAX           Scalar(30,255,255) //orange min changed to 35
 
 
 #define STEREO_CAL_FILENAME     "stereo_rectify_maps240p.xml"
@@ -85,6 +85,7 @@ class ComputerVision {
         double pixelDensityR = 0.2;
         Mat output,output_norm,output_norm_scaled;
         int quad;
+
         /*
         int correction1 = 0;
         int correction2 = 0;
@@ -105,8 +106,7 @@ class ComputerVision {
         int min1 = 100;
         int min2 = 0;
         int min3 = 19;
-        int max1 = 123;
-        int max2 = 114;
+        int max1 = 123;ORANGE_G_MAX
         int max3 = 58;
         */
 
@@ -129,6 +129,7 @@ class ComputerVision {
         bool getBall(float &X, float &Y, float &Z, float &area, Mat imgL, Mat imgR);
         bool tuneBall(float &X, float &Y, float &Z, float &area, Mat imgL, Mat imgR);
         void getGoal(float &X, float &Y, float &Z, float &area, float &angle, Mat imgL, Mat imgR);
+        void tuneGoal(float &X, float &Y, float &Z, float &area, float &angle, Mat imgL, Mat imgR);
         int getAvoidance(Mat imgL, Mat imgR);
         float get_avg_dist_FM(Mat imgL, Mat imgR, String index);
         float get_avg_dist_DM(Mat imgL, Mat imgR, String index);
