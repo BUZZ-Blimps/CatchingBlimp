@@ -53,8 +53,8 @@ using namespace cv;
 #define ORANGE_G_MAX            Scalar(61,255,255)
 
 #define YELLOW_G_CORRECTION	    Scalar(91,42,0)
-#define YELLOW_G_MIN			Scalar(0,37,0)
-#define YELLOW_G_MAX			Scalar(71, 255, 255)
+#define YELLOW_G_MIN			Scalar(24,37,0)
+#define YELLOW_G_MAX			Scalar(91, 255, 255)
 
 #define CONVERSION		    0.15
 
