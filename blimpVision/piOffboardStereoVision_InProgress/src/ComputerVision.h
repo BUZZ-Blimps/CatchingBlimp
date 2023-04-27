@@ -48,9 +48,9 @@ using namespace cv;
 #define B_MIN			        Scalar(105,0,19)
 #define B_MAX			        Scalar(171,255,255)
 
-#define ORANGE_G_CORRECTION     Scalar(0,47,0)
-#define ORANGE_G_MIN            Scalar(13,0,0)
-#define ORANGE_G_MAX            Scalar(24,255,255)
+#define ORANGE_G_CORRECTION     Scalar(56,68,0)
+#define ORANGE_G_MIN            Scalar(0,0,185)
+#define ORANGE_G_MAX            Scalar(61,255,255)
 
 #define YELLOW_G_CORRECTION	    Scalar(48,0,0)
 #define YELLOW_G_MIN			Scalar(25,0,0)

@@ -45,9 +45,9 @@ using namespace cv;
 #define B_MIN			Scalar(105,0,19)
 #define B_MAX			Scalar(171,255,255)
 
-#define ORANGE_G_CORRECTION    Scalar(0,45,0)
-#define ORANGE_G_MIN           Scalar(15,0,0) //orange min changed to 10
-#define ORANGE_G_MAX           Scalar(30,255,255) //orange min changed to 35
+#define ORANGE_G_CORRECTION    Scalar(56,68, 0)
+#define ORANGE_G_MIN           Scalar(0,0,185) //orange min changed to 10
+#define ORANGE_G_MAX           Scalar(61,255,255) //orange min changed to 35
 
 
 #define STEREO_CAL_FILENAME     "stereo_rectify_maps240p.xml"
