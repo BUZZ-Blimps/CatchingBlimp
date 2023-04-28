@@ -98,6 +98,28 @@ class ComputerVision {
         int max3 = 255;
         */
 
+        int correction1 = 0;
+        int correction2 = 19;
+        int correction3 = 0;
+        int min1 = 105;
+        int min2 = 0;
+        int min3 = 19;
+        int max1 = 171;
+        int max2 = 255;
+        int max3 = 255;
+
+        /*
+        int correction1 = 0;
+        int correction2 = 0;
+        int correction3 = 0;
+        int min1 = 117;
+        int min2 = 90;
+        int min3 = 40;
+        int max1 = 255;
+        int max2 = 234;
+        int max3 = 255;
+        */
+
         // Masks purple and red
         /*
         int correction1 = 0;
@@ -106,19 +128,20 @@ class ComputerVision {
         int min1 = 100;
         int min2 = 0;
         int min3 = 19;
-        int max1 = 123;ORANGE_G_MAX
+        int max1 = 123;
         int max3 = 58;
         */
 
-       int targetH = 0;
-       int targetS = 0;
-       int targetV = 0;
+       int targetH = 127;
+       int targetS = 60;
+       int targetV = 160;
        int minH = 0;
        int minS = 0;
        int minV = 0;
        int maxH = 0;
        int maxS = 0;
        int maxV = 0;
+       int maxDiff = 0;
 
     public:
         void init();
@@ -128,6 +151,7 @@ class ComputerVision {
         void getFrames(Mat &imgL, Mat &imgR);
         bool getBall(float &X, float &Y, float &Z, float &area, Mat imgL, Mat imgR);
         bool tuneBall(float &X, float &Y, float &Z, float &area, Mat imgL, Mat imgR);
+        bool tuneBall_Lawson(float &X, float &Y, float &Z, float &area, Mat imgL, Mat imgR);
         void getGoal(float &X, float &Y, float &Z, float &area, float &angle, Mat imgL, Mat imgR);
         void tuneGoal(float &X, float &Y, float &Z, float &area, float &angle, Mat imgL, Mat imgR);
         int getAvoidance(Mat imgL, Mat imgR);

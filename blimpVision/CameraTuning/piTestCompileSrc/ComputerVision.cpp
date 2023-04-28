@@ -36,7 +36,7 @@ void ComputerVision::init()
   // Init Camera  
   if(USE_VIDEO){
     // Open video
-    cap.open("/home/corelab-laptop2/GitHub/CatchingBlimp/Goals5Yellow.avi");
+    cap.open("/home/corelab-laptop2/GitHub/CatchingBlimp/CrazyBurple.avi");
     if (!cap.isOpened()) {
       CV_Assert("CamL open failed");
     }
@@ -1175,8 +1175,7 @@ int ComputerVision::getQuad(){
     return quad;
 }
 
-/*
-bool ComputerVision::tuneBall(float &X, float &Y, float &Z, float &area, Mat imgL, Mat imgR)
+bool ComputerVision::tuneBall_Lawson(float &X, float &Y, float &Z, float &area, Mat imgL, Mat imgR)
 {
   // Initialize matrix for rectified stereo images
   Mat Left_nice, Right_nice;
@@ -1223,7 +1222,7 @@ bool ComputerVision::tuneBall(float &X, float &Y, float &Z, float &area, Mat img
   createTrackbar("max1", "Sliders", &max1, 255);
   createTrackbar("max2", "Sliders", &max2, 255);
   createTrackbar("max3", "Sliders", &max3, 255);
-  waitKey(1);
+  //waitKey(1);
 
   Scalar b_cor = Scalar(correction1, correction2, correction3);
   Scalar min_ = Scalar(min1, min2, min3);
@@ -1373,11 +1372,11 @@ bool ComputerVision::tuneBall(float &X, float &Y, float &Z, float &area, Mat img
   // Debug Circular Mask
   namedWindow("imgL");
   imshow("imgL",masked_imgL);
-  waitKey(1);
+  //waitKey(1);
 
   namedWindow("imgR");
   imshow("imgR",masked_imgR);
-  waitKey(1);
+  //waitKey(1);
 
   try {
 
@@ -1448,7 +1447,7 @@ bool ComputerVision::tuneBall(float &X, float &Y, float &Z, float &area, Mat img
 
   namedWindow("ORB Matches");
   imshow("ORB Matches", img_matches);
-  waitKey(1);
+  //waitKey(1);
 
   // Calculate average distance of all matched points
   double avg_distance = 0.0;
@@ -1498,7 +1497,6 @@ bool ComputerVision::tuneBall(float &X, float &Y, float &Z, float &area, Mat img
   }
   
 }
-*/
 
 // Single channel
 Mat absSplitMat(Mat image, float split, float max){
@@ -1532,10 +1530,6 @@ Mat absSplitMat(Mat image, float split, float max){
   subtract(upperSub, split, upperSub2);
   //imshow("upperSub2", upperSub2);
 
-  //cout << "output type " << output.type() << ", " << openCVType2str(output.type()) << endl;
-  //cout << "lowerSub2 type " << lowerSub2.type() << ", " << openCVType2str(lowerSub2.type()) << endl;
-  //cout << "upperSub2 type " << upperSub2.type() << ", " << openCVType2str(upperSub2.type()) << endl;
-
   //cout << "F3" << endl;
   lowerSub2.copyTo(output, mask_lower);
   upperSub2.copyTo(output, mask_upper);
@@ -1544,8 +1538,41 @@ Mat absSplitMat(Mat image, float split, float max){
   return output;
 }
 
+Mat clickedMat;
+static void onMouse(int event, int x, int y, int, void*){
+  if(event != EVENT_LBUTTONDOWN){
+    return;
+  }
+
+  Point point(x, y);
+  Mat clickedMatHSV;
+  cvtColor(clickedMat, clickedMatHSV, COLOR_BGR2HSV);
+  Vec3b pixel = clickedMatHSV.at<Vec3b>(point);
+
+  cout << "Clicked pixel: (" + to_string(pixel[0]) + ", " + to_string(pixel[1]) + ", " + to_string(pixel[2]) + ")" << endl;
+}
+
+bool firstFrame = true;
 bool ComputerVision::tuneBall(float &X, float &Y, float &Z, float &area, Mat img_L, Mat img_R)
 {
+  if(firstFrame){
+    firstFrame = false;
+  }else{
+    //x diff = 320, y diff = 277
+    moveWindow("Raw_L",       640, 248);
+    moveWindow("Target HSV",  960, 248);
+    moveWindow("diffMask",    960, 525);
+    moveWindow("diff",        960, 802);
+    moveWindow("H",           1280, 248);
+    moveWindow("S",           1280, 525);
+    moveWindow("V",           1280, 802);
+    moveWindow("diffH",       1600, 248);
+    moveWindow("diffS",       1600, 525);
+    moveWindow("diffV",       1600, 802);
+
+  }
+  setMouseCallback("Raw_L", onMouse);
+
   // Initialize matrix for rectified stereo images
   Mat rect_L, rect_R;
 
@@ -1567,6 +1594,7 @@ bool ComputerVision::tuneBall(float &X, float &Y, float &Z, float &area, Mat img
         BORDER_CONSTANT,
         0);
 
+  clickedMat = rect_L;
   // Applying blur to reduce noise
   //GaussianBlur(Left_nice, Left_nice, Size(5, 5), 0);
   //GaussianBlur(Right_nice, Right_nice, Size(5, 5), 0);
@@ -1591,6 +1619,7 @@ bool ComputerVision::tuneBall(float &X, float &Y, float &Z, float &area, Mat img
   createTrackbar("maxH", "Sliders", &maxH, 255);
   createTrackbar("maxS", "Sliders", &maxS, 255);
   createTrackbar("maxV", "Sliders", &maxV, 255);
+  createTrackbar("maxDiff", "Sliders", &maxDiff, 255);
   //waitKey(1);
 
   Scalar minHSV = Scalar(minH, minS, minV);
@@ -1601,8 +1630,8 @@ bool ComputerVision::tuneBall(float &X, float &Y, float &Z, float &area, Mat img
 
   Size leftSize = rect_L.size();
 
-  cout << "type: " << rect_L.type() << endl;
-  cout << "opencv type: " << openCVType2str(rect_L.type()) << endl;
+  //cout << "type: " << rect_L.type() << endl;
+  //cout << "opencv type: " << openCVType2str(rect_L.type()) << endl;
 
   // Show target HSV
   Mat HSV_Target(leftSize, rect_L.type());
@@ -1613,7 +1642,7 @@ bool ComputerVision::tuneBall(float &X, float &Y, float &Z, float &area, Mat img
 
   // Split H S V
   Mat HSV_L;
-  cvtColor(rect_L, HSV_L, COLOR_RGB2HSV);
+  cvtColor(rect_L, HSV_L, COLOR_BGR2HSV);
   vector<Mat> HSV;
   split(HSV_L, HSV); // Split image into HSV channels
   Mat tempS, tempV;
@@ -1637,11 +1666,21 @@ bool ComputerVision::tuneBall(float &X, float &Y, float &Z, float &area, Mat img
   Mat diffH, diffS, diffV;
   diffH = absSplitMat(HSV[0], targetH, 180);
   diffS = absSplitMat(HSV[1], targetS, 255);
-  diffV = absSplitMat(HSV[2], targetS, 255);
+  diffV = absSplitMat(HSV[2], targetV, 255);
 
   imshow("diffH", diffH);
   imshow("diffS", diffS);
   imshow("diffV", diffV);
+
+  Mat diffTemp, diff;
+  diff = 1.0/3 * (diffH + diffS + diffV);
+  //multiply(diffH, diffS, diffTemp);
+  //multiply(diffV, diffTemp, diff);
+  imshow("diff", diff);
+
+  Mat diffMask;
+  inRange(diff, 0, maxDiff, diffMask);
+  imshow("diffMask", diffMask);
   /*
 
   //Apply HSV

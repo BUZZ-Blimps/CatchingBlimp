@@ -140,16 +140,15 @@ int main(int argc, char** argv) {
 		*/
 		
 
-		
-
 		//==================== NEW ====================
 		//compVis.update(searching, goalColor);
 		// compVis.update_PI(mode, goalColor);
 		float X, Y, Z, area, angle = 0;
 		Mat left, right;
 		compVis.getFrames(left, right);
-		compVis.tuneGoal(X, Y, Z, area, angle, left, right);
-		//compVis.getBall(X, Y, Z, area, left, right);
+		//compVis.tuneGoal(X, Y, Z, area, angle, left, right);
+		compVis.tuneBall(X, Y, Z, area, left, right);
+		//compVis.tuneBall_Lawson(X, Y, Z, area, left, right);
 		//compVis.getAvoidance(left, right);
 	}
 

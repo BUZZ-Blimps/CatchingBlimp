@@ -1,3 +1,0 @@
-/home/corelab-laptop2/GitHub/CatchingBlimp/blimpVision/CameraTuning/build/CMakeFiles/rebuild_cache.dir
-/home/corelab-laptop2/GitHub/CatchingBlimp/blimpVision/CameraTuning/build/CMakeFiles/edit_cache.dir
-/home/corelab-laptop2/GitHub/CatchingBlimp/blimpVision/CameraTuning/build/CMakeFiles/piTestCompile.dir
