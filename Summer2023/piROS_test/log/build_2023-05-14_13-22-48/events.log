@@ -1,0 +1,104 @@
+[0.000000] (-) TimerEvent: {}
+[0.000348] (blimp_telemetry) JobQueued: {'identifier': 'blimp_telemetry', 'dependencies': OrderedDict()}
+[0.000502] (blimp_telemetry) JobStarted: {'identifier': 'blimp_telemetry'}
+[0.009053] (blimp_telemetry) JobProgress: {'identifier': 'blimp_telemetry', 'progress': 'cmake'}
+[0.010389] (blimp_telemetry) JobProgress: {'identifier': 'blimp_telemetry', 'progress': 'build'}
+[0.010447] (blimp_telemetry) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/corelab-laptop2/tf2_ws/build/blimp_telemetry', '--', '-j8', '-l8'], 'cwd': '/home/corelab-laptop2/tf2_ws/build/blimp_telemetry', 'env': OrderedDict([('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'corelab-laptop2'), ('SSH_AGENT_PID', '1273'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/home/corelab-laptop2'), ('DESKTOP_SESSION', 'ubuntu'), ('GIO_LAUNCHED_DESKTOP_FILE', '/usr/share/applications/terminator.desktop'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('MANAGERPID', '1003'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('TERMINATOR_DBUS_NAME', 'net.tenshu.Terminator21a9d5db22c73a993ff0b42f64b396873'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '2758'), ('IM_CONFIG_PHASE', '1'), ('COLCON_PREFIX_PATH', '/home/corelab-laptop2/tf2_ws/install'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'corelab-laptop2'), ('JOURNAL_STREAM', '8:43164'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'corelab-laptop2'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/foxy/bin:/home/corelab-laptop2/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('SESSION_MANAGER', 'local/corelablaptop2-Inspiron-15-5510:@/tmp/.ICE-unix/1311,unix/corelablaptop2-Inspiron-15-5510:/tmp/.ICE-unix/1311'), ('INVOCATION_ID', 'cd862c57eb7d4367b8b8c4b6d530e9e9'), ('XDG_MENU_PREFIX', 'gnome-'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('TERMINATOR_DBUS_PATH', '/net/tenshu/Terminator2'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('ROS_DOMAIN_ID', '0'), ('AMENT_PREFIX_PATH', '/home/corelab-laptop2/tf2_ws/install/micro_ros_setup:/home/corelab-laptop2/tf2_ws/install/blimp_telemetry:/opt/ros/foxy'), ('SHELL', '/bin/bash'), ('TERMINATOR_UUID', 'urn:uuid:87d826ce-d8e9-4f07-85f5-d31d89b9c215'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/corelab-laptop2/tf2_ws/build/blimp_telemetry'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('COLCON', '1'), ('VTE_VERSION', '6003'), ('CMAKE_PREFIX_PATH', '/home/corelab-laptop2/tf2_ws/install/micro_ros_setup:/home/corelab-laptop2/tf2_ws/install/blimp_telemetry:/opt/ros/foxy')]), 'shell': False}
+[0.029664] (blimp_telemetry) StdoutLine: {'line': b'-- Found ament_cmake: 0.9.11 (/opt/ros/foxy/share/ament_cmake/cmake)\n'}
+[0.043952] (blimp_telemetry) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[0.099795] (-) TimerEvent: {}
+[0.164749] (blimp_telemetry) StdoutLine: {'line': b'-- Found rclcpp: 2.4.2 (/opt/ros/foxy/share/rclcpp/cmake)\n'}
+[0.192840] (blimp_telemetry) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.194858] (blimp_telemetry) StdoutLine: {'line': b'-- Found rosidl_adapter: 1.3.0 (/opt/ros/foxy/share/rosidl_adapter/cmake)\n'}
+[0.199936] (-) TimerEvent: {}
+[0.272512] (blimp_telemetry) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[0.300103] (-) TimerEvent: {}
+[0.302726] (blimp_telemetry) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)\n'}
+[0.303620] (blimp_telemetry) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[0.394509] (blimp_telemetry) StdoutLine: {'line': b'-- Found sensor_msgs: 2.0.5 (/opt/ros/foxy/share/sensor_msgs/cmake)\n'}
+[0.400263] (-) TimerEvent: {}
+[0.472348] (blimp_telemetry) StdoutLine: {'line': b'-- Found tf2: 0.13.14 (/opt/ros/foxy/share/tf2/cmake)\n'}
+[0.482156] (blimp_telemetry) StdoutLine: {'line': b'-- Found tf2_ros: 0.13.14 (/opt/ros/foxy/share/tf2_ros/cmake)\n'}
+[0.500383] (-) TimerEvent: {}
+[0.600673] (-) TimerEvent: {}
+[0.700947] (-) TimerEvent: {}
+[0.801334] (-) TimerEvent: {}
+[0.804348] (blimp_telemetry) StdoutLine: {'line': b'-- Configuring done\n'}
+[0.811538] (blimp_telemetry) StdoutLine: {'line': b'-- Generating done\n'}
+[0.812507] (blimp_telemetry) StdoutLine: {'line': b'-- Build files have been written to: /home/corelab-laptop2/tf2_ws/build/blimp_telemetry\n'}
+[0.831431] (blimp_telemetry) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target blimp_telemetry_node\x1b[0m\n'}
+[0.855938] (blimp_telemetry) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/blimp_telemetry_node.dir/src/blimp_telemetry_node.cpp.o\x1b[0m\n'}
+[0.901459] (-) TimerEvent: {}
+[1.001823] (-) TimerEvent: {}
+[1.102202] (-) TimerEvent: {}
+[1.202565] (-) TimerEvent: {}
+[1.302914] (-) TimerEvent: {}
+[1.403267] (-) TimerEvent: {}
+[1.503609] (-) TimerEvent: {}
+[1.603907] (-) TimerEvent: {}
+[1.661728] (blimp_telemetry) StderrLine: {'line': b'\x1b[01m\x1b[K/home/corelab-laptop2/tf2_ws/src/blimp_telemetry/src/blimp_telemetry_node.cpp:17:25:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[KISO C++ forbids declaration of \xe2\x80\x98\x1b[01m\x1b[KTelemetrySubscriber\x1b[m\x1b[K\xe2\x80\x99 with no type [\x1b[01;31m\x1b[K-fpermissive\x1b[m\x1b[K]\n'}
+[1.661898] (blimp_telemetry) StderrLine: {'line': b'   17 |     TelemetrySubscriber(\x1b[01;31m\x1b[K)\x1b[m\x1b[K : Node("blimp_telemetry_node") {\n'}
+[1.661945] (blimp_telemetry) StderrLine: {'line': b'      |                         \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[1.673625] (blimp_telemetry) StderrLine: {'line': b'\x1b[01m\x1b[K/home/corelab-laptop2/tf2_ws/src/blimp_telemetry/src/blimp_telemetry_node.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kint TelemetryPublisher::TelemetrySubscriber()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[1.673912] (blimp_telemetry) StderrLine: {'line': b'\x1b[01m\x1b[K/home/corelab-laptop2/tf2_ws/src/blimp_telemetry/src/blimp_telemetry_node.cpp:17:29:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Konly constructors take member initializers\n'}
+[1.673964] (blimp_telemetry) StderrLine: {'line': b'   17 |     TelemetrySubscriber() : \x1b[01;31m\x1b[KNode\x1b[m\x1b[K("blimp_telemetry_node") {\n'}
+[1.674003] (blimp_telemetry) StderrLine: {'line': b'      |                             \x1b[01;31m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[1.674052] (blimp_telemetry) StderrLine: {'line': b'\x1b[01m\x1b[K/home/corelab-laptop2/tf2_ws/src/blimp_telemetry/src/blimp_telemetry_node.cpp:21:101:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KTelemetrySubscriber\x1b[m\x1b[K\xe2\x80\x99 is not a class, namespace, or enumeration\n'}
+[1.674090] (blimp_telemetry) StderrLine: {'line': b'   21 | bscription_ = this->create_subscription<sensor_msgs::msg::Imu>("/imu", 10, std::bind(&\x1b[01;31m\x1b[KTelemetrySubscriber\x1b[m\x1b[K::imu_callback, this, _1));\n'}
+[1.674131] (blimp_telemetry) StderrLine: {'line': b'      |                                                                                       \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[1.674178] (blimp_telemetry) StderrLine: {'line': b'\n'}
+[1.674323] (blimp_telemetry) StderrLine: {'line': b'\x1b[01m\x1b[K/home/corelab-laptop2/tf2_ws/src/blimp_telemetry/src/blimp_telemetry_node.cpp:23:5:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kno return statement in function returning non-void [\x1b[01;35m\x1b[K-Wreturn-type\x1b[m\x1b[K]\n'}
+[1.674404] (blimp_telemetry) StderrLine: {'line': b'   23 |     \x1b[01;35m\x1b[K}\x1b[m\x1b[K\n'}
+[1.674448] (blimp_telemetry) StderrLine: {'line': b'      |     \x1b[01;35m\x1b[K^\x1b[m\x1b[K\n'}
+[1.704090] (-) TimerEvent: {}
+[1.804451] (-) TimerEvent: {}
+[1.891035] (blimp_telemetry) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/x86_64-linux-gnu/c++/9/bits/c++allocator.h:33\x1b[m\x1b[K,\n'}
+[1.891190] (blimp_telemetry) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/c++/9/bits/allocator.h:46\x1b[m\x1b[K,\n'}
+[1.891240] (blimp_telemetry) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/c++/9/string:41\x1b[m\x1b[K,\n'}
+[1.891282] (blimp_telemetry) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/c++/9/stdexcept:39\x1b[m\x1b[K,\n'}
+[1.891322] (blimp_telemetry) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/c++/9/array:39\x1b[m\x1b[K,\n'}
+[1.891361] (blimp_telemetry) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/c++/9/tuple:39\x1b[m\x1b[K,\n'}
+[1.891400] (blimp_telemetry) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/c++/9/functional:54\x1b[m\x1b[K,\n'}
+[1.891439] (blimp_telemetry) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/corelab-laptop2/tf2_ws/src/blimp_telemetry/src/blimp_telemetry_node.cpp:1\x1b[m\x1b[K:\n'}
+[1.891478] (blimp_telemetry) StderrLine: {'line': b'/usr/include/c++/9/ext/new_allocator.h: In instantiation of \xe2\x80\x98\x1b[01m\x1b[Kvoid __gnu_cxx::new_allocator<_Tp>::construct(_Up*, _Args&& ...) [with _Up = TelemetryPublisher; _Args = {}; _Tp = TelemetryPublisher]\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[1.891526] (blimp_telemetry) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/9/bits/alloc_traits.h:483:4:\x1b[m\x1b[K   required from \xe2\x80\x98\x1b[01m\x1b[Kstatic void std::allocator_traits<std::allocator<_CharT> >::construct(std::allocator_traits<std::allocator<_CharT> >::allocator_type&, _Up*, _Args&& ...) [with _Up = TelemetryPublisher; _Args = {}; _Tp = TelemetryPublisher; std::allocator_traits<std::allocator<_CharT> >::allocator_type = std::allocator<TelemetryPublisher>]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[1.891571] (blimp_telemetry) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/9/bits/shared_ptr_base.h:548:39:\x1b[m\x1b[K   required from \xe2\x80\x98\x1b[01m\x1b[Kstd::_Sp_counted_ptr_inplace<_Tp, _Alloc, _Lp>::_Sp_counted_ptr_inplace(_Alloc, _Args&& ...) [with _Args = {}; _Tp = TelemetryPublisher; _Alloc = std::allocator<TelemetryPublisher>; __gnu_cxx::_Lock_policy _Lp = __gnu_cxx::_S_atomic]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[1.891615] (blimp_telemetry) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/9/bits/shared_ptr_base.h:679:16:\x1b[m\x1b[K   required from \xe2\x80\x98\x1b[01m\x1b[Kstd::__shared_count<_Lp>::__shared_count(_Tp*&, std::_Sp_alloc_shared_tag<_Alloc>, _Args&& ...) [with _Tp = TelemetryPublisher; _Alloc = std::allocator<TelemetryPublisher>; _Args = {}; __gnu_cxx::_Lock_policy _Lp = __gnu_cxx::_S_atomic]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[1.891656] (blimp_telemetry) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/9/bits/shared_ptr_base.h:1344:71:\x1b[m\x1b[K   required from \xe2\x80\x98\x1b[01m\x1b[Kstd::__shared_ptr<_Tp, _Lp>::__shared_ptr(std::_Sp_alloc_shared_tag<_Tp>, _Args&& ...) [with _Alloc = std::allocator<TelemetryPublisher>; _Args = {}; _Tp = TelemetryPublisher; __gnu_cxx::_Lock_policy _Lp = __gnu_cxx::_S_atomic]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[1.891696] (blimp_telemetry) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/9/bits/shared_ptr.h:359:59:\x1b[m\x1b[K   required from \xe2\x80\x98\x1b[01m\x1b[Kstd::shared_ptr<_Tp>::shared_ptr(std::_Sp_alloc_shared_tag<_Tp>, _Args&& ...) [with _Alloc = std::allocator<TelemetryPublisher>; _Args = {}; _Tp = TelemetryPublisher]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[1.891739] (blimp_telemetry) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/9/bits/shared_ptr.h:701:14:\x1b[m\x1b[K   required from \xe2\x80\x98\x1b[01m\x1b[Kstd::shared_ptr<_Tp> std::allocate_shared(const _Alloc&, _Args&& ...) [with _Tp = TelemetryPublisher; _Alloc = std::allocator<TelemetryPublisher>; _Args = {}]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[1.891779] (blimp_telemetry) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/9/bits/shared_ptr.h:717:39:\x1b[m\x1b[K   required from \xe2\x80\x98\x1b[01m\x1b[Kstd::shared_ptr<_Tp> std::make_shared(_Args&& ...) [with _Tp = TelemetryPublisher; _Args = {}]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[1.891817] (blimp_telemetry) StderrLine: {'line': b'\x1b[01m\x1b[K/home/corelab-laptop2/tf2_ws/src/blimp_telemetry/src/blimp_telemetry_node.cpp:39:55:\x1b[m\x1b[K   required from here\n'}
+[1.891854] (blimp_telemetry) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/9/ext/new_allocator.h:146:4:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kuse of deleted function \xe2\x80\x98\x1b[01m\x1b[KTelemetryPublisher::TelemetryPublisher()\x1b[m\x1b[K\xe2\x80\x99\n'}
+[1.891892] (blimp_telemetry) StderrLine: {'line': b'  146 |  { \x1b[01;31m\x1b[K::new((void *)__p) _Up(std::forward<_Args>(__args)...)\x1b[m\x1b[K; }\n'}
+[1.891927] (blimp_telemetry) StderrLine: {'line': b'      |    \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[1.891964] (blimp_telemetry) StderrLine: {'line': b'\x1b[01m\x1b[K/home/corelab-laptop2/tf2_ws/src/blimp_telemetry/src/blimp_telemetry_node.cpp:15:7:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KTelemetryPublisher::TelemetryPublisher()\x1b[m\x1b[K\xe2\x80\x99 is implicitly deleted because the default definition would be ill-formed:\n'}
+[1.892001] (blimp_telemetry) StderrLine: {'line': b'   15 | class \x1b[01;36m\x1b[KTelemetryPublisher\x1b[m\x1b[K : public rclcpp::Node {\n'}
+[1.892038] (blimp_telemetry) StderrLine: {'line': b'      |       \x1b[01;36m\x1b[K^~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[1.892076] (blimp_telemetry) StderrLine: {'line': b'\x1b[01m\x1b[K/home/corelab-laptop2/tf2_ws/src/blimp_telemetry/src/blimp_telemetry_node.cpp:15:7:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno matching function for call to \xe2\x80\x98\x1b[01m\x1b[Krclcpp::Node::Node()\x1b[m\x1b[K\xe2\x80\x99\n'}
+[1.892112] (blimp_telemetry) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/executors/single_threaded_executor.hpp:28\x1b[m\x1b[K,\n'}
+[1.892151] (blimp_telemetry) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/executors.hpp:22\x1b[m\x1b[K,\n'}
+[1.892187] (blimp_telemetry) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146\x1b[m\x1b[K,\n'}
+[1.892223] (blimp_telemetry) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/corelab-laptop2/tf2_ws/src/blimp_telemetry/src/blimp_telemetry_node.cpp:6\x1b[m\x1b[K:\n'}
+[1.892260] (blimp_telemetry) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/node.hpp:1193:3:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Krclcpp::Node::Node(const rclcpp::Node&, const string&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[1.892296] (blimp_telemetry) StderrLine: {'line': b' 1193 |   \x1b[01;36m\x1b[KNode\x1b[m\x1b[K(\n'}
+[1.892332] (blimp_telemetry) StderrLine: {'line': b'      |   \x1b[01;36m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[1.892368] (blimp_telemetry) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/node.hpp:1193:3:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  candidate expects 2 arguments, 0 provided\n'}
+[1.892406] (blimp_telemetry) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/node.hpp:98:12:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Krclcpp::Node::Node(const string&, const string&, const rclcpp::NodeOptions&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[1.892443] (blimp_telemetry) StderrLine: {'line': b'   98 |   explicit \x1b[01;36m\x1b[KNode\x1b[m\x1b[K(\n'}
+[1.892479] (blimp_telemetry) StderrLine: {'line': b'      |            \x1b[01;36m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[1.892515] (blimp_telemetry) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/node.hpp:98:12:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  candidate expects 3 arguments, 0 provided\n'}
+[1.892551] (blimp_telemetry) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/node.hpp:86:12:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Krclcpp::Node::Node(const string&, const rclcpp::NodeOptions&)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[1.892605] (blimp_telemetry) StderrLine: {'line': b'   86 |   explicit \x1b[01;36m\x1b[KNode\x1b[m\x1b[K(\n'}
+[1.892641] (blimp_telemetry) StderrLine: {'line': b'      |            \x1b[01;36m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[1.892678] (blimp_telemetry) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/node.hpp:86:12:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  candidate expects 2 arguments, 0 provided\n'}
+[1.904637] (-) TimerEvent: {}
+[2.005016] (-) TimerEvent: {}
+[2.105388] (-) TimerEvent: {}
+[2.198494] (blimp_telemetry) StderrLine: {'line': b'make[2]: *** [CMakeFiles/blimp_telemetry_node.dir/build.make:63: CMakeFiles/blimp_telemetry_node.dir/src/blimp_telemetry_node.cpp.o] Error 1\n'}
+[2.198791] (blimp_telemetry) StderrLine: {'line': b'make[1]: *** [CMakeFiles/Makefile2:78: CMakeFiles/blimp_telemetry_node.dir/all] Error 2\n'}
+[2.198906] (blimp_telemetry) StderrLine: {'line': b'make: *** [Makefile:141: all] Error 2\n'}
+[2.200331] (blimp_telemetry) CommandEnded: {'returncode': 2}
+[2.205504] (-) TimerEvent: {}
+[2.226986] (blimp_telemetry) JobEnded: {'identifier': 'blimp_telemetry', 'rc': 2}
+[2.237572] (-) EventReactorShutdown: {}

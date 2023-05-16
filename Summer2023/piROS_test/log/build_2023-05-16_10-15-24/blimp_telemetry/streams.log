@@ -1,0 +1,28 @@
+[0.015s] Invoking command in '/home/corelab-laptop2/tf2_ws/build/blimp_telemetry': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/corelab-laptop2/tf2_ws/build/blimp_telemetry -- -j8 -l8
+[0.180s] [35m[1mScanning dependencies of target blimp_telemetry_node[0m
+[0.205s] [ 50%] [32mBuilding CXX object CMakeFiles/blimp_telemetry_node.dir/src/blimp_telemetry_node.cpp.o[0m
+[7.729s] [100%] [32m[1mLinking CXX executable blimp_telemetry_node[0m
+[8.080s] [100%] Built target blimp_telemetry_node
+[8.101s] Invoked command in '/home/corelab-laptop2/tf2_ws/build/blimp_telemetry' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/corelab-laptop2/tf2_ws/build/blimp_telemetry -- -j8 -l8
+[8.130s] Invoking command in '/home/corelab-laptop2/tf2_ws/build/blimp_telemetry': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --install /home/corelab-laptop2/tf2_ws/build/blimp_telemetry
+[8.137s] -- Install configuration: ""
+[8.139s] -- Installing: /home/corelab-laptop2/tf2_ws/install/blimp_telemetry/lib/blimp_telemetry/blimp_telemetry_node
+[8.141s] -- Set runtime path of "/home/corelab-laptop2/tf2_ws/install/blimp_telemetry/lib/blimp_telemetry/blimp_telemetry_node" to ""
+[8.141s] -- Up-to-date: /home/corelab-laptop2/tf2_ws/install/blimp_telemetry/share/blimp_telemetry/launch
+[8.142s] -- Installing: /home/corelab-laptop2/tf2_ws/install/blimp_telemetry/share/blimp_telemetry/launch/blimp_telemetry.launch.py
+[8.144s] -- Up-to-date: /home/corelab-laptop2/tf2_ws/install/blimp_telemetry/share/ament_index/resource_index/package_run_dependencies/blimp_telemetry
+[8.144s] -- Up-to-date: /home/corelab-laptop2/tf2_ws/install/blimp_telemetry/share/ament_index/resource_index/parent_prefix_path/blimp_telemetry
+[8.146s] -- Up-to-date: /home/corelab-laptop2/tf2_ws/install/blimp_telemetry/share/blimp_telemetry/environment/ament_prefix_path.sh
+[8.146s] -- Up-to-date: /home/corelab-laptop2/tf2_ws/install/blimp_telemetry/share/blimp_telemetry/environment/ament_prefix_path.dsv
+[8.146s] -- Up-to-date: /home/corelab-laptop2/tf2_ws/install/blimp_telemetry/share/blimp_telemetry/environment/path.sh
+[8.146s] -- Up-to-date: /home/corelab-laptop2/tf2_ws/install/blimp_telemetry/share/blimp_telemetry/environment/path.dsv
+[8.146s] -- Up-to-date: /home/corelab-laptop2/tf2_ws/install/blimp_telemetry/share/blimp_telemetry/local_setup.bash
+[8.146s] -- Up-to-date: /home/corelab-laptop2/tf2_ws/install/blimp_telemetry/share/blimp_telemetry/local_setup.sh
+[8.146s] -- Up-to-date: /home/corelab-laptop2/tf2_ws/install/blimp_telemetry/share/blimp_telemetry/local_setup.zsh
+[8.146s] -- Up-to-date: /home/corelab-laptop2/tf2_ws/install/blimp_telemetry/share/blimp_telemetry/local_setup.dsv
+[8.146s] -- Installing: /home/corelab-laptop2/tf2_ws/install/blimp_telemetry/share/blimp_telemetry/package.dsv
+[8.147s] -- Up-to-date: /home/corelab-laptop2/tf2_ws/install/blimp_telemetry/share/ament_index/resource_index/packages/blimp_telemetry
+[8.147s] -- Up-to-date: /home/corelab-laptop2/tf2_ws/install/blimp_telemetry/share/blimp_telemetry/cmake/blimp_telemetryConfig.cmake
+[8.147s] -- Up-to-date: /home/corelab-laptop2/tf2_ws/install/blimp_telemetry/share/blimp_telemetry/cmake/blimp_telemetryConfig-version.cmake
+[8.147s] -- Up-to-date: /home/corelab-laptop2/tf2_ws/install/blimp_telemetry/share/blimp_telemetry/package.xml
+[8.150s] Invoked command in '/home/corelab-laptop2/tf2_ws/build/blimp_telemetry' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --install /home/corelab-laptop2/tf2_ws/build/blimp_telemetry

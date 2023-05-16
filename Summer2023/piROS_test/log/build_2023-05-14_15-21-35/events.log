@@ -1,0 +1,79 @@
+[0.000000] (-) TimerEvent: {}
+[0.000356] (blimp_telemetry) JobQueued: {'identifier': 'blimp_telemetry', 'dependencies': OrderedDict()}
+[0.000545] (blimp_telemetry) JobStarted: {'identifier': 'blimp_telemetry'}
+[0.011675] (blimp_telemetry) JobProgress: {'identifier': 'blimp_telemetry', 'progress': 'cmake'}
+[0.013330] (blimp_telemetry) JobProgress: {'identifier': 'blimp_telemetry', 'progress': 'build'}
+[0.013465] (blimp_telemetry) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/corelab-laptop2/tf2_ws/build/blimp_telemetry', '--', '-j8', '-l8'], 'cwd': '/home/corelab-laptop2/tf2_ws/build/blimp_telemetry', 'env': OrderedDict([('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'corelab-laptop2'), ('SSH_AGENT_PID', '1273'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/home/corelab-laptop2'), ('DESKTOP_SESSION', 'ubuntu'), ('GIO_LAUNCHED_DESKTOP_FILE', '/usr/share/applications/terminator.desktop'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('MANAGERPID', '1003'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('TERMINATOR_DBUS_NAME', 'net.tenshu.Terminator21a9d5db22c73a993ff0b42f64b396873'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '2758'), ('IM_CONFIG_PHASE', '1'), ('COLCON_PREFIX_PATH', '/home/corelab-laptop2/tf2_ws/install'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'corelab-laptop2'), ('JOURNAL_STREAM', '8:43164'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'corelab-laptop2'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/foxy/bin:/home/corelab-laptop2/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('SESSION_MANAGER', 'local/corelablaptop2-Inspiron-15-5510:@/tmp/.ICE-unix/1311,unix/corelablaptop2-Inspiron-15-5510:/tmp/.ICE-unix/1311'), ('INVOCATION_ID', 'cd862c57eb7d4367b8b8c4b6d530e9e9'), ('XDG_MENU_PREFIX', 'gnome-'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('TERMINATOR_DBUS_PATH', '/net/tenshu/Terminator2'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('ROS_DOMAIN_ID', '0'), ('AMENT_PREFIX_PATH', '/home/corelab-laptop2/tf2_ws/install/micro_ros_setup:/home/corelab-laptop2/tf2_ws/install/blimp_telemetry:/opt/ros/foxy'), ('SHELL', '/bin/bash'), ('TERMINATOR_UUID', 'urn:uuid:87d826ce-d8e9-4f07-85f5-d31d89b9c215'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/corelab-laptop2/tf2_ws/build/blimp_telemetry'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('COLCON', '1'), ('VTE_VERSION', '6003'), ('CMAKE_PREFIX_PATH', '/home/corelab-laptop2/tf2_ws/install/micro_ros_setup:/home/corelab-laptop2/tf2_ws/install/blimp_telemetry:/opt/ros/foxy')]), 'shell': False}
+[0.099804] (-) TimerEvent: {}
+[0.136798] (blimp_telemetry) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target blimp_telemetry_node\x1b[0m\n'}
+[0.160366] (blimp_telemetry) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/blimp_telemetry_node.dir/src/blimp_telemetry_node.cpp.o\x1b[0m\n'}
+[0.199924] (-) TimerEvent: {}
+[0.300199] (-) TimerEvent: {}
+[0.400465] (-) TimerEvent: {}
+[0.500765] (-) TimerEvent: {}
+[0.601051] (-) TimerEvent: {}
+[0.701318] (-) TimerEvent: {}
+[0.801615] (-) TimerEvent: {}
+[0.901905] (-) TimerEvent: {}
+[1.002195] (-) TimerEvent: {}
+[1.102478] (-) TimerEvent: {}
+[1.202743] (-) TimerEvent: {}
+[1.303035] (-) TimerEvent: {}
+[1.403391] (-) TimerEvent: {}
+[1.503752] (-) TimerEvent: {}
+[1.604110] (-) TimerEvent: {}
+[1.704457] (-) TimerEvent: {}
+[1.804829] (-) TimerEvent: {}
+[1.905120] (-) TimerEvent: {}
+[2.005411] (-) TimerEvent: {}
+[2.105706] (-) TimerEvent: {}
+[2.206003] (-) TimerEvent: {}
+[2.306259] (-) TimerEvent: {}
+[2.406555] (-) TimerEvent: {}
+[2.506928] (-) TimerEvent: {}
+[2.607249] (-) TimerEvent: {}
+[2.707554] (-) TimerEvent: {}
+[2.807849] (-) TimerEvent: {}
+[2.908141] (-) TimerEvent: {}
+[3.008419] (-) TimerEvent: {}
+[3.108738] (-) TimerEvent: {}
+[3.209056] (-) TimerEvent: {}
+[3.309472] (-) TimerEvent: {}
+[3.409833] (-) TimerEvent: {}
+[3.510185] (-) TimerEvent: {}
+[3.610502] (-) TimerEvent: {}
+[3.710818] (-) TimerEvent: {}
+[3.811285] (-) TimerEvent: {}
+[3.911617] (-) TimerEvent: {}
+[3.949747] (blimp_telemetry) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable blimp_telemetry_node\x1b[0m\n'}
+[4.011710] (-) TimerEvent: {}
+[4.112017] (-) TimerEvent: {}
+[4.212334] (-) TimerEvent: {}
+[4.236232] (blimp_telemetry) StdoutLine: {'line': b'[100%] Built target blimp_telemetry_node\n'}
+[4.245316] (blimp_telemetry) CommandEnded: {'returncode': 0}
+[4.261359] (blimp_telemetry) JobProgress: {'identifier': 'blimp_telemetry', 'progress': 'install'}
+[4.269148] (blimp_telemetry) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/corelab-laptop2/tf2_ws/build/blimp_telemetry'], 'cwd': '/home/corelab-laptop2/tf2_ws/build/blimp_telemetry', 'env': OrderedDict([('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'corelab-laptop2'), ('SSH_AGENT_PID', '1273'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/home/corelab-laptop2'), ('DESKTOP_SESSION', 'ubuntu'), ('GIO_LAUNCHED_DESKTOP_FILE', '/usr/share/applications/terminator.desktop'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('MANAGERPID', '1003'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('TERMINATOR_DBUS_NAME', 'net.tenshu.Terminator21a9d5db22c73a993ff0b42f64b396873'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '2758'), ('IM_CONFIG_PHASE', '1'), ('COLCON_PREFIX_PATH', '/home/corelab-laptop2/tf2_ws/install'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'corelab-laptop2'), ('JOURNAL_STREAM', '8:43164'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'corelab-laptop2'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/foxy/bin:/home/corelab-laptop2/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('SESSION_MANAGER', 'local/corelablaptop2-Inspiron-15-5510:@/tmp/.ICE-unix/1311,unix/corelablaptop2-Inspiron-15-5510:/tmp/.ICE-unix/1311'), ('INVOCATION_ID', 'cd862c57eb7d4367b8b8c4b6d530e9e9'), ('XDG_MENU_PREFIX', 'gnome-'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('TERMINATOR_DBUS_PATH', '/net/tenshu/Terminator2'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('ROS_DOMAIN_ID', '0'), ('AMENT_PREFIX_PATH', '/home/corelab-laptop2/tf2_ws/install/micro_ros_setup:/home/corelab-laptop2/tf2_ws/install/blimp_telemetry:/opt/ros/foxy'), ('SHELL', '/bin/bash'), ('TERMINATOR_UUID', 'urn:uuid:87d826ce-d8e9-4f07-85f5-d31d89b9c215'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/corelab-laptop2/tf2_ws/build/blimp_telemetry'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('COLCON', '1'), ('VTE_VERSION', '6003'), ('CMAKE_PREFIX_PATH', '/home/corelab-laptop2/tf2_ws/install/micro_ros_setup:/home/corelab-laptop2/tf2_ws/install/blimp_telemetry:/opt/ros/foxy')]), 'shell': False}
+[4.276637] (blimp_telemetry) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[4.276818] (blimp_telemetry) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/tf2_ws/install/blimp_telemetry/lib/blimp_telemetry/blimp_telemetry_node\n'}
+[4.278083] (blimp_telemetry) StdoutLine: {'line': b'-- Set runtime path of "/home/corelab-laptop2/tf2_ws/install/blimp_telemetry/lib/blimp_telemetry/blimp_telemetry_node" to ""\n'}
+[4.278259] (blimp_telemetry) StdoutLine: {'line': b'-- Up-to-date: /home/corelab-laptop2/tf2_ws/install/blimp_telemetry/share/blimp_telemetry/launch\n'}
+[4.278344] (blimp_telemetry) StdoutLine: {'line': b'-- Up-to-date: /home/corelab-laptop2/tf2_ws/install/blimp_telemetry/share/blimp_telemetry/launch/blimp_telemetry.launch\n'}
+[4.278424] (blimp_telemetry) StdoutLine: {'line': b'-- Up-to-date: /home/corelab-laptop2/tf2_ws/install/blimp_telemetry/share/ament_index/resource_index/package_run_dependencies/blimp_telemetry\n'}
+[4.278489] (blimp_telemetry) StdoutLine: {'line': b'-- Up-to-date: /home/corelab-laptop2/tf2_ws/install/blimp_telemetry/share/ament_index/resource_index/parent_prefix_path/blimp_telemetry\n'}
+[4.278555] (blimp_telemetry) StdoutLine: {'line': b'-- Up-to-date: /home/corelab-laptop2/tf2_ws/install/blimp_telemetry/share/blimp_telemetry/environment/ament_prefix_path.sh\n'}
+[4.278609] (blimp_telemetry) StdoutLine: {'line': b'-- Up-to-date: /home/corelab-laptop2/tf2_ws/install/blimp_telemetry/share/blimp_telemetry/environment/ament_prefix_path.dsv\n'}
+[4.278648] (blimp_telemetry) StdoutLine: {'line': b'-- Up-to-date: /home/corelab-laptop2/tf2_ws/install/blimp_telemetry/share/blimp_telemetry/environment/path.sh\n'}
+[4.278687] (blimp_telemetry) StdoutLine: {'line': b'-- Up-to-date: /home/corelab-laptop2/tf2_ws/install/blimp_telemetry/share/blimp_telemetry/environment/path.dsv\n'}
+[4.278725] (blimp_telemetry) StdoutLine: {'line': b'-- Up-to-date: /home/corelab-laptop2/tf2_ws/install/blimp_telemetry/share/blimp_telemetry/local_setup.bash\n'}
+[4.278762] (blimp_telemetry) StdoutLine: {'line': b'-- Up-to-date: /home/corelab-laptop2/tf2_ws/install/blimp_telemetry/share/blimp_telemetry/local_setup.sh\n'}
+[4.278802] (blimp_telemetry) StdoutLine: {'line': b'-- Up-to-date: /home/corelab-laptop2/tf2_ws/install/blimp_telemetry/share/blimp_telemetry/local_setup.zsh\n'}
+[4.278846] (blimp_telemetry) StdoutLine: {'line': b'-- Up-to-date: /home/corelab-laptop2/tf2_ws/install/blimp_telemetry/share/blimp_telemetry/local_setup.dsv\n'}
+[4.278898] (blimp_telemetry) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/tf2_ws/install/blimp_telemetry/share/blimp_telemetry/package.dsv\n'}
+[4.278958] (blimp_telemetry) StdoutLine: {'line': b'-- Up-to-date: /home/corelab-laptop2/tf2_ws/install/blimp_telemetry/share/ament_index/resource_index/packages/blimp_telemetry\n'}
+[4.279033] (blimp_telemetry) StdoutLine: {'line': b'-- Up-to-date: /home/corelab-laptop2/tf2_ws/install/blimp_telemetry/share/blimp_telemetry/cmake/blimp_telemetryConfig.cmake\n'}
+[4.279080] (blimp_telemetry) StdoutLine: {'line': b'-- Up-to-date: /home/corelab-laptop2/tf2_ws/install/blimp_telemetry/share/blimp_telemetry/cmake/blimp_telemetryConfig-version.cmake\n'}
+[4.279121] (blimp_telemetry) StdoutLine: {'line': b'-- Up-to-date: /home/corelab-laptop2/tf2_ws/install/blimp_telemetry/share/blimp_telemetry/package.xml\n'}
+[4.280878] (blimp_telemetry) CommandEnded: {'returncode': 0}
+[4.313492] (-) TimerEvent: {}
+[4.318582] (blimp_telemetry) JobEnded: {'identifier': 'blimp_telemetry', 'rc': 0}
+[4.321112] (-) EventReactorShutdown: {}

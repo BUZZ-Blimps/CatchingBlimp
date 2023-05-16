@@ -1,0 +1,296 @@
+[0.019s] Invoking command in '/home/corelab-laptop2/tf2_ws/build/drive_base_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake /home/corelab-laptop2/tf2_ws/src/uros/drive_base/drive_base_msgs -DCMAKE_INSTALL_PREFIX=/home/corelab-laptop2/tf2_ws/install/drive_base_msgs
+[0.196s] -- The C compiler identification is GNU 9.4.0
+[0.242s] -- The CXX compiler identification is GNU 9.4.0
+[0.247s] -- Check for working C compiler: /usr/bin/cc
+[0.294s] -- Check for working C compiler: /usr/bin/cc -- works
+[0.296s] -- Detecting C compiler ABI info
+[0.349s] -- Detecting C compiler ABI info - done
+[0.363s] -- Detecting C compile features
+[0.363s] -- Detecting C compile features - done
+[0.367s] -- Check for working CXX compiler: /usr/bin/c++
+[0.426s] -- Check for working CXX compiler: /usr/bin/c++ -- works
+[0.427s] -- Detecting CXX compiler ABI info
+[0.490s] -- Detecting CXX compiler ABI info - done
+[0.499s] -- Detecting CXX compile features
+[0.500s] -- Detecting CXX compile features - done
+[0.501s] -- Found ament_cmake: 0.9.11 (/opt/ros/foxy/share/ament_cmake/cmake)
+[0.521s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") 
+[0.521s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[0.684s] -- Found std_msgs: 2.0.5 (/opt/ros/foxy/share/std_msgs/cmake)
+[0.706s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.710s] -- Found rosidl_adapter: 1.3.0 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+[0.770s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "1.1.1f")  
+[0.805s] -- Found FastRTPS: /opt/ros/foxy/include  
+[0.896s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.949s] -- Found rosidl_default_generators: 1.0.1 (/opt/ros/foxy/share/rosidl_default_generators/cmake)
+[0.976s] -- Found PythonInterp: /usr/bin/python3 (found version "3.8.10") 
+[1.148s] -- Found ament_cmake_cppcheck: 0.9.8 (/opt/ros/foxy/share/ament_cmake_cppcheck/cmake)
+[1.149s] -- Found ament_cmake_cpplint: 0.9.8 (/opt/ros/foxy/share/ament_cmake_cpplint/cmake)
+[1.151s] -- Found ament_cmake_uncrustify: 0.9.8 (/opt/ros/foxy/share/ament_cmake_uncrustify/cmake)
+[1.152s] -- Found ament_cmake_ros: 0.9.2 (/opt/ros/foxy/share/ament_cmake_ros/cmake)
+[1.282s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[1.329s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.349s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3.5") 
+[1.350s] -- Found python_cmake_module: 0.8.1 (/opt/ros/foxy/share/python_cmake_module/cmake)
+[1.373s] -- Found PythonLibs: /usr/lib/x86_64-linux-gnu/libpython3.8.so (found suitable version "3.8.10", minimum required is "3.5") 
+[1.374s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[1.374s] -- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.8
+[1.374s] -- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.8.so
+[1.399s] -- Found PythonExtra: .so  
+[1.464s] -- Found ament_cmake_flake8: 0.9.8 (/opt/ros/foxy/share/ament_cmake_flake8/cmake)
+[1.465s] -- Found ament_cmake_pep257: 0.9.8 (/opt/ros/foxy/share/ament_cmake_pep257/cmake)
+[1.473s] -- Configuring done
+[1.511s] -- Generating done
+[1.513s] -- Build files have been written to: /home/corelab-laptop2/tf2_ws/build/drive_base_msgs
+[1.522s] Invoked command in '/home/corelab-laptop2/tf2_ws/build/drive_base_msgs' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake /home/corelab-laptop2/tf2_ws/src/uros/drive_base/drive_base_msgs -DCMAKE_INSTALL_PREFIX=/home/corelab-laptop2/tf2_ws/install/drive_base_msgs
+[1.524s] Invoking command in '/home/corelab-laptop2/tf2_ws/build/drive_base_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/corelab-laptop2/tf2_ws/build/drive_base_msgs -- -j8 -l8
+[1.556s] [  1%] [34m[1mGenerating C code for ROS interfaces[0m
+[1.556s] [35m[1mScanning dependencies of target drive_base_msgs__cpp[0m
+[1.568s] [  3%] [34m[1mGenerating C++ code for ROS interfaces[0m
+[2.637s] [  3%] Built target drive_base_msgs__cpp
+[2.662s] [  5%] [34m[1mGenerating C++ type support for eProsima Fast-RTPS[0m
+[2.673s] [  7%] [34m[1mGenerating C++ type support dispatch for ROS interfaces[0m
+[2.679s] [  9%] [34m[1mGenerating C++ introspection for ROS interfaces[0m
+[2.898s] [35m[1mScanning dependencies of target drive_base_msgs__rosidl_generator_c[0m
+[2.985s] [ 10%] [32mBuilding C object CMakeFiles/drive_base_msgs__rosidl_generator_c.dir/rosidl_generator_c/drive_base_msgs/msg/detail/command_header__functions.c.o[0m
+[2.986s] [ 12%] [32mBuilding C object CMakeFiles/drive_base_msgs__rosidl_generator_c.dir/rosidl_generator_c/drive_base_msgs/msg/detail/base_info__functions.c.o[0m
+[2.990s] [ 14%] [32mBuilding C object CMakeFiles/drive_base_msgs__rosidl_generator_c.dir/rosidl_generator_c/drive_base_msgs/msg/detail/command_status__functions.c.o[0m
+[2.995s] [ 16%] [32mBuilding C object CMakeFiles/drive_base_msgs__rosidl_generator_c.dir/rosidl_generator_c/drive_base_msgs/msg/detail/trv_command__functions.c.o[0m
+[3.191s] [ 18%] [32m[1mLinking C shared library libdrive_base_msgs__rosidl_generator_c.so[0m
+[3.338s] [ 18%] Built target drive_base_msgs__rosidl_generator_c
+[3.406s] [ 20%] [34m[1mGenerating C type support dispatch for ROS interfaces[0m
+[3.413s] [ 21%] [34m[1mGenerating C introspection for ROS interfaces[0m
+[3.615s] [35m[1mScanning dependencies of target drive_base_msgs__rosidl_typesupport_cpp[0m
+[3.650s] [ 23%] [32mBuilding CXX object CMakeFiles/drive_base_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/drive_base_msgs/msg/base_info__type_support.cpp.o[0m
+[3.660s] [ 25%] [32mBuilding CXX object CMakeFiles/drive_base_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/drive_base_msgs/msg/command_header__type_support.cpp.o[0m
+[3.661s] [ 27%] [32mBuilding CXX object CMakeFiles/drive_base_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/drive_base_msgs/msg/command_status__type_support.cpp.o[0m
+[3.730s] [ 29%] [32mBuilding CXX object CMakeFiles/drive_base_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/drive_base_msgs/msg/trv_command__type_support.cpp.o[0m
+[3.742s] [35m[1mScanning dependencies of target drive_base_msgs__rosidl_typesupport_introspection_cpp[0m
+[3.794s] [ 30%] [32mBuilding CXX object CMakeFiles/drive_base_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/drive_base_msgs/msg/detail/command_header__type_support.cpp.o[0m
+[3.907s] [35m[1mScanning dependencies of target drive_base_msgs__rosidl_typesupport_fastrtps_cpp[0m
+[4.014s] [ 32%] [32mBuilding CXX object CMakeFiles/drive_base_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/drive_base_msgs/msg/detail/dds_fastrtps/command_header__type_support.cpp.o[0m
+[4.154s] [ 34%] [32mBuilding CXX object CMakeFiles/drive_base_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/drive_base_msgs/msg/detail/dds_fastrtps/base_info__type_support.cpp.o[0m
+[4.179s] [ 36%] [32mBuilding CXX object CMakeFiles/drive_base_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/drive_base_msgs/msg/detail/dds_fastrtps/command_status__type_support.cpp.o[0m
+[4.232s] [ 38%] [32mBuilding CXX object CMakeFiles/drive_base_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/drive_base_msgs/msg/detail/dds_fastrtps/trv_command__type_support.cpp.o[0m
+[4.313s] [35m[1mScanning dependencies of target drive_base_msgs__rosidl_typesupport_c[0m
+[4.340s] [ 40%] [32mBuilding CXX object CMakeFiles/drive_base_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/drive_base_msgs/msg/detail/base_info__type_support.cpp.o[0m
+[4.373s] [ 41%] [32m[1mLinking CXX shared library libdrive_base_msgs__rosidl_typesupport_cpp.so[0m
+[4.390s] [ 43%] [32mBuilding CXX object CMakeFiles/drive_base_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/drive_base_msgs/msg/command_header__type_support.cpp.o[0m
+[4.536s] [ 45%] [32mBuilding CXX object CMakeFiles/drive_base_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/drive_base_msgs/msg/base_info__type_support.cpp.o[0m
+[4.540s] [ 45%] Built target drive_base_msgs__rosidl_typesupport_cpp
+[4.595s] [ 47%] [32mBuilding CXX object CMakeFiles/drive_base_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/drive_base_msgs/msg/detail/command_status__type_support.cpp.o[0m
+[4.629s] [ 49%] [32mBuilding CXX object CMakeFiles/drive_base_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/drive_base_msgs/msg/command_status__type_support.cpp.o[0m
+[4.725s] [35m[1mScanning dependencies of target drive_base_msgs__rosidl_typesupport_introspection_c[0m
+[4.749s] [ 50%] [32mBuilding C object CMakeFiles/drive_base_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/drive_base_msgs/msg/detail/command_header__type_support.c.o[0m
+[4.757s] [ 52%] [32mBuilding CXX object CMakeFiles/drive_base_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/drive_base_msgs/msg/trv_command__type_support.cpp.o[0m
+[4.795s] [ 54%] [32mBuilding CXX object CMakeFiles/drive_base_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/drive_base_msgs/msg/detail/trv_command__type_support.cpp.o[0m
+[4.799s] [ 56%] [32mBuilding C object CMakeFiles/drive_base_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/drive_base_msgs/msg/detail/base_info__type_support.c.o[0m
+[4.841s] [ 58%] [32mBuilding C object CMakeFiles/drive_base_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/drive_base_msgs/msg/detail/command_status__type_support.c.o[0m
+[4.841s] [ 60%] [32mBuilding C object CMakeFiles/drive_base_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/drive_base_msgs/msg/detail/trv_command__type_support.c.o[0m
+[4.854s] [ 61%] [32m[1mLinking CXX shared library libdrive_base_msgs__rosidl_typesupport_c.so[0m
+[4.887s] [ 63%] [32m[1mLinking CXX shared library libdrive_base_msgs__rosidl_typesupport_fastrtps_cpp.so[0m
+[4.911s] [ 65%] [32m[1mLinking C shared library libdrive_base_msgs__rosidl_typesupport_introspection_c.so[0m
+[4.934s] [ 65%] Built target drive_base_msgs__rosidl_typesupport_c
+[4.996s] [ 65%] Built target drive_base_msgs__rosidl_typesupport_introspection_c
+[5.062s] [ 65%] Built target drive_base_msgs__rosidl_typesupport_fastrtps_cpp
+[5.076s] [ 67%] [34m[1mGenerating C type support for eProsima Fast-RTPS[0m
+[5.235s] [ 69%] [32m[1mLinking CXX shared library libdrive_base_msgs__rosidl_typesupport_introspection_cpp.so[0m
+[5.286s] [ 69%] Built target drive_base_msgs__rosidl_typesupport_introspection_cpp
+[5.579s] [35m[1mScanning dependencies of target drive_base_msgs__rosidl_typesupport_fastrtps_c[0m
+[5.596s] [ 74%] [32mBuilding CXX object CMakeFiles/drive_base_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/drive_base_msgs/msg/detail/base_info__type_support_c.cpp.o[0m
+[5.596s] [ 74%] [32mBuilding CXX object CMakeFiles/drive_base_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/drive_base_msgs/msg/detail/command_status__type_support_c.cpp.o[0m
+[5.596s] [ 74%] [32mBuilding CXX object CMakeFiles/drive_base_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/drive_base_msgs/msg/detail/command_header__type_support_c.cpp.o[0m
+[5.601s] [ 76%] [32mBuilding CXX object CMakeFiles/drive_base_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/drive_base_msgs/msg/detail/trv_command__type_support_c.cpp.o[0m
+[6.033s] [ 78%] [32m[1mLinking CXX shared library libdrive_base_msgs__rosidl_typesupport_fastrtps_c.so[0m
+[6.113s] [ 78%] Built target drive_base_msgs__rosidl_typesupport_fastrtps_c
+[6.124s] [35m[1mScanning dependencies of target drive_base_msgs[0m
+[6.134s] [ 78%] Built target drive_base_msgs
+[6.143s] [35m[1mScanning dependencies of target drive_base_msgs__py[0m
+[6.152s] [ 80%] [34m[1mGenerating Python code for ROS interfaces[0m
+[7.209s] [ 80%] Built target drive_base_msgs__py
+[7.218s] [35m[1mScanning dependencies of target drive_base_msgs__python[0m
+[7.237s] [ 81%] [32mBuilding C object CMakeFiles/drive_base_msgs__python.dir/rosidl_generator_py/drive_base_msgs/msg/_trv_command_s.c.o[0m
+[7.237s] [ 87%] [32mBuilding C object CMakeFiles/drive_base_msgs__python.dir/rosidl_generator_py/drive_base_msgs/msg/_command_status_s.c.o[0m
+[7.237s] [ 87%] [32mBuilding C object CMakeFiles/drive_base_msgs__python.dir/rosidl_generator_py/drive_base_msgs/msg/_command_header_s.c.o[0m
+[7.237s] [ 87%] [32mBuilding C object CMakeFiles/drive_base_msgs__python.dir/rosidl_generator_py/drive_base_msgs/msg/_base_info_s.c.o[0m
+[7.349s] [ 89%] [32m[1mLinking C shared library rosidl_generator_py/drive_base_msgs/libdrive_base_msgs__python.so[0m
+[7.380s] [ 89%] Built target drive_base_msgs__python
+[7.389s] [35m[1mScanning dependencies of target drive_base_msgs__rosidl_typesupport_c__pyext[0m
+[7.389s] [35m[1mScanning dependencies of target drive_base_msgs__rosidl_typesupport_introspection_c__pyext[0m
+[7.389s] [35m[1mScanning dependencies of target drive_base_msgs__rosidl_typesupport_fastrtps_c__pyext[0m
+[7.405s] [ 92%] [32mBuilding C object CMakeFiles/drive_base_msgs__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py/drive_base_msgs/_drive_base_msgs_s.ep.rosidl_typesupport_fastrtps_c.c.o[0m
+[7.405s] [ 92%] [32mBuilding C object CMakeFiles/drive_base_msgs__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/drive_base_msgs/_drive_base_msgs_s.ep.rosidl_typesupport_c.c.o[0m
+[7.408s] [ 94%] [32mBuilding C object CMakeFiles/drive_base_msgs__rosidl_typesupport_introspection_c__pyext.dir/rosidl_generator_py/drive_base_msgs/_drive_base_msgs_s.ep.rosidl_typesupport_introspection_c.c.o[0m
+[7.476s] [ 96%] [32m[1mLinking CXX shared library rosidl_generator_py/drive_base_msgs/drive_base_msgs_s__rosidl_typesupport_fastrtps_c.cpython-38-x86_64-linux-gnu.so[0m
+[7.484s] [ 98%] [32m[1mLinking C shared library rosidl_generator_py/drive_base_msgs/drive_base_msgs_s__rosidl_typesupport_introspection_c.cpython-38-x86_64-linux-gnu.so[0m
+[7.512s] [100%] [32m[1mLinking C shared library rosidl_generator_py/drive_base_msgs/drive_base_msgs_s__rosidl_typesupport_c.cpython-38-x86_64-linux-gnu.so[0m
+[7.513s] [100%] Built target drive_base_msgs__rosidl_typesupport_introspection_c__pyext
+[7.532s] [100%] Built target drive_base_msgs__rosidl_typesupport_fastrtps_c__pyext
+[7.542s] [100%] Built target drive_base_msgs__rosidl_typesupport_c__pyext
+[7.552s] Invoked command in '/home/corelab-laptop2/tf2_ws/build/drive_base_msgs' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/corelab-laptop2/tf2_ws/build/drive_base_msgs -- -j8 -l8
+[7.614s] Invoking command in '/home/corelab-laptop2/tf2_ws/build/drive_base_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --install /home/corelab-laptop2/tf2_ws/build/drive_base_msgs
+[7.621s] -- Install configuration: ""
+[7.622s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/share/ament_index/resource_index/rosidl_interfaces/drive_base_msgs
+[7.622s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs
+[7.622s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg
+[7.622s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg/command_status.h
+[7.622s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg/rosidl_generator_c__visibility_control.h
+[7.622s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg/command_header.h
+[7.622s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg/base_info.h
+[7.622s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg/trv_command.h
+[7.622s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg/detail
+[7.623s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg/detail/base_info__functions.c
+[7.623s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg/detail/command_status__functions.h
+[7.623s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg/detail/command_header__type_support.h
+[7.623s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg/detail/command_status__struct.h
+[7.623s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg/detail/command_header__functions.c
+[7.623s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg/detail/command_status__type_support.h
+[7.623s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg/detail/command_status__functions.c
+[7.623s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg/detail/trv_command__functions.h
+[7.623s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg/detail/base_info__struct.h
+[7.623s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg/detail/trv_command__struct.h
+[7.623s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg/detail/command_header__struct.h
+[7.624s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg/detail/base_info__type_support.h
+[7.624s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg/detail/base_info__functions.h
+[7.624s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg/detail/trv_command__type_support.h
+[7.624s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg/detail/command_header__functions.h
+[7.624s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg/detail/trv_command__functions.c
+[7.624s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/share/drive_base_msgs/environment/library_path.sh
+[7.624s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/share/drive_base_msgs/environment/library_path.dsv
+[7.624s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/lib/libdrive_base_msgs__rosidl_generator_c.so
+[7.624s] -- Set runtime path of "/home/corelab-laptop2/tf2_ws/install/drive_base_msgs/lib/libdrive_base_msgs__rosidl_generator_c.so" to ""
+[7.624s] -- Up-to-date: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs
+[7.624s] -- Up-to-date: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg
+[7.624s] -- Up-to-date: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg/detail
+[7.625s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg/detail/command_status__rosidl_typesupport_fastrtps_c.h
+[7.625s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg/detail/command_header__rosidl_typesupport_fastrtps_c.h
+[7.625s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg/detail/base_info__rosidl_typesupport_fastrtps_c.h
+[7.625s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg/detail/trv_command__rosidl_typesupport_fastrtps_c.h
+[7.625s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[7.625s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/lib/libdrive_base_msgs__rosidl_typesupport_fastrtps_c.so
+[7.625s] -- Set runtime path of "/home/corelab-laptop2/tf2_ws/install/drive_base_msgs/lib/libdrive_base_msgs__rosidl_typesupport_fastrtps_c.so" to ""
+[7.625s] -- Up-to-date: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs
+[7.625s] -- Up-to-date: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg
+[7.625s] -- Up-to-date: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg/detail
+[7.625s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg/detail/command_header__rosidl_typesupport_fastrtps_cpp.hpp
+[7.626s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg/detail/dds_fastrtps
+[7.626s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg/detail/trv_command__rosidl_typesupport_fastrtps_cpp.hpp
+[7.626s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg/detail/base_info__rosidl_typesupport_fastrtps_cpp.hpp
+[7.626s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg/detail/command_status__rosidl_typesupport_fastrtps_cpp.hpp
+[7.626s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[7.626s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/lib/libdrive_base_msgs__rosidl_typesupport_fastrtps_cpp.so
+[7.626s] -- Set runtime path of "/home/corelab-laptop2/tf2_ws/install/drive_base_msgs/lib/libdrive_base_msgs__rosidl_typesupport_fastrtps_cpp.so" to ""
+[7.626s] -- Up-to-date: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs
+[7.626s] -- Up-to-date: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg
+[7.626s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[7.626s] -- Up-to-date: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg/detail
+[7.627s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg/detail/command_status__rosidl_typesupport_introspection_c.h
+[7.627s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg/detail/trv_command__rosidl_typesupport_introspection_c.h
+[7.627s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg/detail/base_info__rosidl_typesupport_introspection_c.h
+[7.627s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg/detail/command_status__type_support.c
+[7.627s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg/detail/trv_command__type_support.c
+[7.627s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg/detail/base_info__type_support.c
+[7.627s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg/detail/command_header__type_support.c
+[7.627s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg/detail/command_header__rosidl_typesupport_introspection_c.h
+[7.627s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/lib/libdrive_base_msgs__rosidl_typesupport_introspection_c.so
+[7.627s] -- Set runtime path of "/home/corelab-laptop2/tf2_ws/install/drive_base_msgs/lib/libdrive_base_msgs__rosidl_typesupport_introspection_c.so" to ""
+[7.627s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/lib/libdrive_base_msgs__rosidl_typesupport_c.so
+[7.628s] -- Set runtime path of "/home/corelab-laptop2/tf2_ws/install/drive_base_msgs/lib/libdrive_base_msgs__rosidl_typesupport_c.so" to ""
+[7.628s] -- Up-to-date: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs
+[7.628s] -- Up-to-date: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg
+[7.628s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg/command_header.hpp
+[7.628s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg/trv_command.hpp
+[7.628s] -- Up-to-date: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg/detail
+[7.628s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg/detail/command_header__builder.hpp
+[7.628s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg/detail/command_status__struct.hpp
+[7.628s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg/detail/trv_command__builder.hpp
+[7.629s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg/detail/command_header__traits.hpp
+[7.629s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg/detail/trv_command__struct.hpp
+[7.629s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg/detail/base_info__builder.hpp
+[7.629s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg/detail/base_info__struct.hpp
+[7.629s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg/detail/command_status__traits.hpp
+[7.629s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg/detail/command_header__struct.hpp
+[7.629s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg/detail/command_status__builder.hpp
+[7.629s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg/detail/trv_command__traits.hpp
+[7.629s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg/detail/base_info__traits.hpp
+[7.629s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg/base_info.hpp
+[7.630s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg/command_status.hpp
+[7.630s] -- Up-to-date: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs
+[7.630s] -- Up-to-date: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg
+[7.630s] -- Up-to-date: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg/detail
+[7.630s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg/detail/command_status__type_support.cpp
+[7.630s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg/detail/command_status__rosidl_typesupport_introspection_cpp.hpp
+[7.630s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg/detail/base_info__type_support.cpp
+[7.630s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg/detail/trv_command__type_support.cpp
+[7.630s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg/detail/trv_command__rosidl_typesupport_introspection_cpp.hpp
+[7.630s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg/detail/command_header__type_support.cpp
+[7.630s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg/detail/command_header__rosidl_typesupport_introspection_cpp.hpp
+[7.630s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/include/drive_base_msgs/msg/detail/base_info__rosidl_typesupport_introspection_cpp.hpp
+[7.631s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/lib/libdrive_base_msgs__rosidl_typesupport_introspection_cpp.so
+[7.631s] -- Set runtime path of "/home/corelab-laptop2/tf2_ws/install/drive_base_msgs/lib/libdrive_base_msgs__rosidl_typesupport_introspection_cpp.so" to ""
+[7.631s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/lib/libdrive_base_msgs__rosidl_typesupport_cpp.so
+[7.631s] -- Set runtime path of "/home/corelab-laptop2/tf2_ws/install/drive_base_msgs/lib/libdrive_base_msgs__rosidl_typesupport_cpp.so" to ""
+[7.631s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/share/drive_base_msgs/environment/pythonpath.sh
+[7.631s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/share/drive_base_msgs/environment/pythonpath.dsv
+[7.631s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/lib/python3.8/site-packages/drive_base_msgs/__init__.py
+[7.655s] Compiling '/home/corelab-laptop2/tf2_ws/install/drive_base_msgs/lib/python3.8/site-packages/drive_base_msgs/__init__.py'...
+[7.658s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/lib/python3.8/site-packages/drive_base_msgs/msg
+[7.658s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/lib/python3.8/site-packages/drive_base_msgs/msg/_command_status_s.c
+[7.658s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/lib/python3.8/site-packages/drive_base_msgs/msg/_trv_command_s.c
+[7.658s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/lib/python3.8/site-packages/drive_base_msgs/msg/_trv_command.py
+[7.658s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/lib/python3.8/site-packages/drive_base_msgs/msg/_command_status.py
+[7.659s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/lib/python3.8/site-packages/drive_base_msgs/msg/_base_info_s.c
+[7.659s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/lib/python3.8/site-packages/drive_base_msgs/msg/_command_header_s.c
+[7.659s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/lib/python3.8/site-packages/drive_base_msgs/msg/_command_header.py
+[7.659s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/lib/python3.8/site-packages/drive_base_msgs/msg/__init__.py
+[7.659s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/lib/python3.8/site-packages/drive_base_msgs/msg/_base_info.py
+[7.659s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/lib/python3.8/site-packages/drive_base_msgs/drive_base_msgs_s__rosidl_typesupport_fastrtps_c.cpython-38-x86_64-linux-gnu.so
+[7.659s] -- Set runtime path of "/home/corelab-laptop2/tf2_ws/install/drive_base_msgs/lib/python3.8/site-packages/drive_base_msgs/drive_base_msgs_s__rosidl_typesupport_fastrtps_c.cpython-38-x86_64-linux-gnu.so" to ""
+[7.660s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/lib/python3.8/site-packages/drive_base_msgs/drive_base_msgs_s__rosidl_typesupport_introspection_c.cpython-38-x86_64-linux-gnu.so
+[7.660s] -- Set runtime path of "/home/corelab-laptop2/tf2_ws/install/drive_base_msgs/lib/python3.8/site-packages/drive_base_msgs/drive_base_msgs_s__rosidl_typesupport_introspection_c.cpython-38-x86_64-linux-gnu.so" to ""
+[7.660s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/lib/python3.8/site-packages/drive_base_msgs/drive_base_msgs_s__rosidl_typesupport_c.cpython-38-x86_64-linux-gnu.so
+[7.661s] -- Set runtime path of "/home/corelab-laptop2/tf2_ws/install/drive_base_msgs/lib/python3.8/site-packages/drive_base_msgs/drive_base_msgs_s__rosidl_typesupport_c.cpython-38-x86_64-linux-gnu.so" to ""
+[7.661s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/lib/libdrive_base_msgs__python.so
+[7.661s] -- Set runtime path of "/home/corelab-laptop2/tf2_ws/install/drive_base_msgs/lib/libdrive_base_msgs__python.so" to ""
+[7.661s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/share/drive_base_msgs/msg/CommandHeader.idl
+[7.661s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/share/drive_base_msgs/msg/BaseInfo.idl
+[7.661s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/share/drive_base_msgs/msg/CommandStatus.idl
+[7.662s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/share/drive_base_msgs/msg/TRVCommand.idl
+[7.662s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/share/drive_base_msgs/msg/CommandHeader.msg
+[7.662s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/share/drive_base_msgs/msg/BaseInfo.msg
+[7.662s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/share/drive_base_msgs/msg/CommandStatus.msg
+[7.662s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/share/drive_base_msgs/msg/TRVCommand.msg
+[7.662s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/share/ament_index/resource_index/package_run_dependencies/drive_base_msgs
+[7.662s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/share/ament_index/resource_index/parent_prefix_path/drive_base_msgs
+[7.662s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/share/drive_base_msgs/environment/ament_prefix_path.sh
+[7.663s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/share/drive_base_msgs/environment/ament_prefix_path.dsv
+[7.663s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/share/drive_base_msgs/environment/path.sh
+[7.663s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/share/drive_base_msgs/environment/path.dsv
+[7.663s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/share/drive_base_msgs/local_setup.bash
+[7.663s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/share/drive_base_msgs/local_setup.sh
+[7.663s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/share/drive_base_msgs/local_setup.zsh
+[7.663s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/share/drive_base_msgs/local_setup.dsv
+[7.663s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/share/drive_base_msgs/package.dsv
+[7.664s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/share/ament_index/resource_index/packages/drive_base_msgs
+[7.664s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/share/drive_base_msgs/cmake/drive_base_msgs__rosidl_generator_cExport.cmake
+[7.664s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/share/drive_base_msgs/cmake/drive_base_msgs__rosidl_generator_cExport-noconfig.cmake
+[7.664s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/share/drive_base_msgs/cmake/drive_base_msgs__rosidl_typesupport_introspection_cExport.cmake
+[7.664s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/share/drive_base_msgs/cmake/drive_base_msgs__rosidl_typesupport_introspection_cExport-noconfig.cmake
+[7.664s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/share/drive_base_msgs/cmake/drive_base_msgs__rosidl_typesupport_cExport.cmake
+[7.664s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/share/drive_base_msgs/cmake/drive_base_msgs__rosidl_typesupport_cExport-noconfig.cmake
+[7.665s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/share/drive_base_msgs/cmake/drive_base_msgs__rosidl_generator_cppExport.cmake
+[7.665s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/share/drive_base_msgs/cmake/drive_base_msgs__rosidl_typesupport_introspection_cppExport.cmake
+[7.665s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/share/drive_base_msgs/cmake/drive_base_msgs__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+[7.665s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/share/drive_base_msgs/cmake/drive_base_msgs__rosidl_typesupport_cppExport.cmake
+[7.665s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/share/drive_base_msgs/cmake/drive_base_msgs__rosidl_typesupport_cppExport-noconfig.cmake
+[7.665s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/share/drive_base_msgs/cmake/rosidl_cmake-extras.cmake
+[7.666s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/share/drive_base_msgs/cmake/ament_cmake_export_dependencies-extras.cmake
+[7.666s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/share/drive_base_msgs/cmake/ament_cmake_export_libraries-extras.cmake
+[7.666s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/share/drive_base_msgs/cmake/ament_cmake_export_targets-extras.cmake
+[7.666s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/share/drive_base_msgs/cmake/ament_cmake_export_include_directories-extras.cmake
+[7.666s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/share/drive_base_msgs/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+[7.666s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/share/drive_base_msgs/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+[7.666s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/share/drive_base_msgs/cmake/drive_base_msgsConfig.cmake
+[7.666s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/share/drive_base_msgs/cmake/drive_base_msgsConfig-version.cmake
+[7.666s] -- Installing: /home/corelab-laptop2/tf2_ws/install/drive_base_msgs/share/drive_base_msgs/package.xml
+[7.670s] Invoked command in '/home/corelab-laptop2/tf2_ws/build/drive_base_msgs' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --install /home/corelab-laptop2/tf2_ws/build/drive_base_msgs

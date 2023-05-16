@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+
+<launch>
+	<node pkg="blimp_telemetry" exec="blimp_telemetry_node" name="burn_cream" output="screen" />
+</launch>

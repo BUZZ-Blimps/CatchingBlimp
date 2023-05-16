@@ -1,0 +1,592 @@
+-- The C compiler identification is GNU 9.4.0
+-- Check for working C compiler: /usr/bin/cc
+-- Check for working C compiler: /usr/bin/cc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- The CXX compiler identification is GNU 9.4.0
+-- Check for working CXX compiler: /usr/bin/c++
+-- Check for working CXX compiler: /usr/bin/c++ -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent
+[35m[1mScanning dependencies of target xrceagent[0m
+[  6%] [34m[1mCreating directories for 'xrceagent'[0m
+[ 12%] [34m[1mPerforming download step (git clone) for 'xrceagent'[0m
+Branch 'ros2' set up to track remote branch 'ros2' from 'origin'.
+[ 18%] [34m[1mNo patch step for 'xrceagent'[0m
+[ 25%] [34m[1mPerforming update step for 'xrceagent'[0m
+Current branch ros2 is up to date.
+[ 31%] [34m[1mPerforming configure step for 'xrceagent'[0m
+loading initial cache file /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/tmp/xrceagent-cache-.cmake
+-- The C compiler identification is GNU 9.4.0
+-- Check for working C compiler: /usr/bin/cc
+-- Check for working C compiler: /usr/bin/cc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- The CXX compiler identification is GNU 9.4.0
+-- Check for working CXX compiler: /usr/bin/c++
+-- Check for working CXX compiler: /usr/bin/c++ -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build
+[ 37%] [34m[1mPerforming build step for 'xrceagent'[0m
+[35m[1mScanning dependencies of target spdlog[0m
+[  6%] [34m[1mCreating directories for 'spdlog'[0m
+[ 12%] [34m[1mPerforming download step (git clone) for 'spdlog'[0m
+[ 18%] [34m[1mNo patch step for 'spdlog'[0m
+[ 25%] [34m[1mPerforming update step for 'spdlog'[0m
+[ 31%] [34m[1mPerforming configure step for 'spdlog'[0m
+loading initial cache file /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/spdlog/tmp/spdlog-cache-.cmake
+-- The CXX compiler identification is GNU 9.4.0
+-- Check for working CXX compiler: /usr/bin/c++
+-- Check for working CXX compiler: /usr/bin/c++ -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Build spdlog: 1.9.2
+-- Looking for C++ include pthread.h
+-- Looking for C++ include pthread.h - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+-- Looking for pthread_create in pthreads
+-- Looking for pthread_create in pthreads - not found
+-- Looking for pthread_create in pthread
+-- Looking for pthread_create in pthread - found
+-- Found Threads: TRUE  
+-- Build type: Release
+-- Generating example(s)
+-- Generating install
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/spdlog/src/spdlog-build
+[ 37%] [34m[1mPerforming build step for 'spdlog'[0m
+[35m[1mScanning dependencies of target spdlog[0m
+[ 10%] [32mBuilding CXX object CMakeFiles/spdlog.dir/src/stdout_sinks.cpp.o[0m
+[ 20%] [32mBuilding CXX object CMakeFiles/spdlog.dir/src/spdlog.cpp.o[0m
+[ 30%] [32mBuilding CXX object CMakeFiles/spdlog.dir/src/file_sinks.cpp.o[0m
+[ 40%] [32mBuilding CXX object CMakeFiles/spdlog.dir/src/async.cpp.o[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/spdlog.dir/src/color_sinks.cpp.o[0m
+[ 60%] [32mBuilding CXX object CMakeFiles/spdlog.dir/src/cfg.cpp.o[0m
+[ 70%] [32mBuilding CXX object CMakeFiles/spdlog.dir/src/fmt.cpp.o[0m
+[ 80%] [32m[1mLinking CXX static library libspdlog.a[0m
+[ 80%] Built target spdlog
+[35m[1mScanning dependencies of target example[0m
+[ 90%] [32mBuilding CXX object example/CMakeFiles/example.dir/example.cpp.o[0m
+[100%] [32m[1mLinking CXX executable example[0m
+[100%] Built target example
+[ 43%] [34m[1mPerforming install step for 'spdlog'[0m
+[ 80%] Built target spdlog
+[100%] Built target example
+[36mInstall the project...[0m
+-- Install configuration: "Release"
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/version.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/logger-inl.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/async_logger-inl.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/common-inl.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/stopwatch.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/async_logger.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/common.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/formatter.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/sinks
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/sinks/systemd_sink.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/sinks/ostream_sink.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/sinks/dup_filter_sink.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/sinks/sink.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/sinks/daily_file_sink.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/sinks/wincolor_sink.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/sinks/stdout_color_sinks.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/sinks/ansicolor_sink-inl.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/sinks/base_sink.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/sinks/android_sink.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/sinks/sink-inl.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/sinks/stdout_color_sinks-inl.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/sinks/basic_file_sink.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/sinks/ansicolor_sink.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/sinks/rotating_file_sink-inl.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/sinks/base_sink-inl.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/sinks/rotating_file_sink.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/sinks/win_eventlog_sink.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/sinks/syslog_sink.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/sinks/null_sink.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/sinks/qt_sinks.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/sinks/stdout_sinks-inl.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/sinks/stdout_sinks.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/sinks/hourly_file_sink.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/sinks/msvc_sink.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/sinks/wincolor_sink-inl.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/sinks/basic_file_sink-inl.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/sinks/tcp_sink.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/sinks/mongo_sink.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/sinks/ringbuffer_sink.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/sinks/dist_sink.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/logger.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/fwd.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/pattern_formatter-inl.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/spdlog.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/pattern_formatter.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/tweakme.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/cfg
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/cfg/helpers-inl.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/cfg/argv.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/cfg/helpers.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/cfg/env.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/spdlog-inl.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/async.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/details
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/details/os.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/details/fmt_helper.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/details/mpmc_blocking_q.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/details/os-inl.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/details/file_helper-inl.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/details/registry-inl.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/details/synchronous_factory.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/details/log_msg_buffer.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/details/log_msg-inl.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/details/periodic_worker.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/details/backtracer.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/details/thread_pool-inl.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/details/thread_pool.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/details/log_msg_buffer-inl.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/details/file_helper.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/details/circular_q.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/details/log_msg.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/details/tcp_client.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/details/console_globals.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/details/tcp_client-windows.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/details/null_mutex.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/details/backtracer-inl.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/details/windows_include.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/details/registry.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/details/periodic_worker-inl.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/fmt
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/fmt/fmt.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/fmt/compile.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/fmt/ostr.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/fmt/bin_to_hex.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/fmt/xchar.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/fmt/chrono.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/lib/libspdlog.a
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/fmt/bundled/
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/fmt/bundled//ranges.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/fmt/bundled//printf.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/fmt/bundled//os.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/fmt/bundled//ostream.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/fmt/bundled//args.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/fmt/bundled//compile.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/fmt/bundled//format.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/fmt/bundled//locale.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/fmt/bundled//color.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/fmt/bundled//format-inl.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/fmt/bundled//core.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/fmt/bundled//xchar.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/include/spdlog/fmt/bundled//chrono.h
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/lib/pkgconfig/spdlog.pc
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/lib/cmake/spdlog/spdlogConfigTargets.cmake
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/lib/cmake/spdlog/spdlogConfigTargets-release.cmake
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/lib/cmake/spdlog/spdlogConfig.cmake
+-- Installing: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2/lib/cmake/spdlog/spdlogConfigVersion.cmake
+[ 50%] [34m[1mCompleted 'spdlog'[0m
+[ 50%] Built target spdlog
+[35m[1mScanning dependencies of target uagent[0m
+[ 56%] [34m[1mCreating directories for 'uagent'[0m
+[ 62%] [34m[1mNo download step for 'uagent'[0m
+[ 75%] [34m[1mNo update step for 'uagent'[0m
+[ 75%] [34m[1mNo patch step for 'uagent'[0m
+[ 81%] [34m[1mPerforming configure step for 'uagent'[0m
+loading initial cache file /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build/uagent-prefix/tmp/uagent-cache-.cmake
+-- Setting build type to 'Release' as none was specified.
+-- Found tinyxml2: /usr/lib/x86_64-linux-gnu/libtinyxml2.so  
+-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "1.1.1f")  
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+-- Looking for pthread_create in pthreads
+-- Looking for pthread_create in pthreads - not found
+-- Looking for pthread_create in pthread
+-- Looking for pthread_create in pthread - found
+-- Found Threads: TRUE  
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/agent/src/xrceagent-build
+[ 87%] [34m[1mPerforming build step for 'uagent'[0m
+[35m[1mScanning dependencies of target microxrcedds_agent[0m
+[  7%] [32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/client/ProxyClient.cpp.o[0m
+[  7%] [32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/AgentInstance.cpp.o[0m
+[  7%] [32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/Agent.cpp.o[0m
+[  9%] [32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/Root.cpp.o[0m
+[ 11%] [32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/processor/Processor.cpp.o[0m
+[ 14%] [32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/participant/Participant.cpp.o[0m
+[ 16%] [32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/topic/Topic.cpp.o[0m
+[ 19%] [32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/publisher/Publisher.cpp.o[0m
+[ 21%] [32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/subscriber/Subscriber.cpp.o[0m
+[ 23%] [32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/datawriter/DataWriter.cpp.o[0m
+[ 26%] [32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/datareader/DataReader.cpp.o[0m
+[ 28%] [32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/requester/Requester.cpp.o[0m
+[ 30%] [32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/replier/Replier.cpp.o[0m
+[ 33%] [32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/object/XRCEObject.cpp.o[0m
+[ 35%] [32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/types/XRCETypes.cpp.o[0m
+[ 38%] [32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/types/MessageHeader.cpp.o[0m
+[ 40%] [32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/types/SubMessageHeader.cpp.o[0m
+[ 42%] [32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/message/InputMessage.cpp.o[0m
+[ 45%] [32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/message/OutputMessage.cpp.o[0m
+[ 47%] [32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/utils/ArgumentParser.cpp.o[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/transport/Server.cpp.o[0m
+[ 52%] [32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/transport/stream_framing/StreamFramingProtocol.cpp.o[0m
+[ 54%] [32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/transport/custom/CustomAgent.cpp.o[0m
+[ 57%] [32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/transport/udp/UDPv4AgentLinux.cpp.o[0m
+[ 59%] [32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/transport/udp/UDPv6AgentLinux.cpp.o[0m
+[ 61%] [32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/transport/tcp/TCPv4AgentLinux.cpp.o[0m
+[ 64%] [32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/transport/tcp/TCPv6AgentLinux.cpp.o[0m
+[ 66%] [32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/transport/serial/SerialAgentLinux.cpp.o[0m
+[ 69%] [32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/transport/serial/TermiosAgentLinux.cpp.o[0m
+[ 71%] [32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/transport/serial/MultiSerialAgentLinux.cpp.o[0m
+[ 73%] [32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/transport/serial/MultiTermiosAgentLinux.cpp.o[0m
+[ 76%] [32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/transport/serial/PseudoTerminalAgentLinux.cpp.o[0m
+[ 78%] [32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/transport/can/CanAgentLinux.cpp.o[0m
+[ 80%] [32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/transport/discovery/DiscoveryServerLinux.cpp.o[0m
+[ 83%] [32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/transport/discovery/DiscoveryServer.cpp.o[0m
+[ 85%] [32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/types/TopicPubSubType.cpp.o[0m
+[ 88%] [32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/xmlobjects/xmlobjects.cpp.o[0m
+[ 90%] [32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/middleware/fast/FastEntities.cpp.o[0m
+[ 92%] [32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/middleware/fast/FastMiddleware.cpp.o[0m
+[ 95%] [32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/middleware/fastdds/FastDDSEntities.cpp.o[0m
+[ 97%] [32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/middleware/fastdds/FastDDSMiddleware.cpp.o[0m
+[100%] [32m[1mLinking CXX shared library libmicroxrcedds_agent.so[0m
+[100%] Built target microxrcedds_agent
+[34m[1mNo install step for 'uagent'[0m
+[34m[1mCompleted 'uagent'[0m
+Built target uagent
+[ 43%] [34m[1mPerforming install step for 'xrceagent'[0m
+[100%] Built target microxrcedds_agent
+[36mInstall the project...[0m
+-- Install configuration: "Release"
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/lib/libmicroxrcedds_agent.so.2.4.0
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/lib/libmicroxrcedds_agent.so.2.4
+-- Set runtime path of "/home/corelab-laptop2/tf2_ws/install/micro_ros_agent/lib/libmicroxrcedds_agent.so.2.4.0" to ""
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/lib/libmicroxrcedds_agent.so
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/p2p
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/p2p/InternalClient.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/p2p/InternalClientManager.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/logger
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/logger/Logger.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/participant
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/participant/Participant.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/processor
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/processor/Processor.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/object
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/object/XRCEObject.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/message
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/message/Packet.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/message/InputMessage.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/message/OutputMessage.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/client
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/client/session
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/client/session/Session.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/client/session/stream
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/client/session/stream/InputStream.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/client/session/stream/OutputStream.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/client/session/SessionInfo.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/client/ProxyClient.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/scheduler
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/scheduler/PacketScheduler.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/scheduler/Scheduler.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/Root.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/topic
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/topic/Topic.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/requester
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/requester/Requester.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/publisher
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/publisher/Publisher.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/replier
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/replier/Replier.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/visibility.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/reader
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/reader/Reader.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/utils
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/utils/ArgumentParser.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/utils/Conversion.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/utils/Color.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/utils/SeqNum.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/utils/Time.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/utils/TokenBucket.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/utils/SharedMutexPriority.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/utils/Functions.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/utils/SharedMutex.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/Agent.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/types
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/types/MessageHeader.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/types/XRCETypes.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/types/TopicPubSubType.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/types/Optional.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/types/SubMessageHeader.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/AgentInstance.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/datareader
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/datareader/DataReader.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/datawriter
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/datawriter/DataWriter.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/transport
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/transport/p2p
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/transport/p2p/AgentDiscoverer.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/transport/p2p/AgentDiscovererLinux.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/transport/serial
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/transport/serial/TermiosAgentLinux.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/transport/serial/MultiTermiosAgentLinux.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/transport/serial/MultiSerialAgentLinux.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/transport/serial/SerialAgentLinux.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/transport/serial/baud_rate_table_linux.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/transport/serial/PseudoTerminalAgentLinux.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/transport/udp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/transport/udp/UDPv6AgentLinux.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/transport/udp/UDPv4AgentWindows.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/transport/udp/UDPv6AgentWindows.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/transport/udp/UDPv4AgentLinux.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/transport/Server.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/transport/SessionManager.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/transport/stream_framing
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/transport/stream_framing/StreamFramingProtocol.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/transport/TransportRc.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/transport/tcp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/transport/tcp/TCPv6AgentLinux.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/transport/tcp/TCPConnection.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/transport/tcp/TCPv6AgentWindows.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/transport/tcp/TCPv4AgentLinux.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/transport/tcp/TCPServerBase.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/transport/tcp/TCPv4AgentWindows.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/transport/discovery
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/transport/discovery/DiscoveryServerLinux.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/transport/discovery/DiscoveryServer.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/transport/discovery/DiscoveryServerWindows.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/transport/can
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/transport/can/CanAgentLinux.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/transport/custom
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/transport/custom/CustomAgent.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/transport/util
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/transport/util/InterfaceLinux.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/transport/util/InterfaceWindows.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/transport/endpoint
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/transport/endpoint/IPv6EndPoint.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/transport/endpoint/IPv4EndPoint.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/transport/endpoint/CanEndPoint.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/transport/endpoint/MultiSerialEndPoint.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/transport/endpoint/SerialEndPoint.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/transport/endpoint/CustomEndPoint.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/subscriber
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/subscriber/Subscriber.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/middleware
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/middleware/ced
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/middleware/ced/CedMiddleware.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/middleware/ced/CedEntities.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/middleware/fastdds
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/middleware/fastdds/FastDDSMiddleware.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/middleware/fastdds/FastDDSEntities.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/middleware/fast
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/middleware/fast/FastMiddleware.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/middleware/fast/FastEntities.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/middleware/utils
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/middleware/utils/Callbacks.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/middleware/Middleware.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/share/microxrcedds_agent/cmake/microxrcedds_agentTargets.cmake
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/share/microxrcedds_agent/cmake/microxrcedds_agentTargets-release.cmake
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/uxr/agent/config.hpp
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/share/microxrcedds_agent/LICENSE
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/share/microxrcedds_agent/cmake/microxrcedds_agentConfig.cmake
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/share/microxrcedds_agent/cmake/microxrcedds_agentConfigVersion.cmake
+-- Up-to-date: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent
+-- Up-to-date: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/version.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/logger-inl.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/async_logger-inl.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/common-inl.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/stopwatch.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/async_logger.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/common.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/formatter.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/sinks
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/sinks/systemd_sink.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/sinks/ostream_sink.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/sinks/dup_filter_sink.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/sinks/sink.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/sinks/daily_file_sink.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/sinks/wincolor_sink.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/sinks/stdout_color_sinks.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/sinks/ansicolor_sink-inl.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/sinks/base_sink.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/sinks/android_sink.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/sinks/sink-inl.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/sinks/stdout_color_sinks-inl.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/sinks/basic_file_sink.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/sinks/ansicolor_sink.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/sinks/rotating_file_sink-inl.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/sinks/base_sink-inl.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/sinks/rotating_file_sink.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/sinks/win_eventlog_sink.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/sinks/syslog_sink.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/sinks/null_sink.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/sinks/qt_sinks.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/sinks/stdout_sinks-inl.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/sinks/stdout_sinks.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/sinks/hourly_file_sink.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/sinks/msvc_sink.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/sinks/wincolor_sink-inl.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/sinks/basic_file_sink-inl.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/sinks/tcp_sink.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/sinks/mongo_sink.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/sinks/ringbuffer_sink.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/sinks/dist_sink.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/logger.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/fwd.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/pattern_formatter-inl.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/spdlog.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/pattern_formatter.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/tweakme.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/cfg
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/cfg/helpers-inl.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/cfg/argv.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/cfg/helpers.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/cfg/env.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/spdlog-inl.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/async.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/details
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/details/os.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/details/fmt_helper.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/details/mpmc_blocking_q.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/details/os-inl.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/details/file_helper-inl.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/details/registry-inl.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/details/synchronous_factory.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/details/log_msg_buffer.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/details/log_msg-inl.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/details/periodic_worker.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/details/backtracer.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/details/thread_pool-inl.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/details/thread_pool.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/details/log_msg_buffer-inl.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/details/file_helper.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/details/circular_q.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/details/log_msg.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/details/tcp_client.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/details/console_globals.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/details/tcp_client-windows.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/details/null_mutex.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/details/backtracer-inl.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/details/windows_include.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/details/registry.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/details/periodic_worker-inl.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/fmt
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/fmt/fmt.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/fmt/compile.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/fmt/ostr.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/fmt/bin_to_hex.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/fmt/bundled
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/fmt/bundled/ranges.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/fmt/bundled/printf.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/fmt/bundled/os.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/fmt/bundled/ostream.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/fmt/bundled/args.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/fmt/bundled/compile.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/fmt/bundled/format.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/fmt/bundled/locale.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/fmt/bundled/color.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/fmt/bundled/format-inl.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/fmt/bundled/core.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/fmt/bundled/xchar.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/fmt/bundled/chrono.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/fmt/xchar.h
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/include/spdlog/fmt/chrono.h
+-- Up-to-date: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/lib
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/lib/cmake
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/lib/cmake/spdlog
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/lib/cmake/spdlog/spdlogConfigVersion.cmake
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/lib/cmake/spdlog/spdlogConfig.cmake
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/lib/cmake/spdlog/spdlogConfigTargets-release.cmake
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/lib/cmake/spdlog/spdlogConfigTargets.cmake
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/lib/libspdlog.a
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/lib/pkgconfig
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/lib/pkgconfig/spdlog.pc
+[ 50%] [34m[1mCompleted 'xrceagent'[0m
+[ 50%] Built target xrceagent
+[35m[1mScanning dependencies of target micro_ros_agent[0m
+[ 56%] [34m[1mCreating directories for 'micro_ros_agent'[0m
+[ 62%] [34m[1mNo download step for 'micro_ros_agent'[0m
+[ 75%] [34m[1mNo patch step for 'micro_ros_agent'[0m
+[ 75%] [34m[1mNo update step for 'micro_ros_agent'[0m
+[ 81%] [34m[1mPerforming configure step for 'micro_ros_agent'[0m
+loading initial cache file /home/corelab-laptop2/tf2_ws/build/micro_ros_agent/micro_ros_agent-prefix/tmp/micro_ros_agent-cache-.cmake
+-- Found ament_cmake: 0.9.11 (/opt/ros/foxy/share/ament_cmake/cmake)
+-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") 
+-- Using PYTHON_EXECUTABLE: /usr/bin/python3
+-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "1.1.1f")  
+-- Looking for C++ include pthread.h
+-- Looking for C++ include pthread.h - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+-- Looking for pthread_create in pthreads
+-- Looking for pthread_create in pthreads - not found
+-- Looking for pthread_create in pthread
+-- Looking for pthread_create in pthread - found
+-- Found Threads: TRUE  
+-- Found rosidl_cmake: 1.3.0 (/opt/ros/foxy/share/rosidl_cmake/cmake)
+-- Found rosidl_adapter: 1.3.0 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+-- Found fastrtps_cmake_module: 1.0.4 (/opt/ros/foxy/share/fastrtps_cmake_module/cmake)
+-- Found rmw_dds_common: 1.0.3 (/opt/ros/foxy/share/rmw_dds_common/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Found FastRTPS: /opt/ros/foxy/include  
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found rmw_fastrtps_shared_cpp: 1.3.1 (/opt/ros/foxy/share/rmw_fastrtps_shared_cpp/cmake)
+-- Found ament_lint_auto: 0.9.8 (/opt/ros/foxy/share/ament_lint_auto/cmake)
+-- Found ament_cmake_gtest: 0.9.11 (/opt/ros/foxy/share/ament_cmake_gtest/cmake)
+-- Found micro_ros_msgs: 1.0.0 (/home/corelab-laptop2/tf2_ws/install/micro_ros_msgs/share/micro_ros_msgs/cmake)
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/corelab-laptop2/tf2_ws/build/micro_ros_agent
+[ 87%] [34m[1mPerforming build step for 'micro_ros_agent'[0m
+[35m[1mScanning dependencies of target micro_ros_agent[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/micro_ros_agent.dir/src/agent/graph_manager/graph_manager.cpp.o[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/micro_ros_agent.dir/src/main.cpp.o[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/micro_ros_agent.dir/src/agent/Agent.cpp.o[0m
+[ 66%] [32mBuilding CXX object CMakeFiles/micro_ros_agent.dir/src/agent/graph_manager/graph_typesupport.cpp.o[0m
+[ 83%] [32mBuilding CXX object CMakeFiles/micro_ros_agent.dir/src/agent/utils/demangle.cpp.o[0m
+[100%] [32m[1mLinking CXX executable micro_ros_agent[0m
+[100%] Built target micro_ros_agent
+[34m[1mNo install step for 'micro_ros_agent'[0m
+[34m[1mCompleted 'micro_ros_agent'[0m
+Built target micro_ros_agent
+-- Install configuration: ""
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/share/ament_index/resource_index/package_run_dependencies/micro_ros_agent
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/share/ament_index/resource_index/parent_prefix_path/micro_ros_agent
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/share/micro_ros_agent/environment/ament_prefix_path.sh
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/share/micro_ros_agent/environment/ament_prefix_path.dsv
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/share/micro_ros_agent/environment/path.sh
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/share/micro_ros_agent/environment/path.dsv
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/share/micro_ros_agent/local_setup.bash
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/share/micro_ros_agent/local_setup.sh
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/share/micro_ros_agent/local_setup.zsh
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/share/micro_ros_agent/local_setup.dsv
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/share/micro_ros_agent/package.dsv
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/share/ament_index/resource_index/packages/micro_ros_agent
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/share/micro_ros_agent/cmake/ament_cmake_export_dependencies-extras.cmake
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/share/micro_ros_agent/cmake/micro_ros_agentConfig.cmake
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/share/micro_ros_agent/cmake/micro_ros_agentConfig-version.cmake
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/share/micro_ros_agent/package.xml
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/lib/micro_ros_agent/micro_ros_agent
+-- Set runtime path of "/home/corelab-laptop2/tf2_ws/install/micro_ros_agent/lib/micro_ros_agent/micro_ros_agent" to ""
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/share/micro_ros_agent/launch
+-- Installing: /home/corelab-laptop2/tf2_ws/install/micro_ros_agent/share/micro_ros_agent/launch/micro_ros_agent_launch.py

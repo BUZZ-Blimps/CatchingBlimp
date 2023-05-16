@@ -1,0 +1,2 @@
+source;share/blimp_telemetry/environment/ament_prefix_path.sh
+source;share/blimp_telemetry/environment/path.sh
