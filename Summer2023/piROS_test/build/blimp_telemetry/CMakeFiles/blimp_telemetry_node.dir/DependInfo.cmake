@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/corelab-laptop2/tf2_ws/src/blimp_telemetry/src/blimp_telemetry_node.cpp" "/home/corelab-laptop2/tf2_ws/build/blimp_telemetry/CMakeFiles/blimp_telemetry_node.dir/src/blimp_telemetry_node.cpp.o"
+  "/home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/piROS_test/src/blimp_telemetry/src/blimp_telemetry_node.cpp" "/home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/piROS_test/build/blimp_telemetry/CMakeFiles/blimp_telemetry_node.dir/src/blimp_telemetry_node.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -18,6 +18,7 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/opt/ros/foxy/include"
+  "/home/corelab-laptop2/microros_ws/install/micro_ros_agent/include"
   )
 
 # Targets to which this target links.

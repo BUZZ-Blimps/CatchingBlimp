@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/corelab-laptop2/tf2_ws/src/blimp_telemetry
+CMAKE_SOURCE_DIR = /home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/piROS_test/src/blimp_telemetry
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/corelab-laptop2/tf2_ws/build/blimp_telemetry
+CMAKE_BINARY_DIR = /home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/piROS_test/build/blimp_telemetry
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -137,9 +137,9 @@ install/local/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/corelab-laptop2/tf2_ws/build/blimp_telemetry/CMakeFiles /home/corelab-laptop2/tf2_ws/build/blimp_telemetry/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/piROS_test/build/blimp_telemetry/CMakeFiles /home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/piROS_test/build/blimp_telemetry/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/corelab-laptop2/tf2_ws/build/blimp_telemetry/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/piROS_test/build/blimp_telemetry/CMakeFiles 0
 .PHONY : all
 
 # The main clean target

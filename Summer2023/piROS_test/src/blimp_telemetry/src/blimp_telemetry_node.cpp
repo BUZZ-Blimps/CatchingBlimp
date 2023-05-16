@@ -16,7 +16,7 @@ class TelemetryPublisher : public rclcpp::Node {
 public:
     TelemetryPublisher() : Node("blimp_telemetry_node") {
 
-    // Declare and acquire `turtlename` parameter
+    // Declare and acquire `blimpname` parameter
      blimpname_ = this->declare_parameter<std::string>("blimpname", "burn_cream_blimp");
 
     // Initialize the transform broadcaster
