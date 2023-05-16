@@ -1,6 +1,5 @@
 #include <Arduino.h>
 #include <vector>
-#include <SerialData.h>
 #include "MotorControl.h"
 #include "BerryIMU_v3.h"
 #include "Madgwick_Filter.h"
@@ -14,23 +13,6 @@
 #include "optical_ekf.h"
 #include "gyro_ekf.h"
 #include "tripleBallGrabber.h"
-#include <Arduino.h>
-#include <vector>
-#include <SerialData.h>
-#include "MotorControl.h"
-#include "BerryIMU_v3.h"
-#include "Madgwick_Filter.h"
-#include "baro_acc_kf.h"
-#include "accelGCorrection.h"
-#include "PID.h"
-#include "EMAFilter.h"
-#include "Optical_Flow.h"
-#include "Kalman_Filter_Tran_Vel_Est.h"
-#include "BangBang.h"
-#include "optical_ekf.h"
-#include "gyro_ekf.h"
-#include "tripleBallGrabber.h"
-#include "PMW3901.h"
 
 #include "Gimbal.h"
 
@@ -38,8 +20,7 @@
 #define BLIMP_COLOR               red      //either red or blue
 #define GOAL_COLOR                orange    //either orange or yellow
 
-//Define ceiling height from where we plug in battery in meters
-#define CEIL_HEIGHT_FROM_START    3.6  
+#define CEIL_HEIGHT_FROM_START    4
 
 //debug mode
 #define ZERO_MODE                 false
@@ -47,75 +28,67 @@
 #define MOTORS_OFF                false
 
 //optional controllers
-#define USE_EST_VELOCITY_IN_MANUAL  false    //use false to turn off the velosity control to see the blimp's behavior 	
+#define USE_EST_VELOCITY_IN_MANUAL  false    //use false to turn off the velosity control to see the blimp's behavior 
 #define USE_OBJECT_AVOIDENCE      false     //use false to turn off the obstacle avoidance 
 
-//catch search time after one	
-#define MAX_SEARCH_WAIT_AFTER_ONE     180    //max searching 80 	
-#define GAME_BALL_WAIT_TIME_PENALTY   20    //should be set to 20, every catch assumed to be 20 seconds long  	
+//catch search time after one
+#define MAX_SEARCH_WAIT_AFTER_ONE     80    //max searching 
+#define GAME_BALL_WAIT_TIME_PENALTY   0    //should be set to 20, every catch assumed to be 20 seconds long  
 
-//number of catches attempted	
-#define TOTAL_ATTEMPTS            8    // attempts at catching (5) 	
-#define MAX_ATTEMPTS              8    //should be set to 5	
+//number of catches attempted
+#define TOTAL_ATTEMPTS            100    // attempts at catching 
+#define MAX_ATTEMPTS              100    //should be set to 5
 
-//flight area parameters	
-#define CEIL_HEIGHT               12      //m	
-#define FLOOR_HEIGHT              4    //m	
+//flight area parameters
+#define CEIL_HEIGHT               8      //m
+#define FLOOR_HEIGHT              2.5    //m
 
-#define MAX_HEIGHT                13    //m	
-#define GOAL_HEIGHT               10   //m	
-#define GOAL_HEIGHT_DEADBAND      0.3       //m	
+#define MAX_HEIGHT                8    //m
+#define GOAL_HEIGHT               5.0    //m
+#define GOAL_HEIGHT_DEADBAND      0.3       //m
 
-//distance triggers	
-#define GOAL_DISTANCE_TRIGGER    1.5 //m distance for blimp to trigger goal score 	
-#define BALL_GATE_OPEN_TRIGGER   2.5 //m distance for blimp to open the gate 	
-#define BALL_CATCH_TRIGGER       1  //m distance for blimp to start the open-loop control
+//distance triggers
+#define GOAL_DISTANCE_TRIGGER     65  //unscaled distance for blimp to trigger goal score 
+#define BALL_GATE_OPEN_TRIGGER    22 //30 unscaled distance for blimp to open the gate
+#define BALL_CATCH_TRIGGER        19 //27 unscaled distance for blimp to start the open-loop control 
 
-//object avoidence motor coms	
-#define FORWARD_AVOID             250  //25% throttle
-#define YAW_AVOID                 10	 //deg/s
-#define UP_AVOID                  0.4  //m/s
+//object avoidence motor coms
+#define FORWARD_AVOID             0.5 
+#define YAW_AVOID                 10
+#define UP_AVOID                  0.1
 
 //autonomy tunning parameters
 // the inputs are bounded from -2 to 2, yaw is maxed out at 120 deg/s
-#define GAME_BALL_YAW_SEARCH      -15  //deg/s
-#define GAME_BALL_FORWARD_SEARCH  300 //30% throttle 
-#define GAME_BALL_VERTICAL_SEARCH 0.7  //m/s
+#define GAME_BALL_YAW_SEARCH      -20  
+#define GAME_BALL_FORWARD_SEARCH  0.4  //0.4 = 20% 
+#define GAME_BALL_VERTICAL_SEARCH 0.15
 
-#define GAME_BALL_CLOSURE_COM     400  //approaching at 20% throttle cap
-#define GAME_BALL_APPROACH_ANGLE  -80  //0.2 approach magic number
-#define GAME_BaLL_X_OFFSET        0   //10 offset magic number
+#define GAME_BALL_CLOSURE_COM     0.2  //approaching at 20% throttle
+#define GAME_BALL_APPROACH_ANGLE  0.1  //descend or ascend at 5% throttle
+#define GAME_BaLL_X_OFFSET        10   //adjusting yaw at 10 deg/s
 
-#define CATCHING_FORWARD_COM      900  //catching at 90% throttle 
-#define CATCHING_UP_COM           1  //damp out pitch
+#define CATCHING_FORWARD_COM      0.8  //catching at 40% throttle 
+#define CATCHING_UP_COM           0.2
 
-#define CAUGHT_FORWARD_COM        -860  //go back so that the game ball gets to the back 
+#define CAUGHT_FORWARD_COM        -0.82  //go back so that the game ball gets to the back 
 #define CAUGHT_UP_COM             -0.2
 
-#define GOAL_YAW_SEARCH           20   
-#define GOAL_FORWARD_SEARCH       320  //400 40% throttle
-#define GOAL_UP_VELOCITY          2.5
+#define GOAL_YAW_SEARCH           15   
+#define GOAL_FORWARD_SEARCH       0.4  //20% throttle
+#define GOAL_UP_VELOCITY          0.1  
 
-#define GOAL_CLOSURE_COM          400  //forward command 25% throttle
-#define GOAL_X_OFFSET             -10
-#define GOAL_APPROACH_ANGLE       -30  //height alignment (approach down)
-
-//goal alignment test
-#define ALIGNING_YAW_COM           10 //test
-#define ALIGNING_FORWARD_COM        100 //test
-#define ALIGNING_UP_COM            0.4 //test
-#define ALIGNING_TRANSLATION_COM   300 //test
+#define GOAL_CLOSURE_COM          0.3 
+#define GOAL_APPROACH_ANGLE       0
 
 #define SCORING_YAW_COM           0
-#define SCORING_FORWARD_COM       500 //40% throttle
-#define SCORING_UP_COM            1.5
+#define SCORING_FORWARD_COM       0.18
+#define SCORING_UP_COM            0.1
 
-#define SHOOTING_FORWARD_COM      700  //counter back motion 
-#define SHOOTING_UP_COM           0.3
-//counter moment (right now we do want to shoot up because ball sinks)
+#define SHOOTING_FORWARD_COM      0.6
+#define SHOOTING_UP_COM           0.2
 
-#define SCORED_FORWARD_COM        -700
-#define SCORED_UP_COM             -0.2
+#define SCORED_FORWARD_COM        -0.6
+#define SCORED_UP_COM             -0.0015
 
 //sensor and controller rates
 #define FAST_SENSOR_LOOP_FREQ           100.0
@@ -137,64 +110,49 @@
 #define TEENSY_WAIT_TIME          0.5
 
 //init pins
-// #define LSPIN                     7
-// #define RSPIN                     10
+
+// #define LYSPIN                     7
+// #define LPSPIN                     6
 // #define LMPIN                     2
+// #define RYSPIN                     10
+// #define RPSPIN                     9
 // #define RMPIN                     5
 
-//**************** TEENSY PINOUT ****************//
-#define L_Pitch                   2                    
-#define L_Yaw                     3              
-#define R_Pitch                   4                
-#define R_Yaw                     5              
-                                   
-#define L_Pitch_FB                23                    
-#define L_Yaw_FB                  22                  
-#define R_Pitch_FB                21                    
-#define R_Yaw_FB                  20                  
-                                  
-#define GATE_S                    15                
-                                  
-#define PWM_R                     6              
-#define PWM_G                     9              
-#define PWM_L                     14              
-                                  
-#define OF_CS                     10              
-//***********************************************//
+#define GRABBER_PIN               8
+#define SHOOTER_PIN               4
 
 //Print info (for sending variable data to the rasberry pi)
 #define MAX_NUM_VARIABLES         4
 #define MAX_VARIABLE_NAME_SIZE    6
 
 //objects
-SerialData piData;
+// SerialData piData;
 
 //sensor fusion objects
 BerryIMU_v3 BerryIMU;
 Madgwick_Filter madgwick;
 BaroAccKF kf;
 AccelGCorrection accelGCorrection;
-// Optical_Flow Flow;
-// Kalman_Filter_Tran_Vel_Est kal_vel;
-// OpticalEKF xekf(DIST_CONSTANT, GYRO_X_CONSTANT, GYRO_YAW_CONSTANT);
-// OpticalEKF yekf(DIST_CONSTANT, GYRO_Y_CONSTANT, 0);
+Optical_Flow Flow;
+Kalman_Filter_Tran_Vel_Est kal_vel;
+OpticalEKF xekf(DIST_CONSTANT, GYRO_X_CONSTANT, GYRO_YAW_CONSTANT);
+OpticalEKF yekf(DIST_CONSTANT, GYRO_Y_CONSTANT, 0);
 GyroEKF gyroEKF;
-//PMW3901 OpticalFlow(OF_CS);
 
 //Gimbal leftGimbal(yawPin, pitchPin, motorPin, newDeadband, newTurnOnCom, newMinCom, newMaxCom);
 MotorControl motorControl;
-Gimbal leftGimbal(L_Yaw, L_Pitch, PWM_L, 25, 30, 1000, 2000, 45, 0.2);
-Gimbal rightGimbal(R_Yaw, R_Pitch, PWM_R, 25, 30, 1000, 2000, 135, 0.2);
+Gimbal leftGimbal(7, 6, 2, 25, 30, 1000, 2000, 45, 0.2);
+Gimbal rightGimbal(10, 9, 5, 25, 30, 1000, 2000, 135, 0.2);
 
-//Manual PID control	
-PID verticalPID(500, 0, 0);  //can be tuned down 	
-PID yawPID(20.0, 0, 0);	
-PID forwardPID(500, 0, 0);  	
+//Manual PID control
+PID verticalPID(500, 0, 0);  //can be tuned down 
+PID yawPID(20.0, 0, 0);
+PID forwardPID(500, 0, 0);  
 PID translationPID(500, 0, 0);
 
 //Auto PID control (output fed into manual controller)
-PID yPixelPID(0.0075,0,0);  //0.0075 default
-PID xPixelPID(0.2,0,0);  //0.162 default
+PID yPixelPID(0.0075,0,0);
+PID xPixelPID(0.162,0,0);
 
 //Goal positioning controller
 BangBang goalPositionHold(GOAL_HEIGHT_DEADBAND, GOAL_UP_VELOCITY); //Dead band, velocity to center itself
@@ -212,7 +170,6 @@ EMAFilter xPixFilter(0.5);
 EMAFilter yPixFilter(0.5);
 EMAFilter zPixFilter(0.5);
 EMAFilter areaFilter(0.5);
-EMAFilter angleFilter(0.5);
 
 
 //baro offset computation from base station value
@@ -221,7 +178,7 @@ EMAFilter baroOffset(0.5);
 EMAFilter rollOffset(0.5);
 
 //ball grabber object
-TripleBallGrabber ballGrabber(GATE_S, PWM_G);
+TripleBallGrabber ballGrabber(GRABBER_PIN,SHOOTER_PIN);
 
 //-----States for blimp and grabber-----
 enum autoState {
@@ -230,12 +187,11 @@ enum autoState {
   catching,
   caught,
   goalSearch,
-  approachGoal,
+  approachGoal,  //To Do: add goal aligntment (PID) in if, or add another state "align"
   scoringStart,
   shooting,
   scored,
 };
-//goalAlignment,         //To Do: add goal aligntment (PID) in if, or add another state "align"
 
 enum blimpState {
   manual,
@@ -260,8 +216,8 @@ enum goalType {
 
 //to Do: make two type of game ball color tracking
 enum gameballType{
-  green,  //3 points
-  purple, //1 point
+  green,
+  pink
 };
 
 //timing global variables for each update loop
@@ -304,19 +260,19 @@ double approachTimeStart = 0;
 double approachTimeMax = 10000;   //ms
 
 double catchTimeStart = 0;
-double catchTime = 3000;        //ms
+double catchTime = 2300;        //ms
 
 double caughtTimeStart = 0;
-double caughtTime = 2600;       //ms
+double caughtTime = 3000;       //ms
 
 double scoreTimeStart = 0;
-double scoreTime = 1300;        //ms
+double scoreTime = 1000;        //ms
 
 double shootingTimeStart = 0;
-double shootingTime = 2500;//2500;     //ms
+double shootingTime = 4500;//2500;     //ms
 
 double scoredTimeStart = 0;
-double scoredTime = 2500 ;//2500;       //ms
+double scoredTime = 4500 ;//2500;       //ms
 
 double firstMessageTime = 0.0;
 
@@ -348,23 +304,12 @@ float actualBaro = 0.0;
 
 float goalYawDirection = -1;
 
-//Optical Flow
-int16_t deltaX1, deltaY1;
-
-//IMU orentation
-float rotation = 90;   //roation matrix angle
-
 //telemetry data to pi
 std::vector<String> piVariables;
 std::vector<float> piValues;
 
-//distance vector
-std::vector<float> zVec;
-
 //function prototypes
 std::vector<String> piMessage();
-bool piListen();
-bool processSerial(String msg);
 void Pulse();
 void print(String key, float value);
 
@@ -373,34 +318,14 @@ void setup() {
   Serial1.begin(115200);
   Serial.begin(115200);
 
-  bool start = true;
-  int msgCount = 0;
-  while (!piListen) {
-    Serial.println("Waiting");
-    delay(100);
-  }
-
-  // if (!OpticalFlow.begin()) {
-  //   Serial.println("Initialization of the flow sensor failed");
-  //   while(1) { }
-  // }
-
-  //while (1)
-  //{
-  //  Serial.print("Loop");
-  //  delay(3000);
-  //  leftGimbal.motorTest();
-  //  rightGimbal.motorTest();
-  //}
-
-  firstMessageTime = micros()/MICROS_TO_SEC;
-
-  Serial.println("Starting Program");
 }
 
 void loop() {
   //check for a message from the pi, done as fast as possible
-  piListen();
+  // piListen();
+
+  //read buffer for optical flow
+  // Flow.read_buffer();
 
   //compute accel, gyro, madwick loop time at the set freqency
   float dt = micros()/MICROS_TO_SEC-lastSensorFastLoopTick;
@@ -409,13 +334,6 @@ void loop() {
 
     //read sensor values and update madgwick
     BerryIMU.IMU_read();
-    BerryIMU.IMU_ROTATION(rotation); // Replace and test!
-
-    //  Serial.print(">x accel:");
-    //  Serial.println(BerryIMU.AccXraw);
-    // Serial.print(">y accel:");
-    // Serial.println(BerryIMU.AccYraw);
-
     madgwick.Madgwick_Update(BerryIMU.gyr_rateXraw,
                              BerryIMU.gyr_rateYraw,
                              BerryIMU.gyr_rateZraw,
@@ -427,15 +345,14 @@ void loop() {
     pitch = madgwick.pitch_final;
     roll = madgwick.roll_final;
     yaw = madgwick.yaw_final;
-     
 
     //compute the acceleration in the barometers vertical reference frame
     accelGCorrection.updateData(BerryIMU.AccXraw, BerryIMU.AccYraw, BerryIMU.AccZraw, pitch, roll);
 
     //run the prediction step of the vertical velecity kalman filter
     kf.predict(dt);
-    // xekf.predict(dt);
-    // yekf.predict(dt);
+    xekf.predict(dt);
+    yekf.predict(dt);
     gyroEKF.predict(dt);
 
 
@@ -446,27 +363,20 @@ void loop() {
     kf.updateAccel(verticalAccelFilter.last);
 
     //update filtered yaw rate
-     yawRateFilter.filter(BerryIMU.gyr_rateZraw);
-    // Serial.print(">yaw rate:");
-    // Serial.println(yawRateFilter.last);
-    // Serial.print(">Pitch:");
-    // Serial.println(pitch);
-    // Serial.print(">Roll:");
-    // Serial.println(roll);
+    yawRateFilter.filter(BerryIMU.gyr_rateZraw);
 
     //perform gyro update
-    gyroEKF.updateGyro(BerryIMU.gyr_rateXraw*3.14/180, BerryIMU.gyr_rateYraw*3.14/180, BerryIMU.gyr_rateZraw*3.14/180); //deg to rad
+    gyroEKF.updateGyro(BerryIMU.gyr_rateXraw*3.14/180, BerryIMU.gyr_rateYraw*3.14/180, BerryIMU.gyr_rateZraw*3.14/180);
     gyroEKF.updateAccel(BerryIMU.AccXraw, BerryIMU.AccYraw, BerryIMU.AccZraw);
     
 
-    // xekf.updateAccelx(-accelGCorrection.agx);
-    // xekf.updateGyroX(gyroEKF.pitchRate - gyroEKF.pitchRateB);
-    // xekf.updateGyroZ(BerryIMU.gyr_rateZraw);
-    
+    xekf.updateAccelx(-accelGCorrection.agx);
+    xekf.updateGyroX(gyroEKF.pitchRate - gyroEKF.pitchRateB);
+    xekf.updateGyroZ(BerryIMU.gyr_rateZraw);
 
-    // yekf.updateAccelx(-accelGCorrection.agy);
-    // yekf.updateGyroX(gyroEKF.rollRate - gyroEKF.rollRateB);
-    // yekf.updateGyroZ(BerryIMU.gyr_rateZraw);
+    yekf.updateAccelx(-accelGCorrection.agy);
+    yekf.updateGyroX(gyroEKF.rollRate - gyroEKF.rollRateB);
+    yekf.updateGyroZ(BerryIMU.gyr_rateZraw);
 
     
     // Serial.print(">Z:");
@@ -491,8 +401,8 @@ void loop() {
     //print("zVel", kf.v);
 
     
-    // kal_vel.predict_vel();
-    // kal_vel.update_vel_acc(-accelGCorrection.agx/9.81, -accelGCorrection.agy/9.81);
+    kal_vel.predict_vel();
+    kal_vel.update_vel_acc(-accelGCorrection.agx/9.81, -accelGCorrection.agy/9.81);
   }
 
 
@@ -503,57 +413,44 @@ void loop() {
 
     //get most current imu values
     BerryIMU.IMU_read();
-    BerryIMU.IMU_ROTATION(rotation);  //Replace and test!
     
     //update kalman with uncorreced barometer data
     kf.updateBaro(BerryIMU.alt);
 
 
     //compute the corrected height with base station baro data and offset
-    if (baseBaro != 0){
-      actualBaro = 44330 * (1 - pow((BerryIMU.comp_press/baseBaro), (1/5.255))); //In meters Base Baro is the pressure
-      //print("Height",actualBaro);
-    }
-    else{
-      actualBaro = 1000;
-    }
-    // xekf.updateBaro(CEIL_HEIGHT_FROM_START-actualBaro);
-    // yekf.updateBaro(CEIL_HEIGHT_FROM_START-actualBaro);
+    actualBaro = BerryIMU.alt - baseBaro + baroOffset.last;
 
-     //Serial.print(">Height:");
-     //Serial.println(actualBaro);
-
-    //Serial.print(">Filtered Height1:");
-    //Serial.println(kf.a);
-    //Serial.print(">Filtered Height2:");
-    //Serial.println(kf.b);
-    //Serial.print(">Filtered Height3:");
-    //Serial.println(kf.v);
-    //Serial.print(">Filtered Height4:");
-    //Serial.println(kf.x);
+    xekf.updateBaro(CEIL_HEIGHT_FROM_START-actualBaro);
+    yekf.updateBaro(CEIL_HEIGHT_FROM_START-actualBaro);
   }
 
   
-  // //Optical flow update
-  // dt = micros()/MICROS_TO_SEC-lastOpticalLoopTick;
-  // if (dt > 1.0/OPTICAL_LOOP_FREQ) {
-  //   lastOpticalLoopTick = micros()/MICROS_TO_SEC;
+  //Optical flow update
+  dt = micros()/MICROS_TO_SEC-lastOpticalLoopTick;
+  if (dt > 1.0/OPTICAL_LOOP_FREQ) {
+    lastOpticalLoopTick = micros()/MICROS_TO_SEC;
   
-  //   OpticalFlow.readMotionCount(&deltaX1, &deltaY1, 1, BerryIMU.gyr_rateXraw, BerryIMU.gyr_rateYraw);
-  //   float x_opt = (float)deltaX1/dt;
-  //   float y_opt = (float)deltaY1/dt;
+    Flow.update_flow(BerryIMU.gyr_rateXraw, BerryIMU.gyr_rateYraw, 1);
 
-  //   xekf.updateOptical(x_opt);
-  //   yekf.updateOptical(y_opt);
+    //change to blimp coordinates
+    float x_opt = (float)Flow.y_motion/dt;
+    float y_opt = (float)Flow.x_motion/dt;
 
-  //   // accelGCorrection.updateData(BerryIMU.AccXraw, BerryIMU.AccYraw, BerryIMU.AccZraw, pitch, roll);
+    xekf.updateOptical(x_opt);
+    yekf.updateOptical(y_opt);
 
-  //   kal_vel.update_vel_optical(OpticalFlow.x_motion_comp, OpticalFlow.y_motion_comp);
+    // Serial.print(">X Velocity:");
+    // Serial.println(Flow.x_motion_comp);
 
-  //   //Serial.print(">X Velocity est:");
-  //   //Serial.println(kal_vel.x_vel_est);
+    // accelGCorrection.updateData(BerryIMU.AccXraw, BerryIMU.AccYraw, BerryIMU.AccZraw, pitch, roll);
 
-  // }
+    // kal_vel.update_vel_optical(Flow.x_motion_comp, Flow.y_motion_comp);
+
+    // Serial.print(">X Velocity est:");
+    // Serial.println(kal_vel.x_vel_est);
+
+  }
   
 
   //compute slower sensors (if any)
@@ -571,7 +468,7 @@ void loop() {
     float yawCom = 0.0;
     float translationCom = 0.0;
   
-    //object avoidence commands to overide search and computer vision
+    //object avoidence commands to overide search and computer vition
     float forwardA = 0.0;
     float upA = 0.0;
     float yawA = 0.0;
@@ -631,9 +528,11 @@ void loop() {
 
     //compute state machine
     if (state == manual) {
+      /*
       //Serial.println("Manual");
       //get manual data
-      std::vector<double> manualComs = piData.getManualComs();
+      //TO DO: new communication
+      // std::vector<double> manualComs = piData.getManualComs();
       
       //all motor commands are between -1 and 1
 
@@ -652,9 +551,9 @@ void loop() {
           translationCom = manualComs[2]*2.0;
         }else{
           //normal mapping using max esc command 
-          upCom = manualComs[1]*5.0*0.7;
-          forwardCom = manualComs[3]*1000.0*0.7;
-          translationCom = manualComs[2]*1000.0*0.7;
+          upCom = manualComs[1]*2.0; //PID used and maxed out at 2m/s
+          forwardCom = manualComs[3]*500.0;
+          translationCom = manualComs[2]*500.0;
         }
       
       } else {
@@ -707,54 +606,40 @@ void loop() {
           }
 
         }
+        */
       
-    } else if (state == autonomous){  
+    } else if (state == autonomous){
+      /*
         //get auto data
       std::vector<std::vector<double>> target = piData.target;
 
       //filter target data
       float tx = 0;
       float ty = 0;
-      float tz = 7;
+      float tz = 200;
       float area = 0;
-      float angle = 0;
-
 
       //update target data if target exists
       if (target.size() > 0 && target[0].size() == 4) {
         float rawZ = target[0][2];
         //if distance is too large, cap distance value
-        if (rawZ < 7) {
-          tz = zPixFilter.filter(rawZ);
-        } else {
-          tz = 7;
+        if (rawZ > 300) {
+          rawZ = 300;
         }
 
         //update filtered target coordinates (3D space, with center of camera as (0,0,0))
         tx = xPixFilter.filter(-target[0][0]);
         ty = yPixFilter.filter(-target[0][1]);
+        tz = zPixFilter.filter(rawZ);
         area = areaFilter.filter(target[0][3]);
-        //angle = angleFilter.filter(target[0][4])
         
       } else {
         //no target, set to default value
         xPixFilter.filter(0);
         yPixFilter.filter(0);
-        zPixFilter.filter(7);
+        zPixFilter.filter(300);
         areaFilter.filter(0);
-        angle = angleFilter.filter(0);
       }
-
-      //Z vector
-      zVec.push_back(tz);
-
-      //ignore jump
-      if (abs(zVec[zVec.size()-2]-tz)>1 && 
-      zVec[zVec.size()-2] != 7)
-      {
-       tz = zVec[zVec.size()-2]; //taking the previous value
-      }
-
       //modes for autonomous behavior
       switch (mode) {
         case searching:
@@ -786,7 +671,7 @@ void loop() {
             //use object avoidence
             if (quad != 10 && USE_OBJECT_AVOIDENCE) {
               //overide search commands
-              yawCom = yawA;
+              //yawCom = yawA;
               forwardCom = forwardA;
             }
 
@@ -834,41 +719,35 @@ void loop() {
 
               //check if the catching mode should be triggered
               if (tz < BALL_CATCH_TRIGGER) {
-                zVec.clear();
                 mode = catching;
+                
+                //start catching timer
+                catchTimeStart = millis();
 
-                //based on trials 
-                /*
-                //yaw offset
-                motorControl.update(0,0,0,-10,0);  //offset for catching 
-                */
-
+                //turn motors off
+                motorControl.update(0,0,0,0,0);
               }
             } else {
-              // //make sure grabber is closed, no game ball is close enough to catch
-              // ballGrabber.closeGrabber();
+              //make sure grabber is closed, no game ball is close enough to catch
+              ballGrabber.closeGrabber();
             }
             
           } else {
             //no target, look for another
-            //mode = searching;
-            mode = catching;
-            ballGrabber.openGrabber();
-           //start catching timer
-           catchTimeStart = millis();
-            //turn motors off
-           motorControl.update(0,0,0,0,0);
+            mode = searching;
           }
 
           break;
-
         case catching:
-
-            //wait for 0.1 second	
-            //delay(100);	
-
           if (true) {
+            //wait for 0.3 second
+            delay(300);
 
+            forwardCom = CATCHING_FORWARD_COM;
+            upCom = CATCHING_UP_COM;
+            yawCom = 0;
+            translationCom = 0;
+    
             if (catchTimeStart < millis() - catchTime) {
               //catching ended, start caught timer
 
@@ -876,39 +755,11 @@ void loop() {
               caughtTimeStart = millis();
               ballGrabber.closeGrabber();
 
-              // //increment number of catches
+              //increment number of catches
               catches = catches + 1;
 
               //start catch timmer
               lastCatch = micros()/MICROS_TO_SEC;
-            } else if (catchTimeStart == 0){
-              //skips the approaching mode, go back to it
-              mode = approach;
-            }
-
-            //two stage catch
-            //0.8s going up
-            // if (catchTimeStart > millis() - 800) {
-            //   forwardCom = 100;
-            //   upCom = 0.5;
-            //   yawCom = 0;
-            // }else{
-            //rest of the timer going forward and catch 
-              forwardCom = CATCHING_FORWARD_COM;
-              upCom = CATCHING_UP_COM;
-              yawCom = 0;
-            // }
-
-            if (catchTimeStart != 0){
-              int yawAlter = int(millis() - catchTimeStart);
-              yawCom = 7; //alternating 
-
-              if (yawAlter == 100){
-              //10 hertz /100 ms alternation
-              yawCom = -yawCom;
-              yawAlter = 0; //reset timer
-              }
-
             }
           }
         
@@ -966,76 +817,24 @@ void loop() {
             mode = searching;
           }
           break;
-
         case approachGoal:
           if (target.size() > 0 && catches >= TOTAL_ATTEMPTS) {
-            yawCom = xPixelPID.calculate(tx, GOAL_X_OFFSET, dt);
+            yawCom = xPixelPID.calculate(tx, 0, dt);
             upCom = yPixelPID.calculate(ty, GOAL_APPROACH_ANGLE, dt);
             forwardCom = GOAL_CLOSURE_COM;
 
-            //Serial.println(tz);
-            //print("tz", tz);
+            Serial.println(tz);
+            print("tz", tz);
 
             if (tz < GOAL_DISTANCE_TRIGGER) {
-              //if (angle < 45){
               mode = scoringStart;
               scoreTimeStart = millis();
-              //} else if (angle > 45){ 
-              // mode = goalAlignment;
-              //alignTimeStart = millis();
-              //}
             }
           } else {
             mode = goalSearch;
           }
           break;
-
           //after correction, we can do goal alignment with a yaw and a translation 
-
-          /*
-           case goalAlignment:
-           bool reverse = false;
-
-           //initialize alignment
-          if (alignTimeStart < 1000) {
-            //Right rotation 
-            yawCom = ALIGNING_YAW_COM;
-            upCom = ALIGNING_UP_COM;
-            forwardCom = GOAL_ALIGN_COM;
-            translationCom = ALIGNING_TRANSLATION_COM;
-
-            std::vector<double> angleVec; 
-            ratioVec.push_back(angle);
-          }
-
-          //check if we are correcting in the right direction after 0.5 second
-          if (alignTimeStart == 500 && angleVec[angleVec.size()-1] < angleVec[0]) {
-              reverse = true;
-          }
-
-          if (alignTimeStart > 1000 && reserse == false){
-            yawCom = ALIGNING_YAW_COM;
-            upCom = ALIGNING_UP_COM;
-            forwardCom = GOAL_ALIGN_COM;
-            translationCom = ALIGNING_TRANSLATION_COM;
-          } else {
-            yawCom = -ALIGNING_YAW_COM;
-            translationCom = -ALIGNING_TRANSLATION_COM;
-            upCom = ALIGNING_UP_COM;
-            forwardCom = GOAL_ALIGN_COM;
-          }
-
-          if (target.size() > 0 && catches >= TOTAL_ATTEMPTS && tz < GOAL_DISTANCE_TRIGGER && acos(ratio)*180/3.14159 < 10){
-              mode = scoringStart;
-              scoreTimeStart = millis();
-          } else if (target.size() > 0 && catches >= TOTAL_ATTEMPTS && tz > GOAL_DISTANCE_TRIGGER && acos(ratio)*180/3.14159 < 10){
-              mode = approachGoal;
-          } else {
-              mode = goalSearch;
-          }
-          break;
-          */
-
 
         case scoringStart:
         if (true) {
@@ -1067,7 +866,6 @@ void loop() {
           }
         }
         break;
-
         case scored:
         if (true) {
 
@@ -1088,6 +886,7 @@ void loop() {
           upCom = 0;
           break;
       }
+      */
     }else {
         //not a valid state
         forwardCom = 0.0;
@@ -1107,48 +906,46 @@ void loop() {
     // Serial.println(translationCom);
 
 
-     //PID controllers	
-    	
-    float yawMotor = 0.0;	
-    float upMotor = 0.0;	
-    float forwardMotor = 0.0;	
-    float translationMotor = 0.0;	
-    	
-    //hyperbolic tan for yaw "filtering"	
-         float deadband = 1.0; //deadband for filteration	
+    //PID controllers
+    
+    float yawMotor = 0.0;
+    float upMotor = 0.0;
+    float forwardMotor = 0.0;
+    float translationMotor = 0.0;
+    
+    //hyperbolic tan for yaw "filtering"
+         float deadband = 1.0; //deadband for filteration
+         yawMotor = yawPID.calculate(yawCom, yawRateFilter.last, dt);  
 
-         //Serial.println(yawRateFilter.last);
+         if (abs(yawCom-yawRateFilter.last) < deadband) {
+             yawMotor = 0;
+         } else {
+             yawMotor = tanh(yawMotor)*abs(yawMotor);
+         }
 
-         yawMotor = yawPID.calculate(yawCom, yawRateFilter.last, dt);  	
-         if (abs(yawCom-yawRateFilter.last) < deadband) {	
-             yawMotor = 0;	
-         } else {	
-             yawMotor = tanh(yawMotor)*abs(yawMotor);	
-         }	
-    upMotor = verticalPID.calculate(upCom, kf.v, dt); //up velocity from barometer	
-    if (USE_EST_VELOCITY_IN_MANUAL == true){	
-      //using kalman filters for the current velosity feedback for full-state feeback PID controllers	
-    // forwardMotor = forwardPID.calculate(forwardCom, xekf.v, dt);  //extended filter	
-    //float forwardMotor = forwardPID.calculate(forwardCom, kal_vel.x_vel_est, dt);	
-    // translationMotor = translationPID.calculate(translationCom, yekf.v, dt); //extended filter	
-    //float translationMotor = translationPID.calculate(translationCom, kal_vel.y_vel_est, dt); 	
-    }else{	
-      //without PID	
-      forwardMotor = forwardCom;	
-      translationMotor = translationCom;	
+    upMotor = verticalPID.calculate(upCom, kf.v, dt); //up velocity from barometer
+
+    if (USE_EST_VELOCITY_IN_MANUAL == true){
+      //using kalman filters for the current velosity feedback for full-state feeback PID controllers
+    forwardMotor = forwardPID.calculate(forwardCom, xekf.v, dt);  //extended filter
+    //float forwardMotor = forwardPID.calculate(forwardCom, kal_vel.x_vel_est, dt);
+    translationMotor = translationPID.calculate(translationCom, yekf.v, dt); //extended filter
+    //float translationMotor = translationPID.calculate(translationCom, kal_vel.y_vel_est, dt); 
+    }else{
+      //without PID
+      forwardMotor = forwardCom;
+      translationMotor = translationCom;
     }
-  
-    //float yawCurrent =  (float)yawRateFilter.last; 
+
     //Serial.print(">up current:");
     //Serial.println(kf.v);
+    //float yawCurrent =  (float)yawRateFilter.last;
     //Serial.print(">yaw current");
     //Serial.println(yawCurrent);
     //Serial.print(">forward current:");
     //Serial.println(xekf.v);
-    //Serial.print(">translation current:");
+    // Serial.print(">translation current:");
     //Serial.println(yekf.v);
-
-    
 
     if (micros()/MICROS_TO_SEC < 10 + firstMessageTime) {
       //filter base station data
@@ -1159,221 +956,208 @@ void loop() {
       motorControl.update(0, 0, 0, 0, 0);
       bool leftReady = leftGimbal.readyGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, motorControl.yawLeft, motorControl.upLeft, motorControl.forwardLeft);
       bool rightReady = rightGimbal.readyGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, motorControl.yawRight, motorControl.upRight, motorControl.forwardRight);
-      
-      //Serial.print("Left ");
       leftGimbal.updateGimbal(leftReady && rightReady);
-
-      //Serial.print("Right ");
       rightGimbal.updateGimbal(leftReady && rightReady);
-
     } else {
       
       if (state == manual && !MOTORS_OFF){
         //forward, translation, up, yaw, roll
-        if (!ZERO_MODE) motorControl.update(forwardMotor, translationMotor, -upMotor, yawMotor, 0);
-        // Serial.println("translationMotor");
-        // Serial.println(translationMotor);
+        if (!ZERO_MODE) motorControl.update(forwardMotor, -translationMotor, upMotor, yawMotor, 0);
         
         //Serial.println("Controlable");
         //if (ZERO_MODE) motorControl.update(10, 0, 0, 0, 0);
-        bool leftReady = leftGimbal.readyGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, motorControl.yawLeft, motorControl.upLeft, motorControl.forwardLeft); //yaw,up,forward
+        bool leftReady = leftGimbal.readyGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, motorControl.yawLeft, motorControl.upLeft, motorControl.forwardLeft);
         bool rightReady = rightGimbal.readyGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, motorControl.yawRight, motorControl.upRight, motorControl.forwardRight);
         leftGimbal.updateGimbal(leftReady && rightReady);
         rightGimbal.updateGimbal(leftReady && rightReady);
-
       } else if (state == autonomous && !MOTORS_OFF) {
-        motorControl.update(forwardMotor, translationMotor, -upMotor, yawMotor, 0);
+        motorControl.update(forwardMotor, -translationMotor, upMotor, yawMotor, 0);
         bool leftReady = leftGimbal.readyGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, motorControl.yawLeft, motorControl.upLeft, motorControl.forwardLeft);
         bool rightReady = rightGimbal.readyGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, motorControl.yawRight, motorControl.upRight, motorControl.forwardRight); 
         leftGimbal.updateGimbal(leftReady && rightReady);
         rightGimbal.updateGimbal(leftReady && rightReady);
-        //Serial.println(forwardMotor);
-
-      } else if(MOTORS_OFF){	
-        motorControl.update(forwardMotor, translationMotor, -upMotor, yawMotor, 0);	
-        bool leftReady = leftGimbal.readyGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, motorControl.yawLeft, motorControl.upLeft, motorControl.forwardLeft);	
-        bool rightReady = rightGimbal.readyGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, motorControl.yawRight, motorControl.upRight, motorControl.forwardRight); 	
-        leftGimbal.updateGimbal(leftReady && rightReady);	
-        rightGimbal.updateGimbal(leftReady && rightReady);	
-
-      } else {
+      } else if(MOTORS_OFF){
+        motorControl.update(forwardMotor, -translationMotor, upMotor, yawMotor, 0);
+        bool leftReady = leftGimbal.readyGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, motorControl.yawLeft, motorControl.upLeft, motorControl.forwardLeft);
+        bool rightReady = rightGimbal.readyGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, motorControl.yawRight, motorControl.upRight, motorControl.forwardRight); 
+        leftGimbal.updateGimbal(leftReady && rightReady);
+        rightGimbal.updateGimbal(leftReady && rightReady);
+      }else {
         motorControl.update(0,0,0,0,0);
         bool leftReady = leftGimbal.readyGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, 0, 0, 0);
         bool rightReady = rightGimbal.readyGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, 0, 0, 0);
         leftGimbal.updateGimbal(leftReady && rightReady);
         rightGimbal.updateGimbal(leftReady && rightReady);
-
       }
     }
   }
 }
 
-bool piListen() {
+// bool piListen() {
 
-  bool retVal = false;
+//   bool retVal = false;
 
-  //check for debug mode
-  if (!ZERO_MODE) {
-    if (Serial1.available() > 0) {
-      char c = Serial1.read();
-      Serial.print(c);
-      if (c == '#') {
-        //process message
-        //Serial.println(msgTemp);
-        retVal = processSerial(msgTemp);
+//   //check for debug mode
+//   if (!ZERO_MODE) {
+//     if (Serial1.available() > 0) {
+//       char c = Serial1.read();
+//       //Serial.print(c);
+//       if (c == '#') {
+//         //process message
+//         Serial.println(msgTemp);
+//         retVal = processSerial(msgTemp);
 
-        //update last message time
-        lastMsgTime = micros()/MICROS_TO_SEC;
+//         //update last message time
+//         lastMsgTime = micros()/MICROS_TO_SEC;
 
-        //send back state of blimp
-        String variablesToPi = "";
-        for (int i = 0; i < piVariables.size(); i++) {
-          variablesToPi = variablesToPi + piVariables[i] + ":";
-          variablesToPi = variablesToPi + String(piValues[i]) + ":";
-        }
+//         //send back state of blimp
+//         String variablesToPi = "";
+//         for (int i = 0; i < piVariables.size(); i++) {
+//           variablesToPi = variablesToPi + piVariables[i] + ":";
+//           variablesToPi = variablesToPi + String(piValues[i]) + ":";
+//         }
 
-        Serial1.println(String(mode)+":"+String(blimpColor)+":"+String(goalColor)+ ":" + String(actualBaro)+ ":"  +"#");
-        //Serial.println(String(mode)+":"+String(blimpColor)+":"+String(goalColor)+ ":" + String(actualBaro)+ ":"  +"#");
-        //Serial.println(String(mode)+":"+String(blimpColor)+":"+String(goalColor)+ ":" + variablesToPi+"#");
+//         Serial1.println(String(mode)+":"+String(blimpColor)+":"+String(goalColor)+ ":" + variablesToPi+"#");
+//         //Serial.println(String(mode)+":"+String(blimpColor)+":"+String(goalColor)+ ":" + variablesToPi+"#");
 
-        //clear message
-        msgTemp = "";
-      } else {
-        msgTemp = msgTemp + String(c);
-      }
-    }
+//         //clear message
+//         msgTemp = "";
+//       } else {
+//         msgTemp = msgTemp + String(c);
+//       }
+//     }
 
-    //if a message has not been recieved after 0.25s change to lost state (turn off motors)
-    if (micros()/MICROS_TO_SEC - lastMsgTime > TEENSY_WAIT_TIME) {
-      state = lost;
-    }
-  }
+//     //if a message has not been recieved after 0.25s change to lost state (turn off motors)
+//     if (micros()/MICROS_TO_SEC - lastMsgTime > TEENSY_WAIT_TIME) {
+//       state = lost;
+//     }
+//   }
 
-  return retVal;
-}
+//   return retVal;
+// }
 
-bool processSerial(String msg) {
-  //set up output vectors
-  std::vector<double> mData;
-  std::vector<String> splitData;
-  std::vector<String> object;
-  std::vector<double> objectFinal;
-  std::vector<std::vector<double> > balloons;
-  std::vector<std::vector<double> > dGoals;
-  std::vector<std::vector<double> > aGoals;
-  std::vector<std::vector<double> > eBlimps;
-  std::vector<std::vector<double> > fBlimps;
+// bool processSerial(String msg) {
+//   //set up output vectors
+//   std::vector<double> mData;
+//   std::vector<String> splitData;
+//   std::vector<String> object;
+//   std::vector<double> objectFinal;
+//   std::vector<std::vector<double> > balloons;
+//   std::vector<std::vector<double> > dGoals;
+//   std::vector<std::vector<double> > aGoals;
+//   std::vector<std::vector<double> > eBlimps;
+//   std::vector<std::vector<double> > fBlimps;
 
-  //clear old target
-  piData.target.clear();
+//   //clear old target
+//   // piData.target.clear();
 
-  //clear manual data
-  mData.clear();
+//   //clear manual data
+//   mData.clear();
 
-  //Serial.println(msg);
-  msg.trim();
+//   //Serial.println(msg);
+//   msg.trim();
 
-  if (msg.length() > 0 && msg[0] == 'L') {
-    state = lost;
-    return false;
-  }
+//   if (msg.length() > 0 && msg[0] == 'L') {
+//     state = lost;
+//     return false;
+//   }
 
-  //split string by objects
-  //decompose data
-  if (msg.length() > 1) {
-    int first = 0;
-    int index = 1;
-    while (index < msg.length()) {
-      if (msg[index] == '&') {
-        splitData.push_back((msg.substring(first, index)).trim());
-        first = index+1;
-        index = first+1;
-      } else {
-        index += 1;
-      }
-    }
-  } else {
-    //invalid message
-    return false;
-  }
+//   //split string by objects
+//   //decompose data
+//   if (msg.length() > 1) {
+//     int first = 0;
+//     int index = 1;
+//     while (index < msg.length()) {
+//       if (msg[index] == '&') {
+//         splitData.push_back((msg.substring(first, index)).trim());
+//         first = index+1;
+//         index = first+1;
+//       } else {
+//         index += 1;
+//       }
+//     }
+//   } else {
+//     //invalid message
+//     return false;
+//   }
   
-  if (splitData.size() > 2 && splitData[0].equals("M")) {
-    //add motor commands to mData array
-    state = manual;
-    if (splitData.size() == 9) {
-      for (unsigned int i = 3; i < splitData.size(); i++) {
-        mData.push_back((double)splitData[i].toFloat());
-      }
-    }
+//   if (splitData.size() > 2 && splitData[0].equals("M")) {
+//     //add motor commands to mData array
+//     state = manual;
+//     if (splitData.size() == 9) {
+//       for (unsigned int i = 3; i < splitData.size(); i++) {
+//         mData.push_back((double)splitData[i].toFloat());
+//       }
+//     }
 
-    quad = (int)splitData[1].toFloat();
+//     quad = (int)splitData[1].toFloat();
 
-    if (splitData[2].toFloat() < -1000) {
-      //Serial.println("Baro Data Not Current");
-    } else {
-      baseBaro = splitData[2].toFloat();
-      //Serial.println("Baro Data is Current");
-    }
+//     if (splitData[2].toFloat() < -1000) {
+//       Serial.println("Baro Data Not Current");
+//     } else {
+//       baseBaro = splitData[2].toFloat();
+//       //Serial.println("Baro Data is Current");
+//     }
 
-    //Serial.print("Manual size: ");
-    //Serial.println(mData.size());
-    piData.update(mData);
-    return true;
+//     //Serial.print("Manual size: ");
+//     //Serial.println(mData.size());
+//     piData.update(mData);
+//     return true;
 
-  } else if (splitData.size() > 2 && splitData[0].equals("A")) {
-    state = autonomous;
+//   } else if (splitData.size() > 2 && splitData[0].equals("A")) {
+//     state = autonomous;
 
-    quad = (int)splitData[1].toFloat();
+//     quad = (int)splitData[1].toFloat();
     
     
-    if (splitData[2].toFloat() < -1000) {
-      Serial.println("Baro Data Not Current");
-    } else {
-      baseBaro = splitData[2].toFloat();
-      //Serial.println("Baro Data is Current");
-    }
+//     if (splitData[2].toFloat() < -1000) {
+//       Serial.println("Baro Data Not Current");
+//     } else {
+//       baseBaro = splitData[2].toFloat();
+//       //Serial.println("Baro Data is Current");
+//     }
     
-    for (unsigned int i = 3; i < 4 && splitData.size() >= 4; i++) {
-        Serial.println("Target Data");
-        Serial.println(splitData[i]);
-        String msg = splitData[i];
-        int index2 = 0;
-        int first2 = 0;
-        while (index2 < msg.length()) {
-          if (msg[index2] == ':') {
-            object.push_back((msg.substring(first2, index2)).trim());
-            first2 = index2+1;
-            index2 = first2+1;
-          }
-          index2 += 1;
-        }
+//     for (unsigned int i = 3; i < 4 && splitData.size() >= 4; i++) {
+//         Serial.println("Target Data");
+//         Serial.println(splitData[i]);
+//         String msg = splitData[i];
+//         int index2 = 0;
+//         int first2 = 0;
+//         while (index2 < msg.length()) {
+//           if (msg[index2] == ':') {
+//             object.push_back((msg.substring(first2, index2)).trim());
+//             first2 = index2+1;
+//             index2 = first2+1;
+//           }
+//           index2 += 1;
+//         }
 
-        for (unsigned int j = 0; j < object.size(); j++) {
-            if (j == 0) {
-              objectFinal.push_back((double)(object[j].toFloat()-320.0/2.0)); //change?
-            } else if (j == 1) {
-              objectFinal.push_back((double)(object[j].toFloat()-240.0/2.0)); //change?
-            } else {
-              objectFinal.push_back((double)(object[j].toFloat()));
-            }
-         }
-         //clear old target
-         piData.target.clear();
+//         for (unsigned int j = 0; j < object.size(); j++) {
+//             if (j == 0) {
+//               objectFinal.push_back((double)(object[j].toFloat()-320.0/2.0));
+//             } else if (j == 1) {
+//               objectFinal.push_back((double)(object[j].toFloat()-240.0/2.0));
+//             } else {
+//               objectFinal.push_back((double)(object[j].toFloat()));
+//             }
+//          }
+//          //clear old target
+//          piData.target.clear();
          
-         //add updated target
-         if (objectFinal.size() == 4) {
-          piData.target.push_back(objectFinal);
-         }
+//          //add updated target
+//          if (objectFinal.size() == 4) {
+//           piData.target.push_back(objectFinal);
+//          }
 
-         //clear old variables
-         object.clear();
-         objectFinal.clear();
-     } 
-  } else {
-    return false;
-  }
-  return true;
-}
+//          //clear old variables
+//          object.clear();
+//          objectFinal.clear();
+//      } 
+//   } else {
+//     return false;
+//   }
+//   return true;
+// }
 
 void print(String key, float value) {
   if (key.length() > MAX_VARIABLE_NAME_SIZE) {

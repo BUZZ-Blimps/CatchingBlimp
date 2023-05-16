@@ -32,17 +32,17 @@ bool Gimbal::readyGimbal(bool debug, bool motors_off, double roll, double pitch,
   if (debug) Serial.println("Corrected Inputs");
   if (debug) Serial.print("Forward: ");
   if (debug) Serial.print(forward);
-  if (debug) Serial.print("\tYaw: "); //should be 0 when no translation is enabled
+  if (debug) Serial.print("\tYaw: ");
   if (debug) Serial.print(yaw);
   if (debug) Serial.print("\tUp: ");
   if (debug) Serial.println(up);
   
   double thrust = sqrt(pow(yaw,2)+pow(up,2)+pow(forward,2));
   
-  double theta1 = atan2(yaw,forward)*180/pi;  //yaw servo
+  double theta1 = atan2(yaw,forward)*180/pi;
   double phi1 = asin(up/thrust)*180/pi;
 
-  double theta2 = atan2(-yaw,-forward)*180/pi; //yaw servo
+  double theta2 = atan2(-yaw,-forward)*180/pi;
   double phi2 = asin(-up/thrust)*180/pi;
 
   double theta3 = theta1;
@@ -169,7 +169,7 @@ bool Gimbal::readyGimbal(bool debug, bool motors_off, double roll, double pitch,
 void Gimbal::updateGimbal(bool ready){ // Actual turn on command for brushless motors
   if (ready){
     motor.write(nextMotorCom); 
-    //Serial.println(nextMotorCom);
+    Serial.println(nextMotorCom);
   }else {
     motor.write(motorCom(0));
   }
@@ -200,20 +200,4 @@ double Gimbal::motorCom(double command) {
     //Serial.println(adjustedCom);
     this->motor.write(adjustedCom);
     return adjustedCom;
-}
-
-void Gimbal::motorTest(){
-  //2000 = full
-  //1500 = zero
-  //1000 = negative full
-  
-  motor.write(2000);
-
-  delay(2000);
-
-  motor.write(1000);
-
-  delay(2000);
-
-  motor.write(1500);
 }

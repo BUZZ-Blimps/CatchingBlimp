@@ -7,8 +7,6 @@
 #include "LSM6DSL.h"
 #include "LIS3MDL.h"
 #include "BM388.h"
-#include <BasicLinearAlgebra.h>
-#include <ElementStorage.h>
 
 BerryIMU_v3::BerryIMU_v3(){
   Wire.begin();        // Initialise i2c
@@ -219,60 +217,9 @@ void BerryIMU_v3::IMU_read(){
     ref_pressure_found = false;
   }
   alt = 44330 * (1 - pow((comp_press / ref_ground_press), (1 / 5.255))); //In meters
+
   //---------------------------------------------------------------------------------------
 }
-
-void BerryIMU_v3::IMU_Flip_Axis()
-{
-  //Raw member variable format
-  //Y = 0
-  //X = 1
-  //Z = 2
-  float temp = 0;
-
-  temp = accRaw[0];
-  accRaw[0] = accRaw[1];
-  accRaw[1] = -temp;
-
-  temp = gyrRaw[0];
-  gyrRaw[0] = gyrRaw[1];
-  gyrRaw[1] = -temp;
-
-  temp = magRaw[0];
-  magRaw[0] = magRaw[1];
-  magRaw[1] = -temp;
-
-  temp = this->AccYraw;
-  this->AccYraw = this->AccXraw;
-  this->AccXraw = -temp;
-
-  temp = this->gyr_rateYraw;
-  this->gyr_rateYraw = this->gyr_rateXraw;
-  this->gyr_rateXraw = -temp;
-}
-
-void BerryIMU_v3::IMU_ROTATION(float rotation_angle){  //current: -90 degrees
-      BLA::Matrix<3, 3> Rz = {cosf(rotation_angle/180*PI),-sinf(rotation_angle/180*PI),0,
-                              sinf(rotation_angle/180*PI),cosf(rotation_angle/180*PI),0,
-                              0,0,1}; // 3X3 Matrix
-      BLA::Matrix<3, 1> gyr_rate= {gyr_rateXraw,
-                                   gyr_rateYraw,
-                                   gyr_rateZraw};
-      BLA::Matrix<3, 1> Acc_raw = {AccXraw,
-                                   AccYraw,
-                                   AccZraw};
-      BLA::Matrix<3, 1> corrected_gyr_rate = Rz*gyr_rate;
-      BLA::Matrix<3, 1> corrected_Acc_raw = Rz*Acc_raw;
-
-      this->AccXraw = corrected_Acc_raw(0);
-      this->AccYraw = corrected_Acc_raw(1);
-      this->AccZraw = corrected_Acc_raw(2);
-
-      this->gyr_rateXraw = corrected_gyr_rate(0);
-      this->gyr_rateYraw = corrected_gyr_rate(1);
-      this->gyr_rateZraw = corrected_gyr_rate(2);
-}
-
 
 float BerryIMU_v3::temp_compensation(float raw_temperature) {
   float partial_data1 = raw_temperature - PAR_T1;

@@ -4,16 +4,12 @@
 
 #pragma once
 #include "Arduino.h"
-#include <BasicLinearAlgebra.h>
-#include <ElementStorage.h>
 
 class BerryIMU_v3
 {
   public:
     BerryIMU_v3();
     void IMU_read();
-    void IMU_Flip_Axis();
-    void IMU_ROTATION(float rotation_angle);
     //Maybe low pass filter applied depending on settings selected
     float AccXraw; 
     float AccYraw; 

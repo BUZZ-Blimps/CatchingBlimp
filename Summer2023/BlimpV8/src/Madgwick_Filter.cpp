@@ -15,14 +15,13 @@ void Madgwick_Filter::Madgwick_Update(float gyr_rateXraw, float gyr_rateYraw, fl
   float final_time = micros();
   t_interval = (final_time - init_time) / 1000000; //in seconds
   init_time = micros();
-  
   float gx = gyr_rateXraw;
   float gy = gyr_rateYraw;
   float gz = gyr_rateZraw;
 
   //Gravity, gyro, and accel quaterions
   std::vector<float> g_W = {0, 0, 0, 1}; //May need to make neg depending on orientation
-  std::vector<float> gyro_I = {0, gx * (float(3.14159265) / 180), gy * (float(3.14159265) / 180), gz * (float(3.14159265) / 180)}; // in rad/s(converted from deg/s)
+  std::vector<float> gyro_I = {0, gx * (3.1415 / 180), gy * (3.1415 / 180), gz * (3.1415 / 180)}; // in rad/s(converted from deg/s)
   //std::vector<float> gyro_I = {0, -gy * (3.1415 / 180), gx * (3.1415 / 180), gz * (3.1415 / 180)}; // in rad/s(converted from deg/s) for changed coordniates
 
   float ax = AccXraw;
