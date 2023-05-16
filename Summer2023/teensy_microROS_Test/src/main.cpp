@@ -32,7 +32,7 @@
 
 //constants
 #define MICROS_TO_SEC             1000000.0
-#define BUFFER_LEN                200
+#define BUFFER_LEN                300
 
 //state machine of teensy agent (the existence of the connection)
 enum states {

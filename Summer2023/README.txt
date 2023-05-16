@@ -19,15 +19,16 @@ The MicroROS agent can be run using the ros2 run command
 
 
 ROS2:
-The ROS2 publisher on pi is in the piROS_testfolder, make sure the 
-To enable the publisher, please build 
+The ROS2 publisher on pi is in the piROS_test folder, make sure the teensy is plugged into the pi for the tf2 messages to be broadcasted!
+To enable the publisher, please build first:
 	-cd /piROS_test
 	-colcon build
 	
 	*If VS code is used, make sure the JSON configurator include path is as follows:
             -"includePath": [
              "${workspaceFolder}/**",
-             "/opt/ros/foxy/include"
+             "/opt/ros/foxy/include" 
+             (this should be set up already)
 
 To launch the publisher,  run ros2 launch command    
 	-ros2 launch blimp_telemetry blimp_telemetry.launch.py
