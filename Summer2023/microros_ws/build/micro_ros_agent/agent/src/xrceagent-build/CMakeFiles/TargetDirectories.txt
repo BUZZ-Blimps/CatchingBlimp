@@ -1,7 +1,0 @@
-/home/corelab-laptop2/microros_ws/build/micro_ros_agent/agent/src/xrceagent-build/CMakeFiles/install/strip.dir
-/home/corelab-laptop2/microros_ws/build/micro_ros_agent/agent/src/xrceagent-build/CMakeFiles/install/local.dir
-/home/corelab-laptop2/microros_ws/build/micro_ros_agent/agent/src/xrceagent-build/CMakeFiles/install.dir
-/home/corelab-laptop2/microros_ws/build/micro_ros_agent/agent/src/xrceagent-build/CMakeFiles/list_install_components.dir
-/home/corelab-laptop2/microros_ws/build/micro_ros_agent/agent/src/xrceagent-build/CMakeFiles/rebuild_cache.dir
-/home/corelab-laptop2/microros_ws/build/micro_ros_agent/agent/src/xrceagent-build/CMakeFiles/edit_cache.dir
-/home/corelab-laptop2/microros_ws/build/micro_ros_agent/agent/src/xrceagent-build/CMakeFiles/microxrcedds_agent.dir
