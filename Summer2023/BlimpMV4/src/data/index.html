@@ -1,0 +1,142 @@
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+   <style>
+    body {
+      min-width: 310px;
+    	max-width: 800px;
+    	height: 400px;
+      margin: 0 auto;
+    }
+    h2 {
+      font-family: New Times Roman;
+      font-size: 3.0rem;
+      text-align: center;
+  </style>
+</head>
+<body>
+  <h2>Blimp Serial Plotter</h2>
+  <div id="chart-Yaw" class="container"></div>
+  <div id="chart-Pitch" class="container"></div>
+  <div id="chart-Roll" class="container"></div>
+</body>
+<script>
+var chartT = new Highcharts.Chart({
+  chart:{ renderTo : 'chart-Yaw' },
+  title: { text: 'Yaw Rate' },
+  series: [{
+    showInLegend: false,
+    data: []
+  }],
+  plotOptions: {
+    line: { animation: false,
+      dataLabels: { enabled: true }
+    },
+    series: { color: '#059e8a' }
+  },
+  xAxis: { type: 'datetime',
+    dateTimeLabelFormats: { second: '%H:%M:%S' }
+  },
+  yAxis: {
+    title: { text: 'Degree/Second' }
+  },
+  credits: { enabled: false }
+});
+setInterval(function ( ) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      var x = (new Date()).getTime(),
+          y = parseFloat(this.responseText);
+      //console.log(this.responseText);
+      if(chartT.series[0].data.length > 40) {
+        chartT.series[0].addPoint([x, y], true, true, true);
+      } else {
+        chartT.series[0].addPoint([x, y], true, false, true);
+      }
+    }
+  };
+  xhttp.open("GET", "/Yaw", true);
+  xhttp.send();
+}, 1000 ) ;
+
+var chartH = new Highcharts.Chart({
+  chart:{ renderTo:'chart-Pitch' },
+  title: { text: 'Pitch Angle' },
+  series: [{
+    showInLegend: false,
+    data: []
+  }],
+  plotOptions: {
+    line: { animation: false,
+      dataLabels: { enabled: true }
+    }
+  },
+  xAxis: {
+    type: 'datetime',
+    dateTimeLabelFormats: { second: '%H:%M:%S' }
+  },
+  yAxis: {
+    title: { text: 'Degree' }
+  },
+  credits: { enabled: false }
+});
+setInterval(function ( ) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      var x = (new Date()).getTime(),
+          y = parseFloat(this.responseText);
+      //console.log(this.responseText);
+      if(chartH.series[0].data.length > 40) {
+        chartH.series[0].addPoint([x, y], true, true, true);
+      } else {
+        chartH.series[0].addPoint([x, y], true, false, true);
+      }
+    }
+  };
+  xhttp.open("GET", "/Pitch", true);
+  xhttp.send();
+}, 1000 ) ;
+
+var chartP = new Highcharts.Chart({
+  chart:{ renderTo:'chart-Roll' },
+  title: { text: 'Roll Angle' },
+  series: [{
+    showInLegend: false,
+    data: []
+  }],
+  plotOptions: {
+    line: { animation: false,
+      dataLabels: { enabled: true }
+    },
+    series: { color: '#18009c' }
+  },
+  xAxis: {
+    type: 'datetime',
+    dateTimeLabelFormats: { second: '%H:%M:%S' }
+  },
+  yAxis: {
+    title: { text: 'Degree' }
+  },
+  credits: { enabled: false }
+});
+setInterval(function ( ) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      var x = (new Date()).getTime(),
+          y = parseFloat(this.responseText);
+      //console.log(this.responseText);
+      if(chartP.series[0].data.length > 40) {
+        chartP.series[0].addPoint([x, y], true, true, true);
+      } else {
+        chartP.series[0].addPoint([x, y], true, false, true);
+      }
+    }
+  };
+  xhttp.open("GET", "/Roll", true);
+  xhttp.send();
+}, 1000 ) ;
+</script>
+</html>

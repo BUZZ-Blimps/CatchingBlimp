@@ -61,6 +61,11 @@ void Madgwick_Filter::Madgwick_Update(float gyr_rateXraw, float gyr_rateYraw, fl
     roll_final = roll_orig;
     pitch_final = pitch_orig;
   }
+  
+  q1 = q_est_orig[0];
+  q2 = q_est_orig[1];
+  q3 = q_est_orig[2];
+  q4 = q_est_orig[3];
   yaw_final = yaw_orig;
 
   //  Serial.print(roll_orig);

@@ -1,4 +1,7 @@
 #include <Arduino.h>
+
+#include <micro_ros_platformio.h>
+
 #include <vector>
 #include "MotorControl.h"
 #include "BerryIMU_v3.h"
@@ -13,8 +16,37 @@
 #include "optical_ekf.h"
 #include "gyro_ekf.h"
 #include "tripleBallGrabber.h"
-
 #include "Gimbal.h"
+
+#include <rcl/rcl.h>
+#include <rcl/error_handling.h>
+#include <rclc/rclc.h>
+#include <rclc/executor.h>
+#include <rmw_microros/rmw_microros.h>
+
+#include <std_msgs/msg/string.h> //include the message type that needs to be published (teensy data)
+#include <micro_ros_utilities/string_utilities.h>
+
+#include <geometry_msgs/msg/quaternion.h>
+#include <geometry_msgs/msg/vector3.h>
+#include <sensor_msgs/msg/imu.h>
+#include <geometry_msgs/msg/transform_stamped.h>
+
+#define EXECUTE_EVERY_N_MS(MS, X)  do { \
+  static volatile int64_t init = -1; \
+  if (init == -1) { init = uxr_millis();} \
+  if (uxr_millis() - init > MS) { X; init = uxr_millis();} \
+} while (0)\
+
+#define RCCHECK(fn) {rcl_ret_t temp_rc = fn; if((temp_rc != RCL_RET_OK)){error_loop();}}
+#define RCSOFTCHECK(fn) { rcl_ret_t temp_rc = fn; if((temp_rc != RCL_RET_OK)){}}
+
+// Error handle loop
+void error_loop() {
+  while(1) {
+    delay(1000);
+  }
+}
 
 //blimp mode
 #define BLIMP_COLOR               red      //either red or blue
@@ -105,38 +137,33 @@
 
 //constants
 #define MICROS_TO_SEC             1000000.0
+#define BUFFER_LEN                300
 
 //motor timeout before entering lost state
 #define TEENSY_WAIT_TIME          0.5
 
 //init pins
 
-// #define LYSPIN                     7
-// #define LPSPIN                     6
-// #define LMPIN                     2
-// #define RYSPIN                     10
-// #define RPSPIN                     9
-// #define RMPIN                     5
+#define LYSPIN                     7
+#define LPSPIN                     6
+#define LMPIN                     2
+#define RYSPIN                     10
+#define RPSPIN                     9
+#define RMPIN                     5
 
 #define GRABBER_PIN               8
 #define SHOOTER_PIN               4
 
-//Print info (for sending variable data to the rasberry pi)
-#define MAX_NUM_VARIABLES         4
-#define MAX_VARIABLE_NAME_SIZE    6
-
-//objects
-// SerialData piData;
 
 //sensor fusion objects
 BerryIMU_v3 BerryIMU;
 Madgwick_Filter madgwick;
 BaroAccKF kf;
 AccelGCorrection accelGCorrection;
-Optical_Flow Flow;
+// Optical_Flow Flow;
 Kalman_Filter_Tran_Vel_Est kal_vel;
-OpticalEKF xekf(DIST_CONSTANT, GYRO_X_CONSTANT, GYRO_YAW_CONSTANT);
-OpticalEKF yekf(DIST_CONSTANT, GYRO_Y_CONSTANT, 0);
+// OpticalEKF xekf(DIST_CONSTANT, GYRO_X_CONSTANT, GYRO_YAW_CONSTANT);
+// OpticalEKF yekf(DIST_CONSTANT, GYRO_Y_CONSTANT, 0);
 GyroEKF gyroEKF;
 
 //Gimbal leftGimbal(yawPin, pitchPin, motorPin, newDeadband, newTurnOnCom, newMinCom, newMaxCom);
@@ -145,7 +172,7 @@ Gimbal leftGimbal(7, 6, 2, 25, 30, 1000, 2000, 45, 0.2);
 Gimbal rightGimbal(10, 9, 5, 25, 30, 1000, 2000, 135, 0.2);
 
 //Manual PID control
-PID verticalPID(500, 0, 0);  //can be tuned down 
+PID verticalPID(500, 0, 0);  
 PID yawPID(20.0, 0, 0);
 PID forwardPID(500, 0, 0);  
 PID translationPID(500, 0, 0);
@@ -181,6 +208,13 @@ EMAFilter rollOffset(0.5);
 TripleBallGrabber ballGrabber(GRABBER_PIN,SHOOTER_PIN);
 
 //-----States for blimp and grabber-----
+enum agentState {
+  WAITING_AGENT,
+  AGENT_AVAILABLE,
+  AGENT_CONNECTED,
+  AGENT_DISCONNECTED
+}agent_state_;
+
 enum autoState {
   searching,
   approach,
@@ -230,6 +264,7 @@ float lastOpticalLoopTick = 0.0;
 int state = lost;
 int mode = searching;
 
+
 //blimp game parameters
 int blimpColor = BLIMP_COLOR;
 int goalColor = GOAL_COLOR;
@@ -238,22 +273,6 @@ int goalColor = GOAL_COLOR;
 float pitch = 0;
 float yaw = 0;
 float roll = 0;
-
-//msg variables
-String msgTemp;
-double lastMsgTime = -1.0;
-bool outMsgRequest = false;
-
-double handShakeTimeOut = 750; //ms
-
-
-String outMsg = "hello world";
-
-double count = 0;
-int mult = 4;
-
-std::vector<uint8_t> ofBuffer;
-double startTime = 0;
 
 //timers for state machine
 double approachTimeStart = 0;
@@ -304,29 +323,148 @@ float actualBaro = 0.0;
 
 float goalYawDirection = -1;
 
-//telemetry data to pi
-std::vector<String> piVariables;
-std::vector<float> piValues;
+//------------------MICRO ROS publisher--------------
+//ROS node
+rclc_executor_t executor;
+rclc_support_t support;
+rcl_allocator_t allocator;
+rcl_node_t node;
+rcl_timer_t timer;
 
-//function prototypes
-std::vector<String> piMessage();
-void Pulse();
-void print(String key, float value);
+//ROS publishers
+rcl_publisher_t burn_publisher;
+rcl_publisher_t imu_publisher;    
+// rcl_publisher_t tf_publisher;
+
+//String message
+std_msgs__msg__String msg;
+const char* burn_cream_str = "Got'Em, get the burn cream!"; //const char message
+int counter = 0;
+
+//sensor message
+sensor_msgs__msg__Imu imu_msg;
+
+//transform message
+geometry_msgs__msg__TransformStamped tf_msg;
+
+void timer_callback(rcl_timer_t * timer, int64_t last_call_time) {
+  RCLC_UNUSED(last_call_time);
+  if (timer != NULL) {
+  snprintf(msg.data.data, BUFFER_LEN, "%s for the %dth time!", burn_cream_str, counter++);
+  msg.data.size = strlen(msg.data.data);
+  msg.data.capacity = BUFFER_LEN;
+  RCSOFTCHECK(rcl_publish(&burn_publisher, &msg, NULL));
+  }
+}
+
+// Functions create_entities and destroy_entities can take several seconds.
+// In order to reduce this rebuild the library wif
+// - UCLIENT_MAX_SESSION_CONNECTION_ATTEMPTS=3
+
+bool create_entities() {
+  allocator = rcl_get_default_allocator();
+
+  // create init_options
+  RCCHECK(rclc_support_init(&support, 0, NULL, &allocator));
+
+  // create node
+  RCCHECK(rclc_node_init_default(&node, "teensy_node", "", &support)); //name the robot
+
+  // create publishers
+  RCCHECK(rclc_publisher_init_default(&burn_publisher, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, String), "/burn_cream"));
+  RCCHECK(rclc_publisher_init_default(&imu_publisher, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(sensor_msgs, msg, Imu), "/imu"));
+  // RCCHECK(rclc_publisher_init_default(&tf_publisher, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(geometry_msgs, msg, TransformStamped), "/transform"));
+
+  // create timer
+  const unsigned int timer_period = 10;
+  RCCHECK(rclc_timer_init_default(&timer, &support, RCL_MS_TO_NS(timer_period), timer_callback));
+
+  // create executor
+  executor = rclc_executor_get_zero_initialized_executor();
+  RCCHECK(rclc_executor_init(&executor, &support.context, 1, &allocator));
+  RCCHECK(rclc_executor_add_timer(&executor, &timer));
+
+  return true;
+}
+
+void destroy_entities() {
+  rmw_context_t * rmw_context = rcl_context_get_rmw_context(&support.context);
+  (void) rmw_uros_set_context_entity_destroy_session_timeout(rmw_context, 0);
+
+  rcl_publisher_fini(&burn_publisher, &node);
+  rcl_publisher_fini(&imu_publisher, &node);
+  // rcl_publisher_fini(&tf_publisher, &node);
+  rcl_timer_fini(&timer);
+  rclc_executor_fini(&executor);
+  rcl_node_fini(&node);
+  rclc_support_fini(&support);
+}
+
+//pulse function for adding ultrasonic
+void Pulse() {
+  if (digitalRead(interruptPin) == HIGH) {
+    // start measuring
+    pulseInTimeBegin = micros();
+  }
+  else {
+    // stop measuring
+    pulseInTimeEnd = micros();
+    newPulseDurationAvailable = true;
+  }
+}
 
 void setup() {
   //start serial connection
   Serial1.begin(115200);
   Serial.begin(115200);
+  set_microros_serial_transports(Serial); //to pi
+  agent_state_ = WAITING_AGENT; //wait for connection
 
+  //initialize
+  imu_msg.header.frame_id.data = (char *) malloc(BUFFER_LEN*sizeof(char));
+  imu_msg.header.frame_id.size = 0;
+  imu_msg.header.frame_id.capacity = BUFFER_LEN;
+
+  // tf_msg.header.frame_id.data = (char *) malloc(BUFFER_LEN*sizeof(char));
+  // tf_msg.header.frame_id.size = 0;
+  // tf_msg.header.frame_id.capacity = BUFFER_LEN;
+
+  msg.data.data = (char *) malloc(BUFFER_LEN*sizeof(char));
+  msg.data.size = strlen(msg.data.data);
+  msg.data.capacity = BUFFER_LEN;
+
+  delay(2000);
 }
 
 void loop() {
-  //check for a message from the pi, done as fast as possible
-  // piListen();
+  //-----------------------MICRO ROS PUBLISHER--------------------------------------
+  //publisher state machine
+  // checking if the agent is available 
+  switch (agent_state_) {
+    case WAITING_AGENT:
+      EXECUTE_EVERY_N_MS(500, agent_state_ = (RMW_RET_OK == rmw_uros_ping_agent(100, 1)) ? AGENT_AVAILABLE : WAITING_AGENT;);
+      break;
+    case AGENT_AVAILABLE:
+      agent_state_ = (true == create_entities()) ? AGENT_CONNECTED : WAITING_AGENT;
+      if (agent_state_ == WAITING_AGENT) {
+        destroy_entities();
+      };
+      break;
+    case AGENT_CONNECTED:
+      EXECUTE_EVERY_N_MS(200, agent_state_ = (RMW_RET_OK == rmw_uros_ping_agent(100, 1)) ? AGENT_CONNECTED : AGENT_DISCONNECTED;);
+      if (agent_state_ == AGENT_CONNECTED) {
+        rclc_executor_spin_some(&executor, RCL_MS_TO_NS(100));
+      }
+      break;
+    case AGENT_DISCONNECTED:
+      destroy_entities();
+      agent_state_ = WAITING_AGENT;
+      break;
+    default:
+      break;
+  }
 
-  //read buffer for optical flow
-  // Flow.read_buffer();
-
+  //----------------------------IMU LOOP-----------------------------------------
   //compute accel, gyro, madwick loop time at the set freqency
   float dt = micros()/MICROS_TO_SEC-lastSensorFastLoopTick;
   if (dt >= 1.0/FAST_SENSOR_LOOP_FREQ) {
@@ -341,6 +479,54 @@ void loop() {
                              BerryIMU.AccYraw,
                              BerryIMU.AccZraw);
 
+        //publish imu data
+    snprintf(imu_msg.header.frame_id.data, BUFFER_LEN, "Burn Cream Blimp");
+    imu_msg.header.frame_id.size = strlen(msg.data.data);
+    imu_msg.header.frame_id.capacity = BUFFER_LEN;
+
+    unsigned int now = micros();
+    imu_msg.header.stamp.sec = (unsigned int)((double)now/1000000);
+    imu_msg.header.stamp.nanosec = (now % 1000000) * 1000;
+        
+        //Estimated body orentation (quaternion)
+        imu_msg.orientation.w = madgwick.q1;
+        imu_msg.orientation.x = madgwick.q2;
+        imu_msg.orientation.y = madgwick.q3;
+        imu_msg.orientation.z = madgwick.q4;
+
+        //Estimated body frame angular velocity from gyro
+        imu_msg.angular_velocity.x = BerryIMU.gyr_rateXraw;
+        imu_msg.angular_velocity.y = BerryIMU.gyr_rateYraw;
+        imu_msg.angular_velocity.z = BerryIMU.gyr_rateZraw;
+
+        //Estimated body frame acceleration from accelerometer
+        imu_msg.linear_acceleration.x = BerryIMU.AccXraw;
+        imu_msg.linear_acceleration.y = BerryIMU.AccYraw;
+        imu_msg.linear_acceleration.z = BerryIMU.AccZraw;
+      
+    RCSOFTCHECK(rcl_publish(&imu_publisher, &imu_msg, NULL));
+
+    // //publish tranform data
+    // snprintf(tf_msg.header.frame_id.data, BUFFER_LEN, "Burn Cream Blimp");
+    // tf_msg.header.frame_id.size = strlen(msg.data.data);
+    // tf_msg.header.frame_id.capacity = BUFFER_LEN;
+
+    // tf_msg.header.stamp.sec = (unsigned int)((double)now/1000000);
+    // tf_msg.header.stamp.nanosec = (now % 1000000) * 1000;
+
+    //     // x,y,z translation
+    //     tf_msg.transform.translation.x = 0.0;
+    //     tf_msg.transform.translation.y = 0.0;
+    //     tf_msg.transform.translation.z = 0.0;
+
+    //     // rotation in quaternion
+    //     tf_msg.transform.rotation.w = madgwick.q1;
+    //     tf_msg.transform.rotation.x = madgwick.q2;
+    //     tf_msg.transform.rotation.y = madgwick.q3;
+    //     tf_msg.transform.rotation.z = madgwick.q4;
+        
+    // RCSOFTCHECK(rcl_publish(&tf_publisher, &tf_msg, NULL));
+
     //get orientation from madgwick
     pitch = madgwick.pitch_final;
     roll = madgwick.roll_final;
@@ -351,10 +537,9 @@ void loop() {
 
     //run the prediction step of the vertical velecity kalman filter
     kf.predict(dt);
-    xekf.predict(dt);
-    yekf.predict(dt);
+    // xekf.predict(dt);
+    // yekf.predict(dt);
     gyroEKF.predict(dt);
-
 
     //pre filter accel before updating vertical velocity kalman filter
     verticalAccelFilter.filter(-accelGCorrection.agz);
@@ -370,13 +555,13 @@ void loop() {
     gyroEKF.updateAccel(BerryIMU.AccXraw, BerryIMU.AccYraw, BerryIMU.AccZraw);
     
 
-    xekf.updateAccelx(-accelGCorrection.agx);
-    xekf.updateGyroX(gyroEKF.pitchRate - gyroEKF.pitchRateB);
-    xekf.updateGyroZ(BerryIMU.gyr_rateZraw);
+    // xekf.updateAccelx(-accelGCorrection.agx);
+    // xekf.updateGyroX(gyroEKF.pitchRate - gyroEKF.pitchRateB);
+    // xekf.updateGyroZ(BerryIMU.gyr_rateZraw);
 
-    yekf.updateAccelx(-accelGCorrection.agy);
-    yekf.updateGyroX(gyroEKF.rollRate - gyroEKF.rollRateB);
-    yekf.updateGyroZ(BerryIMU.gyr_rateZraw);
+    // yekf.updateAccelx(-accelGCorrection.agy);
+    // yekf.updateGyroX(gyroEKF.rollRate - gyroEKF.rollRateB);
+    // yekf.updateGyroZ(BerryIMU.gyr_rateZraw);
 
     
     // Serial.print(">Z:");
@@ -393,19 +578,18 @@ void loop() {
 
     // Serial.print(">Velocity:");
     // Serial.println(xekf.v);
-    
-    
 
-    //print("Yrate", yawRateFilter.last);
+    // Serial.print(">Yrate:");
+    // Serial.println(yawRateFilter.last);
 
-    //print("zVel", kf.v);
+    // Serial.print(">zVel:");
+    // Serial.println(kf.v);
 
-    
     kal_vel.predict_vel();
     kal_vel.update_vel_acc(-accelGCorrection.agx/9.81, -accelGCorrection.agy/9.81);
   }
 
-
+  //-----------------------------BARO LOOP----------------------
   //update barometere at set barometere frequency
   dt = micros()/MICROS_TO_SEC-lastBaroLoopTick;
   if (dt >= 1.0/BARO_LOOP_FREQ) {
@@ -421,42 +605,44 @@ void loop() {
     //compute the corrected height with base station baro data and offset
     actualBaro = BerryIMU.alt - baseBaro + baroOffset.last;
 
-    xekf.updateBaro(CEIL_HEIGHT_FROM_START-actualBaro);
-    yekf.updateBaro(CEIL_HEIGHT_FROM_START-actualBaro);
+    // xekf.updateBaro(CEIL_HEIGHT_FROM_START-actualBaro);
+    // yekf.updateBaro(CEIL_HEIGHT_FROM_START-actualBaro);
   }
 
+  //---------------------OPTICAL FLOW LOOP----------------------------
+  // //Optical flow update
+  //read buffer for optical flow
+  // Flow.read_buffer();
+  // dt = micros()/MICROS_TO_SEC-lastOpticalLoopTick;
+  // if (dt > 1.0/OPTICAL_LOOP_FREQ) {
+  //   lastOpticalLoopTick = micros()/MICROS_TO_SEC;
   
-  //Optical flow update
-  dt = micros()/MICROS_TO_SEC-lastOpticalLoopTick;
-  if (dt > 1.0/OPTICAL_LOOP_FREQ) {
-    lastOpticalLoopTick = micros()/MICROS_TO_SEC;
-  
-    Flow.update_flow(BerryIMU.gyr_rateXraw, BerryIMU.gyr_rateYraw, 1);
+  //   Flow.update_flow(BerryIMU.gyr_rateXraw, BerryIMU.gyr_rateYraw, 1);
 
-    //change to blimp coordinates
-    float x_opt = (float)Flow.y_motion/dt;
-    float y_opt = (float)Flow.x_motion/dt;
+  //   //change to blimp coordinates
+  //   float x_opt = (float)Flow.y_motion/dt;
+  //   float y_opt = (float)Flow.x_motion/dt;
 
-    xekf.updateOptical(x_opt);
-    yekf.updateOptical(y_opt);
+  //   xekf.updateOptical(x_opt);
+  //   yekf.updateOptical(y_opt);
 
-    // Serial.print(">X Velocity:");
-    // Serial.println(Flow.x_motion_comp);
+  //   // Serial.print(">X Velocity:");
+  //   // Serial.println(Flow.x_motion_comp);
 
-    // accelGCorrection.updateData(BerryIMU.AccXraw, BerryIMU.AccYraw, BerryIMU.AccZraw, pitch, roll);
+  //   // accelGCorrection.updateData(BerryIMU.AccXraw, BerryIMU.AccYraw, BerryIMU.AccZraw, pitch, roll);
 
-    // kal_vel.update_vel_optical(Flow.x_motion_comp, Flow.y_motion_comp);
+  //   // kal_vel.update_vel_optical(Flow.x_motion_comp, Flow.y_motion_comp);
 
-    // Serial.print(">X Velocity est:");
-    // Serial.println(kal_vel.x_vel_est);
+  //   // Serial.print(">X Velocity est:");
+  //   // Serial.println(kal_vel.x_vel_est);
 
-  }
+  // }
   
 
   //compute slower sensors (if any)
   //use same if statement structure
 
-
+  //----------------------------STATE MACHINE LOOP-------------------------------
   //compute state machine and motor control at specified frequency
   dt = micros()/MICROS_TO_SEC-lastStateLoopTick;
   if (dt >= 1.0/STATE_MACHINE_FREQ) {
@@ -524,7 +710,6 @@ void loop() {
 
       break;
     }
-
 
     //compute state machine
     if (state == manual) {
@@ -894,6 +1079,7 @@ void loop() {
         yawCom = 0.0;
     }
 
+    //  safty height 
     if (actualBaro > MAX_HEIGHT) {
         upCom = -0.5;
     }
@@ -926,10 +1112,10 @@ void loop() {
     upMotor = verticalPID.calculate(upCom, kf.v, dt); //up velocity from barometer
 
     if (USE_EST_VELOCITY_IN_MANUAL == true){
-      //using kalman filters for the current velosity feedback for full-state feeback PID controllers
-    forwardMotor = forwardPID.calculate(forwardCom, xekf.v, dt);  //extended filter
+    //using kalman filters for the current velosity feedback for full-state feeback PID controllers
+    //forwardMotor = forwardPID.calculate(forwardCom, xekf.v, dt);  //extended filter
     //float forwardMotor = forwardPID.calculate(forwardCom, kal_vel.x_vel_est, dt);
-    translationMotor = translationPID.calculate(translationCom, yekf.v, dt); //extended filter
+    //translationMotor = translationPID.calculate(translationCom, yekf.v, dt); //extended filter
     //float translationMotor = translationPID.calculate(translationCom, kal_vel.y_vel_est, dt); 
     }else{
       //without PID
@@ -947,6 +1133,8 @@ void loop() {
     // Serial.print(">translation current:");
     //Serial.println(yekf.v);
 
+    //gimbal + motor updates
+
     if (micros()/MICROS_TO_SEC < 10 + firstMessageTime) {
       //filter base station data
       baroOffset.filter(baseBaro-BerryIMU.alt);
@@ -959,13 +1147,9 @@ void loop() {
       leftGimbal.updateGimbal(leftReady && rightReady);
       rightGimbal.updateGimbal(leftReady && rightReady);
     } else {
-      
       if (state == manual && !MOTORS_OFF){
         //forward, translation, up, yaw, roll
         if (!ZERO_MODE) motorControl.update(forwardMotor, -translationMotor, upMotor, yawMotor, 0);
-        
-        //Serial.println("Controlable");
-        //if (ZERO_MODE) motorControl.update(10, 0, 0, 0, 0);
         bool leftReady = leftGimbal.readyGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, motorControl.yawLeft, motorControl.upLeft, motorControl.forwardLeft);
         bool rightReady = rightGimbal.readyGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, motorControl.yawRight, motorControl.upRight, motorControl.forwardRight);
         leftGimbal.updateGimbal(leftReady && rightReady);
@@ -990,209 +1174,5 @@ void loop() {
         rightGimbal.updateGimbal(leftReady && rightReady);
       }
     }
-  }
-}
-
-// bool piListen() {
-
-//   bool retVal = false;
-
-//   //check for debug mode
-//   if (!ZERO_MODE) {
-//     if (Serial1.available() > 0) {
-//       char c = Serial1.read();
-//       //Serial.print(c);
-//       if (c == '#') {
-//         //process message
-//         Serial.println(msgTemp);
-//         retVal = processSerial(msgTemp);
-
-//         //update last message time
-//         lastMsgTime = micros()/MICROS_TO_SEC;
-
-//         //send back state of blimp
-//         String variablesToPi = "";
-//         for (int i = 0; i < piVariables.size(); i++) {
-//           variablesToPi = variablesToPi + piVariables[i] + ":";
-//           variablesToPi = variablesToPi + String(piValues[i]) + ":";
-//         }
-
-//         Serial1.println(String(mode)+":"+String(blimpColor)+":"+String(goalColor)+ ":" + variablesToPi+"#");
-//         //Serial.println(String(mode)+":"+String(blimpColor)+":"+String(goalColor)+ ":" + variablesToPi+"#");
-
-//         //clear message
-//         msgTemp = "";
-//       } else {
-//         msgTemp = msgTemp + String(c);
-//       }
-//     }
-
-//     //if a message has not been recieved after 0.25s change to lost state (turn off motors)
-//     if (micros()/MICROS_TO_SEC - lastMsgTime > TEENSY_WAIT_TIME) {
-//       state = lost;
-//     }
-//   }
-
-//   return retVal;
-// }
-
-// bool processSerial(String msg) {
-//   //set up output vectors
-//   std::vector<double> mData;
-//   std::vector<String> splitData;
-//   std::vector<String> object;
-//   std::vector<double> objectFinal;
-//   std::vector<std::vector<double> > balloons;
-//   std::vector<std::vector<double> > dGoals;
-//   std::vector<std::vector<double> > aGoals;
-//   std::vector<std::vector<double> > eBlimps;
-//   std::vector<std::vector<double> > fBlimps;
-
-//   //clear old target
-//   // piData.target.clear();
-
-//   //clear manual data
-//   mData.clear();
-
-//   //Serial.println(msg);
-//   msg.trim();
-
-//   if (msg.length() > 0 && msg[0] == 'L') {
-//     state = lost;
-//     return false;
-//   }
-
-//   //split string by objects
-//   //decompose data
-//   if (msg.length() > 1) {
-//     int first = 0;
-//     int index = 1;
-//     while (index < msg.length()) {
-//       if (msg[index] == '&') {
-//         splitData.push_back((msg.substring(first, index)).trim());
-//         first = index+1;
-//         index = first+1;
-//       } else {
-//         index += 1;
-//       }
-//     }
-//   } else {
-//     //invalid message
-//     return false;
-//   }
-  
-//   if (splitData.size() > 2 && splitData[0].equals("M")) {
-//     //add motor commands to mData array
-//     state = manual;
-//     if (splitData.size() == 9) {
-//       for (unsigned int i = 3; i < splitData.size(); i++) {
-//         mData.push_back((double)splitData[i].toFloat());
-//       }
-//     }
-
-//     quad = (int)splitData[1].toFloat();
-
-//     if (splitData[2].toFloat() < -1000) {
-//       Serial.println("Baro Data Not Current");
-//     } else {
-//       baseBaro = splitData[2].toFloat();
-//       //Serial.println("Baro Data is Current");
-//     }
-
-//     //Serial.print("Manual size: ");
-//     //Serial.println(mData.size());
-//     piData.update(mData);
-//     return true;
-
-//   } else if (splitData.size() > 2 && splitData[0].equals("A")) {
-//     state = autonomous;
-
-//     quad = (int)splitData[1].toFloat();
-    
-    
-//     if (splitData[2].toFloat() < -1000) {
-//       Serial.println("Baro Data Not Current");
-//     } else {
-//       baseBaro = splitData[2].toFloat();
-//       //Serial.println("Baro Data is Current");
-//     }
-    
-//     for (unsigned int i = 3; i < 4 && splitData.size() >= 4; i++) {
-//         Serial.println("Target Data");
-//         Serial.println(splitData[i]);
-//         String msg = splitData[i];
-//         int index2 = 0;
-//         int first2 = 0;
-//         while (index2 < msg.length()) {
-//           if (msg[index2] == ':') {
-//             object.push_back((msg.substring(first2, index2)).trim());
-//             first2 = index2+1;
-//             index2 = first2+1;
-//           }
-//           index2 += 1;
-//         }
-
-//         for (unsigned int j = 0; j < object.size(); j++) {
-//             if (j == 0) {
-//               objectFinal.push_back((double)(object[j].toFloat()-320.0/2.0));
-//             } else if (j == 1) {
-//               objectFinal.push_back((double)(object[j].toFloat()-240.0/2.0));
-//             } else {
-//               objectFinal.push_back((double)(object[j].toFloat()));
-//             }
-//          }
-//          //clear old target
-//          piData.target.clear();
-         
-//          //add updated target
-//          if (objectFinal.size() == 4) {
-//           piData.target.push_back(objectFinal);
-//          }
-
-//          //clear old variables
-//          object.clear();
-//          objectFinal.clear();
-//      } 
-//   } else {
-//     return false;
-//   }
-//   return true;
-// }
-
-void print(String key, float value) {
-  if (key.length() > MAX_VARIABLE_NAME_SIZE) {
-    Serial.print("Variable name is to long: ");
-    Serial.println(key);
-    return;
-  }
-
-  bool keyWasFound = false;
-  for (int i = 0; i < piVariables.size(); i++) {
-    if (piVariables[i].equals(key)) {
-      //update variable in values
-      piValues[i] = value;
-      keyWasFound = true;
-    }
-  }
-
-  if (!keyWasFound) {
-    if (piVariables.size() < MAX_NUM_VARIABLES) {
-      piVariables.push_back(key);
-      piValues.push_back(value);
-    } else {
-      Serial.println("To Many Variables to print to pi");
-    }
-  }
-}
-
-void Pulse() {
-  if (digitalRead(interruptPin) == HIGH) {
-    // start measuring
-    pulseInTimeBegin = micros();
-  }
-  else {
-    // stop measuring
-    pulseInTimeEnd = micros();
-    newPulseDurationAvailable = true;
   }
 }

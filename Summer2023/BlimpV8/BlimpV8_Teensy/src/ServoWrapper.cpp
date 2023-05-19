@@ -1,5 +1,5 @@
 #include "ServoWrapper.h"
-#include <Arduino.h>&
+#include <Arduino.h>
 
 void ServoWrapper::attach(int servoPin){
     lastMotorPos=0; // degrees from start

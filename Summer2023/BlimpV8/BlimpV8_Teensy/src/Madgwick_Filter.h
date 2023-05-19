@@ -14,6 +14,10 @@ class Madgwick_Filter
     float roll_final;
     float pitch_final;
     float yaw_final;
+    float q1;
+    float q2;
+    float q3;
+    float q4;
 
   private:
     std::vector<float> update_quat(float Gyr_RateX, float Gyr_RateY, float Gyr_RateZ, float AccelX, float AccelY, float AccelZ, float q1_est, float q2_est, float q3_est, float q4_est);

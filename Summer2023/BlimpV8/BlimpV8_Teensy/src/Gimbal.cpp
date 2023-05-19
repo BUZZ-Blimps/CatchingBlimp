@@ -29,13 +29,13 @@ Gimbal::Gimbal(int yawPin, int pitchPin, int motorPin,double newDeadband, double
 
 bool Gimbal::readyGimbal(bool debug, bool motors_off, double roll, double pitch, double yaw, double up, double forward) {
 
-  if (debug) Serial.println("Corrected Inputs");
-  if (debug) Serial.print("Forward: ");
-  if (debug) Serial.print(forward);
-  if (debug) Serial.print("\tYaw: ");
-  if (debug) Serial.print(yaw);
-  if (debug) Serial.print("\tUp: ");
-  if (debug) Serial.println(up);
+  // if (debug) Serial.println("Corrected Inputs");
+  // if (debug) Serial.print("Forward: ");
+  // if (debug) Serial.print(forward);
+  // if (debug) Serial.print("\tYaw: ");
+  // if (debug) Serial.print(yaw);
+  // if (debug) Serial.print("\tUp: ");
+  // if (debug) Serial.println(up);
   
   double thrust = sqrt(pow(yaw,2)+pow(up,2)+pow(forward,2));
   
@@ -51,23 +51,23 @@ bool Gimbal::readyGimbal(bool debug, bool motors_off, double roll, double pitch,
   double theta4 = theta2;
   double phi4 = phi2-180;
   
-  if (debug) Serial.println("Initial Solutions");
-  if (debug) Serial.print(theta1);
-  if (debug) Serial.print("\t");
-  if (debug) Serial.print(theta2);
-  if (debug) Serial.print("\t");
-  if (debug) Serial.print(theta3);
-  if (debug) Serial.print("\t");
-  if (debug) Serial.println(theta4);
+  // if (debug) Serial.println("Initial Solutions");
+  // if (debug) Serial.print(theta1);
+  // if (debug) Serial.print("\t");
+  // if (debug) Serial.print(theta2);
+  // if (debug) Serial.print("\t");
+  // if (debug) Serial.print(theta3);
+  // if (debug) Serial.print("\t");
+  // if (debug) Serial.println(theta4);
 
-  if (debug) Serial.print(phi1);
-  if (debug) Serial.print("\t");
-  if (debug) Serial.print(phi2);
-  if (debug) Serial.print("\t");
-  if (debug) Serial.print(phi3);
-  if (debug) Serial.print("\t");
-  if (debug) Serial.println(phi4);
-  if (debug) Serial.println();
+  // if (debug) Serial.print(phi1);
+  // if (debug) Serial.print("\t");
+  // if (debug) Serial.print(phi2);
+  // if (debug) Serial.print("\t");
+  // if (debug) Serial.print(phi3);
+  // if (debug) Serial.print("\t");
+  // if (debug) Serial.println(phi4);
+  // if (debug) Serial.println();
 
   double thetaOffset = 135;
 
@@ -80,23 +80,23 @@ bool Gimbal::readyGimbal(bool debug, bool motors_off, double roll, double pitch,
   phi3 += phiOffset;
   phi4 += phiOffset;
 
-  if (debug) Serial.print("Shifted Solutions");
-  if (debug) Serial.print(theta1);
-  if (debug) Serial.print("\t");
-  if (debug) Serial.print(theta2);
-  if (debug) Serial.print("\t");
-  if (debug) Serial.print(theta3);
-  if (debug) Serial.print("\t");
-  if (debug) Serial.println(theta4);
+  // if (debug) Serial.print("Shifted Solutions");
+  // if (debug) Serial.print(theta1);
+  // if (debug) Serial.print("\t");
+  // if (debug) Serial.print(theta2);
+  // if (debug) Serial.print("\t");
+  // if (debug) Serial.print(theta3);
+  // if (debug) Serial.print("\t");
+  // if (debug) Serial.println(theta4);
 
-  if (debug) Serial.print(phi1);
-  if (debug) Serial.print("\t");
-  if (debug) Serial.print(phi2);
-  if (debug) Serial.print("\t");
-  if (debug) Serial.print(phi3);
-  if (debug) Serial.print("\t");
-  if (debug) Serial.println(phi4);
-  if (debug) Serial.println();
+  // if (debug) Serial.print(phi1);
+  // if (debug) Serial.print("\t");
+  // if (debug) Serial.print(phi2);
+  // if (debug) Serial.print("\t");
+  // if (debug) Serial.print(phi3);
+  // if (debug) Serial.print("\t");
+  // if (debug) Serial.println(phi4);
+  // if (debug) Serial.println();
 
   double theta = theta1;
   double phi = phi1;
@@ -129,11 +129,11 @@ bool Gimbal::readyGimbal(bool debug, bool motors_off, double roll, double pitch,
     thrustf = thrust*sqrt(2)/2.0;
   }
 
-  if (debug) Serial.print(theta);
-  if (debug) Serial.print("\t");
-  if (debug) Serial.print(phi);
-  if (debug) Serial.print("\t");
-  if (debug) Serial.println(thrustf);
+  // if (debug) Serial.print(theta);
+  // if (debug) Serial.print("\t");
+  // if (debug) Serial.print(phi);
+  // if (debug) Serial.print("\t");
+  // if (debug) Serial.println(thrustf);
 
   thetaPos = filter*theta + (1-filter)*thetaPos;
 
@@ -169,7 +169,7 @@ bool Gimbal::readyGimbal(bool debug, bool motors_off, double roll, double pitch,
 void Gimbal::updateGimbal(bool ready){ // Actual turn on command for brushless motors
   if (ready){
     motor.write(nextMotorCom); 
-    Serial.println(nextMotorCom);
+    // Serial.println(nextMotorCom);
   }else {
     motor.write(motorCom(0));
   }

@@ -1,13 +1,13 @@
 #include "tripleBallGrabber.h"
 
 TripleBallGrabber::TripleBallGrabber(int servoPin, int motorPin) {
-  Serial.println("Initializing Ball Grabber");
+  // Serial.println("Initializing Ball Grabber");
   this->servo.attach(servoPin);
   this->motor.attach(motorPin);
   
   this->servo.write(83);
   this->motor.write(1500);
-  Serial.println("Setup Comlete");
+  // Serial.println("Setup Comlete");
 }
 
 void TripleBallGrabber::openGrabber() {

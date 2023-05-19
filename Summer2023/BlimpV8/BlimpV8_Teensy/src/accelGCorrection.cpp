@@ -1,7 +1,7 @@
 #include "accelGCorrection.h"
 
 AccelGCorrection::AccelGCorrection() {
-    Serial.println("Starting correction");
+    // Serial.println("Starting correction");
 }
 
 void AccelGCorrection::updateData(float accX, float accY, float accZ, float pitch, float roll) {
