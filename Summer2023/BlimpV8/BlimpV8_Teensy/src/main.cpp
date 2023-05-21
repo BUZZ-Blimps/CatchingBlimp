@@ -31,6 +31,7 @@
 #include <geometry_msgs/msg/vector3.h>
 #include <sensor_msgs/msg/imu.h>
 #include <geometry_msgs/msg/transform_stamped.h>
+#include <std_msgs/msg/bool.h>
 
 #define EXECUTE_EVERY_N_MS(MS, X)  do { \
   static volatile int64_t init = -1; \
@@ -323,7 +324,7 @@ float actualBaro = 0.0;
 
 float goalYawDirection = -1;
 
-//------------------MICRO ROS publisher--------------
+//------------------MICRO ROS publishers/subscribers--------------
 //ROS node
 rclc_executor_t executor;
 rclc_support_t support;
@@ -335,6 +336,12 @@ rcl_timer_t timer;
 rcl_publisher_t burn_publisher;
 rcl_publisher_t imu_publisher;    
 // rcl_publisher_t tf_publisher;
+
+//ROS subscribers
+rcl_subscription_t identity_subscription;
+
+//boolean messgae
+std_msgs__msg__Bool identity_msg;
 
 //String message
 std_msgs__msg__String msg;
@@ -368,12 +375,15 @@ bool create_entities() {
   RCCHECK(rclc_support_init(&support, 0, NULL, &allocator));
 
   // create node
-  RCCHECK(rclc_node_init_default(&node, "teensy_node", "", &support)); //name the robot
+  RCCHECK(rclc_node_init_default(&node, "burn_cream_blimp", "", &support)); //name the robot
 
   // create publishers
   RCCHECK(rclc_publisher_init_default(&burn_publisher, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, String), "/burn_cream"));
   RCCHECK(rclc_publisher_init_default(&imu_publisher, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(sensor_msgs, msg, Imu), "/imu"));
   // RCCHECK(rclc_publisher_init_default(&tf_publisher, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(geometry_msgs, msg, TransformStamped), "/transform"));
+
+  //create subscribers
+  RCCHECK(rclc_subscription_init_default(&identity_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Bool), "/identity"));
 
   // create timer
   const unsigned int timer_period = 10;
@@ -394,6 +404,7 @@ void destroy_entities() {
   rcl_publisher_fini(&burn_publisher, &node);
   rcl_publisher_fini(&imu_publisher, &node);
   // rcl_publisher_fini(&tf_publisher, &node);
+  rcl_subscription_fini(&identity_subscription, &node);
   rcl_timer_fini(&timer);
   rclc_executor_fini(&executor);
   rcl_node_fini(&node);
