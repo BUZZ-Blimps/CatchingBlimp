@@ -23,8 +23,10 @@ The MicroROS agent can be run using the ros2 run command
 ROS2:
 The ROS2 publisher is in the ROS_tf2_test folder, make sure the teensy is plugged into the pi for the tf2 messages to be broadcasted!
 To enable the publisher, please build first:
-	-cd /piROS_test
+	-cd /ROS_tf2_test
 	-colcon build
+	- don't forget to make bash in bashrc: source .../install/setup.bash
+	- to get access to the whole directory name, go into ROS_tf2_test, and run: pwd (this replaces the ...)
 	
 	*If VS code is used, make sure the JSON configurator include path is as the following:
             -"includePath": [
