@@ -1,4 +1,5 @@
-Welcome to the new ROS2 MicroROS integrated blimp version!
+============================Welcome to the new ROS2 MicroROS integrated blimp version!===================================
+
 
 MICRO ROS:
 To enbale the MicroROS agent, please make the microros_ws bash, and do "colcon build"
@@ -16,21 +17,22 @@ The MicroROS agent can be run using the ros2 run command
 	-ros2 run micro_ros_agent micro_ros_agent serial --dev /dev/ttyACM0  
 	 ttyACM0 is the serial port name that teensy is connected to
 
+(more info on the pi section)
 
 
 ROS2:
-The ROS2 publisher on pi is in the piROS_test folder, make sure the teensy is plugged into the pi for the tf2 messages to be broadcasted!
+The ROS2 publisher is in the ROS_tf2_test folder, make sure the teensy is plugged into the pi for the tf2 messages to be broadcasted!
 To enable the publisher, please build first:
 	-cd /piROS_test
 	-colcon build
 	
-	*If VS code is used, make sure the JSON configurator include path is as follows:
+	*If VS code is used, make sure the JSON configurator include path is as the following:
             -"includePath": [
              "${workspaceFolder}/**",
              "/opt/ros/foxy/include" 
              (this should be set up already)
 
-To launch the publisher,  run ros2 launch command    
+To launch the publisher, run ros2 launch command    
 	-ros2 launch blimp_telemetry blimp_telemetry.launch.py
 	
 	
