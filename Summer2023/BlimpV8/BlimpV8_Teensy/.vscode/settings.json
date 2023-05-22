@@ -10,6 +10,11 @@
         "streambuf": "cpp",
         "type_traits": "cpp",
         "tuple": "cpp",
-        "utility": "cpp"
+        "utility": "cpp",
+        "string": "cpp",
+        "vector": "cpp",
+        "exception": "cpp",
+        "string_view": "cpp",
+        "limits": "cpp"
     }
 }

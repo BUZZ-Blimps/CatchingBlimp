@@ -9,7 +9,7 @@ def generate_launch_description():
             executable='blimp_telemetry_node',
             name='burn_cream',
             parameters=[
-                {'blimpname': 'burn_cream_blimp'}
+                {'blimpname': 'BurnCreamBlimp'}
             ]
         ),
     ])

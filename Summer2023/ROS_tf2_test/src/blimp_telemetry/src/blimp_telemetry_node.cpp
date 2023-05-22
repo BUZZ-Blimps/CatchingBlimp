@@ -17,7 +17,7 @@ public:
     TelemetryPublisher() : Node("blimp_telemetry_node") {
 
     // Declare and acquire `blimpname` parameter
-     blimpname_ = this->declare_parameter<std::string>("blimpname", "burn_cream_blimp");
+     blimpname_ = this->declare_parameter<std::string>("blimpname", "BurnCreamBlimp");
 
     // Initialize the transform broadcaster
      tf_broadcaster_ = std::make_unique<tf2_ros::TransformBroadcaster>(*this);
@@ -28,7 +28,7 @@ public:
      stream << "/" << blimpname_.c_str() << "/imu";
      std::string topic_name = stream.str();
 
-     imu_subscription_ = this->create_subscription<sensor_msgs::msg::Imu>("/imu", 10, std::bind(&TelemetryPublisher::imu_callback, this, _1));
+     imu_subscription_ = this->create_subscription<sensor_msgs::msg::Imu>("/BurnCreamBlimp/imu", 10, std::bind(&TelemetryPublisher::imu_callback, this, _1));
      RCLCPP_INFO(this->get_logger(), "Telemetry publisher running");
 
     }

@@ -24,14 +24,18 @@
 #include <rclc/executor.h>
 #include <rmw_microros/rmw_microros.h>
 
+//include all message types needed
 #include <std_msgs/msg/string.h> //include the message type that needs to be published (teensy data)
-#include <micro_ros_utilities/string_utilities.h>
+#include <micro_ros_utilities/type_utilities.h>
 
 #include <geometry_msgs/msg/quaternion.h>
 #include <geometry_msgs/msg/vector3.h>
 #include <sensor_msgs/msg/imu.h>
-#include <geometry_msgs/msg/transform_stamped.h>
 #include <std_msgs/msg/bool.h>
+#include <std_msgs/msg/float64.h>
+#include <std_msgs/msg/float64_multi_array.h>
+
+
 
 #define EXECUTE_EVERY_N_MS(MS, X)  do { \
   static volatile int64_t init = -1; \
@@ -270,10 +274,19 @@ int mode = searching;
 int blimpColor = BLIMP_COLOR;
 int goalColor = GOAL_COLOR;
 
+//msg for commands
+float forward_msg = 0;
+float yaw_msg = 0;
+float up_msg = 0;
+float translation_msg = 0;
+
+
 //sensor data
 float pitch = 0;
 float yaw = 0;
 float roll = 0;
+
+float ground_pressure = 0;
 
 //timers for state machine
 double approachTimeStart = 0;
@@ -326,47 +339,152 @@ float goalYawDirection = -1;
 
 //------------------MICRO ROS publishers/subscribers--------------
 //ROS node
-rclc_executor_t executor;
+rclc_executor_t executor_pub;
+rclc_executor_t executor_sub;
+
+
+
 rclc_support_t support;
 rcl_allocator_t allocator;
 rcl_node_t node;
 rcl_timer_t timer;
 
 //ROS publishers
-rcl_publisher_t burn_publisher;
+rcl_publisher_t blimpid_publisher;
 rcl_publisher_t imu_publisher;    
 // rcl_publisher_t tf_publisher;
 
 //ROS subscribers
-rcl_subscription_t identity_subscription;
+rcl_subscription_t identity_subscription; //boolean
+rcl_subscription_t auto_subscription; //boolean
+rcl_subscription_t baseBarometer_subscription; //float64
+rcl_subscription_t grabber_subscription; //boolean
+rcl_subscription_t shooter_subscription; //boolean
+rcl_subscription_t motor_subscription; //float64_multi_array
+rcl_subscription_t kill_subscription; //boolean
 
-//boolean messgae
+
+//message types: String Bool Float32 Float32 MultiArray
+//message topics : /auto /baseBarometer /blimpID /grabbing /killed /motorCommands /shooting /identify /imu
+
+//bolean message
 std_msgs__msg__Bool identity_msg;
+std_msgs__msg__Bool auto_msg;
+std_msgs__msg__Bool grab_msg;
+std_msgs__msg__Bool shoot_msg;
+std_msgs__msg__Bool kill_msg;
+
+//float64 message
+std_msgs__msg__Float64  baro_msg;
+
+//float64multiarray message
+std_msgs__msg__Float64MultiArray motor_msg;
 
 //String message
-std_msgs__msg__String msg;
-const char* burn_cream_str = "Got'Em, get the burn cream!"; //const char message
+std_msgs__msg__String blimpid_msg;
+const char* burn_cream_str = "BurnCreamBlimp"; //const char message
 int counter = 0;
 
 //sensor message
 sensor_msgs__msg__Imu imu_msg;
 
-//transform message
-geometry_msgs__msg__TransformStamped tf_msg;
-
+//timer call back
 void timer_callback(rcl_timer_t * timer, int64_t last_call_time) {
   RCLC_UNUSED(last_call_time);
   if (timer != NULL) {
-  snprintf(msg.data.data, BUFFER_LEN, "%s for the %dth time!", burn_cream_str, counter++);
-  msg.data.size = strlen(msg.data.data);
-  msg.data.capacity = BUFFER_LEN;
-  RCSOFTCHECK(rcl_publish(&burn_publisher, &msg, NULL));
+  // snprintf(msg.data.data, BUFFER_LEN, "%s for the %dth time!", burn_cream_str, counter++);
+  snprintf(blimpid_msg.data.data, BUFFER_LEN, burn_cream_str, "BurnCreamBlimp");
+  blimpid_msg.data.size = strlen(blimpid_msg.data.data);
+  blimpid_msg.data.capacity = BUFFER_LEN;
+  RCSOFTCHECK(rcl_publish(&blimpid_publisher, &blimpid_msg, NULL));
   }
 }
 
-// Functions create_entities and destroy_entities can take several seconds.
-// In order to reduce this rebuild the library wif
-// - UCLIENT_MAX_SESSION_CONNECTION_ATTEMPTS=3
+//subscription massage callbacks
+//message topics : /auto /baseBarometer/grabbing /killed /motorCommands /shooting /
+
+void id_subscription_callback(const void *msgin)
+{
+  const std_msgs__msg__Bool *identity_msg = (const std_msgs__msg__Bool *)msgin;
+}
+
+void auto_subscription_callback(const void *msgin)
+{
+
+  const std_msgs__msg__Bool *auto_msg = (const std_msgs__msg__Bool *)msgin;
+  if (auto_msg->data == false){
+    state = manual;
+  } else if (auto_msg->data == true){
+    state = autonomous;
+  } else {
+    state = lost;
+  }
+
+}
+
+void baro_subscription_callback(const void *msgin)
+{
+  const std_msgs__msg__Float64 *baro_msg = (const std_msgs__msg__Float64 *)msgin;
+  ground_pressure = baro_msg->data;
+}
+
+void grab_subscription_callback(const void *msgin)
+{
+  const std_msgs__msg__Bool *grab_msg = (const std_msgs__msg__Bool *)msgin;
+  if (grab_msg->data == false){
+    ballGrabber.closeGrabber();
+
+    //start catching timer if catching was attempted
+    if (catches >= 1) {
+      lastCatch = micros()/MICROS_TO_SEC;
+    }
+
+  } else if (grab_msg->data == true){
+    ballGrabber.openGrabber();
+    //increase catch counter
+    catches++;
+  }
+}
+
+void kill_subscription_callback(const void *msgin)
+{
+  const std_msgs__msg__Bool *kill_msg = (const std_msgs__msg__Bool *)msgin;
+
+ if (kill_msg->data == true){
+        motorControl.update(0,0,0,0,0);
+        bool leftReady = leftGimbal.readyGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, 0, 0, 0);
+        bool rightReady = rightGimbal.readyGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, 0, 0, 0);
+        leftGimbal.updateGimbal(leftReady && rightReady);
+        rightGimbal.updateGimbal(leftReady && rightReady);
+  } 
+}
+
+void shoot_subscription_callback(const void *msgin)
+{
+  const std_msgs__msg__Bool *shoot_msg = (const std_msgs__msg__Bool *)msgin;
+
+   if (shoot_msg->data == false){
+    ballGrabber.closeGrabber();
+
+  } else if (shoot_msg->data == true){
+    //startshooting
+    ballGrabber.shoot();
+    //reset cathes counter
+    catches = 0;
+  }
+
+}
+
+void motor_subscription_callback(const void *msgin)
+{
+  const std_msgs__msg__Float64MultiArray *motor_msg = (const std_msgs__msg__Float64MultiArray *)msgin;
+  //commands from basestation
+  forward_msg = motor_msg->data.data[3];
+  up_msg = motor_msg->data.data[1];
+  yaw_msg = motor_msg->data.data[0];
+  translation_msg = motor_msg->data.data[2];
+}
+
 
 bool create_entities() {
   allocator = rcl_get_default_allocator();
@@ -375,24 +493,43 @@ bool create_entities() {
   RCCHECK(rclc_support_init(&support, 0, NULL, &allocator));
 
   // create node
-  RCCHECK(rclc_node_init_default(&node, "burn_cream_blimp", "", &support)); //name the robot
+  RCCHECK(rclc_node_init_default(&node, "BurnCreamBlimp", "", &support)); //name the robot
 
   // create publishers
-  RCCHECK(rclc_publisher_init_default(&burn_publisher, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, String), "/burn_cream"));
-  RCCHECK(rclc_publisher_init_default(&imu_publisher, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(sensor_msgs, msg, Imu), "/imu"));
-  // RCCHECK(rclc_publisher_init_default(&tf_publisher, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(geometry_msgs, msg, TransformStamped), "/transform"));
+  RCCHECK(rclc_publisher_init_default(&blimpid_publisher, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, String), "/BurnCreamBlimp/blimpID"));
+  RCCHECK(rclc_publisher_init_default(&imu_publisher, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(sensor_msgs, msg, Imu), "/BurnCreamBlimp/imu"));
 
   //create subscribers
-  RCCHECK(rclc_subscription_init_default(&identity_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Bool), "/identity"));
+  RCCHECK(rclc_subscription_init_default(&identity_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Bool), "/identify"));
+  RCCHECK(rclc_subscription_init_default(&auto_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Bool), "/BurnCreamBlimp/auto"));
+  RCCHECK(rclc_subscription_init_default(&baseBarometer_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Float64), "/BurnCreamBlimp/baseBarometer"));
+  // RCCHECK(rclc_subscription_init_default(&grabber_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Bool), "/BurnCreamBlimp/grabbing"));
+  // RCCHECK(rclc_subscription_init_default(&shooter_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Bool), "/BurnCreamBlimp/shooting"));
+  RCCHECK(rclc_subscription_init_default(&motor_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Float64MultiArray), "/BurnCreamBlimp/motorCommands"));
+  RCCHECK(rclc_subscription_init_default(&kill_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Bool), "/BurnCreamBlimp/killed"));
 
   // create timer
   const unsigned int timer_period = 10;
   RCCHECK(rclc_timer_init_default(&timer, &support, RCL_MS_TO_NS(timer_period), timer_callback));
 
   // create executor
-  executor = rclc_executor_get_zero_initialized_executor();
-  RCCHECK(rclc_executor_init(&executor, &support.context, 1, &allocator));
-  RCCHECK(rclc_executor_add_timer(&executor, &timer));
+  executor_pub = rclc_executor_get_zero_initialized_executor();
+  executor_sub = rclc_executor_get_zero_initialized_executor();
+
+  RCCHECK(rclc_executor_init(&executor_pub, &support.context, 1, &allocator));
+  RCCHECK(rclc_executor_add_timer(&executor_pub, &timer));
+
+  RCCHECK(rclc_executor_init(&executor_sub, &support.context, 7, &allocator));
+
+
+  //add all subscriptions
+  RCCHECK(rclc_executor_add_subscription(&executor_sub, &identity_subscription, &identity_msg, &id_subscription_callback, ON_NEW_DATA));
+  RCCHECK(rclc_executor_add_subscription(&executor_sub, &auto_subscription, &auto_msg, &auto_subscription_callback, ON_NEW_DATA));
+  RCCHECK(rclc_executor_add_subscription(&executor_sub, &baseBarometer_subscription, &baro_msg, &baro_subscription_callback, ON_NEW_DATA));
+  RCCHECK(rclc_executor_add_subscription(&executor_sub, &grabber_subscription, &grab_msg, &grab_subscription_callback, ON_NEW_DATA));
+  RCCHECK(rclc_executor_add_subscription(&executor_sub, &shooter_subscription, &shoot_msg, &shoot_subscription_callback, ON_NEW_DATA));
+  RCCHECK(rclc_executor_add_subscription(&executor_sub, &kill_subscription, &kill_msg, &kill_subscription_callback, ON_NEW_DATA));
+  RCCHECK(rclc_executor_add_subscription(&executor_sub, &motor_subscription, &motor_msg, &motor_subscription_callback, ON_NEW_DATA));
 
   return true;
 }
@@ -401,15 +538,28 @@ void destroy_entities() {
   rmw_context_t * rmw_context = rcl_context_get_rmw_context(&support.context);
   (void) rmw_uros_set_context_entity_destroy_session_timeout(rmw_context, 0);
 
-  rcl_publisher_fini(&burn_publisher, &node);
+  rcl_publisher_fini(&blimpid_publisher, &node);
   rcl_publisher_fini(&imu_publisher, &node);
-  // rcl_publisher_fini(&tf_publisher, &node);
   rcl_subscription_fini(&identity_subscription, &node);
+  rcl_subscription_fini(&auto_subscription, &node);
+  rcl_subscription_fini(&baseBarometer_subscription, &node);
+  rcl_subscription_fini(&grabber_subscription, &node);
+  rcl_subscription_fini(&shooter_subscription, &node);
+  rcl_subscription_fini(&motor_subscription, &node);
+  rcl_subscription_fini(&kill_subscription, &node);
+
   rcl_timer_fini(&timer);
-  rclc_executor_fini(&executor);
+  rclc_executor_fini(&executor_pub);
+  rclc_executor_fini(&executor_sub);
+ 
   rcl_node_fini(&node);
   rclc_support_fini(&support);
 }
+
+// Functions create_entities and destroy_entities can take several seconds.
+// In order to reduce this rebuild the library wif
+// - UCLIENT_MAX_SESSION_CONNECTION_ATTEMPTS=3
+
 
 //pulse function for adding ultrasonic
 void Pulse() {
@@ -431,18 +581,20 @@ void setup() {
   set_microros_serial_transports(Serial); //to pi
   agent_state_ = WAITING_AGENT; //wait for connection
 
-  //initialize
+  //initialize messages
+
   imu_msg.header.frame_id.data = (char *) malloc(BUFFER_LEN*sizeof(char));
   imu_msg.header.frame_id.size = 0;
   imu_msg.header.frame_id.capacity = BUFFER_LEN;
 
-  // tf_msg.header.frame_id.data = (char *) malloc(BUFFER_LEN*sizeof(char));
-  // tf_msg.header.frame_id.size = 0;
-  // tf_msg.header.frame_id.capacity = BUFFER_LEN;
 
-  msg.data.data = (char *) malloc(BUFFER_LEN*sizeof(char));
-  msg.data.size = strlen(msg.data.data);
-  msg.data.capacity = BUFFER_LEN;
+  blimpid_msg.data.data = (char *) malloc(BUFFER_LEN*sizeof(char));
+  blimpid_msg.data.size = strlen(blimpid_msg.data.data);
+  blimpid_msg.data.capacity = BUFFER_LEN;
+
+  motor_msg.data.data = (double *) malloc(BUFFER_LEN*sizeof(char));
+  motor_msg.data.size = strlen(blimpid_msg.data.data);
+  motor_msg.data.capacity = BUFFER_LEN;
 
   delay(2000);
 }
@@ -462,13 +614,14 @@ void loop() {
       };
       break;
     case AGENT_CONNECTED:
-      EXECUTE_EVERY_N_MS(200, agent_state_ = (RMW_RET_OK == rmw_uros_ping_agent(100, 1)) ? AGENT_CONNECTED : AGENT_DISCONNECTED;);
+      EXECUTE_EVERY_N_MS(100, agent_state_ = (RMW_RET_OK == rmw_uros_ping_agent(100, 1)) ? AGENT_CONNECTED : AGENT_DISCONNECTED;);
       if (agent_state_ == AGENT_CONNECTED) {
-        rclc_executor_spin_some(&executor, RCL_MS_TO_NS(100));
+        rclc_executor_spin_some(&executor_pub, RCL_MS_TO_NS(10));
+        rclc_executor_spin_some(&executor_sub, RCL_MS_TO_NS(10));
       }
       break;
     case AGENT_DISCONNECTED:
-      destroy_entities();
+        destroy_entities();
       agent_state_ = WAITING_AGENT;
       break;
     default:
@@ -490,9 +643,9 @@ void loop() {
                              BerryIMU.AccYraw,
                              BerryIMU.AccZraw);
 
-        //publish imu data
-    snprintf(imu_msg.header.frame_id.data, BUFFER_LEN, "Burn Cream Blimp");
-    imu_msg.header.frame_id.size = strlen(msg.data.data);
+    //publish imu data
+    snprintf(imu_msg.header.frame_id.data, BUFFER_LEN, "BurnCreamBlimp");
+    imu_msg.header.frame_id.size = strlen(blimpid_msg.data.data);
     imu_msg.header.frame_id.capacity = BUFFER_LEN;
 
     unsigned int now = micros();
@@ -517,26 +670,6 @@ void loop() {
       
     RCSOFTCHECK(rcl_publish(&imu_publisher, &imu_msg, NULL));
 
-    // //publish tranform data
-    // snprintf(tf_msg.header.frame_id.data, BUFFER_LEN, "Burn Cream Blimp");
-    // tf_msg.header.frame_id.size = strlen(msg.data.data);
-    // tf_msg.header.frame_id.capacity = BUFFER_LEN;
-
-    // tf_msg.header.stamp.sec = (unsigned int)((double)now/1000000);
-    // tf_msg.header.stamp.nanosec = (now % 1000000) * 1000;
-
-    //     // x,y,z translation
-    //     tf_msg.transform.translation.x = 0.0;
-    //     tf_msg.transform.translation.y = 0.0;
-    //     tf_msg.transform.translation.z = 0.0;
-
-    //     // rotation in quaternion
-    //     tf_msg.transform.rotation.w = madgwick.q1;
-    //     tf_msg.transform.rotation.x = madgwick.q2;
-    //     tf_msg.transform.rotation.y = madgwick.q3;
-    //     tf_msg.transform.rotation.z = madgwick.q4;
-        
-    // RCSOFTCHECK(rcl_publish(&tf_publisher, &tf_msg, NULL));
 
     //get orientation from madgwick
     pitch = madgwick.pitch_final;
@@ -614,7 +747,13 @@ void loop() {
 
 
     //compute the corrected height with base station baro data and offset
-    actualBaro = BerryIMU.alt - baseBaro + baroOffset.last;
+    if (baseBaro != 0){
+      actualBaro = 44330 * (1 - pow((BerryIMU.comp_press/baseBaro), (1/5.255))); //In meters Base Baro is the pressure
+      //print("Height",actualBaro);
+    }
+    else{
+      actualBaro = 1000;
+    }
 
     // xekf.updateBaro(CEIL_HEIGHT_FROM_START-actualBaro);
     // yekf.updateBaro(CEIL_HEIGHT_FROM_START-actualBaro);
@@ -722,87 +861,38 @@ void loop() {
       break;
     }
 
+    //from base station
+    
+
+
     //compute state machine
     if (state == manual) {
-      /*
-      //Serial.println("Manual");
+      
       //get manual data
-      //TO DO: new communication
-      // std::vector<double> manualComs = piData.getManualComs();
       
       //all motor commands are between -1 and 1
 
-      //check to make sure 4 motor commands and two grabber commands are recieved
-      if (manualComs.size() == 6) {
-        //Serial.println("Set Commands");
         //set max yaw command to 120 deg/s
         
 
-        yawCom = -manualComs[0]*120;
+        yawCom = -yaw_msg*120;
 
         if (USE_EST_VELOCITY_IN_MANUAL == true){
           //set max velocities 2 m/s
-          upCom = manualComs[1]*2.0;
-          forwardCom = manualComs[3]*2.0;
-          translationCom = manualComs[2]*2.0;
+          upCom = up_msg*2.0;
+          forwardCom = forward_msg*2.0;
+          translationCom = translation_msg*2.0;
         }else{
           //normal mapping using max esc command 
-          upCom = manualComs[1]*2.0; //PID used and maxed out at 2m/s
-          forwardCom = manualComs[3]*500.0;
-          translationCom = manualComs[2]*500.0;
+          upCom = up_msg*5.0; //PID used and maxed out at 5m/s
+          forwardCom = forward_msg*1000.0;
+          translationCom = translation_msg*1000.0;
         }
       
-      } else {
-        Serial.println(manualComs.size());
-        //data is not valid, set motors to zero
-        yawCom = 0;
-        forwardCom = 0;
-        upCom = 0;
-        translationCom = 0;
-      }
 
       //Serial.print(">up:");
       //Serial.println(upCom);
-
-
-        //check if shooting should be engaged
-        //this block switches the state to the oposite that it is currently in
-          if (shoot != manualComs[5]) {
-          shoot = manualComs[5];
-          //change shoot state
-          if (ballGrabber.state == 2) {
-            //stop shooting
-            ballGrabber.closeGrabber();
-          } else {
-            //start shooting
-            ballGrabber.shoot();
-
-            //reset catch counter
-            catches=0;
-          }
-
-        //check if grabbing should be engaged
-        //this block switches the state to the oposite that it is currently in
-        } else if (grab != manualComs[4]) {
-          grab = manualComs[4];
-
-          //change grab state
-          if (ballGrabber.state == 0) {
-            ballGrabber.openGrabber();
-          } else {
-            ballGrabber.closeGrabber();
-
-            //increase catch counter
-            catches++;
-
-            //start catch timmer
-            if (catches >= 1) {
-              lastCatch = micros()/MICROS_TO_SEC;
-            }
-          }
-
-        }
-        */
+  
       
     } else if (state == autonomous){
       /*
