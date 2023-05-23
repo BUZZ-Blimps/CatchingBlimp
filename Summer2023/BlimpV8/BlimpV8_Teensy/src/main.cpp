@@ -274,6 +274,9 @@ int mode = searching;
 int blimpColor = BLIMP_COLOR;
 int goalColor = GOAL_COLOR;
 
+//timeout message time
+double lastMsgTime = -1.0;
+
 //msg for commands
 float forward_msg = 0;
 float yaw_msg = 0;
@@ -414,8 +417,12 @@ void auto_subscription_callback(const void *msgin)
   const std_msgs__msg__Bool *auto_msg = (const std_msgs__msg__Bool *)msgin;
   if (auto_msg->data == false){
     state = manual;
+    //update last message time
+    lastMsgTime = micros()/MICROS_TO_SEC;
   } else if (auto_msg->data == true){
     state = autonomous;
+    //update last message time
+    lastMsgTime = micros()/MICROS_TO_SEC;
   } else {
     state = lost;
   }
@@ -519,15 +526,15 @@ bool create_entities() {
   RCCHECK(rclc_executor_init(&executor_pub, &support.context, 1, &allocator));
   RCCHECK(rclc_executor_add_timer(&executor_pub, &timer));
 
-  RCCHECK(rclc_executor_init(&executor_sub, &support.context, 7, &allocator));
+  RCCHECK(rclc_executor_init(&executor_sub, &support.context, 5, &allocator));
 
 
   //add all subscriptions
   RCCHECK(rclc_executor_add_subscription(&executor_sub, &identity_subscription, &identity_msg, &id_subscription_callback, ON_NEW_DATA));
   RCCHECK(rclc_executor_add_subscription(&executor_sub, &auto_subscription, &auto_msg, &auto_subscription_callback, ON_NEW_DATA));
   RCCHECK(rclc_executor_add_subscription(&executor_sub, &baseBarometer_subscription, &baro_msg, &baro_subscription_callback, ON_NEW_DATA));
-  RCCHECK(rclc_executor_add_subscription(&executor_sub, &grabber_subscription, &grab_msg, &grab_subscription_callback, ON_NEW_DATA));
-  RCCHECK(rclc_executor_add_subscription(&executor_sub, &shooter_subscription, &shoot_msg, &shoot_subscription_callback, ON_NEW_DATA));
+  // RCCHECK(rclc_executor_add_subscription(&executor_sub, &grabber_subscription, &grab_msg, &grab_subscription_callback, ON_NEW_DATA));
+  // RCCHECK(rclc_executor_add_subscription(&executor_sub, &shooter_subscription, &shoot_msg, &shoot_subscription_callback, ON_NEW_DATA));
   RCCHECK(rclc_executor_add_subscription(&executor_sub, &kill_subscription, &kill_msg, &kill_subscription_callback, ON_NEW_DATA));
   RCCHECK(rclc_executor_add_subscription(&executor_sub, &motor_subscription, &motor_msg, &motor_subscription_callback, ON_NEW_DATA));
 
@@ -543,8 +550,8 @@ void destroy_entities() {
   rcl_subscription_fini(&identity_subscription, &node);
   rcl_subscription_fini(&auto_subscription, &node);
   rcl_subscription_fini(&baseBarometer_subscription, &node);
-  rcl_subscription_fini(&grabber_subscription, &node);
-  rcl_subscription_fini(&shooter_subscription, &node);
+  // rcl_subscription_fini(&grabber_subscription, &node);
+  // rcl_subscription_fini(&shooter_subscription, &node);
   rcl_subscription_fini(&motor_subscription, &node);
   rcl_subscription_fini(&kill_subscription, &node);
 
@@ -592,10 +599,6 @@ void setup() {
   blimpid_msg.data.size = strlen(blimpid_msg.data.data);
   blimpid_msg.data.capacity = BUFFER_LEN;
 
-  motor_msg.data.data = (double *) malloc(BUFFER_LEN*sizeof(char));
-  motor_msg.data.size = strlen(blimpid_msg.data.data);
-  motor_msg.data.capacity = BUFFER_LEN;
-
   delay(2000);
 }
 
@@ -626,6 +629,12 @@ void loop() {
       break;
     default:
       break;
+  }
+
+
+  //lost state
+  if (micros()/MICROS_TO_SEC - lastMsgTime > TEENSY_WAIT_TIME) {
+      state = lost;
   }
 
   //----------------------------IMU LOOP-----------------------------------------
@@ -888,10 +897,6 @@ void loop() {
           forwardCom = forward_msg*1000.0;
           translationCom = translation_msg*1000.0;
         }
-      
-
-      //Serial.print(">up:");
-      //Serial.println(upCom);
   
       
     } else if (state == autonomous){
