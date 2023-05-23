@@ -289,6 +289,8 @@ float pitch = 0;
 float yaw = 0;
 float roll = 0;
 
+float rotation = 90;
+
 float ground_pressure = 0;
 
 //timers for state machine
@@ -432,7 +434,8 @@ void auto_subscription_callback(const void *msgin)
 void baro_subscription_callback(const void *msgin)
 {
   const std_msgs__msg__Float64 *baro_msg = (const std_msgs__msg__Float64 *)msgin;
-  ground_pressure = baro_msg->data;
+  baseBaro = baro_msg->data;
+
 }
 
 void grab_subscription_callback(const void *msgin)
@@ -599,7 +602,13 @@ void setup() {
   blimpid_msg.data.size = strlen(blimpid_msg.data.data);
   blimpid_msg.data.capacity = BUFFER_LEN;
 
+  motor_msg.data.data = (double *) malloc(BUFFER_LEN*sizeof(double));
+  motor_msg.data.size = sizeof(motor_msg.data.data);
+  motor_msg.data.capacity = BUFFER_LEN;
+
   delay(2000);
+  
+  firstMessageTime = micros()/MICROS_TO_SEC;
 }
 
 void loop() {
@@ -645,6 +654,7 @@ void loop() {
 
     //read sensor values and update madgwick
     BerryIMU.IMU_read();
+    BerryIMU.IMU_ROTATION(rotation); // Rotate IMU
     madgwick.Madgwick_Update(BerryIMU.gyr_rateXraw,
                              BerryIMU.gyr_rateYraw,
                              BerryIMU.gyr_rateZraw,
@@ -738,8 +748,8 @@ void loop() {
     // Serial.print(">zVel:");
     // Serial.println(kf.v);
 
-    kal_vel.predict_vel();
-    kal_vel.update_vel_acc(-accelGCorrection.agx/9.81, -accelGCorrection.agy/9.81);
+    // kal_vel.predict_vel();
+    // kal_vel.update_vel_acc(-accelGCorrection.agx/9.81, -accelGCorrection.agy/9.81);
   }
 
   //-----------------------------BARO LOOP----------------------
@@ -1252,6 +1262,7 @@ void loop() {
       bool rightReady = rightGimbal.readyGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, motorControl.yawRight, motorControl.upRight, motorControl.forwardRight);
       leftGimbal.updateGimbal(leftReady && rightReady);
       rightGimbal.updateGimbal(leftReady && rightReady);
+      
     } else {
       if (state == manual && !MOTORS_OFF){
         //forward, translation, up, yaw, roll
