@@ -24,6 +24,7 @@ class BerryIMU_v3
     float comp_press;
     float ref_ground_press;
     float alt;
+    float pressRaw;
 
   private:
     float temp_compensation(float raw_temperature);

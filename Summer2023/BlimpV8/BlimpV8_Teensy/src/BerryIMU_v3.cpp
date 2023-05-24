@@ -12,8 +12,8 @@
 
 BerryIMU_v3::BerryIMU_v3(){
   Wire.begin();        // Initialise i2c
-  Wire.setClock(400000);  //Change i2c bus speed to 400kHz
-  //Serial.begin(115200); Start serial for output set to 115200 Baud Rate
+  Wire.setClock(200000);  //Change i2c bus speed to 400kHz
+  Serial.begin(115200); //Start serial for output set to 115200 Baud Rate
   ref_pressure_found = true;
 
   //Initialize the accelerometer
@@ -207,7 +207,7 @@ void BerryIMU_v3::IMU_read(){
 
   // First 3 bytes are the pressure XLSB, LSB, MSB
   // Bit shift done by 256^3 = 16777216 and 16777216/3 = 5592405
-  float pressRaw = (int)(buff[0] | (buff[1] << 8) | (buff[2] << 16));
+  pressRaw = (int)(buff[0] | (buff[1] << 8) | (buff[2] << 16));
   comp_press = press_compensation(pressRaw, comp_temp);
   //Serial.println(comp_press); //Pressure in Pa
 
@@ -245,12 +245,14 @@ void BerryIMU_v3::IMU_ROTATION(float rotation_angle){  //current: -90 degrees
       this->gyr_rateZraw = corrected_gyr_rate(2);
 }
 
+
 float BerryIMU_v3::temp_compensation(float raw_temperature) {
   float partial_data1 = raw_temperature - PAR_T1;
   float partial_data2 = partial_data1 * PAR_T2;
   float comp_temp = partial_data2 + (partial_data1 * partial_data1) * PAR_T3;
   return comp_temp;
 }
+
 
 float BerryIMU_v3::press_compensation(float raw_pressure, float comp_temp) {
   float partial_data1 = PAR_P6 * comp_temp;
@@ -266,6 +268,7 @@ float BerryIMU_v3::press_compensation(float raw_pressure, float comp_temp) {
   partial_data3 = partial_data1 * partial_data2;
   float partial_data4 = partial_data3 + (raw_pressure * raw_pressure * raw_pressure) * PAR_P11;
   float comp_press = partial_out1 + partial_out2 + partial_data4;
+
   return comp_press;
 }
 

@@ -85,47 +85,57 @@ void error_loop() {
 #define GOAL_HEIGHT_DEADBAND      0.3       //m
 
 //distance triggers
-#define GOAL_DISTANCE_TRIGGER     65  //unscaled distance for blimp to trigger goal score 
-#define BALL_GATE_OPEN_TRIGGER    22 //30 unscaled distance for blimp to open the gate
-#define BALL_CATCH_TRIGGER        19 //27 unscaled distance for blimp to start the open-loop control 
+#define GOAL_DISTANCE_TRIGGER    1.5 //m distance for blimp to trigger goal score 	
+#define BALL_GATE_OPEN_TRIGGER   2.5 //m distance for blimp to open the gate 	
+#define BALL_CATCH_TRIGGER       1  //m distance for blimp to start the open-loop control
 
 //object avoidence motor coms
-#define FORWARD_AVOID             0.5 
-#define YAW_AVOID                 10
-#define UP_AVOID                  0.1
+#define FORWARD_AVOID             250  //25% throttle
+#define YAW_AVOID                 10	 //deg/s
+#define UP_AVOID                  0.4  //m/s
 
 //autonomy tunning parameters
 // the inputs are bounded from -2 to 2, yaw is maxed out at 120 deg/s
-#define GAME_BALL_YAW_SEARCH      -20  
-#define GAME_BALL_FORWARD_SEARCH  0.4  //0.4 = 20% 
-#define GAME_BALL_VERTICAL_SEARCH 0.15
+#define GAME_BALL_YAW_SEARCH      -15  //deg/s
+#define GAME_BALL_FORWARD_SEARCH  300 //30% throttle 
+#define GAME_BALL_VERTICAL_SEARCH 0.7  //m/s
 
-#define GAME_BALL_CLOSURE_COM     0.2  //approaching at 20% throttle
-#define GAME_BALL_APPROACH_ANGLE  0.1  //descend or ascend at 5% throttle
-#define GAME_BaLL_X_OFFSET        10   //adjusting yaw at 10 deg/s
 
-#define CATCHING_FORWARD_COM      0.8  //catching at 40% throttle 
-#define CATCHING_UP_COM           0.2
+#define GAME_BALL_CLOSURE_COM     400  //approaching at 20% throttle cap
+#define GAME_BALL_APPROACH_ANGLE  -80  //0.2 approach magic number
+#define GAME_BaLL_X_OFFSET        0   //10 offset magic number
 
-#define CAUGHT_FORWARD_COM        -0.82  //go back so that the game ball gets to the back 
+#define CATCHING_FORWARD_COM      900  //catching at 90% throttle 
+#define CATCHING_UP_COM           1  //damp out pitch
+
+#define CAUGHT_FORWARD_COM        -860  //go back so that the game ball gets to the back 
 #define CAUGHT_UP_COM             -0.2
 
-#define GOAL_YAW_SEARCH           15   
-#define GOAL_FORWARD_SEARCH       0.4  //20% throttle
-#define GOAL_UP_VELOCITY          0.1  
+#define GOAL_YAW_SEARCH           20   
+#define GOAL_FORWARD_SEARCH       320  //400 40% throttle
+#define GOAL_UP_VELOCITY          2.5
 
-#define GOAL_CLOSURE_COM          0.3 
-#define GOAL_APPROACH_ANGLE       0
+#define GOAL_CLOSURE_COM          400  //forward command 25% throttle
+#define GOAL_X_OFFSET             -10
+#define GOAL_APPROACH_ANGLE       -30  //height alignment (approach down)
+
+//goal alignment test
+#define ALIGNING_YAW_COM           10 //test
+#define ALIGNING_FORWARD_COM        100 //test
+#define ALIGNING_UP_COM            0.4 //test
+#define ALIGNING_TRANSLATION_COM   300 //test
+
 
 #define SCORING_YAW_COM           0
-#define SCORING_FORWARD_COM       0.18
-#define SCORING_UP_COM            0.1
+#define SCORING_FORWARD_COM       500 //40% throttle
+#define SCORING_UP_COM            1.5
 
-#define SHOOTING_FORWARD_COM      0.6
-#define SHOOTING_UP_COM           0.2
+#define SHOOTING_FORWARD_COM      700  //counter back motion 
+#define SHOOTING_UP_COM           0.3
+//counter moment (right now we do want to shoot up because ball sinks)
 
-#define SCORED_FORWARD_COM        -0.6
-#define SCORED_UP_COM             -0.0015
+#define SCORED_FORWARD_COM        -700
+#define SCORED_UP_COM             -0.2
 
 //sensor and controller rates
 #define FAST_SENSOR_LOOP_FREQ           100.0
@@ -147,17 +157,25 @@ void error_loop() {
 //motor timeout before entering lost state
 #define TEENSY_WAIT_TIME          0.5
 
-//init pins
-
-#define LYSPIN                     7
-#define LPSPIN                     6
-#define LMPIN                     2
-#define RYSPIN                     10
-#define RPSPIN                     9
-#define RMPIN                     5
-
-#define GRABBER_PIN               8
-#define SHOOTER_PIN               4
+//**************** TEENSY PINOUT ****************//
+#define L_Pitch                   2                    
+#define L_Yaw                     3              
+#define R_Pitch                   4                
+#define R_Yaw                     5              
+                                   
+#define L_Pitch_FB                23                    
+#define L_Yaw_FB                  22                  
+#define R_Pitch_FB                21                    
+#define R_Yaw_FB                  20                  
+                                  
+#define GATE_S                    15                
+                                  
+#define PWM_R                     6              
+#define PWM_G                     9              
+#define PWM_L                     14              
+                                  
+#define OF_CS                     10              
+//***********************************************//
 
 
 //sensor fusion objects
@@ -173,8 +191,8 @@ GyroEKF gyroEKF;
 
 //Gimbal leftGimbal(yawPin, pitchPin, motorPin, newDeadband, newTurnOnCom, newMinCom, newMaxCom);
 MotorControl motorControl;
-Gimbal leftGimbal(7, 6, 2, 25, 30, 1000, 2000, 45, 0.2);
-Gimbal rightGimbal(10, 9, 5, 25, 30, 1000, 2000, 135, 0.2);
+Gimbal leftGimbal(L_Yaw, L_Pitch, PWM_L, 25, 30, 1000, 2000, 45, 0.2);
+Gimbal rightGimbal(R_Yaw, R_Pitch, PWM_R, 25, 30, 1000, 2000, 135, 0.2);
 
 //Manual PID control
 PID verticalPID(500, 0, 0);  
@@ -184,7 +202,7 @@ PID translationPID(500, 0, 0);
 
 //Auto PID control (output fed into manual controller)
 PID yPixelPID(0.0075,0,0);
-PID xPixelPID(0.162,0,0);
+PID xPixelPID(0.2,0,0);
 
 //Goal positioning controller
 BangBang goalPositionHold(GOAL_HEIGHT_DEADBAND, GOAL_UP_VELOCITY); //Dead band, velocity to center itself
@@ -210,7 +228,7 @@ EMAFilter baroOffset(0.5);
 EMAFilter rollOffset(0.5);
 
 //ball grabber object
-TripleBallGrabber ballGrabber(GRABBER_PIN,SHOOTER_PIN);
+TripleBallGrabber ballGrabber(GATE_S, PWM_G);
 
 //-----States for blimp and grabber-----
 enum agentState {
@@ -289,7 +307,7 @@ float pitch = 0;
 float yaw = 0;
 float roll = 0;
 
-float rotation = 90;
+float rotation = 180;
 
 float ground_pressure = 0;
 
@@ -348,7 +366,6 @@ rclc_executor_t executor_pub;
 rclc_executor_t executor_sub;
 
 
-
 rclc_support_t support;
 rcl_allocator_t allocator;
 rcl_node_t node;
@@ -357,7 +374,8 @@ rcl_timer_t timer;
 //ROS publishers
 rcl_publisher_t blimpid_publisher;
 rcl_publisher_t imu_publisher;    
-// rcl_publisher_t tf_publisher;
+rcl_publisher_t motor_publisher; 
+rcl_publisher_t height_publisher;
 
 //ROS subscribers
 rcl_subscription_t identity_subscription; //boolean
@@ -381,9 +399,11 @@ std_msgs__msg__Bool kill_msg;
 
 //float64 message
 std_msgs__msg__Float64  baro_msg;
+std_msgs__msg__Float64  height_msg;
 
 //float64multiarray message
 std_msgs__msg__Float64MultiArray motor_msg;
+std_msgs__msg__Float64MultiArray motor_debug_msg;
 
 //String message
 std_msgs__msg__String blimpid_msg;
@@ -435,7 +455,6 @@ void baro_subscription_callback(const void *msgin)
 {
   const std_msgs__msg__Float64 *baro_msg = (const std_msgs__msg__Float64 *)msgin;
   baseBaro = baro_msg->data;
-
 }
 
 void grab_subscription_callback(const void *msgin)
@@ -508,6 +527,8 @@ bool create_entities() {
   // create publishers
   RCCHECK(rclc_publisher_init_default(&blimpid_publisher, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, String), "/BurnCreamBlimp/blimpID"));
   RCCHECK(rclc_publisher_init_default(&imu_publisher, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(sensor_msgs, msg, Imu), "/BurnCreamBlimp/imu"));
+  RCCHECK(rclc_publisher_init_default(&motor_publisher, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg,Float64MultiArray ), "/BurnCreamBlimp/motorDebug"));
+  RCCHECK(rclc_publisher_init_default(&height_publisher, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg,Float64), "/BurnCreamBlimp/height"));
 
   //create subscribers
   RCCHECK(rclc_subscription_init_default(&identity_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Bool), "/identify"));
@@ -526,7 +547,7 @@ bool create_entities() {
   executor_pub = rclc_executor_get_zero_initialized_executor();
   executor_sub = rclc_executor_get_zero_initialized_executor();
 
-  RCCHECK(rclc_executor_init(&executor_pub, &support.context, 1, &allocator));
+  RCCHECK(rclc_executor_init(&executor_pub, &support.context, 4, &allocator));
   RCCHECK(rclc_executor_add_timer(&executor_pub, &timer));
 
   RCCHECK(rclc_executor_init(&executor_sub, &support.context, 5, &allocator));
@@ -548,8 +569,13 @@ void destroy_entities() {
   rmw_context_t * rmw_context = rcl_context_get_rmw_context(&support.context);
   (void) rmw_uros_set_context_entity_destroy_session_timeout(rmw_context, 0);
 
+  //finish publishers
   rcl_publisher_fini(&blimpid_publisher, &node);
   rcl_publisher_fini(&imu_publisher, &node);
+  rcl_publisher_fini(&motor_publisher, &node);
+  rcl_publisher_fini(&height_publisher, &node);
+
+  //finnish subscriptions
   rcl_subscription_fini(&identity_subscription, &node);
   rcl_subscription_fini(&auto_subscription, &node);
   rcl_subscription_fini(&baseBarometer_subscription, &node);
@@ -584,13 +610,16 @@ void Pulse() {
   }
 }
 
+//set up
+
 void setup() {
   //start serial connection
-  Serial1.begin(115200);
   Serial.begin(115200);
   set_microros_serial_transports(Serial); //to pi
   agent_state_ = WAITING_AGENT; //wait for connection
+  Serial1.begin(115200);
 
+  
   //initialize messages
 
   imu_msg.header.frame_id.data = (char *) malloc(BUFFER_LEN*sizeof(char));
@@ -606,14 +635,23 @@ void setup() {
   motor_msg.data.size = sizeof(motor_msg.data.data);
   motor_msg.data.capacity = BUFFER_LEN;
 
+  motor_debug_msg.data.data = (double *) malloc(BUFFER_LEN*sizeof(double));
+  motor_debug_msg.data.size = 0; 
+  motor_debug_msg.data.capacity = BUFFER_LEN;
+
+
   delay(2000);
-  
+
+  //time out
   firstMessageTime = micros()/MICROS_TO_SEC;
 }
 
+
+//loop
+
 void loop() {
   //-----------------------MICRO ROS PUBLISHER--------------------------------------
-  //publisher state machine
+  // publisher state machine
   // checking if the agent is available 
   switch (agent_state_) {
     case WAITING_AGENT:
@@ -628,7 +666,7 @@ void loop() {
     case AGENT_CONNECTED:
       EXECUTE_EVERY_N_MS(100, agent_state_ = (RMW_RET_OK == rmw_uros_ping_agent(100, 1)) ? AGENT_CONNECTED : AGENT_DISCONNECTED;);
       if (agent_state_ == AGENT_CONNECTED) {
-        rclc_executor_spin_some(&executor_pub, RCL_MS_TO_NS(10));
+        rclc_executor_spin_some(&executor_pub, RCL_MS_TO_NS(100));
         rclc_executor_spin_some(&executor_sub, RCL_MS_TO_NS(10));
       }
       break;
@@ -640,7 +678,7 @@ void loop() {
       break;
   }
 
-
+  //----------------------------------LOST---------------------------------------
   //lost state
   if (micros()/MICROS_TO_SEC - lastMsgTime > TEENSY_WAIT_TIME) {
       state = lost;
@@ -752,7 +790,7 @@ void loop() {
     // kal_vel.update_vel_acc(-accelGCorrection.agx/9.81, -accelGCorrection.agy/9.81);
   }
 
-  //-----------------------------BARO LOOP----------------------
+  //-----------------------------BARO LOOP-----------------------------------------------
   //update barometere at set barometere frequency
   dt = micros()/MICROS_TO_SEC-lastBaroLoopTick;
   if (dt >= 1.0/BARO_LOOP_FREQ) {
@@ -768,7 +806,10 @@ void loop() {
     //compute the corrected height with base station baro data and offset
     if (baseBaro != 0){
       actualBaro = 44330 * (1 - pow((BerryIMU.comp_press/baseBaro), (1/5.255))); //In meters Base Baro is the pressure
-      //print("Height",actualBaro);
+
+        //publish Height
+        height_msg.data = actualBaro;
+        RCSOFTCHECK(rcl_publish(&height_publisher, &height_msg, NULL));
     }
     else{
       actualBaro = 1000;
@@ -778,7 +819,7 @@ void loop() {
     // yekf.updateBaro(CEIL_HEIGHT_FROM_START-actualBaro);
   }
 
-  //---------------------OPTICAL FLOW LOOP----------------------------
+  //---------------------OPTICAL FLOW LOOP-----------------------------------------
   // //Optical flow update
   //read buffer for optical flow
   // Flow.read_buffer();
@@ -898,16 +939,23 @@ void loop() {
 
         if (USE_EST_VELOCITY_IN_MANUAL == true){
           //set max velocities 2 m/s
-          upCom = up_msg*2.0;
+          upCom = -up_msg*2.0;
           forwardCom = forward_msg*2.0;
           translationCom = translation_msg*2.0;
         }else{
           //normal mapping using max esc command 
-          upCom = up_msg*5.0; //PID used and maxed out at 5m/s
+          upCom = -up_msg*5.0; //PID used and maxed out at 5m/s
           forwardCom = forward_msg*1000.0;
           translationCom = translation_msg*1000.0;
         }
-  
+
+        //motor debug
+        motor_debug_msg.data.data[0] = yaw_msg;
+        motor_debug_msg.data.data[1] = up_msg;
+        motor_debug_msg.data.data[2] = translation_msg;
+        motor_debug_msg.data.data[3] = forward_msg;
+        motor_debug_msg.data.size = 4;
+        RCSOFTCHECK(rcl_publish(&motor_publisher, &motor_debug_msg, NULL));
       
     } else if (state == autonomous){
       /*
@@ -1196,9 +1244,9 @@ void loop() {
     }
 
     //  safty height 
-    if (actualBaro > MAX_HEIGHT) {
-        upCom = -0.5;
-    }
+    // if (actualBaro > MAX_HEIGHT) {
+    //     upCom = -0.5;
+    // }
 
     //translation velocity and command
     // Serial.print(">z v:");
@@ -1229,10 +1277,10 @@ void loop() {
 
     if (USE_EST_VELOCITY_IN_MANUAL == true){
     //using kalman filters for the current velosity feedback for full-state feeback PID controllers
-    //forwardMotor = forwardPID.calculate(forwardCom, xekf.v, dt);  //extended filter
-    //float forwardMotor = forwardPID.calculate(forwardCom, kal_vel.x_vel_est, dt);
-    //translationMotor = translationPID.calculate(translationCom, yekf.v, dt); //extended filter
-    //float translationMotor = translationPID.calculate(translationCom, kal_vel.y_vel_est, dt); 
+    // forwardMotor = forwardPID.calculate(forwardCom, xekf.v, dt);  //extended filter
+    // float forwardMotor = forwardPID.calculate(forwardCom, kal_vel.x_vel_est, dt);
+    // translationMotor = translationPID.calculate(translationCom, yekf.v, dt); //extended filter
+    // float translationMotor = translationPID.calculate(translationCom, kal_vel.y_vel_est, dt); 
     }else{
       //without PID
       forwardMotor = forwardCom;
@@ -1262,7 +1310,7 @@ void loop() {
       bool rightReady = rightGimbal.readyGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, motorControl.yawRight, motorControl.upRight, motorControl.forwardRight);
       leftGimbal.updateGimbal(leftReady && rightReady);
       rightGimbal.updateGimbal(leftReady && rightReady);
-      
+
     } else {
       if (state == manual && !MOTORS_OFF){
         //forward, translation, up, yaw, roll
