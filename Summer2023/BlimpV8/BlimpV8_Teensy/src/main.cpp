@@ -195,7 +195,7 @@ Gimbal leftGimbal(L_Yaw, L_Pitch, PWM_L, 25, 30, 1000, 2000, 45, 0.2);
 Gimbal rightGimbal(R_Yaw, R_Pitch, PWM_R, 25, 30, 1000, 2000, 135, 0.2);
 
 //Manual PID control
-PID verticalPID(500, 0, 0);  
+PID verticalPID(400, 0, 0);  
 PID yawPID(20.0, 0, 0);
 PID forwardPID(500, 0, 0);  
 PID translationPID(500, 0, 0);
@@ -807,9 +807,9 @@ void loop() {
     if (baseBaro != 0){
       actualBaro = 44330 * (1 - pow((BerryIMU.comp_press/baseBaro), (1/5.255))); //In meters Base Baro is the pressure
 
-        //publish Height
-        height_msg.data = actualBaro;
-        RCSOFTCHECK(rcl_publish(&height_publisher, &height_msg, NULL));
+        // //publish Height
+        // height_msg.data = BerryIMU.alt;
+        // RCSOFTCHECK(rcl_publish(&height_publisher, &height_msg, NULL));
     }
     else{
       actualBaro = 1000;
@@ -939,12 +939,12 @@ void loop() {
 
         if (USE_EST_VELOCITY_IN_MANUAL == true){
           //set max velocities 2 m/s
-          upCom = -up_msg*2.0;
+          upCom = up_msg*2.0;
           forwardCom = forward_msg*2.0;
           translationCom = translation_msg*2.0;
         }else{
           //normal mapping using max esc command 
-          upCom = -up_msg*5.0; //PID used and maxed out at 5m/s
+          upCom = up_msg*2.0; //PID used and maxed out at 2m/s
           forwardCom = forward_msg*1000.0;
           translationCom = translation_msg*1000.0;
         }
@@ -1273,6 +1273,7 @@ void loop() {
              yawMotor = tanh(yawMotor)*abs(yawMotor);
          }
 
+    //TO DO: im prove velocity control
     upMotor = verticalPID.calculate(upCom, kf.v, dt); //up velocity from barometer
 
     if (USE_EST_VELOCITY_IN_MANUAL == true){
