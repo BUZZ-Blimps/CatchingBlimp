@@ -1288,6 +1288,14 @@ void loop() {
       translationMotor = translationCom;
     }
 
+    //motor debug
+    motor_debug_msg.data.data[0] = yawMotor;
+    motor_debug_msg.data.data[1] = upMotor;
+    motor_debug_msg.data.data[2] = translationMotor;
+    motor_debug_msg.data.data[3] = forwardMotor;
+    motor_debug_msg.data.size = 4;
+    RCSOFTCHECK(rcl_publish(&motor_publisher, &motor_debug_msg, NULL));
+
     //Serial.print(">up current:");
     //Serial.println(kf.v);
     //float yawCurrent =  (float)yawRateFilter.last;
