@@ -46,13 +46,15 @@ To get Ubuntu on Rasberry Pi 4, follow the instructions on
 This will get Ubuntu server on the pi
 
 The default ubuntu user name to log in to is: ubuntu, the passward is also: ubuntu
-after the first log in, the system will prompt a passward change, set it to: rasberry (or rasberrypi)
+after the first log in, the system will prompt a passward change, set it to: raspberrypi
 
 to change to username of the pi, reboot first
 	-- sudo reboot
+create a password for root:
+	-- sudo passwd root
 log in root:
 	username: root
-	password: the password you set to(rasberrypi)
+	password: the password you set to(raspberrypi)
 Then change the username to pi for the ubuntu user:
 	-- usermod -l pi ubuntu
 	-- groupmod -n pi ubuntu
@@ -80,13 +82,21 @@ you now possess the power to get into the pi wirelessly!
 after getting into the pi directory, we can install ROS2 and MICRO ROS	
 
 ============================ROS 2===========================================
-Follow the same instruction for ROS 2 installation:
+Follow the one of the options below for ROS 2 installation:
+	Option 1:
+	-- Open a terminal and copy the file InstallROS2.sh to the pi using the following command:
+	-- scp InstallROS2.sh pi@192.168.0.10#:/home/pi/
+	-- don't forget to source 
+		-nano ~/.bashrc
+		-source /opt/ros/foxy/setup.bash
+		-run source ~/.bashrc
+	
+	Option 2:
 	-- https://docs.ros.org/en/foxy/Installation/Ubuntu-Install-Debians.html
 	-- don't forget to source 
 		-nano ~/.bashrc
 		-source /opt/ros/foxy/setup.bash
 		-run source ~/.bashrc
-
 
 ============================MICRO ROS=======================================
  Follow the instruction for MICRO ROS 2 installation:

@@ -806,9 +806,9 @@ void loop() {
     if (baseBaro != 0){
       actualBaro = 44330 * (1 - pow((BerryIMU.comp_press/baseBaro), (1/5.255))); //In meters Base Baro is the pressure
 
-        // //publish Height
-        // height_msg.data = BerryIMU.alt;
-        // RCSOFTCHECK(rcl_publish(&height_publisher, &height_msg, NULL));
+        //publish Height
+        height_msg.data = BerryIMU.alt;
+        RCSOFTCHECK(rcl_publish(&height_publisher, &height_msg, NULL));
     }
     else{
       actualBaro = 1000;
