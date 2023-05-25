@@ -26,7 +26,6 @@
 
 //include all message types needed
 #include <std_msgs/msg/string.h> //include the message type that needs to be published (teensy data)
-#include <micro_ros_utilities/type_utilities.h>
 
 #include <geometry_msgs/msg/quaternion.h>
 #include <geometry_msgs/msg/vector3.h>
