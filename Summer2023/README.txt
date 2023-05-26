@@ -100,7 +100,15 @@ Follow the one of the options below for ROS 2 installation:
 
 ============================MICRO ROS=======================================
  Follow the instruction for MICRO ROS 2 installation:
+ 	Complete one of the following options:
+ 	Option 1:
+ 	-- Open a terminal and copy the folder microros_ws to the pi using the following command:
+ 	-- scp -r microros_ws pi@192.168.0.10#:/home/pi/
+ 	-- Remove the build and install folder in microros_ws using the command rm -r [folder]
+ 	Option 2:
+ 	-- Follow the instructions on the website below:
  	-- https://manzurmurshid.medium.com/how-to-connect-teensy-3-2-with-micro-ros-and-ros2-foxy-6c8f99c9b66a
+ 	
  	-- Before "colcon build", make sure colcon is installed
 	   - Installing colcon
 		-https://colcon.readthedocs.io/en/released/user/installation.html
