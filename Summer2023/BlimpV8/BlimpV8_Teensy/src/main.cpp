@@ -194,7 +194,7 @@ Gimbal leftGimbal(L_Yaw, L_Pitch, PWM_L, 25, 30, 1000, 2000, 45, 0.5);
 Gimbal rightGimbal(R_Yaw, R_Pitch, PWM_R, 25, 30, 1000, 2000, 135, 0.5);
 
 //Manual PID control
-PID verticalPID(-320, 0, 0);  
+PID verticalPID(-350, 0, 0);  
 PID yawPID(5.0, 0, 0);
 PID forwardPID(300, 0, 0);  //not used
 PID translationPID(300, 0, 0); //not used
