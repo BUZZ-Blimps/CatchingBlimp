@@ -536,8 +536,8 @@ bool create_entities() {
   RCCHECK(rclc_subscription_init_default(&identity_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Bool), "/identify"));
   RCCHECK(rclc_subscription_init_default(&auto_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Bool), "/BurnCreamBlimp/auto"));
   RCCHECK(rclc_subscription_init_default(&baseBarometer_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Float64), "/BurnCreamBlimp/baseBarometer"));
-  // RCCHECK(rclc_subscription_init_default(&grabber_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Bool), "/BurnCreamBlimp/grabbing"));
-  // RCCHECK(rclc_subscription_init_default(&shooter_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Bool), "/BurnCreamBlimp/shooting"));
+  RCCHECK(rclc_subscription_init_default(&grabber_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Bool), "/BurnCreamBlimp/grabbing"));
+  RCCHECK(rclc_subscription_init_default(&shooter_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Bool), "/BurnCreamBlimp/shooting"));
   RCCHECK(rclc_subscription_init_default(&motor_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Float64MultiArray), "/BurnCreamBlimp/motorCommands"));
   RCCHECK(rclc_subscription_init_default(&kill_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Bool), "/BurnCreamBlimp/killed"));
 
@@ -558,8 +558,8 @@ bool create_entities() {
   RCCHECK(rclc_executor_add_subscription(&executor_sub, &identity_subscription, &identity_msg, &id_subscription_callback, ON_NEW_DATA));
   RCCHECK(rclc_executor_add_subscription(&executor_sub, &auto_subscription, &auto_msg, &auto_subscription_callback, ON_NEW_DATA));
   RCCHECK(rclc_executor_add_subscription(&executor_sub, &baseBarometer_subscription, &baro_msg, &baro_subscription_callback, ON_NEW_DATA));
-  // RCCHECK(rclc_executor_add_subscription(&executor_sub, &grabber_subscription, &grab_msg, &grab_subscription_callback, ON_NEW_DATA));
-  // RCCHECK(rclc_executor_add_subscription(&executor_sub, &shooter_subscription, &shoot_msg, &shoot_subscription_callback, ON_NEW_DATA));
+  RCCHECK(rclc_executor_add_subscription(&executor_sub, &grabber_subscription, &grab_msg, &grab_subscription_callback, ON_NEW_DATA));
+  RCCHECK(rclc_executor_add_subscription(&executor_sub, &shooter_subscription, &shoot_msg, &shoot_subscription_callback, ON_NEW_DATA));
   RCCHECK(rclc_executor_add_subscription(&executor_sub, &kill_subscription, &kill_msg, &kill_subscription_callback, ON_NEW_DATA));
   RCCHECK(rclc_executor_add_subscription(&executor_sub, &motor_subscription, &motor_msg, &motor_subscription_callback, ON_NEW_DATA));
 
@@ -581,8 +581,8 @@ void destroy_entities() {
   rcl_subscription_fini(&identity_subscription, &node);
   rcl_subscription_fini(&auto_subscription, &node);
   rcl_subscription_fini(&baseBarometer_subscription, &node);
-  // rcl_subscription_fini(&grabber_subscription, &node);
-  // rcl_subscription_fini(&shooter_subscription, &node);
+  rcl_subscription_fini(&grabber_subscription, &node);
+  rcl_subscription_fini(&shooter_subscription, &node);
   rcl_subscription_fini(&motor_subscription, &node);
   rcl_subscription_fini(&kill_subscription, &node);
 
