@@ -45,7 +45,6 @@ bool Gimbal::readyGimbal(bool debug, bool motors_off, double roll, double pitch,
   double theta2 = atan2(-yaw,-forward)*180/pi;
   double phi2 = asin(-up/thrust)*180/pi;
 
-
   double theta3 = theta1;
   double phi3 = phi1-180;
 
@@ -71,13 +70,11 @@ bool Gimbal::readyGimbal(bool debug, bool motors_off, double roll, double pitch,
   // if (debug) Serial.println();
 
   double thetaOffset = 135;
-  
+
   theta1 += thetaOffset;
   theta2 += thetaOffset;
   theta3 += thetaOffset;
   theta4 += thetaOffset;
-  
-
   phi1 += phiOffset;
   phi2 += phiOffset;
   phi3 += phiOffset;
@@ -103,7 +100,7 @@ bool Gimbal::readyGimbal(bool debug, bool motors_off, double roll, double pitch,
 
   double theta = theta1;
   double phi = phi1;
-  double thrustf = thrust*sqrt(2);
+  double thrustf = thrust*sqrt(2)/2.0;
 
   bool sol1 = theta1 > 0 && theta1 < 180 && phi1 > 0 && phi1 < 180;
   bool sol2 = theta2 > 0 && theta2 < 180 && phi2 > 0 && phi2 < 180;
@@ -114,22 +111,22 @@ bool Gimbal::readyGimbal(bool debug, bool motors_off, double roll, double pitch,
     //Serial.println("First Solution");
     theta = theta1;
     phi = phi1;
-    thrustf = thrust*sqrt(2);
+    thrustf = thrust*sqrt(2)/2.0;
   } else if (sol2) {
     //Serial.println("Second Solution");
     theta = theta2;
     phi = phi2;
-    thrustf = -thrust*sqrt(2);
+    thrustf = -thrust*sqrt(2)/2.0;
   } else if (sol3) {
     //Serial.println("Third Solution");
     theta = theta3;
     phi = phi3;
-    thrustf = -thrust*sqrt(2);
+    thrustf = -thrust*sqrt(2)/2.0;
   } else if (sol4) {
     //Serial.println("Fourth Solution");
     theta = theta4;
     phi = phi4;
-    thrustf = thrust*sqrt(2);
+    thrustf = thrust*sqrt(2)/2.0;
   }
 
   // if (debug) Serial.print(theta);
@@ -143,11 +140,11 @@ bool Gimbal::readyGimbal(bool debug, bool motors_off, double roll, double pitch,
   phiPos1 = filter*phi + (1-filter)*phiPos1;
   
   if (abs(thrustf) >= deadband/2.0){ // Turn on motors
-    yawServo.write(135);
+    yawServo.write(thetaPos);
     pitchServo.write(phi);
 
     if (!motors_off) {
-      nextMotorCom = motorCom(thrustf); //mator mapping from "-1000 - 1000" to "1000 - 2000"
+      nextMotorCom = motorCom(thrustf); //mator mapping 
       
       //prevent overpowering
       if (nextMotorCom > 2000){
@@ -155,7 +152,6 @@ bool Gimbal::readyGimbal(bool debug, bool motors_off, double roll, double pitch,
       } else if (nextMotorCom < 1000){
         nextMotorCom = 1000; //max out
       }
-
     }else{
       nextMotorCom=motorCom(0);
       motor.write(motorCom(0)); //write 1500
