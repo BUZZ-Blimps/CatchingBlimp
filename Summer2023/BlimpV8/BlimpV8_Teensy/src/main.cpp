@@ -337,6 +337,8 @@ double lastCatch = 0.0;
 int catches = 0;
 int shoot = 0;
 int grab = 0;
+int shootCom = 0;
+int grabCom = 0;
 
 //interupt pin setup at timing for long range ultrasonic
 volatile unsigned long pulseInTimeBegin = micros();
@@ -462,15 +464,9 @@ void grab_subscription_callback(const void *msgin)
 {
   const std_msgs__msg__Bool *grab_msg = (const std_msgs__msg__Bool *)msgin;
   if (grab_msg->data == false){
-    ballGrabber.closeGrabber();
-
-    //start catching timer if catching was attempted
-    if (catches >= 1) {
-      lastCatch = micros()/MICROS_TO_SEC;
-    }
-
+    grabCom = 0;
   } else if (grab_msg->data == true){
-    ballGrabber.openGrabber();
+    grabCom = 1;
     //increase catch counter
     catches++;
   }
@@ -494,15 +490,10 @@ void shoot_subscription_callback(const void *msgin)
   const std_msgs__msg__Bool *shoot_msg = (const std_msgs__msg__Bool *)msgin;
 
    if (shoot_msg->data == false){
-    ballGrabber.closeGrabber();
-
+    shootCom = 0;
   } else if (shoot_msg->data == true){
-    //startshooting
-    ballGrabber.shoot();
-    //reset cathes counter
-    catches = 0;
+    shootCom = 1;
   }
-
 }
 
 void motor_subscription_callback(const void *msgin)
@@ -811,7 +802,7 @@ void loop() {
       actualBaro = 44330 * (1 - pow((BerryIMU.comp_press/baseBaro), (1/5.255))); //In meters Base Baro is the pressure
 
         //publish Height
-        height_msg.data = BerryIMU.alt;
+        height_msg.data = actualBaro;
         RCSOFTCHECK(rcl_publish(&height_publisher, &height_msg, NULL));
     }
     else{
@@ -963,6 +954,44 @@ void loop() {
         motor_debug_msg.data.data[3] = forward_msg;
         motor_debug_msg.data.size = 4;
         RCSOFTCHECK(rcl_publish(&motor_publisher, &motor_debug_msg, NULL));
+
+      //check if shooting should be engaged
+      //this block switches the state to the oposite that it is currently in
+
+          if (shoot != shootCom) {
+          shoot = shootCom;
+          //change shoot state
+          if (ballGrabber.state == 2) {
+            //stop shooting
+            ballGrabber.closeGrabber();
+          } else {
+            //start shooting
+            ballGrabber.shoot();
+
+            //reset catch counter
+            catches=0;
+          }
+
+     //check if grabbing should be engaged
+     //this block switches the state to the oposite that it is currently in
+        } else if (grab != grabCom) {
+          grab = grabCom;
+
+          //change grab state
+          if (ballGrabber.state == 0) {
+            ballGrabber.openGrabber();
+          } else {
+            ballGrabber.closeGrabber();
+
+            //increase catch counter
+            catches++;
+
+            //start catch timmer
+            if (catches >= 1) {
+              lastCatch = micros()/MICROS_TO_SEC;
+            }
+          }
+        }
       
     } else if (state == autonomous){
       /*
