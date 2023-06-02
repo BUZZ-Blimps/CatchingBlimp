@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/corelab-laptop2/microros_ws/src/uros/micro-ROS-Agent/micro_ros_agent
+CMAKE_SOURCE_DIR = /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/src/uros/micro-ROS-Agent/micro_ros_agent
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/corelab-laptop2/microros_ws/build/micro_ros_agent
+CMAKE_BINARY_DIR = /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent
 
 # Utility rule file for uninstall.
 
@@ -67,6 +67,6 @@ CMakeFiles/uninstall.dir/clean:
 .PHONY : CMakeFiles/uninstall.dir/clean
 
 CMakeFiles/uninstall.dir/depend:
-	cd /home/corelab-laptop2/microros_ws/build/micro_ros_agent && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/corelab-laptop2/microros_ws/src/uros/micro-ROS-Agent/micro_ros_agent /home/corelab-laptop2/microros_ws/src/uros/micro-ROS-Agent/micro_ros_agent /home/corelab-laptop2/microros_ws/build/micro_ros_agent /home/corelab-laptop2/microros_ws/build/micro_ros_agent /home/corelab-laptop2/microros_ws/build/micro_ros_agent/CMakeFiles/uninstall.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/src/uros/micro-ROS-Agent/micro_ros_agent /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/src/uros/micro-ROS-Agent/micro_ros_agent /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/CMakeFiles/uninstall.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/uninstall.dir/depend
 

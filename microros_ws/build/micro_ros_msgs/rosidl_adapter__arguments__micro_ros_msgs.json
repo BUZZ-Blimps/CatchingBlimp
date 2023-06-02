@@ -1,8 +1,0 @@
-{
-  "package_name": "micro_ros_msgs",
-  "non_idl_tuples": [
-    "/home/corelab-laptop2/microros_ws/src/uros/micro_ros_msgs:msg/Graph.msg",
-    "/home/corelab-laptop2/microros_ws/src/uros/micro_ros_msgs:msg/Node.msg",
-    "/home/corelab-laptop2/microros_ws/src/uros/micro_ros_msgs:msg/Entity.msg"
-  ]
-}

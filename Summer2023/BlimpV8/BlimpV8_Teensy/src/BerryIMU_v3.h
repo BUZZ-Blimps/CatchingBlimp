@@ -8,7 +8,7 @@
 class BerryIMU_v3
 {
   public:
-    BerryIMU_v3();
+    void BerryIMU_v3_Setup();
     void IMU_read();
     void IMU_ROTATION(float rotation_angle);
     //Maybe low pass filter applied depending on settings selected

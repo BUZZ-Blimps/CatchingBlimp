@@ -16,7 +16,7 @@
 #include <rmw_microros/rmw_microros.h>
 
 #include <std_msgs/msg/string.h> //include the message type that needs to be published (teensy data)
-#include <micro_ros_utilities/string_utilities.h>
+
 
 #include <geometry_msgs/msg/quaternion.h>
 #include <geometry_msgs/msg/vector3.h>

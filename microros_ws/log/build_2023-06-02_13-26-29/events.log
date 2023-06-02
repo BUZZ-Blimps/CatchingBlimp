@@ -1,0 +1,700 @@
+[0.000000] (-) TimerEvent: {}
+[0.000255] (micro_ros_agent) JobQueued: {'identifier': 'micro_ros_agent', 'dependencies': OrderedDict()}
+[0.000433] (micro_ros_agent) JobStarted: {'identifier': 'micro_ros_agent'}
+[0.013657] (micro_ros_agent) JobProgress: {'identifier': 'micro_ros_agent', 'progress': 'cmake'}
+[0.013862] (micro_ros_agent) Command: {'cmd': ['/usr/bin/cmake', '/home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/src/uros/micro-ROS-Agent/micro_ros_agent', '-DCMAKE_INSTALL_PREFIX=/home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent'], 'cwd': '/home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'corelab-laptop2'), ('SSH_AGENT_PID', '1297'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/corelab-laptop2/microros_ws/install/micro_ros_agent/lib:/home/corelab-laptop2/microros_ws/install/micro_ros_msgs/lib:/home/corelab-laptop2/microros_ws/install/drive_base_msgs/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/home/corelab-laptop2'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('MANAGERPID', '1024'), ('DBUS_STARTER_BUS_TYPE', 'session'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus,guid=10bf2c4a02663f8410f175b764795646'), ('COLORTERM', 'truecolor'), ('IM_CONFIG_PHASE', '1'), ('COLCON_PREFIX_PATH', '/home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/ROS_tf2_test/install:/home/corelab-laptop2/microros_ws/install:/home/corelab-laptop2/tf2_ws/install'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'corelab-laptop2'), ('JOURNAL_STREAM', '8:41946'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'corelab-laptop2'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/foxy/bin:/home/corelab-laptop2/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('SESSION_MANAGER', 'local/corelablaptop2-Inspiron-15-5510:@/tmp/.ICE-unix/1335,unix/corelablaptop2-Inspiron-15-5510:/tmp/.ICE-unix/1335'), ('INVOCATION_ID', '890d4b567bce49e7b63be27f5c660b21'), ('XDG_MENU_PREFIX', 'gnome-'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/22b909e6_698f_4198_b5de_4fad0ba9009d'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.1978'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('ROS_DOMAIN_ID', '0'), ('AMENT_PREFIX_PATH', '/home/corelab-laptop2/microros_ws/install/micro_ros_setup:/home/corelab-laptop2/microros_ws/install/micro_ros_agent:/home/corelab-laptop2/microros_ws/install/micro_ros_msgs:/home/corelab-laptop2/microros_ws/install/drive_base_msgs:/home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/ROS_tf2_test/install/blimp_telemetry:/home/corelab-laptop2/tf2_ws/install/blimp_telemetry:/opt/ros/foxy'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('DBUS_STARTER_ADDRESS', 'unix:path=/run/user/1000/bus,guid=10bf2c4a02663f8410f175b764795646'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/corelab-laptop2/microros_ws/install/micro_ros_msgs/lib/python3.8/site-packages:/home/corelab-laptop2/microros_ws/install/drive_base_msgs/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages'), ('COLCON', '1'), ('VTE_VERSION', '6003'), ('CMAKE_PREFIX_PATH', '/home/corelab-laptop2/microros_ws/install/micro_ros_setup:/home/corelab-laptop2/microros_ws/install/micro_ros_agent:/home/corelab-laptop2/microros_ws/install/micro_ros_msgs:/home/corelab-laptop2/microros_ws/install/drive_base_msgs:/home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/ROS_tf2_test/install/blimp_telemetry:/home/corelab-laptop2/tf2_ws/install/blimp_telemetry:/opt/ros/foxy')]), 'shell': False}
+[0.063805] (micro_ros_agent) StdoutLine: {'line': b'-- The C compiler identification is GNU 9.4.0\n'}
+[0.069024] (micro_ros_agent) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc\n'}
+[0.099840] (-) TimerEvent: {}
+[0.116519] (micro_ros_agent) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc -- works\n'}
+[0.117394] (micro_ros_agent) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.174210] (micro_ros_agent) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.181810] (micro_ros_agent) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.182007] (micro_ros_agent) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.200051] (-) TimerEvent: {}
+[0.216481] (micro_ros_agent) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 9.4.0\n'}
+[0.219105] (micro_ros_agent) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++\n'}
+[0.281460] (micro_ros_agent) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ -- works\n'}
+[0.282156] (micro_ros_agent) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.300134] (-) TimerEvent: {}
+[0.340330] (micro_ros_agent) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.348066] (micro_ros_agent) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.348431] (micro_ros_agent) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[0.377698] (micro_ros_agent) StdoutLine: {'line': b'-- Configuring done\n'}
+[0.379597] (micro_ros_agent) StdoutLine: {'line': b'-- Generating done\n'}
+[0.380112] (micro_ros_agent) StdoutLine: {'line': b'-- Build files have been written to: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent\n'}
+[0.382199] (micro_ros_agent) CommandEnded: {'returncode': 0}
+[0.382627] (micro_ros_agent) JobProgress: {'identifier': 'micro_ros_agent', 'progress': 'build'}
+[0.383228] (micro_ros_agent) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent', '--', '-j8', '-l8'], 'cwd': '/home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'corelab-laptop2'), ('SSH_AGENT_PID', '1297'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/corelab-laptop2/microros_ws/install/micro_ros_agent/lib:/home/corelab-laptop2/microros_ws/install/micro_ros_msgs/lib:/home/corelab-laptop2/microros_ws/install/drive_base_msgs/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/home/corelab-laptop2'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('MANAGERPID', '1024'), ('DBUS_STARTER_BUS_TYPE', 'session'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus,guid=10bf2c4a02663f8410f175b764795646'), ('COLORTERM', 'truecolor'), ('IM_CONFIG_PHASE', '1'), ('COLCON_PREFIX_PATH', '/home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/ROS_tf2_test/install:/home/corelab-laptop2/microros_ws/install:/home/corelab-laptop2/tf2_ws/install'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'corelab-laptop2'), ('JOURNAL_STREAM', '8:41946'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'corelab-laptop2'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/foxy/bin:/home/corelab-laptop2/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('SESSION_MANAGER', 'local/corelablaptop2-Inspiron-15-5510:@/tmp/.ICE-unix/1335,unix/corelablaptop2-Inspiron-15-5510:/tmp/.ICE-unix/1335'), ('INVOCATION_ID', '890d4b567bce49e7b63be27f5c660b21'), ('XDG_MENU_PREFIX', 'gnome-'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/22b909e6_698f_4198_b5de_4fad0ba9009d'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.1978'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('ROS_DOMAIN_ID', '0'), ('AMENT_PREFIX_PATH', '/home/corelab-laptop2/microros_ws/install/micro_ros_setup:/home/corelab-laptop2/microros_ws/install/micro_ros_agent:/home/corelab-laptop2/microros_ws/install/micro_ros_msgs:/home/corelab-laptop2/microros_ws/install/drive_base_msgs:/home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/ROS_tf2_test/install/blimp_telemetry:/home/corelab-laptop2/tf2_ws/install/blimp_telemetry:/opt/ros/foxy'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('DBUS_STARTER_ADDRESS', 'unix:path=/run/user/1000/bus,guid=10bf2c4a02663f8410f175b764795646'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/corelab-laptop2/microros_ws/install/micro_ros_msgs/lib/python3.8/site-packages:/home/corelab-laptop2/microros_ws/install/drive_base_msgs/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages'), ('COLCON', '1'), ('VTE_VERSION', '6003'), ('CMAKE_PREFIX_PATH', '/home/corelab-laptop2/microros_ws/install/micro_ros_setup:/home/corelab-laptop2/microros_ws/install/micro_ros_agent:/home/corelab-laptop2/microros_ws/install/micro_ros_msgs:/home/corelab-laptop2/microros_ws/install/drive_base_msgs:/home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/ROS_tf2_test/install/blimp_telemetry:/home/corelab-laptop2/tf2_ws/install/blimp_telemetry:/opt/ros/foxy')]), 'shell': False}
+[0.400245] (-) TimerEvent: {}
+[0.409365] (micro_ros_agent) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target xrceagent\x1b[0m\n'}
+[0.416576] (micro_ros_agent) StdoutLine: {'line': b"[  6%] \x1b[34m\x1b[1mCreating directories for 'xrceagent'\x1b[0m\n"}
+[0.463555] (micro_ros_agent) StdoutLine: {'line': b"[ 12%] \x1b[34m\x1b[1mPerforming download step (git clone) for 'xrceagent'\x1b[0m\n"}
+[0.477186] (micro_ros_agent) StderrLine: {'line': b"Cloning into 'xrceagent'...\n"}
+[0.500369] (-) TimerEvent: {}
+[0.600910] (-) TimerEvent: {}
+[0.701480] (-) TimerEvent: {}
+[0.802043] (-) TimerEvent: {}
+[0.902633] (-) TimerEvent: {}
+[1.003240] (-) TimerEvent: {}
+[1.103749] (-) TimerEvent: {}
+[1.204301] (-) TimerEvent: {}
+[1.304731] (-) TimerEvent: {}
+[1.405267] (-) TimerEvent: {}
+[1.505733] (-) TimerEvent: {}
+[1.606264] (-) TimerEvent: {}
+[1.706679] (-) TimerEvent: {}
+[1.807195] (-) TimerEvent: {}
+[1.907797] (-) TimerEvent: {}
+[2.008372] (-) TimerEvent: {}
+[2.108859] (-) TimerEvent: {}
+[2.209358] (-) TimerEvent: {}
+[2.309799] (-) TimerEvent: {}
+[2.410279] (-) TimerEvent: {}
+[2.510675] (-) TimerEvent: {}
+[2.611112] (-) TimerEvent: {}
+[2.711716] (-) TimerEvent: {}
+[2.812234] (-) TimerEvent: {}
+[2.874709] (micro_ros_agent) StderrLine: {'line': b"Switched to a new branch 'ros2'\n"}
+[2.874902] (micro_ros_agent) StdoutLine: {'line': b"Branch 'ros2' set up to track remote branch 'ros2' from 'origin'.\n"}
+[2.911454] (micro_ros_agent) StdoutLine: {'line': b"[ 25%] \x1b[34m\x1b[1mNo patch step for 'xrceagent'\x1b[0m\n"}
+[2.911661] (micro_ros_agent) StdoutLine: {'line': b"[ 25%] \x1b[34m\x1b[1mPerforming update step for 'xrceagent'\x1b[0m\n"}
+[2.912311] (-) TimerEvent: {}
+[3.012589] (-) TimerEvent: {}
+[3.112943] (-) TimerEvent: {}
+[3.205051] (micro_ros_agent) StdoutLine: {'line': b'Current branch ros2 is up to date.\n'}
+[3.213035] (-) TimerEvent: {}
+[3.229059] (micro_ros_agent) StdoutLine: {'line': b"[ 31%] \x1b[34m\x1b[1mPerforming configure step for 'xrceagent'\x1b[0m\n"}
+[3.238592] (micro_ros_agent) StdoutLine: {'line': b'loading initial cache file /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/agent/tmp/xrceagent-cache-.cmake\n'}
+[3.279896] (micro_ros_agent) StdoutLine: {'line': b'-- The C compiler identification is GNU 9.4.0\n'}
+[3.284720] (micro_ros_agent) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc\n'}
+[3.313199] (-) TimerEvent: {}
+[3.334859] (micro_ros_agent) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc -- works\n'}
+[3.335345] (micro_ros_agent) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[3.380958] (micro_ros_agent) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[3.388078] (micro_ros_agent) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[3.388307] (micro_ros_agent) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[3.413300] (-) TimerEvent: {}
+[3.422002] (micro_ros_agent) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 9.4.0\n'}
+[3.424546] (micro_ros_agent) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++\n'}
+[3.476890] (micro_ros_agent) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ -- works\n'}
+[3.477620] (micro_ros_agent) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[3.513419] (-) TimerEvent: {}
+[3.538171] (micro_ros_agent) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[3.545851] (micro_ros_agent) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[3.546219] (micro_ros_agent) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[3.548087] (micro_ros_agent) StdoutLine: {'line': b'-- Looking for pthread.h\n'}
+[3.597393] (micro_ros_agent) StdoutLine: {'line': b'-- Looking for pthread.h - found\n'}
+[3.597728] (micro_ros_agent) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD\n'}
+[3.613514] (-) TimerEvent: {}
+[3.656691] (micro_ros_agent) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed\n'}
+[3.656986] (micro_ros_agent) StdoutLine: {'line': b'-- Looking for pthread_create in pthreads\n'}
+[3.713615] (-) TimerEvent: {}
+[3.716657] (micro_ros_agent) StdoutLine: {'line': b'-- Looking for pthread_create in pthreads - not found\n'}
+[3.716909] (micro_ros_agent) StdoutLine: {'line': b'-- Looking for pthread_create in pthread\n'}
+[3.778700] (micro_ros_agent) StdoutLine: {'line': b'-- Looking for pthread_create in pthread - found\n'}
+[3.779211] (micro_ros_agent) StdoutLine: {'line': b'-- Found Threads: TRUE  \n'}
+[3.787292] (micro_ros_agent) StdoutLine: {'line': b'-- Configuring done\n'}
+[3.788593] (micro_ros_agent) StdoutLine: {'line': b'-- Generating done\n'}
+[3.788964] (micro_ros_agent) StdoutLine: {'line': b'-- Build files have been written to: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/agent/src/xrceagent-build\n'}
+[3.804702] (micro_ros_agent) StdoutLine: {'line': b"[ 37%] \x1b[34m\x1b[1mPerforming build step for 'xrceagent'\x1b[0m\n"}
+[3.813714] (-) TimerEvent: {}
+[3.827715] (micro_ros_agent) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target uagent\x1b[0m\n'}
+[3.835452] (micro_ros_agent) StdoutLine: {'line': b"[ 12%] \x1b[34m\x1b[1mCreating directories for 'uagent'\x1b[0m\n"}
+[3.889657] (micro_ros_agent) StdoutLine: {'line': b"[ 25%] \x1b[34m\x1b[1mNo download step for 'uagent'\x1b[0m\n"}
+[3.908490] (micro_ros_agent) StdoutLine: {'line': b"[ 50%] \x1b[34m\x1b[1mNo update step for 'uagent'\x1b[0m\n"}
+[3.908726] (micro_ros_agent) StdoutLine: {'line': b"[ 50%] \x1b[34m\x1b[1mNo patch step for 'uagent'\x1b[0m\n"}
+[3.913822] (-) TimerEvent: {}
+[3.927007] (micro_ros_agent) StdoutLine: {'line': b"[ 62%] \x1b[34m\x1b[1mPerforming configure step for 'uagent'\x1b[0m\n"}
+[3.933764] (micro_ros_agent) StdoutLine: {'line': b'loading initial cache file /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/agent/src/xrceagent-build/uagent-prefix/tmp/uagent-cache-.cmake\n'}
+[3.937855] (micro_ros_agent) StdoutLine: {'line': b"-- Setting build type to 'Release' as none was specified.\n"}
+[3.959164] (micro_ros_agent) StdoutLine: {'line': b'-- Found tinyxml2: /usr/lib/x86_64-linux-gnu/libtinyxml2.so  \n'}
+[4.008144] (micro_ros_agent) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "1.1.1f")  \n'}
+[4.013914] (-) TimerEvent: {}
+[4.016335] (micro_ros_agent) StdoutLine: {'line': b'-- Configuring done\n'}
+[4.028764] (micro_ros_agent) StdoutLine: {'line': b'-- Generating done\n'}
+[4.029462] (micro_ros_agent) StdoutLine: {'line': b'-- Build files have been written to: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/agent/src/xrceagent-build\n'}
+[4.044714] (micro_ros_agent) StdoutLine: {'line': b"[ 75%] \x1b[34m\x1b[1mPerforming build step for 'uagent'\x1b[0m\n"}
+[4.067820] (micro_ros_agent) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target microxrcedds_agent\x1b[0m\n'}
+[4.114006] (-) TimerEvent: {}
+[4.184892] (micro_ros_agent) StdoutLine: {'line': b'[  2%] \x1b[32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/AgentInstance.cpp.o\x1b[0m\n'}
+[4.186180] (micro_ros_agent) StdoutLine: {'line': b'[  4%] \x1b[32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/Agent.cpp.o\x1b[0m\n'}
+[4.187305] (micro_ros_agent) StdoutLine: {'line': b'[  7%] \x1b[32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/Root.cpp.o\x1b[0m\n'}
+[4.188386] (micro_ros_agent) StdoutLine: {'line': b'[  9%] \x1b[32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/processor/Processor.cpp.o\x1b[0m\n'}
+[4.189417] (micro_ros_agent) StdoutLine: {'line': b'[ 11%] \x1b[32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/topic/Topic.cpp.o\x1b[0m\n'}
+[4.190181] (micro_ros_agent) StdoutLine: {'line': b'[ 14%] \x1b[32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/publisher/Publisher.cpp.o\x1b[0m\n'}
+[4.194241] (micro_ros_agent) StdoutLine: {'line': b'[ 16%] \x1b[32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/client/ProxyClient.cpp.o\x1b[0m\n'}
+[4.196601] (micro_ros_agent) StdoutLine: {'line': b'[ 19%] \x1b[32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/participant/Participant.cpp.o\x1b[0m\n'}
+[4.227985] (-) TimerEvent: {}
+[4.332110] (-) TimerEvent: {}
+[4.432457] (-) TimerEvent: {}
+[4.533108] (-) TimerEvent: {}
+[4.633737] (-) TimerEvent: {}
+[4.739566] (-) TimerEvent: {}
+[4.840823] (-) TimerEvent: {}
+[4.941474] (-) TimerEvent: {}
+[5.042160] (-) TimerEvent: {}
+[5.142876] (-) TimerEvent: {}
+[5.243534] (-) TimerEvent: {}
+[5.344298] (-) TimerEvent: {}
+[5.444950] (-) TimerEvent: {}
+[5.545728] (-) TimerEvent: {}
+[5.646538] (-) TimerEvent: {}
+[5.747241] (-) TimerEvent: {}
+[5.848045] (-) TimerEvent: {}
+[5.936962] (micro_ros_agent) StdoutLine: {'line': b'[ 21%] \x1b[32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/subscriber/Subscriber.cpp.o\x1b[0m\n'}
+[5.948159] (-) TimerEvent: {}
+[5.950255] (micro_ros_agent) StdoutLine: {'line': b'[ 23%] \x1b[32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/datawriter/DataWriter.cpp.o\x1b[0m\n'}
+[6.048401] (-) TimerEvent: {}
+[6.058594] (micro_ros_agent) StdoutLine: {'line': b'[ 26%] \x1b[32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/datareader/DataReader.cpp.o\x1b[0m\n'}
+[6.148523] (-) TimerEvent: {}
+[6.249174] (-) TimerEvent: {}
+[6.349867] (-) TimerEvent: {}
+[6.450532] (-) TimerEvent: {}
+[6.551221] (-) TimerEvent: {}
+[6.651921] (-) TimerEvent: {}
+[6.752622] (-) TimerEvent: {}
+[6.853602] (-) TimerEvent: {}
+[6.954381] (-) TimerEvent: {}
+[7.055088] (-) TimerEvent: {}
+[7.155769] (-) TimerEvent: {}
+[7.256570] (-) TimerEvent: {}
+[7.357253] (-) TimerEvent: {}
+[7.457974] (-) TimerEvent: {}
+[7.558720] (-) TimerEvent: {}
+[7.650611] (micro_ros_agent) StdoutLine: {'line': b'[ 28%] \x1b[32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/requester/Requester.cpp.o\x1b[0m\n'}
+[7.658842] (-) TimerEvent: {}
+[7.759593] (-) TimerEvent: {}
+[7.860331] (-) TimerEvent: {}
+[7.961032] (-) TimerEvent: {}
+[8.061730] (-) TimerEvent: {}
+[8.162435] (-) TimerEvent: {}
+[8.263179] (-) TimerEvent: {}
+[8.363838] (-) TimerEvent: {}
+[8.464566] (-) TimerEvent: {}
+[8.565381] (-) TimerEvent: {}
+[8.666203] (-) TimerEvent: {}
+[8.767116] (-) TimerEvent: {}
+[8.867928] (-) TimerEvent: {}
+[8.968580] (-) TimerEvent: {}
+[9.069293] (-) TimerEvent: {}
+[9.170057] (-) TimerEvent: {}
+[9.270818] (-) TimerEvent: {}
+[9.371522] (-) TimerEvent: {}
+[9.472251] (-) TimerEvent: {}
+[9.572939] (-) TimerEvent: {}
+[9.673611] (-) TimerEvent: {}
+[9.774263] (-) TimerEvent: {}
+[9.857676] (micro_ros_agent) StdoutLine: {'line': b'[ 30%] \x1b[32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/replier/Replier.cpp.o\x1b[0m\n'}
+[9.874400] (-) TimerEvent: {}
+[9.975113] (-) TimerEvent: {}
+[10.075877] (-) TimerEvent: {}
+[10.176533] (-) TimerEvent: {}
+[10.277240] (-) TimerEvent: {}
+[10.378062] (-) TimerEvent: {}
+[10.478971] (-) TimerEvent: {}
+[10.530411] (micro_ros_agent) StdoutLine: {'line': b'[ 33%] \x1b[32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/object/XRCEObject.cpp.o\x1b[0m\n'}
+[10.579101] (-) TimerEvent: {}
+[10.653150] (micro_ros_agent) StdoutLine: {'line': b'[ 35%] \x1b[32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/types/XRCETypes.cpp.o\x1b[0m\n'}
+[10.679241] (-) TimerEvent: {}
+[10.779997] (-) TimerEvent: {}
+[10.880762] (-) TimerEvent: {}
+[10.981438] (-) TimerEvent: {}
+[11.082160] (-) TimerEvent: {}
+[11.182943] (-) TimerEvent: {}
+[11.283645] (-) TimerEvent: {}
+[11.307582] (micro_ros_agent) StdoutLine: {'line': b'[ 38%] \x1b[32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/types/MessageHeader.cpp.o\x1b[0m\n'}
+[11.383789] (-) TimerEvent: {}
+[11.484579] (-) TimerEvent: {}
+[11.585342] (-) TimerEvent: {}
+[11.686029] (-) TimerEvent: {}
+[11.786766] (-) TimerEvent: {}
+[11.835256] (micro_ros_agent) StdoutLine: {'line': b'[ 40%] \x1b[32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/types/SubMessageHeader.cpp.o\x1b[0m\n'}
+[11.886899] (-) TimerEvent: {}
+[11.968532] (micro_ros_agent) StdoutLine: {'line': b'[ 42%] \x1b[32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/message/InputMessage.cpp.o\x1b[0m\n'}
+[11.987032] (-) TimerEvent: {}
+[12.091102] (-) TimerEvent: {}
+[12.191795] (-) TimerEvent: {}
+[12.292501] (-) TimerEvent: {}
+[12.393179] (-) TimerEvent: {}
+[12.493855] (-) TimerEvent: {}
+[12.536987] (micro_ros_agent) StdoutLine: {'line': b'[ 45%] \x1b[32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/message/OutputMessage.cpp.o\x1b[0m\n'}
+[12.544819] (micro_ros_agent) StdoutLine: {'line': b'[ 47%] \x1b[32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/utils/ArgumentParser.cpp.o\x1b[0m\n'}
+[12.593993] (-) TimerEvent: {}
+[12.720421] (-) TimerEvent: {}
+[12.821105] (-) TimerEvent: {}
+[12.921792] (-) TimerEvent: {}
+[13.022538] (-) TimerEvent: {}
+[13.123217] (-) TimerEvent: {}
+[13.223909] (-) TimerEvent: {}
+[13.324615] (-) TimerEvent: {}
+[13.425324] (-) TimerEvent: {}
+[13.475860] (micro_ros_agent) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/transport/Server.cpp.o\x1b[0m\n'}
+[13.525455] (-) TimerEvent: {}
+[13.628033] (-) TimerEvent: {}
+[13.728416] (-) TimerEvent: {}
+[13.828806] (-) TimerEvent: {}
+[13.929188] (-) TimerEvent: {}
+[14.029582] (-) TimerEvent: {}
+[14.129976] (-) TimerEvent: {}
+[14.230371] (-) TimerEvent: {}
+[14.330804] (-) TimerEvent: {}
+[14.431190] (-) TimerEvent: {}
+[14.531594] (-) TimerEvent: {}
+[14.632118] (-) TimerEvent: {}
+[14.732492] (-) TimerEvent: {}
+[14.832880] (-) TimerEvent: {}
+[14.849730] (micro_ros_agent) StdoutLine: {'line': b'[ 52%] \x1b[32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/transport/stream_framing/StreamFramingProtocol.cpp.o\x1b[0m\n'}
+[14.933018] (-) TimerEvent: {}
+[15.033747] (-) TimerEvent: {}
+[15.076368] (micro_ros_agent) StdoutLine: {'line': b'[ 54%] \x1b[32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/transport/custom/CustomAgent.cpp.o\x1b[0m\n'}
+[15.133869] (-) TimerEvent: {}
+[15.236414] (-) TimerEvent: {}
+[15.310823] (micro_ros_agent) StdoutLine: {'line': b'[ 57%] \x1b[32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/transport/udp/UDPv4AgentLinux.cpp.o\x1b[0m\n'}
+[15.336541] (-) TimerEvent: {}
+[15.437397] (-) TimerEvent: {}
+[15.538297] (-) TimerEvent: {}
+[15.639357] (-) TimerEvent: {}
+[15.740107] (-) TimerEvent: {}
+[15.840489] (-) TimerEvent: {}
+[15.940886] (-) TimerEvent: {}
+[16.041341] (-) TimerEvent: {}
+[16.061197] (micro_ros_agent) StdoutLine: {'line': b'[ 59%] \x1b[32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/transport/udp/UDPv6AgentLinux.cpp.o\x1b[0m\n'}
+[16.141464] (-) TimerEvent: {}
+[16.242135] (-) TimerEvent: {}
+[16.272675] (micro_ros_agent) StdoutLine: {'line': b'[ 61%] \x1b[32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/transport/tcp/TCPv4AgentLinux.cpp.o\x1b[0m\n'}
+[16.342263] (-) TimerEvent: {}
+[16.443031] (-) TimerEvent: {}
+[16.544290] (-) TimerEvent: {}
+[16.611506] (micro_ros_agent) StdoutLine: {'line': b'[ 64%] \x1b[32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/transport/tcp/TCPv6AgentLinux.cpp.o\x1b[0m\n'}
+[16.644420] (-) TimerEvent: {}
+[16.751094] (-) TimerEvent: {}
+[16.851881] (-) TimerEvent: {}
+[16.952768] (-) TimerEvent: {}
+[17.053471] (-) TimerEvent: {}
+[17.154313] (-) TimerEvent: {}
+[17.259994] (-) TimerEvent: {}
+[17.360389] (-) TimerEvent: {}
+[17.394319] (micro_ros_agent) StdoutLine: {'line': b'[ 66%] \x1b[32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/transport/serial/SerialAgentLinux.cpp.o\x1b[0m\n'}
+[17.460510] (-) TimerEvent: {}
+[17.561267] (-) TimerEvent: {}
+[17.661958] (-) TimerEvent: {}
+[17.762644] (-) TimerEvent: {}
+[17.863339] (-) TimerEvent: {}
+[17.964075] (-) TimerEvent: {}
+[18.064788] (-) TimerEvent: {}
+[18.165486] (-) TimerEvent: {}
+[18.266271] (-) TimerEvent: {}
+[18.366996] (-) TimerEvent: {}
+[18.467717] (-) TimerEvent: {}
+[18.568439] (-) TimerEvent: {}
+[18.669114] (-) TimerEvent: {}
+[18.769842] (-) TimerEvent: {}
+[18.870544] (-) TimerEvent: {}
+[18.971414] (-) TimerEvent: {}
+[19.072232] (-) TimerEvent: {}
+[19.172957] (-) TimerEvent: {}
+[19.273662] (-) TimerEvent: {}
+[19.374365] (-) TimerEvent: {}
+[19.475150] (-) TimerEvent: {}
+[19.575997] (-) TimerEvent: {}
+[19.676719] (-) TimerEvent: {}
+[19.777489] (-) TimerEvent: {}
+[19.878246] (-) TimerEvent: {}
+[19.978956] (-) TimerEvent: {}
+[20.079711] (-) TimerEvent: {}
+[20.180461] (-) TimerEvent: {}
+[20.281148] (-) TimerEvent: {}
+[20.297814] (micro_ros_agent) StdoutLine: {'line': b'[ 69%] \x1b[32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/transport/serial/TermiosAgentLinux.cpp.o\x1b[0m\n'}
+[20.381278] (-) TimerEvent: {}
+[20.481985] (-) TimerEvent: {}
+[20.582681] (-) TimerEvent: {}
+[20.683452] (-) TimerEvent: {}
+[20.721329] (micro_ros_agent) StdoutLine: {'line': b'[ 71%] \x1b[32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/transport/serial/MultiSerialAgentLinux.cpp.o\x1b[0m\n'}
+[20.783571] (-) TimerEvent: {}
+[20.886044] (-) TimerEvent: {}
+[20.986765] (-) TimerEvent: {}
+[21.087442] (-) TimerEvent: {}
+[21.188163] (-) TimerEvent: {}
+[21.288932] (-) TimerEvent: {}
+[21.389637] (-) TimerEvent: {}
+[21.450754] (micro_ros_agent) StdoutLine: {'line': b'[ 73%] \x1b[32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/transport/serial/MultiTermiosAgentLinux.cpp.o\x1b[0m\n'}
+[21.489757] (-) TimerEvent: {}
+[21.590457] (-) TimerEvent: {}
+[21.691336] (-) TimerEvent: {}
+[21.792216] (-) TimerEvent: {}
+[21.872370] (micro_ros_agent) StdoutLine: {'line': b'[ 76%] \x1b[32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/transport/serial/PseudoTerminalAgentLinux.cpp.o\x1b[0m\n'}
+[21.893017] (-) TimerEvent: {}
+[21.993811] (-) TimerEvent: {}
+[21.994501] (micro_ros_agent) StdoutLine: {'line': b'[ 78%] \x1b[32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/transport/can/CanAgentLinux.cpp.o\x1b[0m\n'}
+[21.996095] (micro_ros_agent) StdoutLine: {'line': b'[ 80%] \x1b[32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/transport/discovery/DiscoveryServerLinux.cpp.o\x1b[0m\n'}
+[22.093935] (-) TimerEvent: {}
+[22.194795] (-) TimerEvent: {}
+[22.295697] (-) TimerEvent: {}
+[22.396535] (-) TimerEvent: {}
+[22.497279] (-) TimerEvent: {}
+[22.598083] (-) TimerEvent: {}
+[22.698819] (-) TimerEvent: {}
+[22.799810] (-) TimerEvent: {}
+[22.900575] (-) TimerEvent: {}
+[22.989008] (micro_ros_agent) StdoutLine: {'line': b'[ 83%] \x1b[32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/transport/discovery/DiscoveryServer.cpp.o\x1b[0m\n'}
+[23.000684] (-) TimerEvent: {}
+[23.082684] (micro_ros_agent) StdoutLine: {'line': b'[ 85%] \x1b[32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/types/TopicPubSubType.cpp.o\x1b[0m\n'}
+[23.100794] (-) TimerEvent: {}
+[23.201502] (-) TimerEvent: {}
+[23.302254] (-) TimerEvent: {}
+[23.402930] (-) TimerEvent: {}
+[23.503779] (-) TimerEvent: {}
+[23.604590] (-) TimerEvent: {}
+[23.705445] (-) TimerEvent: {}
+[23.806497] (-) TimerEvent: {}
+[23.907926] (-) TimerEvent: {}
+[24.008696] (-) TimerEvent: {}
+[24.037243] (micro_ros_agent) StdoutLine: {'line': b'[ 88%] \x1b[32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/xmlobjects/xmlobjects.cpp.o\x1b[0m\n'}
+[24.108817] (-) TimerEvent: {}
+[24.209507] (-) TimerEvent: {}
+[24.310304] (-) TimerEvent: {}
+[24.411006] (-) TimerEvent: {}
+[24.511708] (-) TimerEvent: {}
+[24.612406] (-) TimerEvent: {}
+[24.713164] (-) TimerEvent: {}
+[24.801606] (micro_ros_agent) StdoutLine: {'line': b'[ 90%] \x1b[32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/middleware/fast/FastEntities.cpp.o\x1b[0m\n'}
+[24.813289] (-) TimerEvent: {}
+[24.914239] (-) TimerEvent: {}
+[25.014974] (-) TimerEvent: {}
+[25.115671] (-) TimerEvent: {}
+[25.216395] (-) TimerEvent: {}
+[25.317249] (-) TimerEvent: {}
+[25.417998] (-) TimerEvent: {}
+[25.459656] (micro_ros_agent) StdoutLine: {'line': b'[ 92%] \x1b[32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/middleware/fast/FastMiddleware.cpp.o\x1b[0m\n'}
+[25.518125] (-) TimerEvent: {}
+[25.618872] (-) TimerEvent: {}
+[25.719526] (-) TimerEvent: {}
+[25.820346] (-) TimerEvent: {}
+[25.921194] (-) TimerEvent: {}
+[26.021942] (-) TimerEvent: {}
+[26.057034] (micro_ros_agent) StdoutLine: {'line': b'[ 95%] \x1b[32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/middleware/fastdds/FastDDSEntities.cpp.o\x1b[0m\n'}
+[26.122079] (-) TimerEvent: {}
+[26.222919] (-) TimerEvent: {}
+[26.324182] (-) TimerEvent: {}
+[26.424910] (-) TimerEvent: {}
+[26.525631] (-) TimerEvent: {}
+[26.626360] (-) TimerEvent: {}
+[26.725626] (micro_ros_agent) StdoutLine: {'line': b'[ 97%] \x1b[32mBuilding CXX object CMakeFiles/microxrcedds_agent.dir/src/cpp/middleware/fastdds/FastDDSMiddleware.cpp.o\x1b[0m\n'}
+[26.727439] (-) TimerEvent: {}
+[26.828012] (-) TimerEvent: {}
+[26.928593] (-) TimerEvent: {}
+[27.029288] (-) TimerEvent: {}
+[27.129937] (-) TimerEvent: {}
+[27.230471] (-) TimerEvent: {}
+[27.330877] (-) TimerEvent: {}
+[27.431310] (-) TimerEvent: {}
+[27.531726] (-) TimerEvent: {}
+[27.632205] (-) TimerEvent: {}
+[27.732681] (-) TimerEvent: {}
+[27.833085] (-) TimerEvent: {}
+[27.933478] (-) TimerEvent: {}
+[28.033886] (-) TimerEvent: {}
+[28.134289] (-) TimerEvent: {}
+[28.234696] (-) TimerEvent: {}
+[28.335105] (-) TimerEvent: {}
+[28.435523] (-) TimerEvent: {}
+[28.535943] (-) TimerEvent: {}
+[28.636350] (-) TimerEvent: {}
+[28.736759] (-) TimerEvent: {}
+[28.837154] (-) TimerEvent: {}
+[28.937581] (-) TimerEvent: {}
+[29.037991] (-) TimerEvent: {}
+[29.138351] (-) TimerEvent: {}
+[29.238822] (-) TimerEvent: {}
+[29.339315] (-) TimerEvent: {}
+[29.439832] (-) TimerEvent: {}
+[29.540339] (-) TimerEvent: {}
+[29.640735] (-) TimerEvent: {}
+[29.741115] (-) TimerEvent: {}
+[29.841630] (-) TimerEvent: {}
+[29.942693] (-) TimerEvent: {}
+[30.043075] (-) TimerEvent: {}
+[30.143436] (-) TimerEvent: {}
+[30.243823] (-) TimerEvent: {}
+[30.344330] (-) TimerEvent: {}
+[30.444933] (-) TimerEvent: {}
+[30.545464] (-) TimerEvent: {}
+[30.645820] (-) TimerEvent: {}
+[30.746152] (-) TimerEvent: {}
+[30.846474] (-) TimerEvent: {}
+[30.946839] (-) TimerEvent: {}
+[31.047201] (-) TimerEvent: {}
+[31.147561] (-) TimerEvent: {}
+[31.231999] (micro_ros_agent) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX shared library libmicroxrcedds_agent.so\x1b[0m\n'}
+[31.247757] (-) TimerEvent: {}
+[31.348128] (-) TimerEvent: {}
+[31.448533] (-) TimerEvent: {}
+[31.529538] (micro_ros_agent) StdoutLine: {'line': b'[100%] Built target microxrcedds_agent\n'}
+[31.548708] (-) TimerEvent: {}
+[31.551715] (micro_ros_agent) StdoutLine: {'line': b"\x1b[34m\x1b[1mNo install step for 'uagent'\x1b[0m\n"}
+[31.571676] (micro_ros_agent) StdoutLine: {'line': b"\x1b[34m\x1b[1mCompleted 'uagent'\x1b[0m\n"}
+[31.603723] (micro_ros_agent) StdoutLine: {'line': b'Built target uagent\n'}
+[31.624654] (micro_ros_agent) StdoutLine: {'line': b"[ 43%] \x1b[34m\x1b[1mPerforming install step for 'xrceagent'\x1b[0m\n"}
+[31.648830] (-) TimerEvent: {}
+[31.693738] (micro_ros_agent) StdoutLine: {'line': b'[100%] Built target microxrcedds_agent\n'}
+[31.706438] (micro_ros_agent) StdoutLine: {'line': b'\x1b[36mInstall the project...\x1b[0m\n'}
+[31.714312] (micro_ros_agent) StdoutLine: {'line': b'-- Install configuration: "Release"\n'}
+[31.714648] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/lib/libmicroxrcedds_agent.so.2.4.0\n'}
+[31.716976] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/lib/libmicroxrcedds_agent.so.2.4\n'}
+[31.717322] (micro_ros_agent) StdoutLine: {'line': b'-- Set runtime path of "/home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/lib/libmicroxrcedds_agent.so.2.4.0" to ""\n'}
+[31.717392] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/lib/libmicroxrcedds_agent.so\n'}
+[31.717464] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent\n'}
+[31.717531] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/p2p\n'}
+[31.717595] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/p2p/InternalClient.hpp\n'}
+[31.717662] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/p2p/InternalClientManager.hpp\n'}
+[31.717726] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/logger\n'}
+[31.717782] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/logger/Logger.hpp\n'}
+[31.717847] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/participant\n'}
+[31.717904] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/participant/Participant.hpp\n'}
+[31.717966] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/processor\n'}
+[31.718021] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/processor/Processor.hpp\n'}
+[31.718077] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/object\n'}
+[31.718142] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/object/XRCEObject.hpp\n'}
+[31.718205] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/message\n'}
+[31.718259] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/message/Packet.hpp\n'}
+[31.718324] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/message/InputMessage.hpp\n'}
+[31.718388] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/message/OutputMessage.hpp\n'}
+[31.718444] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/client\n'}
+[31.718509] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/client/session\n'}
+[31.718564] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/client/session/Session.hpp\n'}
+[31.718631] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/client/session/stream\n'}
+[31.718695] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/client/session/stream/InputStream.hpp\n'}
+[31.718739] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/client/session/stream/OutputStream.hpp\n'}
+[31.718804] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/client/session/SessionInfo.hpp\n'}
+[31.718866] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/client/ProxyClient.hpp\n'}
+[31.718922] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/scheduler\n'}
+[31.718987] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/scheduler/PacketScheduler.hpp\n'}
+[31.719047] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/scheduler/Scheduler.hpp\n'}
+[31.719101] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/Root.hpp\n'}
+[31.719166] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/topic\n'}
+[31.719219] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/topic/Topic.hpp\n'}
+[31.719258] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/requester\n'}
+[31.719298] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/requester/Requester.hpp\n'}
+[31.719338] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/publisher\n'}
+[31.719378] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/publisher/Publisher.hpp\n'}
+[31.719431] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/replier\n'}
+[31.719474] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/replier/Replier.hpp\n'}
+[31.719541] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/visibility.hpp\n'}
+[31.719607] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/reader\n'}
+[31.719671] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/reader/Reader.hpp\n'}
+[31.719723] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/utils\n'}
+[31.719796] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/utils/ArgumentParser.hpp\n'}
+[31.719851] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/utils/Conversion.hpp\n'}
+[31.720028] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/utils/Color.hpp\n'}
+[31.720104] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/utils/SeqNum.hpp\n'}
+[31.720169] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/utils/Time.hpp\n'}
+[31.720226] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/utils/TokenBucket.hpp\n'}
+[31.720288] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/utils/SharedMutexPriority.hpp\n'}
+[31.720343] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/utils/Functions.hpp\n'}
+[31.720408] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/utils/SharedMutex.hpp\n'}
+[31.720464] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/Agent.hpp\n'}
+[31.720527] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/types\n'}
+[31.720585] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/types/MessageHeader.hpp\n'}
+[31.720648] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/types/XRCETypes.hpp\n'}
+[31.720706] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/types/TopicPubSubType.hpp\n'}
+[31.720771] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/types/Optional.hpp\n'}
+[31.720827] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/types/SubMessageHeader.hpp\n'}
+[31.720880] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/AgentInstance.hpp\n'}
+[31.720947] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/datareader\n'}
+[31.721012] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/datareader/DataReader.hpp\n'}
+[31.721066] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/datawriter\n'}
+[31.721122] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/datawriter/DataWriter.hpp\n'}
+[31.721182] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/transport\n'}
+[31.721245] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/transport/p2p\n'}
+[31.721300] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/transport/p2p/AgentDiscoverer.hpp\n'}
+[31.721341] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/transport/p2p/AgentDiscovererLinux.hpp\n'}
+[31.721380] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/transport/serial\n'}
+[31.721420] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/transport/serial/TermiosAgentLinux.hpp\n'}
+[31.721475] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/transport/serial/MultiTermiosAgentLinux.hpp\n'}
+[31.721529] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/transport/serial/MultiSerialAgentLinux.hpp\n'}
+[31.721585] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/transport/serial/SerialAgentLinux.hpp\n'}
+[31.721649] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/transport/serial/baud_rate_table_linux.h\n'}
+[31.721702] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/transport/serial/PseudoTerminalAgentLinux.hpp\n'}
+[31.721763] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/transport/udp\n'}
+[31.721819] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/transport/udp/UDPv6AgentLinux.hpp\n'}
+[31.721888] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/transport/udp/UDPv4AgentWindows.hpp\n'}
+[31.721942] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/transport/udp/UDPv6AgentWindows.hpp\n'}
+[31.721996] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/transport/udp/UDPv4AgentLinux.hpp\n'}
+[31.722060] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/transport/Server.hpp\n'}
+[31.722116] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/transport/SessionManager.hpp\n'}
+[31.722171] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/transport/stream_framing\n'}
+[31.722232] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/transport/stream_framing/StreamFramingProtocol.hpp\n'}
+[31.722300] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/transport/TransportRc.hpp\n'}
+[31.722342] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/transport/tcp\n'}
+[31.722397] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/transport/tcp/TCPv6AgentLinux.hpp\n'}
+[31.722438] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/transport/tcp/TCPConnection.hpp\n'}
+[31.722478] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/transport/tcp/TCPv6AgentWindows.hpp\n'}
+[31.722534] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/transport/tcp/TCPv4AgentLinux.hpp\n'}
+[31.722578] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/transport/tcp/TCPServerBase.hpp\n'}
+[31.722618] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/transport/tcp/TCPv4AgentWindows.hpp\n'}
+[31.722657] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/transport/discovery\n'}
+[31.722710] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/transport/discovery/DiscoveryServerLinux.hpp\n'}
+[31.722750] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/transport/discovery/DiscoveryServer.hpp\n'}
+[31.722788] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/transport/discovery/DiscoveryServerWindows.hpp\n'}
+[31.722830] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/transport/can\n'}
+[31.722876] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/transport/can/CanAgentLinux.hpp\n'}
+[31.722919] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/transport/custom\n'}
+[31.722979] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/transport/custom/CustomAgent.hpp\n'}
+[31.723017] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/transport/util\n'}
+[31.723056] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/transport/util/InterfaceLinux.hpp\n'}
+[31.723094] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/transport/util/InterfaceWindows.hpp\n'}
+[31.723133] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/transport/endpoint\n'}
+[31.723172] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/transport/endpoint/IPv6EndPoint.hpp\n'}
+[31.723214] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/transport/endpoint/IPv4EndPoint.hpp\n'}
+[31.723253] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/transport/endpoint/CanEndPoint.hpp\n'}
+[31.723293] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/transport/endpoint/MultiSerialEndPoint.hpp\n'}
+[31.723348] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/transport/endpoint/SerialEndPoint.hpp\n'}
+[31.723388] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/transport/endpoint/CustomEndPoint.hpp\n'}
+[31.723429] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/subscriber\n'}
+[31.723482] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/subscriber/Subscriber.hpp\n'}
+[31.723521] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/middleware\n'}
+[31.723560] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/middleware/ced\n'}
+[31.723600] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/middleware/ced/CedMiddleware.hpp\n'}
+[31.723638] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/middleware/ced/CedEntities.hpp\n'}
+[31.723678] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/middleware/fastdds\n'}
+[31.723717] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/middleware/fastdds/FastDDSMiddleware.hpp\n'}
+[31.723759] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/middleware/fastdds/FastDDSEntities.hpp\n'}
+[31.723804] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/middleware/fast\n'}
+[31.723844] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/middleware/fast/FastMiddleware.hpp\n'}
+[31.723884] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/middleware/fast/FastEntities.hpp\n'}
+[31.723940] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/middleware/utils\n'}
+[31.723984] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/middleware/utils/Callbacks.hpp\n'}
+[31.724024] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/middleware/Middleware.hpp\n'}
+[31.724066] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/share/microxrcedds_agent/cmake/microxrcedds_agentTargets.cmake\n'}
+[31.724106] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/share/microxrcedds_agent/cmake/microxrcedds_agentTargets-release.cmake\n'}
+[31.724145] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/include/uxr/agent/config.hpp\n'}
+[31.724185] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/share/microxrcedds_agent/LICENSE\n'}
+[31.724225] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/share/microxrcedds_agent/cmake/microxrcedds_agentConfig.cmake\n'}
+[31.724266] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/share/microxrcedds_agent/cmake/microxrcedds_agentConfigVersion.cmake\n'}
+[31.737657] (micro_ros_agent) StdoutLine: {'line': b"[ 50%] \x1b[34m\x1b[1mCompleted 'xrceagent'\x1b[0m\n"}
+[31.748940] (-) TimerEvent: {}
+[31.764449] (micro_ros_agent) StdoutLine: {'line': b'[ 50%] Built target xrceagent\n'}
+[31.773584] (micro_ros_agent) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target micro_ros_agent\x1b[0m\n'}
+[31.782810] (micro_ros_agent) StdoutLine: {'line': b"[ 56%] \x1b[34m\x1b[1mCreating directories for 'micro_ros_agent'\x1b[0m\n"}
+[31.832296] (micro_ros_agent) StdoutLine: {'line': b"[ 62%] \x1b[34m\x1b[1mNo download step for 'micro_ros_agent'\x1b[0m\n"}
+[31.849058] (-) TimerEvent: {}
+[31.850424] (micro_ros_agent) StdoutLine: {'line': b"[ 75%] \x1b[34m\x1b[1mNo update step for 'micro_ros_agent'\x1b[0m\n"}
+[31.850603] (micro_ros_agent) StdoutLine: {'line': b"[ 75%] \x1b[34m\x1b[1mNo patch step for 'micro_ros_agent'\x1b[0m\n"}
+[31.868182] (micro_ros_agent) StdoutLine: {'line': b"[ 81%] \x1b[34m\x1b[1mPerforming configure step for 'micro_ros_agent'\x1b[0m\n"}
+[31.875482] (micro_ros_agent) StdoutLine: {'line': b'loading initial cache file /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/micro_ros_agent-prefix/tmp/micro_ros_agent-cache-.cmake\n'}
+[31.894231] (micro_ros_agent) StdoutLine: {'line': b'-- Found ament_cmake: 0.9.11 (/opt/ros/foxy/share/ament_cmake/cmake)\n'}
+[31.935527] (micro_ros_agent) StdoutLine: {'line': b'-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") \n'}
+[31.935689] (micro_ros_agent) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[31.949148] (-) TimerEvent: {}
+[32.049519] (-) TimerEvent: {}
+[32.149792] (-) TimerEvent: {}
+[32.250234] (-) TimerEvent: {}
+[32.300753] (micro_ros_agent) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "1.1.1f")  \n'}
+[32.304602] (micro_ros_agent) StdoutLine: {'line': b'-- Looking for C++ include pthread.h\n'}
+[32.350343] (-) TimerEvent: {}
+[32.367989] (micro_ros_agent) StdoutLine: {'line': b'-- Looking for C++ include pthread.h - found\n'}
+[32.368321] (micro_ros_agent) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD\n'}
+[32.438381] (micro_ros_agent) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed\n'}
+[32.438636] (micro_ros_agent) StdoutLine: {'line': b'-- Looking for pthread_create in pthreads\n'}
+[32.450439] (-) TimerEvent: {}
+[32.499543] (micro_ros_agent) StdoutLine: {'line': b'-- Looking for pthread_create in pthreads - not found\n'}
+[32.499741] (micro_ros_agent) StdoutLine: {'line': b'-- Looking for pthread_create in pthread\n'}
+[32.550568] (-) TimerEvent: {}
+[32.565226] (micro_ros_agent) StdoutLine: {'line': b'-- Looking for pthread_create in pthread - found\n'}
+[32.566032] (micro_ros_agent) StdoutLine: {'line': b'-- Found Threads: TRUE  \n'}
+[32.569911] (micro_ros_agent) StdoutLine: {'line': b'-- Found rosidl_cmake: 1.3.0 (/opt/ros/foxy/share/rosidl_cmake/cmake)\n'}
+[32.571787] (micro_ros_agent) StdoutLine: {'line': b'-- Found rosidl_adapter: 1.3.0 (/opt/ros/foxy/share/rosidl_adapter/cmake)\n'}
+[32.595063] (micro_ros_agent) StdoutLine: {'line': b'-- Found fastrtps_cmake_module: 1.0.4 (/opt/ros/foxy/share/fastrtps_cmake_module/cmake)\n'}
+[32.597683] (micro_ros_agent) StdoutLine: {'line': b'-- Found rmw_dds_common: 1.0.3 (/opt/ros/foxy/share/rmw_dds_common/cmake)\n'}
+[32.638265] (micro_ros_agent) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[32.650681] (-) TimerEvent: {}
+[32.689471] (micro_ros_agent) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/foxy/include  \n'}
+[32.750794] (-) TimerEvent: {}
+[32.757213] (micro_ros_agent) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[32.784781] (micro_ros_agent) StdoutLine: {'line': b'-- Found rmw_fastrtps_shared_cpp: 1.3.1 (/opt/ros/foxy/share/rmw_fastrtps_shared_cpp/cmake)\n'}
+[32.820511] (micro_ros_agent) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.9.8 (/opt/ros/foxy/share/ament_lint_auto/cmake)\n'}
+[32.822928] (micro_ros_agent) StdoutLine: {'line': b'-- Found ament_cmake_gtest: 0.9.11 (/opt/ros/foxy/share/ament_cmake_gtest/cmake)\n'}
+[32.824807] (micro_ros_agent) StdoutLine: {'line': b'-- Found micro_ros_msgs: 1.0.0 (/home/corelab-laptop2/microros_ws/install/micro_ros_msgs/share/micro_ros_msgs/cmake)\n'}
+[32.850962] (-) TimerEvent: {}
+[32.931084] (micro_ros_agent) StdoutLine: {'line': b'-- Configuring done\n'}
+[32.935684] (micro_ros_agent) StdoutLine: {'line': b'-- Generating done\n'}
+[32.936617] (micro_ros_agent) StdoutLine: {'line': b'-- Build files have been written to: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent\n'}
+[32.951162] (-) TimerEvent: {}
+[32.952191] (micro_ros_agent) StdoutLine: {'line': b"[ 87%] \x1b[34m\x1b[1mPerforming build step for 'micro_ros_agent'\x1b[0m\n"}
+[32.974495] (micro_ros_agent) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target micro_ros_agent\x1b[0m\n'}
+[33.051279] (-) TimerEvent: {}
+[33.059839] (micro_ros_agent) StdoutLine: {'line': b'[ 16%] \x1b[32mBuilding CXX object CMakeFiles/micro_ros_agent.dir/src/main.cpp.o\x1b[0m\n'}
+[33.060202] (micro_ros_agent) StdoutLine: {'line': b'[ 66%] \x1b[32mBuilding CXX object CMakeFiles/micro_ros_agent.dir/src/agent/graph_manager/graph_manager.cpp.o\x1b[0m\n'}
+[33.060347] (micro_ros_agent) StdoutLine: {'line': b'[ 66%] \x1b[32mBuilding CXX object CMakeFiles/micro_ros_agent.dir/src/agent/Agent.cpp.o\x1b[0m\n'}
+[33.060509] (micro_ros_agent) StdoutLine: {'line': b'[ 66%] \x1b[32mBuilding CXX object CMakeFiles/micro_ros_agent.dir/src/agent/graph_manager/graph_typesupport.cpp.o\x1b[0m\n'}
+[33.060627] (micro_ros_agent) StdoutLine: {'line': b'[ 83%] \x1b[32mBuilding CXX object CMakeFiles/micro_ros_agent.dir/src/agent/utils/demangle.cpp.o\x1b[0m\n'}
+[33.151406] (-) TimerEvent: {}
+[33.251807] (-) TimerEvent: {}
+[33.352209] (-) TimerEvent: {}
+[33.452655] (-) TimerEvent: {}
+[33.553009] (-) TimerEvent: {}
+[33.653615] (-) TimerEvent: {}
+[33.754027] (-) TimerEvent: {}
+[33.854428] (-) TimerEvent: {}
+[33.955197] (-) TimerEvent: {}
+[34.055604] (-) TimerEvent: {}
+[34.156014] (-) TimerEvent: {}
+[34.256393] (-) TimerEvent: {}
+[34.356794] (-) TimerEvent: {}
+[34.457185] (-) TimerEvent: {}
+[34.557601] (-) TimerEvent: {}
+[34.658089] (-) TimerEvent: {}
+[34.758587] (-) TimerEvent: {}
+[34.859064] (-) TimerEvent: {}
+[34.959451] (-) TimerEvent: {}
+[35.059894] (-) TimerEvent: {}
+[35.160281] (-) TimerEvent: {}
+[35.260735] (-) TimerEvent: {}
+[35.361103] (-) TimerEvent: {}
+[35.461510] (-) TimerEvent: {}
+[35.561881] (-) TimerEvent: {}
+[35.662362] (-) TimerEvent: {}
+[35.762751] (-) TimerEvent: {}
+[35.863123] (-) TimerEvent: {}
+[35.963508] (-) TimerEvent: {}
+[36.063898] (-) TimerEvent: {}
+[36.164270] (-) TimerEvent: {}
+[36.264631] (-) TimerEvent: {}
+[36.365039] (-) TimerEvent: {}
+[36.431067] (micro_ros_agent) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable micro_ros_agent\x1b[0m\n'}
+[36.465218] (-) TimerEvent: {}
+[36.565538] (-) TimerEvent: {}
+[36.659365] (micro_ros_agent) StdoutLine: {'line': b'[100%] Built target micro_ros_agent\n'}
+[36.665636] (-) TimerEvent: {}
+[36.676618] (micro_ros_agent) StdoutLine: {'line': b"\x1b[34m\x1b[1mNo install step for 'micro_ros_agent'\x1b[0m\n"}
+[36.692940] (micro_ros_agent) StdoutLine: {'line': b"\x1b[34m\x1b[1mCompleted 'micro_ros_agent'\x1b[0m\n"}
+[36.715272] (micro_ros_agent) StdoutLine: {'line': b'Built target micro_ros_agent\n'}
+[36.722924] (micro_ros_agent) CommandEnded: {'returncode': 0}
+[36.744397] (micro_ros_agent) JobProgress: {'identifier': 'micro_ros_agent', 'progress': 'install'}
+[36.752049] (micro_ros_agent) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent'], 'cwd': '/home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'corelab-laptop2'), ('SSH_AGENT_PID', '1297'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/corelab-laptop2/microros_ws/install/micro_ros_agent/lib:/home/corelab-laptop2/microros_ws/install/micro_ros_msgs/lib:/home/corelab-laptop2/microros_ws/install/drive_base_msgs/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/home/corelab-laptop2'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('MANAGERPID', '1024'), ('DBUS_STARTER_BUS_TYPE', 'session'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus,guid=10bf2c4a02663f8410f175b764795646'), ('COLORTERM', 'truecolor'), ('IM_CONFIG_PHASE', '1'), ('COLCON_PREFIX_PATH', '/home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/ROS_tf2_test/install:/home/corelab-laptop2/microros_ws/install:/home/corelab-laptop2/tf2_ws/install'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'corelab-laptop2'), ('JOURNAL_STREAM', '8:41946'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'corelab-laptop2'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/foxy/bin:/home/corelab-laptop2/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('SESSION_MANAGER', 'local/corelablaptop2-Inspiron-15-5510:@/tmp/.ICE-unix/1335,unix/corelablaptop2-Inspiron-15-5510:/tmp/.ICE-unix/1335'), ('INVOCATION_ID', '890d4b567bce49e7b63be27f5c660b21'), ('XDG_MENU_PREFIX', 'gnome-'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/22b909e6_698f_4198_b5de_4fad0ba9009d'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.1978'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('ROS_DOMAIN_ID', '0'), ('AMENT_PREFIX_PATH', '/home/corelab-laptop2/microros_ws/install/micro_ros_setup:/home/corelab-laptop2/microros_ws/install/micro_ros_agent:/home/corelab-laptop2/microros_ws/install/micro_ros_msgs:/home/corelab-laptop2/microros_ws/install/drive_base_msgs:/home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/ROS_tf2_test/install/blimp_telemetry:/home/corelab-laptop2/tf2_ws/install/blimp_telemetry:/opt/ros/foxy'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('DBUS_STARTER_ADDRESS', 'unix:path=/run/user/1000/bus,guid=10bf2c4a02663f8410f175b764795646'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/corelab-laptop2/microros_ws/install/micro_ros_msgs/lib/python3.8/site-packages:/home/corelab-laptop2/microros_ws/install/drive_base_msgs/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages'), ('COLCON', '1'), ('VTE_VERSION', '6003'), ('CMAKE_PREFIX_PATH', '/home/corelab-laptop2/microros_ws/install/micro_ros_setup:/home/corelab-laptop2/microros_ws/install/micro_ros_agent:/home/corelab-laptop2/microros_ws/install/micro_ros_msgs:/home/corelab-laptop2/microros_ws/install/drive_base_msgs:/home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/ROS_tf2_test/install/blimp_telemetry:/home/corelab-laptop2/tf2_ws/install/blimp_telemetry:/opt/ros/foxy')]), 'shell': False}
+[36.759418] (micro_ros_agent) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[36.759612] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/share/ament_index/resource_index/package_run_dependencies/micro_ros_agent\n'}
+[36.759701] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/share/ament_index/resource_index/parent_prefix_path/micro_ros_agent\n'}
+[36.759778] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/share/micro_ros_agent/environment/ament_prefix_path.sh\n'}
+[36.759856] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/share/micro_ros_agent/environment/ament_prefix_path.dsv\n'}
+[36.760113] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/share/micro_ros_agent/environment/path.sh\n'}
+[36.760193] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/share/micro_ros_agent/environment/path.dsv\n'}
+[36.760266] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/share/micro_ros_agent/local_setup.bash\n'}
+[36.760340] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/share/micro_ros_agent/local_setup.sh\n'}
+[36.760418] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/share/micro_ros_agent/local_setup.zsh\n'}
+[36.760480] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/share/micro_ros_agent/local_setup.dsv\n'}
+[36.760552] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/share/micro_ros_agent/package.dsv\n'}
+[36.760624] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/share/ament_index/resource_index/packages/micro_ros_agent\n'}
+[36.760698] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/share/micro_ros_agent/cmake/ament_cmake_export_dependencies-extras.cmake\n'}
+[36.760767] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/share/micro_ros_agent/cmake/micro_ros_agentConfig.cmake\n'}
+[36.760826] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/share/micro_ros_agent/cmake/micro_ros_agentConfig-version.cmake\n'}
+[36.760893] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/share/micro_ros_agent/package.xml\n'}
+[36.760950] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/lib/micro_ros_agent/micro_ros_agent\n'}
+[36.761576] (micro_ros_agent) StdoutLine: {'line': b'-- Set runtime path of "/home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/lib/micro_ros_agent/micro_ros_agent" to ""\n'}
+[36.761647] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/share/micro_ros_agent/launch\n'}
+[36.761703] (micro_ros_agent) StdoutLine: {'line': b'-- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/share/micro_ros_agent/launch/micro_ros_agent_launch.py\n'}
+[36.762843] (micro_ros_agent) CommandEnded: {'returncode': 0}
+[36.765912] (-) TimerEvent: {}
+[36.817091] (micro_ros_agent) JobEnded: {'identifier': 'micro_ros_agent', 'rc': 0}
+[36.817644] (-) EventReactorShutdown: {}

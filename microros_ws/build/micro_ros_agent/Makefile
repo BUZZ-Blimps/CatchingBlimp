@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/corelab-laptop2/microros_ws/src/uros/micro-ROS-Agent/micro_ros_agent
+CMAKE_SOURCE_DIR = /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/src/uros/micro-ROS-Agent/micro_ros_agent
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/corelab-laptop2/microros_ws/build/micro_ros_agent
+CMAKE_BINARY_DIR = /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -137,9 +137,9 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/corelab-laptop2/microros_ws/build/micro_ros_agent/CMakeFiles /home/corelab-laptop2/microros_ws/build/micro_ros_agent/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/CMakeFiles /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/corelab-laptop2/microros_ws/build/micro_ros_agent/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
