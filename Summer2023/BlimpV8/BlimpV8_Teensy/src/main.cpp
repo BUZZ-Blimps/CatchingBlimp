@@ -79,7 +79,7 @@ void error_loop() {
 #define CEIL_HEIGHT               8      //m
 #define FLOOR_HEIGHT              2.5    //m
 
-#define MAX_HEIGHT                8    //m
+#define MAX_HEIGHT                2    //m
 #define GOAL_HEIGHT               5.0    //m
 #define GOAL_HEIGHT_DEADBAND      0.3       //m
 
@@ -96,22 +96,22 @@ void error_loop() {
 //autonomy tunning parameters
 // the inputs are bounded from -2 to 2, yaw is maxed out at 120 deg/s
 #define GAME_BALL_YAW_SEARCH      -15  //deg/s
-#define GAME_BALL_FORWARD_SEARCH  300 //30% throttle 
+#define GAME_BALL_FORWARD_SEARCH  250 //50% throttle 
 #define GAME_BALL_VERTICAL_SEARCH 0.7  //m/s
 
 
-#define GAME_BALL_CLOSURE_COM     400  //approaching at 20% throttle cap
+#define GAME_BALL_CLOSURE_COM     200  //approaching at 20% throttle cap
 #define GAME_BALL_APPROACH_ANGLE  -80  //0.2 approach magic number
 #define GAME_BaLL_X_OFFSET        0   //10 offset magic number
 
-#define CATCHING_FORWARD_COM      900  //catching at 90% throttle 
+#define CATCHING_FORWARD_COM      450  //catching at 90% throttle 
 #define CATCHING_UP_COM           1  //damp out pitch
 
-#define CAUGHT_FORWARD_COM        -860  //go back so that the game ball gets to the back 
-#define CAUGHT_UP_COM             -0.2
+#define CAUGHT_FORWARD_COM        -420  //go back so that the game ball gets to the back 
+#define CAUGHT_UP_COM             -0.5
 
 #define GOAL_YAW_SEARCH           20   
-#define GOAL_FORWARD_SEARCH       320  //400 40% throttle
+#define GOAL_FORWARD_SEARCH       300  //200 40% throttle
 #define GOAL_UP_VELOCITY          2.5
 
 #define GOAL_CLOSURE_COM          400  //forward command 25% throttle
@@ -190,14 +190,14 @@ GyroEKF gyroEKF;
 
 //Gimbal leftGimbal(yawPin, pitchPin, motorPin, newDeadband, newTurnOnCom, newMinCom, newMaxCom);
 MotorControl motorControl;
-Gimbal leftGimbal(L_Yaw, L_Pitch, PWM_L, 25, 30, 1000, 2000, 45, 0.2);
-Gimbal rightGimbal(R_Yaw, R_Pitch, PWM_R, 25, 30, 1000, 2000, 135, 0.2);
+Gimbal leftGimbal(L_Yaw, L_Pitch, PWM_L, 25, 30, 1000, 2000, 45, 0.5);
+Gimbal rightGimbal(R_Yaw, R_Pitch, PWM_R, 25, 30, 1000, 2000, 135, 0.5);
 
 //Manual PID control
-PID verticalPID(200, 0, 0);  
-PID yawPID(20.0, 0, 0);
-PID forwardPID(500, 0, 0);  
-PID translationPID(500, 0, 0);
+PID verticalPID(-320, 0, 0);  
+PID yawPID(5.0, 0, 0);
+PID forwardPID(300, 0, 0);  //not used
+PID translationPID(300, 0, 0); //not used
 
 //Auto PID control (output fed into manual controller)
 PID yPixelPID(0.0075,0,0);
@@ -375,6 +375,7 @@ rcl_publisher_t blimpid_publisher;
 rcl_publisher_t imu_publisher;    
 rcl_publisher_t motor_publisher; 
 rcl_publisher_t height_publisher;
+rcl_publisher_t z_velocity_publisher;
 
 //ROS subscribers
 rcl_subscription_t identity_subscription; //boolean
@@ -399,6 +400,7 @@ std_msgs__msg__Bool kill_msg;
 //float64 message
 std_msgs__msg__Float64  baro_msg;
 std_msgs__msg__Float64  height_msg;
+std_msgs__msg__Float64  z_velocity_msg;
 
 //float64multiarray message
 std_msgs__msg__Float64MultiArray motor_msg;
@@ -528,15 +530,16 @@ bool create_entities() {
   RCCHECK(rclc_publisher_init_default(&imu_publisher, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(sensor_msgs, msg, Imu), "/BurnCreamBlimp/imu"));
   RCCHECK(rclc_publisher_init_default(&motor_publisher, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg,Float64MultiArray ), "/BurnCreamBlimp/motorDebug"));
   RCCHECK(rclc_publisher_init_default(&height_publisher, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg,Float64), "/BurnCreamBlimp/height"));
+  RCCHECK(rclc_publisher_init_default(&z_velocity_publisher, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg,Float64), "/BurnCreamBlimp/z_velocity"));
 
   //create subscribers
   RCCHECK(rclc_subscription_init_default(&identity_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Bool), "/identify"));
   RCCHECK(rclc_subscription_init_default(&auto_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Bool), "/BurnCreamBlimp/auto"));
   RCCHECK(rclc_subscription_init_default(&baseBarometer_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Float64), "/BurnCreamBlimp/baseBarometer"));
-  // RCCHECK(rclc_subscription_init_default(&grabber_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Bool), "/BurnCreamBlimp/grabbing"));
-  // RCCHECK(rclc_subscription_init_default(&shooter_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Bool), "/BurnCreamBlimp/shooting"));
-  RCCHECK(rclc_subscription_init_default(&motor_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Float64MultiArray), "/BurnCreamBlimp/motorCommands"));
-  RCCHECK(rclc_subscription_init_default(&kill_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Bool), "/BurnCreamBlimp/killed"));
+  RCCHECK(rclc_subscription_init_default(&grabber_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Bool), "/BurnCreamBlimp/grabbing"));
+  RCCHECK(rclc_subscription_init_default(&shooter_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Bool), "/BurnCreamBlimp/shooting"));
+  // RCCHECK(rclc_subscription_init_default(&motor_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Float64MultiArray), "/BurnCreamBlimp/motorCommands"));
+  // RCCHECK(rclc_subscription_init_default(&kill_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Bool), "/BurnCreamBlimp/killed"));
 
   // create timer
   const unsigned int timer_period = 10;
@@ -546,20 +549,19 @@ bool create_entities() {
   executor_pub = rclc_executor_get_zero_initialized_executor();
   executor_sub = rclc_executor_get_zero_initialized_executor();
 
-  RCCHECK(rclc_executor_init(&executor_pub, &support.context, 4, &allocator));
+  RCCHECK(rclc_executor_init(&executor_pub, &support.context, 5, &allocator));
   RCCHECK(rclc_executor_add_timer(&executor_pub, &timer));
 
   RCCHECK(rclc_executor_init(&executor_sub, &support.context, 5, &allocator));
-
 
   //add all subscriptions
   RCCHECK(rclc_executor_add_subscription(&executor_sub, &identity_subscription, &identity_msg, &id_subscription_callback, ON_NEW_DATA));
   RCCHECK(rclc_executor_add_subscription(&executor_sub, &auto_subscription, &auto_msg, &auto_subscription_callback, ON_NEW_DATA));
   RCCHECK(rclc_executor_add_subscription(&executor_sub, &baseBarometer_subscription, &baro_msg, &baro_subscription_callback, ON_NEW_DATA));
-  // RCCHECK(rclc_executor_add_subscription(&executor_sub, &grabber_subscription, &grab_msg, &grab_subscription_callback, ON_NEW_DATA));
-  // RCCHECK(rclc_executor_add_subscription(&executor_sub, &shooter_subscription, &shoot_msg, &shoot_subscription_callback, ON_NEW_DATA));
-  RCCHECK(rclc_executor_add_subscription(&executor_sub, &kill_subscription, &kill_msg, &kill_subscription_callback, ON_NEW_DATA));
-  RCCHECK(rclc_executor_add_subscription(&executor_sub, &motor_subscription, &motor_msg, &motor_subscription_callback, ON_NEW_DATA));
+  RCCHECK(rclc_executor_add_subscription(&executor_sub, &grabber_subscription, &grab_msg, &grab_subscription_callback, ON_NEW_DATA));
+  RCCHECK(rclc_executor_add_subscription(&executor_sub, &shooter_subscription, &shoot_msg, &shoot_subscription_callback, ON_NEW_DATA));
+  // RCCHECK(rclc_executor_add_subscription(&executor_sub, &kill_subscription, &kill_msg, &kill_subscription_callback, ON_NEW_DATA));
+  // RCCHECK(rclc_executor_add_subscription(&executor_sub, &motor_subscription, &motor_msg, &motor_subscription_callback, ON_NEW_DATA));
 
   return true;
 }
@@ -573,15 +575,16 @@ void destroy_entities() {
   rcl_publisher_fini(&imu_publisher, &node);
   rcl_publisher_fini(&motor_publisher, &node);
   rcl_publisher_fini(&height_publisher, &node);
+  rcl_publisher_fini(&z_velocity_publisher, &node);
 
   //finnish subscriptions
   rcl_subscription_fini(&identity_subscription, &node);
   rcl_subscription_fini(&auto_subscription, &node);
   rcl_subscription_fini(&baseBarometer_subscription, &node);
-  // rcl_subscription_fini(&grabber_subscription, &node);
-  // rcl_subscription_fini(&shooter_subscription, &node);
-  rcl_subscription_fini(&motor_subscription, &node);
-  rcl_subscription_fini(&kill_subscription, &node);
+  rcl_subscription_fini(&grabber_subscription, &node);
+  rcl_subscription_fini(&shooter_subscription, &node);
+  // rcl_subscription_fini(&motor_subscription, &node);
+  // rcl_subscription_fini(&kill_subscription, &node);
 
   rcl_timer_fini(&timer);
   rclc_executor_fini(&executor_pub);
@@ -649,7 +652,7 @@ void setup() {
 //loop
 
 void loop() {
-  //-----------------------MICRO ROS PUBLISHER--------------------------------------
+  //-----------------------MICRO ROS PUBLISHER and SUBSCRIBERS--------------------------------------
   // publisher state machine
   // checking if the agent is available 
   switch (agent_state_) {
@@ -763,7 +766,6 @@ void loop() {
     // yekf.updateGyroX(gyroEKF.rollRate - gyroEKF.rollRateB);
     // yekf.updateGyroZ(BerryIMU.gyr_rateZraw);
 
-    
     // Serial.print(">Z:");
     // Serial.println(xekf.z);
 
@@ -813,6 +815,10 @@ void loop() {
     else{
       actualBaro = 1000;
     }
+
+    // Add Z Velocity to a Message and Publish
+    z_velocity_msg.data = kf.v;
+    RCSOFTCHECK(rcl_publish(&z_velocity_publisher, &z_velocity_msg, NULL));
 
     // xekf.updateBaro(CEIL_HEIGHT_FROM_START-actualBaro);
     // yekf.updateBaro(CEIL_HEIGHT_FROM_START-actualBaro);
@@ -944,8 +950,8 @@ void loop() {
         }else{
           //normal mapping using max esc command 
           upCom = up_msg*2.0; //PID used and maxed out at 2m/s
-          forwardCom = forward_msg*1000.0;
-          translationCom = translation_msg*1000.0;
+          forwardCom = forward_msg*500.0;
+          translationCom = translation_msg*500.0;
         }
 
         //motor debug
@@ -988,6 +994,7 @@ void loop() {
         zPixFilter.filter(300);
         areaFilter.filter(0);
       }
+
       //modes for autonomous behavior
       switch (mode) {
         case searching:
@@ -1242,10 +1249,10 @@ void loop() {
         yawCom = 0.0;
     }
 
-    //  safty height 
-    // if (actualBaro > MAX_HEIGHT) {
-    //     upCom = -0.5;
-    // }
+     //safty height 
+    if (actualBaro > MAX_HEIGHT) {
+        upCom = -1;
+    }
 
     //translation velocity and command
     // Serial.print(">z v:");
@@ -1323,8 +1330,8 @@ void loop() {
       if (state == manual && !MOTORS_OFF){
         //forward, translation, up, yaw, roll
         if (!ZERO_MODE) motorControl.update(forwardMotor, -translationMotor, upMotor, yawMotor, 0);
-        bool leftReady = leftGimbal.readyGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, motorControl.yawLeft, motorControl.upLeft, motorControl.forwardLeft);
-        bool rightReady = rightGimbal.readyGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, motorControl.yawRight, motorControl.upRight, motorControl.forwardRight);
+        bool leftReady = leftGimbal.readyGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, 0, motorControl.upLeft, motorControl.forwardLeft);
+        bool rightReady = rightGimbal.readyGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, 0, motorControl.upRight, motorControl.forwardRight);
         leftGimbal.updateGimbal(leftReady && rightReady);
         rightGimbal.updateGimbal(leftReady && rightReady);
       } else if (state == autonomous && !MOTORS_OFF) {
