@@ -14,10 +14,10 @@ using namespace std;
 using namespace cv;
 
 // ============================== DEFINES ==============================
-#define USE_VIDEO       true
+#define USE_VIDEO       false
 #define VIDEO_FPS       30
 
-#define CAMERA_INDEX       2
+#define CAMERA_INDEX    0
 
 #define CAMERA_WIDTH	320
 #define CAMERA_HEIGHT	240
