@@ -14,7 +14,7 @@ using namespace std;
 using namespace cv;
 
 // ============================== DEFINES ==============================
-#define CAMERA_INDEX            0
+#define CAMERA_INDEX            2
 #define CAMERA_INDEX_BACKUP     1
 #define CAMERA_API              cv::CAP_V4L
 

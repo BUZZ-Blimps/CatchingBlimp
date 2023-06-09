@@ -747,8 +747,8 @@ void loop() {
     yawRateFilter.filter(BerryIMU.gyr_rateZraw);
 
     //perform gyro update
-    gyroEKF.updateGyro(BerryIMU.gyr_rateXraw*3.14/180, BerryIMU.gyr_rateYraw*3.14/180, BerryIMU.gyr_rateZraw*3.14/180);
-    gyroEKF.updateAccel(BerryIMU.AccXraw, BerryIMU.AccYraw, BerryIMU.AccZraw);
+    // gyroEKF.updateGyro(BerryIMU.gyr_rateXraw*3.14/180, BerryIMU.gyr_rateYraw*3.14/180, BerryIMU.gyr_rateZraw*3.14/180);
+    // gyroEKF.updateAccel(BerryIMU.AccXraw, BerryIMU.AccYraw, BerryIMU.AccZraw);
     
 
     // xekf.updateAccelx(-accelGCorrection.agx);
@@ -942,7 +942,8 @@ void loop() {
           translationCom = translation_msg*2.0;
         }else{
           //normal mapping using max esc command 
-          upCom = up_msg*2.0; //PID used and maxed out at 2m/s
+          // upCom = up_msg*2.0; //PID used and maxed out at 2m/s
+          upCom = -up_msg*500.0; //PID used and maxed out at 2m/s
           forwardCom = forward_msg*500.0;
           translationCom = translation_msg*500.0;
         }
@@ -1280,10 +1281,10 @@ void loop() {
         yawCom = 0.0;
     }
 
-     //safty height 
-    if (actualBaro > MAX_HEIGHT) {
-        upCom = -1;
-    }
+    //  //safty height 
+    // if (actualBaro > MAX_HEIGHT) {
+    //     upCom = -1;
+    // }
 
     //translation velocity and command
     // Serial.print(">z v:");
@@ -1311,7 +1312,8 @@ void loop() {
          }
 
     //TO DO: im prove velocity control
-    upMotor = verticalPID.calculate(upCom, kf.v, dt); //up velocity from barometer
+    // upMotor = verticalPID.calculate(upCom, kf.v, dt); //up velocity from barometer
+    upMotor = upCom;
 
     if (USE_EST_VELOCITY_IN_MANUAL == true){
     //using kalman filters for the current velosity feedback for full-state feeback PID controllers

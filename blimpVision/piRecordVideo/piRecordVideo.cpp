@@ -7,7 +7,7 @@ using namespace cv;
 
 //Display camera feed
 int main(int, char**) {
-	VideoCapture inputVideo(0);
+	VideoCapture inputVideo(2);
 
 	//Make sure camera is connected
 	if (!inputVideo.isOpened()) {
@@ -19,10 +19,10 @@ int main(int, char**) {
 
 	int fps = inputVideo.get(CAP_PROP_FPS);
 
-	int secondsToRecord = 60;
+	int secondsToRecord = 120;
 	int numFrames = secondsToRecord*fps;
 
-	Size S = Size((int) inputVideo.get(CAP_PROP_FRAME_WIDTH),    // Acquire input size
+	Size S = Size((int) inputVideo.get(CAP_PROP_FRAME_WIDTH)/2,    // Acquire input size
 	              (int) inputVideo.get(CAP_PROP_FRAME_HEIGHT));
 
 	VideoWriter outputVideo;
@@ -40,11 +40,19 @@ int main(int, char**) {
 
 		inputVideo >> frame;
 
+		//for only one lens feedback
+        // Crop the left and right images
+        Rect left_roi(0, 0, frame.cols/2, frame.rows);
+        Rect right_roi(frame.cols/2, 0, frame.cols/2, frame.rows);
+        Mat leftFrame_maxres(frame, left_roi);
+        Mat rightFrame_maxres(frame, right_roi);
+
 		if (frame.empty()) {
 			break;
 		}
 
-		outputVideo.write(frame);
+		outputVideo.write(leftFrame_maxres);
+		imshow("CameraOutput", leftFrame_maxres);
 
 		waitKey(1);
 	}
