@@ -1,0 +1,146 @@
+[0.000000] (-) TimerEvent: {}
+[0.000182] (blimp_telemetry) JobQueued: {'identifier': 'blimp_telemetry', 'dependencies': OrderedDict()}
+[0.000479] (blimp_telemetry) JobStarted: {'identifier': 'blimp_telemetry'}
+[0.011455] (blimp_telemetry) JobProgress: {'identifier': 'blimp_telemetry', 'progress': 'cmake'}
+[0.011645] (blimp_telemetry) Command: {'cmd': ['/usr/bin/cmake', '/home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/ROS_tf2_test/src/blimp_telemetry', '-DCMAKE_INSTALL_PREFIX=/home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/ROS_tf2_test/install/blimp_telemetry'], 'cwd': '/home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/ROS_tf2_test/build/blimp_telemetry', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'corelab-laptop2'), ('SSH_AGENT_PID', '1259'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/lib:/home/corelab-laptop2/microros_ws/install/micro_ros_agent/lib:/home/corelab-laptop2/microros_ws/install/micro_ros_msgs/lib:/home/corelab-laptop2/microros_ws/install/drive_base_msgs/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/home/corelab-laptop2'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('MANAGERPID', '1013'), ('DBUS_STARTER_BUS_TYPE', 'session'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus,guid=630aa6dd8ff252f9b5277a8164838fb9'), ('COLORTERM', 'truecolor'), ('IM_CONFIG_PHASE', '1'), ('COLCON_PREFIX_PATH', '/home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install:/home/corelab-laptop2/microros_ws/install:/home/corelab-laptop2/tf2_ws/install'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'corelab-laptop2'), ('JOURNAL_STREAM', '8:42866'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'corelab-laptop2'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/foxy/bin:/home/corelab-laptop2/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('SESSION_MANAGER', 'local/corelablaptop2-Inspiron-15-5510:@/tmp/.ICE-unix/1317,unix/corelablaptop2-Inspiron-15-5510:/tmp/.ICE-unix/1317'), ('INVOCATION_ID', 'eaf4ede54c524b7aabe621411ccb1dcc'), ('XDG_MENU_PREFIX', 'gnome-'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/7cc3f2e8_2cb6_4c3c_af5c_f6b8ade3c76d'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.931'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('ROS_DOMAIN_ID', '0'), ('AMENT_PREFIX_PATH', '/home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent:/home/corelab-laptop2/microros_ws/install/micro_ros_setup:/home/corelab-laptop2/microros_ws/install/micro_ros_agent:/home/corelab-laptop2/microros_ws/install/micro_ros_msgs:/home/corelab-laptop2/microros_ws/install/drive_base_msgs:/home/corelab-laptop2/tf2_ws/install/blimp_telemetry:/opt/ros/foxy'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/ROS_tf2_test/build/blimp_telemetry'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('DBUS_STARTER_ADDRESS', 'unix:path=/run/user/1000/bus,guid=630aa6dd8ff252f9b5277a8164838fb9'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/corelab-laptop2/microros_ws/install/micro_ros_msgs/lib/python3.8/site-packages:/home/corelab-laptop2/microros_ws/install/drive_base_msgs/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages'), ('COLCON', '1'), ('VTE_VERSION', '6003'), ('CMAKE_PREFIX_PATH', '/home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent:/home/corelab-laptop2/microros_ws/install/micro_ros_setup:/home/corelab-laptop2/microros_ws/install/micro_ros_agent:/home/corelab-laptop2/microros_ws/install/micro_ros_msgs:/home/corelab-laptop2/microros_ws/install/drive_base_msgs:/home/corelab-laptop2/tf2_ws/install/blimp_telemetry:/opt/ros/foxy')]), 'shell': False}
+[0.060331] (blimp_telemetry) StdoutLine: {'line': b'-- The C compiler identification is GNU 9.4.0\n'}
+[0.099863] (-) TimerEvent: {}
+[0.114632] (blimp_telemetry) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 9.4.0\n'}
+[0.120325] (blimp_telemetry) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc\n'}
+[0.170058] (blimp_telemetry) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc -- works\n'}
+[0.170840] (blimp_telemetry) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.200008] (-) TimerEvent: {}
+[0.218071] (blimp_telemetry) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.226511] (blimp_telemetry) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.226747] (blimp_telemetry) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.228441] (blimp_telemetry) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++\n'}
+[0.282170] (blimp_telemetry) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ -- works\n'}
+[0.283319] (blimp_telemetry) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.300182] (-) TimerEvent: {}
+[0.342867] (blimp_telemetry) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.350592] (blimp_telemetry) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.350848] (blimp_telemetry) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[0.352512] (blimp_telemetry) StdoutLine: {'line': b'-- Found ament_cmake: 0.9.11 (/opt/ros/foxy/share/ament_cmake/cmake)\n'}
+[0.372090] (blimp_telemetry) StdoutLine: {'line': b'-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") \n'}
+[0.372255] (blimp_telemetry) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[0.400347] (-) TimerEvent: {}
+[0.500735] (-) TimerEvent: {}
+[0.522856] (blimp_telemetry) StdoutLine: {'line': b'-- Found rclcpp: 2.4.2 (/opt/ros/foxy/share/rclcpp/cmake)\n'}
+[0.554797] (blimp_telemetry) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.560103] (blimp_telemetry) StdoutLine: {'line': b'-- Found rosidl_adapter: 1.3.0 (/opt/ros/foxy/share/rosidl_adapter/cmake)\n'}
+[0.600828] (-) TimerEvent: {}
+[0.614270] (blimp_telemetry) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "1.1.1f")  \n'}
+[0.634488] (blimp_telemetry) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/foxy/include  \n'}
+[0.690208] (blimp_telemetry) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[0.700986] (-) TimerEvent: {}
+[0.726013] (blimp_telemetry) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)\n'}
+[0.727113] (blimp_telemetry) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[0.727719] (blimp_telemetry) StdoutLine: {'line': b'-- Looking for pthread.h\n'}
+[0.776320] (blimp_telemetry) StdoutLine: {'line': b'-- Looking for pthread.h - found\n'}
+[0.776548] (blimp_telemetry) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD\n'}
+[0.801124] (-) TimerEvent: {}
+[0.830243] (blimp_telemetry) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed\n'}
+[0.830436] (blimp_telemetry) StdoutLine: {'line': b'-- Looking for pthread_create in pthreads\n'}
+[0.874132] (blimp_telemetry) StdoutLine: {'line': b'-- Looking for pthread_create in pthreads - not found\n'}
+[0.874339] (blimp_telemetry) StdoutLine: {'line': b'-- Looking for pthread_create in pthread\n'}
+[0.901253] (-) TimerEvent: {}
+[0.926608] (blimp_telemetry) StdoutLine: {'line': b'-- Looking for pthread_create in pthread - found\n'}
+[0.927857] (blimp_telemetry) StdoutLine: {'line': b'-- Found Threads: TRUE  \n'}
+[1.001370] (-) TimerEvent: {}
+[1.030146] (blimp_telemetry) StdoutLine: {'line': b'-- Found sensor_msgs: 2.0.5 (/opt/ros/foxy/share/sensor_msgs/cmake)\n'}
+[1.101495] (-) TimerEvent: {}
+[1.110954] (blimp_telemetry) StdoutLine: {'line': b'-- Found tf2: 0.13.14 (/opt/ros/foxy/share/tf2/cmake)\n'}
+[1.118747] (blimp_telemetry) StdoutLine: {'line': b'-- Found tf2_ros: 0.13.14 (/opt/ros/foxy/share/tf2_ros/cmake)\n'}
+[1.201601] (-) TimerEvent: {}
+[1.301982] (-) TimerEvent: {}
+[1.402402] (-) TimerEvent: {}
+[1.418341] (blimp_telemetry) StdoutLine: {'line': b'-- Configuring done\n'}
+[1.433371] (blimp_telemetry) StdoutLine: {'line': b'-- Generating done\n'}
+[1.435146] (blimp_telemetry) StdoutLine: {'line': b'-- Build files have been written to: /home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/ROS_tf2_test/build/blimp_telemetry\n'}
+[1.444262] (blimp_telemetry) CommandEnded: {'returncode': 0}
+[1.446376] (blimp_telemetry) JobProgress: {'identifier': 'blimp_telemetry', 'progress': 'build'}
+[1.446429] (blimp_telemetry) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/ROS_tf2_test/build/blimp_telemetry', '--', '-j8', '-l8'], 'cwd': '/home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/ROS_tf2_test/build/blimp_telemetry', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'corelab-laptop2'), ('SSH_AGENT_PID', '1259'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/lib:/home/corelab-laptop2/microros_ws/install/micro_ros_agent/lib:/home/corelab-laptop2/microros_ws/install/micro_ros_msgs/lib:/home/corelab-laptop2/microros_ws/install/drive_base_msgs/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/home/corelab-laptop2'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('MANAGERPID', '1013'), ('DBUS_STARTER_BUS_TYPE', 'session'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus,guid=630aa6dd8ff252f9b5277a8164838fb9'), ('COLORTERM', 'truecolor'), ('IM_CONFIG_PHASE', '1'), ('COLCON_PREFIX_PATH', '/home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install:/home/corelab-laptop2/microros_ws/install:/home/corelab-laptop2/tf2_ws/install'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'corelab-laptop2'), ('JOURNAL_STREAM', '8:42866'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'corelab-laptop2'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/foxy/bin:/home/corelab-laptop2/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('SESSION_MANAGER', 'local/corelablaptop2-Inspiron-15-5510:@/tmp/.ICE-unix/1317,unix/corelablaptop2-Inspiron-15-5510:/tmp/.ICE-unix/1317'), ('INVOCATION_ID', 'eaf4ede54c524b7aabe621411ccb1dcc'), ('XDG_MENU_PREFIX', 'gnome-'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/7cc3f2e8_2cb6_4c3c_af5c_f6b8ade3c76d'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.931'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('ROS_DOMAIN_ID', '0'), ('AMENT_PREFIX_PATH', '/home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent:/home/corelab-laptop2/microros_ws/install/micro_ros_setup:/home/corelab-laptop2/microros_ws/install/micro_ros_agent:/home/corelab-laptop2/microros_ws/install/micro_ros_msgs:/home/corelab-laptop2/microros_ws/install/drive_base_msgs:/home/corelab-laptop2/tf2_ws/install/blimp_telemetry:/opt/ros/foxy'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/ROS_tf2_test/build/blimp_telemetry'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('DBUS_STARTER_ADDRESS', 'unix:path=/run/user/1000/bus,guid=630aa6dd8ff252f9b5277a8164838fb9'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/corelab-laptop2/microros_ws/install/micro_ros_msgs/lib/python3.8/site-packages:/home/corelab-laptop2/microros_ws/install/drive_base_msgs/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages'), ('COLCON', '1'), ('VTE_VERSION', '6003'), ('CMAKE_PREFIX_PATH', '/home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent:/home/corelab-laptop2/microros_ws/install/micro_ros_setup:/home/corelab-laptop2/microros_ws/install/micro_ros_agent:/home/corelab-laptop2/microros_ws/install/micro_ros_msgs:/home/corelab-laptop2/microros_ws/install/drive_base_msgs:/home/corelab-laptop2/tf2_ws/install/blimp_telemetry:/opt/ros/foxy')]), 'shell': False}
+[1.474263] (blimp_telemetry) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target static_telemetry_node\x1b[0m\n'}
+[1.474413] (blimp_telemetry) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target blimp_telemetry_node\x1b[0m\n'}
+[1.502501] (-) TimerEvent: {}
+[1.562472] (blimp_telemetry) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/static_telemetry_node.dir/src/static_telemetry_node.cpp.o\x1b[0m\n'}
+[1.562647] (blimp_telemetry) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/blimp_telemetry_node.dir/src/blimp_telemetry_node.cpp.o\x1b[0m\n'}
+[1.602610] (-) TimerEvent: {}
+[1.670206] (blimp_telemetry) StderrLine: {'line': b'\x1b[01m\x1b[K/home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/ROS_tf2_test/src/blimp_telemetry/src/static_telemetry_node.cpp:53:15:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kmissing terminating " character\n'}
+[1.670577] (blimp_telemetry) StderrLine: {'line': b'   53 |       logger, \x1b[01;35m\x1b[K"\x1b[m\x1b[KInvalid number of parameters\n'}
+[1.670691] (blimp_telemetry) StderrLine: {'line': b'      |               \x1b[01;35m\x1b[K^\x1b[m\x1b[K\n'}
+[1.670771] (blimp_telemetry) StderrLine: {'line': b'\x1b[01m\x1b[K/home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/ROS_tf2_test/src/blimp_telemetry/src/static_telemetry_node.cpp:54:16:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kmissing terminating " character\n'}
+[1.670854] (blimp_telemetry) StderrLine: {'line': b'   54 |       \\nusage: \x1b[01;35m\x1b[K"\x1b[m\x1b[K\n'}
+[1.670942] (blimp_telemetry) StderrLine: {'line': b'      |                \x1b[01;35m\x1b[K^\x1b[m\x1b[K\n'}
+[1.671015] (blimp_telemetry) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/client.hpp:40\x1b[m\x1b[K,\n'}
+[1.671087] (blimp_telemetry) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/callback_group.hpp:23\x1b[m\x1b[K,\n'}
+[1.671161] (blimp_telemetry) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/any_executable.hpp:20\x1b[m\x1b[K,\n'}
+[1.671235] (blimp_telemetry) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/memory_strategy.hpp:24\x1b[m\x1b[K,\n'}
+[1.671315] (blimp_telemetry) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/memory_strategies.hpp:18\x1b[m\x1b[K,\n'}
+[1.671387] (blimp_telemetry) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/executor_options.hpp:20\x1b[m\x1b[K,\n'}
+[1.671459] (blimp_telemetry) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/executor.hpp:33\x1b[m\x1b[K,\n'}
+[1.671532] (blimp_telemetry) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:26\x1b[m\x1b[K,\n'}
+[1.671609] (blimp_telemetry) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/executors.hpp:21\x1b[m\x1b[K,\n'}
+[1.671682] (blimp_telemetry) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146\x1b[m\x1b[K,\n'}
+[1.671755] (blimp_telemetry) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/ROS_tf2_test/src/blimp_telemetry/src/static_telemetry_node.cpp:4\x1b[m\x1b[K:\n'}
+[1.671837] (blimp_telemetry) StderrLine: {'line': b'\x1b[01m\x1b[K/home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/ROS_tf2_test/src/blimp_telemetry/src/static_telemetry_node.cpp:53:15:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kmissing terminating " character\n'}
+[1.671916] (blimp_telemetry) StderrLine: {'line': b'   53 |       logger, \x1b[01;31m\x1b[K"Invalid number of parameters\x1b[m\x1b[K\n'}
+[1.671990] (blimp_telemetry) StderrLine: {'line': b'      |               \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[1.672062] (blimp_telemetry) StderrLine: {'line': b'\x1b[01m\x1b[K/home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/ROS_tf2_test/src/blimp_telemetry/src/static_telemetry_node.cpp:54:7:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kstray \xe2\x80\x98\x1b[01m\x1b[K\\\x1b[m\x1b[K\xe2\x80\x99 in program\n'}
+[1.672136] (blimp_telemetry) StderrLine: {'line': b'   54 |       \x1b[01;31m\x1b[K\\\x1b[m\x1b[Knusage: "\n'}
+[1.672214] (blimp_telemetry) StderrLine: {'line': b'      |       \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[1.672288] (blimp_telemetry) StderrLine: {'line': b'\x1b[01m\x1b[K/home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/ROS_tf2_test/src/blimp_telemetry/src/static_telemetry_node.cpp:54:16:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kmissing terminating " character\n'}
+[1.672359] (blimp_telemetry) StderrLine: {'line': b'   54 |       \\nusage: \x1b[01;31m\x1b[K"\x1b[m\x1b[K\n'}
+[1.672429] (blimp_telemetry) StderrLine: {'line': b'      |                \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[1.702741] (-) TimerEvent: {}
+[1.803127] (-) TimerEvent: {}
+[1.903528] (-) TimerEvent: {}
+[2.003937] (-) TimerEvent: {}
+[2.104286] (-) TimerEvent: {}
+[2.205185] (-) TimerEvent: {}
+[2.305569] (-) TimerEvent: {}
+[2.405946] (-) TimerEvent: {}
+[2.506238] (-) TimerEvent: {}
+[2.597690] (blimp_telemetry) StderrLine: {'line': b'\x1b[01m\x1b[K/home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/ROS_tf2_test/src/blimp_telemetry/src/static_telemetry_node.cpp:\x1b[m\x1b[K In function \xe2\x80\x98\x1b[01m\x1b[Kint main(int, char**)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[2.597872] (blimp_telemetry) StderrLine: {'line': b'\x1b[01m\x1b[K/home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/ROS_tf2_test/src/blimp_telemetry/src/static_telemetry_node.cpp:54:8:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Knusage\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[2.597930] (blimp_telemetry) StderrLine: {'line': b'   54 |       \\\x1b[01;31m\x1b[Knusage\x1b[m\x1b[K: "\n'}
+[2.597980] (blimp_telemetry) StderrLine: {'line': b'      |        \x1b[01;31m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[2.606331] (-) TimerEvent: {}
+[2.706673] (-) TimerEvent: {}
+[2.807039] (-) TimerEvent: {}
+[2.907343] (-) TimerEvent: {}
+[3.007731] (-) TimerEvent: {}
+[3.108117] (-) TimerEvent: {}
+[3.205030] (blimp_telemetry) StderrLine: {'line': b'make[2]: *** [CMakeFiles/static_telemetry_node.dir/build.make:63: CMakeFiles/static_telemetry_node.dir/src/static_telemetry_node.cpp.o] Error 1\n'}
+[3.205287] (blimp_telemetry) StderrLine: {'line': b'make[1]: *** [CMakeFiles/Makefile2:80: CMakeFiles/static_telemetry_node.dir/all] Error 2\n'}
+[3.205352] (blimp_telemetry) StderrLine: {'line': b'make[1]: *** Waiting for unfinished jobs....\n'}
+[3.208271] (-) TimerEvent: {}
+[3.308565] (-) TimerEvent: {}
+[3.408928] (-) TimerEvent: {}
+[3.509261] (-) TimerEvent: {}
+[3.609620] (-) TimerEvent: {}
+[3.709928] (-) TimerEvent: {}
+[3.810287] (-) TimerEvent: {}
+[3.910604] (-) TimerEvent: {}
+[4.010862] (-) TimerEvent: {}
+[4.111138] (-) TimerEvent: {}
+[4.211425] (-) TimerEvent: {}
+[4.311750] (-) TimerEvent: {}
+[4.412125] (-) TimerEvent: {}
+[4.512494] (-) TimerEvent: {}
+[4.612864] (-) TimerEvent: {}
+[4.713257] (-) TimerEvent: {}
+[4.813635] (-) TimerEvent: {}
+[4.914030] (-) TimerEvent: {}
+[5.014525] (-) TimerEvent: {}
+[5.114898] (-) TimerEvent: {}
+[5.215244] (-) TimerEvent: {}
+[5.278208] (blimp_telemetry) StdoutLine: {'line': b'[ 75%] \x1b[32m\x1b[1mLinking CXX executable blimp_telemetry_node\x1b[0m\n'}
+[5.315425] (-) TimerEvent: {}
+[5.415724] (-) TimerEvent: {}
+[5.507983] (blimp_telemetry) StdoutLine: {'line': b'[ 75%] Built target blimp_telemetry_node\n'}
+[5.508676] (blimp_telemetry) StderrLine: {'line': b'make: *** [Makefile:141: all] Error 2\n'}
+[5.509962] (blimp_telemetry) CommandEnded: {'returncode': 2}
+[5.515839] (-) TimerEvent: {}
+[5.539534] (blimp_telemetry) JobEnded: {'identifier': 'blimp_telemetry', 'rc': 2}
+[5.550705] (-) EventReactorShutdown: {}

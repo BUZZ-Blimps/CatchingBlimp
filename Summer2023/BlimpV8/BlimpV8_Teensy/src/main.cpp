@@ -738,7 +738,7 @@ void loop() {
     gyroEKF.predict(dt);
 
     //pre filter accel before updating vertical velocity kalman filter
-    verticalAccelFilter.filter(-accelGCorrection.agz);
+    verticalAccelFilter.filter(accelGCorrection.agz);
 
     //update vertical velocity kalman filter acceleration
     kf.updateAccel(verticalAccelFilter.last);
@@ -933,7 +933,7 @@ void loop() {
         //set max yaw command to 120 deg/s
         
 
-        yawCom = -yaw_msg*120;
+        yawCom = yaw_msg*120;
 
         if (USE_EST_VELOCITY_IN_MANUAL == true){
           //set max velocities 2 m/s

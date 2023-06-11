@@ -1,0 +1,54 @@
+[0.015s] Invoking command in '/home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/ROS_tf2_test/build/blimp_telemetry': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake /home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/ROS_tf2_test/src/blimp_telemetry -DCMAKE_INSTALL_PREFIX=/home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/ROS_tf2_test/install/blimp_telemetry
+[0.254s] -- The C compiler identification is GNU 9.4.0
+[0.428s] -- The CXX compiler identification is GNU 9.4.0
+[0.435s] -- Check for working C compiler: /usr/bin/cc
+[0.489s] -- Check for working C compiler: /usr/bin/cc -- works
+[0.490s] -- Detecting C compiler ABI info
+[0.553s] -- Detecting C compiler ABI info - done
+[0.563s] -- Detecting C compile features
+[0.563s] -- Detecting C compile features - done
+[0.566s] -- Check for working CXX compiler: /usr/bin/c++
+[0.623s] -- Check for working CXX compiler: /usr/bin/c++ -- works
+[0.624s] -- Detecting CXX compiler ABI info
+[0.684s] -- Detecting CXX compiler ABI info - done
+[0.692s] -- Detecting CXX compile features
+[0.692s] -- Detecting CXX compile features - done
+[0.698s] -- Found ament_cmake: 0.9.11 (/opt/ros/foxy/share/ament_cmake/cmake)
+[0.724s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") 
+[0.724s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[0.894s] -- Found rclcpp: 2.4.2 (/opt/ros/foxy/share/rclcpp/cmake)
+[0.943s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.951s] -- Found rosidl_adapter: 1.3.0 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+[1.025s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "1.1.1f")  
+[1.047s] -- Found FastRTPS: /opt/ros/foxy/include  
+[1.115s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.166s] -- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+[1.169s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[1.170s] -- Looking for pthread.h
+[1.235s] -- Looking for pthread.h - found
+[1.235s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[1.288s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+[1.288s] -- Looking for pthread_create in pthreads
+[1.329s] -- Looking for pthread_create in pthreads - not found
+[1.329s] -- Looking for pthread_create in pthread
+[1.383s] -- Looking for pthread_create in pthread - found
+[1.384s] -- Found Threads: TRUE  
+[1.498s] -- Found sensor_msgs: 2.0.5 (/opt/ros/foxy/share/sensor_msgs/cmake)
+[1.581s] -- Found tf2: 0.13.14 (/opt/ros/foxy/share/tf2/cmake)
+[1.592s] -- Found tf2_ros: 0.13.14 (/opt/ros/foxy/share/tf2_ros/cmake)
+[1.920s] -- Configuring done
+[1.922s] CMake Error at CMakeLists.txt:37 (add_executable):
+[1.922s]   Cannot find source file:
+[1.922s] 
+[1.922s]     src/static_telemetery_node.cpp
+[1.922s] 
+[1.922s]   Tried extensions .c .C .c++ .cc .cpp .cxx .cu .m .M .mm .h .hh .h++ .hm
+[1.922s]   .hpp .hxx .in .txx
+[1.922s] 
+[1.922s] 
+[1.922s] CMake Error at CMakeLists.txt:37 (add_executable):
+[1.922s]   No SOURCES given to target: static_telemetery_node
+[1.922s] 
+[1.922s] 
+[1.922s] CMake Generate step failed.  Build files cannot be regenerated correctly.
+[1.928s] Invoked command in '/home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/ROS_tf2_test/build/blimp_telemetry' returned '1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake /home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/ROS_tf2_test/src/blimp_telemetry -DCMAKE_INSTALL_PREFIX=/home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/ROS_tf2_test/install/blimp_telemetry

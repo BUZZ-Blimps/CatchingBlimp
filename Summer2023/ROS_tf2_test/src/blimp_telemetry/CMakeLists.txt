@@ -26,7 +26,14 @@ find_package(tf2_ros REQUIRED)
 find_package(geometry_msgs REQUIRED)
 
 add_executable(blimp_telemetry_node src/blimp_telemetry_node.cpp)
-ament_target_dependencies(blimp_telemetry_node rclcpp std_msgs sensor_msgs tf2 tf2_ros geometry_msgs)
+ament_target_dependencies(
+   blimp_telemetry_node
+   rclcpp 
+   std_msgs
+   sensor_msgs 
+   tf2 
+   tf2_ros 
+   geometry_msgs)
 
 
 install(
@@ -34,6 +41,7 @@ install(
   blimp_telemetry_node
   DESTINATION lib/${PROJECT_NAME}
 )
+
 
 install(
   DIRECTORY
