@@ -1,5 +1,7 @@
 {
     "files.associations": {
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "memory": "cpp",
+        "condition_variable": "cpp"
     }
 }

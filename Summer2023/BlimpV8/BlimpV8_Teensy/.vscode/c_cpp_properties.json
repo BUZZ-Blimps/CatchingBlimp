@@ -233,7 +233,7 @@
                 ]
             },
             "defines": [
-                "PLATFORMIO=60107",
+                "PLATFORMIO=60109",
                 "__IMXRT1062__",
                 "ARDUINO_TEENSY40",
                 "USB_SERIAL",
@@ -246,7 +246,7 @@
                 "MICRO_ROS_DISTRO_FOXY =1",
                 ""
             ],
-            "cppStandard": "c++14",
+            "cppStandard": "gnu++14",
             "compilerPath": "/home/corelab-laptop2/.platformio/packages/toolchain-gccarmnoneeabi-teensy/bin/arm-none-eabi-gcc",
             "compilerArgs": [
                 "-mthumb",

@@ -223,10 +223,10 @@ void BerryIMU_v3::IMU_read(){
   //---------------------------------------------------------------------------------------
 }
 
-void BerryIMU_v3::IMU_ROTATION(float rotation_angle){  //current: 180 degrees x axis rotation
-      BLA::Matrix<3, 3> Rz = {1,0,0,
-                              0,cosf(rotation_angle/180*PI),-sinf(rotation_angle/180*PI),
-                              0,sinf(rotation_angle/180*PI),cosf(rotation_angle/180*PI)}; // 3X3 Matrix
+void BerryIMU_v3::IMU_ROTATION(float rotation_angle){  //current: 180 degrees z axis rotation
+      BLA::Matrix<3, 3> Rz = {cosf(rotation_angle/180*PI),-sinf(rotation_angle/180*PI),0,
+                              sinf(rotation_angle/180*PI),cosf(rotation_angle/180*PI),0,
+                              0,0,1}; // 3X3 Matrix
       BLA::Matrix<3, 1> gyr_rate= {gyr_rateXraw,
                                    gyr_rateYraw,
                                    gyr_rateZraw};

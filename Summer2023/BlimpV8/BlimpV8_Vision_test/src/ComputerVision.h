@@ -83,7 +83,6 @@ class ComputerVision {
         Mat Left_Stereo_Map2;
         Mat Right_Stereo_Map1;
         Mat Right_Stereo_Map2;
-        Mat Q;
 
         // Stereo matcher
         Ptr< StereoBM > left_matcher;
@@ -122,5 +121,7 @@ class ComputerVision {
 
         // Store left camera's corrected view
         Mat left_correct;
+        //calibration matrix
+        Mat Q;
 
 };

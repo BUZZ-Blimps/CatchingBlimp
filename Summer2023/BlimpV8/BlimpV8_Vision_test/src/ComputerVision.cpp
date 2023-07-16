@@ -261,7 +261,8 @@ bool ComputerVision::getBall(float &X, float &Y, float &Z, float &area, Mat imgL
   Mat newHSV, newHSVRGB;
   merge(HSV, newHSV); // Merge channels back into one image
   cvtColor(newHSV, newHSVRGB, COLOR_HSV2BGR); // Convert to RGB
-  piComm->setStreamFrame(newHSVRGB, "Left_HSV");*/
+  piComm->setStreamFrame(newHSVRGB, "Left_HSV");
+  */
 
   //Isolate Ball
   Mat bMask_L, bMask_R;
@@ -330,14 +331,14 @@ bool ComputerVision::getBall(float &X, float &Y, float &Z, float &area, Mat imgL
 
 
   // Debug draw contours
-  namedWindow("contL");
-  drawContours(imgL, contoursL, index_L, Scalar(255, 255, 255), -1);
-  imshow("contL", imgL);
-  // piComm->setStreamFrame(imgL, "Draw Contours");
+  // namedWindow("contL");
+  // drawContours(imgL, contoursL, index_L, Scalar(255, 255, 255), -1);
+  // imshow("contL", imgL);
+  // // piComm->setStreamFrame(imgL, "Draw Contours");
 
-  namedWindow("contR");
-  drawContours(imgR, contoursR, index_R, Scalar(255, 255, 255), -1);
-  imshow("contR", imgR);
+  // namedWindow("contR");
+  // drawContours(imgR, contoursR, index_R, Scalar(255, 255, 255), -1);
+  // imshow("contR", imgR);
 
   // Center detection with blob centroid
   Moments m_L = moments(largestContour_L, true);
@@ -351,13 +352,22 @@ bool ComputerVision::getBall(float &X, float &Y, float &Z, float &area, Mat imgL
 
   // Reveal area around chosen point in original image
   Mat maskL = Mat::zeros(imgL.size(), CV_8UC1);
-  Mat maskR = Mat::zeros(imgL.size(), CV_8UC1);
+  Mat maskR = Mat::zeros(imgR.size(), CV_8UC1);
 
   // Create Circle masks
-  int radius = 50;
+  int radius = 80;
+  // Create rectangle masks
+  int height = 80;
+  int width = 100;
+  Point boundingBoxL_LT(p_L.x-width/2,p_L.y-height/2);
+  Point boundingBoxL_RB(p_L.x+width/2,p_L.y+height/2);
+  Point boundingBoxR_LT(p_R.x-width/2,p_R.y-height/2);
+  Point boundingBoxR_RB(p_R.x+width/2,p_R.y+height/2);
 
-  circle(maskL, p_L, radius, Scalar(255, 255, 255), -1);
-  circle(maskR, p_R, radius, Scalar(255, 255, 255), -1);
+  // circle(maskL, p_L, radius, Scalar(255, 255, 255), -1);
+  // circle(maskR, p_R, radius, Scalar(255, 255, 255), -1);
+  rectangle(maskL, boundingBoxL_LT, boundingBoxL_RB, Scalar(255, 255, 255), -1);
+  rectangle(maskR, boundingBoxR_LT, boundingBoxR_RB, Scalar(255, 255, 255), -1);
 
   threshold(maskL, maskL, 127, 255, THRESH_BINARY);
   threshold(maskR, maskR, 127, 255, THRESH_BINARY);
@@ -368,8 +378,21 @@ bool ComputerVision::getBall(float &X, float &Y, float &Z, float &area, Mat imgL
   bitwise_and(Right_nice, Right_nice, masked_imgR, maskR);
 
   //piComm->setStreamFrame(masked_imgL, "MaxSight");
+  
+  // Define the region of interest (ROI)
+  // Rect roi(p_L.x, p_L.y, 200, 100); // Example ROI: top-left (100, 100), width 200, height 200
+  // for (int y = roi.y; y < roi.y + roi.height; ++y)
+  //   {
+  //       for (int x = roi.x; x < roi.x + roi.width; ++x)
+  //       {
+          
+  //       }
+  //   }
 
-  // Debug Circular Mask
+
+
+
+  // Debug Circular/Rectangluar Mask
   namedWindow("imgL");
   imshow("imgL",masked_imgL);
   waitKey(1);
@@ -379,129 +402,168 @@ bool ComputerVision::getBall(float &X, float &Y, float &Z, float &area, Mat imgL
   imshow("imgR",masked_imgR);
   waitKey(1);
 
-  try {
 
-  // Perform ORB feature extraction and matching
-  int minHessian = 800;
-  Ptr<ORB> orb = ORB::create(minHessian);
 
-  vector<KeyPoint> keypointsL, keypointsR;
-  Mat descriptorsL, descriptorsR;
+  //disparity map of regions
 
-  // Detect keypoints in the image
-  orb->detect(masked_imgL, keypointsL);
-  orb->detect(masked_imgR, keypointsR);
+  //disparity map of every pixel in the region
+  Mat disparity32F = Mat(masked_imgL.rows, masked_imgL.cols, CV_32F);
 
-  //Define radius
-  float radius = 15.0f;
+  // StereoBM sbm(StereoBM::BASIC_PRESET,80,5);
+  // sbm.state->preFilterSize  = 15;
+  // sbm.state->preFilterCap   = 20;
+  // sbm.state->SADWindowSize  = 11;
+  // sbm.state->minDisparity   = 0;
+  // sbm.state->numberOfDisparities = 80;
+  // sbm.state->textureThreshold = 0;
+  // sbm.state->uniquenessRatio = 8;
+  // sbm.state->speckleWindowSize = 0;
+  // sbm.state->speckleRange = 0;
 
-  //Filter keypoints
-  vector<KeyPoint> kp_filt_L;
-  for (const auto& k : keypointsL)
-  {
-    //Calculate Float
-    float dist = sqrt(pow(k.pt.x - p_L.x, 2) + pow(k.pt.y - p_L.y, 2));
+  // // Compute disparity
+  // sbm(masked_imgL, masked_imgR, disparity32F, CV_32F);
 
-      if (dist < radius)
-      {
-        kp_filt_L.push_back(k);
-      }
-  }
-
-  vector<KeyPoint> kp_filt_R;
-  for (const auto& k : keypointsR)
-  {
-    //Calculate Float
-    float dist = sqrt(pow(k.pt.x - p_R.x, 2) + pow(k.pt.y - p_R.y, 2));
-
-      if (dist < radius)
-      {
-        kp_filt_R.push_back(k);
-      }
-  }
-
-  //DEBUG: Filtering
-  //cout << "Number of keypoints before filtering: " << keypointsL.size() << endl;
-  //cout << "Number of keypoints after filtering: " << kp_filt_L.size() << endl;
-
-  //Compute matches
-  orb->compute(masked_imgL, kp_filt_L, descriptorsL);
-  orb->compute(masked_imgR, kp_filt_R, descriptorsR);
-
-  // Match descriptors using Brute-Force matcher
-  BFMatcher matcher(NORM_HAMMING);
-  vector<vector<DMatch>> knn_matches;
-  matcher.knnMatch(descriptorsL, descriptorsR, knn_matches, 2);
-
-  // Filter matches using ratio test
-  const float ratio_thresh = 0.8f;
-  vector<DMatch> good_matches;
-  for (size_t i = 0; i < knn_matches.size(); i++) {
-    if (knn_matches[i][0].distance < ratio_thresh * knn_matches[i][1].distance) {
-      good_matches.push_back(knn_matches[i][0]);
+  //using Q matrix from calibration to project image to 3D
+  cv::Mat_<cv::Vec3f> XYZ(disparity32F.rows,disparity32F.cols);   // Output point cloud
+  cv::Mat_<float> vec_tmp(4,1);
+  for(int y=0; y<disparity32F.rows; ++y) {
+    for(int x=0; x<disparity32F.cols; ++x) {
+        vec_tmp(0)=x; vec_tmp(1)=y; vec_tmp(2)=disparity32F.at<float>(y,x); vec_tmp(3)=1;
+        vec_tmp = Q*vec_tmp;
+        vec_tmp /= vec_tmp(3);
+        cv::Vec3f &point = XYZ.at<cv::Vec3f>(y,x);
+        point[0] = vec_tmp(0);
+        point[1] = vec_tmp(1);
+        point[2] = vec_tmp(2);
     }
   }
 
-  // Draw good matches
-  Mat img_matches;
-  drawMatches(masked_imgL, kp_filt_L, masked_imgR, kp_filt_R, knn_matches, img_matches);
 
-  namedWindow("ORB Matches");
-  imshow("ORB Matches", img_matches);
-  waitKey(1);
-  // piComm->setStreamFrame(img_matches, "Matches");
 
-  // Calculate average distance of all matched points
-  double avg_distance = 0.0;
-  for (const auto& matches : knn_matches) {
-    if (matches.size() < 2) continue;  // Skip if not enough matches
-    const auto& kp_L = kp_filt_L[matches[0].queryIdx];
-    const auto& kp_R1 = kp_filt_R[matches[0].trainIdx];
-    const auto& kp_R2 = kp_filt_R[matches[1].trainIdx];
-    double disparity = abs(kp_L.pt.x - kp_R1.pt.x);
-    double ratio = matches[0].distance / matches[1].distance;
-    if (ratio < ratio_thresh) {
-      double distance = (F * BASELINE) / disparity;
-      avg_distance += distance;
-    }
-  }
 
-  avg_distance /= good_matches.size();
+  // try {
 
-  // Add RANSAC maybe?
+  // // Perform ORB feature extraction and matching
+  // int minHessian = 800;
+  // Ptr<ORB> orb = ORB::create(minHessian);
 
-  if (isnan(avg_distance)) {
-    //Assign XYZ of ball
-    Z = 1000;
-    X = (p_L.x + p_R.x)/2;
-    Y = (p_L.y + p_R.y)/2;
-    area = (largestArea_L + largestArea_R)/2;
+  // vector<KeyPoint> keypointsL, keypointsR;
+  // Mat descriptorsL, descriptorsR;
 
-  } else {
-    //Assign XYZ of ball
-    Z = avg_distance;
-    X = (p_L.x + p_R.x)/2;
-    Y = (p_L.y + p_R.y)/2;
-    area = (largestArea_L + largestArea_R)/2;
+  // // Detect keypoints in the image
+  // orb->detect(masked_imgL, keypointsL);
+  // orb->detect(masked_imgR, keypointsR);
 
-  }
+  // //Define radius
+  // float radius = 15.0f;
 
-  //DEBUG READ OUTPUT
-  if(false){
-    cout << "Distance : " << Z << endl;
-    cout << "X: " << X << endl;
-    cout << "Y: " << Y << endl;
-    cout << area << endl;
-    cout << isnan(Z) << endl << endl;
-  }
+  // //Filter keypoints
+  // vector<KeyPoint> kp_filt_L;
+  // for (const auto& k : keypointsL)
+  // {
+  //   //Calculate Float
+  //   float dist = sqrt(pow(k.pt.x - p_L.x, 2) + pow(k.pt.y - p_L.y, 2));
+
+  //     if (dist < radius)
+  //     {
+  //       kp_filt_L.push_back(k);
+  //     }
+  // }
+
+  // vector<KeyPoint> kp_filt_R;
+  // for (const auto& k : keypointsR)
+  // {
+  //   //Calculate Float
+  //   float dist = sqrt(pow(k.pt.x - p_R.x, 2) + pow(k.pt.y - p_R.y, 2));
+
+  //     if (dist < radius)
+  //     {
+  //       kp_filt_R.push_back(k);
+  //     }
+  // }
+
+  // //DEBUG: Filtering
+  // //cout << "Number of keypoints before filtering: " << keypointsL.size() << endl;
+  // //cout << "Number of keypoints after filtering: " << kp_filt_L.size() << endl;
+
+  // //Compute matches
+  // orb->compute(masked_imgL, kp_filt_L, descriptorsL);
+  // orb->compute(masked_imgR, kp_filt_R, descriptorsR);
+
+  // // Match descriptors using Brute-Force matcher
+  // BFMatcher matcher(NORM_HAMMING);
+  // vector<vector<DMatch>> knn_matches;
+  // matcher.knnMatch(descriptorsL, descriptorsR, knn_matches, 2);
+
+  // // Filter matches using ratio test
+  // const float ratio_thresh = 0.8f;
+  // vector<DMatch> good_matches;
+  // for (size_t i = 0; i < knn_matches.size(); i++) {
+  //   if (knn_matches[i][0].distance < ratio_thresh * knn_matches[i][1].distance) {
+  //     good_matches.push_back(knn_matches[i][0]);
+  //   }
+  // }
+
+  // // Draw good matches
+  // Mat img_matches;
+  // drawMatches(masked_imgL, kp_filt_L, masked_imgR, kp_filt_R, knn_matches, img_matches);
+
+  // namedWindow("ORB Matches");
+  // imshow("ORB Matches", img_matches);
+  // waitKey(1);
+  // // piComm->setStreamFrame(img_matches, "Matches");
+
+  // // Calculate average distance of all matched points
+  // double avg_distance = 0.0;
+  // for (const auto& matches : knn_matches) {
+  //   if (matches.size() < 2) continue;  // Skip if not enough matches
+  //   const auto& kp_L = kp_filt_L[matches[0].queryIdx];
+  //   const auto& kp_R1 = kp_filt_R[matches[0].trainIdx];
+  //   const auto& kp_R2 = kp_filt_R[matches[1].trainIdx];
+  //   double disparity = abs(kp_L.pt.x - kp_R1.pt.x);
+  //   double ratio = matches[0].distance / matches[1].distance;
+  //   if (ratio < ratio_thresh) {
+  //     double distance = (F * BASELINE) / disparity;
+  //     avg_distance += distance;
+  //   }
+  // }
+
+  // avg_distance /= good_matches.size();
+
+  // // Add RANSAC maybe?
+
+  // if (isnan(avg_distance)) {
+  //   //Assign XYZ of ball
+  //   Z = 1000;
+  //   X = (p_L.x + p_R.x)/2;
+  //   Y = (p_L.y + p_R.y)/2;
+  //   area = (largestArea_L + largestArea_R)/2;
+
+  // } else {
+  //   //Assign XYZ of ball
+  //   Z = avg_distance;
+  //   X = (p_L.x + p_R.x)/2;
+  //   Y = (p_L.y + p_R.y)/2;
+  //   area = (largestArea_L + largestArea_R)/2;
+
+  // }
+
+  // //DEBUG READ OUTPUT
+  // if(false){
+  //   cout << "Distance : " << Z << endl;
+  //   cout << "X: " << X << endl;
+  //   cout << "Y: " << Y << endl;
+  //   cout << area << endl;
+  //   cout << isnan(Z) << endl << endl;
+  // }
 
   return true;
 
-  }
-  catch (const cv::Exception){
-    cout << "Failed" << endl;
-    return false;
-  }
+  // }
+  // catch (const cv::Exception){
+  //   cout << "Failed" << endl;
+  //   return false;
+  // }
   
 }
 

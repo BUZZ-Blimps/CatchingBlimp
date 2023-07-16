@@ -14,7 +14,7 @@ Gimbal::Gimbal(int yawPin, int pitchPin, int motorPin,double newDeadband, double
   phiPos1 = phiOffset;
   thetaPos = 0;
 
-  servoThreshold = 180; // (degrees) Defines how close servos must be for brushless motors to activate
+  servoThreshold = 1000; // (degrees) Defines how close servos must be for brushless motors to activate
   
   //attach to pin
   yawServo.attach(yawPin);

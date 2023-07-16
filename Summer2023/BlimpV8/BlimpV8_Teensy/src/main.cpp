@@ -2,7 +2,11 @@
 
 #include <micro_ros_platformio.h>
 
+#include <chrono>
+#include <cstdlib>
+#include <memory>
 #include <vector>
+
 #include "MotorControl.h"
 #include "BerryIMU_v3.h"
 #include "Madgwick_Filter.h"
@@ -34,7 +38,8 @@
 #include <std_msgs/msg/float64.h>
 #include <std_msgs/msg/float64_multi_array.h>
 
-
+//include service
+#include <test_msgs/srv/basic_types.h>
 
 #define EXECUTE_EVERY_N_MS(MS, X)  do { \
   static volatile int64_t init = -1; \
@@ -151,7 +156,7 @@ void error_loop() {
 
 //constants
 #define MICROS_TO_SEC             1000000.0
-#define BUFFER_LEN                300
+#define BUFFER_LEN                500
 
 //motor timeout before entering lost state
 #define TEENSY_WAIT_TIME          0.5
@@ -194,7 +199,7 @@ Gimbal leftGimbal(L_Yaw, L_Pitch, PWM_L, 25, 30, 1000, 2000, 45, 0.5);
 Gimbal rightGimbal(R_Yaw, R_Pitch, PWM_R, 25, 30, 1000, 2000, 135, 0.5);
 
 //Manual PID control
-PID verticalPID(-350, 0, 0);  
+PID verticalPID(350, 0, 0);  
 PID yawPID(5.0, 0, 0);
 PID forwardPID(300, 0, 0);  //not used
 PID translationPID(300, 0, 0); //not used
@@ -306,7 +311,7 @@ float pitch = 0;
 float yaw = 0;
 float roll = 0;
 
-float rotation = 180;
+float rotation = 0;
 
 float ground_pressure = 0;
 
@@ -363,14 +368,21 @@ float goalYawDirection = -1;
 
 //------------------MICRO ROS publishers/subscribers--------------
 //ROS node
+//executors
 rclc_executor_t executor_pub;
 rclc_executor_t executor_sub;
+rclc_executor_t executor_srv;
 
 
 rclc_support_t support;
 rcl_allocator_t allocator;
 rcl_node_t node;
 rcl_timer_t timer;
+
+
+//ROS client
+rcl_client_t client;
+rmw_request_id_t req_id;
 
 //ROS publishers
 rcl_publisher_t blimpid_publisher;
@@ -391,6 +403,11 @@ rcl_subscription_t kill_subscription; //boolean
 
 //message types: String Bool Float32 Float32 MultiArray
 //message topics : /auto /baseBarometer /blimpID /grabbing /killed /motorCommands /shooting /identify /imu
+
+//service response&request
+test_msgs__srv__BasicTypes_Response res;
+test_msgs__srv__BasicTypes_Request req;
+bool check = false;
 
 //bolean message
 std_msgs__msg__Bool identity_msg;
@@ -416,17 +433,43 @@ int counter = 0;
 //sensor message
 sensor_msgs__msg__Imu imu_msg;
 
+
+void client_callback(const void * msgin){
+  // Cast response message to expected type
+  test_msgs__srv__BasicTypes_Response *id_msg = (test_msgs__srv__BasicTypes_Response *) msgin;
+  check = id_msg->bool_value;
+}
+
+//send request
+void send_request(){
+  // request
+  int64_t seq;
+  test_msgs__srv__BasicTypes_Request__init(&req);
+  snprintf(req.string_value.data, BUFFER_LEN,"%s",burn_cream_str);
+  req.string_value.size = strlen(req.string_value.data);
+  req.string_value.capacity = BUFFER_LEN;
+  delay(2000);  //Sleep a while to ensure DDS matching before sending request
+  RCSOFTCHECK(rcl_send_request(&client, &req, &seq));
+}
+
+//receive response
+void receive_response(){
+  //response
+  RCSOFTCHECK(rcl_take_response(&client,&req_id, &res));
+}
+
 //timer call back
 void timer_callback(rcl_timer_t * timer, int64_t last_call_time) {
   RCLC_UNUSED(last_call_time);
   if (timer != NULL) {
   // snprintf(msg.data.data, BUFFER_LEN, "%s for the %dth time!", burn_cream_str, counter++);
-  snprintf(blimpid_msg.data.data, BUFFER_LEN, burn_cream_str, "BurnCreamBlimp");
+  snprintf(blimpid_msg.data.data, BUFFER_LEN,"%s", burn_cream_str);
   blimpid_msg.data.size = strlen(blimpid_msg.data.data);
   blimpid_msg.data.capacity = BUFFER_LEN;
   RCSOFTCHECK(rcl_publish(&blimpid_publisher, &blimpid_msg, NULL));
   }
 }
+
 
 //subscription massage callbacks
 //message topics : /auto /baseBarometer/grabbing /killed /motorCommands /shooting /
@@ -514,7 +557,11 @@ bool create_entities() {
   RCCHECK(rclc_support_init(&support, 0, NULL, &allocator));
 
   // create node
-  RCCHECK(rclc_node_init_default(&node, "BurnCreamBlimp", "", &support)); //name the robot
+  RCCHECK(rclc_node_init_default(&node, burn_cream_str, "", &support)); //name the robot
+
+  //create client
+  RCCHECK(rclc_client_init_default(&client, &node, ROSIDL_GET_SRV_TYPE_SUPPORT(test_msgs, srv, BasicTypes), "/BlimpID"));  
+
 
   // create publishers
   RCCHECK(rclc_publisher_init_default(&blimpid_publisher, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, String), "/BurnCreamBlimp/blimpID"));
@@ -539,12 +586,17 @@ bool create_entities() {
   // create executor
   executor_pub = rclc_executor_get_zero_initialized_executor();
   executor_sub = rclc_executor_get_zero_initialized_executor();
+  executor_srv = rclc_executor_get_zero_initialized_executor();
 
+  //init executors
+  RCCHECK(rclc_executor_init(&executor_srv, &support.context, 1, &allocator));
   RCCHECK(rclc_executor_init(&executor_pub, &support.context, 5, &allocator));
   RCCHECK(rclc_executor_add_timer(&executor_pub, &timer));
-
   RCCHECK(rclc_executor_init(&executor_sub, &support.context, 8, &allocator));
 
+  //add client  
+  RCCHECK(rclc_executor_add_client(&executor_srv, &client, &res, client_callback));
+  
   //add all subscriptions
   RCCHECK(rclc_executor_add_subscription(&executor_sub, &identity_subscription, &identity_msg, &id_subscription_callback, ON_NEW_DATA));
   RCCHECK(rclc_executor_add_subscription(&executor_sub, &auto_subscription, &auto_msg, &auto_subscription_callback, ON_NEW_DATA));
@@ -576,8 +628,12 @@ void destroy_entities() {
   rcl_subscription_fini(&shooter_subscription, &node);
   rcl_subscription_fini(&motor_subscription, &node);
   rcl_subscription_fini(&kill_subscription, &node);
+  
+  //finish client
+  rcl_client_fini(&client, &node);
 
   rcl_timer_fini(&timer);
+  rclc_executor_fini(&executor_srv);
   rclc_executor_fini(&executor_pub);
   rclc_executor_fini(&executor_sub);
  
@@ -617,6 +673,10 @@ void setup() {
   
   //initialize messages
 
+  //service message
+  req.string_value.data = (char *)malloc(BUFFER_LEN * sizeof(char));
+  
+  //publisher/subscriber messages
   imu_msg.header.frame_id.data = (char *) malloc(BUFFER_LEN*sizeof(char));
   imu_msg.header.frame_id.size = 0;
   imu_msg.header.frame_id.capacity = BUFFER_LEN;
@@ -645,12 +705,13 @@ void setup() {
 //loop
 
 void loop() {
-  //-----------------------MICRO ROS PUBLISHER and SUBSCRIBERS--------------------------------------
+  //-------------------------MICRO ROS PUBLISHER and SUBSCRIBERS--------------------------------------
   // publisher state machine
   // checking if the agent is available 
+
   switch (agent_state_) {
     case WAITING_AGENT:
-      EXECUTE_EVERY_N_MS(500, agent_state_ = (RMW_RET_OK == rmw_uros_ping_agent(100, 1)) ? AGENT_AVAILABLE : WAITING_AGENT;);
+      EXECUTE_EVERY_N_MS(100, agent_state_ = (RMW_RET_OK == rmw_uros_ping_agent(100, 1)) ? AGENT_AVAILABLE : WAITING_AGENT;);
       break;
     case AGENT_AVAILABLE:
       agent_state_ = (true == create_entities()) ? AGENT_CONNECTED : WAITING_AGENT;
@@ -658,10 +719,11 @@ void loop() {
         destroy_entities();
       };
       break;
-    case AGENT_CONNECTED:
-      EXECUTE_EVERY_N_MS(100, agent_state_ = (RMW_RET_OK == rmw_uros_ping_agent(100, 1)) ? AGENT_CONNECTED : AGENT_DISCONNECTED;);
+    case AGENT_CONNECTED: //the microros agent is connected to teensy
+      EXECUTE_EVERY_N_MS(10, agent_state_ = (RMW_RET_OK == rmw_uros_ping_agent(10, 1)) ? AGENT_CONNECTED : AGENT_DISCONNECTED;);
       if (agent_state_ == AGENT_CONNECTED) {
-        rclc_executor_spin_some(&executor_pub, RCL_MS_TO_NS(100));
+        rclc_executor_spin_some(&executor_srv, RCL_MS_TO_NS(10));
+        rclc_executor_spin_some(&executor_pub, RCL_MS_TO_NS(10));
         rclc_executor_spin_some(&executor_sub, RCL_MS_TO_NS(10));
       }
       break;
@@ -696,7 +758,7 @@ void loop() {
                              BerryIMU.AccZraw);
 
     //publish imu data
-    snprintf(imu_msg.header.frame_id.data, BUFFER_LEN, "BurnCreamBlimp");
+    snprintf(imu_msg.header.frame_id.data, BUFFER_LEN, burn_cream_str);
     imu_msg.header.frame_id.size = strlen(blimpid_msg.data.data);
     imu_msg.header.frame_id.capacity = BUFFER_LEN;
 
@@ -933,7 +995,7 @@ void loop() {
         //set max yaw command to 120 deg/s
         
 
-        yawCom = yaw_msg*120;
+        yawCom = -yaw_msg*120;
 
         if (USE_EST_VELOCITY_IN_MANUAL == true){
           //set max velocities 2 m/s
