@@ -1,0 +1,21 @@
+[0.500s] Invoking command in '/home/corelab-laptop2/test_urdf_tool_ws/src/test_urdf_tool': PYTHONPATH=/home/corelab-laptop2/test_urdf_tool_ws/build/test_urdf_tool/prefix_override:/home/corelab-laptop2/test_urdf_tool_ws/install/test_urdf_tool/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/test_urdf_tool build --build-base /home/corelab-laptop2/test_urdf_tool_ws/build/test_urdf_tool/build install --record /home/corelab-laptop2/test_urdf_tool_ws/build/test_urdf_tool/install.log --install-scripts $base/lib/test_urdf_tool --single-version-externally-managed
+[0.667s] running egg_info
+[0.667s] writing ../../build/test_urdf_tool/test_urdf_tool.egg-info/PKG-INFO
+[0.668s] writing dependency_links to ../../build/test_urdf_tool/test_urdf_tool.egg-info/dependency_links.txt
+[0.669s] writing entry points to ../../build/test_urdf_tool/test_urdf_tool.egg-info/entry_points.txt
+[0.669s] writing requirements to ../../build/test_urdf_tool/test_urdf_tool.egg-info/requires.txt
+[0.669s] writing top-level names to ../../build/test_urdf_tool/test_urdf_tool.egg-info/top_level.txt
+[0.693s] reading manifest file '../../build/test_urdf_tool/test_urdf_tool.egg-info/SOURCES.txt'
+[0.694s] writing manifest file '../../build/test_urdf_tool/test_urdf_tool.egg-info/SOURCES.txt'
+[0.694s] running build
+[0.694s] running build_py
+[0.694s] running install
+[0.695s] running install_lib
+[0.696s] running install_data
+[0.696s] copying launch/launch.py -> /home/corelab-laptop2/test_urdf_tool_ws/install/test_urdf_tool/share/test_urdf_tool
+[0.696s] running install_egg_info
+[0.697s] removing '/home/corelab-laptop2/test_urdf_tool_ws/install/test_urdf_tool/lib/python3.8/site-packages/test_urdf_tool-0.0.0-py3.8.egg-info' (and everything under it)
+[0.698s] Copying ../../build/test_urdf_tool/test_urdf_tool.egg-info to /home/corelab-laptop2/test_urdf_tool_ws/install/test_urdf_tool/lib/python3.8/site-packages/test_urdf_tool-0.0.0-py3.8.egg-info
+[0.698s] running install_scripts
+[0.710s] writing list of installed files to '/home/corelab-laptop2/test_urdf_tool_ws/build/test_urdf_tool/install.log'
+[0.725s] Invoked command in '/home/corelab-laptop2/test_urdf_tool_ws/src/test_urdf_tool' returned '0': PYTHONPATH=/home/corelab-laptop2/test_urdf_tool_ws/build/test_urdf_tool/prefix_override:/home/corelab-laptop2/test_urdf_tool_ws/install/test_urdf_tool/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/test_urdf_tool build --build-base /home/corelab-laptop2/test_urdf_tool_ws/build/test_urdf_tool/build install --record /home/corelab-laptop2/test_urdf_tool_ws/build/test_urdf_tool/install.log --install-scripts $base/lib/test_urdf_tool --single-version-externally-managed

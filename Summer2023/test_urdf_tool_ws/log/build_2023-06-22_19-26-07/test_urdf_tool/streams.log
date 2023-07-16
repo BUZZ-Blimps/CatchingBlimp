@@ -1,0 +1,33 @@
+[0.475s] Invoking command in '/home/corelab-laptop2/test_urdf_tool_ws/src/test_urdf_tool': PYTHONPATH=/home/corelab-laptop2/test_urdf_tool_ws/build/test_urdf_tool/prefix_override:/home/corelab-laptop2/test_urdf_tool_ws/install/test_urdf_tool/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/test_urdf_tool build --build-base /home/corelab-laptop2/test_urdf_tool_ws/build/test_urdf_tool/build install --record /home/corelab-laptop2/test_urdf_tool_ws/build/test_urdf_tool/install.log --install-scripts $base/lib/test_urdf_tool --single-version-externally-managed
+[0.633s] running egg_info
+[0.633s] creating ../../build/test_urdf_tool/test_urdf_tool.egg-info
+[0.633s] writing ../../build/test_urdf_tool/test_urdf_tool.egg-info/PKG-INFO
+[0.633s] writing dependency_links to ../../build/test_urdf_tool/test_urdf_tool.egg-info/dependency_links.txt
+[0.633s] writing entry points to ../../build/test_urdf_tool/test_urdf_tool.egg-info/entry_points.txt
+[0.633s] writing requirements to ../../build/test_urdf_tool/test_urdf_tool.egg-info/requires.txt
+[0.634s] writing top-level names to ../../build/test_urdf_tool/test_urdf_tool.egg-info/top_level.txt
+[0.634s] writing manifest file '../../build/test_urdf_tool/test_urdf_tool.egg-info/SOURCES.txt'
+[0.657s] reading manifest file '../../build/test_urdf_tool/test_urdf_tool.egg-info/SOURCES.txt'
+[0.657s] writing manifest file '../../build/test_urdf_tool/test_urdf_tool.egg-info/SOURCES.txt'
+[0.657s] running build
+[0.657s] running build_py
+[0.657s] creating /home/corelab-laptop2/test_urdf_tool_ws/build/test_urdf_tool/build
+[0.657s] creating /home/corelab-laptop2/test_urdf_tool_ws/build/test_urdf_tool/build/lib
+[0.657s] creating /home/corelab-laptop2/test_urdf_tool_ws/build/test_urdf_tool/build/lib/test_urdf_tool
+[0.657s] copying test_urdf_tool/__init__.py -> /home/corelab-laptop2/test_urdf_tool_ws/build/test_urdf_tool/build/lib/test_urdf_tool
+[0.657s] running install
+[0.658s] running install_lib
+[0.658s] creating /home/corelab-laptop2/test_urdf_tool_ws/install/test_urdf_tool/lib/python3.8/site-packages/test_urdf_tool
+[0.659s] copying /home/corelab-laptop2/test_urdf_tool_ws/build/test_urdf_tool/build/lib/test_urdf_tool/__init__.py -> /home/corelab-laptop2/test_urdf_tool_ws/install/test_urdf_tool/lib/python3.8/site-packages/test_urdf_tool
+[0.659s] byte-compiling /home/corelab-laptop2/test_urdf_tool_ws/install/test_urdf_tool/lib/python3.8/site-packages/test_urdf_tool/__init__.py to __init__.cpython-38.pyc
+[0.660s] running install_data
+[0.660s] creating /home/corelab-laptop2/test_urdf_tool_ws/install/test_urdf_tool/share/ament_index
+[0.660s] creating /home/corelab-laptop2/test_urdf_tool_ws/install/test_urdf_tool/share/ament_index/resource_index
+[0.660s] creating /home/corelab-laptop2/test_urdf_tool_ws/install/test_urdf_tool/share/ament_index/resource_index/packages
+[0.660s] copying resource/test_urdf_tool -> /home/corelab-laptop2/test_urdf_tool_ws/install/test_urdf_tool/share/ament_index/resource_index/packages
+[0.660s] copying package.xml -> /home/corelab-laptop2/test_urdf_tool_ws/install/test_urdf_tool/share/test_urdf_tool
+[0.660s] running install_egg_info
+[0.661s] Copying ../../build/test_urdf_tool/test_urdf_tool.egg-info to /home/corelab-laptop2/test_urdf_tool_ws/install/test_urdf_tool/lib/python3.8/site-packages/test_urdf_tool-0.0.0-py3.8.egg-info
+[0.662s] running install_scripts
+[0.673s] writing list of installed files to '/home/corelab-laptop2/test_urdf_tool_ws/build/test_urdf_tool/install.log'
+[0.688s] Invoked command in '/home/corelab-laptop2/test_urdf_tool_ws/src/test_urdf_tool' returned '0': PYTHONPATH=/home/corelab-laptop2/test_urdf_tool_ws/build/test_urdf_tool/prefix_override:/home/corelab-laptop2/test_urdf_tool_ws/install/test_urdf_tool/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/test_urdf_tool build --build-base /home/corelab-laptop2/test_urdf_tool_ws/build/test_urdf_tool/build install --record /home/corelab-laptop2/test_urdf_tool_ws/build/test_urdf_tool/install.log --install-scripts $base/lib/test_urdf_tool --single-version-externally-managed

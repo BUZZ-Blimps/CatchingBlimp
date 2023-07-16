@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="burn_cream_blimp">
+<link name="world">
+    <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+            <box size="0.001 0.001 0.001" />
+        </geometry>
+    </visual>
+</link>
+
+<joint name="world_joint" type="fixed">
+    <origin xyz="0 0 0.001" rpy="0 0 3.1415" />
+    <parent link="world"/>
+    <child link="staticFrame" />
+</joint>
+  <link
+    name="staticFrame">
+    <inertial>
+      <origin
+        xyz="0.52984 -0.0063986 -0.24547"
+        rpy="0 0 3.1416" />
+      <mass
+        value="29.561" />
+      <inertia
+        ixx="2.159"
+        ixy="-5.058E-05"
+        ixz="0.0022745"
+        iyy="6.8294"
+        iyz="-6.1749E-05"
+        izz="6.3297" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0.43258 0 0.38426"
+        rpy="0 0 3.1416" />
+      <geometry>
+        <mesh
+          filename="package://test_urdf_tool/meshes/visual/staticFrame.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://test_urdf_tool/meshes/visual/staticFrame.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="BurnCreamBlimp">
+    <inertial>
+      <origin
+        xyz="0.52984 -0.0063986 -0.24547"
+        rpy="1.5708 0 3.1416" />
+      <mass
+        value="29.551" />
+      <inertia
+        ixx="2.159"
+        ixy="0.0022744"
+        ixz="5.1199E-05"
+        iyy="6.3297"
+        iyz="6.1646E-05"
+        izz="6.8294" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0.43258 -7E-07 0.38426"
+        rpy="1.5708 0 3.1416" />
+      <geometry>
+        <mesh
+          filename="package://test_urdf_tool/meshes/visual/BurnCreamBlimp.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://test_urdf_tool/meshes/visual/BurnCreamBlimp.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="IMU"
+    type="continuous">
+    <origin
+      xyz="0 0 0"
+      rpy="1.5708 0 3.1416" />
+    <parent
+      link="staticFrame" />
+    <child
+      link="BurnCreamBlimp" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="BurnCreamCamera">
+    <inertial>
+      <origin
+        xyz="1.4495E-09 -0.0022426 -0.0086043"
+        rpy="0 0 0" />
+      <mass
+        value="0.010159" />
+      <inertia
+        ixx="6.7246E-07"
+        ixy="-1.0359E-07"
+        ixz="-6.1934E-07"
+        iyy="6.282E-06"
+        iyz="-6.7786E-08"
+        izz="6.1913E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 3.14159 0" />
+      <geometry>
+        <mesh
+          filename="package://test_urdf_tool/meshes/visual/BurnCreamCamera.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://test_urdf_tool/meshes/visual/BurnCreamCamera.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Camera"
+    type="fixed">
+    <origin
+      xyz="0.640405 -9E-03 0.004073"
+      rpy="1.5708 0 1.5708" />
+    <parent
+      link="BurnCreamBlimp" />
+    <child
+      link="BurnCreamCamera" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+</robot>

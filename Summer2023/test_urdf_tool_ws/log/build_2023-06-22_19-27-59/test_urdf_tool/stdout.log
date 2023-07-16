@@ -1,0 +1,32 @@
+running egg_info
+writing ../../build/test_urdf_tool/test_urdf_tool.egg-info/PKG-INFO
+writing dependency_links to ../../build/test_urdf_tool/test_urdf_tool.egg-info/dependency_links.txt
+writing entry points to ../../build/test_urdf_tool/test_urdf_tool.egg-info/entry_points.txt
+writing requirements to ../../build/test_urdf_tool/test_urdf_tool.egg-info/requires.txt
+writing top-level names to ../../build/test_urdf_tool/test_urdf_tool.egg-info/top_level.txt
+reading manifest file '../../build/test_urdf_tool/test_urdf_tool.egg-info/SOURCES.txt'
+writing manifest file '../../build/test_urdf_tool/test_urdf_tool.egg-info/SOURCES.txt'
+running build
+running build_py
+running install
+running install_lib
+running install_data
+copying package.xml -> /home/corelab-laptop2/test_urdf_tool_ws/install/test_urdf_tool/share/test_urdf_tool
+copying launch/launch.py -> /home/corelab-laptop2/test_urdf_tool_ws/install/test_urdf_tool/share/test_urdf_tool
+creating /home/corelab-laptop2/test_urdf_tool_ws/install/test_urdf_tool/share/test_urdf_tool/urdf
+copying urdf/burn_cream_blimp.urdf -> /home/corelab-laptop2/test_urdf_tool_ws/install/test_urdf_tool/share/test_urdf_tool/urdf/
+creating /home/corelab-laptop2/test_urdf_tool_ws/install/test_urdf_tool/share/test_urdf_tool/rviz
+creating /home/corelab-laptop2/test_urdf_tool_ws/install/test_urdf_tool/share/test_urdf_tool/meshes
+creating /home/corelab-laptop2/test_urdf_tool_ws/install/test_urdf_tool/share/test_urdf_tool/meshes/collision
+copying meshes/collision/BurnCreamBlimp.STL -> /home/corelab-laptop2/test_urdf_tool_ws/install/test_urdf_tool/share/test_urdf_tool/meshes/collision/
+copying meshes/collision/BurnCreamCamera.STL -> /home/corelab-laptop2/test_urdf_tool_ws/install/test_urdf_tool/share/test_urdf_tool/meshes/collision/
+copying meshes/collision/staticFrame.STL -> /home/corelab-laptop2/test_urdf_tool_ws/install/test_urdf_tool/share/test_urdf_tool/meshes/collision/
+creating /home/corelab-laptop2/test_urdf_tool_ws/install/test_urdf_tool/share/test_urdf_tool/meshes/visual
+copying meshes/visual/BurnCreamBlimp.STL -> /home/corelab-laptop2/test_urdf_tool_ws/install/test_urdf_tool/share/test_urdf_tool/meshes/visual/
+copying meshes/visual/BurnCreamCamera.STL -> /home/corelab-laptop2/test_urdf_tool_ws/install/test_urdf_tool/share/test_urdf_tool/meshes/visual/
+copying meshes/visual/staticFrame.STL -> /home/corelab-laptop2/test_urdf_tool_ws/install/test_urdf_tool/share/test_urdf_tool/meshes/visual/
+running install_egg_info
+removing '/home/corelab-laptop2/test_urdf_tool_ws/install/test_urdf_tool/lib/python3.8/site-packages/test_urdf_tool-0.0.0-py3.8.egg-info' (and everything under it)
+Copying ../../build/test_urdf_tool/test_urdf_tool.egg-info to /home/corelab-laptop2/test_urdf_tool_ws/install/test_urdf_tool/lib/python3.8/site-packages/test_urdf_tool-0.0.0-py3.8.egg-info
+running install_scripts
+writing list of installed files to '/home/corelab-laptop2/test_urdf_tool_ws/build/test_urdf_tool/install.log'
