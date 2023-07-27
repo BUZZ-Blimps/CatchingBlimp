@@ -1,0 +1,324 @@
+[0.228s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build']
+[0.228s] DEBUG:colcon:Parsed command line arguments: Namespace(allow_overriding=[], ament_cmake_args=None, base_paths=['.'], build_base='build', catkin_cmake_args=None, catkin_skip_building_tests=False, cmake_args=None, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, cmake_target=None, cmake_target_skip_unavailable=False, continue_on_error=False, event_handlers=None, executor='parallel', ignore_user_meta=False, install_base='install', log_base=None, log_level=None, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x7fae8a23c370>>, merge_install=False, metas=['./colcon.meta'], packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_end=None, packages_ignore=None, packages_ignore_regex=None, packages_select=None, packages_select_build_failed=False, packages_select_by_dep=None, packages_select_regex=None, packages_select_test_failures=False, packages_skip=None, packages_skip_build_finished=False, packages_skip_by_dep=None, packages_skip_regex=None, packages_skip_test_passed=False, packages_skip_up_to=None, packages_start=None, packages_up_to=None, packages_up_to_regex=None, parallel_workers=16, paths=None, symlink_install=False, test_result_base=None, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x7fae8a23c370>, verb_name='build', verb_parser=<colcon_defaults.argument_parser.defaults.DefaultArgumentsDecorator object at 0x7fae8a20df40>)
+[0.258s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.258s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.258s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.258s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.258s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[0.258s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.258s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/corelab/ros2_stereo'
+[0.258s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.258s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[0.258s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[0.258s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[0.258s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[0.258s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[0.258s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[0.258s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[0.258s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[0.267s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[0.267s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[0.267s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[0.267s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[0.267s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[0.267s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[0.267s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[0.267s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[0.267s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[0.268s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[0.268s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[0.268s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[0.268s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[0.268s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[0.268s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ignore', 'ignore_ament_install']
+[0.268s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore'
+[0.268s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore_ament_install'
+[0.268s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_pkg']
+[0.268s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_pkg'
+[0.268s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_meta']
+[0.268s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_meta'
+[0.268s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ros']
+[0.268s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ros'
+[0.268s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['cmake', 'python']
+[0.268s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'cmake'
+[0.268s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python'
+[0.268s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['python_setup_py']
+[0.268s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python_setup_py'
+[0.268s] Level 1:colcon.colcon_core.package_identification:_identify(src/image_proc) by extensions ['ignore', 'ignore_ament_install']
+[0.268s] Level 1:colcon.colcon_core.package_identification:_identify(src/image_proc) by extension 'ignore'
+[0.268s] Level 1:colcon.colcon_core.package_identification:_identify(src/image_proc) by extension 'ignore_ament_install'
+[0.268s] Level 1:colcon.colcon_core.package_identification:_identify(src/image_proc) by extensions ['colcon_pkg']
+[0.268s] Level 1:colcon.colcon_core.package_identification:_identify(src/image_proc) by extension 'colcon_pkg'
+[0.268s] Level 1:colcon.colcon_core.package_identification:_identify(src/image_proc) by extensions ['colcon_meta']
+[0.268s] Level 1:colcon.colcon_core.package_identification:_identify(src/image_proc) by extension 'colcon_meta'
+[0.268s] Level 1:colcon.colcon_core.package_identification:_identify(src/image_proc) by extensions ['ros']
+[0.268s] Level 1:colcon.colcon_core.package_identification:_identify(src/image_proc) by extension 'ros'
+[0.270s] DEBUG:colcon.colcon_core.package_identification:Package 'src/image_proc' with type 'ros.ament_cmake' and name 'image_proc'
+[0.270s] Level 1:colcon.colcon_core.package_identification:_identify(src/image_view) by extensions ['ignore', 'ignore_ament_install']
+[0.270s] Level 1:colcon.colcon_core.package_identification:_identify(src/image_view) by extension 'ignore'
+[0.270s] Level 1:colcon.colcon_core.package_identification:_identify(src/image_view) by extension 'ignore_ament_install'
+[0.270s] Level 1:colcon.colcon_core.package_identification:_identify(src/image_view) by extensions ['colcon_pkg']
+[0.270s] Level 1:colcon.colcon_core.package_identification:_identify(src/image_view) by extension 'colcon_pkg'
+[0.270s] Level 1:colcon.colcon_core.package_identification:_identify(src/image_view) by extensions ['colcon_meta']
+[0.270s] Level 1:colcon.colcon_core.package_identification:_identify(src/image_view) by extension 'colcon_meta'
+[0.270s] Level 1:colcon.colcon_core.package_identification:_identify(src/image_view) by extensions ['ros']
+[0.270s] Level 1:colcon.colcon_core.package_identification:_identify(src/image_view) by extension 'ros'
+[0.271s] DEBUG:colcon.colcon_core.package_identification:Package 'src/image_view' with type 'ros.ament_cmake' and name 'image_view'
+[0.271s] Level 1:colcon.colcon_core.package_identification:_identify(src/stereo_image_proc) by extensions ['ignore', 'ignore_ament_install']
+[0.271s] Level 1:colcon.colcon_core.package_identification:_identify(src/stereo_image_proc) by extension 'ignore'
+[0.271s] Level 1:colcon.colcon_core.package_identification:_identify(src/stereo_image_proc) by extension 'ignore_ament_install'
+[0.271s] Level 1:colcon.colcon_core.package_identification:_identify(src/stereo_image_proc) by extensions ['colcon_pkg']
+[0.271s] Level 1:colcon.colcon_core.package_identification:_identify(src/stereo_image_proc) by extension 'colcon_pkg'
+[0.271s] Level 1:colcon.colcon_core.package_identification:_identify(src/stereo_image_proc) by extensions ['colcon_meta']
+[0.271s] Level 1:colcon.colcon_core.package_identification:_identify(src/stereo_image_proc) by extension 'colcon_meta'
+[0.271s] Level 1:colcon.colcon_core.package_identification:_identify(src/stereo_image_proc) by extensions ['ros']
+[0.271s] Level 1:colcon.colcon_core.package_identification:_identify(src/stereo_image_proc) by extension 'ros'
+[0.272s] DEBUG:colcon.colcon_core.package_identification:Package 'src/stereo_image_proc' with type 'ros.ament_cmake' and name 'stereo_image_proc'
+[0.272s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[0.272s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[0.272s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[0.272s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[0.272s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[0.290s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[0.290s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[0.292s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 3 installed packages in /home/corelab/ros2_stereo/install
+[0.293s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 1 installed packages in /home/corelab/ros2_camera_calibration/install
+[0.293s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 1 installed packages in /home/corelab/opencv_ros2/install
+[0.294s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 1 installed packages in /home/corelab/image_transport_tutorials_ws/install
+[0.295s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 1 installed packages in /home/corelab/ros2_ws/install
+[0.298s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 1075 installed packages in /opt/ros/foxy
+[0.312s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[0.383s] WARNING:colcon.colcon_core.package_selection:Some selected packages are already built in one or more underlay workspaces:
+	'stereo_image_proc' is in: /home/corelab/ros2_stereo/install/stereo_image_proc, /opt/ros/foxy
+	'image_view' is in: /home/corelab/ros2_stereo/install/image_view, /opt/ros/foxy
+	'image_proc' is in: /home/corelab/ros2_stereo/install/image_proc, /opt/ros/foxy
+If a package in a merged underlay workspace is overridden and it installs headers, then all packages in the overlay must sort their include directories by workspace order. Failure to do so may result in build failures or undefined behavior at run time.
+If the overridden package is used by another package in any underlay, then the overriding package in the overlay must be API and ABI compatible or undefined behavior at run time may occur.
+
+If you understand the risks and want to override a package anyways, add the following to the command line:
+	--allow-overriding image_proc image_view stereo_image_proc
+
+This may be promoted to an error in a future release of colcon-override-check.
+[0.385s] Level 5:colcon.colcon_core.verb:set package 'image_proc' build argument 'cmake_args' from command line to 'None'
+[0.385s] Level 5:colcon.colcon_core.verb:set package 'image_proc' build argument 'cmake_target' from command line to 'None'
+[0.385s] Level 5:colcon.colcon_core.verb:set package 'image_proc' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.385s] Level 5:colcon.colcon_core.verb:set package 'image_proc' build argument 'cmake_clean_cache' from command line to 'False'
+[0.385s] Level 5:colcon.colcon_core.verb:set package 'image_proc' build argument 'cmake_clean_first' from command line to 'False'
+[0.385s] Level 5:colcon.colcon_core.verb:set package 'image_proc' build argument 'cmake_force_configure' from command line to 'False'
+[0.385s] Level 5:colcon.colcon_core.verb:set package 'image_proc' build argument 'ament_cmake_args' from command line to 'None'
+[0.385s] Level 5:colcon.colcon_core.verb:set package 'image_proc' build argument 'catkin_cmake_args' from command line to 'None'
+[0.385s] Level 5:colcon.colcon_core.verb:set package 'image_proc' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.385s] DEBUG:colcon.colcon_core.verb:Building package 'image_proc' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/corelab/ros2_stereo/build/image_proc', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/corelab/ros2_stereo/install/image_proc', 'merge_install': False, 'path': '/home/corelab/ros2_stereo/src/image_proc', 'symlink_install': False, 'test_result_base': None}
+[0.386s] Level 5:colcon.colcon_core.verb:set package 'image_view' build argument 'cmake_args' from command line to 'None'
+[0.386s] Level 5:colcon.colcon_core.verb:set package 'image_view' build argument 'cmake_target' from command line to 'None'
+[0.386s] Level 5:colcon.colcon_core.verb:set package 'image_view' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.386s] Level 5:colcon.colcon_core.verb:set package 'image_view' build argument 'cmake_clean_cache' from command line to 'False'
+[0.386s] Level 5:colcon.colcon_core.verb:set package 'image_view' build argument 'cmake_clean_first' from command line to 'False'
+[0.386s] Level 5:colcon.colcon_core.verb:set package 'image_view' build argument 'cmake_force_configure' from command line to 'False'
+[0.386s] Level 5:colcon.colcon_core.verb:set package 'image_view' build argument 'ament_cmake_args' from command line to 'None'
+[0.386s] Level 5:colcon.colcon_core.verb:set package 'image_view' build argument 'catkin_cmake_args' from command line to 'None'
+[0.386s] Level 5:colcon.colcon_core.verb:set package 'image_view' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.386s] DEBUG:colcon.colcon_core.verb:Building package 'image_view' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/corelab/ros2_stereo/build/image_view', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/corelab/ros2_stereo/install/image_view', 'merge_install': False, 'path': '/home/corelab/ros2_stereo/src/image_view', 'symlink_install': False, 'test_result_base': None}
+[0.386s] Level 5:colcon.colcon_core.verb:set package 'stereo_image_proc' build argument 'cmake_args' from command line to 'None'
+[0.386s] Level 5:colcon.colcon_core.verb:set package 'stereo_image_proc' build argument 'cmake_target' from command line to 'None'
+[0.386s] Level 5:colcon.colcon_core.verb:set package 'stereo_image_proc' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.386s] Level 5:colcon.colcon_core.verb:set package 'stereo_image_proc' build argument 'cmake_clean_cache' from command line to 'False'
+[0.386s] Level 5:colcon.colcon_core.verb:set package 'stereo_image_proc' build argument 'cmake_clean_first' from command line to 'False'
+[0.386s] Level 5:colcon.colcon_core.verb:set package 'stereo_image_proc' build argument 'cmake_force_configure' from command line to 'False'
+[0.386s] Level 5:colcon.colcon_core.verb:set package 'stereo_image_proc' build argument 'ament_cmake_args' from command line to 'None'
+[0.386s] Level 5:colcon.colcon_core.verb:set package 'stereo_image_proc' build argument 'catkin_cmake_args' from command line to 'None'
+[0.386s] Level 5:colcon.colcon_core.verb:set package 'stereo_image_proc' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.386s] DEBUG:colcon.colcon_core.verb:Building package 'stereo_image_proc' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/corelab/ros2_stereo/build/stereo_image_proc', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/corelab/ros2_stereo/install/stereo_image_proc', 'merge_install': False, 'path': '/home/corelab/ros2_stereo/src/stereo_image_proc', 'symlink_install': False, 'test_result_base': None}
+[0.387s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[0.389s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[0.389s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/corelab/ros2_stereo/src/image_proc' with build type 'ament_cmake'
+[0.389s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/corelab/ros2_stereo/src/image_proc'
+[0.392s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[0.392s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.392s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.399s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/corelab/ros2_stereo/src/image_view' with build type 'ament_cmake'
+[0.399s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/corelab/ros2_stereo/src/image_view'
+[0.400s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.400s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.418s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/corelab/ros2_stereo/build/image_proc': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/corelab/ros2_camera_calibration/install/camera_calibration:/opt/ros/foxy /home/corelab/.local/bin/cmake --build /home/corelab/ros2_stereo/build/image_proc -- -j16 -l16
+[0.429s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/corelab/ros2_stereo/build/image_view': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/corelab/ros2_camera_calibration/install/camera_calibration:/opt/ros/foxy /home/corelab/.local/bin/cmake --build /home/corelab/ros2_stereo/build/image_view -- -j16 -l16
+[0.496s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/corelab/ros2_stereo/build/image_view' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/corelab/ros2_camera_calibration/install/camera_calibration:/opt/ros/foxy /home/corelab/.local/bin/cmake --build /home/corelab/ros2_stereo/build/image_view -- -j16 -l16
+[0.534s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/corelab/ros2_stereo/build/image_proc' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/corelab/ros2_camera_calibration/install/camera_calibration:/opt/ros/foxy /home/corelab/.local/bin/cmake --build /home/corelab/ros2_stereo/build/image_proc -- -j16 -l16
+[0.587s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/corelab/ros2_stereo/build/image_view': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/corelab/ros2_camera_calibration/install/camera_calibration:/opt/ros/foxy /home/corelab/.local/bin/cmake --install /home/corelab/ros2_stereo/build/image_view
+[0.592s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/corelab/ros2_stereo/build/image_proc': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/corelab/ros2_camera_calibration/install/camera_calibration:/opt/ros/foxy /home/corelab/.local/bin/cmake --install /home/corelab/ros2_stereo/build/image_proc
+[0.616s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(image_view)
+[0.618s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/corelab/ros2_stereo/build/image_view' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/corelab/ros2_camera_calibration/install/camera_calibration:/opt/ros/foxy /home/corelab/.local/bin/cmake --install /home/corelab/ros2_stereo/build/image_view
+[0.622s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/ros2_stereo/install/image_view' for CMake module files
+[0.622s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/ros2_stereo/install/image_view' for CMake config files
+[0.622s] Level 1:colcon.colcon_core.shell:create_environment_hook('image_view', 'cmake_prefix_path')
+[0.623s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/ros2_stereo/install/image_view/share/image_view/hook/cmake_prefix_path.ps1'
+[0.624s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/corelab/ros2_stereo/install/image_view/share/image_view/hook/cmake_prefix_path.dsv'
+[0.625s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/ros2_stereo/install/image_view/share/image_view/hook/cmake_prefix_path.sh'
+[0.625s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/ros2_stereo/install/image_view/lib'
+[0.625s] Level 1:colcon.colcon_core.shell:create_environment_hook('image_view', 'ld_library_path_lib')
+[0.627s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/ros2_stereo/install/image_view/share/image_view/hook/ld_library_path_lib.ps1'
+[0.627s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/corelab/ros2_stereo/install/image_view/share/image_view/hook/ld_library_path_lib.dsv'
+[0.627s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/ros2_stereo/install/image_view/share/image_view/hook/ld_library_path_lib.sh'
+[0.627s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/ros2_stereo/install/image_view/bin'
+[0.627s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/ros2_stereo/install/image_view/lib/pkgconfig/image_view.pc'
+[0.628s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/ros2_stereo/install/image_view/lib/python3.8/site-packages'
+[0.628s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/ros2_stereo/install/image_view/bin'
+[0.629s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/ros2_stereo/install/image_view/share/image_view/package.ps1'
+[0.629s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/corelab/ros2_stereo/install/image_view/share/image_view/package.dsv'
+[0.629s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/ros2_stereo/install/image_view/share/image_view/package.sh'
+[0.630s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/ros2_stereo/install/image_view/share/image_view/package.bash'
+[0.630s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/ros2_stereo/install/image_view/share/image_view/package.zsh'
+[0.631s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/corelab/ros2_stereo/install/image_view/share/colcon-core/packages/image_view)
+[0.633s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(image_proc)
+[0.635s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/ros2_stereo/install/image_proc' for CMake module files
+[0.635s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/corelab/ros2_stereo/build/image_proc' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/corelab/ros2_camera_calibration/install/camera_calibration:/opt/ros/foxy /home/corelab/.local/bin/cmake --install /home/corelab/ros2_stereo/build/image_proc
+[0.636s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/ros2_stereo/install/image_proc' for CMake config files
+[0.636s] Level 1:colcon.colcon_core.shell:create_environment_hook('image_proc', 'cmake_prefix_path')
+[0.637s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/ros2_stereo/install/image_proc/share/image_proc/hook/cmake_prefix_path.ps1'
+[0.637s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/corelab/ros2_stereo/install/image_proc/share/image_proc/hook/cmake_prefix_path.dsv'
+[0.638s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/ros2_stereo/install/image_proc/share/image_proc/hook/cmake_prefix_path.sh'
+[0.638s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/ros2_stereo/install/image_proc/lib'
+[0.638s] Level 1:colcon.colcon_core.shell:create_environment_hook('image_proc', 'ld_library_path_lib')
+[0.640s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/ros2_stereo/install/image_proc/share/image_proc/hook/ld_library_path_lib.ps1'
+[0.640s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/corelab/ros2_stereo/install/image_proc/share/image_proc/hook/ld_library_path_lib.dsv'
+[0.640s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/ros2_stereo/install/image_proc/share/image_proc/hook/ld_library_path_lib.sh'
+[0.641s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/ros2_stereo/install/image_proc/bin'
+[0.641s] Level 1:colcon.colcon_core.shell:create_environment_hook('image_proc', 'path')
+[0.642s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/ros2_stereo/install/image_proc/share/image_proc/hook/path.ps1'
+[0.642s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/corelab/ros2_stereo/install/image_proc/share/image_proc/hook/path.dsv'
+[0.642s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/ros2_stereo/install/image_proc/share/image_proc/hook/path.sh'
+[0.642s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/ros2_stereo/install/image_proc/lib/pkgconfig/image_proc.pc'
+[0.643s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/ros2_stereo/install/image_proc/lib/python3.8/site-packages'
+[0.643s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/ros2_stereo/install/image_proc/bin'
+[0.643s] Level 1:colcon.colcon_core.shell:create_environment_hook('image_proc', 'pythonscriptspath')
+[0.644s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/ros2_stereo/install/image_proc/share/image_proc/hook/pythonscriptspath.ps1'
+[0.644s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/corelab/ros2_stereo/install/image_proc/share/image_proc/hook/pythonscriptspath.dsv'
+[0.644s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/ros2_stereo/install/image_proc/share/image_proc/hook/pythonscriptspath.sh'
+[0.645s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/ros2_stereo/install/image_proc/share/image_proc/package.ps1'
+[0.646s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/corelab/ros2_stereo/install/image_proc/share/image_proc/package.dsv'
+[0.646s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/ros2_stereo/install/image_proc/share/image_proc/package.sh'
+[0.646s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/ros2_stereo/install/image_proc/share/image_proc/package.bash'
+[0.646s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/ros2_stereo/install/image_proc/share/image_proc/package.zsh'
+[0.646s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/corelab/ros2_stereo/install/image_proc/share/colcon-core/packages/image_proc)
+[0.691s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(image_view)
+[0.693s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/ros2_stereo/install/image_view' for CMake module files
+[0.693s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/ros2_stereo/install/image_view' for CMake config files
+[0.693s] Level 1:colcon.colcon_core.shell:create_environment_hook('image_view', 'cmake_prefix_path')
+[0.694s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/ros2_stereo/install/image_view/share/image_view/hook/cmake_prefix_path.ps1'
+[0.695s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/corelab/ros2_stereo/install/image_view/share/image_view/hook/cmake_prefix_path.dsv'
+[0.695s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/ros2_stereo/install/image_view/share/image_view/hook/cmake_prefix_path.sh'
+[0.695s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/ros2_stereo/install/image_view/lib'
+[0.695s] Level 1:colcon.colcon_core.shell:create_environment_hook('image_view', 'ld_library_path_lib')
+[0.696s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/ros2_stereo/install/image_view/share/image_view/hook/ld_library_path_lib.ps1'
+[0.696s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/corelab/ros2_stereo/install/image_view/share/image_view/hook/ld_library_path_lib.dsv'
+[0.696s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/ros2_stereo/install/image_view/share/image_view/hook/ld_library_path_lib.sh'
+[0.697s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/ros2_stereo/install/image_view/bin'
+[0.697s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/ros2_stereo/install/image_view/lib/pkgconfig/image_view.pc'
+[0.697s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/ros2_stereo/install/image_view/lib/python3.8/site-packages'
+[0.697s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/ros2_stereo/install/image_view/bin'
+[0.698s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/ros2_stereo/install/image_view/share/image_view/package.ps1'
+[0.698s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/corelab/ros2_stereo/install/image_view/share/image_view/package.dsv'
+[0.698s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/ros2_stereo/install/image_view/share/image_view/package.sh'
+[0.699s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/ros2_stereo/install/image_view/share/image_view/package.bash'
+[0.699s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/ros2_stereo/install/image_view/share/image_view/package.zsh'
+[0.699s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/corelab/ros2_stereo/install/image_view/share/colcon-core/packages/image_view)
+[0.701s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(image_proc)
+[0.703s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/ros2_stereo/install/image_proc' for CMake module files
+[0.703s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/ros2_stereo/install/image_proc' for CMake config files
+[0.704s] Level 1:colcon.colcon_core.shell:create_environment_hook('image_proc', 'cmake_prefix_path')
+[0.705s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/ros2_stereo/install/image_proc/share/image_proc/hook/cmake_prefix_path.ps1'
+[0.705s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/corelab/ros2_stereo/install/image_proc/share/image_proc/hook/cmake_prefix_path.dsv'
+[0.705s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/ros2_stereo/install/image_proc/share/image_proc/hook/cmake_prefix_path.sh'
+[0.706s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/ros2_stereo/install/image_proc/lib'
+[0.706s] Level 1:colcon.colcon_core.shell:create_environment_hook('image_proc', 'ld_library_path_lib')
+[0.707s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/ros2_stereo/install/image_proc/share/image_proc/hook/ld_library_path_lib.ps1'
+[0.707s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/corelab/ros2_stereo/install/image_proc/share/image_proc/hook/ld_library_path_lib.dsv'
+[0.707s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/ros2_stereo/install/image_proc/share/image_proc/hook/ld_library_path_lib.sh'
+[0.707s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/ros2_stereo/install/image_proc/bin'
+[0.707s] Level 1:colcon.colcon_core.shell:create_environment_hook('image_proc', 'path')
+[0.708s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/ros2_stereo/install/image_proc/share/image_proc/hook/path.ps1'
+[0.708s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/corelab/ros2_stereo/install/image_proc/share/image_proc/hook/path.dsv'
+[0.708s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/ros2_stereo/install/image_proc/share/image_proc/hook/path.sh'
+[0.709s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/ros2_stereo/install/image_proc/lib/pkgconfig/image_proc.pc'
+[0.709s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/ros2_stereo/install/image_proc/lib/python3.8/site-packages'
+[0.709s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/ros2_stereo/install/image_proc/bin'
+[0.709s] Level 1:colcon.colcon_core.shell:create_environment_hook('image_proc', 'pythonscriptspath')
+[0.710s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/ros2_stereo/install/image_proc/share/image_proc/hook/pythonscriptspath.ps1'
+[0.710s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/corelab/ros2_stereo/install/image_proc/share/image_proc/hook/pythonscriptspath.dsv'
+[0.710s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/ros2_stereo/install/image_proc/share/image_proc/hook/pythonscriptspath.sh'
+[0.711s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/ros2_stereo/install/image_proc/share/image_proc/package.ps1'
+[0.711s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/corelab/ros2_stereo/install/image_proc/share/image_proc/package.dsv'
+[0.712s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/ros2_stereo/install/image_proc/share/image_proc/package.sh'
+[0.712s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/ros2_stereo/install/image_proc/share/image_proc/package.bash'
+[0.712s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/ros2_stereo/install/image_proc/share/image_proc/package.zsh'
+[0.712s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/corelab/ros2_stereo/install/image_proc/share/colcon-core/packages/image_proc)
+[0.713s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/corelab/ros2_stereo/src/stereo_image_proc' with build type 'ament_cmake'
+[0.713s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/corelab/ros2_stereo/src/stereo_image_proc'
+[0.714s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.714s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.727s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/corelab/ros2_stereo/build/stereo_image_proc': CMAKE_PREFIX_PATH=/home/corelab/ros2_stereo/install/image_proc:/home/corelab/opencv_ros2/install/opencv_telemetry:/home/corelab/ros2_stereo/install/stereo_image_proc:/home/corelab/ros2_stereo/install/image_view:/home/corelab/image_transport_tutorials_ws/install/image_transport_tutorials:/home/corelab/ros2_ws/install/cpp_pubsub:/home/corelab/ros2_camera_calibration/install/camera_calibration:/opt/ros/foxy LD_LIBRARY_PATH=/home/corelab/ros2_stereo/install/image_proc/lib:/home/corelab/opencv_ros2/install/opencv_telemetry/lib:/home/corelab/ros2_stereo/install/stereo_image_proc/lib:/home/corelab/ros2_stereo/install/image_view/lib:/home/corelab/image_transport_tutorials_ws/install/image_transport_tutorials/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/opt/libphidget22/lib:/usr/share/gurumdds/cmake/../../../lib:/opt/rti.com/rti_connext_dds-5.3.1/lib/x64Linux3gcc5.4.0:/opt/ros/foxy/lib /home/corelab/.local/bin/cmake --build /home/corelab/ros2_stereo/build/stereo_image_proc -- -j16 -l16
+[7.589s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/corelab/ros2_stereo/build/stereo_image_proc' returned '0': CMAKE_PREFIX_PATH=/home/corelab/ros2_stereo/install/image_proc:/home/corelab/opencv_ros2/install/opencv_telemetry:/home/corelab/ros2_stereo/install/stereo_image_proc:/home/corelab/ros2_stereo/install/image_view:/home/corelab/image_transport_tutorials_ws/install/image_transport_tutorials:/home/corelab/ros2_ws/install/cpp_pubsub:/home/corelab/ros2_camera_calibration/install/camera_calibration:/opt/ros/foxy LD_LIBRARY_PATH=/home/corelab/ros2_stereo/install/image_proc/lib:/home/corelab/opencv_ros2/install/opencv_telemetry/lib:/home/corelab/ros2_stereo/install/stereo_image_proc/lib:/home/corelab/ros2_stereo/install/image_view/lib:/home/corelab/image_transport_tutorials_ws/install/image_transport_tutorials/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/opt/libphidget22/lib:/usr/share/gurumdds/cmake/../../../lib:/opt/rti.com/rti_connext_dds-5.3.1/lib/x64Linux3gcc5.4.0:/opt/ros/foxy/lib /home/corelab/.local/bin/cmake --build /home/corelab/ros2_stereo/build/stereo_image_proc -- -j16 -l16
+[7.633s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/corelab/ros2_stereo/build/stereo_image_proc': CMAKE_PREFIX_PATH=/home/corelab/ros2_stereo/install/image_proc:/home/corelab/opencv_ros2/install/opencv_telemetry:/home/corelab/ros2_stereo/install/stereo_image_proc:/home/corelab/ros2_stereo/install/image_view:/home/corelab/image_transport_tutorials_ws/install/image_transport_tutorials:/home/corelab/ros2_ws/install/cpp_pubsub:/home/corelab/ros2_camera_calibration/install/camera_calibration:/opt/ros/foxy LD_LIBRARY_PATH=/home/corelab/ros2_stereo/install/image_proc/lib:/home/corelab/opencv_ros2/install/opencv_telemetry/lib:/home/corelab/ros2_stereo/install/stereo_image_proc/lib:/home/corelab/ros2_stereo/install/image_view/lib:/home/corelab/image_transport_tutorials_ws/install/image_transport_tutorials/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/opt/libphidget22/lib:/usr/share/gurumdds/cmake/../../../lib:/opt/rti.com/rti_connext_dds-5.3.1/lib/x64Linux3gcc5.4.0:/opt/ros/foxy/lib /home/corelab/.local/bin/cmake --install /home/corelab/ros2_stereo/build/stereo_image_proc
+[7.667s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(stereo_image_proc)
+[7.669s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/ros2_stereo/install/stereo_image_proc' for CMake module files
+[7.670s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/corelab/ros2_stereo/build/stereo_image_proc' returned '0': CMAKE_PREFIX_PATH=/home/corelab/ros2_stereo/install/image_proc:/home/corelab/opencv_ros2/install/opencv_telemetry:/home/corelab/ros2_stereo/install/stereo_image_proc:/home/corelab/ros2_stereo/install/image_view:/home/corelab/image_transport_tutorials_ws/install/image_transport_tutorials:/home/corelab/ros2_ws/install/cpp_pubsub:/home/corelab/ros2_camera_calibration/install/camera_calibration:/opt/ros/foxy LD_LIBRARY_PATH=/home/corelab/ros2_stereo/install/image_proc/lib:/home/corelab/opencv_ros2/install/opencv_telemetry/lib:/home/corelab/ros2_stereo/install/stereo_image_proc/lib:/home/corelab/ros2_stereo/install/image_view/lib:/home/corelab/image_transport_tutorials_ws/install/image_transport_tutorials/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/opt/libphidget22/lib:/usr/share/gurumdds/cmake/../../../lib:/opt/rti.com/rti_connext_dds-5.3.1/lib/x64Linux3gcc5.4.0:/opt/ros/foxy/lib /home/corelab/.local/bin/cmake --install /home/corelab/ros2_stereo/build/stereo_image_proc
+[7.671s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/ros2_stereo/install/stereo_image_proc' for CMake config files
+[7.671s] Level 1:colcon.colcon_core.shell:create_environment_hook('stereo_image_proc', 'cmake_prefix_path')
+[7.672s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/hook/cmake_prefix_path.ps1'
+[7.673s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/corelab/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/hook/cmake_prefix_path.dsv'
+[7.673s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/hook/cmake_prefix_path.sh'
+[7.674s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/ros2_stereo/install/stereo_image_proc/lib'
+[7.674s] Level 1:colcon.colcon_core.shell:create_environment_hook('stereo_image_proc', 'ld_library_path_lib')
+[7.674s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/hook/ld_library_path_lib.ps1'
+[7.675s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/corelab/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/hook/ld_library_path_lib.dsv'
+[7.675s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/hook/ld_library_path_lib.sh'
+[7.675s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/ros2_stereo/install/stereo_image_proc/bin'
+[7.675s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/ros2_stereo/install/stereo_image_proc/lib/pkgconfig/stereo_image_proc.pc'
+[7.675s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/ros2_stereo/install/stereo_image_proc/lib/python3.8/site-packages'
+[7.675s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/ros2_stereo/install/stereo_image_proc/bin'
+[7.676s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/package.ps1'
+[7.676s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/corelab/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/package.dsv'
+[7.677s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/package.sh'
+[7.677s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/package.bash'
+[7.677s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/package.zsh'
+[7.677s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/corelab/ros2_stereo/install/stereo_image_proc/share/colcon-core/packages/stereo_image_proc)
+[7.724s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(stereo_image_proc)
+[7.726s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/ros2_stereo/install/stereo_image_proc' for CMake module files
+[7.726s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/ros2_stereo/install/stereo_image_proc' for CMake config files
+[7.726s] Level 1:colcon.colcon_core.shell:create_environment_hook('stereo_image_proc', 'cmake_prefix_path')
+[7.727s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/hook/cmake_prefix_path.ps1'
+[7.728s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/corelab/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/hook/cmake_prefix_path.dsv'
+[7.728s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/hook/cmake_prefix_path.sh'
+[7.728s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/ros2_stereo/install/stereo_image_proc/lib'
+[7.728s] Level 1:colcon.colcon_core.shell:create_environment_hook('stereo_image_proc', 'ld_library_path_lib')
+[7.730s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/hook/ld_library_path_lib.ps1'
+[7.730s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/corelab/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/hook/ld_library_path_lib.dsv'
+[7.730s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/hook/ld_library_path_lib.sh'
+[7.730s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/ros2_stereo/install/stereo_image_proc/bin'
+[7.730s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/ros2_stereo/install/stereo_image_proc/lib/pkgconfig/stereo_image_proc.pc'
+[7.730s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/ros2_stereo/install/stereo_image_proc/lib/python3.8/site-packages'
+[7.730s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/ros2_stereo/install/stereo_image_proc/bin'
+[7.731s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/package.ps1'
+[7.732s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/corelab/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/package.dsv'
+[7.732s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/package.sh'
+[7.732s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/package.bash'
+[7.732s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/package.zsh'
+[7.733s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/corelab/ros2_stereo/install/stereo_image_proc/share/colcon-core/packages/stereo_image_proc)
+[7.733s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[7.733s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[7.734s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[7.734s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[7.740s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[7.740s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[7.740s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[7.748s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[7.749s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/corelab/ros2_stereo/install/local_setup.ps1'
+[7.750s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/corelab/ros2_stereo/install/_local_setup_util_ps1.py'
+[7.751s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/corelab/ros2_stereo/install/setup.ps1'
+[7.752s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/corelab/ros2_stereo/install/local_setup.sh'
+[7.753s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/corelab/ros2_stereo/install/_local_setup_util_sh.py'
+[7.753s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/corelab/ros2_stereo/install/setup.sh'
+[7.755s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/corelab/ros2_stereo/install/local_setup.bash'
+[7.755s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/corelab/ros2_stereo/install/setup.bash'
+[7.757s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/corelab/ros2_stereo/install/local_setup.zsh'
+[7.757s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/corelab/ros2_stereo/install/setup.zsh'

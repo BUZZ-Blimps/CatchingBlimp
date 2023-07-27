@@ -1,0 +1,68 @@
+[0.557s] Invoking command in '/home/corelab/ros2_camera_calibration/src/camera_calibration': PYTHONPATH=/home/corelab/ros2_camera_calibration/build/camera_calibration/prefix_override:/home/corelab/ros2_camera_calibration/install/camera_calibration/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/camera_calibration build --build-base /home/corelab/ros2_camera_calibration/build/camera_calibration/build install --record /home/corelab/ros2_camera_calibration/build/camera_calibration/install.log --single-version-externally-managed
+[0.702s] running egg_info
+[0.702s] creating ../../build/camera_calibration/camera_calibration.egg-info
+[0.713s] writing ../../build/camera_calibration/camera_calibration.egg-info/PKG-INFO
+[0.713s] writing dependency_links to ../../build/camera_calibration/camera_calibration.egg-info/dependency_links.txt
+[0.713s] writing entry points to ../../build/camera_calibration/camera_calibration.egg-info/entry_points.txt
+[0.713s] writing requirements to ../../build/camera_calibration/camera_calibration.egg-info/requires.txt
+[0.713s] writing top-level names to ../../build/camera_calibration/camera_calibration.egg-info/top_level.txt
+[0.789s] writing manifest file '../../build/camera_calibration/camera_calibration.egg-info/SOURCES.txt'
+[0.812s] reading manifest file '../../build/camera_calibration/camera_calibration.egg-info/SOURCES.txt'
+[0.813s] writing manifest file '../../build/camera_calibration/camera_calibration.egg-info/SOURCES.txt'
+[0.813s] running build
+[0.813s] running build_py
+[0.813s] creating /home/corelab/ros2_camera_calibration/build/camera_calibration/build
+[0.813s] creating /home/corelab/ros2_camera_calibration/build/camera_calibration/build/lib
+[0.813s] creating /home/corelab/ros2_camera_calibration/build/camera_calibration/build/lib/camera_calibration
+[0.813s] copying src/camera_calibration/__init__.py -> /home/corelab/ros2_camera_calibration/build/camera_calibration/build/lib/camera_calibration
+[0.813s] copying src/camera_calibration/camera_checker.py -> /home/corelab/ros2_camera_calibration/build/camera_calibration/build/lib/camera_calibration
+[0.813s] copying src/camera_calibration/calibrator.py -> /home/corelab/ros2_camera_calibration/build/camera_calibration/build/lib/camera_calibration
+[0.813s] copying src/camera_calibration/camera_calibrator.py -> /home/corelab/ros2_camera_calibration/build/camera_calibration/build/lib/camera_calibration
+[0.813s] creating /home/corelab/ros2_camera_calibration/build/camera_calibration/build/lib/camera_calibration/nodes
+[0.813s] copying src/camera_calibration/nodes/__init__.py -> /home/corelab/ros2_camera_calibration/build/camera_calibration/build/lib/camera_calibration/nodes
+[0.813s] copying src/camera_calibration/nodes/cameracheck.py -> /home/corelab/ros2_camera_calibration/build/camera_calibration/build/lib/camera_calibration/nodes
+[0.813s] copying src/camera_calibration/nodes/cameracalibrator.py -> /home/corelab/ros2_camera_calibration/build/camera_calibration/build/lib/camera_calibration/nodes
+[0.813s] running install
+[0.814s] /home/corelab/.local/lib/python3.8/site-packages/setuptools/_distutils/cmd.py:66: SetuptoolsDeprecationWarning: setup.py install is deprecated.
+[0.814s] !!
+[0.814s] 
+[0.814s]         ********************************************************************************
+[0.814s]         Please avoid running ``setup.py`` directly.
+[0.814s]         Instead, use pypa/build, pypa/installer, pypa/build or
+[0.814s]         other standards-based tools.
+[0.814s] 
+[0.814s]         See https://blog.ganssle.io/articles/2021/10/setup-py-deprecated.html for details.
+[0.814s]         ********************************************************************************
+[0.814s] 
+[0.814s] !!
+[0.814s]   self.initialize_options()
+[0.817s] running install_lib
+[0.828s] creating /home/corelab/ros2_camera_calibration/install/camera_calibration/lib/python3.8/site-packages/camera_calibration
+[0.828s] copying /home/corelab/ros2_camera_calibration/build/camera_calibration/build/lib/camera_calibration/__init__.py -> /home/corelab/ros2_camera_calibration/install/camera_calibration/lib/python3.8/site-packages/camera_calibration
+[0.828s] creating /home/corelab/ros2_camera_calibration/install/camera_calibration/lib/python3.8/site-packages/camera_calibration/nodes
+[0.828s] copying /home/corelab/ros2_camera_calibration/build/camera_calibration/build/lib/camera_calibration/nodes/__init__.py -> /home/corelab/ros2_camera_calibration/install/camera_calibration/lib/python3.8/site-packages/camera_calibration/nodes
+[0.828s] copying /home/corelab/ros2_camera_calibration/build/camera_calibration/build/lib/camera_calibration/nodes/cameracheck.py -> /home/corelab/ros2_camera_calibration/install/camera_calibration/lib/python3.8/site-packages/camera_calibration/nodes
+[0.828s] copying /home/corelab/ros2_camera_calibration/build/camera_calibration/build/lib/camera_calibration/nodes/cameracalibrator.py -> /home/corelab/ros2_camera_calibration/install/camera_calibration/lib/python3.8/site-packages/camera_calibration/nodes
+[0.828s] copying /home/corelab/ros2_camera_calibration/build/camera_calibration/build/lib/camera_calibration/camera_checker.py -> /home/corelab/ros2_camera_calibration/install/camera_calibration/lib/python3.8/site-packages/camera_calibration
+[0.828s] copying /home/corelab/ros2_camera_calibration/build/camera_calibration/build/lib/camera_calibration/calibrator.py -> /home/corelab/ros2_camera_calibration/install/camera_calibration/lib/python3.8/site-packages/camera_calibration
+[0.829s] copying /home/corelab/ros2_camera_calibration/build/camera_calibration/build/lib/camera_calibration/camera_calibrator.py -> /home/corelab/ros2_camera_calibration/install/camera_calibration/lib/python3.8/site-packages/camera_calibration
+[0.829s] byte-compiling /home/corelab/ros2_camera_calibration/install/camera_calibration/lib/python3.8/site-packages/camera_calibration/__init__.py to __init__.cpython-38.pyc
+[0.829s] byte-compiling /home/corelab/ros2_camera_calibration/install/camera_calibration/lib/python3.8/site-packages/camera_calibration/nodes/__init__.py to __init__.cpython-38.pyc
+[0.829s] byte-compiling /home/corelab/ros2_camera_calibration/install/camera_calibration/lib/python3.8/site-packages/camera_calibration/nodes/cameracheck.py to cameracheck.cpython-38.pyc
+[0.829s] byte-compiling /home/corelab/ros2_camera_calibration/install/camera_calibration/lib/python3.8/site-packages/camera_calibration/nodes/cameracalibrator.py to cameracalibrator.cpython-38.pyc
+[0.830s] byte-compiling /home/corelab/ros2_camera_calibration/install/camera_calibration/lib/python3.8/site-packages/camera_calibration/camera_checker.py to camera_checker.cpython-38.pyc
+[0.830s] byte-compiling /home/corelab/ros2_camera_calibration/install/camera_calibration/lib/python3.8/site-packages/camera_calibration/calibrator.py to calibrator.cpython-38.pyc
+[0.835s] byte-compiling /home/corelab/ros2_camera_calibration/install/camera_calibration/lib/python3.8/site-packages/camera_calibration/camera_calibrator.py to camera_calibrator.cpython-38.pyc
+[0.836s] running install_data
+[0.848s] creating /home/corelab/ros2_camera_calibration/install/camera_calibration/share/ament_index
+[0.848s] creating /home/corelab/ros2_camera_calibration/install/camera_calibration/share/ament_index/resource_index
+[0.848s] creating /home/corelab/ros2_camera_calibration/install/camera_calibration/share/ament_index/resource_index/packages
+[0.848s] copying resource/camera_calibration -> /home/corelab/ros2_camera_calibration/install/camera_calibration/share/ament_index/resource_index/packages
+[0.848s] copying package.xml -> /home/corelab/ros2_camera_calibration/install/camera_calibration/share/camera_calibration
+[0.848s] running install_egg_info
+[0.859s] Copying ../../build/camera_calibration/camera_calibration.egg-info to /home/corelab/ros2_camera_calibration/install/camera_calibration/lib/python3.8/site-packages/camera_calibration-2.3.0-py3.8.egg-info
+[0.860s] running install_scripts
+[0.901s] Installing cameracalibrator script to /home/corelab/ros2_camera_calibration/install/camera_calibration/lib/camera_calibration
+[0.901s] Installing cameracheck script to /home/corelab/ros2_camera_calibration/install/camera_calibration/lib/camera_calibration
+[0.902s] writing list of installed files to '/home/corelab/ros2_camera_calibration/build/camera_calibration/install.log'
+[0.915s] Invoked command in '/home/corelab/ros2_camera_calibration/src/camera_calibration' returned '0': PYTHONPATH=/home/corelab/ros2_camera_calibration/build/camera_calibration/prefix_override:/home/corelab/ros2_camera_calibration/install/camera_calibration/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/camera_calibration build --build-base /home/corelab/ros2_camera_calibration/build/camera_calibration/build install --record /home/corelab/ros2_camera_calibration/build/camera_calibration/install.log --single-version-externally-managed

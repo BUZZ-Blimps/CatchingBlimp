@@ -1,0 +1,60 @@
+[  5%] [32mBuilding CXX object CMakeFiles/image_view_nodes.dir/src/disparity_view_node.cpp.o[0m
+[ 10%] [32m[1mLinking CXX shared library libimage_view_nodes.so[0m
+[ 36%] Built target image_view_nodes
+[ 42%] [32mBuilding CXX object CMakeFiles/disparity_view.dir/src/disparity_view.cpp.o[0m
+[ 47%] [32m[1mLinking CXX executable video_recorder[0m
+[ 63%] [32m[1mLinking CXX executable image_view[0m
+[ 63%] [32m[1mLinking CXX executable extract_images[0m
+[ 63%] [32m[1mLinking CXX executable stereo_view[0m
+[ 68%] [32m[1mLinking CXX executable image_saver[0m
+[ 73%] Built target image_view
+[ 78%] Built target stereo_view
+[ 84%] Built target extract_images
+[ 89%] Built target video_recorder
+[ 94%] Built target image_saver
+[100%] [32m[1mLinking CXX executable disparity_view[0m
+[100%] Built target disparity_view
+-- Install configuration: ""
+-- Up-to-date: /home/corelab/ros2_stereo/install/image_view/include
+-- Up-to-date: /home/corelab/ros2_stereo/install/image_view/include/image_view
+-- Installing: /home/corelab/ros2_stereo/install/image_view/include/image_view/disparity_view_node.hpp
+-- Up-to-date: /home/corelab/ros2_stereo/install/image_view/include/image_view/image_saver_node.hpp
+-- Up-to-date: /home/corelab/ros2_stereo/install/image_view/include/image_view/extract_images_node.hpp
+-- Up-to-date: /home/corelab/ros2_stereo/install/image_view/include/image_view/video_recorder_node.hpp
+-- Up-to-date: /home/corelab/ros2_stereo/install/image_view/include/image_view/stereo_view_node.hpp
+-- Up-to-date: /home/corelab/ros2_stereo/install/image_view/include/image_view/image_view_node.hpp
+-- Up-to-date: /home/corelab/ros2_stereo/install/image_view/share/image_view/environment/library_path.sh
+-- Up-to-date: /home/corelab/ros2_stereo/install/image_view/share/image_view/environment/library_path.dsv
+-- Installing: /home/corelab/ros2_stereo/install/image_view/lib/libimage_view_nodes.so
+-- Set runtime path of "/home/corelab/ros2_stereo/install/image_view/lib/libimage_view_nodes.so" to ""
+-- Installing: /home/corelab/ros2_stereo/install/image_view/lib/image_view/disparity_view
+-- Set runtime path of "/home/corelab/ros2_stereo/install/image_view/lib/image_view/disparity_view" to ""
+-- Installing: /home/corelab/ros2_stereo/install/image_view/lib/image_view/image_view
+-- Set runtime path of "/home/corelab/ros2_stereo/install/image_view/lib/image_view/image_view" to ""
+-- Installing: /home/corelab/ros2_stereo/install/image_view/lib/image_view/stereo_view
+-- Set runtime path of "/home/corelab/ros2_stereo/install/image_view/lib/image_view/stereo_view" to ""
+-- Installing: /home/corelab/ros2_stereo/install/image_view/lib/image_view/extract_images
+-- Set runtime path of "/home/corelab/ros2_stereo/install/image_view/lib/image_view/extract_images" to ""
+-- Installing: /home/corelab/ros2_stereo/install/image_view/lib/image_view/image_saver
+-- Set runtime path of "/home/corelab/ros2_stereo/install/image_view/lib/image_view/image_saver" to ""
+-- Installing: /home/corelab/ros2_stereo/install/image_view/lib/image_view/video_recorder
+-- Set runtime path of "/home/corelab/ros2_stereo/install/image_view/lib/image_view/video_recorder" to ""
+-- Up-to-date: /home/corelab/ros2_stereo/install/image_view/share/ament_index/resource_index/package_run_dependencies/image_view
+-- Up-to-date: /home/corelab/ros2_stereo/install/image_view/share/ament_index/resource_index/parent_prefix_path/image_view
+-- Up-to-date: /home/corelab/ros2_stereo/install/image_view/share/image_view/environment/ament_prefix_path.sh
+-- Up-to-date: /home/corelab/ros2_stereo/install/image_view/share/image_view/environment/ament_prefix_path.dsv
+-- Up-to-date: /home/corelab/ros2_stereo/install/image_view/share/image_view/environment/path.sh
+-- Up-to-date: /home/corelab/ros2_stereo/install/image_view/share/image_view/environment/path.dsv
+-- Up-to-date: /home/corelab/ros2_stereo/install/image_view/share/image_view/local_setup.bash
+-- Up-to-date: /home/corelab/ros2_stereo/install/image_view/share/image_view/local_setup.sh
+-- Up-to-date: /home/corelab/ros2_stereo/install/image_view/share/image_view/local_setup.zsh
+-- Up-to-date: /home/corelab/ros2_stereo/install/image_view/share/image_view/local_setup.dsv
+-- Installing: /home/corelab/ros2_stereo/install/image_view/share/image_view/package.dsv
+-- Up-to-date: /home/corelab/ros2_stereo/install/image_view/share/ament_index/resource_index/packages/image_view
+-- Up-to-date: /home/corelab/ros2_stereo/install/image_view/share/ament_index/resource_index/rclcpp_components/image_view
+-- Up-to-date: /home/corelab/ros2_stereo/install/image_view/share/image_view/cmake/ament_cmake_export_dependencies-extras.cmake
+-- Up-to-date: /home/corelab/ros2_stereo/install/image_view/share/image_view/cmake/ament_cmake_export_include_directories-extras.cmake
+-- Up-to-date: /home/corelab/ros2_stereo/install/image_view/share/image_view/cmake/ament_cmake_export_libraries-extras.cmake
+-- Up-to-date: /home/corelab/ros2_stereo/install/image_view/share/image_view/cmake/image_viewConfig.cmake
+-- Up-to-date: /home/corelab/ros2_stereo/install/image_view/share/image_view/cmake/image_viewConfig-version.cmake
+-- Up-to-date: /home/corelab/ros2_stereo/install/image_view/share/image_view/package.xml

@@ -1,0 +1,12 @@
+/home/corelab/ros2_stereo/build/stereo_image_proc/CMakeFiles/uninstall.dir
+/home/corelab/ros2_stereo/build/stereo_image_proc/CMakeFiles/stereo_image_proc_uninstall.dir
+/home/corelab/ros2_stereo/build/stereo_image_proc/CMakeFiles/stereo_image_proc.dir
+/home/corelab/ros2_stereo/build/stereo_image_proc/CMakeFiles/disparity_node.dir
+/home/corelab/ros2_stereo/build/stereo_image_proc/CMakeFiles/point_cloud_node.dir
+/home/corelab/ros2_stereo/build/stereo_image_proc/CMakeFiles/test.dir
+/home/corelab/ros2_stereo/build/stereo_image_proc/CMakeFiles/edit_cache.dir
+/home/corelab/ros2_stereo/build/stereo_image_proc/CMakeFiles/rebuild_cache.dir
+/home/corelab/ros2_stereo/build/stereo_image_proc/CMakeFiles/list_install_components.dir
+/home/corelab/ros2_stereo/build/stereo_image_proc/CMakeFiles/install.dir
+/home/corelab/ros2_stereo/build/stereo_image_proc/CMakeFiles/install/local.dir
+/home/corelab/ros2_stereo/build/stereo_image_proc/CMakeFiles/install/strip.dir

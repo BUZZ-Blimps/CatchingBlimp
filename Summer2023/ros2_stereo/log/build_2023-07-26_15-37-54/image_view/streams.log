@@ -1,0 +1,63 @@
+[0.015s] Invoking command in '/home/corelab/ros2_stereo/build/image_view': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/corelab/ros2_camera_calibration/install/camera_calibration:/opt/ros/foxy /home/corelab/.local/bin/cmake --build /home/corelab/ros2_stereo/build/image_view -- -j16 -l16
+[0.063s] [  5%] [32mBuilding CXX object CMakeFiles/image_view_nodes.dir/src/disparity_view_node.cpp.o[0m
+[2.773s] [ 10%] [32m[1mLinking CXX shared library libimage_view_nodes.so[0m
+[3.195s] [ 36%] Built target image_view_nodes
+[3.212s] [ 42%] [32m[1mLinking CXX executable disparity_view[0m
+[3.213s] [ 47%] [32m[1mLinking CXX executable video_recorder[0m
+[3.213s] [ 52%] [32m[1mLinking CXX executable stereo_view[0m
+[3.213s] [ 57%] [32m[1mLinking CXX executable image_view[0m
+[3.213s] [ 63%] [32m[1mLinking CXX executable extract_images[0m
+[3.213s] [ 68%] [32m[1mLinking CXX executable image_saver[0m
+[4.693s] [ 89%] Built target image_saver
+[4.693s] [ 89%] Built target stereo_view
+[4.693s] [ 89%] Built target video_recorder
+[4.693s] [ 89%] Built target extract_images
+[4.693s] [ 94%] Built target disparity_view
+[4.693s] [100%] Built target image_view
+[4.704s] Invoked command in '/home/corelab/ros2_stereo/build/image_view' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/corelab/ros2_camera_calibration/install/camera_calibration:/opt/ros/foxy /home/corelab/.local/bin/cmake --build /home/corelab/ros2_stereo/build/image_view -- -j16 -l16
+[4.754s] Invoking command in '/home/corelab/ros2_stereo/build/image_view': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/corelab/ros2_camera_calibration/install/camera_calibration:/opt/ros/foxy /home/corelab/.local/bin/cmake --install /home/corelab/ros2_stereo/build/image_view
+[4.779s] -- Install configuration: ""
+[4.779s] -- Up-to-date: /home/corelab/ros2_stereo/install/image_view/include
+[4.779s] -- Up-to-date: /home/corelab/ros2_stereo/install/image_view/include/image_view
+[4.779s] -- Up-to-date: /home/corelab/ros2_stereo/install/image_view/include/image_view/disparity_view_node.hpp
+[4.779s] -- Up-to-date: /home/corelab/ros2_stereo/install/image_view/include/image_view/image_saver_node.hpp
+[4.779s] -- Up-to-date: /home/corelab/ros2_stereo/install/image_view/include/image_view/extract_images_node.hpp
+[4.779s] -- Up-to-date: /home/corelab/ros2_stereo/install/image_view/include/image_view/video_recorder_node.hpp
+[4.779s] -- Up-to-date: /home/corelab/ros2_stereo/install/image_view/include/image_view/stereo_view_node.hpp
+[4.779s] -- Up-to-date: /home/corelab/ros2_stereo/install/image_view/include/image_view/image_view_node.hpp
+[4.779s] -- Up-to-date: /home/corelab/ros2_stereo/install/image_view/share/image_view/environment/library_path.sh
+[4.779s] -- Up-to-date: /home/corelab/ros2_stereo/install/image_view/share/image_view/environment/library_path.dsv
+[4.779s] -- Installing: /home/corelab/ros2_stereo/install/image_view/lib/libimage_view_nodes.so
+[4.782s] -- Set runtime path of "/home/corelab/ros2_stereo/install/image_view/lib/libimage_view_nodes.so" to ""
+[4.782s] -- Installing: /home/corelab/ros2_stereo/install/image_view/lib/image_view/disparity_view
+[4.782s] -- Set runtime path of "/home/corelab/ros2_stereo/install/image_view/lib/image_view/disparity_view" to ""
+[4.783s] -- Installing: /home/corelab/ros2_stereo/install/image_view/lib/image_view/image_view
+[4.783s] -- Set runtime path of "/home/corelab/ros2_stereo/install/image_view/lib/image_view/image_view" to ""
+[4.783s] -- Installing: /home/corelab/ros2_stereo/install/image_view/lib/image_view/stereo_view
+[4.784s] -- Set runtime path of "/home/corelab/ros2_stereo/install/image_view/lib/image_view/stereo_view" to ""
+[4.784s] -- Installing: /home/corelab/ros2_stereo/install/image_view/lib/image_view/extract_images
+[4.784s] -- Set runtime path of "/home/corelab/ros2_stereo/install/image_view/lib/image_view/extract_images" to ""
+[4.784s] -- Installing: /home/corelab/ros2_stereo/install/image_view/lib/image_view/image_saver
+[4.785s] -- Set runtime path of "/home/corelab/ros2_stereo/install/image_view/lib/image_view/image_saver" to ""
+[4.785s] -- Installing: /home/corelab/ros2_stereo/install/image_view/lib/image_view/video_recorder
+[4.785s] -- Set runtime path of "/home/corelab/ros2_stereo/install/image_view/lib/image_view/video_recorder" to ""
+[4.785s] -- Up-to-date: /home/corelab/ros2_stereo/install/image_view/share/ament_index/resource_index/package_run_dependencies/image_view
+[4.785s] -- Up-to-date: /home/corelab/ros2_stereo/install/image_view/share/ament_index/resource_index/parent_prefix_path/image_view
+[4.785s] -- Up-to-date: /home/corelab/ros2_stereo/install/image_view/share/image_view/environment/ament_prefix_path.sh
+[4.785s] -- Up-to-date: /home/corelab/ros2_stereo/install/image_view/share/image_view/environment/ament_prefix_path.dsv
+[4.785s] -- Up-to-date: /home/corelab/ros2_stereo/install/image_view/share/image_view/environment/path.sh
+[4.785s] -- Up-to-date: /home/corelab/ros2_stereo/install/image_view/share/image_view/environment/path.dsv
+[4.785s] -- Up-to-date: /home/corelab/ros2_stereo/install/image_view/share/image_view/local_setup.bash
+[4.786s] -- Up-to-date: /home/corelab/ros2_stereo/install/image_view/share/image_view/local_setup.sh
+[4.786s] -- Up-to-date: /home/corelab/ros2_stereo/install/image_view/share/image_view/local_setup.zsh
+[4.786s] -- Up-to-date: /home/corelab/ros2_stereo/install/image_view/share/image_view/local_setup.dsv
+[4.786s] -- Installing: /home/corelab/ros2_stereo/install/image_view/share/image_view/package.dsv
+[4.786s] -- Up-to-date: /home/corelab/ros2_stereo/install/image_view/share/ament_index/resource_index/packages/image_view
+[4.786s] -- Up-to-date: /home/corelab/ros2_stereo/install/image_view/share/ament_index/resource_index/rclcpp_components/image_view
+[4.786s] -- Up-to-date: /home/corelab/ros2_stereo/install/image_view/share/image_view/cmake/ament_cmake_export_dependencies-extras.cmake
+[4.786s] -- Up-to-date: /home/corelab/ros2_stereo/install/image_view/share/image_view/cmake/ament_cmake_export_include_directories-extras.cmake
+[4.786s] -- Up-to-date: /home/corelab/ros2_stereo/install/image_view/share/image_view/cmake/ament_cmake_export_libraries-extras.cmake
+[4.786s] -- Up-to-date: /home/corelab/ros2_stereo/install/image_view/share/image_view/cmake/image_viewConfig.cmake
+[4.786s] -- Up-to-date: /home/corelab/ros2_stereo/install/image_view/share/image_view/cmake/image_viewConfig-version.cmake
+[4.786s] -- Up-to-date: /home/corelab/ros2_stereo/install/image_view/share/image_view/package.xml
+[4.790s] Invoked command in '/home/corelab/ros2_stereo/build/image_view' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/corelab/ros2_camera_calibration/install/camera_calibration:/opt/ros/foxy /home/corelab/.local/bin/cmake --install /home/corelab/ros2_stereo/build/image_view

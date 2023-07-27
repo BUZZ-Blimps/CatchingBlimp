@@ -1,0 +1,21 @@
+[0.020s] Invoking command in '/home/corelab/ros2_stereo/build/image_view': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/corelab/ros2_camera_calibration/install/camera_calibration:/opt/ros/foxy /home/corelab/.local/bin/cmake --build /home/corelab/ros2_stereo/build/image_view -- -j16 -l16
+[0.075s] [ 36%] Built target image_view_nodes
+[0.086s] [ 73%] Built target image_view
+[0.086s] [ 73%] Built target video_recorder
+[0.086s] [ 73%] Built target stereo_view
+[0.087s] [ 78%] Built target image_saver
+[0.087s] [ 89%] Built target extract_images
+[0.087s] [ 94%] [32mBuilding CXX object CMakeFiles/disparity_view.dir/src/disparity_view.cpp.o[0m
+[1.090s] [01m[K/home/corelab/ros2_stereo/src/image_view/src/disparity_view.cpp:[m[K In function ‘[01m[Kint main(int, char**)[m[K’:
+[1.090s] [01m[K/home/corelab/ros2_stereo/src/image_view/src/disparity_view.cpp:64:3:[m[K [01;31m[Kerror: [m[K‘[01m[KstartWindowThread[m[K’ was not declared in this scope; did you mean ‘[01m[Kcv::startWindowThread[m[K’?
+[1.090s]    64 |   [01;31m[KstartWindowThread[m[K();
+[1.090s]       |   [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+[1.090s]       |   [32m[Kcv::startWindowThread[m[K
+[1.090s] In file included from [01m[K/home/corelab/ros2_stereo/src/image_view/src/disparity_view.cpp:53[m[K:
+[1.090s] [01m[K/usr/local/include/opencv4/opencv2/highgui.hpp:334:18:[m[K [01;36m[Knote: [m[K‘[01m[Kcv::startWindowThread[m[K’ declared here
+[1.090s]   334 | CV_EXPORTS_W int [01;36m[KstartWindowThread[m[K();
+[1.090s]       |                  [01;36m[K^~~~~~~~~~~~~~~~~[m[K
+[1.517s] make[2]: *** [CMakeFiles/disparity_view.dir/build.make:76: CMakeFiles/disparity_view.dir/src/disparity_view.cpp.o] Error 1
+[1.517s] make[1]: *** [CMakeFiles/Makefile2:175: CMakeFiles/disparity_view.dir/all] Error 2
+[1.517s] make: *** [Makefile:146: all] Error 2
+[1.520s] Invoked command in '/home/corelab/ros2_stereo/build/image_view' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/corelab/ros2_camera_calibration/install/camera_calibration:/opt/ros/foxy /home/corelab/.local/bin/cmake --build /home/corelab/ros2_stereo/build/image_view -- -j16 -l16

@@ -1,0 +1,6 @@
+image_view::DisparityViewNode;lib/libimage_view_nodes.so
+image_view::ExtractImagesNode;lib/libimage_view_nodes.so
+image_view::ImageViewNode;lib/libimage_view_nodes.so
+image_view::ImageSaverNode;lib/libimage_view_nodes.so
+image_view::StereoViewNode;lib/libimage_view_nodes.so
+image_view::VideoRecorderNode;lib/libimage_view_nodes.so

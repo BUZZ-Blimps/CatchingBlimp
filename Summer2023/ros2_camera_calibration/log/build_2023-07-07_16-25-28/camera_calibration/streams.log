@@ -1,0 +1,35 @@
+[0.524s] Invoking command in '/home/corelab/ros2_camera_calibration/src/camera_calibration': PYTHONPATH=/home/corelab/ros2_camera_calibration/build/camera_calibration/prefix_override:/home/corelab/ros2_camera_calibration/install/camera_calibration/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/camera_calibration build --build-base /home/corelab/ros2_camera_calibration/build/camera_calibration/build install --record /home/corelab/ros2_camera_calibration/build/camera_calibration/install.log --single-version-externally-managed
+[0.668s] running egg_info
+[0.679s] writing ../../build/camera_calibration/camera_calibration.egg-info/PKG-INFO
+[0.679s] writing dependency_links to ../../build/camera_calibration/camera_calibration.egg-info/dependency_links.txt
+[0.680s] writing entry points to ../../build/camera_calibration/camera_calibration.egg-info/entry_points.txt
+[0.680s] writing requirements to ../../build/camera_calibration/camera_calibration.egg-info/requires.txt
+[0.680s] writing top-level names to ../../build/camera_calibration/camera_calibration.egg-info/top_level.txt
+[0.771s] reading manifest file '../../build/camera_calibration/camera_calibration.egg-info/SOURCES.txt'
+[0.771s] writing manifest file '../../build/camera_calibration/camera_calibration.egg-info/SOURCES.txt'
+[0.772s] running build
+[0.772s] running build_py
+[0.772s] running install
+[0.772s] /home/corelab/.local/lib/python3.8/site-packages/setuptools/_distutils/cmd.py:66: SetuptoolsDeprecationWarning: setup.py install is deprecated.
+[0.772s] !!
+[0.772s] 
+[0.772s]         ********************************************************************************
+[0.772s]         Please avoid running ``setup.py`` directly.
+[0.772s]         Instead, use pypa/build, pypa/installer, pypa/build or
+[0.772s]         other standards-based tools.
+[0.772s] 
+[0.772s]         See https://blog.ganssle.io/articles/2021/10/setup-py-deprecated.html for details.
+[0.772s]         ********************************************************************************
+[0.772s] 
+[0.772s] !!
+[0.772s]   self.initialize_options()
+[0.775s] running install_lib
+[0.787s] running install_data
+[0.798s] running install_egg_info
+[0.809s] removing '/home/corelab/ros2_camera_calibration/install/camera_calibration/lib/python3.8/site-packages/camera_calibration-2.3.0-py3.8.egg-info' (and everything under it)
+[0.809s] Copying ../../build/camera_calibration/camera_calibration.egg-info to /home/corelab/ros2_camera_calibration/install/camera_calibration/lib/python3.8/site-packages/camera_calibration-2.3.0-py3.8.egg-info
+[0.810s] running install_scripts
+[0.852s] Installing cameracalibrator script to /home/corelab/ros2_camera_calibration/install/camera_calibration/lib/camera_calibration
+[0.852s] Installing cameracheck script to /home/corelab/ros2_camera_calibration/install/camera_calibration/lib/camera_calibration
+[0.853s] writing list of installed files to '/home/corelab/ros2_camera_calibration/build/camera_calibration/install.log'
+[0.866s] Invoked command in '/home/corelab/ros2_camera_calibration/src/camera_calibration' returned '0': PYTHONPATH=/home/corelab/ros2_camera_calibration/build/camera_calibration/prefix_override:/home/corelab/ros2_camera_calibration/install/camera_calibration/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/camera_calibration build --build-base /home/corelab/ros2_camera_calibration/build/camera_calibration/build install --record /home/corelab/ros2_camera_calibration/build/camera_calibration/install.log --single-version-externally-managed
