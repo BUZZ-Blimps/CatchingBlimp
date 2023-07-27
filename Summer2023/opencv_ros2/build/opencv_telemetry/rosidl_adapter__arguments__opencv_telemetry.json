@@ -1,6 +1,0 @@
-{
-  "package_name": "opencv_telemetry",
-  "non_idl_tuples": [
-    "/home/corelab/opencv_ros2/src/opencv_telemetry:msg/ResizedImage.msg"
-  ]
-}
