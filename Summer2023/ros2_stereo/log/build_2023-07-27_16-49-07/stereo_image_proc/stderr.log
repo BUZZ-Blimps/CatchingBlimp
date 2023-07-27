@@ -1,0 +1,1 @@
+[0mCMake Error: The current CMakeCache.txt directory /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_image_proc/CMakeCache.txt is different than the directory /home/corelab/ros2_stereo/build/stereo_image_proc where CMakeCache.txt was created. This may result in binaries being created in the wrong place. If you are not sure, reedit the CMakeCache.txt[0m
