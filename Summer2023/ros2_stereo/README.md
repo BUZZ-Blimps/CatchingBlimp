@@ -28,6 +28,8 @@ for creating the reference frame:
 
 1.tune disparity parameters (use rqt_reconfigure)
 
+
+
 tutorial reference:
 	for calibration: http://wiki.ros.org/camera_calibration?distro=noetic
 	for the entire process: https://jeffzzq.medium.com/ros2-image-pipeline-tutorial-3b18903e7329
