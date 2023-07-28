@@ -50,8 +50,10 @@ Note: Don't forget to make bash in bashrc: source .../install/setup.bash to get 
 or:
 	
 If VS Code is used, make sure the JSON configurator include path is as the following:
- 
+
+```
 "includePath": ["${workspaceFolder}/**","/opt/ros/foxy/include" ]
+```
 	
 (this should be set up already, but if it's not done, make sure to include the VS Code folder generated in the OG microros-teensy code and copy paste it)
 
