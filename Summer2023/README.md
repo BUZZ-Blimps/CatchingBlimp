@@ -19,7 +19,7 @@ nano ~/.bashrc
 source dir/setup.bash
 ```
  
-or, just go into the directory, and source the setup files:
+Or, just go into the directory, and source the setup files:
 
 ```
 . install/setup.bash
@@ -47,9 +47,7 @@ colcon build
 
 Note: Don't forget to make bash in bashrc: source .../install/setup.bash to get access to the whole directory name, go into ROS_tf2_test, and run: pwd (this replaces the ...)
  
-or:
-	
-If VS Code is used, make sure the JSON configurator include path is as the following:
+Or, if VS Code is used, make sure the JSON configurator include path is as the following:
 
 ```
 "includePath": ["${workspaceFolder}/**","/opt/ros/foxy/include" ]
