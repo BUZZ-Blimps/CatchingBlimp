@@ -21,7 +21,7 @@ To enbale the MicroROS agent, please make the microros_ws bash, and do "colcon b
 	
 The MicroROS agent can be run using the ros2 run command:
 
-	-ros2 run micro_ros_agent micro_ros_agent serial --dev /dev/ttyACM0  
+	 ros2 run micro_ros_agent micro_ros_agent serial --dev /dev/ttyACM0  
 	 ttyACM0 is the serial port name that teensy is connected to
 
 (more info on the pi section)
