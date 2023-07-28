@@ -21,8 +21,8 @@ To enbale the MicroROS agent, please make the microros_ws bash, and do "colcon b
 	
 The MicroROS agent can be run using the ros2 run command:
 
-	 ros2 run micro_ros_agent micro_ros_agent serial --dev /dev/ttyACM0  
-	 ttyACM0 is the serial port name that teensy is connected to
+	ros2 run micro_ros_agent micro_ros_agent serial --dev /dev/ttyACM0  
+	ttyACM0 is the serial port name that teensy is connected to
 
 (more info on the pi section)
 
@@ -39,14 +39,14 @@ To enable the publisher, please build first:
  or:
 	*If VS code is used, make sure the JSON configurator include path is as the following:
  
-             "includePath": [
-             "${workspaceFolder}/**",
-             "/opt/ros/foxy/include" 
+        "includePath": [
+        "${workspaceFolder}/**",
+        "/opt/ros/foxy/include" 
 (this should be set up already, but if it's not done, make sure to include the vscode folder generated in the OG microros-teensy code and copy paste it)
 
 To launch the tf (transformation) publisher, run ros2 launch command:
 
-	-ros2 launch blimp_telemetry blimp_telemetry.launch.py
+	ros2 launch blimp_telemetry blimp_telemetry.launch.py
 	
 	
 **Pi**:
