@@ -1,8 +1,9 @@
-===============*Welcome to the new ROS2 MicroROS integrated blimp version!*==============
+===============***Welcome to the new ROS2 MicroROS integrated blimp version!***==============
 
 
 
 **MICRO ROS**:
+
 To enbale the MicroROS agent, please make the microros_ws bash, and do "colcon build":
 
 	- source .../microros_ws/install/setup.bash  #(recomend taking it out of the GitHub and make a copy, for the GitHub directory is shared by devices)
@@ -26,7 +27,7 @@ The MicroROS agent can be run using the ros2 run command:
 (more info on the pi section)
 
 
-ROS2:
+**ROS2**:
 The ROS2 publisher is in the ROS_tf2_test folder, make sure the teensy is plugged into the pi for the tf2 messages to be broadcasted!
 To enable the publisher, please build first:
 
