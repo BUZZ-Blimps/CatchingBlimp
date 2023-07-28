@@ -151,13 +151,11 @@ Complete one of the following options:
 		sudo apt update
 		sudo apt install python3-colcon-common-extensions
 	
-	--WARNING: when running "ros2 run micro_ros_setup build_agent.sh", the system may throw errors saying "pytest version too old",
-	when this happens, run this:
- 
-		-- pip3 install --upgrade pytest
-	the system might tell you that you already have the newest version, that is a CAP, after running this the agent builds with no errors
-	
-	-- after "colcon build", and "ros2 run micro_ros_setup build_agent.sh" make sure to "source install/local_setup.bash" to make bash!
+--WARNING: when running "ros2 run micro_ros_setup build_agent.sh", the system may throw errors saying "pytest version too old",
+when this happens, run this:
+ -- pip3 install --upgrade pytest
+the system might tell you that you already have the newest version, that is a CAP, after running this the agent builds with no errors
+-- after "colcon build", and "ros2 run micro_ros_setup build_agent.sh" make sure to "source install/local_setup.bash" to make bash!
 	
  After these steps, everything is set up for the pi, to run the MICRO ROS agent, run the forementioned micro_ros_agent command:
  
