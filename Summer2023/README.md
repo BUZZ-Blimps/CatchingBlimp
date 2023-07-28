@@ -10,7 +10,7 @@ To enbale the MicroROS agent, please make the microros_ws bash, and do "colcon b
 	cd /microros_ws
 	colcon build
 	
-**To make bash, it can be done through going into bashrc:
+To make bash, it can be done through going into bashrc:
 
 	nano ~/.bashrc
 	source dir/setup.bash
