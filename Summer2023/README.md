@@ -40,23 +40,26 @@ ttyACM0 is the serial port name that teensy is connected to
 The ROS2 publisher is in the ROS_tf2_test folder, make sure the teensy is plugged into the pi for the tf2 messages to be broadcasted!
 To enable the publisher, please build first:
 
-	cd /ROS_tf2_test
-	colcon build
-	don't forget to make bash in bashrc: source .../install/setup.bash
-	to get access to the whole directory name, go into ROS_tf2_test, and run: pwd (this replaces the ...)
- or:
-	*If VS code is used, make sure the JSON configurator include path is as the following:
+```
+cd /ROS_tf2_test
+colcon build
+```
+
+Note: Don't forget to make bash in bashrc: source .../install/setup.bash to get access to the whole directory name, go into ROS_tf2_test, and run: pwd (this replaces the ...)
  
-        "includePath": [
-        "${workspaceFolder}/**",
-        "/opt/ros/foxy/include" 
+or:
 	
-(this should be set up already, but if it's not done, make sure to include the vscode folder generated in the OG microros-teensy code and copy paste it)
-
-To launch the tf (transformation) publisher, run ros2 launch command:
-
-	ros2 launch blimp_telemetry blimp_telemetry.launch.py
+If VS Code is used, make sure the JSON configurator include path is as the following:
+ 
+"includePath": ["${workspaceFolder}/**","/opt/ros/foxy/include" ]
 	
+(this should be set up already, but if it's not done, make sure to include the VS Code folder generated in the OG microros-teensy code and copy paste it)
+
+To launch the tf (transformation) publisher, run the ros2 launch command:
+
+```
+ros2 launch blimp_telemetry blimp_telemetry.launch.py
+```	
 	
 ## Pi
 
