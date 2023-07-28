@@ -2,7 +2,7 @@
 
 
 
-# MICRO ROS**
+# MICRO ROS
 
 To enbale the MicroROS agent, please make the microros_ws bash, and do "colcon build":
 
