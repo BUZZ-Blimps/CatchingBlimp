@@ -113,17 +113,17 @@ Follow the one of the options below for ROS 2 installation:
 	-- scp InstallROS2.sh pi@192.168.0.10#:/home/pi/
 	-- don't forget to source:
  
-		nano ~/.bashrc
-		source /opt/ros/foxy/setup.bash
-		run source ~/.bashrc
+	nano ~/.bashrc
+	source /opt/ros/foxy/setup.bash
+	run source ~/.bashrc
 	
 	Option 2:
 	-- https://docs.ros.org/en/foxy/Installation/Ubuntu-Install-Debians.html
 	-- don't forget to source:
  
-		nano ~/.bashrc
-		source /opt/ros/foxy/setup.bash
-		run source ~/.bashrc
+	nano ~/.bashrc
+	source /opt/ros/foxy/setup.bash
+	run source ~/.bashrc
 
 ====================MICRO ROS============================
 
