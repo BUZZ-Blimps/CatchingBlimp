@@ -42,6 +42,7 @@ To enable the publisher, please build first:
         "includePath": [
         "${workspaceFolder}/**",
         "/opt/ros/foxy/include" 
+	
 (this should be set up already, but if it's not done, make sure to include the vscode folder generated in the OG microros-teensy code and copy paste it)
 
 To launch the tf (transformation) publisher, run ros2 launch command:
@@ -83,7 +84,7 @@ try logging back into it with the new username:
 	-- username: pi
 	-- password: rasberrypi
  
-****WIFI setup + SSH****
+### WiFi Setup + SSH
 
 To enable SSH, WIFI needs to be set up first:
 	*tutorial video-> https://www.youtube.com/watch?app=desktop&v=s4ZDlV3tIuM
