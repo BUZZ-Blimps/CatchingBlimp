@@ -1,4 +1,4 @@
-============================Welcome to the new ROS2 MicroROS integrated blimp version!===================================
+=======================Welcome to the new ROS2 MicroROS integrated blimp version!=======================
 
 
 MICRO ROS:
