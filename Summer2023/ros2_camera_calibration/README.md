@@ -2,7 +2,7 @@
 
 1. calibration example with 8x6 checker board, 25 mm square width:
    
-on linux terminal, run:
+   on linux terminal, run:
 
    ros2 run camera_calibration cameracalibrator --size 8x6 --square 0.025 right:=/BurnCreamBlimp/right/image_raw left:=/BurnCreamBlimp/left/image_raw left_camera:=/BurnCreamBlimp/left right_camera:=/BurnCreamBlimp/right
 
