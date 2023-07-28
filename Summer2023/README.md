@@ -126,7 +126,7 @@ Follow the one of the options below for ROS 2 installation:
 	source /opt/ros/foxy/setup.bash
 	run source ~/.bashrc
 
-### Micro ROS
+### MICRO ROS
 
 Follow the instructions below for MICRO ROS 2 installation.
 
