@@ -39,7 +39,9 @@ To launch the tf (transformation) publisher, run ros2 launch command
 	
 	
 Pi:
+
 ==============ubuntu============================
+
 To get Ubuntu on Rasberry Pi 4, follow the instructions on
  	-- https://ubuntu.com/tutorials/how-to-install-ubuntu-desktop-on-raspberry-pi-4#1-overview\
  	-- make sure the version is 20.04.5 LST (64-bit)
@@ -81,7 +83,8 @@ try on another computer to ssh into the pi:
 you now possess the power to get into the pi wirelessly!
 after getting into the pi directory, we can install ROS2 and MICRO ROS	
 
-============================ROS 2===========================================
+=====================ROS 2===============================
+
 Follow the one of the options below for ROS 2 installation:
 	Option 1:
 	-- Open a terminal and copy the file InstallROS2.sh to the pi using the following command:
