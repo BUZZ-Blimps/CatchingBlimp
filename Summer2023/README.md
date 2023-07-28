@@ -39,7 +39,7 @@ To launch the tf (transformation) publisher, run ros2 launch command
 	
 	
 Pi:
-===========================ubuntu========================================
+==============ubuntu============================
 To get Ubuntu on Rasberry Pi 4, follow the instructions on
  	-- https://ubuntu.com/tutorials/how-to-install-ubuntu-desktop-on-raspberry-pi-4#1-overview\
  	-- make sure the version is 20.04.5 LST (64-bit)
