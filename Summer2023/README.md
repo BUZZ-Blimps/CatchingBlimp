@@ -32,9 +32,7 @@ ros2 run micro_ros_agent micro_ros_agent serial --dev /dev/ttyACM0
 ttyACM0 is the serial port name that teensy is connected to
 ```
 
-For more information, see the [Pi](#Pi) section.
-[Go to Real Cool Heading section](###MICRO-ROS)
-For more information, see the [Pi > MICRO ROS](#pi-micro-ros) section.
+For more information, see the [Pi -> MICRO ROS](#micro-ros-1) section.
 
 
 
