@@ -8,7 +8,7 @@ ROS2 Image pipeline for creating a point cloud:
 4. create disparity for the image:
 	ros2 run stereo_image_proc disparity_node
 	--to view the image, run:
-	ros2 run image_view disparity_view image:=disparity
+	ros2 run image_view disparity_view --ros-args --remap image:=disparity
 5. create point clound:
 	ros2 run stereo_image_proc point_cloud_node 
 
@@ -20,7 +20,15 @@ for creating the reference frame:
 	ros2 run tf2_ros static_transform_publisher   0.64 0 0.004  0 0 1.5708   BurnCreamBlimp_left_optical_frame   BurnCreamBlimp_left_optical_frame_child
 	
 
-tutorial reference:
-for calibration: http://wiki.ros.org/camera_calibration?distro=noetic
-https://jeffzzq.medium.com/ros2-image-pipeline-tutorial-3b18903e7329
 
+***
+	!!!REMEMBER to rebuild the package by deleting the "build install log" folders and using "colcon build" in the "ros2_stereo" directory to reconfigure the setup.bash!!!
+
+
+
+tutorial reference:
+	for calibration: http://wiki.ros.org/camera_calibration?distro=noetic
+	for the entire process: https://jeffzzq.medium.com/ros2-image-pipeline-tutorial-3b18903e7329
+
+
+plz read the documentations, thank you:)

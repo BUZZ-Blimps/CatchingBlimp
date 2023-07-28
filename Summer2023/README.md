@@ -3,7 +3,7 @@
 
 MICRO ROS:
 To enbale the MicroROS agent, please make the microros_ws bash, and do "colcon build"
-	- source .../microros_ws/install/setup.bash
+	- source .../microros_ws/install/setup.bash  (recomend taking it out of the GitHub and make a copy, for the GitHub directory is shared by devices)
 	- cd /microros_ws
 	- colcon build
 	
@@ -32,9 +32,9 @@ To enable the publisher, please build first:
             -"includePath": [
              "${workspaceFolder}/**",
              "/opt/ros/foxy/include" 
-             (this should be set up already)
+             (this should be set up already, but if it's not done, make sure to include the vscode folder generated in the OG microros-teensy code and copy paste it)
 
-To launch the publisher, run ros2 launch command    
+To launch the tf (transformation) publisher, run ros2 launch command    
 	-ros2 launch blimp_telemetry blimp_telemetry.launch.py
 	
 	
