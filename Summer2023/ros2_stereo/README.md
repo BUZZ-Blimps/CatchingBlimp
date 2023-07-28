@@ -24,7 +24,8 @@ for creating the reference frame:
 ***
 	!!!REMEMBER to rebuild the package by deleting the "build install log" folders and using "colcon build" in the "ros2_stereo" directory to reconfigure the setup.bash!!!
 
-
+***TO DO***
+1.tune disparity parameters (use rqt_reconfigure)
 
 tutorial reference:
 	for calibration: http://wiki.ros.org/camera_calibration?distro=noetic
