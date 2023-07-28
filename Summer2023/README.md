@@ -105,7 +105,7 @@ try on another computer to ssh into the pi:
 you now possess the power to get into the pi wirelessly!
 after getting into the pi directory, we can install ROS2 and MICRO ROS	
 
-=====================ROS 2===============================
+### ROS 2
 
 Follow the one of the options below for ROS 2 installation:
 
@@ -126,7 +126,7 @@ Follow the one of the options below for ROS 2 installation:
 	source /opt/ros/foxy/setup.bash
 	run source ~/.bashrc
 
-====================MICRO ROS============================
+### Micro ROS
 
 Follow the instruction for MICRO ROS 2 installation:
 
