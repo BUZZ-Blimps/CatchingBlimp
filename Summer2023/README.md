@@ -4,9 +4,9 @@
 
 ## MICRO ROS
 
-To enbale the MicroROS agent, please make the microros_ws bash, and do "colcon build":
+To enable the MicroROS agent, please make the microros_ws bash, and do "colcon build":
 
-	source .../microros_ws/install/setup.bash  #(recomend taking it out of the GitHub and make a copy, for the GitHub directory is shared by devices)
+	source .../microros_ws/install/setup.bash  #(recommend taking it out of the GitHub and make a copy, for the GitHub directory is shared by devices)
 	cd /microros_ws
 	colcon build
 	
@@ -128,7 +128,7 @@ Follow the one of the options below for ROS 2 installation:
 
 ### Micro ROS
 
-Follow the instruction for MICRO ROS 2 installation:
+Follow the instructions below for MICRO ROS 2 installation.
 
 Complete one of the following options:
 
