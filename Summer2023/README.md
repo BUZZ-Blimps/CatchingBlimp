@@ -107,7 +107,7 @@ after getting into the pi directory, we can install ROS2 and MICRO ROS
 
 ### ROS 2
 
-Follow the one of the options below for ROS 2 installation:
+Follow one of the options below for ROS 2 installation.
 
 	Option 1:
 	-- Open a terminal and copy the file InstallROS2.sh to the pi using the following command:
