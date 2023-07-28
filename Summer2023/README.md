@@ -1,7 +1,8 @@
-==============***Welcome to the new ROS2 MicroROS integrated blimp version!***==============
+===============***Welcome to the new ROS2 MicroROS integrated blimp version!***==============
 
 
-MICRO ROS:
+
+**MICRO ROS**:
 To enbale the MicroROS agent, please make the microros_ws bash, and do "colcon build":
 
 	- source .../microros_ws/install/setup.bash  #(recomend taking it out of the GitHub and make a copy, for the GitHub directory is shared by devices)
