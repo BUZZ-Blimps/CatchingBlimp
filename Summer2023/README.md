@@ -14,17 +14,23 @@ colcon build
 	
 To make bash, it can be done through going into bashrc:
 
-	nano ~/.bashrc
-	source dir/setup.bash
+```
+nano ~/.bashrc
+source dir/setup.bash
+```
  
-  or, just go into the directory, and source the setup files:
-  
-	. install/setup.bash
+or, just go into the directory, and source the setup files:
+
+```
+. install/setup.bash
+```
 	
 The MicroROS agent can be run using the ros2 run command:
 
-	ros2 run micro_ros_agent micro_ros_agent serial --dev /dev/ttyACM0  
-	ttyACM0 is the serial port name that teensy is connected to
+```
+ros2 run micro_ros_agent micro_ros_agent serial --dev /dev/ttyACM0  
+ttyACM0 is the serial port name that teensy is connected to
+```
 
 (more info on the pi section)
 
