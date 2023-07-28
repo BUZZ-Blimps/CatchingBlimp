@@ -33,7 +33,8 @@ ttyACM0 is the serial port name that teensy is connected to
 ```
 
 For more information, see the [Pi](#Pi) section.
-For more information, see the [Pi > MICRO ROS](#Pi--MICRO ROS).
+For more information, see the [Pi > MICRO%20ROS](#pi--micro-ros) section.
+
 
 
 ## ROS2
