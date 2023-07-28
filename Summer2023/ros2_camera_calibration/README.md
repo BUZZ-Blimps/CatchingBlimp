@@ -12,5 +12,12 @@
     ->install->opencv_telemetry->share->opencv_telemetry->calibration   >>>make the calibration folder:) 
 
 
+***TO DO***
+
+1. calibrate all cameras and find a way to check the quality of the calibration files
+2. create the calibration files for each camera
+
+
+
 
 tutorial reference: http://wiki.ros.org/camera_calibration?distro=noetic
