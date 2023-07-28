@@ -28,6 +28,7 @@ The MicroROS agent can be run using the ros2 run command:
 
 
 **ROS2**:
+
 The ROS2 publisher is in the ROS_tf2_test folder, make sure the teensy is plugged into the pi for the tf2 messages to be broadcasted!
 To enable the publisher, please build first:
 
@@ -48,7 +49,7 @@ To launch the tf (transformation) publisher, run ros2 launch command:
 	-ros2 launch blimp_telemetry blimp_telemetry.launch.py
 	
 	
-Pi:
+**Pi**:
 
 ==============ubuntu============================
 
@@ -82,7 +83,8 @@ try logging back into it with the new username:
 	-- username: pi
 	-- password: rasberrypi
  
-******WIFI setup + SSH******
+****WIFI setup + SSH****
+
 To enable SSH, WIFI needs to be set up first:
 	*tutorial video-> https://www.youtube.com/watch?app=desktop&v=s4ZDlV3tIuM
 	-WIFI SSID: COREBlimp
@@ -171,7 +173,7 @@ Follow the one of the options below for ROS 2 installation:
 	 	--diff dev.txt dev2.txt
 	 the port name in /dev/tty will be shown
 	 
-****Now you are ready to fly your blimp! Yay!***
+****Now you are ready to fly your blimp! Yay!****
 	
 
   
