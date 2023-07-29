@@ -211,7 +211,7 @@ sudo apt install python3-colcon-common-extensions
 ```
 
 Potential Error:
-WARNING: when running "ros2 run micro_ros_setup build_agent.sh", the system may throw errors saying "pytest version too old"
+- WARNING: when running "ros2 run micro_ros_setup build_agent.sh", the system may throw errors saying "pytest version too old"
 
 When this error happens, run the following:
 
