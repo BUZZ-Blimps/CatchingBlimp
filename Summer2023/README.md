@@ -99,10 +99,9 @@ Create a password for root:
 sudo passwd root
 ```
 
-Log in root:
+Now, log in as the root user:
 	
-username: root
-password: the password you set (i.e. raspberrypi)
+username: root<br>password: The password you set (i.e. raspberrypi)
  
 Then change the username to pi for the ubuntu user:
 
@@ -112,21 +111,19 @@ groupmod -n pi ubuntu
 usermod -d /home/pi -m pi
 ```
  
-After this, log out of root by doing -> [Ctrl] + [D]
+After this, log out of root by doing -> [Ctrl] + [D].
 
 Try logging back into it with the new username:
 
-username: pi
-password: rasberrypi
+username: pi<br>password: rasberrypi
  
 ### WiFi Setup + SSH
 
-To enable SSH, WIFI needs to be set up first:
+To enable SSH, WiFi needs to be set up first:
 
 Tutorial video -> https://www.youtube.com/watch?app=desktop&v=s4ZDlV3tIuM
 
-WiFi SSID: COREBlimp
-Password: jollypiano265
+WiFi SSID: COREBlimp<br>Password: jollypiano265
  
 Now, get excited, you are ready to get SSH working!
 
@@ -142,12 +139,11 @@ Now it's done!
 
 Try on another computer to ssh into the Pi:
 
-ssh pi@192.168.0.10# where # is the Pi ID
-enter password
+ssh pi@192.168.0.10# where # is the Pi ID<br>enter password
 
 You now possess the power to get into the Pi wirelessly!
 
-After getting into the pi directory, we can install ROS 2 and MICRO ROS.
+After getting into the Pi directory, we can install ROS 2 and MICRO ROS.
 
 ### ROS 2
 
