@@ -19,7 +19,7 @@ nano ~/.bashrc
 source dir/setup.bash
 ```
  
-Or, just go into the directory, and source the setup files:
+Alternatively, just go into the directory, and source the setup files:
 
 ```
 . install/setup.bash
@@ -55,7 +55,7 @@ pwd
 
 Note: this replaces the ...
  
-Or, if VS Code is used, make sure the JSON configurator include path is as the following:
+Alternatively, if VS Code is used, make sure the JSON configurator include path is the following:
 
 ```
 "includePath": ["${workspaceFolder}/**","/opt/ros/foxy/include" ]
