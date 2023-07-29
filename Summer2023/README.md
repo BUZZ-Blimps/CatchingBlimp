@@ -31,7 +31,7 @@ The MicroROS agent can be run using the ros2 run command:
 ros2 run micro_ros_agent micro_ros_agent serial --dev /dev/ttyACM0  
 ```
 
-Note: ttyACM0 is the serial port name that teensy is connected to
+Note: ttyACM0 is the serial port name that teensy is connected to.
 
 For more information, see the [Pi -> MICRO ROS](#micro-ros-1) section.
 
@@ -53,7 +53,7 @@ Note: Don't forget to make bash in bashrc: source .../install/setup.bash to get 
 pwd 
 ```
 
-Note: this replaces the ...
+Note: This replaces the '...'.
  
 Alternatively, if VS Code is used, make sure the JSON configurator include path is the following:
 
@@ -61,7 +61,7 @@ Alternatively, if VS Code is used, make sure the JSON configurator include path 
 "includePath": ["${workspaceFolder}/**","/opt/ros/foxy/include" ]
 ```
 	
-(this should be set up already, but if it's not done, make sure to include the VS Code folder generated in the OG microros-teensy code and copy paste it)
+Note: This should be set up already, but if it's not done, make sure to include the VS Code folder generated in the OG microros-teensy code and copy paste it.
 
 To launch the tf (transformation) publisher, run the ros2 launch command:
 
