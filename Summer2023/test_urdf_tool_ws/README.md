@@ -7,7 +7,7 @@ URDF exporter download link:
 https://github.com/ros/solidworks_urdf_exporter/releases
 (choose the newest release v1.6.1, only the .exe file is required)
 
-
+In Solidworks, the exporter can be added by accessing **Options**->**Add-ins**, then in the ***Other Add-ins*** block click the box with ***SW2URDF***
 
 **To make the package for the URDF robot model, please follow this after using the SOLIDWORKS built-in sw2urdf tool:**
 
