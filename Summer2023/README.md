@@ -47,10 +47,10 @@ cd /ROS_tf2_test
 colcon build
 ```
 
-Note: Don't forget to make bash in bashrc: source .../install/setup.bash to get access to the whole directory name, go into ROS_tf2_test, and run: 
+Now, go into ROS_tf2_test and run the following: 
 
 ```
-pwd 
+source $PWD/install/setup.bash
 ```
 
 Note: This replaces the '...'
