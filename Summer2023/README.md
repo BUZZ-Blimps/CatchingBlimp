@@ -1,4 +1,4 @@
-# :tada: Welcome to the new ROS2 MicroROS integrated blimp version! :tada:
+# :tada: Welcome to the new ROS2 MicroROS integrated blimp V8! :tada:
 
 
 
