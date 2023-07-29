@@ -52,15 +52,12 @@ Now, go into ROS_tf2_test and run the following:
 ```
 source $PWD/install/setup.bash
 ```
-
-Note: This replaces the '...'
  
 Alternatively, if VS Code is used, make sure the JSON configurator include path is the following:
 
 ```
 "includePath": ["${workspaceFolder}/**","/opt/ros/foxy/include" ]
-```
-	
+```	
 Note: This should be set up already, but if it's not done, make sure to include the VS Code folder generated in the OG microros-teensy code and copy paste it.
 
 To launch the tf (transformation) publisher, run the ros2 launch command:
