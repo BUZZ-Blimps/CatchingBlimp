@@ -1,6 +1,7 @@
 **calibration tutorial**
 
 1. calibration example with 8x6 checker board, 25 mm square width:
+
 on linux terminal, run:
 
 ```
