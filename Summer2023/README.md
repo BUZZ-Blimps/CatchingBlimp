@@ -219,7 +219,7 @@ When this error happens, run the following:
 pip3 install --upgrade pytest
 ```
 
-The system might tell you that you already have the newest version, that is a CAP, after running this the agent builds with no errors.
+The system might tell you that you already have the newest version, that is a CAP, after running the command above the agent builds with no errors.
 
 After "colcon build", and "ros2 run micro_ros_setup build_agent.sh" make sure to "source install/local_setup.bash" to make bash!
 
