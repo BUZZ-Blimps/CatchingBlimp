@@ -1,56 +1,70 @@
 # ROS2 Image pipeline for creating a point cloud
 
-1. publish raw image:
+### 1. Publish raw image:
    
-	ros2 run opencv_telemetry minimal_opencv_ros2_node 0
+```	
+ros2 run opencv_telemetry minimal_opencv_ros2_node 0
+```
 
-2. split the images to left and right frames, and upload the camera info for both lenses:
-   
-	ros2 run opencv_telemetry split_sync_images
+### 2. Split the images to left and right frames, and upload the camera info for both lenses:
 
-3. rectify each image by calling the launch file:
-   
-	ros2 launch image_proc image_proc.launch.py
+```
+ros2 run opencv_telemetry split_sync_images
+```
 
-4. create disparity for the image:
-   
-	ros2 run stereo_image_proc disparity_node
+### 3. Rectify each image by calling the launch file:
 
-to view the image, run:
-	
- 	ros2 run image_view disparity_view --ros-args --remap image:=disparity
-  
-to dynamically tune the disparity parameters:
+```
+ros2 launch image_proc image_proc.launch.py
+```
 
-	ros2 run rqt_reconfigure rqt_reconfigure
+### 4. Create disparity for the image:
 
-5. create point clound:
+```
+ros2 run stereo_image_proc disparity_node
+```
 
-	ros2 run stereo_image_proc point_cloud_node 
+To view the image, run:
+
+``` 
+ros2 run image_view disparity_view --ros-args --remap image:=disparity
+```
+
+To dynamically tune the disparity parameters:
+
+```
+ros2 run rqt_reconfigure rqt_reconfigure
+```
+
+### 5. Create point clound:
+
+```
+ros2 run stereo_image_proc point_cloud_node 
+```
 
 To view the point cloud in rviz, run:
 
- 	ros2 run rviz2 rviz2
+```
+ros2 run rviz2 rviz2
+```
 	
-**IMPORTANT:The golbal frame MUST BE SET TO "BurnCreamBlimp_left_optical_frame"**
-for creating the reference frame:
+**IMPORTANT: The global frame MUST BE SET TO "BurnCreamBlimp_left_optical_frame"**
+For creating the reference frame:
 
-	ros2 run tf2_ros static_transform_publisher   0.64 0 0.004  0 0 1.5708   BurnCreamBlimp_left_optical_frame   BurnCreamBlimp_left_optical_frame_child
-	
+```
+ros2 run tf2_ros static_transform_publisher   0.64 0 0.004  0 0 1.5708   BurnCreamBlimp_left_optical_frame   BurnCreamBlimp_left_optical_frame_child
+```	
 
 
-***
-	!!!REMEMBER to rebuild the package by deleting the "build install log" folders and using "colcon build" in the "ros2_stereo" directory to reconfigure the setup.bash!!!
+***!!!REMEMBER to rebuild the package by deleting the "build install log" folders and using "colcon build" in the "ros2_stereo" directory to reconfigure the setup.bash!!!***
 
 ***TO DO***
 
 1.tune disparity parameters (use rqt_reconfigure)
 
-
-
-tutorial reference:
-	for calibration: http://wiki.ros.org/camera_calibration?distro=noetic
-	for the entire process: https://jeffzzq.medium.com/ros2-image-pipeline-tutorial-3b18903e7329
+Tutorial reference:
+- For calibration: http://wiki.ros.org/camera_calibration?distro=noetic
+- For the entire process: https://jeffzzq.medium.com/ros2-image-pipeline-tutorial-3b18903e7329
 
 
 plz read the documentations, thank you:)
