@@ -163,7 +163,7 @@ scp InstallROS2.sh pi@192.168.0.10#:/home/pi/
 ```
 nano ~/.bashrc
 source /opt/ros/foxy/setup.bash
-run source ~/.bashrc
+source ~/.bashrc
 ```	
 
 Option 2
@@ -173,7 +173,7 @@ Option 2
 ```
 nano ~/.bashrc
 source /opt/ros/foxy/setup.bash
-run source ~/.bashrc
+source ~/.bashrc
 ```
 
 ### MICRO ROS
