@@ -181,9 +181,7 @@ run source ~/.bashrc
 
 ### MICRO ROS
 
-Follow the instructions below for MICRO ROS installation.
-
-Complete one of the following options:
+Follow one of the options below for MICRO ROS installation.
 
 Option 1:
 - Open a terminal and copy the folder microros_ws to the pi using the following command:
