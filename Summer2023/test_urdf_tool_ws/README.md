@@ -1,3 +1,6 @@
+**To install the URDF exporter in Solidworks, follow this tutorial:
+	- https://www.youtube.com/watch?v=I08lO_SRBbk
+
 **To make the package for the URDF robot model, please follow this after using the SOLIDWORKS built-in sw2urdf tool:**
 https://github.com/xiaoming-sun6/sw2urdf_ros2/blob/master/readme.md
 
