@@ -126,7 +126,8 @@ To enable SSH, WiFi needs to be set up first:
 
 Tutorial video -> https://www.youtube.com/watch?app=desktop&v=s4ZDlV3tIuM
 
-WiFi SSID: COREBlimp<br>Password: jollypiano265
+- WiFi SSID: COREBlimp
+- Password: jollypiano265
  
 Now, get excited, you are ready to get SSH working!
 
