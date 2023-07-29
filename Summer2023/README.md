@@ -53,7 +53,7 @@ Note: Don't forget to make bash in bashrc: source .../install/setup.bash to get 
 pwd 
 ```
 
-Note: This replaces the '...'.
+Note: This replaces the '...'
  
 Alternatively, if VS Code is used, make sure the JSON configurator include path is the following:
 
