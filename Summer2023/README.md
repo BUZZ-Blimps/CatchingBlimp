@@ -200,7 +200,7 @@ scp -r microros_ws pi@192.168.0.10#:/home/pi/
 rm -r [folder]
 ```
 
--remember to rebuild the folder (read *option 2* for how to install colcon package):
+- Remember to rebuild the package (read *option 2* for how to install colcon package):
 
 ```
 colcon build
