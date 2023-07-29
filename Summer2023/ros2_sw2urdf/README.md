@@ -1,4 +1,4 @@
-# sw2urdf_ros2
+# ros2_sw2urdf
 
 The current solidworks sw2urdf plugin can only be used in ros1, which is obviously unfriendly to the current learning
 environment.So I made this tool to convert files to ros2 for use. At this stage, the tool has only been successfully tested in rviz2.
@@ -25,7 +25,8 @@ We download the tool from github
 
 ~~~ bash
 git clone https://github.com/xiaoming-sun6/sw2urdf_ros2.git
-~~~ 
+~~~
+(this part is done!)
 
 ### 3. Getting started
 
