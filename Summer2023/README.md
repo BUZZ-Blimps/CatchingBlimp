@@ -159,6 +159,11 @@ Option 1
 ```
 scp InstallROS2.sh pi@192.168.0.10#:/home/pi/
 ```
+- To run InstallROS2.sh:
+
+```
+./InstallROS2.sh
+```
 
 - Don't forget to source:
 
@@ -194,10 +199,16 @@ scp -r microros_ws pi@192.168.0.10#:/home/pi/
 ```
 rm -r [folder]
 ```
+
+-remember to rebuild the folder (read *option 2* for how to install colcon package):
+
+```
+colcon build
+```
  
 Option 2
 - Follow the instructions here to setup MICRO ROS: https://manzurmurshid.medium.com/how-to-connect-teensy-3-2-with-micro-ros-and-ros2-foxy-6c8f99c9b66a
-- Before "colcon build", make sure colcon is installed.
+- **Before "colcon build", make sure colcon is installed**.
 - Follow the instructions here to install colcon: https://colcon.readthedocs.io/en/released/user/installation.html
 		
 Run the following commands:
