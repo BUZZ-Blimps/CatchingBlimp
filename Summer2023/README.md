@@ -12,7 +12,7 @@ cd /microros_ws
 colcon build
 ```
 	
-To make bash, it can be done through going into bashrc:
+To make bash, it can be done by going into your bashrc:
 
 ```
 nano ~/.bashrc
