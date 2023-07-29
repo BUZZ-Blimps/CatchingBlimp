@@ -252,7 +252,7 @@ Finally run:
 diff dev.txt dev2.txt
 ```
 
-The port name in /dev/tty will now be shown.
+This will show th port name in /dev/tty.
 
   
 ****Now you are ready to fly your blimp! Yay!****
