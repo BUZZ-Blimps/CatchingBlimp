@@ -1,3 +1,5 @@
+# ros2_robot_model
+
 **To install the URDF exporter in Solidworks, follow this tutorial:**
 
 https://www.youtube.com/watch?v=I08lO_SRBbk
@@ -26,5 +28,6 @@ To launch the robot model:
 	ros2 launch test_urdf_tool launch.py 
 
 ***TO DO:***
-1. make a more accurate model of the blimp and make it the robot model for the launch file.
+1. Make a more accurate model of the blimp and make it the robot model for the launch file.
+2. Change the package name to ros2_robot_model
    
