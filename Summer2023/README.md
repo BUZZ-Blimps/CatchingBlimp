@@ -29,8 +29,9 @@ The MicroROS agent can be run using the ros2 run command:
 
 ```
 ros2 run micro_ros_agent micro_ros_agent serial --dev /dev/ttyACM0  
-ttyACM0 is the serial port name that teensy is connected to
 ```
+
+Note: ttyACM0 is the serial port name that teensy is connected to
 
 For more information, see the [Pi -> MICRO ROS](#micro-ros-1) section.
 
