@@ -75,9 +75,7 @@ ros2 launch blimp_telemetry blimp_telemetry.launch.py
 
 To get Ubuntu on Rasberry Pi 4, follow the instructions on
 
-```
 https://ubuntu.com/tutorials/how-to-install-ubuntu-desktop-on-raspberry-pi-4#1-overview\
-```
 	
 Note: Make sure the version is 20.04.5 LST (64-bit)
 
