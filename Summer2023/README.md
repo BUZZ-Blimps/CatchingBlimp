@@ -77,7 +77,7 @@ To get Ubuntu on Rasberry Pi 4, follow the instructions here: https://ubuntu.com
 	
 Note: Make sure the version is 20.04.5 LST (64-bit)
 
-This will get Ubuntu server on the pi.
+The Ubuntu server will now be on the pi. Here is how to log in:
 
 The default username to log in to is: ubuntu<br>The default password is: ubuntu
 
