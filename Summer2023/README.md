@@ -47,7 +47,13 @@ cd /ROS_tf2_test
 colcon build
 ```
 
-Note: Don't forget to make bash in bashrc: source .../install/setup.bash to get access to the whole directory name, go into ROS_tf2_test, and run: pwd (this replaces the ...)
+Note: Don't forget to make bash in bashrc: source .../install/setup.bash to get access to the whole directory name, go into ROS_tf2_test, and run: 
+
+```
+pwd 
+```
+
+Note: this replaces the ...
  
 Or, if VS Code is used, make sure the JSON configurator include path is as the following:
 
