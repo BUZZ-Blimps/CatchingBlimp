@@ -237,7 +237,7 @@ ros2 run micro_ros_agent micro_ros_agent serial --dev /dev/ttyACM0
   
 Note: ttyACM0 is the serial port name that teensy is connected to.
 
-Tip: to see what port that you are running on, plug a Teensy in your device first, and run the following:
+Tip: To see what port that you are running on, plug a Teensy in your device first, and run the following:
 
 ```
 ls -1 /dev > dev.txt
