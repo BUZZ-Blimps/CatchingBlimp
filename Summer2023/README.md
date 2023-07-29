@@ -221,9 +221,13 @@ pip3 install --upgrade pytest
 
 The system might tell you that you already have the newest version, that is a CAP, after running the command above the agent builds with no errors.
 
-After "colcon build", and "ros2 run micro_ros_setup build_agent.sh" make sure to "source install/local_setup.bash" to make bash!
+Now, run the following commands:
 
-
+```
+colcon build
+ros2 run micro_ros_setup build_agent.sh
+source install/local_setup.bash
+```
 
 After these steps, everything is set up for the Pi, to run the MICRO ROS agent, run the forementioned micro_ros_agent command:
 
@@ -231,15 +235,15 @@ After these steps, everything is set up for the Pi, to run the MICRO ROS agent, 
 ros2 run micro_ros_agent micro_ros_agent serial --dev /dev/ttyACM0 
 ```
   
-Note: ttyACM0 is the serial port name that teensy is connected to
+Note: ttyACM0 is the serial port name that teensy is connected to.
 
-Tip: to see what port that you are running on, plug teensy in your device first, and run:
+Tip: to see what port that you are running on, plug a Teensy in your device first, and run the following:
 
 ```
 ls -1 /dev > dev.txt
 ```
 
-Unplug your teensy, and run:
+Unplug your Teensy, and run:
 
 ```
 ls -1 /dev > dev2.txt
