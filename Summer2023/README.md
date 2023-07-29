@@ -154,7 +154,7 @@ After getting into the Pi directory, we can install ROS 2 and MICRO ROS.
 
 Follow one of the options below for ROS 2 installation.
 
-Option 1:
+Option 1
 - Open a terminal and copy the file InstallROS2.sh to the pi using the following command:
 
 ```
@@ -169,7 +169,7 @@ source /opt/ros/foxy/setup.bash
 run source ~/.bashrc
 ```	
 
-Option 2:
+Option 2
 - Follow the installation instructions here: https://docs.ros.org/en/foxy/Installation/Ubuntu-Install-Debians.html
 - Don't forget to source:
 
@@ -183,7 +183,7 @@ run source ~/.bashrc
 
 Follow one of the options below for MICRO ROS installation.
 
-Option 1:
+Option 1
 - Open a terminal and copy the folder microros_ws to the pi using the following command:
 
 ```
@@ -196,7 +196,7 @@ scp -r microros_ws pi@192.168.0.10#:/home/pi/
 rm -r [folder]
 ```
  
-Option 2:
+Option 2
 - Follow the instructions here to setup MICRO ROS: https://manzurmurshid.medium.com/how-to-connect-teensy-3-2-with-micro-ros-and-ros2-foxy-6c8f99c9b66a
 - Before "colcon build", make sure colcon is installed.
 - Follow the instructions here to install colcon: https://colcon.readthedocs.io/en/released/user/installation.html
