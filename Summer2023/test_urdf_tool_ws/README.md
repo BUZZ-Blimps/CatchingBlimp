@@ -4,7 +4,7 @@ https://www.youtube.com/watch?v=I08lO_SRBbk
 
 **To make the package for the URDF robot model, please follow this after using the SOLIDWORKS built-in sw2urdf tool:**
 
-https://github.com/xiaoming-sun6/sw2urdf_ros2/blob/master/readme.md
+https://github.com/SWAMP-Blimps/CatchingBlimp/tree/main/Summer2023/ros2_sw2urdf
 
 
 To launch the robot model:
