@@ -11,7 +11,7 @@ In Solidworks, the exporter can be added by accessing **Options**->**Add-ins**, 
 
 What would Billy Mays say? But wait, there's more!
 
-*insert awkward laugh*
+**insert awkward laugh*
 
 After the URDF file is exported:
 
