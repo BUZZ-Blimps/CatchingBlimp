@@ -258,6 +258,11 @@ This will show the port name for /dev/tty.
 
   
 ****Now you are ready to fly your blimp! Yay!****
+
+
+**TO DO**
+1. Add streaming on Pi for vision processing.
+    
 	
 
   
