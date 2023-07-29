@@ -139,7 +139,8 @@ Now it's done!
 
 Try on another computer to ssh into the Pi:
 
-ssh pi@192.168.0.10# where # is the Pi ID<br>enter password
+- ssh pi@192.168.0.10# where # is the Pi ID
+- Enter your password
 
 You now possess the power to get into the Pi wirelessly!
 
