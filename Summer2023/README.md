@@ -79,8 +79,8 @@ Note: Make sure the version is 20.04.5 LST (64-bit)
 
 The Ubuntu server should now be on the pi. Here is how to log in:
 
-- The default username to log in to is: ubuntu
-- The default password is: ubuntu
+- default username: ubuntu
+- default password: ubuntu
 
 After the first log in, the system will prompt a passward change, set it to: 
 
