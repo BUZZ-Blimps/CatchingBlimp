@@ -256,12 +256,19 @@ diff dev.txt dev2.txt
 
 This will show the port name for /dev/tty.
 
+### OpenCV
+To get OpenCV on Pi for streaming camera footage, the bash script can be copied and used to download and install OpenCV:
+
+```
+scp InstallOpenCV4.sh pi@192.168.0.10#:/home/pi/
+```
   
 ****Now you are ready to fly your blimp! Yay!****
 
 
 **TO DO**
 1. Add streaming on Pi for vision processing.
+2. Document how to get OpenCV on Pi.
     
 	
 
