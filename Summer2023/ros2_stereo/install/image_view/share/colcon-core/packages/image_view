@@ -1,1 +1,0 @@
-camera_calibration_parsers:cv_bridge:image_transport:libboost-dev:libopencv-dev:message_filters:rclcpp:rclcpp_components:sensor_msgs:std_srvs:stereo_msgs

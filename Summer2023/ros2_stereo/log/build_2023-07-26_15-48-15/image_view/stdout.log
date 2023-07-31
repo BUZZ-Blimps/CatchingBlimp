@@ -1,7 +1,0 @@
-[ 36%] Built target image_view_nodes
-[ 73%] Built target image_view
-[ 73%] Built target video_recorder
-[ 73%] Built target stereo_view
-[ 78%] Built target image_saver
-[ 89%] Built target extract_images
-[ 94%] [32mBuilding CXX object CMakeFiles/disparity_view.dir/src/disparity_view.cpp.o[0m
