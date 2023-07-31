@@ -1,0 +1,363 @@
+[0.021s] Invoking command in '/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/image_view': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/corelab/ros2_camera_calibration/install/camera_calibration:/opt/ros/foxy /home/corelab/.local/bin/cmake /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/image_view -DCMAKE_INSTALL_PREFIX=/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view
+[0.066s] -- The C compiler identification is GNU 9.4.0
+[0.098s] -- The CXX compiler identification is GNU 9.4.0
+[0.103s] -- Detecting C compiler ABI info
+[0.133s] -- Detecting C compiler ABI info - done
+[0.138s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.138s] -- Detecting C compile features
+[0.139s] -- Detecting C compile features - done
+[0.141s] -- Detecting CXX compiler ABI info
+[0.179s] -- Detecting CXX compiler ABI info - done
+[0.185s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.185s] -- Detecting CXX compile features
+[0.185s] -- Detecting CXX compile features - done
+[0.188s] -- Found ament_cmake_auto: 0.9.12 (/opt/ros/foxy/share/ament_cmake_auto/cmake)
+[0.213s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") 
+[0.213s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[0.481s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_connext_c;rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.490s] -- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+[0.500s] -- Found RTI Connext: /opt/rti.com/rti_connext_dds-5.3.1
+[0.500s] [33mCMake Warning (dev) at /opt/ros/foxy/share/connext_cmake_module/cmake/Modules/FindConnext.cmake:163 (list):
+[0.500s]   Policy CMP0121 is not set: The list() command now validates parsing of
+[0.500s]   index arguments.  Run "cmake --help-policy CMP0121" for policy details.
+[0.500s]   Use the cmake_policy command to set the policy and suppress this warning.
+[0.500s]   Invalid list index "libnddsc.so".
+[0.500s] Call Stack (most recent call first):
+[0.500s]   /opt/ros/foxy/share/connext_cmake_module/cmake/Modules/FindConnext.cmake:198 (_count_found_libraries)
+[0.500s]   /opt/ros/foxy/share/rosidl_typesupport_connext_c/cmake/rosidl_typesupport_connext_c-extras.cmake:5 (find_package)
+[0.500s]   /opt/ros/foxy/share/rosidl_typesupport_connext_c/cmake/rosidl_typesupport_connext_cConfig.cmake:41 (include)
+[0.500s]   /opt/ros/foxy/share/rosidl_typesupport_c/cmake/rosidl_typesupport_c-extras.cmake:13 (find_package)
+[0.500s]   /opt/ros/foxy/share/rosidl_typesupport_c/cmake/rosidl_typesupport_cConfig.cmake:41 (include)
+[0.500s]   /opt/ros/foxy/share/rosidl_default_runtime/cmake/rosidl_default_runtime-extras.cmake:12 (find_package)
+[0.500s]   /opt/ros/foxy/share/rosidl_default_runtime/cmake/rosidl_default_runtimeConfig.cmake:41 (include)
+[0.500s]   /opt/ros/foxy/share/builtin_interfaces/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.500s]   /opt/ros/foxy/share/builtin_interfaces/cmake/builtin_interfacesConfig.cmake:41 (include)
+[0.500s]   /opt/ros/foxy/share/rcl_interfaces/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.500s]   /opt/ros/foxy/share/rcl_interfaces/cmake/rcl_interfacesConfig.cmake:41 (include)
+[0.501s]   /opt/ros/foxy/share/rcl/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.501s]   /opt/ros/foxy/share/rcl/cmake/rclConfig.cmake:41 (include)
+[0.501s]   /opt/ros/foxy/share/libstatistics_collector/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.501s]   /opt/ros/foxy/share/libstatistics_collector/cmake/libstatistics_collectorConfig.cmake:41 (include)
+[0.501s]   /opt/ros/foxy/share/rclcpp/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.501s]   /opt/ros/foxy/share/rclcpp/cmake/rclcppConfig.cmake:41 (include)
+[0.501s]   /opt/ros/foxy/share/camera_calibration_parsers/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.501s]   /opt/ros/foxy/share/camera_calibration_parsers/cmake/camera_calibration_parsersConfig.cmake:41 (include)
+[0.501s]   /opt/ros/foxy/share/ament_cmake_auto/cmake/ament_auto_find_build_dependencies.cmake:67 (find_package)
+[0.501s]   CMakeLists.txt:18 (ament_auto_find_build_dependencies)
+[0.501s] This warning is for project developers.  Use -Wno-dev to suppress it.
+[0.501s] [0m
+[0.501s] [33mCMake Warning (dev) at /opt/ros/foxy/share/connext_cmake_module/cmake/Modules/FindConnext.cmake:163 (list):
+[0.501s]   Policy CMP0121 is not set: The list() command now validates parsing of
+[0.501s]   index arguments.  Run "cmake --help-policy CMP0121" for policy details.
+[0.501s]   Use the cmake_policy command to set the policy and suppress this warning.
+[0.501s]   Invalid list index "libnddscore.so".
+[0.501s] Call Stack (most recent call first):
+[0.501s]   /opt/ros/foxy/share/connext_cmake_module/cmake/Modules/FindConnext.cmake:198 (_count_found_libraries)
+[0.501s]   /opt/ros/foxy/share/rosidl_typesupport_connext_c/cmake/rosidl_typesupport_connext_c-extras.cmake:5 (find_package)
+[0.501s]   /opt/ros/foxy/share/rosidl_typesupport_connext_c/cmake/rosidl_typesupport_connext_cConfig.cmake:41 (include)
+[0.501s]   /opt/ros/foxy/share/rosidl_typesupport_c/cmake/rosidl_typesupport_c-extras.cmake:13 (find_package)
+[0.501s]   /opt/ros/foxy/share/rosidl_typesupport_c/cmake/rosidl_typesupport_cConfig.cmake:41 (include)
+[0.501s]   /opt/ros/foxy/share/rosidl_default_runtime/cmake/rosidl_default_runtime-extras.cmake:12 (find_package)
+[0.501s]   /opt/ros/foxy/share/rosidl_default_runtime/cmake/rosidl_default_runtimeConfig.cmake:41 (include)
+[0.501s]   /opt/ros/foxy/share/builtin_interfaces/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.501s]   /opt/ros/foxy/share/builtin_interfaces/cmake/builtin_interfacesConfig.cmake:41 (include)
+[0.501s]   /opt/ros/foxy/share/rcl_interfaces/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.501s]   /opt/ros/foxy/share/rcl_interfaces/cmake/rcl_interfacesConfig.cmake:41 (include)
+[0.502s]   /opt/ros/foxy/share/rcl/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.502s]   /opt/ros/foxy/share/rcl/cmake/rclConfig.cmake:41 (include)
+[0.502s]   /opt/ros/foxy/share/libstatistics_collector/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.502s]   /opt/ros/foxy/share/libstatistics_collector/cmake/libstatistics_collectorConfig.cmake:41 (include)
+[0.502s]   /opt/ros/foxy/share/rclcpp/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.502s]   /opt/ros/foxy/share/rclcpp/cmake/rclcppConfig.cmake:41 (include)
+[0.502s]   /opt/ros/foxy/share/camera_calibration_parsers/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.502s]   /opt/ros/foxy/share/camera_calibration_parsers/cmake/camera_calibration_parsersConfig.cmake:41 (include)
+[0.502s]   /opt/ros/foxy/share/ament_cmake_auto/cmake/ament_auto_find_build_dependencies.cmake:67 (find_package)
+[0.502s]   CMakeLists.txt:18 (ament_auto_find_build_dependencies)
+[0.502s] This warning is for project developers.  Use -Wno-dev to suppress it.
+[0.502s] [0m
+[0.502s] [33mCMake Warning (dev) at /opt/ros/foxy/share/connext_cmake_module/cmake/Modules/FindConnext.cmake:163 (list):
+[0.502s]   Policy CMP0121 is not set: The list() command now validates parsing of
+[0.502s]   index arguments.  Run "cmake --help-policy CMP0121" for policy details.
+[0.502s]   Use the cmake_policy command to set the policy and suppress this warning.
+[0.502s]   Invalid list index "libnddscpp.so".
+[0.502s] Call Stack (most recent call first):
+[0.502s]   /opt/ros/foxy/share/connext_cmake_module/cmake/Modules/FindConnext.cmake:198 (_count_found_libraries)
+[0.502s]   /opt/ros/foxy/share/rosidl_typesupport_connext_c/cmake/rosidl_typesupport_connext_c-extras.cmake:5 (find_package)
+[0.502s]   /opt/ros/foxy/share/rosidl_typesupport_connext_c/cmake/rosidl_typesupport_connext_cConfig.cmake:41 (include)
+[0.502s]   /opt/ros/foxy/share/rosidl_typesupport_c/cmake/rosidl_typesupport_c-extras.cmake:13 (find_package)
+[0.502s]   /opt/ros/foxy/share/rosidl_typesupport_c/cmake/rosidl_typesupport_cConfig.cmake:41 (include)
+[0.502s]   /opt/ros/foxy/share/rosidl_default_runtime/cmake/rosidl_default_runtime-extras.cmake:12 (find_package)
+[0.502s]   /opt/ros/foxy/share/rosidl_default_runtime/cmake/rosidl_default_runtimeConfig.cmake:41 (include)
+[0.502s]   /opt/ros/foxy/share/builtin_interfaces/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.502s]   /opt/ros/foxy/share/builtin_interfaces/cmake/builtin_interfacesConfig.cmake:41 (include)
+[0.502s]   /opt/ros/foxy/share/rcl_interfaces/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.502s]   /opt/ros/foxy/share/rcl_interfaces/cmake/rcl_interfacesConfig.cmake:41 (include)
+[0.503s]   /opt/ros/foxy/share/rcl/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.503s]   /opt/ros/foxy/share/rcl/cmake/rclConfig.cmake:41 (include)
+[0.503s]   /opt/ros/foxy/share/libstatistics_collector/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.503s]   /opt/ros/foxy/share/libstatistics_collector/cmake/libstatistics_collectorConfig.cmake:41 (include)
+[0.503s]   /opt/ros/foxy/share/rclcpp/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.503s]   /opt/ros/foxy/share/rclcpp/cmake/rclcppConfig.cmake:41 (include)
+[0.503s]   /opt/ros/foxy/share/camera_calibration_parsers/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.503s]   /opt/ros/foxy/share/camera_calibration_parsers/cmake/camera_calibration_parsersConfig.cmake:41 (include)
+[0.503s]   /opt/ros/foxy/share/ament_cmake_auto/cmake/ament_auto_find_build_dependencies.cmake:67 (find_package)
+[0.503s]   CMakeLists.txt:18 (ament_auto_find_build_dependencies)
+[0.503s] This warning is for project developers.  Use -Wno-dev to suppress it.
+[0.503s] [0m
+[0.503s] [33mCMake Warning (dev) at /opt/ros/foxy/share/connext_cmake_module/cmake/Modules/FindConnext.cmake:163 (list):
+[0.503s]   Policy CMP0121 is not set: The list() command now validates parsing of
+[0.503s]   index arguments.  Run "cmake --help-policy CMP0121" for policy details.
+[0.503s]   Use the cmake_policy command to set the policy and suppress this warning.
+[0.503s]   Invalid list index "librticonnextmsgcpp.so".
+[0.503s] Call Stack (most recent call first):
+[0.503s]   /opt/ros/foxy/share/connext_cmake_module/cmake/Modules/FindConnext.cmake:198 (_count_found_libraries)
+[0.503s]   /opt/ros/foxy/share/rosidl_typesupport_connext_c/cmake/rosidl_typesupport_connext_c-extras.cmake:5 (find_package)
+[0.503s]   /opt/ros/foxy/share/rosidl_typesupport_connext_c/cmake/rosidl_typesupport_connext_cConfig.cmake:41 (include)
+[0.503s]   /opt/ros/foxy/share/rosidl_typesupport_c/cmake/rosidl_typesupport_c-extras.cmake:13 (find_package)
+[0.503s]   /opt/ros/foxy/share/rosidl_typesupport_c/cmake/rosidl_typesupport_cConfig.cmake:41 (include)
+[0.503s]   /opt/ros/foxy/share/rosidl_default_runtime/cmake/rosidl_default_runtime-extras.cmake:12 (find_package)
+[0.503s]   /opt/ros/foxy/share/rosidl_default_runtime/cmake/rosidl_default_runtimeConfig.cmake:41 (include)
+[0.503s]   /opt/ros/foxy/share/builtin_interfaces/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.503s]   /opt/ros/foxy/share/builtin_interfaces/cmake/builtin_interfacesConfig.cmake:41 (include)
+[0.503s]   /opt/ros/foxy/share/rcl_interfaces/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.504s]   /opt/ros/foxy/share/rcl_interfaces/cmake/rcl_interfacesConfig.cmake:41 (include)
+[0.504s]   /opt/ros/foxy/share/rcl/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.504s]   /opt/ros/foxy/share/rcl/cmake/rclConfig.cmake:41 (include)
+[0.504s]   /opt/ros/foxy/share/libstatistics_collector/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.504s]   /opt/ros/foxy/share/libstatistics_collector/cmake/libstatistics_collectorConfig.cmake:41 (include)
+[0.504s]   /opt/ros/foxy/share/rclcpp/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.504s]   /opt/ros/foxy/share/rclcpp/cmake/rclcppConfig.cmake:41 (include)
+[0.504s]   /opt/ros/foxy/share/camera_calibration_parsers/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.504s]   /opt/ros/foxy/share/camera_calibration_parsers/cmake/camera_calibration_parsersConfig.cmake:41 (include)
+[0.504s]   /opt/ros/foxy/share/ament_cmake_auto/cmake/ament_auto_find_build_dependencies.cmake:67 (find_package)
+[0.504s]   CMakeLists.txt:18 (ament_auto_find_build_dependencies)
+[0.504s] This warning is for project developers.  Use -Wno-dev to suppress it.
+[0.504s] [0m
+[0.504s] [33mCMake Warning (dev) at /opt/ros/foxy/share/connext_cmake_module/cmake/Modules/FindConnext.cmake:163 (list):
+[0.504s]   Policy CMP0121 is not set: The list() command now validates parsing of
+[0.504s]   index arguments.  Run "cmake --help-policy CMP0121" for policy details.
+[0.504s]   Use the cmake_policy command to set the policy and suppress this warning.
+[0.504s]   Invalid list index "libnddscd.so".
+[0.504s] Call Stack (most recent call first):
+[0.504s]   /opt/ros/foxy/share/connext_cmake_module/cmake/Modules/FindConnext.cmake:199 (_count_found_libraries)
+[0.504s]   /opt/ros/foxy/share/rosidl_typesupport_connext_c/cmake/rosidl_typesupport_connext_c-extras.cmake:5 (find_package)
+[0.504s]   /opt/ros/foxy/share/rosidl_typesupport_connext_c/cmake/rosidl_typesupport_connext_cConfig.cmake:41 (include)
+[0.504s]   /opt/ros/foxy/share/rosidl_typesupport_c/cmake/rosidl_typesupport_c-extras.cmake:13 (find_package)
+[0.504s]   /opt/ros/foxy/share/rosidl_typesupport_c/cmake/rosidl_typesupport_cConfig.cmake:41 (include)
+[0.504s]   /opt/ros/foxy/share/rosidl_default_runtime/cmake/rosidl_default_runtime-extras.cmake:12 (find_package)
+[0.504s]   /opt/ros/foxy/share/rosidl_default_runtime/cmake/rosidl_default_runtimeConfig.cmake:41 (include)
+[0.504s]   /opt/ros/foxy/share/builtin_interfaces/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.504s]   /opt/ros/foxy/share/builtin_interfaces/cmake/builtin_interfacesConfig.cmake:41 (include)
+[0.505s]   /opt/ros/foxy/share/rcl_interfaces/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.505s]   /opt/ros/foxy/share/rcl_interfaces/cmake/rcl_interfacesConfig.cmake:41 (include)
+[0.505s]   /opt/ros/foxy/share/rcl/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.505s]   /opt/ros/foxy/share/rcl/cmake/rclConfig.cmake:41 (include)
+[0.505s]   /opt/ros/foxy/share/libstatistics_collector/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.505s]   /opt/ros/foxy/share/libstatistics_collector/cmake/libstatistics_collectorConfig.cmake:41 (include)
+[0.505s]   /opt/ros/foxy/share/rclcpp/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.505s]   /opt/ros/foxy/share/rclcpp/cmake/rclcppConfig.cmake:41 (include)
+[0.505s]   /opt/ros/foxy/share/camera_calibration_parsers/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.505s]   /opt/ros/foxy/share/camera_calibration_parsers/cmake/camera_calibration_parsersConfig.cmake:41 (include)
+[0.505s]   /opt/ros/foxy/share/ament_cmake_auto/cmake/ament_auto_find_build_dependencies.cmake:67 (find_package)
+[0.505s]   CMakeLists.txt:18 (ament_auto_find_build_dependencies)
+[0.505s] This warning is for project developers.  Use -Wno-dev to suppress it.
+[0.505s] [0m
+[0.505s] [33mCMake Warning (dev) at /opt/ros/foxy/share/connext_cmake_module/cmake/Modules/FindConnext.cmake:163 (list):
+[0.505s]   Policy CMP0121 is not set: The list() command now validates parsing of
+[0.505s]   index arguments.  Run "cmake --help-policy CMP0121" for policy details.
+[0.505s]   Use the cmake_policy command to set the policy and suppress this warning.
+[0.505s]   Invalid list index "libnddscored.so".
+[0.505s] Call Stack (most recent call first):
+[0.505s]   /opt/ros/foxy/share/connext_cmake_module/cmake/Modules/FindConnext.cmake:199 (_count_found_libraries)
+[0.505s]   /opt/ros/foxy/share/rosidl_typesupport_connext_c/cmake/rosidl_typesupport_connext_c-extras.cmake:5 (find_package)
+[0.505s]   /opt/ros/foxy/share/rosidl_typesupport_connext_c/cmake/rosidl_typesupport_connext_cConfig.cmake:41 (include)
+[0.505s]   /opt/ros/foxy/share/rosidl_typesupport_c/cmake/rosidl_typesupport_c-extras.cmake:13 (find_package)
+[0.505s]   /opt/ros/foxy/share/rosidl_typesupport_c/cmake/rosidl_typesupport_cConfig.cmake:41 (include)
+[0.505s]   /opt/ros/foxy/share/rosidl_default_runtime/cmake/rosidl_default_runtime-extras.cmake:12 (find_package)
+[0.505s]   /opt/ros/foxy/share/rosidl_default_runtime/cmake/rosidl_default_runtimeConfig.cmake:41 (include)
+[0.505s]   /opt/ros/foxy/share/builtin_interfaces/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.505s]   /opt/ros/foxy/share/builtin_interfaces/cmake/builtin_interfacesConfig.cmake:41 (include)
+[0.506s]   /opt/ros/foxy/share/rcl_interfaces/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.506s]   /opt/ros/foxy/share/rcl_interfaces/cmake/rcl_interfacesConfig.cmake:41 (include)
+[0.506s]   /opt/ros/foxy/share/rcl/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.506s]   /opt/ros/foxy/share/rcl/cmake/rclConfig.cmake:41 (include)
+[0.506s]   /opt/ros/foxy/share/libstatistics_collector/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.506s]   /opt/ros/foxy/share/libstatistics_collector/cmake/libstatistics_collectorConfig.cmake:41 (include)
+[0.506s]   /opt/ros/foxy/share/rclcpp/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.506s]   /opt/ros/foxy/share/rclcpp/cmake/rclcppConfig.cmake:41 (include)
+[0.506s]   /opt/ros/foxy/share/camera_calibration_parsers/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.506s]   /opt/ros/foxy/share/camera_calibration_parsers/cmake/camera_calibration_parsersConfig.cmake:41 (include)
+[0.506s]   /opt/ros/foxy/share/ament_cmake_auto/cmake/ament_auto_find_build_dependencies.cmake:67 (find_package)
+[0.506s]   CMakeLists.txt:18 (ament_auto_find_build_dependencies)
+[0.506s] This warning is for project developers.  Use -Wno-dev to suppress it.
+[0.506s] [0m
+[0.506s] [33mCMake Warning (dev) at /opt/ros/foxy/share/connext_cmake_module/cmake/Modules/FindConnext.cmake:163 (list):
+[0.506s]   Policy CMP0121 is not set: The list() command now validates parsing of
+[0.506s]   index arguments.  Run "cmake --help-policy CMP0121" for policy details.
+[0.506s]   Use the cmake_policy command to set the policy and suppress this warning.
+[0.506s]   Invalid list index "libnddscppd.so".
+[0.506s] Call Stack (most recent call first):
+[0.506s]   /opt/ros/foxy/share/connext_cmake_module/cmake/Modules/FindConnext.cmake:199 (_count_found_libraries)
+[0.506s]   /opt/ros/foxy/share/rosidl_typesupport_connext_c/cmake/rosidl_typesupport_connext_c-extras.cmake:5 (find_package)
+[0.506s]   /opt/ros/foxy/share/rosidl_typesupport_connext_c/cmake/rosidl_typesupport_connext_cConfig.cmake:41 (include)
+[0.506s]   /opt/ros/foxy/share/rosidl_typesupport_c/cmake/rosidl_typesupport_c-extras.cmake:13 (find_package)
+[0.506s]   /opt/ros/foxy/share/rosidl_typesupport_c/cmake/rosidl_typesupport_cConfig.cmake:41 (include)
+[0.506s]   /opt/ros/foxy/share/rosidl_default_runtime/cmake/rosidl_default_runtime-extras.cmake:12 (find_package)
+[0.506s]   /opt/ros/foxy/share/rosidl_default_runtime/cmake/rosidl_default_runtimeConfig.cmake:41 (include)
+[0.506s]   /opt/ros/foxy/share/builtin_interfaces/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.506s]   /opt/ros/foxy/share/builtin_interfaces/cmake/builtin_interfacesConfig.cmake:41 (include)
+[0.507s]   /opt/ros/foxy/share/rcl_interfaces/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.507s]   /opt/ros/foxy/share/rcl_interfaces/cmake/rcl_interfacesConfig.cmake:41 (include)
+[0.507s]   /opt/ros/foxy/share/rcl/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.507s]   /opt/ros/foxy/share/rcl/cmake/rclConfig.cmake:41 (include)
+[0.507s]   /opt/ros/foxy/share/libstatistics_collector/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.507s]   /opt/ros/foxy/share/libstatistics_collector/cmake/libstatistics_collectorConfig.cmake:41 (include)
+[0.507s]   /opt/ros/foxy/share/rclcpp/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.507s]   /opt/ros/foxy/share/rclcpp/cmake/rclcppConfig.cmake:41 (include)
+[0.507s]   /opt/ros/foxy/share/camera_calibration_parsers/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.507s]   /opt/ros/foxy/share/camera_calibration_parsers/cmake/camera_calibration_parsersConfig.cmake:41 (include)
+[0.507s]   /opt/ros/foxy/share/ament_cmake_auto/cmake/ament_auto_find_build_dependencies.cmake:67 (find_package)
+[0.507s]   CMakeLists.txt:18 (ament_auto_find_build_dependencies)
+[0.507s] This warning is for project developers.  Use -Wno-dev to suppress it.
+[0.507s] [0m
+[0.507s] [33mCMake Warning (dev) at /opt/ros/foxy/share/connext_cmake_module/cmake/Modules/FindConnext.cmake:163 (list):
+[0.507s]   Policy CMP0121 is not set: The list() command now validates parsing of
+[0.507s]   index arguments.  Run "cmake --help-policy CMP0121" for policy details.
+[0.507s]   Use the cmake_policy command to set the policy and suppress this warning.
+[0.507s]   Invalid list index "librticonnextmsgcppd.so".
+[0.507s] Call Stack (most recent call first):
+[0.507s]   /opt/ros/foxy/share/connext_cmake_module/cmake/Modules/FindConnext.cmake:199 (_count_found_libraries)
+[0.507s]   /opt/ros/foxy/share/rosidl_typesupport_connext_c/cmake/rosidl_typesupport_connext_c-extras.cmake:5 (find_package)
+[0.507s]   /opt/ros/foxy/share/rosidl_typesupport_connext_c/cmake/rosidl_typesupport_connext_cConfig.cmake:41 (include)
+[0.507s]   /opt/ros/foxy/share/rosidl_typesupport_c/cmake/rosidl_typesupport_c-extras.cmake:13 (find_package)
+[0.507s]   /opt/ros/foxy/share/rosidl_typesupport_c/cmake/rosidl_typesupport_cConfig.cmake:41 (include)
+[0.507s]   /opt/ros/foxy/share/rosidl_default_runtime/cmake/rosidl_default_runtime-extras.cmake:12 (find_package)
+[0.507s]   /opt/ros/foxy/share/rosidl_default_runtime/cmake/rosidl_default_runtimeConfig.cmake:41 (include)
+[0.507s]   /opt/ros/foxy/share/builtin_interfaces/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.507s]   /opt/ros/foxy/share/builtin_interfaces/cmake/builtin_interfacesConfig.cmake:41 (include)
+[0.508s]   /opt/ros/foxy/share/rcl_interfaces/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.508s]   /opt/ros/foxy/share/rcl_interfaces/cmake/rcl_interfacesConfig.cmake:41 (include)
+[0.508s]   /opt/ros/foxy/share/rcl/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.508s]   /opt/ros/foxy/share/rcl/cmake/rclConfig.cmake:41 (include)
+[0.508s]   /opt/ros/foxy/share/libstatistics_collector/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.508s]   /opt/ros/foxy/share/libstatistics_collector/cmake/libstatistics_collectorConfig.cmake:41 (include)
+[0.508s]   /opt/ros/foxy/share/rclcpp/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.508s]   /opt/ros/foxy/share/rclcpp/cmake/rclcppConfig.cmake:41 (include)
+[0.508s]   /opt/ros/foxy/share/camera_calibration_parsers/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.508s]   /opt/ros/foxy/share/camera_calibration_parsers/cmake/camera_calibration_parsersConfig.cmake:41 (include)
+[0.508s]   /opt/ros/foxy/share/ament_cmake_auto/cmake/ament_auto_find_build_dependencies.cmake:67 (find_package)
+[0.508s]   CMakeLists.txt:18 (ament_auto_find_build_dependencies)
+[0.508s] This warning is for project developers.  Use -Wno-dev to suppress it.
+[0.508s] [0m
+[0.508s] [0mCMake Deprecation Warning at /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/image_view/connext_cmake_module/check_abi/CMakeLists.txt:15 (cmake_minimum_required):
+[0.508s]   Compatibility with CMake < 2.8.12 will be removed from a future version of
+[0.508s]   CMake.
+[0.508s] 
+[0.508s]   Update the VERSION argument <min> value or use a ...<max> suffix to tell
+[0.508s]   CMake that the project does not need compatibility with older versions.
+[0.508s] 
+[0.508s] [0m
+[1.022s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "1.1.1f")  
+[1.044s] -- Found FastRTPS: /opt/ros/foxy/include  
+[1.101s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_connext_cpp;rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.145s] -- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+[1.146s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[1.146s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[1.179s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+[1.179s] -- Looking for pthread_create in pthreads
+[1.203s] -- Looking for pthread_create in pthreads - not found
+[1.203s] -- Looking for pthread_create in pthread
+[1.233s] -- Looking for pthread_create in pthread - found
+[1.233s] -- Found Threads: TRUE  
+[1.410s] -- Setting yaml-cpp_DIR to: '/opt/ros/foxy/share/yaml_cpp_vendor/cmake/../../../opt/yaml_cpp_vendor/lib/cmake/yaml-cpp'
+[1.613s] -- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.71.0/BoostConfig.cmake (found version "1.71.0")  
+[1.616s] -- Found OpenCV: /usr/local (found version "4.7.0") 
+[1.874s] -- Found ament_lint_auto: 0.9.8 (/opt/ros/foxy/share/ament_lint_auto/cmake)
+[1.902s] -- Added test 'copyright' to check source files copyright and LICENSE
+[1.903s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[1.903s] -- Configured cppcheck include dirs: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/image_view/include
+[1.904s] -- Configured cppcheck exclude dirs and/or files: 
+[1.904s] -- Added test 'cpplint' to check C / C++ code against the Google style
+[1.904s] -- Configured cpplint exclude dirs and/or files: 
+[1.905s] -- Added test 'lint_cmake' to check CMake code style
+[1.906s] -- Added test 'uncrustify' to check C / C++ code style
+[1.906s] -- Configured uncrustify additional arguments: 
+[1.906s] -- Added test 'xmllint' to check XML markup files
+[1.908s] -- Configuring done
+[1.973s] -- Generating done
+[1.975s] -- Build files have been written to: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/image_view
+[1.985s] Invoked command in '/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/image_view' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/corelab/ros2_camera_calibration/install/camera_calibration:/opt/ros/foxy /home/corelab/.local/bin/cmake /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/image_view -DCMAKE_INSTALL_PREFIX=/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view
+[1.987s] Invoking command in '/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/image_view': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/corelab/ros2_camera_calibration/install/camera_calibration:/opt/ros/foxy /home/corelab/.local/bin/cmake --build /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/image_view -- -j16 -l16
+[2.020s] [  5%] [32mBuilding CXX object CMakeFiles/image_view_nodes.dir/src/disparity_view_node.cpp.o[0m
+[2.020s] [ 10%] [32mBuilding CXX object CMakeFiles/image_view_nodes.dir/src/extract_images_node.cpp.o[0m
+[2.020s] [ 26%] [32mBuilding CXX object CMakeFiles/image_view_nodes.dir/src/stereo_view_node.cpp.o[0m
+[2.020s] [ 26%] [32mBuilding CXX object CMakeFiles/image_view_nodes.dir/src/image_view_node.cpp.o[0m
+[2.020s] [ 26%] [32mBuilding CXX object CMakeFiles/image_view_nodes.dir/src/image_saver_node.cpp.o[0m
+[2.020s] [ 31%] [32mBuilding CXX object CMakeFiles/image_view_nodes.dir/src/video_recorder_node.cpp.o[0m
+[9.349s] [ 36%] [32m[1mLinking CXX shared library libimage_view_nodes.so[0m
+[9.779s] [ 36%] Built target image_view_nodes
+[9.785s] [ 57%] [32mBuilding CXX object CMakeFiles/image_view.dir/src/image_view.cpp.o[0m
+[9.785s] [ 57%] [32mBuilding CXX object CMakeFiles/disparity_view.dir/src/disparity_view.cpp.o[0m
+[9.786s] [ 57%] [32mBuilding CXX object CMakeFiles/stereo_view.dir/src/stereo_view.cpp.o[0m
+[9.786s] [ 63%] [32mBuilding CXX object CMakeFiles/image_saver.dir/src/image_saver.cpp.o[0m
+[9.786s] [ 57%] [32mBuilding CXX object CMakeFiles/extract_images.dir/src/extract_images.cpp.o[0m
+[9.786s] [ 68%] [32mBuilding CXX object CMakeFiles/video_recorder.dir/src/video_recorder.cpp.o[0m
+[11.257s] [ 73%] [32m[1mLinking CXX executable image_saver[0m
+[11.264s] [ 78%] [32m[1mLinking CXX executable extract_images[0m
+[11.297s] [ 84%] [32m[1mLinking CXX executable disparity_view[0m
+[11.310s] [ 89%] [32m[1mLinking CXX executable video_recorder[0m
+[11.732s] [ 94%] [32m[1mLinking CXX executable image_view[0m
+[11.990s] [100%] [32m[1mLinking CXX executable stereo_view[0m
+[12.623s] [100%] Built target extract_images
+[12.638s] [100%] Built target image_saver
+[12.678s] [100%] Built target video_recorder
+[12.678s] [100%] Built target disparity_view
+[12.805s] [100%] Built target image_view
+[12.845s] [100%] Built target stereo_view
+[12.849s] Invoked command in '/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/image_view' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/corelab/ros2_camera_calibration/install/camera_calibration:/opt/ros/foxy /home/corelab/.local/bin/cmake --build /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/image_view -- -j16 -l16
+[12.923s] Invoking command in '/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/image_view': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/corelab/ros2_camera_calibration/install/camera_calibration:/opt/ros/foxy /home/corelab/.local/bin/cmake --install /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/image_view
+[12.943s] -- Install configuration: ""
+[12.943s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/include
+[12.943s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/include/image_view
+[12.943s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/include/image_view/disparity_view_node.hpp
+[12.943s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/include/image_view/image_saver_node.hpp
+[12.943s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/include/image_view/extract_images_node.hpp
+[12.943s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/include/image_view/video_recorder_node.hpp
+[12.943s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/include/image_view/stereo_view_node.hpp
+[12.943s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/include/image_view/image_view_node.hpp
+[12.943s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/environment/library_path.sh
+[12.943s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/environment/library_path.dsv
+[12.943s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/lib/libimage_view_nodes.so
+[12.946s] -- Set runtime path of "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/lib/libimage_view_nodes.so" to ""
+[12.946s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/lib/image_view/disparity_view
+[12.946s] -- Set runtime path of "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/lib/image_view/disparity_view" to ""
+[12.946s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/lib/image_view/image_view
+[12.947s] -- Set runtime path of "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/lib/image_view/image_view" to ""
+[12.947s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/lib/image_view/stereo_view
+[12.947s] -- Set runtime path of "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/lib/image_view/stereo_view" to ""
+[12.947s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/lib/image_view/extract_images
+[12.947s] -- Set runtime path of "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/lib/image_view/extract_images" to ""
+[12.947s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/lib/image_view/image_saver
+[12.947s] -- Set runtime path of "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/lib/image_view/image_saver" to ""
+[12.947s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/lib/image_view/video_recorder
+[12.947s] -- Set runtime path of "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/lib/image_view/video_recorder" to ""
+[12.947s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/ament_index/resource_index/package_run_dependencies/image_view
+[12.948s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/ament_index/resource_index/parent_prefix_path/image_view
+[12.948s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/environment/ament_prefix_path.sh
+[12.948s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/environment/ament_prefix_path.dsv
+[12.948s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/environment/path.sh
+[12.948s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/environment/path.dsv
+[12.948s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/local_setup.bash
+[12.948s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/local_setup.sh
+[12.948s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/local_setup.zsh
+[12.948s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/local_setup.dsv
+[12.948s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/package.dsv
+[12.948s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/ament_index/resource_index/packages/image_view
+[12.948s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/ament_index/resource_index/rclcpp_components/image_view
+[12.948s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/cmake/ament_cmake_export_dependencies-extras.cmake
+[12.948s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/cmake/ament_cmake_export_include_directories-extras.cmake
+[12.948s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/cmake/ament_cmake_export_libraries-extras.cmake
+[12.948s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/cmake/image_viewConfig.cmake
+[12.948s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/cmake/image_viewConfig-version.cmake
+[12.948s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/package.xml
+[12.952s] Invoked command in '/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/image_view' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/corelab/ros2_camera_calibration/install/camera_calibration:/opt/ros/foxy /home/corelab/.local/bin/cmake --install /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/image_view
