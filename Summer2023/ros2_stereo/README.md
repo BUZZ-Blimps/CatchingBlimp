@@ -60,7 +60,8 @@ ros2 run tf2_ros static_transform_publisher   0.64 0 0.004  0 0 1.5708   BurnCre
 
 ***TO DO***
 
-1. Tune disparity parameters (use rqt_reconfigure)
+1. Create another node to subcribe to the ML custome messages and the point cloud messages to find the positions of targets (in the camera reference frame).
+2. Tune disparity parameters (use rqt_reconfigure).
 
 Tutorial reference:
 - For calibration: http://wiki.ros.org/camera_calibration?distro=noetic
