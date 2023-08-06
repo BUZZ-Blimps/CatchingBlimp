@@ -139,7 +139,7 @@ std::vector<float> Madgwick_Filter::update_quat(float Gyr_RateX, float Gyr_RateY
   float del_f4 = 4.0f * q2q2 * q4 - _2q2 * a_I[1] + 4.0f * q3q3 * q4 - _2q3 * a_I[2];
 
   //Tunable parameter
-  float beta = .1;
+  float beta = .033; //from the original article
 
   float del_f_norm = sqrtf(pow(del_f1, 2) + pow(del_f2, 2) + pow(del_f3, 2) + pow(del_f4, 2));
   std::vector<float> del_q_est = { -beta*(del_f1 / del_f_norm),
@@ -150,6 +150,7 @@ std::vector<float> Madgwick_Filter::update_quat(float Gyr_RateX, float Gyr_RateY
 
   //Orientation from Gyroscope
   //quaternion product
+  // Rate of change of quaternion from gyroscope
   std::vector<float> q_dot_w = {q_est[0]*gyro_I[0] - q_est[1]*gyro_I[1] - q_est[2]*gyro_I[2] - q_est[3]*gyro_I[3],
                                 q_est[0]*gyro_I[1] + q_est[1]*gyro_I[0] + q_est[2]*gyro_I[3] - q_est[3]*gyro_I[2],
                                 q_est[0]*gyro_I[2] - q_est[1]*gyro_I[3] + q_est[2]*gyro_I[0] + q_est[3]*gyro_I[1],

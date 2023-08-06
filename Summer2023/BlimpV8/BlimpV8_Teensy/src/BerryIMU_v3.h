@@ -19,6 +19,10 @@ class BerryIMU_v3
     float gyr_rateXraw; 
     float gyr_rateYraw; 
     float gyr_rateZraw;
+    //magnetometer
+    float MagXraw;
+    float MagYraw;
+    float MagZraw;
     //See cpp file for settings 
     float comp_temp;
     float comp_press;
