@@ -53,10 +53,10 @@ RM = /home/corelab/.local/lib/python3.8/site-packages/cmake/data/bin/cmake -E rm
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry
+CMAKE_SOURCE_DIR = /home/corelab/ros2_stereo/src/opencv_telemetry
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry
+CMAKE_BINARY_DIR = /home/corelab/ros2_stereo/build/opencv_telemetry
 
 # Utility rule file for opencv_telemetry__cpp.
 
@@ -182,8 +182,8 @@ rosidl_generator_cpp/opencv_telemetry/msg/resized_image.hpp: /opt/ros/foxy/share
 rosidl_generator_cpp/opencv_telemetry/msg/resized_image.hpp: /opt/ros/foxy/share/std_msgs/msg/UInt64MultiArray.idl
 rosidl_generator_cpp/opencv_telemetry/msg/resized_image.hpp: /opt/ros/foxy/share/std_msgs/msg/UInt8.idl
 rosidl_generator_cpp/opencv_telemetry/msg/resized_image.hpp: /opt/ros/foxy/share/std_msgs/msg/UInt8MultiArray.idl
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating C++ code for ROS interfaces"
-	/usr/bin/python3 /opt/ros/foxy/share/rosidl_generator_cpp/cmake/../../../lib/rosidl_generator_cpp/rosidl_generator_cpp --generator-arguments-file /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/rosidl_generator_cpp__arguments.json
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/corelab/ros2_stereo/build/opencv_telemetry/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating C++ code for ROS interfaces"
+	/usr/bin/python3 /opt/ros/foxy/share/rosidl_generator_cpp/cmake/../../../lib/rosidl_generator_cpp/rosidl_generator_cpp --generator-arguments-file /home/corelab/ros2_stereo/build/opencv_telemetry/rosidl_generator_cpp__arguments.json
 
 rosidl_generator_cpp/opencv_telemetry/msg/detail/resized_image__builder.hpp: rosidl_generator_cpp/opencv_telemetry/msg/resized_image.hpp
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/opencv_telemetry/msg/detail/resized_image__builder.hpp
@@ -215,6 +215,6 @@ CMakeFiles/opencv_telemetry__cpp.dir/clean:
 .PHONY : CMakeFiles/opencv_telemetry__cpp.dir/clean
 
 CMakeFiles/opencv_telemetry__cpp.dir/depend:
-	cd /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/CMakeFiles/opencv_telemetry__cpp.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/corelab/ros2_stereo/build/opencv_telemetry && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/corelab/ros2_stereo/src/opencv_telemetry /home/corelab/ros2_stereo/src/opencv_telemetry /home/corelab/ros2_stereo/build/opencv_telemetry /home/corelab/ros2_stereo/build/opencv_telemetry /home/corelab/ros2_stereo/build/opencv_telemetry/CMakeFiles/opencv_telemetry__cpp.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/opencv_telemetry__cpp.dir/depend
 

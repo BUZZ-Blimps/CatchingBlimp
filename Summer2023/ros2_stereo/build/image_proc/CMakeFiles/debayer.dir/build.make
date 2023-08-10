@@ -53,10 +53,10 @@ RM = /home/corelab/.local/lib/python3.8/site-packages/cmake/data/bin/cmake -E rm
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/image_proc
+CMAKE_SOURCE_DIR = /home/corelab/ros2_stereo/src/image_proc
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/image_proc
+CMAKE_BINARY_DIR = /home/corelab/ros2_stereo/build/image_proc
 
 # Include any dependencies generated for this target.
 include CMakeFiles/debayer.dir/depend.make
@@ -70,32 +70,32 @@ include CMakeFiles/debayer.dir/progress.make
 include CMakeFiles/debayer.dir/flags.make
 
 CMakeFiles/debayer.dir/src/debayer.cpp.o: CMakeFiles/debayer.dir/flags.make
-CMakeFiles/debayer.dir/src/debayer.cpp.o: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/image_proc/src/debayer.cpp
+CMakeFiles/debayer.dir/src/debayer.cpp.o: /home/corelab/ros2_stereo/src/image_proc/src/debayer.cpp
 CMakeFiles/debayer.dir/src/debayer.cpp.o: CMakeFiles/debayer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/image_proc/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/debayer.dir/src/debayer.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/debayer.dir/src/debayer.cpp.o -MF CMakeFiles/debayer.dir/src/debayer.cpp.o.d -o CMakeFiles/debayer.dir/src/debayer.cpp.o -c /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/image_proc/src/debayer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/corelab/ros2_stereo/build/image_proc/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/debayer.dir/src/debayer.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/debayer.dir/src/debayer.cpp.o -MF CMakeFiles/debayer.dir/src/debayer.cpp.o.d -o CMakeFiles/debayer.dir/src/debayer.cpp.o -c /home/corelab/ros2_stereo/src/image_proc/src/debayer.cpp
 
 CMakeFiles/debayer.dir/src/debayer.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/debayer.dir/src/debayer.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/image_proc/src/debayer.cpp > CMakeFiles/debayer.dir/src/debayer.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/corelab/ros2_stereo/src/image_proc/src/debayer.cpp > CMakeFiles/debayer.dir/src/debayer.cpp.i
 
 CMakeFiles/debayer.dir/src/debayer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/debayer.dir/src/debayer.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/image_proc/src/debayer.cpp -o CMakeFiles/debayer.dir/src/debayer.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/corelab/ros2_stereo/src/image_proc/src/debayer.cpp -o CMakeFiles/debayer.dir/src/debayer.cpp.s
 
 CMakeFiles/debayer.dir/src/edge_aware.cpp.o: CMakeFiles/debayer.dir/flags.make
-CMakeFiles/debayer.dir/src/edge_aware.cpp.o: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/image_proc/src/edge_aware.cpp
+CMakeFiles/debayer.dir/src/edge_aware.cpp.o: /home/corelab/ros2_stereo/src/image_proc/src/edge_aware.cpp
 CMakeFiles/debayer.dir/src/edge_aware.cpp.o: CMakeFiles/debayer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/image_proc/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/debayer.dir/src/edge_aware.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/debayer.dir/src/edge_aware.cpp.o -MF CMakeFiles/debayer.dir/src/edge_aware.cpp.o.d -o CMakeFiles/debayer.dir/src/edge_aware.cpp.o -c /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/image_proc/src/edge_aware.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/corelab/ros2_stereo/build/image_proc/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/debayer.dir/src/edge_aware.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/debayer.dir/src/edge_aware.cpp.o -MF CMakeFiles/debayer.dir/src/edge_aware.cpp.o.d -o CMakeFiles/debayer.dir/src/edge_aware.cpp.o -c /home/corelab/ros2_stereo/src/image_proc/src/edge_aware.cpp
 
 CMakeFiles/debayer.dir/src/edge_aware.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/debayer.dir/src/edge_aware.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/image_proc/src/edge_aware.cpp > CMakeFiles/debayer.dir/src/edge_aware.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/corelab/ros2_stereo/src/image_proc/src/edge_aware.cpp > CMakeFiles/debayer.dir/src/edge_aware.cpp.i
 
 CMakeFiles/debayer.dir/src/edge_aware.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/debayer.dir/src/edge_aware.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/image_proc/src/edge_aware.cpp -o CMakeFiles/debayer.dir/src/edge_aware.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/corelab/ros2_stereo/src/image_proc/src/edge_aware.cpp -o CMakeFiles/debayer.dir/src/edge_aware.cpp.s
 
 # Object files for target debayer
 debayer_OBJECTS = \
@@ -329,7 +329,7 @@ libdebayer.so: /opt/ros/foxy/lib/librcpputils.so
 libdebayer.so: /opt/ros/foxy/lib/librcutils.so
 libdebayer.so: /usr/lib/x86_64-linux-gnu/libtinyxml2.so
 libdebayer.so: CMakeFiles/debayer.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/image_proc/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX shared library libdebayer.so"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/corelab/ros2_stereo/build/image_proc/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX shared library libdebayer.so"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/debayer.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -341,6 +341,6 @@ CMakeFiles/debayer.dir/clean:
 .PHONY : CMakeFiles/debayer.dir/clean
 
 CMakeFiles/debayer.dir/depend:
-	cd /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/image_proc && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/image_proc /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/image_proc /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/image_proc /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/image_proc /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/image_proc/CMakeFiles/debayer.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/corelab/ros2_stereo/build/image_proc && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/corelab/ros2_stereo/src/image_proc /home/corelab/ros2_stereo/src/image_proc /home/corelab/ros2_stereo/build/image_proc /home/corelab/ros2_stereo/build/image_proc /home/corelab/ros2_stereo/build/image_proc/CMakeFiles/debayer.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/debayer.dir/depend
 

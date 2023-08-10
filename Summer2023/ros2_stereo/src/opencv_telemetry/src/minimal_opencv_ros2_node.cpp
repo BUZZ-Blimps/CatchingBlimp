@@ -23,7 +23,7 @@ int main(int argc, char ** argv)
   rclcpp::NodeOptions options;
   rclcpp::Node::SharedPtr node = rclcpp::Node::make_shared("image_publisher", options);
   image_transport::ImageTransport it(node);
-  image_transport::Publisher pub = it.advertise("/" + cameraNs_ + "/sync/image_raw", 60);
+  image_transport::Publisher pub = it.advertise("/" + cameraNs_ + "/sync/image_raw", 30);
 
   // Convert the command line parameter index for the video device to an integer
   std::istringstream video_sourceCmd(argv[1]);

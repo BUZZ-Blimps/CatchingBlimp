@@ -53,10 +53,10 @@ RM = /home/corelab/.local/lib/python3.8/site-packages/cmake/data/bin/cmake -E rm
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/image_view
+CMAKE_SOURCE_DIR = /home/corelab/ros2_stereo/src/image_view
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/image_view
+CMAKE_BINARY_DIR = /home/corelab/ros2_stereo/build/image_view
 
 # Utility rule file for uninstall.
 
@@ -78,6 +78,6 @@ CMakeFiles/uninstall.dir/clean:
 .PHONY : CMakeFiles/uninstall.dir/clean
 
 CMakeFiles/uninstall.dir/depend:
-	cd /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/image_view && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/image_view /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/image_view /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/image_view /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/image_view /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/image_view/CMakeFiles/uninstall.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/corelab/ros2_stereo/build/image_view && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/corelab/ros2_stereo/src/image_view /home/corelab/ros2_stereo/src/image_view /home/corelab/ros2_stereo/build/image_view /home/corelab/ros2_stereo/build/image_view /home/corelab/ros2_stereo/build/image_view/CMakeFiles/uninstall.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/uninstall.dir/depend
 

@@ -53,10 +53,10 @@ RM = /home/corelab/.local/lib/python3.8/site-packages/cmake/data/bin/cmake -E rm
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry
+CMAKE_SOURCE_DIR = /home/corelab/ros2_stereo/src/opencv_telemetry
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry
+CMAKE_BINARY_DIR = /home/corelab/ros2_stereo/build/opencv_telemetry
 
 # Utility rule file for opencv_telemetry_uninstall.
 
@@ -67,7 +67,7 @@ include CMakeFiles/opencv_telemetry_uninstall.dir/compiler_depend.make
 include CMakeFiles/opencv_telemetry_uninstall.dir/progress.make
 
 CMakeFiles/opencv_telemetry_uninstall:
-	/home/corelab/.local/lib/python3.8/site-packages/cmake/data/bin/cmake -P /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_uninstall_target/ament_cmake_uninstall_target.cmake
+	/home/corelab/.local/lib/python3.8/site-packages/cmake/data/bin/cmake -P /home/corelab/ros2_stereo/build/opencv_telemetry/ament_cmake_uninstall_target/ament_cmake_uninstall_target.cmake
 
 opencv_telemetry_uninstall: CMakeFiles/opencv_telemetry_uninstall
 opencv_telemetry_uninstall: CMakeFiles/opencv_telemetry_uninstall.dir/build.make
@@ -82,6 +82,6 @@ CMakeFiles/opencv_telemetry_uninstall.dir/clean:
 .PHONY : CMakeFiles/opencv_telemetry_uninstall.dir/clean
 
 CMakeFiles/opencv_telemetry_uninstall.dir/depend:
-	cd /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/CMakeFiles/opencv_telemetry_uninstall.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/corelab/ros2_stereo/build/opencv_telemetry && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/corelab/ros2_stereo/src/opencv_telemetry /home/corelab/ros2_stereo/src/opencv_telemetry /home/corelab/ros2_stereo/build/opencv_telemetry /home/corelab/ros2_stereo/build/opencv_telemetry /home/corelab/ros2_stereo/build/opencv_telemetry/CMakeFiles/opencv_telemetry_uninstall.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/opencv_telemetry_uninstall.dir/depend
 

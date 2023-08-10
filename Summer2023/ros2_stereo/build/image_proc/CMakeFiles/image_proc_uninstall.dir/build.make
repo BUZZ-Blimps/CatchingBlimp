@@ -53,10 +53,10 @@ RM = /home/corelab/.local/lib/python3.8/site-packages/cmake/data/bin/cmake -E rm
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/image_proc
+CMAKE_SOURCE_DIR = /home/corelab/ros2_stereo/src/image_proc
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/image_proc
+CMAKE_BINARY_DIR = /home/corelab/ros2_stereo/build/image_proc
 
 # Utility rule file for image_proc_uninstall.
 
@@ -67,7 +67,7 @@ include CMakeFiles/image_proc_uninstall.dir/compiler_depend.make
 include CMakeFiles/image_proc_uninstall.dir/progress.make
 
 CMakeFiles/image_proc_uninstall:
-	/home/corelab/.local/lib/python3.8/site-packages/cmake/data/bin/cmake -P /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/image_proc/ament_cmake_uninstall_target/ament_cmake_uninstall_target.cmake
+	/home/corelab/.local/lib/python3.8/site-packages/cmake/data/bin/cmake -P /home/corelab/ros2_stereo/build/image_proc/ament_cmake_uninstall_target/ament_cmake_uninstall_target.cmake
 
 image_proc_uninstall: CMakeFiles/image_proc_uninstall
 image_proc_uninstall: CMakeFiles/image_proc_uninstall.dir/build.make
@@ -82,6 +82,6 @@ CMakeFiles/image_proc_uninstall.dir/clean:
 .PHONY : CMakeFiles/image_proc_uninstall.dir/clean
 
 CMakeFiles/image_proc_uninstall.dir/depend:
-	cd /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/image_proc && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/image_proc /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/image_proc /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/image_proc /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/image_proc /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/image_proc/CMakeFiles/image_proc_uninstall.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/corelab/ros2_stereo/build/image_proc && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/corelab/ros2_stereo/src/image_proc /home/corelab/ros2_stereo/src/image_proc /home/corelab/ros2_stereo/build/image_proc /home/corelab/ros2_stereo/build/image_proc /home/corelab/ros2_stereo/build/image_proc/CMakeFiles/image_proc_uninstall.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/image_proc_uninstall.dir/depend
 

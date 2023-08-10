@@ -1,0 +1,1 @@
+camera_calibration_parsers;camera_info_manager;class_loader;cv_bridge;libgstreamer1.0-dev;libgstreamer-plugins-base1.0-dev;rclcpp;rclcpp_components;rclpy;ros2_shared;sensor_msgs;ament_cmake_gtest;ament_lint_auto;ament_cmake_cppcheck;ament_cmake_flake8;ament_cmake_lint_cmake;ament_cmake_pep257;ament_cmake_uncrustify;ament_cmake_xmllint

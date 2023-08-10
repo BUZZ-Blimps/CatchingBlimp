@@ -1,6 +1,6 @@
 {
   "package_name": "opencv_telemetry",
   "non_idl_tuples": [
-    "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry:msg/ResizedImage.msg"
+    "/home/corelab/ros2_stereo/src/opencv_telemetry:msg/ResizedImage.msg"
   ]
 }

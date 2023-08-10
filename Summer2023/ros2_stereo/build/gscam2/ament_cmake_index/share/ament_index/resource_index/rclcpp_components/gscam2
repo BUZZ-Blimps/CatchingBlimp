@@ -1,0 +1,2 @@
+gscam2::GSCamNode;lib/libgscam_node.so
+gscam2::ImageSubscriberNode;lib/libsubscriber_node.so

@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "*.json": "cpp",
+        "*.ipp": "cpp",
+        "bitset": "cpp",
+        "chrono": "cpp"
+    }
+}

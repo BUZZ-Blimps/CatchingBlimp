@@ -1,0 +1,16 @@
+[0.011s] Invoking command in '/home/corelab/ros2_stereo/build/gscam2': CMAKE_PREFIX_PATH=/home/corelab/ros2_stereo/install/ros2_shared:/home/corelab/ros2_stereo/install/stereo_image_proc:/home/corelab/ros2_stereo/install/yolo_msgs:/home/corelab/ros2_stereo/install/gscam2:/home/corelab/ros2_stereo/install/opencv_telemetry:/home/corelab/ros2_stereo/install/image_view:/home/corelab/ros2_stereo/install/image_proc:/opt/ros/foxy /home/corelab/.local/bin/cmake --build /home/corelab/ros2_stereo/build/gscam2 -- -j16 -l16
+[0.044s] [ 14%] Built target gtest_main
+[0.045s] [ 28%] Built target gtest
+[0.046s] [ 42%] Built target subscriber_node
+[0.050s] [ 50%] [32mBuilding CXX object CMakeFiles/gscam_node.dir/src/gscam_node.cpp.o[0m
+[0.125s] [01m[K/home/corelab/ros2_stereo/src/gscam2/src/gscam_node.cpp:29:3:[m[K [01;35m[Kwarning: [m[Kmulti-line comment [[01;35m[K-Wcomment[m[K]
+[0.126s]    29 |   [01;35m[K/[m[K/ CXT_MACRO_MEMBER(camera_info_url, std::string, "")        /* Location of camera info file  */ \
+[0.126s]       |   [01;35m[K^[m[K
+[0.774s] [01m[K/home/corelab/ros2_stereo/src/gscam2/src/gscam_node.cpp:[m[K In member function ‘[01m[Kvoid gscam2::GSCamNode::impl::process_frame()[m[K’:
+[0.774s] [01m[K/home/corelab/ros2_stereo/src/gscam2/src/gscam_node.cpp:387:5:[m[K [01;31m[Kerror: [m[K‘[01m[Khdr[m[K’ was not declared in this scope
+[0.774s]   387 |     [01;31m[Khdr[m[K.frame_id = ss.str();
+[0.774s]       |     [01;31m[K^~~[m[K
+[1.259s] make[2]: *** [CMakeFiles/gscam_node.dir/build.make:76: CMakeFiles/gscam_node.dir/src/gscam_node.cpp.o] Error 1
+[1.259s] make[1]: *** [CMakeFiles/Makefile2:163: CMakeFiles/gscam_node.dir/all] Error 2
+[1.259s] make: *** [Makefile:146: all] Error 2
+[1.262s] Invoked command in '/home/corelab/ros2_stereo/build/gscam2' returned '2': CMAKE_PREFIX_PATH=/home/corelab/ros2_stereo/install/ros2_shared:/home/corelab/ros2_stereo/install/stereo_image_proc:/home/corelab/ros2_stereo/install/yolo_msgs:/home/corelab/ros2_stereo/install/gscam2:/home/corelab/ros2_stereo/install/opencv_telemetry:/home/corelab/ros2_stereo/install/image_view:/home/corelab/ros2_stereo/install/image_proc:/opt/ros/foxy /home/corelab/.local/bin/cmake --build /home/corelab/ros2_stereo/build/gscam2 -- -j16 -l16

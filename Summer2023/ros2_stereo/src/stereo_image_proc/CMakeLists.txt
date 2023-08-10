@@ -13,6 +13,9 @@ find_package(ament_cmake_auto REQUIRED)
 ament_auto_find_build_dependencies()
 
 find_package(OpenCV REQUIRED)
+# set(CMAKE_PREFIX_PATH "/home/corelab/ros2_stereo/install/yolo_msgs/share/yolo_msgs/cmake" ${CMAKE_PREFIX_PATH})
+set(CMAKE_PREFIX_PATH "/home/corelab/ros2_stereo/build/yolo_msgs/ament_cmake_core" ${CMAKE_PREFIX_PATH})
+find_package(yolo_msgs REQUIRED)
 
 # See note in image_proc/CMakeLists.txt
 # add_definitions(-DOPENCV_TRAITS_ENABLE_DEPRECATED)
@@ -63,5 +66,6 @@ if(BUILD_TESTING)
 
   set(PYTHON_EXECUTABLE "${_PYTHON_EXECUTABLE}")
 endif()
+
 
 ament_auto_package(INSTALL_TO_SHARE launch)

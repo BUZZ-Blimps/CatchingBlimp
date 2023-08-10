@@ -1,0 +1,31 @@
+// generated from rosidl_generator_dds_idl/resource/idl.idl.em
+// with input from yolo_msgs:msg/ObjectCount.idl
+// generated code does not contain a copyright notice
+#include "std_msgs/msg/dds_connext/Header_.idl"
+
+#ifndef __yolo_msgs__msg__object_count__idl__
+#define __yolo_msgs__msg__object_count__idl__
+
+
+module yolo_msgs {
+
+module msg {
+
+module dds_ {
+
+
+struct ObjectCount_ {
+std_msgs::msg::dds_::Header_ header_;
+octet count_;
+
+};
+
+
+};  // module dds_
+
+};  // module msg
+
+};  // module yolo_msgs
+
+
+#endif  // __yolo_msgs__msg__object_count__idl__

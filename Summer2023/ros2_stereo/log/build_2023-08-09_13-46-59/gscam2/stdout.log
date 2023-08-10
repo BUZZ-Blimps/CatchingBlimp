@@ -1,0 +1,126 @@
+-- The C compiler identification is GNU 9.4.0
+-- The CXX compiler identification is GNU 9.4.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found PkgConfig: /usr/bin/pkg-config (found version "0.29.1") 
+-- Checking for module 'gstreamer-1.0'
+--   Found gstreamer-1.0, version 1.16.3
+-- Checking for module 'gstreamer-app-1.0'
+--   Found gstreamer-app-1.0, version 1.16.3
+-- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)
+-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") 
+-- Using PYTHON_EXECUTABLE: /usr/bin/python3
+-- Found camera_calibration_parsers: 2.4.0 (/opt/ros/foxy/share/camera_calibration_parsers/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_connext_c;rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+-- Found RTI Connext: /opt/rti.com/rti_connext_dds-5.3.1
+-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "1.1.1f")  
+-- Found FastRTPS: /opt/ros/foxy/include  
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_connext_cpp;rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+-- Using RMW implementation 'rmw_fastrtps_cpp' as default
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+-- Looking for pthread_create in pthreads
+-- Looking for pthread_create in pthreads - not found
+-- Looking for pthread_create in pthread
+-- Looking for pthread_create in pthread - found
+-- Found Threads: TRUE  
+-- Setting yaml-cpp_DIR to: '/opt/ros/foxy/share/yaml_cpp_vendor/cmake/../../../opt/yaml_cpp_vendor/lib/cmake/yaml-cpp'
+-- Found camera_info_manager: 2.4.0 (/opt/ros/foxy/share/camera_info_manager/cmake)
+-- Found class_loader: 2.0.3 (/opt/ros/foxy/share/class_loader/cmake)
+-- Found rclcpp_components: 2.4.3 (/opt/ros/foxy/share/rclcpp_components/cmake)
+-- Found rclpy: 1.0.13 (/opt/ros/foxy/share/rclpy/cmake)
+-- Found ros2_shared: 0.1.0 (/home/corelab/ros2_stereo/install/ros2_shared/share/ros2_shared/cmake)
+-- Found ament_lint_auto: 0.9.8 (/opt/ros/foxy/share/ament_lint_auto/cmake)
+-- Found gtest sources under '/opt/ros/foxy/src/gtest_vendor': C++ tests using 'Google Test' will be built
+-- Check if compiler accepts -pthread
+-- Check if compiler accepts -pthread - yes
+-- Added test 'cppcheck' to perform static code analysis on C / C++ code
+-- Configured cppcheck include dirs: /home/corelab/ros2_stereo/src/gscam2/include
+-- Configured cppcheck exclude dirs and/or files: 
+-- Added test 'flake8' to check Python code syntax and style conventions
+-- Added test 'lint_cmake' to check CMake code style
+-- Added test 'pep257' to check Python code against some of the style conventions in PEP 257
+-- Added test 'uncrustify' to check C / C++ code style
+-- Configured uncrustify additional arguments: 
+-- Added test 'xmllint' to check XML markup files
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/corelab/ros2_stereo/build/gscam2
+[  7%] [32mBuilding CXX object CMakeFiles/gscam_node.dir/src/gscam_node.cpp.o[0m
+[ 14%] [32mBuilding CXX object gtest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o[0m
+[ 21%] [32mBuilding CXX object gtest/CMakeFiles/gtest.dir/src/gtest-all.cc.o[0m
+[ 28%] [32mBuilding CXX object CMakeFiles/subscriber_node.dir/src/subscriber_node.cpp.o[0m
+[ 35%] [32m[1mLinking CXX static library libgtest_main.a[0m
+[ 35%] Built target gtest_main
+[ 42%] [32m[1mLinking CXX shared library libgscam_node.so[0m
+[ 50%] [32m[1mLinking CXX static library libgtest.a[0m
+[ 50%] Built target gtest
+[ 50%] Built target gscam_node
+[ 64%] [32mBuilding CXX object CMakeFiles/smoke_test.dir/test/smoke_test.cpp.o[0m
+[ 64%] [32mBuilding CXX object CMakeFiles/gscam_main.dir/src/gscam_main.cpp.o[0m
+[ 71%] [32m[1mLinking CXX shared library libsubscriber_node.so[0m
+[ 71%] Built target subscriber_node
+[ 78%] [32mBuilding CXX object CMakeFiles/ipc_test_main.dir/src/ipc_test_main.cpp.o[0m
+[ 85%] [32m[1mLinking CXX executable gscam_main[0m
+[ 85%] Built target gscam_main
+[ 92%] [32m[1mLinking CXX executable ipc_test_main[0m
+[ 92%] Built target ipc_test_main
+[100%] [32m[1mLinking CXX executable smoke_test[0m
+[100%] Built target smoke_test
+-- Install configuration: ""
+-- Installing: /home/corelab/ros2_stereo/install/gscam2/share/gscam2/environment/library_path.sh
+-- Installing: /home/corelab/ros2_stereo/install/gscam2/share/gscam2/environment/library_path.dsv
+-- Installing: /home/corelab/ros2_stereo/install/gscam2/share/ament_index/resource_index/package_run_dependencies/gscam2
+-- Installing: /home/corelab/ros2_stereo/install/gscam2/share/ament_index/resource_index/parent_prefix_path/gscam2
+-- Installing: /home/corelab/ros2_stereo/install/gscam2/share/gscam2/environment/ament_prefix_path.sh
+-- Installing: /home/corelab/ros2_stereo/install/gscam2/share/gscam2/environment/ament_prefix_path.dsv
+-- Installing: /home/corelab/ros2_stereo/install/gscam2/share/gscam2/environment/path.sh
+-- Installing: /home/corelab/ros2_stereo/install/gscam2/share/gscam2/environment/path.dsv
+-- Installing: /home/corelab/ros2_stereo/install/gscam2/share/gscam2/local_setup.bash
+-- Installing: /home/corelab/ros2_stereo/install/gscam2/share/gscam2/local_setup.sh
+-- Installing: /home/corelab/ros2_stereo/install/gscam2/share/gscam2/local_setup.zsh
+-- Installing: /home/corelab/ros2_stereo/install/gscam2/share/gscam2/local_setup.dsv
+-- Installing: /home/corelab/ros2_stereo/install/gscam2/share/gscam2/package.dsv
+-- Installing: /home/corelab/ros2_stereo/install/gscam2/share/ament_index/resource_index/packages/gscam2
+-- Installing: /home/corelab/ros2_stereo/install/gscam2/share/ament_index/resource_index/rclcpp_components/gscam2
+-- Installing: /home/corelab/ros2_stereo/install/gscam2/share/gscam2/cmake/export_gscam_nodeExport.cmake
+-- Installing: /home/corelab/ros2_stereo/install/gscam2/share/gscam2/cmake/export_gscam_nodeExport-noconfig.cmake
+-- Installing: /home/corelab/ros2_stereo/install/gscam2/share/gscam2/cmake/export_subscriber_nodeExport.cmake
+-- Installing: /home/corelab/ros2_stereo/install/gscam2/share/gscam2/cmake/export_subscriber_nodeExport-noconfig.cmake
+-- Installing: /home/corelab/ros2_stereo/install/gscam2/share/gscam2/cmake/ament_cmake_export_dependencies-extras.cmake
+-- Installing: /home/corelab/ros2_stereo/install/gscam2/share/gscam2/cmake/ament_cmake_export_include_directories-extras.cmake
+-- Installing: /home/corelab/ros2_stereo/install/gscam2/share/gscam2/cmake/ament_cmake_export_targets-extras.cmake
+-- Installing: /home/corelab/ros2_stereo/install/gscam2/share/gscam2/cmake/ament_cmake_export_libraries-extras.cmake
+-- Installing: /home/corelab/ros2_stereo/install/gscam2/share/gscam2/cmake/gscam2Config.cmake
+-- Installing: /home/corelab/ros2_stereo/install/gscam2/share/gscam2/cmake/gscam2Config-version.cmake
+-- Installing: /home/corelab/ros2_stereo/install/gscam2/share/gscam2/package.xml
+-- Installing: /home/corelab/ros2_stereo/install/gscam2/include/gscam2
+-- Installing: /home/corelab/ros2_stereo/install/gscam2/include/gscam2/gscam_node.hpp
+-- Installing: /home/corelab/ros2_stereo/install/gscam2/include/gscam2/subscriber_node.hpp
+-- Installing: /home/corelab/ros2_stereo/install/gscam2/lib/libgscam_node.so
+-- Set runtime path of "/home/corelab/ros2_stereo/install/gscam2/lib/libgscam_node.so" to ""
+-- Installing: /home/corelab/ros2_stereo/install/gscam2/lib/libsubscriber_node.so
+-- Set runtime path of "/home/corelab/ros2_stereo/install/gscam2/lib/libsubscriber_node.so" to ""
+-- Installing: /home/corelab/ros2_stereo/install/gscam2/lib/gscam2/gscam_main
+-- Set runtime path of "/home/corelab/ros2_stereo/install/gscam2/lib/gscam2/gscam_main" to ""
+-- Installing: /home/corelab/ros2_stereo/install/gscam2/lib/gscam2/ipc_test_main
+-- Set runtime path of "/home/corelab/ros2_stereo/install/gscam2/lib/gscam2/ipc_test_main" to ""
+-- Installing: /home/corelab/ros2_stereo/install/gscam2/share/gscam2/cfg
+-- Installing: /home/corelab/ros2_stereo/install/gscam2/share/gscam2/cfg/my_camera.ini
+-- Installing: /home/corelab/ros2_stereo/install/gscam2/share/gscam2/cfg/workaround_params.yaml
+-- Installing: /home/corelab/ros2_stereo/install/gscam2/share/gscam2/cfg/elp_left.yaml
+-- Installing: /home/corelab/ros2_stereo/install/gscam2/share/gscam2/cfg/params.yaml
+-- Installing: /home/corelab/ros2_stereo/install/gscam2/share/gscam2/launch
+-- Installing: /home/corelab/ros2_stereo/install/gscam2/share/gscam2/launch/composition_launch.py
+-- Installing: /home/corelab/ros2_stereo/install/gscam2/share/gscam2/launch/container_param_launch.py
+-- Installing: /home/corelab/ros2_stereo/install/gscam2/share/gscam2/launch/node_param_launch.py

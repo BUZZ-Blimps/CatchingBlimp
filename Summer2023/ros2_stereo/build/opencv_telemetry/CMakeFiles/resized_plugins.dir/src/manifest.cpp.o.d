@@ -1,5 +1,5 @@
 CMakeFiles/resized_plugins.dir/src/manifest.cpp.o: \
- /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry/src/manifest.cpp \
+ /home/corelab/ros2_stereo/src/opencv_telemetry/src/manifest.cpp \
  /usr/include/stdc-predef.h \
  /opt/ros/foxy/include/pluginlib/class_list_macros.hpp \
  /opt/ros/foxy/include/class_loader/class_loader.hpp \
@@ -175,7 +175,7 @@ CMakeFiles/resized_plugins.dir/src/manifest.cpp.o: \
  /opt/ros/foxy/include/rcutils/types/rcutils_ret.h \
  /opt/ros/foxy/include/rcpputils/visibility_control.hpp \
  /opt/ros/foxy/include/class_loader/register_macro.hpp \
- /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry/include/opencv_telemetry/resized_publisher.hpp \
+ /home/corelab/ros2_stereo/src/opencv_telemetry/include/opencv_telemetry/resized_publisher.hpp \
  /opt/ros/foxy/include/image_transport/simple_publisher_plugin.hpp \
  /opt/ros/foxy/include/rclcpp/node.hpp /usr/include/c++/9/atomic \
  /usr/include/c++/9/condition_variable /usr/include/c++/9/list \
@@ -446,12 +446,12 @@ CMakeFiles/resized_plugins.dir/src/manifest.cpp.o: \
  /opt/ros/foxy/include/sensor_msgs/msg/rosidl_generator_cpp__visibility_control.hpp \
  /opt/ros/foxy/include/image_transport/single_subscriber_publisher.hpp \
  /opt/ros/foxy/include/image_transport/visibility_control.hpp \
- /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/rosidl_generator_cpp/opencv_telemetry/msg/resized_image.hpp \
- /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/rosidl_generator_cpp/opencv_telemetry/msg/detail/resized_image__struct.hpp \
- /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/rosidl_generator_cpp/opencv_telemetry/msg/detail/resized_image__builder.hpp \
- /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/rosidl_generator_cpp/opencv_telemetry/msg/detail/resized_image__traits.hpp \
- /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/rosidl_generator_cpp/opencv_telemetry/msg/detail/resized_image__type_support.hpp \
- /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/rosidl_generator_cpp/opencv_telemetry/msg/rosidl_generator_cpp__visibility_control.hpp \
- /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry/include/opencv_telemetry/resized_subscriber.hpp \
+ /home/corelab/ros2_stereo/build/opencv_telemetry/rosidl_generator_cpp/opencv_telemetry/msg/resized_image.hpp \
+ /home/corelab/ros2_stereo/build/opencv_telemetry/rosidl_generator_cpp/opencv_telemetry/msg/detail/resized_image__struct.hpp \
+ /home/corelab/ros2_stereo/build/opencv_telemetry/rosidl_generator_cpp/opencv_telemetry/msg/detail/resized_image__builder.hpp \
+ /home/corelab/ros2_stereo/build/opencv_telemetry/rosidl_generator_cpp/opencv_telemetry/msg/detail/resized_image__traits.hpp \
+ /home/corelab/ros2_stereo/build/opencv_telemetry/rosidl_generator_cpp/opencv_telemetry/msg/detail/resized_image__type_support.hpp \
+ /home/corelab/ros2_stereo/build/opencv_telemetry/rosidl_generator_cpp/opencv_telemetry/msg/rosidl_generator_cpp__visibility_control.hpp \
+ /home/corelab/ros2_stereo/src/opencv_telemetry/include/opencv_telemetry/resized_subscriber.hpp \
  /opt/ros/foxy/include/image_transport/simple_subscriber_plugin.hpp \
  /opt/ros/foxy/include/image_transport/subscriber_plugin.hpp

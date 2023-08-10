@@ -1,4 +1,4 @@
-# Install script for directory: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/image_view/connext_cmake_module/check_abi
+# Install script for directory: /home/corelab/ros2_stereo/build/image_view/connext_cmake_module/check_abi
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/image_view/connext_cmake_module/check_abi/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/corelab/ros2_stereo/build/image_view/connext_cmake_module/check_abi/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

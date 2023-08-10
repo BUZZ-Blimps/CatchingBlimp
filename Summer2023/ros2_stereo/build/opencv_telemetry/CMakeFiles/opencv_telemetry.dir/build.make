@@ -53,10 +53,10 @@ RM = /home/corelab/.local/lib/python3.8/site-packages/cmake/data/bin/cmake -E rm
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry
+CMAKE_SOURCE_DIR = /home/corelab/ros2_stereo/src/opencv_telemetry
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry
+CMAKE_BINARY_DIR = /home/corelab/ros2_stereo/build/opencv_telemetry
 
 # Utility rule file for opencv_telemetry.
 
@@ -66,7 +66,7 @@ include CMakeFiles/opencv_telemetry.dir/compiler_depend.make
 # Include the progress variables for this target.
 include CMakeFiles/opencv_telemetry.dir/progress.make
 
-CMakeFiles/opencv_telemetry: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry/msg/ResizedImage.msg
+CMakeFiles/opencv_telemetry: /home/corelab/ros2_stereo/src/opencv_telemetry/msg/ResizedImage.msg
 CMakeFiles/opencv_telemetry: /opt/ros/foxy/share/sensor_msgs/msg/BatteryState.idl
 CMakeFiles/opencv_telemetry: /opt/ros/foxy/share/sensor_msgs/msg/CameraInfo.idl
 CMakeFiles/opencv_telemetry: /opt/ros/foxy/share/sensor_msgs/msg/ChannelFloat32.idl
@@ -109,6 +109,6 @@ CMakeFiles/opencv_telemetry.dir/clean:
 .PHONY : CMakeFiles/opencv_telemetry.dir/clean
 
 CMakeFiles/opencv_telemetry.dir/depend:
-	cd /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/CMakeFiles/opencv_telemetry.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/corelab/ros2_stereo/build/opencv_telemetry && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/corelab/ros2_stereo/src/opencv_telemetry /home/corelab/ros2_stereo/src/opencv_telemetry /home/corelab/ros2_stereo/build/opencv_telemetry /home/corelab/ros2_stereo/build/opencv_telemetry /home/corelab/ros2_stereo/build/opencv_telemetry/CMakeFiles/opencv_telemetry.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/opencv_telemetry.dir/depend
 

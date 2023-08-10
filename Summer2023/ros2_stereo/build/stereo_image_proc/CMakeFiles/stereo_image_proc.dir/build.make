@@ -53,10 +53,10 @@ RM = /home/corelab/.local/lib/python3.8/site-packages/cmake/data/bin/cmake -E rm
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_image_proc
+CMAKE_SOURCE_DIR = /home/corelab/ros2_stereo/src/stereo_image_proc
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_image_proc
+CMAKE_BINARY_DIR = /home/corelab/ros2_stereo/build/stereo_image_proc
 
 # Include any dependencies generated for this target.
 include CMakeFiles/stereo_image_proc.dir/depend.make
@@ -70,46 +70,46 @@ include CMakeFiles/stereo_image_proc.dir/progress.make
 include CMakeFiles/stereo_image_proc.dir/flags.make
 
 CMakeFiles/stereo_image_proc.dir/src/stereo_image_proc/stereo_processor.cpp.o: CMakeFiles/stereo_image_proc.dir/flags.make
-CMakeFiles/stereo_image_proc.dir/src/stereo_image_proc/stereo_processor.cpp.o: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_image_proc/src/stereo_image_proc/stereo_processor.cpp
+CMakeFiles/stereo_image_proc.dir/src/stereo_image_proc/stereo_processor.cpp.o: /home/corelab/ros2_stereo/src/stereo_image_proc/src/stereo_image_proc/stereo_processor.cpp
 CMakeFiles/stereo_image_proc.dir/src/stereo_image_proc/stereo_processor.cpp.o: CMakeFiles/stereo_image_proc.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_image_proc/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/stereo_image_proc.dir/src/stereo_image_proc/stereo_processor.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/stereo_image_proc.dir/src/stereo_image_proc/stereo_processor.cpp.o -MF CMakeFiles/stereo_image_proc.dir/src/stereo_image_proc/stereo_processor.cpp.o.d -o CMakeFiles/stereo_image_proc.dir/src/stereo_image_proc/stereo_processor.cpp.o -c /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_image_proc/src/stereo_image_proc/stereo_processor.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/corelab/ros2_stereo/build/stereo_image_proc/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/stereo_image_proc.dir/src/stereo_image_proc/stereo_processor.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/stereo_image_proc.dir/src/stereo_image_proc/stereo_processor.cpp.o -MF CMakeFiles/stereo_image_proc.dir/src/stereo_image_proc/stereo_processor.cpp.o.d -o CMakeFiles/stereo_image_proc.dir/src/stereo_image_proc/stereo_processor.cpp.o -c /home/corelab/ros2_stereo/src/stereo_image_proc/src/stereo_image_proc/stereo_processor.cpp
 
 CMakeFiles/stereo_image_proc.dir/src/stereo_image_proc/stereo_processor.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/stereo_image_proc.dir/src/stereo_image_proc/stereo_processor.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_image_proc/src/stereo_image_proc/stereo_processor.cpp > CMakeFiles/stereo_image_proc.dir/src/stereo_image_proc/stereo_processor.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/corelab/ros2_stereo/src/stereo_image_proc/src/stereo_image_proc/stereo_processor.cpp > CMakeFiles/stereo_image_proc.dir/src/stereo_image_proc/stereo_processor.cpp.i
 
 CMakeFiles/stereo_image_proc.dir/src/stereo_image_proc/stereo_processor.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/stereo_image_proc.dir/src/stereo_image_proc/stereo_processor.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_image_proc/src/stereo_image_proc/stereo_processor.cpp -o CMakeFiles/stereo_image_proc.dir/src/stereo_image_proc/stereo_processor.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/corelab/ros2_stereo/src/stereo_image_proc/src/stereo_image_proc/stereo_processor.cpp -o CMakeFiles/stereo_image_proc.dir/src/stereo_image_proc/stereo_processor.cpp.s
 
 CMakeFiles/stereo_image_proc.dir/src/stereo_image_proc/disparity_node.cpp.o: CMakeFiles/stereo_image_proc.dir/flags.make
-CMakeFiles/stereo_image_proc.dir/src/stereo_image_proc/disparity_node.cpp.o: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_image_proc/src/stereo_image_proc/disparity_node.cpp
+CMakeFiles/stereo_image_proc.dir/src/stereo_image_proc/disparity_node.cpp.o: /home/corelab/ros2_stereo/src/stereo_image_proc/src/stereo_image_proc/disparity_node.cpp
 CMakeFiles/stereo_image_proc.dir/src/stereo_image_proc/disparity_node.cpp.o: CMakeFiles/stereo_image_proc.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_image_proc/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/stereo_image_proc.dir/src/stereo_image_proc/disparity_node.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/stereo_image_proc.dir/src/stereo_image_proc/disparity_node.cpp.o -MF CMakeFiles/stereo_image_proc.dir/src/stereo_image_proc/disparity_node.cpp.o.d -o CMakeFiles/stereo_image_proc.dir/src/stereo_image_proc/disparity_node.cpp.o -c /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_image_proc/src/stereo_image_proc/disparity_node.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/corelab/ros2_stereo/build/stereo_image_proc/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/stereo_image_proc.dir/src/stereo_image_proc/disparity_node.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/stereo_image_proc.dir/src/stereo_image_proc/disparity_node.cpp.o -MF CMakeFiles/stereo_image_proc.dir/src/stereo_image_proc/disparity_node.cpp.o.d -o CMakeFiles/stereo_image_proc.dir/src/stereo_image_proc/disparity_node.cpp.o -c /home/corelab/ros2_stereo/src/stereo_image_proc/src/stereo_image_proc/disparity_node.cpp
 
 CMakeFiles/stereo_image_proc.dir/src/stereo_image_proc/disparity_node.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/stereo_image_proc.dir/src/stereo_image_proc/disparity_node.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_image_proc/src/stereo_image_proc/disparity_node.cpp > CMakeFiles/stereo_image_proc.dir/src/stereo_image_proc/disparity_node.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/corelab/ros2_stereo/src/stereo_image_proc/src/stereo_image_proc/disparity_node.cpp > CMakeFiles/stereo_image_proc.dir/src/stereo_image_proc/disparity_node.cpp.i
 
 CMakeFiles/stereo_image_proc.dir/src/stereo_image_proc/disparity_node.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/stereo_image_proc.dir/src/stereo_image_proc/disparity_node.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_image_proc/src/stereo_image_proc/disparity_node.cpp -o CMakeFiles/stereo_image_proc.dir/src/stereo_image_proc/disparity_node.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/corelab/ros2_stereo/src/stereo_image_proc/src/stereo_image_proc/disparity_node.cpp -o CMakeFiles/stereo_image_proc.dir/src/stereo_image_proc/disparity_node.cpp.s
 
 CMakeFiles/stereo_image_proc.dir/src/stereo_image_proc/point_cloud_node.cpp.o: CMakeFiles/stereo_image_proc.dir/flags.make
-CMakeFiles/stereo_image_proc.dir/src/stereo_image_proc/point_cloud_node.cpp.o: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_image_proc/src/stereo_image_proc/point_cloud_node.cpp
+CMakeFiles/stereo_image_proc.dir/src/stereo_image_proc/point_cloud_node.cpp.o: /home/corelab/ros2_stereo/src/stereo_image_proc/src/stereo_image_proc/point_cloud_node.cpp
 CMakeFiles/stereo_image_proc.dir/src/stereo_image_proc/point_cloud_node.cpp.o: CMakeFiles/stereo_image_proc.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_image_proc/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/stereo_image_proc.dir/src/stereo_image_proc/point_cloud_node.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/stereo_image_proc.dir/src/stereo_image_proc/point_cloud_node.cpp.o -MF CMakeFiles/stereo_image_proc.dir/src/stereo_image_proc/point_cloud_node.cpp.o.d -o CMakeFiles/stereo_image_proc.dir/src/stereo_image_proc/point_cloud_node.cpp.o -c /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_image_proc/src/stereo_image_proc/point_cloud_node.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/corelab/ros2_stereo/build/stereo_image_proc/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/stereo_image_proc.dir/src/stereo_image_proc/point_cloud_node.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/stereo_image_proc.dir/src/stereo_image_proc/point_cloud_node.cpp.o -MF CMakeFiles/stereo_image_proc.dir/src/stereo_image_proc/point_cloud_node.cpp.o.d -o CMakeFiles/stereo_image_proc.dir/src/stereo_image_proc/point_cloud_node.cpp.o -c /home/corelab/ros2_stereo/src/stereo_image_proc/src/stereo_image_proc/point_cloud_node.cpp
 
 CMakeFiles/stereo_image_proc.dir/src/stereo_image_proc/point_cloud_node.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/stereo_image_proc.dir/src/stereo_image_proc/point_cloud_node.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_image_proc/src/stereo_image_proc/point_cloud_node.cpp > CMakeFiles/stereo_image_proc.dir/src/stereo_image_proc/point_cloud_node.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/corelab/ros2_stereo/src/stereo_image_proc/src/stereo_image_proc/point_cloud_node.cpp > CMakeFiles/stereo_image_proc.dir/src/stereo_image_proc/point_cloud_node.cpp.i
 
 CMakeFiles/stereo_image_proc.dir/src/stereo_image_proc/point_cloud_node.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/stereo_image_proc.dir/src/stereo_image_proc/point_cloud_node.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_image_proc/src/stereo_image_proc/point_cloud_node.cpp -o CMakeFiles/stereo_image_proc.dir/src/stereo_image_proc/point_cloud_node.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/corelab/ros2_stereo/src/stereo_image_proc/src/stereo_image_proc/point_cloud_node.cpp -o CMakeFiles/stereo_image_proc.dir/src/stereo_image_proc/point_cloud_node.cpp.s
 
 # Object files for target stereo_image_proc
 stereo_image_proc_OBJECTS = \
@@ -130,6 +130,10 @@ libstereo_image_proc.so: /opt/ros/foxy/lib/libstereo_msgs__rosidl_typesupport_in
 libstereo_image_proc.so: /opt/ros/foxy/lib/libstereo_msgs__rosidl_typesupport_c.so
 libstereo_image_proc.so: /opt/ros/foxy/lib/libstereo_msgs__rosidl_typesupport_introspection_cpp.so
 libstereo_image_proc.so: /opt/ros/foxy/lib/libstereo_msgs__rosidl_typesupport_cpp.so
+libstereo_image_proc.so: /home/corelab/ros2_stereo/install/yolo_msgs/lib/libyolo_msgs__rosidl_typesupport_introspection_c.so
+libstereo_image_proc.so: /home/corelab/ros2_stereo/install/yolo_msgs/lib/libyolo_msgs__rosidl_typesupport_c.so
+libstereo_image_proc.so: /home/corelab/ros2_stereo/install/yolo_msgs/lib/libyolo_msgs__rosidl_typesupport_introspection_cpp.so
+libstereo_image_proc.so: /home/corelab/ros2_stereo/install/yolo_msgs/lib/libyolo_msgs__rosidl_typesupport_cpp.so
 libstereo_image_proc.so: /opt/ros/foxy/lib/libgeometry_msgs__rosidl_generator_c.so
 libstereo_image_proc.so: /opt/ros/foxy/lib/libgeometry_msgs__rosidl_typesupport_introspection_c.so
 libstereo_image_proc.so: /opt/ros/foxy/lib/libgeometry_msgs__rosidl_typesupport_c.so
@@ -158,12 +162,12 @@ libstereo_image_proc.so: /opt/ros/foxy/lib/libcomposition_interfaces__rosidl_typ
 libstereo_image_proc.so: /opt/ros/foxy/lib/libcomposition_interfaces__rosidl_typesupport_introspection_cpp.so
 libstereo_image_proc.so: /opt/ros/foxy/lib/libcomposition_interfaces__rosidl_typesupport_cpp.so
 libstereo_image_proc.so: /opt/ros/foxy/lib/libtracetools_image_pipeline.so
-libstereo_image_proc.so: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/lib/libimage_proc.so
-libstereo_image_proc.so: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/lib/librectify.so
-libstereo_image_proc.so: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/lib/libdebayer.so
-libstereo_image_proc.so: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/lib/libresize.so
-libstereo_image_proc.so: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/lib/libcrop_decimate.so
-libstereo_image_proc.so: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/lib/libcrop_non_zero.so
+libstereo_image_proc.so: /home/corelab/ros2_stereo/install/image_proc/lib/libimage_proc.so
+libstereo_image_proc.so: /home/corelab/ros2_stereo/install/image_proc/lib/librectify.so
+libstereo_image_proc.so: /home/corelab/ros2_stereo/install/image_proc/lib/libdebayer.so
+libstereo_image_proc.so: /home/corelab/ros2_stereo/install/image_proc/lib/libresize.so
+libstereo_image_proc.so: /home/corelab/ros2_stereo/install/image_proc/lib/libcrop_decimate.so
+libstereo_image_proc.so: /home/corelab/ros2_stereo/install/image_proc/lib/libcrop_non_zero.so
 libstereo_image_proc.so: /opt/ros/foxy/lib/libimage_transport.so
 libstereo_image_proc.so: /opt/ros/foxy/lib/libmessage_filters.so
 libstereo_image_proc.so: /opt/ros/foxy/lib/librclcpp.so
@@ -281,6 +285,7 @@ libstereo_image_proc.so: /opt/ros/foxy/lib/libgeometry_msgs__rosidl_generator_c.
 libstereo_image_proc.so: /opt/ros/foxy/lib/libgeometry_msgs__rosidl_typesupport_c.so
 libstereo_image_proc.so: /opt/ros/foxy/lib/libgeometry_msgs__rosidl_typesupport_introspection_cpp.so
 libstereo_image_proc.so: /opt/ros/foxy/lib/libgeometry_msgs__rosidl_typesupport_cpp.so
+libstereo_image_proc.so: /home/corelab/ros2_stereo/install/yolo_msgs/lib/libyolo_msgs__rosidl_generator_c.so
 libstereo_image_proc.so: /opt/ros/foxy/lib/libstd_msgs__rosidl_typesupport_introspection_c.so
 libstereo_image_proc.so: /opt/ros/foxy/lib/libstd_msgs__rosidl_generator_c.so
 libstereo_image_proc.so: /opt/ros/foxy/lib/libstd_msgs__rosidl_typesupport_c.so
@@ -319,7 +324,7 @@ libstereo_image_proc.so: /usr/local/lib/libopencv_photo.so.4.7.0
 libstereo_image_proc.so: /usr/local/lib/libopencv_imgproc.so.4.7.0
 libstereo_image_proc.so: /usr/local/lib/libopencv_core.so.4.7.0
 libstereo_image_proc.so: CMakeFiles/stereo_image_proc.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_image_proc/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX shared library libstereo_image_proc.so"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/corelab/ros2_stereo/build/stereo_image_proc/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX shared library libstereo_image_proc.so"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/stereo_image_proc.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -331,6 +336,6 @@ CMakeFiles/stereo_image_proc.dir/clean:
 .PHONY : CMakeFiles/stereo_image_proc.dir/clean
 
 CMakeFiles/stereo_image_proc.dir/depend:
-	cd /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_image_proc && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_image_proc /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_image_proc /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_image_proc /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_image_proc /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_image_proc/CMakeFiles/stereo_image_proc.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/corelab/ros2_stereo/build/stereo_image_proc && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/corelab/ros2_stereo/src/stereo_image_proc /home/corelab/ros2_stereo/src/stereo_image_proc /home/corelab/ros2_stereo/build/stereo_image_proc /home/corelab/ros2_stereo/build/stereo_image_proc /home/corelab/ros2_stereo/build/stereo_image_proc/CMakeFiles/stereo_image_proc.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/stereo_image_proc.dir/depend
 

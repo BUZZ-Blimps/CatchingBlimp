@@ -1,0 +1,4 @@
+[ 14%] Built target gtest_main
+[ 28%] Built target gtest
+[ 42%] Built target subscriber_node
+[ 50%] [32mBuilding CXX object CMakeFiles/gscam_node.dir/src/gscam_node.cpp.o[0m

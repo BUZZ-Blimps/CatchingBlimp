@@ -1,0 +1,9 @@
+# Example parameter file, see parameters_launch.py
+
+# Format is namespace_name/node_name
+my_camera/gscam_publisher:
+  ros__parameters:
+    gscam_config: "udpsrc port=3000 ! video/x-h264, width=2560,height=960 ! rtph264depay ! h264parse ! queue ! avdec_h264 ! videoconvert"
+    preroll: False
+    use_gst_timestamps: False
+    frame_id: 'BurnCreamBlimp'

@@ -1,0 +1,35 @@
+// generated from rosidl_generator_dds_idl/resource/idl.idl.em
+// with input from yolo_msgs:msg/BoundingBox.idl
+// generated code does not contain a copyright notice
+
+#ifndef __yolo_msgs__msg__bounding_box__idl__
+#define __yolo_msgs__msg__bounding_box__idl__
+
+
+module yolo_msgs {
+
+module msg {
+
+module dds_ {
+
+
+struct BoundingBox_ {
+double probability_;
+long long x_center_;
+long long y_center_;
+long long width_;
+long long height_;
+short track_id_;
+short class_id_;
+
+};
+
+
+};  // module dds_
+
+};  // module msg
+
+};  // module yolo_msgs
+
+
+#endif  // __yolo_msgs__msg__bounding_box__idl__

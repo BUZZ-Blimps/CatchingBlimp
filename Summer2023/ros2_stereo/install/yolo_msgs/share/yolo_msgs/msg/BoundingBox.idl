@@ -1,0 +1,24 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from yolo_msgs/msg/BoundingBox.msg
+// generated code does not contain a copyright notice
+
+
+module yolo_msgs {
+  module msg {
+    struct BoundingBox {
+      double probability;
+
+      int64 x_center;
+
+      int64 y_center;
+
+      int64 width;
+
+      int64 height;
+
+      int16 track_id;
+
+      int16 class_id;
+    };
+  };
+};

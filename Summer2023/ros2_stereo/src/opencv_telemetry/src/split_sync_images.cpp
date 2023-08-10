@@ -65,7 +65,7 @@ SplitImage::SplitImage() : Node("split_sync_image_node")
 
     // Subscribe to synchronized image topic
     syncImageSub_ = this->create_subscription<sensor_msgs::msg::Image>(
-        "/" + cameraNs_ + "/sync/image_raw", 1, std::bind(&SplitImage::syncImageCallback, this, std::placeholders::_1));
+        "/" + cameraNs_ + "/sync/image_raw", 10, std::bind(&SplitImage::syncImageCallback, this, std::placeholders::_1));
 }
 
 void SplitImage::syncImageCallback(const sensor_msgs::msg::Image::SharedPtr msg)

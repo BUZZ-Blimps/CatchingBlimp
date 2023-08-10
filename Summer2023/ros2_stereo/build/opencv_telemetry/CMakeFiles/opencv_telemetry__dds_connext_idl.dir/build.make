@@ -53,10 +53,10 @@ RM = /home/corelab/.local/lib/python3.8/site-packages/cmake/data/bin/cmake -E rm
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry
+CMAKE_SOURCE_DIR = /home/corelab/ros2_stereo/src/opencv_telemetry
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry
+CMAKE_BINARY_DIR = /home/corelab/ros2_stereo/build/opencv_telemetry
 
 # Utility rule file for opencv_telemetry__dds_connext_idl.
 
@@ -164,8 +164,8 @@ rosidl_generator_dds_idl/opencv_telemetry/msg/dds_connext/ResizedImage_.idl: /op
 rosidl_generator_dds_idl/opencv_telemetry/msg/dds_connext/ResizedImage_.idl: /opt/ros/foxy/share/std_msgs/msg/UInt64MultiArray.idl
 rosidl_generator_dds_idl/opencv_telemetry/msg/dds_connext/ResizedImage_.idl: /opt/ros/foxy/share/std_msgs/msg/UInt8.idl
 rosidl_generator_dds_idl/opencv_telemetry/msg/dds_connext/ResizedImage_.idl: /opt/ros/foxy/share/std_msgs/msg/UInt8MultiArray.idl
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating DDS interfaces"
-	/usr/bin/python3 /opt/ros/foxy/lib/rosidl_generator_dds_idl/rosidl_generator_dds_idl --additional-service-templates --generator-arguments-file /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/rosidl_generator_dds_idl__dds_connext__arguments.json --subfolders dds_connext --extension
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/corelab/ros2_stereo/build/opencv_telemetry/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating DDS interfaces"
+	/usr/bin/python3 /opt/ros/foxy/lib/rosidl_generator_dds_idl/rosidl_generator_dds_idl --additional-service-templates --generator-arguments-file /home/corelab/ros2_stereo/build/opencv_telemetry/rosidl_generator_dds_idl__dds_connext__arguments.json --subfolders dds_connext --extension
 
 opencv_telemetry__dds_connext_idl: CMakeFiles/opencv_telemetry__dds_connext_idl
 opencv_telemetry__dds_connext_idl: rosidl_generator_dds_idl/opencv_telemetry/msg/dds_connext/ResizedImage_.idl
@@ -181,6 +181,6 @@ CMakeFiles/opencv_telemetry__dds_connext_idl.dir/clean:
 .PHONY : CMakeFiles/opencv_telemetry__dds_connext_idl.dir/clean
 
 CMakeFiles/opencv_telemetry__dds_connext_idl.dir/depend:
-	cd /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/CMakeFiles/opencv_telemetry__dds_connext_idl.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/corelab/ros2_stereo/build/opencv_telemetry && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/corelab/ros2_stereo/src/opencv_telemetry /home/corelab/ros2_stereo/src/opencv_telemetry /home/corelab/ros2_stereo/build/opencv_telemetry /home/corelab/ros2_stereo/build/opencv_telemetry /home/corelab/ros2_stereo/build/opencv_telemetry/CMakeFiles/opencv_telemetry__dds_connext_idl.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/opencv_telemetry__dds_connext_idl.dir/depend
 
