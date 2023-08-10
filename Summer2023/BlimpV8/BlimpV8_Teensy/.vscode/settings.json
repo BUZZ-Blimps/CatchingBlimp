@@ -54,5 +54,7 @@
         "stdexcept": "cpp",
         "cinttypes": "cpp",
         "typeinfo": "cpp"
-    }
+    },
+    "C_Cpp.errorSquiggles": "enabled",
+    "problems.showCurrentInStatus": true
 }

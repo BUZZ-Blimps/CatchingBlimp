@@ -20,6 +20,6 @@ def generate_launch_description():
         Node(
             package='tf2_ros',
             executable='static_transform_publisher',
-            #arguments = ['1', '0', '0', '1.57079', '0', '1.57079', 'BurnCreamBlimp', 'BurnCreamCamera']
+            #arguments = ['1', '0', '0', '1.57079', '0', '1.57079', 'BurnCreamBlimp', 'BurnCreamBlimp_left_optical_frame']
         ),
     ])

@@ -180,6 +180,11 @@ void BerryIMU_v3::IMU_read(){
   if (magRaw[1] >= 32768) magRaw[1] = magRaw[1] - 65536;
   if (magRaw[2] >= 32768) magRaw[2] = magRaw[2] - 65536;
 
+  //convert?
+  MagYraw = magRaw[0];
+  MagXraw = -magRaw[1];
+  MagZraw = magRaw[2];
+
   //---------------------------------------------------------------------------------------
   //Gyroscope Output
   readFrom(LSM6DSL_ADDRESS, LSM6DSL_OUT_X_L_G, 6, buff);
