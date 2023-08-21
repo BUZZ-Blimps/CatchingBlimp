@@ -366,8 +366,9 @@ float actualBaro = 0.0;
 
 float goalYawDirection = -1;
 
-//targets data
-std::vector<double> targets;
+//targets data (balloon, orange goal, yellow goal)
+//1000 means object is not present
+std::vector<double> targets = {1000.0, 1000.0, 1000.0, 1000.0, 1000.0, 1000.0, 1000.0, 1000.0, 1000.0};
 
 //------------------MICRO ROS publishers/subscribers--------------
 //ROS node
