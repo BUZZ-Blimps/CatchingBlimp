@@ -200,14 +200,14 @@ Gimbal leftGimbal(L_Yaw, L_Pitch, PWM_L, 25, 30, 1000, 2000, 45, 0.5);
 Gimbal rightGimbal(R_Yaw, R_Pitch, PWM_R, 25, 30, 1000, 2000, 135, 0.5);
 
 //Manual PID control
-PID verticalPID(350, 0, 0);  
+PID verticalPID(350, 0, 0);  //not used for now due to baro reading malfunction
 PID yawPID(5.0, 0, 0);
 PID forwardPID(300, 0, 0);  //not used
 PID translationPID(300, 0, 0); //not used
 
 //Auto PID control (output fed into manual controller)
-PID yPixelPID(0.0075,0,0);
-PID xPixelPID(0.2,0,0);
+PID yPixelPID(0.0075,0,0);    //change to just z at some point
+PID xPixelPID(0.2,0,0);       //change to just y at some point
 
 //Goal positioning controller
 BangBang goalPositionHold(GOAL_HEIGHT_DEADBAND, GOAL_UP_VELOCITY); //Dead band, velocity to center itself
@@ -366,6 +366,9 @@ float actualBaro = 0.0;
 
 float goalYawDirection = -1;
 
+//targets data
+std::vector<double> targets;
+
 //------------------MICRO ROS publishers/subscribers--------------
 //ROS node
 //executors
@@ -401,6 +404,7 @@ rcl_subscription_t shooter_subscription; //boolean
 rcl_subscription_t motor_subscription; //float64_multi_array
 rcl_subscription_t kill_subscription; //boolean
 rcl_subscription_t goal_color_subscription; //int64
+rcl_subscription_t targets_subscription; //float64_multi_array
 
 
 //message types: String Bool Float32 Float32 MultiArray
@@ -430,6 +434,7 @@ std_msgs__msg__Float64  z_velocity_msg;
 //float64multiarray message
 std_msgs__msg__Float64MultiArray motor_msg;
 std_msgs__msg__Float64MultiArray motor_debug_msg;
+std_msgs__msg__Float64MultiArray targets_msg;
 
 //String message
 std_msgs__msg__String blimpid_msg;
@@ -570,6 +575,15 @@ void goal_color_subscription_callback(const void *msgin)
   }
 }
 
+void targets_subscription_callback(const void *msgin)
+{
+  const std_msgs__msg__Float64MultiArray *targets_msg = (const std_msgs__msg__Float64MultiArray *)msgin;
+  //3 objects with xyz (9 elements in total)
+    for (size_t i = 0; i < 9; ++i) {
+      targets[i] = targets_msg->data.data[i];
+    }
+}
+
 
 bool create_entities() {
   allocator = rcl_get_default_allocator();
@@ -584,7 +598,7 @@ bool create_entities() {
   RCCHECK(rclc_client_init_default(&client, &node, ROSIDL_GET_SRV_TYPE_SUPPORT(test_msgs, srv, BasicTypes), "/BlimpID"));  
 
 
-  // create publishers
+  // create publishers (6 right now)
   RCCHECK(rclc_publisher_init_default(&blimpid_publisher, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, String), "/BurnCreamBlimp/blimpID"));
   RCCHECK(rclc_publisher_init_default(&imu_publisher, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(sensor_msgs, msg, Imu), "/BurnCreamBlimp/imu"));
   RCCHECK(rclc_publisher_init_default(&motor_publisher, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg,Float64MultiArray ), "/BurnCreamBlimp/motorDebug"));
@@ -592,7 +606,7 @@ bool create_entities() {
   RCCHECK(rclc_publisher_init_default(&z_velocity_publisher, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg,Float64), "/BurnCreamBlimp/z_velocity"));
   RCCHECK(rclc_publisher_init_default(&state_machine_publisher, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg,Int64), "/BurnCreamBlimp/state_machine"));
 
-  //create subscribers
+  //create subscribers (9 right now)
   RCCHECK(rclc_subscription_init_default(&identity_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Bool), "/identify"));
   RCCHECK(rclc_subscription_init_default(&auto_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Bool), "/BurnCreamBlimp/auto"));
   RCCHECK(rclc_subscription_init_default(&baseBarometer_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Float64), "/BurnCreamBlimp/baseBarometer"));
@@ -601,6 +615,7 @@ bool create_entities() {
   RCCHECK(rclc_subscription_init_default(&motor_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Float64MultiArray), "/BurnCreamBlimp/motorCommands"));
   RCCHECK(rclc_subscription_init_default(&kill_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Bool), "/BurnCreamBlimp/killed"));
   RCCHECK(rclc_subscription_init_default(&goal_color_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Int64), "/BurnCreamBlimp/goal_color"));
+  RCCHECK(rclc_subscription_init_default(&targets_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Float64MultiArray), "/BurnCreamBlimp/targets"));
 
   // create timer
   const unsigned int timer_period = 10;
@@ -615,14 +630,14 @@ bool create_entities() {
   // RCCHECK(rclc_executor_init(&executor_srv, &support.context, 1, &allocator));
   RCCHECK(rclc_executor_init(&executor_pub, &support.context, 6, &allocator));
   RCCHECK(rclc_executor_add_timer(&executor_pub, &timer));
-  RCCHECK(rclc_executor_init(&executor_sub, &support.context, 9, &allocator));
+  RCCHECK(rclc_executor_init(&executor_sub, &support.context, 10, &allocator));
 
   //add client  
   // RCCHECK(rclc_executor_add_client(&executor_srv, &client, &res, client_callback));
   // send_request();
   // receive_response();
   
-  //add all subscriptions
+  //add all subscriptions (9) 
   RCCHECK(rclc_executor_add_subscription(&executor_sub, &identity_subscription, &identity_msg, &id_subscription_callback, ON_NEW_DATA));
   RCCHECK(rclc_executor_add_subscription(&executor_sub, &auto_subscription, &auto_msg, &auto_subscription_callback, ON_NEW_DATA));
   RCCHECK(rclc_executor_add_subscription(&executor_sub, &baseBarometer_subscription, &baro_msg, &baro_subscription_callback, ON_NEW_DATA));
@@ -631,6 +646,7 @@ bool create_entities() {
   RCCHECK(rclc_executor_add_subscription(&executor_sub, &kill_subscription, &kill_msg, &kill_subscription_callback, ON_NEW_DATA));
   RCCHECK(rclc_executor_add_subscription(&executor_sub, &motor_subscription, &motor_msg, &motor_subscription_callback, ON_NEW_DATA));
   RCCHECK(rclc_executor_add_subscription(&executor_sub, &goal_color_subscription, &goal_color_msg, &goal_color_subscription_callback, ON_NEW_DATA));
+  RCCHECK(rclc_executor_add_subscription(&executor_sub, &targets_subscription, &targets_msg, &targets_subscription_callback, ON_NEW_DATA));
   return true;
 }
 
@@ -655,12 +671,13 @@ void destroy_entities() {
   rcl_subscription_fini(&motor_subscription, &node);
   rcl_subscription_fini(&kill_subscription, &node);
   rcl_subscription_fini(&goal_color_subscription, &node);
+  rcl_subscription_fini(&targets_subscription, &node);
   
   //finish client
   rcl_client_fini(&client, &node);
 
   rcl_timer_fini(&timer);
-  rclc_executor_fini(&executor_srv);
+  // rclc_executor_fini(&executor_srv);
   rclc_executor_fini(&executor_pub);
   rclc_executor_fini(&executor_sub);
  
@@ -720,6 +737,10 @@ void setup() {
   motor_debug_msg.data.data = (double *) malloc(BUFFER_LEN*sizeof(double));
   motor_debug_msg.data.size = 0; 
   motor_debug_msg.data.capacity = BUFFER_LEN;
+
+  targets_msg.data.data = (double *) malloc(BUFFER_LEN*sizeof(double));
+  targets_msg.data.size = sizeof(targets_msg.data.data);
+  targets_msg.data.capacity = BUFFER_LEN;
 
 
   delay(2000);
@@ -1160,7 +1181,9 @@ void loop() {
 
             //move up and down within the set boundry
             if (actualBaro > CEIL_HEIGHT || !wasUp) {
-              if (wasUp) wasUp = false;
+              if (wasUp) wasUp = false;test_msgs__srv__BasicTypes_Response res;
+test_msgs__srv__BasicTypes_Request req;
+bool check = false;
               upCom = -GAME_BALL_VERTICAL_SEARCH;
             }
             if (actualBaro < FLOOR_HEIGHT || wasUp) {
