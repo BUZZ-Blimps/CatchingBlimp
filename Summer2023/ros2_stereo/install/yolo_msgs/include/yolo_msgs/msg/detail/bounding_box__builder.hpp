@@ -20,15 +20,15 @@ namespace msg
 namespace builder
 {
 
-class Init_BoundingBox_class_id
+class Init_BoundingBox_height_o_goal
 {
 public:
-  explicit Init_BoundingBox_class_id(::yolo_msgs::msg::BoundingBox & msg)
+  explicit Init_BoundingBox_height_o_goal(::yolo_msgs::msg::BoundingBox & msg)
   : msg_(msg)
   {}
-  ::yolo_msgs::msg::BoundingBox class_id(::yolo_msgs::msg::BoundingBox::_class_id_type arg)
+  ::yolo_msgs::msg::BoundingBox height_o_goal(::yolo_msgs::msg::BoundingBox::_height_o_goal_type arg)
   {
-    msg_.class_id = std::move(arg);
+    msg_.height_o_goal = std::move(arg);
     return std::move(msg_);
   }
 
@@ -36,96 +36,192 @@ private:
   ::yolo_msgs::msg::BoundingBox msg_;
 };
 
-class Init_BoundingBox_track_id
+class Init_BoundingBox_width_o_goal
 {
 public:
-  explicit Init_BoundingBox_track_id(::yolo_msgs::msg::BoundingBox & msg)
+  explicit Init_BoundingBox_width_o_goal(::yolo_msgs::msg::BoundingBox & msg)
   : msg_(msg)
   {}
-  Init_BoundingBox_class_id track_id(::yolo_msgs::msg::BoundingBox::_track_id_type arg)
+  Init_BoundingBox_height_o_goal width_o_goal(::yolo_msgs::msg::BoundingBox::_width_o_goal_type arg)
   {
-    msg_.track_id = std::move(arg);
-    return Init_BoundingBox_class_id(msg_);
+    msg_.width_o_goal = std::move(arg);
+    return Init_BoundingBox_height_o_goal(msg_);
   }
 
 private:
   ::yolo_msgs::msg::BoundingBox msg_;
 };
 
-class Init_BoundingBox_height
+class Init_BoundingBox_y_center_o_goal
 {
 public:
-  explicit Init_BoundingBox_height(::yolo_msgs::msg::BoundingBox & msg)
+  explicit Init_BoundingBox_y_center_o_goal(::yolo_msgs::msg::BoundingBox & msg)
   : msg_(msg)
   {}
-  Init_BoundingBox_track_id height(::yolo_msgs::msg::BoundingBox::_height_type arg)
+  Init_BoundingBox_width_o_goal y_center_o_goal(::yolo_msgs::msg::BoundingBox::_y_center_o_goal_type arg)
   {
-    msg_.height = std::move(arg);
-    return Init_BoundingBox_track_id(msg_);
+    msg_.y_center_o_goal = std::move(arg);
+    return Init_BoundingBox_width_o_goal(msg_);
   }
 
 private:
   ::yolo_msgs::msg::BoundingBox msg_;
 };
 
-class Init_BoundingBox_width
+class Init_BoundingBox_x_center_o_goal
 {
 public:
-  explicit Init_BoundingBox_width(::yolo_msgs::msg::BoundingBox & msg)
+  explicit Init_BoundingBox_x_center_o_goal(::yolo_msgs::msg::BoundingBox & msg)
   : msg_(msg)
   {}
-  Init_BoundingBox_height width(::yolo_msgs::msg::BoundingBox::_width_type arg)
+  Init_BoundingBox_y_center_o_goal x_center_o_goal(::yolo_msgs::msg::BoundingBox::_x_center_o_goal_type arg)
   {
-    msg_.width = std::move(arg);
-    return Init_BoundingBox_height(msg_);
+    msg_.x_center_o_goal = std::move(arg);
+    return Init_BoundingBox_y_center_o_goal(msg_);
   }
 
 private:
   ::yolo_msgs::msg::BoundingBox msg_;
 };
 
-class Init_BoundingBox_y_center
+class Init_BoundingBox_height_y_goal
 {
 public:
-  explicit Init_BoundingBox_y_center(::yolo_msgs::msg::BoundingBox & msg)
+  explicit Init_BoundingBox_height_y_goal(::yolo_msgs::msg::BoundingBox & msg)
   : msg_(msg)
   {}
-  Init_BoundingBox_width y_center(::yolo_msgs::msg::BoundingBox::_y_center_type arg)
+  Init_BoundingBox_x_center_o_goal height_y_goal(::yolo_msgs::msg::BoundingBox::_height_y_goal_type arg)
   {
-    msg_.y_center = std::move(arg);
-    return Init_BoundingBox_width(msg_);
+    msg_.height_y_goal = std::move(arg);
+    return Init_BoundingBox_x_center_o_goal(msg_);
   }
 
 private:
   ::yolo_msgs::msg::BoundingBox msg_;
 };
 
-class Init_BoundingBox_x_center
+class Init_BoundingBox_width_y_goal
 {
 public:
-  explicit Init_BoundingBox_x_center(::yolo_msgs::msg::BoundingBox & msg)
+  explicit Init_BoundingBox_width_y_goal(::yolo_msgs::msg::BoundingBox & msg)
   : msg_(msg)
   {}
-  Init_BoundingBox_y_center x_center(::yolo_msgs::msg::BoundingBox::_x_center_type arg)
+  Init_BoundingBox_height_y_goal width_y_goal(::yolo_msgs::msg::BoundingBox::_width_y_goal_type arg)
   {
-    msg_.x_center = std::move(arg);
-    return Init_BoundingBox_y_center(msg_);
+    msg_.width_y_goal = std::move(arg);
+    return Init_BoundingBox_height_y_goal(msg_);
   }
 
 private:
   ::yolo_msgs::msg::BoundingBox msg_;
 };
 
-class Init_BoundingBox_probability
+class Init_BoundingBox_y_center_y_goal
 {
 public:
-  Init_BoundingBox_probability()
+  explicit Init_BoundingBox_y_center_y_goal(::yolo_msgs::msg::BoundingBox & msg)
+  : msg_(msg)
+  {}
+  Init_BoundingBox_width_y_goal y_center_y_goal(::yolo_msgs::msg::BoundingBox::_y_center_y_goal_type arg)
+  {
+    msg_.y_center_y_goal = std::move(arg);
+    return Init_BoundingBox_width_y_goal(msg_);
+  }
+
+private:
+  ::yolo_msgs::msg::BoundingBox msg_;
+};
+
+class Init_BoundingBox_x_center_y_goal
+{
+public:
+  explicit Init_BoundingBox_x_center_y_goal(::yolo_msgs::msg::BoundingBox & msg)
+  : msg_(msg)
+  {}
+  Init_BoundingBox_y_center_y_goal x_center_y_goal(::yolo_msgs::msg::BoundingBox::_x_center_y_goal_type arg)
+  {
+    msg_.x_center_y_goal = std::move(arg);
+    return Init_BoundingBox_y_center_y_goal(msg_);
+  }
+
+private:
+  ::yolo_msgs::msg::BoundingBox msg_;
+};
+
+class Init_BoundingBox_height_balloon
+{
+public:
+  explicit Init_BoundingBox_height_balloon(::yolo_msgs::msg::BoundingBox & msg)
+  : msg_(msg)
+  {}
+  Init_BoundingBox_x_center_y_goal height_balloon(::yolo_msgs::msg::BoundingBox::_height_balloon_type arg)
+  {
+    msg_.height_balloon = std::move(arg);
+    return Init_BoundingBox_x_center_y_goal(msg_);
+  }
+
+private:
+  ::yolo_msgs::msg::BoundingBox msg_;
+};
+
+class Init_BoundingBox_width_balloon
+{
+public:
+  explicit Init_BoundingBox_width_balloon(::yolo_msgs::msg::BoundingBox & msg)
+  : msg_(msg)
+  {}
+  Init_BoundingBox_height_balloon width_balloon(::yolo_msgs::msg::BoundingBox::_width_balloon_type arg)
+  {
+    msg_.width_balloon = std::move(arg);
+    return Init_BoundingBox_height_balloon(msg_);
+  }
+
+private:
+  ::yolo_msgs::msg::BoundingBox msg_;
+};
+
+class Init_BoundingBox_y_center_balloon
+{
+public:
+  explicit Init_BoundingBox_y_center_balloon(::yolo_msgs::msg::BoundingBox & msg)
+  : msg_(msg)
+  {}
+  Init_BoundingBox_width_balloon y_center_balloon(::yolo_msgs::msg::BoundingBox::_y_center_balloon_type arg)
+  {
+    msg_.y_center_balloon = std::move(arg);
+    return Init_BoundingBox_width_balloon(msg_);
+  }
+
+private:
+  ::yolo_msgs::msg::BoundingBox msg_;
+};
+
+class Init_BoundingBox_x_center_balloon
+{
+public:
+  explicit Init_BoundingBox_x_center_balloon(::yolo_msgs::msg::BoundingBox & msg)
+  : msg_(msg)
+  {}
+  Init_BoundingBox_y_center_balloon x_center_balloon(::yolo_msgs::msg::BoundingBox::_x_center_balloon_type arg)
+  {
+    msg_.x_center_balloon = std::move(arg);
+    return Init_BoundingBox_y_center_balloon(msg_);
+  }
+
+private:
+  ::yolo_msgs::msg::BoundingBox msg_;
+};
+
+class Init_BoundingBox_header
+{
+public:
+  Init_BoundingBox_header()
   : msg_(::rosidl_runtime_cpp::MessageInitialization::SKIP)
   {}
-  Init_BoundingBox_x_center probability(::yolo_msgs::msg::BoundingBox::_probability_type arg)
+  Init_BoundingBox_x_center_balloon header(::yolo_msgs::msg::BoundingBox::_header_type arg)
   {
-    msg_.probability = std::move(arg);
-    return Init_BoundingBox_x_center(msg_);
+    msg_.header = std::move(arg);
+    return Init_BoundingBox_x_center_balloon(msg_);
   }
 
 private:
@@ -143,7 +239,7 @@ template<>
 inline
 auto build<::yolo_msgs::msg::BoundingBox>()
 {
-  return yolo_msgs::msg::builder::Init_BoundingBox_probability();
+  return yolo_msgs::msg::builder::Init_BoundingBox_header();
 }
 
 }  // namespace yolo_msgs

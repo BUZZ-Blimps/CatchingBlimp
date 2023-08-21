@@ -40,6 +40,10 @@ class Metaclass_BoundingBox(type):
             cls._TYPE_SUPPORT = module.type_support_msg__msg__bounding_box
             cls._DESTROY_ROS_MESSAGE = module.destroy_ros_message_msg__msg__bounding_box
 
+            from std_msgs.msg import Header
+            if Header.__class__._TYPE_SUPPORT is None:
+                Header.__class__.__import_type_support__()
+
     @classmethod
     def __prepare__(cls, name, bases, **kwargs):
         # list constant names here so that they appear in the help text of
@@ -53,46 +57,71 @@ class BoundingBox(metaclass=Metaclass_BoundingBox):
     """Message class 'BoundingBox'."""
 
     __slots__ = [
-        '_probability',
-        '_x_center',
-        '_y_center',
-        '_width',
-        '_height',
-        '_track_id',
-        '_class_id',
+        '_header',
+        '_x_center_balloon',
+        '_y_center_balloon',
+        '_width_balloon',
+        '_height_balloon',
+        '_x_center_y_goal',
+        '_y_center_y_goal',
+        '_width_y_goal',
+        '_height_y_goal',
+        '_x_center_o_goal',
+        '_y_center_o_goal',
+        '_width_o_goal',
+        '_height_o_goal',
     ]
 
     _fields_and_field_types = {
-        'probability': 'double',
-        'x_center': 'int64',
-        'y_center': 'int64',
-        'width': 'int64',
-        'height': 'int64',
-        'track_id': 'int16',
-        'class_id': 'int16',
+        'header': 'std_msgs/Header',
+        'x_center_balloon': 'int64',
+        'y_center_balloon': 'int64',
+        'width_balloon': 'int64',
+        'height_balloon': 'int64',
+        'x_center_y_goal': 'int64',
+        'y_center_y_goal': 'int64',
+        'width_y_goal': 'int64',
+        'height_y_goal': 'int64',
+        'x_center_o_goal': 'int64',
+        'y_center_o_goal': 'int64',
+        'width_o_goal': 'int64',
+        'height_o_goal': 'int64',
     }
 
     SLOT_TYPES = (
-        rosidl_parser.definition.BasicType('double'),  # noqa: E501
+        rosidl_parser.definition.NamespacedType(['std_msgs', 'msg'], 'Header'),  # noqa: E501
         rosidl_parser.definition.BasicType('int64'),  # noqa: E501
         rosidl_parser.definition.BasicType('int64'),  # noqa: E501
         rosidl_parser.definition.BasicType('int64'),  # noqa: E501
         rosidl_parser.definition.BasicType('int64'),  # noqa: E501
-        rosidl_parser.definition.BasicType('int16'),  # noqa: E501
-        rosidl_parser.definition.BasicType('int16'),  # noqa: E501
+        rosidl_parser.definition.BasicType('int64'),  # noqa: E501
+        rosidl_parser.definition.BasicType('int64'),  # noqa: E501
+        rosidl_parser.definition.BasicType('int64'),  # noqa: E501
+        rosidl_parser.definition.BasicType('int64'),  # noqa: E501
+        rosidl_parser.definition.BasicType('int64'),  # noqa: E501
+        rosidl_parser.definition.BasicType('int64'),  # noqa: E501
+        rosidl_parser.definition.BasicType('int64'),  # noqa: E501
+        rosidl_parser.definition.BasicType('int64'),  # noqa: E501
     )
 
     def __init__(self, **kwargs):
         assert all('_' + key in self.__slots__ for key in kwargs.keys()), \
             'Invalid arguments passed to constructor: %s' % \
             ', '.join(sorted(k for k in kwargs.keys() if '_' + k not in self.__slots__))
-        self.probability = kwargs.get('probability', float())
-        self.x_center = kwargs.get('x_center', int())
-        self.y_center = kwargs.get('y_center', int())
-        self.width = kwargs.get('width', int())
-        self.height = kwargs.get('height', int())
-        self.track_id = kwargs.get('track_id', int())
-        self.class_id = kwargs.get('class_id', int())
+        from std_msgs.msg import Header
+        self.header = kwargs.get('header', Header())
+        self.x_center_balloon = kwargs.get('x_center_balloon', int())
+        self.y_center_balloon = kwargs.get('y_center_balloon', int())
+        self.width_balloon = kwargs.get('width_balloon', int())
+        self.height_balloon = kwargs.get('height_balloon', int())
+        self.x_center_y_goal = kwargs.get('x_center_y_goal', int())
+        self.y_center_y_goal = kwargs.get('y_center_y_goal', int())
+        self.width_y_goal = kwargs.get('width_y_goal', int())
+        self.height_y_goal = kwargs.get('height_y_goal', int())
+        self.x_center_o_goal = kwargs.get('x_center_o_goal', int())
+        self.y_center_o_goal = kwargs.get('y_center_o_goal', int())
+        self.width_o_goal = kwargs.get('width_o_goal', int())
+        self.height_o_goal = kwargs.get('height_o_goal', int())
 
     def __repr__(self):
         typename = self.__class__.__module__.split('.')
@@ -123,19 +152,31 @@ class BoundingBox(metaclass=Metaclass_BoundingBox):
     def __eq__(self, other):
         if not isinstance(other, self.__class__):
             return False
-        if self.probability != other.probability:
+        if self.header != other.header:
             return False
-        if self.x_center != other.x_center:
+        if self.x_center_balloon != other.x_center_balloon:
             return False
-        if self.y_center != other.y_center:
+        if self.y_center_balloon != other.y_center_balloon:
             return False
-        if self.width != other.width:
+        if self.width_balloon != other.width_balloon:
             return False
-        if self.height != other.height:
+        if self.height_balloon != other.height_balloon:
             return False
-        if self.track_id != other.track_id:
+        if self.x_center_y_goal != other.x_center_y_goal:
             return False
-        if self.class_id != other.class_id:
+        if self.y_center_y_goal != other.y_center_y_goal:
+            return False
+        if self.width_y_goal != other.width_y_goal:
+            return False
+        if self.height_y_goal != other.height_y_goal:
+            return False
+        if self.x_center_o_goal != other.x_center_o_goal:
+            return False
+        if self.y_center_o_goal != other.y_center_o_goal:
+            return False
+        if self.width_o_goal != other.width_o_goal:
+            return False
+        if self.height_o_goal != other.height_o_goal:
             return False
         return True
 
@@ -145,104 +186,195 @@ class BoundingBox(metaclass=Metaclass_BoundingBox):
         return copy(cls._fields_and_field_types)
 
     @property
-    def probability(self):
-        """Message field 'probability'."""
-        return self._probability
+    def header(self):
+        """Message field 'header'."""
+        return self._header
 
-    @probability.setter
-    def probability(self, value):
+    @header.setter
+    def header(self, value):
         if __debug__:
+            from std_msgs.msg import Header
             assert \
-                isinstance(value, float), \
-                "The 'probability' field must be of type 'float'"
-        self._probability = value
+                isinstance(value, Header), \
+                "The 'header' field must be a sub message of type 'Header'"
+        self._header = value
 
     @property
-    def x_center(self):
-        """Message field 'x_center'."""
-        return self._x_center
+    def x_center_balloon(self):
+        """Message field 'x_center_balloon'."""
+        return self._x_center_balloon
 
-    @x_center.setter
-    def x_center(self, value):
+    @x_center_balloon.setter
+    def x_center_balloon(self, value):
         if __debug__:
             assert \
                 isinstance(value, int), \
-                "The 'x_center' field must be of type 'int'"
+                "The 'x_center_balloon' field must be of type 'int'"
             assert value >= -9223372036854775808 and value < 9223372036854775808, \
-                "The 'x_center' field must be an integer in [-9223372036854775808, 9223372036854775807]"
-        self._x_center = value
+                "The 'x_center_balloon' field must be an integer in [-9223372036854775808, 9223372036854775807]"
+        self._x_center_balloon = value
 
     @property
-    def y_center(self):
-        """Message field 'y_center'."""
-        return self._y_center
+    def y_center_balloon(self):
+        """Message field 'y_center_balloon'."""
+        return self._y_center_balloon
 
-    @y_center.setter
-    def y_center(self, value):
+    @y_center_balloon.setter
+    def y_center_balloon(self, value):
         if __debug__:
             assert \
                 isinstance(value, int), \
-                "The 'y_center' field must be of type 'int'"
+                "The 'y_center_balloon' field must be of type 'int'"
             assert value >= -9223372036854775808 and value < 9223372036854775808, \
-                "The 'y_center' field must be an integer in [-9223372036854775808, 9223372036854775807]"
-        self._y_center = value
+                "The 'y_center_balloon' field must be an integer in [-9223372036854775808, 9223372036854775807]"
+        self._y_center_balloon = value
 
     @property
-    def width(self):
-        """Message field 'width'."""
-        return self._width
+    def width_balloon(self):
+        """Message field 'width_balloon'."""
+        return self._width_balloon
 
-    @width.setter
-    def width(self, value):
+    @width_balloon.setter
+    def width_balloon(self, value):
         if __debug__:
             assert \
                 isinstance(value, int), \
-                "The 'width' field must be of type 'int'"
+                "The 'width_balloon' field must be of type 'int'"
             assert value >= -9223372036854775808 and value < 9223372036854775808, \
-                "The 'width' field must be an integer in [-9223372036854775808, 9223372036854775807]"
-        self._width = value
+                "The 'width_balloon' field must be an integer in [-9223372036854775808, 9223372036854775807]"
+        self._width_balloon = value
 
     @property
-    def height(self):
-        """Message field 'height'."""
-        return self._height
+    def height_balloon(self):
+        """Message field 'height_balloon'."""
+        return self._height_balloon
 
-    @height.setter
-    def height(self, value):
+    @height_balloon.setter
+    def height_balloon(self, value):
         if __debug__:
             assert \
                 isinstance(value, int), \
-                "The 'height' field must be of type 'int'"
+                "The 'height_balloon' field must be of type 'int'"
             assert value >= -9223372036854775808 and value < 9223372036854775808, \
-                "The 'height' field must be an integer in [-9223372036854775808, 9223372036854775807]"
-        self._height = value
+                "The 'height_balloon' field must be an integer in [-9223372036854775808, 9223372036854775807]"
+        self._height_balloon = value
 
     @property
-    def track_id(self):
-        """Message field 'track_id'."""
-        return self._track_id
+    def x_center_y_goal(self):
+        """Message field 'x_center_y_goal'."""
+        return self._x_center_y_goal
 
-    @track_id.setter
-    def track_id(self, value):
+    @x_center_y_goal.setter
+    def x_center_y_goal(self, value):
         if __debug__:
             assert \
                 isinstance(value, int), \
-                "The 'track_id' field must be of type 'int'"
-            assert value >= -32768 and value < 32768, \
-                "The 'track_id' field must be an integer in [-32768, 32767]"
-        self._track_id = value
+                "The 'x_center_y_goal' field must be of type 'int'"
+            assert value >= -9223372036854775808 and value < 9223372036854775808, \
+                "The 'x_center_y_goal' field must be an integer in [-9223372036854775808, 9223372036854775807]"
+        self._x_center_y_goal = value
 
     @property
-    def class_id(self):
-        """Message field 'class_id'."""
-        return self._class_id
+    def y_center_y_goal(self):
+        """Message field 'y_center_y_goal'."""
+        return self._y_center_y_goal
 
-    @class_id.setter
-    def class_id(self, value):
+    @y_center_y_goal.setter
+    def y_center_y_goal(self, value):
         if __debug__:
             assert \
                 isinstance(value, int), \
-                "The 'class_id' field must be of type 'int'"
-            assert value >= -32768 and value < 32768, \
-                "The 'class_id' field must be an integer in [-32768, 32767]"
-        self._class_id = value
+                "The 'y_center_y_goal' field must be of type 'int'"
+            assert value >= -9223372036854775808 and value < 9223372036854775808, \
+                "The 'y_center_y_goal' field must be an integer in [-9223372036854775808, 9223372036854775807]"
+        self._y_center_y_goal = value
+
+    @property
+    def width_y_goal(self):
+        """Message field 'width_y_goal'."""
+        return self._width_y_goal
+
+    @width_y_goal.setter
+    def width_y_goal(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, int), \
+                "The 'width_y_goal' field must be of type 'int'"
+            assert value >= -9223372036854775808 and value < 9223372036854775808, \
+                "The 'width_y_goal' field must be an integer in [-9223372036854775808, 9223372036854775807]"
+        self._width_y_goal = value
+
+    @property
+    def height_y_goal(self):
+        """Message field 'height_y_goal'."""
+        return self._height_y_goal
+
+    @height_y_goal.setter
+    def height_y_goal(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, int), \
+                "The 'height_y_goal' field must be of type 'int'"
+            assert value >= -9223372036854775808 and value < 9223372036854775808, \
+                "The 'height_y_goal' field must be an integer in [-9223372036854775808, 9223372036854775807]"
+        self._height_y_goal = value
+
+    @property
+    def x_center_o_goal(self):
+        """Message field 'x_center_o_goal'."""
+        return self._x_center_o_goal
+
+    @x_center_o_goal.setter
+    def x_center_o_goal(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, int), \
+                "The 'x_center_o_goal' field must be of type 'int'"
+            assert value >= -9223372036854775808 and value < 9223372036854775808, \
+                "The 'x_center_o_goal' field must be an integer in [-9223372036854775808, 9223372036854775807]"
+        self._x_center_o_goal = value
+
+    @property
+    def y_center_o_goal(self):
+        """Message field 'y_center_o_goal'."""
+        return self._y_center_o_goal
+
+    @y_center_o_goal.setter
+    def y_center_o_goal(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, int), \
+                "The 'y_center_o_goal' field must be of type 'int'"
+            assert value >= -9223372036854775808 and value < 9223372036854775808, \
+                "The 'y_center_o_goal' field must be an integer in [-9223372036854775808, 9223372036854775807]"
+        self._y_center_o_goal = value
+
+    @property
+    def width_o_goal(self):
+        """Message field 'width_o_goal'."""
+        return self._width_o_goal
+
+    @width_o_goal.setter
+    def width_o_goal(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, int), \
+                "The 'width_o_goal' field must be of type 'int'"
+            assert value >= -9223372036854775808 and value < 9223372036854775808, \
+                "The 'width_o_goal' field must be an integer in [-9223372036854775808, 9223372036854775807]"
+        self._width_o_goal = value
+
+    @property
+    def height_o_goal(self):
+        """Message field 'height_o_goal'."""
+        return self._height_o_goal
+
+    @height_o_goal.setter
+    def height_o_goal(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, int), \
+                "The 'height_o_goal' field must be of type 'int'"
+            assert value >= -9223372036854775808 and value < 9223372036854775808, \
+                "The 'height_o_goal' field must be an integer in [-9223372036854775808, 9223372036854775807]"
+        self._height_o_goal = value

@@ -14,6 +14,10 @@
 #include <vector>
 
 
+// Include directives for member types
+// Member 'header'
+#include "std_msgs/msg/detail/header__struct.hpp"
+
 #ifndef _WIN32
 # define DEPRECATED__yolo_msgs__msg__BoundingBox __attribute__((deprecated))
 #else
@@ -33,100 +37,165 @@ struct BoundingBox_
   using Type = BoundingBox_<ContainerAllocator>;
 
   explicit BoundingBox_(rosidl_runtime_cpp::MessageInitialization _init = rosidl_runtime_cpp::MessageInitialization::ALL)
+  : header(_init)
   {
     if (rosidl_runtime_cpp::MessageInitialization::ALL == _init ||
       rosidl_runtime_cpp::MessageInitialization::ZERO == _init)
     {
-      this->probability = 0.0;
-      this->x_center = 0ll;
-      this->y_center = 0ll;
-      this->width = 0ll;
-      this->height = 0ll;
-      this->track_id = 0;
-      this->class_id = 0;
+      this->x_center_balloon = 0ll;
+      this->y_center_balloon = 0ll;
+      this->width_balloon = 0ll;
+      this->height_balloon = 0ll;
+      this->x_center_y_goal = 0ll;
+      this->y_center_y_goal = 0ll;
+      this->width_y_goal = 0ll;
+      this->height_y_goal = 0ll;
+      this->x_center_o_goal = 0ll;
+      this->y_center_o_goal = 0ll;
+      this->width_o_goal = 0ll;
+      this->height_o_goal = 0ll;
     }
   }
 
   explicit BoundingBox_(const ContainerAllocator & _alloc, rosidl_runtime_cpp::MessageInitialization _init = rosidl_runtime_cpp::MessageInitialization::ALL)
+  : header(_alloc, _init)
   {
-    (void)_alloc;
     if (rosidl_runtime_cpp::MessageInitialization::ALL == _init ||
       rosidl_runtime_cpp::MessageInitialization::ZERO == _init)
     {
-      this->probability = 0.0;
-      this->x_center = 0ll;
-      this->y_center = 0ll;
-      this->width = 0ll;
-      this->height = 0ll;
-      this->track_id = 0;
-      this->class_id = 0;
+      this->x_center_balloon = 0ll;
+      this->y_center_balloon = 0ll;
+      this->width_balloon = 0ll;
+      this->height_balloon = 0ll;
+      this->x_center_y_goal = 0ll;
+      this->y_center_y_goal = 0ll;
+      this->width_y_goal = 0ll;
+      this->height_y_goal = 0ll;
+      this->x_center_o_goal = 0ll;
+      this->y_center_o_goal = 0ll;
+      this->width_o_goal = 0ll;
+      this->height_o_goal = 0ll;
     }
   }
 
   // field types and members
-  using _probability_type =
-    double;
-  _probability_type probability;
-  using _x_center_type =
+  using _header_type =
+    std_msgs::msg::Header_<ContainerAllocator>;
+  _header_type header;
+  using _x_center_balloon_type =
     int64_t;
-  _x_center_type x_center;
-  using _y_center_type =
+  _x_center_balloon_type x_center_balloon;
+  using _y_center_balloon_type =
     int64_t;
-  _y_center_type y_center;
-  using _width_type =
+  _y_center_balloon_type y_center_balloon;
+  using _width_balloon_type =
     int64_t;
-  _width_type width;
-  using _height_type =
+  _width_balloon_type width_balloon;
+  using _height_balloon_type =
     int64_t;
-  _height_type height;
-  using _track_id_type =
-    int16_t;
-  _track_id_type track_id;
-  using _class_id_type =
-    int16_t;
-  _class_id_type class_id;
+  _height_balloon_type height_balloon;
+  using _x_center_y_goal_type =
+    int64_t;
+  _x_center_y_goal_type x_center_y_goal;
+  using _y_center_y_goal_type =
+    int64_t;
+  _y_center_y_goal_type y_center_y_goal;
+  using _width_y_goal_type =
+    int64_t;
+  _width_y_goal_type width_y_goal;
+  using _height_y_goal_type =
+    int64_t;
+  _height_y_goal_type height_y_goal;
+  using _x_center_o_goal_type =
+    int64_t;
+  _x_center_o_goal_type x_center_o_goal;
+  using _y_center_o_goal_type =
+    int64_t;
+  _y_center_o_goal_type y_center_o_goal;
+  using _width_o_goal_type =
+    int64_t;
+  _width_o_goal_type width_o_goal;
+  using _height_o_goal_type =
+    int64_t;
+  _height_o_goal_type height_o_goal;
 
   // setters for named parameter idiom
-  Type & set__probability(
-    const double & _arg)
+  Type & set__header(
+    const std_msgs::msg::Header_<ContainerAllocator> & _arg)
   {
-    this->probability = _arg;
+    this->header = _arg;
     return *this;
   }
-  Type & set__x_center(
+  Type & set__x_center_balloon(
     const int64_t & _arg)
   {
-    this->x_center = _arg;
+    this->x_center_balloon = _arg;
     return *this;
   }
-  Type & set__y_center(
+  Type & set__y_center_balloon(
     const int64_t & _arg)
   {
-    this->y_center = _arg;
+    this->y_center_balloon = _arg;
     return *this;
   }
-  Type & set__width(
+  Type & set__width_balloon(
     const int64_t & _arg)
   {
-    this->width = _arg;
+    this->width_balloon = _arg;
     return *this;
   }
-  Type & set__height(
+  Type & set__height_balloon(
     const int64_t & _arg)
   {
-    this->height = _arg;
+    this->height_balloon = _arg;
     return *this;
   }
-  Type & set__track_id(
-    const int16_t & _arg)
+  Type & set__x_center_y_goal(
+    const int64_t & _arg)
   {
-    this->track_id = _arg;
+    this->x_center_y_goal = _arg;
     return *this;
   }
-  Type & set__class_id(
-    const int16_t & _arg)
+  Type & set__y_center_y_goal(
+    const int64_t & _arg)
   {
-    this->class_id = _arg;
+    this->y_center_y_goal = _arg;
+    return *this;
+  }
+  Type & set__width_y_goal(
+    const int64_t & _arg)
+  {
+    this->width_y_goal = _arg;
+    return *this;
+  }
+  Type & set__height_y_goal(
+    const int64_t & _arg)
+  {
+    this->height_y_goal = _arg;
+    return *this;
+  }
+  Type & set__x_center_o_goal(
+    const int64_t & _arg)
+  {
+    this->x_center_o_goal = _arg;
+    return *this;
+  }
+  Type & set__y_center_o_goal(
+    const int64_t & _arg)
+  {
+    this->y_center_o_goal = _arg;
+    return *this;
+  }
+  Type & set__width_o_goal(
+    const int64_t & _arg)
+  {
+    this->width_o_goal = _arg;
+    return *this;
+  }
+  Type & set__height_o_goal(
+    const int64_t & _arg)
+  {
+    this->height_o_goal = _arg;
     return *this;
   }
 
@@ -172,25 +241,43 @@ struct BoundingBox_
   // comparison operators
   bool operator==(const BoundingBox_ & other) const
   {
-    if (this->probability != other.probability) {
+    if (this->header != other.header) {
       return false;
     }
-    if (this->x_center != other.x_center) {
+    if (this->x_center_balloon != other.x_center_balloon) {
       return false;
     }
-    if (this->y_center != other.y_center) {
+    if (this->y_center_balloon != other.y_center_balloon) {
       return false;
     }
-    if (this->width != other.width) {
+    if (this->width_balloon != other.width_balloon) {
       return false;
     }
-    if (this->height != other.height) {
+    if (this->height_balloon != other.height_balloon) {
       return false;
     }
-    if (this->track_id != other.track_id) {
+    if (this->x_center_y_goal != other.x_center_y_goal) {
       return false;
     }
-    if (this->class_id != other.class_id) {
+    if (this->y_center_y_goal != other.y_center_y_goal) {
+      return false;
+    }
+    if (this->width_y_goal != other.width_y_goal) {
+      return false;
+    }
+    if (this->height_y_goal != other.height_y_goal) {
+      return false;
+    }
+    if (this->x_center_o_goal != other.x_center_o_goal) {
+      return false;
+    }
+    if (this->y_center_o_goal != other.y_center_o_goal) {
+      return false;
+    }
+    if (this->width_o_goal != other.width_o_goal) {
+      return false;
+    }
+    if (this->height_o_goal != other.height_o_goal) {
       return false;
     }
     return true;

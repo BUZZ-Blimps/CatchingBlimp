@@ -1,0 +1,5 @@
+[01m[K/home/corelab/ros2_stereo/src/stereo_image_proc/src/stereo_image_proc/point_cloud_node.cpp:[m[K In member function ‘[01m[Kvoid stereo_image_proc::PointCloudNode::imageCb(const ConstSharedPtr&, const ConstSharedPtr&, const ConstSharedPtr&, const ConstSharedPtr&, const ConstSharedPtr&)[m[K’:
+[01m[K/home/corelab/ros2_stereo/src/stereo_image_proc/src/stereo_image_proc/point_cloud_node.cpp:248:57:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kbbox_msg[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+  248 | [01;35m[Kmsgs::msg::BoundingBox::ConstSharedPtr & bbox_msg[m[K)
+      | [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~[m[K
+

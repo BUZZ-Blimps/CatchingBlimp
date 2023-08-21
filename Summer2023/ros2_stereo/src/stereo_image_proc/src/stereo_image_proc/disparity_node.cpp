@@ -154,7 +154,7 @@ DisparityNode::DisparityNode(const rclcpp::NodeOptions & options)
   using namespace std::placeholders;
 
   // Declare/read parameters
-  int queue_size = this->declare_parameter("queue_size", 5);
+  int queue_size = this->declare_parameter("queue_size", 7);
   bool approx = this->declare_parameter("approximate_sync", false);
   this->declare_parameter("use_system_default_qos", false);
 
@@ -265,7 +265,7 @@ DisparityNode::DisparityNode(const rclcpp::NodeOptions & options)
   this->declare_parameters("", double_params);
   this->declare_parameters("", bool_params);
 
-  pub_disparity_ = create_publisher<stereo_msgs::msg::DisparityImage>("disparity", 1);
+  pub_disparity_ = create_publisher<stereo_msgs::msg::DisparityImage>("disparity", 10);
 
   // TODO(jacobperron): Replace this with a graph event.
   //                    Only subscribe if there's a subscription listening to our publisher.

@@ -34,8 +34,22 @@ extern "C"
 {
 #endif
 
+#include "std_msgs/msg/detail/header__functions.h"  // header
 
 // forward declare type support functions
+ROSIDL_TYPESUPPORT_FASTRTPS_C_IMPORT_yolo_msgs
+size_t get_serialized_size_std_msgs__msg__Header(
+  const void * untyped_ros_message,
+  size_t current_alignment);
+
+ROSIDL_TYPESUPPORT_FASTRTPS_C_IMPORT_yolo_msgs
+size_t max_serialized_size_std_msgs__msg__Header(
+  bool & full_bounded,
+  size_t current_alignment);
+
+ROSIDL_TYPESUPPORT_FASTRTPS_C_IMPORT_yolo_msgs
+const rosidl_message_type_support_t *
+  ROSIDL_TYPESUPPORT_INTERFACE__MESSAGE_SYMBOL_NAME(rosidl_typesupport_fastrtps_c, std_msgs, msg, Header)();
 
 
 using _BoundingBox__ros_msg_type = yolo_msgs__msg__BoundingBox;
@@ -49,39 +63,78 @@ static bool _BoundingBox__cdr_serialize(
     return false;
   }
   const _BoundingBox__ros_msg_type * ros_message = static_cast<const _BoundingBox__ros_msg_type *>(untyped_ros_message);
-  // Field name: probability
+  // Field name: header
   {
-    cdr << ros_message->probability;
+    const message_type_support_callbacks_t * callbacks =
+      static_cast<const message_type_support_callbacks_t *>(
+      ROSIDL_TYPESUPPORT_INTERFACE__MESSAGE_SYMBOL_NAME(
+        rosidl_typesupport_fastrtps_c, std_msgs, msg, Header
+      )()->data);
+    if (!callbacks->cdr_serialize(
+        &ros_message->header, cdr))
+    {
+      return false;
+    }
   }
 
-  // Field name: x_center
+  // Field name: x_center_balloon
   {
-    cdr << ros_message->x_center;
+    cdr << ros_message->x_center_balloon;
   }
 
-  // Field name: y_center
+  // Field name: y_center_balloon
   {
-    cdr << ros_message->y_center;
+    cdr << ros_message->y_center_balloon;
   }
 
-  // Field name: width
+  // Field name: width_balloon
   {
-    cdr << ros_message->width;
+    cdr << ros_message->width_balloon;
   }
 
-  // Field name: height
+  // Field name: height_balloon
   {
-    cdr << ros_message->height;
+    cdr << ros_message->height_balloon;
   }
 
-  // Field name: track_id
+  // Field name: x_center_y_goal
   {
-    cdr << ros_message->track_id;
+    cdr << ros_message->x_center_y_goal;
   }
 
-  // Field name: class_id
+  // Field name: y_center_y_goal
   {
-    cdr << ros_message->class_id;
+    cdr << ros_message->y_center_y_goal;
+  }
+
+  // Field name: width_y_goal
+  {
+    cdr << ros_message->width_y_goal;
+  }
+
+  // Field name: height_y_goal
+  {
+    cdr << ros_message->height_y_goal;
+  }
+
+  // Field name: x_center_o_goal
+  {
+    cdr << ros_message->x_center_o_goal;
+  }
+
+  // Field name: y_center_o_goal
+  {
+    cdr << ros_message->y_center_o_goal;
+  }
+
+  // Field name: width_o_goal
+  {
+    cdr << ros_message->width_o_goal;
+  }
+
+  // Field name: height_o_goal
+  {
+    cdr << ros_message->height_o_goal;
   }
 
   return true;
@@ -96,39 +149,78 @@ static bool _BoundingBox__cdr_deserialize(
     return false;
   }
   _BoundingBox__ros_msg_type * ros_message = static_cast<_BoundingBox__ros_msg_type *>(untyped_ros_message);
-  // Field name: probability
+  // Field name: header
   {
-    cdr >> ros_message->probability;
+    const message_type_support_callbacks_t * callbacks =
+      static_cast<const message_type_support_callbacks_t *>(
+      ROSIDL_TYPESUPPORT_INTERFACE__MESSAGE_SYMBOL_NAME(
+        rosidl_typesupport_fastrtps_c, std_msgs, msg, Header
+      )()->data);
+    if (!callbacks->cdr_deserialize(
+        cdr, &ros_message->header))
+    {
+      return false;
+    }
   }
 
-  // Field name: x_center
+  // Field name: x_center_balloon
   {
-    cdr >> ros_message->x_center;
+    cdr >> ros_message->x_center_balloon;
   }
 
-  // Field name: y_center
+  // Field name: y_center_balloon
   {
-    cdr >> ros_message->y_center;
+    cdr >> ros_message->y_center_balloon;
   }
 
-  // Field name: width
+  // Field name: width_balloon
   {
-    cdr >> ros_message->width;
+    cdr >> ros_message->width_balloon;
   }
 
-  // Field name: height
+  // Field name: height_balloon
   {
-    cdr >> ros_message->height;
+    cdr >> ros_message->height_balloon;
   }
 
-  // Field name: track_id
+  // Field name: x_center_y_goal
   {
-    cdr >> ros_message->track_id;
+    cdr >> ros_message->x_center_y_goal;
   }
 
-  // Field name: class_id
+  // Field name: y_center_y_goal
   {
-    cdr >> ros_message->class_id;
+    cdr >> ros_message->y_center_y_goal;
+  }
+
+  // Field name: width_y_goal
+  {
+    cdr >> ros_message->width_y_goal;
+  }
+
+  // Field name: height_y_goal
+  {
+    cdr >> ros_message->height_y_goal;
+  }
+
+  // Field name: x_center_o_goal
+  {
+    cdr >> ros_message->x_center_o_goal;
+  }
+
+  // Field name: y_center_o_goal
+  {
+    cdr >> ros_message->y_center_o_goal;
+  }
+
+  // Field name: width_o_goal
+  {
+    cdr >> ros_message->width_o_goal;
+  }
+
+  // Field name: height_o_goal
+  {
+    cdr >> ros_message->height_o_goal;
   }
 
   return true;
@@ -148,45 +240,79 @@ size_t get_serialized_size_yolo_msgs__msg__BoundingBox(
   (void)padding;
   (void)wchar_size;
 
-  // field.name probability
+  // field.name header
+
+  current_alignment += get_serialized_size_std_msgs__msg__Header(
+    &(ros_message->header), current_alignment);
+  // field.name x_center_balloon
   {
-    size_t item_size = sizeof(ros_message->probability);
+    size_t item_size = sizeof(ros_message->x_center_balloon);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
-  // field.name x_center
+  // field.name y_center_balloon
   {
-    size_t item_size = sizeof(ros_message->x_center);
+    size_t item_size = sizeof(ros_message->y_center_balloon);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
-  // field.name y_center
+  // field.name width_balloon
   {
-    size_t item_size = sizeof(ros_message->y_center);
+    size_t item_size = sizeof(ros_message->width_balloon);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
-  // field.name width
+  // field.name height_balloon
   {
-    size_t item_size = sizeof(ros_message->width);
+    size_t item_size = sizeof(ros_message->height_balloon);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
-  // field.name height
+  // field.name x_center_y_goal
   {
-    size_t item_size = sizeof(ros_message->height);
+    size_t item_size = sizeof(ros_message->x_center_y_goal);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
-  // field.name track_id
+  // field.name y_center_y_goal
   {
-    size_t item_size = sizeof(ros_message->track_id);
+    size_t item_size = sizeof(ros_message->y_center_y_goal);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
-  // field.name class_id
+  // field.name width_y_goal
   {
-    size_t item_size = sizeof(ros_message->class_id);
+    size_t item_size = sizeof(ros_message->width_y_goal);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // field.name height_y_goal
+  {
+    size_t item_size = sizeof(ros_message->height_y_goal);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // field.name x_center_o_goal
+  {
+    size_t item_size = sizeof(ros_message->x_center_o_goal);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // field.name y_center_o_goal
+  {
+    size_t item_size = sizeof(ros_message->y_center_o_goal);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // field.name width_o_goal
+  {
+    size_t item_size = sizeof(ros_message->width_o_goal);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // field.name height_o_goal
+  {
+    size_t item_size = sizeof(ros_message->height_o_goal);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
@@ -214,54 +340,100 @@ size_t max_serialized_size_yolo_msgs__msg__BoundingBox(
   (void)wchar_size;
   (void)full_bounded;
 
-  // member: probability
+  // member: header
+  {
+    size_t array_size = 1;
+
+
+    for (size_t index = 0; index < array_size; ++index) {
+      current_alignment +=
+        max_serialized_size_std_msgs__msg__Header(
+        full_bounded, current_alignment);
+    }
+  }
+  // member: x_center_balloon
   {
     size_t array_size = 1;
 
     current_alignment += array_size * sizeof(uint64_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
   }
-  // member: x_center
+  // member: y_center_balloon
   {
     size_t array_size = 1;
 
     current_alignment += array_size * sizeof(uint64_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
   }
-  // member: y_center
+  // member: width_balloon
   {
     size_t array_size = 1;
 
     current_alignment += array_size * sizeof(uint64_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
   }
-  // member: width
+  // member: height_balloon
   {
     size_t array_size = 1;
 
     current_alignment += array_size * sizeof(uint64_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
   }
-  // member: height
+  // member: x_center_y_goal
   {
     size_t array_size = 1;
 
     current_alignment += array_size * sizeof(uint64_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
   }
-  // member: track_id
+  // member: y_center_y_goal
   {
     size_t array_size = 1;
 
-    current_alignment += array_size * sizeof(uint16_t) +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint16_t));
+    current_alignment += array_size * sizeof(uint64_t) +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
   }
-  // member: class_id
+  // member: width_y_goal
   {
     size_t array_size = 1;
 
-    current_alignment += array_size * sizeof(uint16_t) +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint16_t));
+    current_alignment += array_size * sizeof(uint64_t) +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
+  }
+  // member: height_y_goal
+  {
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint64_t) +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
+  }
+  // member: x_center_o_goal
+  {
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint64_t) +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
+  }
+  // member: y_center_o_goal
+  {
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint64_t) +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
+  }
+  // member: width_o_goal
+  {
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint64_t) +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
+  }
+  // member: height_o_goal
+  {
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint64_t) +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
   }
 
   return current_alignment - initial_alignment;

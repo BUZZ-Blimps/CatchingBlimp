@@ -28,6 +28,7 @@
   <depend>rclcpp_components</depend>
   <depend>sensor_msgs</depend>
   <depend>stereo_msgs</depend>
+  <depend>std_msgs</depend>
   <depend>yolo_msgs</depend>
 
   <test_depend>ament_cmake_pytest</test_depend>

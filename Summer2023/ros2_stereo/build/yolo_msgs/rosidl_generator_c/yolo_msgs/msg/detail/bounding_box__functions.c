@@ -11,19 +11,33 @@
 #include "rcutils/allocator.h"
 
 
+// Include directives for member types
+// Member `header`
+#include "std_msgs/msg/detail/header__functions.h"
+
 bool
 yolo_msgs__msg__BoundingBox__init(yolo_msgs__msg__BoundingBox * msg)
 {
   if (!msg) {
     return false;
   }
-  // probability
-  // x_center
-  // y_center
-  // width
-  // height
-  // track_id
-  // class_id
+  // header
+  if (!std_msgs__msg__Header__init(&msg->header)) {
+    yolo_msgs__msg__BoundingBox__fini(msg);
+    return false;
+  }
+  // x_center_balloon
+  // y_center_balloon
+  // width_balloon
+  // height_balloon
+  // x_center_y_goal
+  // y_center_y_goal
+  // width_y_goal
+  // height_y_goal
+  // x_center_o_goal
+  // y_center_o_goal
+  // width_o_goal
+  // height_o_goal
   return true;
 }
 
@@ -33,13 +47,20 @@ yolo_msgs__msg__BoundingBox__fini(yolo_msgs__msg__BoundingBox * msg)
   if (!msg) {
     return;
   }
-  // probability
-  // x_center
-  // y_center
-  // width
-  // height
-  // track_id
-  // class_id
+  // header
+  std_msgs__msg__Header__fini(&msg->header);
+  // x_center_balloon
+  // y_center_balloon
+  // width_balloon
+  // height_balloon
+  // x_center_y_goal
+  // y_center_y_goal
+  // width_y_goal
+  // height_y_goal
+  // x_center_o_goal
+  // y_center_o_goal
+  // width_o_goal
+  // height_o_goal
 }
 
 bool
@@ -48,32 +69,58 @@ yolo_msgs__msg__BoundingBox__are_equal(const yolo_msgs__msg__BoundingBox * lhs, 
   if (!lhs || !rhs) {
     return false;
   }
-  // probability
-  if (lhs->probability != rhs->probability) {
+  // header
+  if (!std_msgs__msg__Header__are_equal(
+      &(lhs->header), &(rhs->header)))
+  {
     return false;
   }
-  // x_center
-  if (lhs->x_center != rhs->x_center) {
+  // x_center_balloon
+  if (lhs->x_center_balloon != rhs->x_center_balloon) {
     return false;
   }
-  // y_center
-  if (lhs->y_center != rhs->y_center) {
+  // y_center_balloon
+  if (lhs->y_center_balloon != rhs->y_center_balloon) {
     return false;
   }
-  // width
-  if (lhs->width != rhs->width) {
+  // width_balloon
+  if (lhs->width_balloon != rhs->width_balloon) {
     return false;
   }
-  // height
-  if (lhs->height != rhs->height) {
+  // height_balloon
+  if (lhs->height_balloon != rhs->height_balloon) {
     return false;
   }
-  // track_id
-  if (lhs->track_id != rhs->track_id) {
+  // x_center_y_goal
+  if (lhs->x_center_y_goal != rhs->x_center_y_goal) {
     return false;
   }
-  // class_id
-  if (lhs->class_id != rhs->class_id) {
+  // y_center_y_goal
+  if (lhs->y_center_y_goal != rhs->y_center_y_goal) {
+    return false;
+  }
+  // width_y_goal
+  if (lhs->width_y_goal != rhs->width_y_goal) {
+    return false;
+  }
+  // height_y_goal
+  if (lhs->height_y_goal != rhs->height_y_goal) {
+    return false;
+  }
+  // x_center_o_goal
+  if (lhs->x_center_o_goal != rhs->x_center_o_goal) {
+    return false;
+  }
+  // y_center_o_goal
+  if (lhs->y_center_o_goal != rhs->y_center_o_goal) {
+    return false;
+  }
+  // width_o_goal
+  if (lhs->width_o_goal != rhs->width_o_goal) {
+    return false;
+  }
+  // height_o_goal
+  if (lhs->height_o_goal != rhs->height_o_goal) {
     return false;
   }
   return true;
@@ -87,20 +134,36 @@ yolo_msgs__msg__BoundingBox__copy(
   if (!input || !output) {
     return false;
   }
-  // probability
-  output->probability = input->probability;
-  // x_center
-  output->x_center = input->x_center;
-  // y_center
-  output->y_center = input->y_center;
-  // width
-  output->width = input->width;
-  // height
-  output->height = input->height;
-  // track_id
-  output->track_id = input->track_id;
-  // class_id
-  output->class_id = input->class_id;
+  // header
+  if (!std_msgs__msg__Header__copy(
+      &(input->header), &(output->header)))
+  {
+    return false;
+  }
+  // x_center_balloon
+  output->x_center_balloon = input->x_center_balloon;
+  // y_center_balloon
+  output->y_center_balloon = input->y_center_balloon;
+  // width_balloon
+  output->width_balloon = input->width_balloon;
+  // height_balloon
+  output->height_balloon = input->height_balloon;
+  // x_center_y_goal
+  output->x_center_y_goal = input->x_center_y_goal;
+  // y_center_y_goal
+  output->y_center_y_goal = input->y_center_y_goal;
+  // width_y_goal
+  output->width_y_goal = input->width_y_goal;
+  // height_y_goal
+  output->height_y_goal = input->height_y_goal;
+  // x_center_o_goal
+  output->x_center_o_goal = input->x_center_o_goal;
+  // y_center_o_goal
+  output->y_center_o_goal = input->y_center_o_goal;
+  // width_o_goal
+  output->width_o_goal = input->width_o_goal;
+  // height_o_goal
+  output->height_o_goal = input->height_o_goal;
   return true;
 }
 

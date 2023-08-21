@@ -151,6 +151,8 @@ CMakeFiles/yolo_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/yolo_msg
  /opt/ros/foxy/include/rosidl_runtime_cpp/message_initialization.hpp \
  /opt/ros/foxy/include/rosidl_runtime_c/message_initialization.h \
  /home/corelab/ros2_stereo/build/yolo_msgs/rosidl_generator_cpp/yolo_msgs/msg/detail/bounding_box__struct.hpp \
+ /opt/ros/foxy/include/std_msgs/msg/detail/header__struct.hpp \
+ /opt/ros/foxy/include/builtin_interfaces/msg/detail/time__struct.hpp \
  /opt/ros/foxy/include/rosidl_typesupport_cpp/identifier.hpp \
  /opt/ros/foxy/include/rosidl_typesupport_cpp/visibility_control.h \
  /opt/ros/foxy/include/rosidl_typesupport_cpp/message_type_support.hpp \

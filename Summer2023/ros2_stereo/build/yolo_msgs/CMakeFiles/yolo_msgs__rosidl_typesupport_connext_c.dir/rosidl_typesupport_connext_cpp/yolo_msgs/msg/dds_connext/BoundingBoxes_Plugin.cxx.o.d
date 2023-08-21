@@ -376,5 +376,11 @@ CMakeFiles/yolo_msgs__rosidl_typesupport_connext_c.dir/rosidl_typesupport_connex
  /home/corelab/ros2_stereo/build/yolo_msgs/rosidl_typesupport_connext_cpp/yolo_msgs/msg/dds_connext/BoundingBoxes_Plugin.h \
  /home/corelab/ros2_stereo/build/yolo_msgs/rosidl_typesupport_connext_cpp/yolo_msgs/msg/dds_connext/BoundingBoxes_.h \
  /home/corelab/ros2_stereo/build/yolo_msgs/rosidl_typesupport_connext_cpp/yolo_msgs/msg/dds_connext/BoundingBox_.h \
+ /opt/ros/foxy/include/std_msgs/msg/dds_connext/Header_.h \
+ /opt/ros/foxy/include/builtin_interfaces/msg/dds_connext/Time_.h \
  /home/corelab/ros2_stereo/build/yolo_msgs/rosidl_typesupport_connext_cpp/yolo_msgs/msg/dds_connext/BoundingBox_Plugin.h \
- /home/corelab/ros2_stereo/build/yolo_msgs/rosidl_typesupport_connext_cpp/yolo_msgs/msg/dds_connext/BoundingBox_.h
+ /home/corelab/ros2_stereo/build/yolo_msgs/rosidl_typesupport_connext_cpp/yolo_msgs/msg/dds_connext/BoundingBox_.h \
+ /opt/ros/foxy/include/std_msgs/msg/dds_connext/Header_Plugin.h \
+ /opt/ros/foxy/include/std_msgs/msg/dds_connext/Header_.h \
+ /opt/ros/foxy/include/builtin_interfaces/msg/dds_connext/Time_Plugin.h \
+ /opt/ros/foxy/include/builtin_interfaces/msg/dds_connext/Time_.h

@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef BoundingBox_Plugin_279539174_h
-#define BoundingBox_Plugin_279539174_h
+#ifndef BoundingBox_Plugin_279539451_h
+#define BoundingBox_Plugin_279539451_h
 
 #include "BoundingBox_.h"
 
@@ -19,6 +19,8 @@ struct RTICdrStream;
 #ifndef pres_typePlugin_h
 #include "pres/pres_typePlugin.h"
 #endif
+
+#include "std_msgs/msg/dds_connext/Header_Plugin.h"
 
 #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)
 /* If the code is building on Windows, start exporting symbols.
@@ -281,5 +283,5 @@ namespace yolo_msgs {
 #define NDDSUSERDllExport
 #endif
 
-#endif /* BoundingBox_Plugin_279539174_h */
+#endif /* BoundingBox_Plugin_279539451_h */
 

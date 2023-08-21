@@ -16,6 +16,7 @@ find_package(OpenCV REQUIRED)
 # set(CMAKE_PREFIX_PATH "/home/corelab/ros2_stereo/install/yolo_msgs/share/yolo_msgs/cmake" ${CMAKE_PREFIX_PATH})
 set(CMAKE_PREFIX_PATH "/home/corelab/ros2_stereo/build/yolo_msgs/ament_cmake_core" ${CMAKE_PREFIX_PATH})
 find_package(yolo_msgs REQUIRED)
+find_package(std_msgs REQUIRED)
 
 # See note in image_proc/CMakeLists.txt
 # add_definitions(-DOPENCV_TRAITS_ENABLE_DEPRECATED)
@@ -27,6 +28,8 @@ ament_auto_add_library(${PROJECT_NAME} SHARED
 )
 target_link_libraries(${PROJECT_NAME}
   ${OpenCV_LIBRARIES}
+  ${yolo_msgs_LIBRARIES}
+  ${std_msgs_LIBRARIES}
 )
 
 rclcpp_components_register_node(${PROJECT_NAME}

@@ -1,0 +1,150 @@
+[0.000000] (-) TimerEvent: {}
+[0.000552] (-) JobUnselected: {'identifier': 'gscam2'}
+[0.000578] (-) JobUnselected: {'identifier': 'image_proc'}
+[0.000589] (-) JobUnselected: {'identifier': 'image_view'}
+[0.000596] (-) JobUnselected: {'identifier': 'opencv_telemetry'}
+[0.000604] (-) JobUnselected: {'identifier': 'ros2_shared'}
+[0.000612] (-) JobUnselected: {'identifier': 'yolo_msgs'}
+[0.000621] (stereo_image_proc) JobQueued: {'identifier': 'stereo_image_proc', 'dependencies': OrderedDict([('image_proc', '/home/corelab/ros2_stereo/install/image_proc'), ('yolo_msgs', '/home/corelab/ros2_stereo/install/yolo_msgs')])}
+[0.000633] (stereo_image_proc) JobStarted: {'identifier': 'stereo_image_proc'}
+[0.011728] (stereo_image_proc) JobProgress: {'identifier': 'stereo_image_proc', 'progress': 'cmake'}
+[0.012122] (stereo_image_proc) JobProgress: {'identifier': 'stereo_image_proc', 'progress': 'build'}
+[0.012529] (stereo_image_proc) Command: {'cmd': ['/home/corelab/.local/bin/cmake', '--build', '/home/corelab/ros2_stereo/build/stereo_image_proc', '--', '-j16', '-l16'], 'cwd': '/home/corelab/ros2_stereo/build/stereo_image_proc', 'env': OrderedDict([('MALIPUT_MALIDRIVE_RESOURCE_ROOT', '/opt/ros/foxy/share/maliput_malidrive'), ('MALIPUT_VIZ_GUI_PLUGINS', '/opt/ros/foxy/lib/gui_plugins'), ('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('LANGUAGE', 'en_US'), ('GURUMDDS_HOME', '/usr/share/gurumdds/cmake/../../..'), ('USER', 'corelab'), ('MULTILANE_RESOURCE_ROOT', '/opt/ros/foxy/share/maliput_multilane'), ('SSH_AGENT_PID', '2037'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/corelab/ros2_stereo/install/yolo_msgs/lib:/home/corelab/ros2_stereo/install/image_proc/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/opt/libphidget22/lib:/usr/share/gurumdds/cmake/../../../lib:/opt/rti.com/rti_connext_dds-5.3.1/lib/x64Linux3gcc5.4.0:/opt/ros/foxy/lib'), ('HOME', '/home/corelab'), ('OLDPWD', '/home/corelab'), ('DESKTOP_SESSION', 'ubuntu'), ('GIO_LAUNCHED_DESKTOP_FILE', '/usr/share/applications/terminator.desktop'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('MALIPUT_VIZ_RESOURCE_ROOT', '/opt/ros/foxy/share/maliput_viz'), ('XDG_SEAT_PATH', '/org/freedesktop/DisplayManager/Seat0'), ('NDDSHOME', '/opt/rti.com/rti_connext_dds-5.3.1'), ('MANAGERPID', '1885'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('TERMINATOR_DBUS_NAME', 'net.tenshu.Terminator21a9d5db22c73a993ff0b42f64b396873'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '3912'), ('_colcon_cd_root', '/opt/ros/foxy/'), ('MANDATORY_PATH', '/usr/share/gconf/ubuntu.mandatory.path'), ('IM_CONFIG_PHASE', '1'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'corelab'), ('JOURNAL_STREAM', '8:54415'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('DEFAULTS_PATH', '/usr/share/gconf/ubuntu.default.path'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/home/corelab/ros2_stereo/install/image_proc/bin:/opt/ros/foxy/bin/maliput_malidrive/applications:/opt/ros/foxy/bin/maliput_malidrive:/opt/rti.com/rti_connext_dds-5.3.1/lib/x64Linux3gcc5.4.0:/opt/rti.com/rti_connext_dds-5.3.1/bin:/opt/ros/foxy/bin:/home/corelab/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('SESSION_MANAGER', 'local/corelab-steve:@/tmp/.ICE-unix/2072,unix/corelab-steve:/tmp/.ICE-unix/2072'), ('GDM_LANG', 'en_US'), ('INVOCATION_ID', 'c350e6bdd9d049829a82905b0ba6ca56'), ('XDG_SESSION_PATH', '/org/freedesktop/DisplayManager/Session0'), ('XDG_MENU_PREFIX', 'gnome-'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('TERMINATOR_DBUS_PATH', '/net/tenshu/Terminator2'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/home/corelab/.Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('XDG_GREETER_DATA_DIR', '/var/lib/lightdm-data/corelab'), ('AMENT_PREFIX_PATH', '/home/corelab/ros2_stereo/install/yolo_msgs:/home/corelab/ros2_stereo/install/image_proc:/opt/ros/foxy'), ('SHELL', '/bin/bash'), ('TERMINATOR_UUID', 'urn:uuid:d751ed23-9de7-40ca-9d07-d4462fad66e4'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('ASAN_OPTIONS', ':detect_odr_violation=0::detect_odr_violation=0:detect_odr_violation=0::detect_odr_violation=0::detect_odr_violation=0:detect_odr_violation=0:detect_odr_violation=0'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/corelab/ros2_stereo/build/stereo_image_proc'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('MALIPUT_PLUGIN_PATH', '/opt/ros/foxy/lib/maliput_plugins'), ('PYTHONPATH', '/home/corelab/ros2_stereo/install/yolo_msgs/lib/python3.8/site-packages:/opt/ros/foxy/lib/python/site-packages:/opt/ros/foxy/lib/python3.8/site-packages'), ('COLCON', '1'), ('VTE_VERSION', '6003'), ('MALIPUT_OSM_RESOURCE_ROOT', '/opt/ros/foxy/share/maliput_osm'), ('CMAKE_PREFIX_PATH', '/home/corelab/ros2_stereo/install/yolo_msgs:/home/corelab/ros2_stereo/install/image_proc:/opt/ros/foxy')]), 'shell': False}
+[0.049501] (stereo_image_proc) StdoutLine: {'line': b'[ 50%] Built target disparity_node\n'}
+[0.049789] (stereo_image_proc) StdoutLine: {'line': b'[ 50%] Built target point_cloud_node\n'}
+[0.056086] (stereo_image_proc) StdoutLine: {'line': b'[ 62%] \x1b[32mBuilding CXX object CMakeFiles/stereo_image_proc.dir/src/stereo_image_proc/point_cloud_node.cpp.o\x1b[0m\n'}
+[0.100009] (-) TimerEvent: {}
+[0.200229] (-) TimerEvent: {}
+[0.300469] (-) TimerEvent: {}
+[0.400685] (-) TimerEvent: {}
+[0.500939] (-) TimerEvent: {}
+[0.601194] (-) TimerEvent: {}
+[0.701438] (-) TimerEvent: {}
+[0.801684] (-) TimerEvent: {}
+[0.901940] (-) TimerEvent: {}
+[1.002167] (-) TimerEvent: {}
+[1.102421] (-) TimerEvent: {}
+[1.202681] (-) TimerEvent: {}
+[1.302972] (-) TimerEvent: {}
+[1.319947] (stereo_image_proc) StderrLine: {'line': b'\x1b[01m\x1b[K/home/corelab/ros2_stereo/src/stereo_image_proc/src/stereo_image_proc/point_cloud_node.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid stereo_image_proc::PointCloudNode::imageCb(const ConstSharedPtr&, const ConstSharedPtr&, const ConstSharedPtr&, const ConstSharedPtr&, const ConstSharedPtr&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[1.320100] (stereo_image_proc) StderrLine: {'line': b'\x1b[01m\x1b[K/home/corelab/ros2_stereo/src/stereo_image_proc/src/stereo_image_proc/point_cloud_node.cpp:247:57:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kbbox_msg\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[1.320146] (stereo_image_proc) StderrLine: {'line': b'  247 | \x1b[01;35m\x1b[Kmsgs::msg::BoundingBox::ConstSharedPtr & bbox_msg\x1b[m\x1b[K)\n'}
+[1.320181] (stereo_image_proc) StderrLine: {'line': b'      | \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~\x1b[m\x1b[K\n'}
+[1.320214] (stereo_image_proc) StderrLine: {'line': b'\n'}
+[1.403143] (-) TimerEvent: {}
+[1.503581] (-) TimerEvent: {}
+[1.604020] (-) TimerEvent: {}
+[1.704505] (-) TimerEvent: {}
+[1.804728] (-) TimerEvent: {}
+[1.904953] (-) TimerEvent: {}
+[2.005163] (-) TimerEvent: {}
+[2.105368] (-) TimerEvent: {}
+[2.205667] (-) TimerEvent: {}
+[2.306033] (-) TimerEvent: {}
+[2.406241] (-) TimerEvent: {}
+[2.506480] (-) TimerEvent: {}
+[2.606715] (-) TimerEvent: {}
+[2.706952] (-) TimerEvent: {}
+[2.807190] (-) TimerEvent: {}
+[2.907424] (-) TimerEvent: {}
+[3.007663] (-) TimerEvent: {}
+[3.107898] (-) TimerEvent: {}
+[3.208110] (-) TimerEvent: {}
+[3.308343] (-) TimerEvent: {}
+[3.408636] (-) TimerEvent: {}
+[3.509047] (-) TimerEvent: {}
+[3.609310] (-) TimerEvent: {}
+[3.709627] (-) TimerEvent: {}
+[3.810076] (-) TimerEvent: {}
+[3.910404] (-) TimerEvent: {}
+[4.010796] (-) TimerEvent: {}
+[4.111231] (-) TimerEvent: {}
+[4.211605] (-) TimerEvent: {}
+[4.311816] (-) TimerEvent: {}
+[4.412033] (-) TimerEvent: {}
+[4.512253] (-) TimerEvent: {}
+[4.612494] (-) TimerEvent: {}
+[4.712845] (-) TimerEvent: {}
+[4.813040] (-) TimerEvent: {}
+[4.913239] (-) TimerEvent: {}
+[5.013478] (-) TimerEvent: {}
+[5.113699] (-) TimerEvent: {}
+[5.214014] (-) TimerEvent: {}
+[5.314358] (-) TimerEvent: {}
+[5.414598] (-) TimerEvent: {}
+[5.514884] (-) TimerEvent: {}
+[5.615116] (-) TimerEvent: {}
+[5.715365] (-) TimerEvent: {}
+[5.815601] (-) TimerEvent: {}
+[5.915841] (-) TimerEvent: {}
+[6.016091] (-) TimerEvent: {}
+[6.116342] (-) TimerEvent: {}
+[6.216643] (-) TimerEvent: {}
+[6.316892] (-) TimerEvent: {}
+[6.417137] (-) TimerEvent: {}
+[6.517432] (-) TimerEvent: {}
+[6.617838] (-) TimerEvent: {}
+[6.718317] (-) TimerEvent: {}
+[6.818711] (-) TimerEvent: {}
+[6.918945] (-) TimerEvent: {}
+[7.019184] (-) TimerEvent: {}
+[7.119408] (-) TimerEvent: {}
+[7.219609] (-) TimerEvent: {}
+[7.319871] (-) TimerEvent: {}
+[7.420133] (-) TimerEvent: {}
+[7.520329] (-) TimerEvent: {}
+[7.620573] (-) TimerEvent: {}
+[7.720806] (-) TimerEvent: {}
+[7.821053] (-) TimerEvent: {}
+[7.921370] (-) TimerEvent: {}
+[8.021780] (-) TimerEvent: {}
+[8.052738] (stereo_image_proc) StdoutLine: {'line': b'[ 75%] \x1b[32m\x1b[1mLinking CXX shared library libstereo_image_proc.so\x1b[0m\n'}
+[8.121945] (-) TimerEvent: {}
+[8.222350] (-) TimerEvent: {}
+[8.322610] (-) TimerEvent: {}
+[8.422886] (-) TimerEvent: {}
+[8.523141] (-) TimerEvent: {}
+[8.623406] (-) TimerEvent: {}
+[8.723656] (-) TimerEvent: {}
+[8.823910] (-) TimerEvent: {}
+[8.924150] (-) TimerEvent: {}
+[8.969124] (stereo_image_proc) StdoutLine: {'line': b'[100%] Built target stereo_image_proc\n'}
+[8.980895] (stereo_image_proc) CommandEnded: {'returncode': 0}
+[9.017310] (stereo_image_proc) JobProgress: {'identifier': 'stereo_image_proc', 'progress': 'install'}
+[9.024240] (-) TimerEvent: {}
+[9.040752] (stereo_image_proc) Command: {'cmd': ['/home/corelab/.local/bin/cmake', '--install', '/home/corelab/ros2_stereo/build/stereo_image_proc'], 'cwd': '/home/corelab/ros2_stereo/build/stereo_image_proc', 'env': OrderedDict([('MALIPUT_MALIDRIVE_RESOURCE_ROOT', '/opt/ros/foxy/share/maliput_malidrive'), ('MALIPUT_VIZ_GUI_PLUGINS', '/opt/ros/foxy/lib/gui_plugins'), ('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('LANGUAGE', 'en_US'), ('GURUMDDS_HOME', '/usr/share/gurumdds/cmake/../../..'), ('USER', 'corelab'), ('MULTILANE_RESOURCE_ROOT', '/opt/ros/foxy/share/maliput_multilane'), ('SSH_AGENT_PID', '2037'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/corelab/ros2_stereo/install/yolo_msgs/lib:/home/corelab/ros2_stereo/install/image_proc/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/opt/libphidget22/lib:/usr/share/gurumdds/cmake/../../../lib:/opt/rti.com/rti_connext_dds-5.3.1/lib/x64Linux3gcc5.4.0:/opt/ros/foxy/lib'), ('HOME', '/home/corelab'), ('OLDPWD', '/home/corelab'), ('DESKTOP_SESSION', 'ubuntu'), ('GIO_LAUNCHED_DESKTOP_FILE', '/usr/share/applications/terminator.desktop'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('MALIPUT_VIZ_RESOURCE_ROOT', '/opt/ros/foxy/share/maliput_viz'), ('XDG_SEAT_PATH', '/org/freedesktop/DisplayManager/Seat0'), ('NDDSHOME', '/opt/rti.com/rti_connext_dds-5.3.1'), ('MANAGERPID', '1885'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('TERMINATOR_DBUS_NAME', 'net.tenshu.Terminator21a9d5db22c73a993ff0b42f64b396873'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '3912'), ('_colcon_cd_root', '/opt/ros/foxy/'), ('MANDATORY_PATH', '/usr/share/gconf/ubuntu.mandatory.path'), ('IM_CONFIG_PHASE', '1'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'corelab'), ('JOURNAL_STREAM', '8:54415'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('DEFAULTS_PATH', '/usr/share/gconf/ubuntu.default.path'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/home/corelab/ros2_stereo/install/image_proc/bin:/opt/ros/foxy/bin/maliput_malidrive/applications:/opt/ros/foxy/bin/maliput_malidrive:/opt/rti.com/rti_connext_dds-5.3.1/lib/x64Linux3gcc5.4.0:/opt/rti.com/rti_connext_dds-5.3.1/bin:/opt/ros/foxy/bin:/home/corelab/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('SESSION_MANAGER', 'local/corelab-steve:@/tmp/.ICE-unix/2072,unix/corelab-steve:/tmp/.ICE-unix/2072'), ('GDM_LANG', 'en_US'), ('INVOCATION_ID', 'c350e6bdd9d049829a82905b0ba6ca56'), ('XDG_SESSION_PATH', '/org/freedesktop/DisplayManager/Session0'), ('XDG_MENU_PREFIX', 'gnome-'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('TERMINATOR_DBUS_PATH', '/net/tenshu/Terminator2'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/home/corelab/.Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('XDG_GREETER_DATA_DIR', '/var/lib/lightdm-data/corelab'), ('AMENT_PREFIX_PATH', '/home/corelab/ros2_stereo/install/yolo_msgs:/home/corelab/ros2_stereo/install/image_proc:/opt/ros/foxy'), ('SHELL', '/bin/bash'), ('TERMINATOR_UUID', 'urn:uuid:d751ed23-9de7-40ca-9d07-d4462fad66e4'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('ASAN_OPTIONS', ':detect_odr_violation=0::detect_odr_violation=0:detect_odr_violation=0::detect_odr_violation=0::detect_odr_violation=0:detect_odr_violation=0:detect_odr_violation=0'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/corelab/ros2_stereo/build/stereo_image_proc'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('MALIPUT_PLUGIN_PATH', '/opt/ros/foxy/lib/maliput_plugins'), ('PYTHONPATH', '/home/corelab/ros2_stereo/install/yolo_msgs/lib/python3.8/site-packages:/opt/ros/foxy/lib/python/site-packages:/opt/ros/foxy/lib/python3.8/site-packages'), ('COLCON', '1'), ('VTE_VERSION', '6003'), ('MALIPUT_OSM_RESOURCE_ROOT', '/opt/ros/foxy/share/maliput_osm'), ('CMAKE_PREFIX_PATH', '/home/corelab/ros2_stereo/install/yolo_msgs:/home/corelab/ros2_stereo/install/image_proc:/opt/ros/foxy')]), 'shell': False}
+[9.062323] (stereo_image_proc) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[9.062684] (stereo_image_proc) StdoutLine: {'line': b'-- Up-to-date: /home/corelab/ros2_stereo/install/stereo_image_proc/lib/stereo_image_proc/disparity_node\n'}
+[9.062746] (stereo_image_proc) StdoutLine: {'line': b'-- Up-to-date: /home/corelab/ros2_stereo/install/stereo_image_proc/lib/stereo_image_proc/point_cloud_node\n'}
+[9.062783] (stereo_image_proc) StdoutLine: {'line': b'-- Up-to-date: /home/corelab/ros2_stereo/install/stereo_image_proc/include\n'}
+[9.062820] (stereo_image_proc) StdoutLine: {'line': b'-- Up-to-date: /home/corelab/ros2_stereo/install/stereo_image_proc/include/stereo_image_proc\n'}
+[9.062855] (stereo_image_proc) StdoutLine: {'line': b'-- Up-to-date: /home/corelab/ros2_stereo/install/stereo_image_proc/include/stereo_image_proc/stereo_processor.hpp\n'}
+[9.062890] (stereo_image_proc) StdoutLine: {'line': b'-- Up-to-date: /home/corelab/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/environment/library_path.sh\n'}
+[9.062925] (stereo_image_proc) StdoutLine: {'line': b'-- Up-to-date: /home/corelab/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/environment/library_path.dsv\n'}
+[9.062959] (stereo_image_proc) StdoutLine: {'line': b'-- Installing: /home/corelab/ros2_stereo/install/stereo_image_proc/lib/libstereo_image_proc.so\n'}
+[9.069497] (stereo_image_proc) StdoutLine: {'line': b'-- Set runtime path of "/home/corelab/ros2_stereo/install/stereo_image_proc/lib/libstereo_image_proc.so" to ""\n'}
+[9.069609] (stereo_image_proc) StdoutLine: {'line': b'-- Up-to-date: /home/corelab/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/launch\n'}
+[9.069651] (stereo_image_proc) StdoutLine: {'line': b'-- Up-to-date: /home/corelab/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/launch/stereo_image_proc.launch.py\n'}
+[9.069689] (stereo_image_proc) StdoutLine: {'line': b'-- Up-to-date: /home/corelab/ros2_stereo/install/stereo_image_proc/share/ament_index/resource_index/package_run_dependencies/stereo_image_proc\n'}
+[9.069724] (stereo_image_proc) StdoutLine: {'line': b'-- Up-to-date: /home/corelab/ros2_stereo/install/stereo_image_proc/share/ament_index/resource_index/parent_prefix_path/stereo_image_proc\n'}
+[9.069758] (stereo_image_proc) StdoutLine: {'line': b'-- Up-to-date: /home/corelab/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/environment/ament_prefix_path.sh\n'}
+[9.069793] (stereo_image_proc) StdoutLine: {'line': b'-- Up-to-date: /home/corelab/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/environment/ament_prefix_path.dsv\n'}
+[9.069827] (stereo_image_proc) StdoutLine: {'line': b'-- Up-to-date: /home/corelab/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/environment/path.sh\n'}
+[9.069872] (stereo_image_proc) StdoutLine: {'line': b'-- Up-to-date: /home/corelab/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/environment/path.dsv\n'}
+[9.069907] (stereo_image_proc) StdoutLine: {'line': b'-- Up-to-date: /home/corelab/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/local_setup.bash\n'}
+[9.069941] (stereo_image_proc) StdoutLine: {'line': b'-- Up-to-date: /home/corelab/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/local_setup.sh\n'}
+[9.069975] (stereo_image_proc) StdoutLine: {'line': b'-- Up-to-date: /home/corelab/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/local_setup.zsh\n'}
+[9.070036] (stereo_image_proc) StdoutLine: {'line': b'-- Up-to-date: /home/corelab/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/local_setup.dsv\n'}
+[9.070072] (stereo_image_proc) StdoutLine: {'line': b'-- Installing: /home/corelab/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/package.dsv\n'}
+[9.070105] (stereo_image_proc) StdoutLine: {'line': b'-- Up-to-date: /home/corelab/ros2_stereo/install/stereo_image_proc/share/ament_index/resource_index/packages/stereo_image_proc\n'}
+[9.070137] (stereo_image_proc) StdoutLine: {'line': b'-- Up-to-date: /home/corelab/ros2_stereo/install/stereo_image_proc/share/ament_index/resource_index/rclcpp_components/stereo_image_proc\n'}
+[9.070176] (stereo_image_proc) StdoutLine: {'line': b'-- Up-to-date: /home/corelab/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/cmake/ament_cmake_export_dependencies-extras.cmake\n'}
+[9.070209] (stereo_image_proc) StdoutLine: {'line': b'-- Up-to-date: /home/corelab/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[9.070246] (stereo_image_proc) StdoutLine: {'line': b'-- Up-to-date: /home/corelab/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/cmake/ament_cmake_export_libraries-extras.cmake\n'}
+[9.070284] (stereo_image_proc) StdoutLine: {'line': b'-- Up-to-date: /home/corelab/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/cmake/stereo_image_procConfig.cmake\n'}
+[9.070317] (stereo_image_proc) StdoutLine: {'line': b'-- Up-to-date: /home/corelab/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/cmake/stereo_image_procConfig-version.cmake\n'}
+[9.070351] (stereo_image_proc) StdoutLine: {'line': b'-- Up-to-date: /home/corelab/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/package.xml\n'}
+[9.073061] (stereo_image_proc) CommandEnded: {'returncode': 0}
+[9.124395] (-) TimerEvent: {}
+[9.130879] (stereo_image_proc) JobEnded: {'identifier': 'stereo_image_proc', 'rc': 0}
+[9.131395] (-) EventReactorShutdown: {}

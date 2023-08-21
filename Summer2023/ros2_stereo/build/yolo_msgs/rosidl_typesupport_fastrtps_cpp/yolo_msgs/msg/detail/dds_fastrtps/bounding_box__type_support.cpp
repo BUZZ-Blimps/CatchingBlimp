@@ -16,6 +16,29 @@
 
 
 // forward declaration of message dependencies and their conversion functions
+namespace std_msgs
+{
+namespace msg
+{
+namespace typesupport_fastrtps_cpp
+{
+bool cdr_serialize(
+  const std_msgs::msg::Header &,
+  eprosima::fastcdr::Cdr &);
+bool cdr_deserialize(
+  eprosima::fastcdr::Cdr &,
+  std_msgs::msg::Header &);
+size_t get_serialized_size(
+  const std_msgs::msg::Header &,
+  size_t current_alignment);
+size_t
+max_serialized_size_Header(
+  bool & full_bounded,
+  size_t current_alignment);
+}  // namespace typesupport_fastrtps_cpp
+}  // namespace msg
+}  // namespace std_msgs
+
 
 namespace yolo_msgs
 {
@@ -32,20 +55,34 @@ cdr_serialize(
   const yolo_msgs::msg::BoundingBox & ros_message,
   eprosima::fastcdr::Cdr & cdr)
 {
-  // Member: probability
-  cdr << ros_message.probability;
-  // Member: x_center
-  cdr << ros_message.x_center;
-  // Member: y_center
-  cdr << ros_message.y_center;
-  // Member: width
-  cdr << ros_message.width;
-  // Member: height
-  cdr << ros_message.height;
-  // Member: track_id
-  cdr << ros_message.track_id;
-  // Member: class_id
-  cdr << ros_message.class_id;
+  // Member: header
+  std_msgs::msg::typesupport_fastrtps_cpp::cdr_serialize(
+    ros_message.header,
+    cdr);
+  // Member: x_center_balloon
+  cdr << ros_message.x_center_balloon;
+  // Member: y_center_balloon
+  cdr << ros_message.y_center_balloon;
+  // Member: width_balloon
+  cdr << ros_message.width_balloon;
+  // Member: height_balloon
+  cdr << ros_message.height_balloon;
+  // Member: x_center_y_goal
+  cdr << ros_message.x_center_y_goal;
+  // Member: y_center_y_goal
+  cdr << ros_message.y_center_y_goal;
+  // Member: width_y_goal
+  cdr << ros_message.width_y_goal;
+  // Member: height_y_goal
+  cdr << ros_message.height_y_goal;
+  // Member: x_center_o_goal
+  cdr << ros_message.x_center_o_goal;
+  // Member: y_center_o_goal
+  cdr << ros_message.y_center_o_goal;
+  // Member: width_o_goal
+  cdr << ros_message.width_o_goal;
+  // Member: height_o_goal
+  cdr << ros_message.height_o_goal;
   return true;
 }
 
@@ -55,26 +92,45 @@ cdr_deserialize(
   eprosima::fastcdr::Cdr & cdr,
   yolo_msgs::msg::BoundingBox & ros_message)
 {
-  // Member: probability
-  cdr >> ros_message.probability;
+  // Member: header
+  std_msgs::msg::typesupport_fastrtps_cpp::cdr_deserialize(
+    cdr, ros_message.header);
 
-  // Member: x_center
-  cdr >> ros_message.x_center;
+  // Member: x_center_balloon
+  cdr >> ros_message.x_center_balloon;
 
-  // Member: y_center
-  cdr >> ros_message.y_center;
+  // Member: y_center_balloon
+  cdr >> ros_message.y_center_balloon;
 
-  // Member: width
-  cdr >> ros_message.width;
+  // Member: width_balloon
+  cdr >> ros_message.width_balloon;
 
-  // Member: height
-  cdr >> ros_message.height;
+  // Member: height_balloon
+  cdr >> ros_message.height_balloon;
 
-  // Member: track_id
-  cdr >> ros_message.track_id;
+  // Member: x_center_y_goal
+  cdr >> ros_message.x_center_y_goal;
 
-  // Member: class_id
-  cdr >> ros_message.class_id;
+  // Member: y_center_y_goal
+  cdr >> ros_message.y_center_y_goal;
+
+  // Member: width_y_goal
+  cdr >> ros_message.width_y_goal;
+
+  // Member: height_y_goal
+  cdr >> ros_message.height_y_goal;
+
+  // Member: x_center_o_goal
+  cdr >> ros_message.x_center_o_goal;
+
+  // Member: y_center_o_goal
+  cdr >> ros_message.y_center_o_goal;
+
+  // Member: width_o_goal
+  cdr >> ros_message.width_o_goal;
+
+  // Member: height_o_goal
+  cdr >> ros_message.height_o_goal;
 
   return true;
 }
@@ -92,45 +148,80 @@ get_serialized_size(
   (void)padding;
   (void)wchar_size;
 
-  // Member: probability
+  // Member: header
+
+  current_alignment +=
+    std_msgs::msg::typesupport_fastrtps_cpp::get_serialized_size(
+    ros_message.header, current_alignment);
+  // Member: x_center_balloon
   {
-    size_t item_size = sizeof(ros_message.probability);
+    size_t item_size = sizeof(ros_message.x_center_balloon);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
-  // Member: x_center
+  // Member: y_center_balloon
   {
-    size_t item_size = sizeof(ros_message.x_center);
+    size_t item_size = sizeof(ros_message.y_center_balloon);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
-  // Member: y_center
+  // Member: width_balloon
   {
-    size_t item_size = sizeof(ros_message.y_center);
+    size_t item_size = sizeof(ros_message.width_balloon);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
-  // Member: width
+  // Member: height_balloon
   {
-    size_t item_size = sizeof(ros_message.width);
+    size_t item_size = sizeof(ros_message.height_balloon);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
-  // Member: height
+  // Member: x_center_y_goal
   {
-    size_t item_size = sizeof(ros_message.height);
+    size_t item_size = sizeof(ros_message.x_center_y_goal);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
-  // Member: track_id
+  // Member: y_center_y_goal
   {
-    size_t item_size = sizeof(ros_message.track_id);
+    size_t item_size = sizeof(ros_message.y_center_y_goal);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
-  // Member: class_id
+  // Member: width_y_goal
   {
-    size_t item_size = sizeof(ros_message.class_id);
+    size_t item_size = sizeof(ros_message.width_y_goal);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // Member: height_y_goal
+  {
+    size_t item_size = sizeof(ros_message.height_y_goal);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // Member: x_center_o_goal
+  {
+    size_t item_size = sizeof(ros_message.x_center_o_goal);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // Member: y_center_o_goal
+  {
+    size_t item_size = sizeof(ros_message.y_center_o_goal);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // Member: width_o_goal
+  {
+    size_t item_size = sizeof(ros_message.width_o_goal);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // Member: height_o_goal
+  {
+    size_t item_size = sizeof(ros_message.height_o_goal);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
@@ -153,7 +244,19 @@ max_serialized_size_BoundingBox(
   (void)full_bounded;
 
 
-  // Member: probability
+  // Member: header
+  {
+    size_t array_size = 1;
+
+
+    for (size_t index = 0; index < array_size; ++index) {
+      current_alignment +=
+        std_msgs::msg::typesupport_fastrtps_cpp::max_serialized_size_Header(
+        full_bounded, current_alignment);
+    }
+  }
+
+  // Member: x_center_balloon
   {
     size_t array_size = 1;
 
@@ -161,7 +264,7 @@ max_serialized_size_BoundingBox(
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
   }
 
-  // Member: x_center
+  // Member: y_center_balloon
   {
     size_t array_size = 1;
 
@@ -169,7 +272,7 @@ max_serialized_size_BoundingBox(
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
   }
 
-  // Member: y_center
+  // Member: width_balloon
   {
     size_t array_size = 1;
 
@@ -177,7 +280,7 @@ max_serialized_size_BoundingBox(
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
   }
 
-  // Member: width
+  // Member: height_balloon
   {
     size_t array_size = 1;
 
@@ -185,7 +288,7 @@ max_serialized_size_BoundingBox(
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
   }
 
-  // Member: height
+  // Member: x_center_y_goal
   {
     size_t array_size = 1;
 
@@ -193,20 +296,60 @@ max_serialized_size_BoundingBox(
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
   }
 
-  // Member: track_id
+  // Member: y_center_y_goal
   {
     size_t array_size = 1;
 
-    current_alignment += array_size * sizeof(uint16_t) +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint16_t));
+    current_alignment += array_size * sizeof(uint64_t) +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
   }
 
-  // Member: class_id
+  // Member: width_y_goal
   {
     size_t array_size = 1;
 
-    current_alignment += array_size * sizeof(uint16_t) +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint16_t));
+    current_alignment += array_size * sizeof(uint64_t) +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
+  }
+
+  // Member: height_y_goal
+  {
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint64_t) +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
+  }
+
+  // Member: x_center_o_goal
+  {
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint64_t) +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
+  }
+
+  // Member: y_center_o_goal
+  {
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint64_t) +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
+  }
+
+  // Member: width_o_goal
+  {
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint64_t) +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
+  }
+
+  // Member: height_o_goal
+  {
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint64_t) +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
   }
 
   return current_alignment - initial_alignment;

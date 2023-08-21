@@ -9,8 +9,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef BoundingBox__279539174_h
-#define BoundingBox__279539174_h
+#ifndef BoundingBox__279539451_h
+#define BoundingBox__279539451_h
 
 #ifndef NDDS_STANDALONE_TYPE
 #ifndef ndds_cpp_h
@@ -20,6 +20,7 @@ or consult the RTI Connext manual.
 #include "ndds_standalone_type.h"
 #endif
 
+#include "std_msgs/msg/dds_connext/Header_.h"
 namespace yolo_msgs {
     namespace msg {
         namespace dds_ {
@@ -43,13 +44,19 @@ namespace yolo_msgs {
                 typedef BoundingBox_DataReader DataReader;
                 #endif
 
-                DDS_Double   probability_ ;
-                DDS_LongLong   x_center_ ;
-                DDS_LongLong   y_center_ ;
-                DDS_LongLong   width_ ;
-                DDS_LongLong   height_ ;
-                DDS_Short   track_id_ ;
-                DDS_Short   class_id_ ;
+                std_msgs::msg::dds_::Header_   header_ ;
+                DDS_LongLong   x_center_balloon_ ;
+                DDS_LongLong   y_center_balloon_ ;
+                DDS_LongLong   width_balloon_ ;
+                DDS_LongLong   height_balloon_ ;
+                DDS_LongLong   x_center_y_goal_ ;
+                DDS_LongLong   y_center_y_goal_ ;
+                DDS_LongLong   width_y_goal_ ;
+                DDS_LongLong   height_y_goal_ ;
+                DDS_LongLong   x_center_o_goal_ ;
+                DDS_LongLong   y_center_o_goal_ ;
+                DDS_LongLong   width_o_goal_ ;
+                DDS_LongLong   height_o_goal_ ;
 
             };
             #if (defined(RTI_WIN32) || defined (RTI_WINCE)) && defined(NDDS_USER_DLL_EXPORT)

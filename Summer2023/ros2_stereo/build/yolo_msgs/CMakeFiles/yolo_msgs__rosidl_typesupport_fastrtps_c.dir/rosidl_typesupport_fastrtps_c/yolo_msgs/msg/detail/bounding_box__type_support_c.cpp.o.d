@@ -175,6 +175,11 @@ CMakeFiles/yolo_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastr
  /usr/include/c++/9/bits/ostream.tcc /usr/include/c++/9/istream \
  /usr/include/c++/9/bits/istream.tcc /usr/include/malloc.h \
  /home/corelab/ros2_stereo/build/yolo_msgs/rosidl_generator_c/yolo_msgs/msg/detail/bounding_box__struct.h \
+ /opt/ros/foxy/include/std_msgs/msg/detail/header__struct.h \
+ /opt/ros/foxy/include/builtin_interfaces/msg/detail/time__struct.h \
+ /opt/ros/foxy/include/rosidl_runtime_c/string.h \
  /home/corelab/ros2_stereo/build/yolo_msgs/rosidl_generator_c/yolo_msgs/msg/detail/bounding_box__functions.h \
  /usr/include/c++/9/stdlib.h \
- /home/corelab/ros2_stereo/build/yolo_msgs/rosidl_generator_c/yolo_msgs/msg/rosidl_generator_c__visibility_control.h
+ /home/corelab/ros2_stereo/build/yolo_msgs/rosidl_generator_c/yolo_msgs/msg/rosidl_generator_c__visibility_control.h \
+ /opt/ros/foxy/include/std_msgs/msg/detail/header__functions.h \
+ /opt/ros/foxy/include/std_msgs/msg/rosidl_generator_c__visibility_control.h

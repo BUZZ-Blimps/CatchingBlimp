@@ -1,6 +1,6 @@
 # generated from ament_cmake_export_dependencies/cmake/ament_cmake_export_dependencies-extras.cmake.in
 
-set(_exported_dependencies "cv_bridge;image_geometry;image_proc;image_transport;message_filters;rclcpp;rclcpp_components;sensor_msgs;stereo_msgs;yolo_msgs")
+set(_exported_dependencies "cv_bridge;image_geometry;image_proc;image_transport;message_filters;rclcpp;rclcpp_components;sensor_msgs;stereo_msgs;std_msgs;yolo_msgs")
 
 find_package(ament_cmake_libraries QUIET REQUIRED)
 

@@ -37,16 +37,16 @@ void BoundingBox_fini_function(void * message_memory)
   typed_message->~BoundingBox();
 }
 
-static const ::rosidl_typesupport_introspection_cpp::MessageMember BoundingBox_message_member_array[7] = {
+static const ::rosidl_typesupport_introspection_cpp::MessageMember BoundingBox_message_member_array[13] = {
   {
-    "probability",  // name
-    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_DOUBLE,  // type
+    "header",  // name
+    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_MESSAGE,  // type
     0,  // upper bound of string
-    nullptr,  // members of sub message
+    ::rosidl_typesupport_introspection_cpp::get_message_type_support_handle<std_msgs::msg::Header>(),  // members of sub message
     false,  // is array
     0,  // array size
     false,  // is upper bound
-    offsetof(yolo_msgs::msg::BoundingBox, probability),  // bytes offset in struct
+    offsetof(yolo_msgs::msg::BoundingBox, header),  // bytes offset in struct
     nullptr,  // default value
     nullptr,  // size() function pointer
     nullptr,  // get_const(index) function pointer
@@ -54,14 +54,14 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember BoundingBox_m
     nullptr  // resize(index) function pointer
   },
   {
-    "x_center",  // name
+    "x_center_balloon",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_INT64,  // type
     0,  // upper bound of string
     nullptr,  // members of sub message
     false,  // is array
     0,  // array size
     false,  // is upper bound
-    offsetof(yolo_msgs::msg::BoundingBox, x_center),  // bytes offset in struct
+    offsetof(yolo_msgs::msg::BoundingBox, x_center_balloon),  // bytes offset in struct
     nullptr,  // default value
     nullptr,  // size() function pointer
     nullptr,  // get_const(index) function pointer
@@ -69,14 +69,14 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember BoundingBox_m
     nullptr  // resize(index) function pointer
   },
   {
-    "y_center",  // name
+    "y_center_balloon",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_INT64,  // type
     0,  // upper bound of string
     nullptr,  // members of sub message
     false,  // is array
     0,  // array size
     false,  // is upper bound
-    offsetof(yolo_msgs::msg::BoundingBox, y_center),  // bytes offset in struct
+    offsetof(yolo_msgs::msg::BoundingBox, y_center_balloon),  // bytes offset in struct
     nullptr,  // default value
     nullptr,  // size() function pointer
     nullptr,  // get_const(index) function pointer
@@ -84,14 +84,14 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember BoundingBox_m
     nullptr  // resize(index) function pointer
   },
   {
-    "width",  // name
+    "width_balloon",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_INT64,  // type
     0,  // upper bound of string
     nullptr,  // members of sub message
     false,  // is array
     0,  // array size
     false,  // is upper bound
-    offsetof(yolo_msgs::msg::BoundingBox, width),  // bytes offset in struct
+    offsetof(yolo_msgs::msg::BoundingBox, width_balloon),  // bytes offset in struct
     nullptr,  // default value
     nullptr,  // size() function pointer
     nullptr,  // get_const(index) function pointer
@@ -99,14 +99,14 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember BoundingBox_m
     nullptr  // resize(index) function pointer
   },
   {
-    "height",  // name
+    "height_balloon",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_INT64,  // type
     0,  // upper bound of string
     nullptr,  // members of sub message
     false,  // is array
     0,  // array size
     false,  // is upper bound
-    offsetof(yolo_msgs::msg::BoundingBox, height),  // bytes offset in struct
+    offsetof(yolo_msgs::msg::BoundingBox, height_balloon),  // bytes offset in struct
     nullptr,  // default value
     nullptr,  // size() function pointer
     nullptr,  // get_const(index) function pointer
@@ -114,14 +114,14 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember BoundingBox_m
     nullptr  // resize(index) function pointer
   },
   {
-    "track_id",  // name
-    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_INT16,  // type
+    "x_center_y_goal",  // name
+    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_INT64,  // type
     0,  // upper bound of string
     nullptr,  // members of sub message
     false,  // is array
     0,  // array size
     false,  // is upper bound
-    offsetof(yolo_msgs::msg::BoundingBox, track_id),  // bytes offset in struct
+    offsetof(yolo_msgs::msg::BoundingBox, x_center_y_goal),  // bytes offset in struct
     nullptr,  // default value
     nullptr,  // size() function pointer
     nullptr,  // get_const(index) function pointer
@@ -129,14 +129,104 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember BoundingBox_m
     nullptr  // resize(index) function pointer
   },
   {
-    "class_id",  // name
-    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_INT16,  // type
+    "y_center_y_goal",  // name
+    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_INT64,  // type
     0,  // upper bound of string
     nullptr,  // members of sub message
     false,  // is array
     0,  // array size
     false,  // is upper bound
-    offsetof(yolo_msgs::msg::BoundingBox, class_id),  // bytes offset in struct
+    offsetof(yolo_msgs::msg::BoundingBox, y_center_y_goal),  // bytes offset in struct
+    nullptr,  // default value
+    nullptr,  // size() function pointer
+    nullptr,  // get_const(index) function pointer
+    nullptr,  // get(index) function pointer
+    nullptr  // resize(index) function pointer
+  },
+  {
+    "width_y_goal",  // name
+    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_INT64,  // type
+    0,  // upper bound of string
+    nullptr,  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(yolo_msgs::msg::BoundingBox, width_y_goal),  // bytes offset in struct
+    nullptr,  // default value
+    nullptr,  // size() function pointer
+    nullptr,  // get_const(index) function pointer
+    nullptr,  // get(index) function pointer
+    nullptr  // resize(index) function pointer
+  },
+  {
+    "height_y_goal",  // name
+    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_INT64,  // type
+    0,  // upper bound of string
+    nullptr,  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(yolo_msgs::msg::BoundingBox, height_y_goal),  // bytes offset in struct
+    nullptr,  // default value
+    nullptr,  // size() function pointer
+    nullptr,  // get_const(index) function pointer
+    nullptr,  // get(index) function pointer
+    nullptr  // resize(index) function pointer
+  },
+  {
+    "x_center_o_goal",  // name
+    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_INT64,  // type
+    0,  // upper bound of string
+    nullptr,  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(yolo_msgs::msg::BoundingBox, x_center_o_goal),  // bytes offset in struct
+    nullptr,  // default value
+    nullptr,  // size() function pointer
+    nullptr,  // get_const(index) function pointer
+    nullptr,  // get(index) function pointer
+    nullptr  // resize(index) function pointer
+  },
+  {
+    "y_center_o_goal",  // name
+    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_INT64,  // type
+    0,  // upper bound of string
+    nullptr,  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(yolo_msgs::msg::BoundingBox, y_center_o_goal),  // bytes offset in struct
+    nullptr,  // default value
+    nullptr,  // size() function pointer
+    nullptr,  // get_const(index) function pointer
+    nullptr,  // get(index) function pointer
+    nullptr  // resize(index) function pointer
+  },
+  {
+    "width_o_goal",  // name
+    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_INT64,  // type
+    0,  // upper bound of string
+    nullptr,  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(yolo_msgs::msg::BoundingBox, width_o_goal),  // bytes offset in struct
+    nullptr,  // default value
+    nullptr,  // size() function pointer
+    nullptr,  // get_const(index) function pointer
+    nullptr,  // get(index) function pointer
+    nullptr  // resize(index) function pointer
+  },
+  {
+    "height_o_goal",  // name
+    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_INT64,  // type
+    0,  // upper bound of string
+    nullptr,  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(yolo_msgs::msg::BoundingBox, height_o_goal),  // bytes offset in struct
     nullptr,  // default value
     nullptr,  // size() function pointer
     nullptr,  // get_const(index) function pointer
@@ -148,7 +238,7 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember BoundingBox_m
 static const ::rosidl_typesupport_introspection_cpp::MessageMembers BoundingBox_message_members = {
   "yolo_msgs::msg",  // message namespace
   "BoundingBox",  // message name
-  7,  // number of fields
+  13,  // number of fields
   sizeof(yolo_msgs::msg::BoundingBox),
   BoundingBox_message_member_array,  // message members
   BoundingBox_init_function,  // function to initialize message memory (memory has to be allocated)

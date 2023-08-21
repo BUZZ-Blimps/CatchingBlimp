@@ -167,26 +167,44 @@ namespace yolo_msgs {
                     return;
                 }
 
-                RTICdrType_printDouble(
-                    &sample->probability_, "probability_", indent_level + 1);    
+                std_msgs::msg::dds_::Header_PluginSupport_print_data(
+                    (const std_msgs::msg::dds_::Header_*) &sample->header_, "header_", indent_level + 1);
 
                 RTICdrType_printLongLong(
-                    &sample->x_center_, "x_center_", indent_level + 1);    
+                    &sample->x_center_balloon_, "x_center_balloon_", indent_level + 1);    
 
                 RTICdrType_printLongLong(
-                    &sample->y_center_, "y_center_", indent_level + 1);    
+                    &sample->y_center_balloon_, "y_center_balloon_", indent_level + 1);    
 
                 RTICdrType_printLongLong(
-                    &sample->width_, "width_", indent_level + 1);    
+                    &sample->width_balloon_, "width_balloon_", indent_level + 1);    
 
                 RTICdrType_printLongLong(
-                    &sample->height_, "height_", indent_level + 1);    
+                    &sample->height_balloon_, "height_balloon_", indent_level + 1);    
 
-                RTICdrType_printShort(
-                    &sample->track_id_, "track_id_", indent_level + 1);    
+                RTICdrType_printLongLong(
+                    &sample->x_center_y_goal_, "x_center_y_goal_", indent_level + 1);    
 
-                RTICdrType_printShort(
-                    &sample->class_id_, "class_id_", indent_level + 1);    
+                RTICdrType_printLongLong(
+                    &sample->y_center_y_goal_, "y_center_y_goal_", indent_level + 1);    
+
+                RTICdrType_printLongLong(
+                    &sample->width_y_goal_, "width_y_goal_", indent_level + 1);    
+
+                RTICdrType_printLongLong(
+                    &sample->height_y_goal_, "height_y_goal_", indent_level + 1);    
+
+                RTICdrType_printLongLong(
+                    &sample->x_center_o_goal_, "x_center_o_goal_", indent_level + 1);    
+
+                RTICdrType_printLongLong(
+                    &sample->y_center_o_goal_, "y_center_o_goal_", indent_level + 1);    
+
+                RTICdrType_printLongLong(
+                    &sample->width_o_goal_, "width_o_goal_", indent_level + 1);    
+
+                RTICdrType_printLongLong(
+                    &sample->height_o_goal_, "height_o_goal_", indent_level + 1);    
 
             }
 
@@ -336,38 +354,73 @@ namespace yolo_msgs {
 
                 if(serialize_sample) {
 
-                    if (!RTICdrStream_serializeDouble(
-                        stream, &sample->probability_)) {
+                    if(!std_msgs::msg::dds_::Header_Plugin_serialize(
+                        endpoint_data,
+                        (const std_msgs::msg::dds_::Header_*) &sample->header_,
+                        stream,
+                        RTI_FALSE, encapsulation_id,
+                        RTI_TRUE,
+                        endpoint_plugin_qos)) {
                         return RTI_FALSE;
                     }
 
                     if (!RTICdrStream_serializeLongLong(
-                        stream, &sample->x_center_)) {
+                        stream, &sample->x_center_balloon_)) {
                         return RTI_FALSE;
                     }
 
                     if (!RTICdrStream_serializeLongLong(
-                        stream, &sample->y_center_)) {
+                        stream, &sample->y_center_balloon_)) {
                         return RTI_FALSE;
                     }
 
                     if (!RTICdrStream_serializeLongLong(
-                        stream, &sample->width_)) {
+                        stream, &sample->width_balloon_)) {
                         return RTI_FALSE;
                     }
 
                     if (!RTICdrStream_serializeLongLong(
-                        stream, &sample->height_)) {
+                        stream, &sample->height_balloon_)) {
                         return RTI_FALSE;
                     }
 
-                    if (!RTICdrStream_serializeShort(
-                        stream, &sample->track_id_)) {
+                    if (!RTICdrStream_serializeLongLong(
+                        stream, &sample->x_center_y_goal_)) {
                         return RTI_FALSE;
                     }
 
-                    if (!RTICdrStream_serializeShort(
-                        stream, &sample->class_id_)) {
+                    if (!RTICdrStream_serializeLongLong(
+                        stream, &sample->y_center_y_goal_)) {
+                        return RTI_FALSE;
+                    }
+
+                    if (!RTICdrStream_serializeLongLong(
+                        stream, &sample->width_y_goal_)) {
+                        return RTI_FALSE;
+                    }
+
+                    if (!RTICdrStream_serializeLongLong(
+                        stream, &sample->height_y_goal_)) {
+                        return RTI_FALSE;
+                    }
+
+                    if (!RTICdrStream_serializeLongLong(
+                        stream, &sample->x_center_o_goal_)) {
+                        return RTI_FALSE;
+                    }
+
+                    if (!RTICdrStream_serializeLongLong(
+                        stream, &sample->y_center_o_goal_)) {
+                        return RTI_FALSE;
+                    }
+
+                    if (!RTICdrStream_serializeLongLong(
+                        stream, &sample->width_o_goal_)) {
+                        return RTI_FALSE;
+                    }
+
+                    if (!RTICdrStream_serializeLongLong(
+                        stream, &sample->height_o_goal_)) {
                         return RTI_FALSE;
                     }
 
@@ -410,32 +463,60 @@ namespace yolo_msgs {
 
                         yolo_msgs::msg::dds_::BoundingBox__initialize_ex(sample, RTI_FALSE, RTI_FALSE);
 
-                        if (!RTICdrStream_deserializeDouble(
-                            stream, &sample->probability_)) {
+                        if(!std_msgs::msg::dds_::Header_Plugin_deserialize_sample(
+                            endpoint_data,
+                            &sample->header_,
+                            stream,
+                            RTI_FALSE, RTI_TRUE,
+                            endpoint_plugin_qos)) {
                             goto fin; 
                         }
                         if (!RTICdrStream_deserializeLongLong(
-                            stream, &sample->x_center_)) {
+                            stream, &sample->x_center_balloon_)) {
                             goto fin; 
                         }
                         if (!RTICdrStream_deserializeLongLong(
-                            stream, &sample->y_center_)) {
+                            stream, &sample->y_center_balloon_)) {
                             goto fin; 
                         }
                         if (!RTICdrStream_deserializeLongLong(
-                            stream, &sample->width_)) {
+                            stream, &sample->width_balloon_)) {
                             goto fin; 
                         }
                         if (!RTICdrStream_deserializeLongLong(
-                            stream, &sample->height_)) {
+                            stream, &sample->height_balloon_)) {
                             goto fin; 
                         }
-                        if (!RTICdrStream_deserializeShort(
-                            stream, &sample->track_id_)) {
+                        if (!RTICdrStream_deserializeLongLong(
+                            stream, &sample->x_center_y_goal_)) {
                             goto fin; 
                         }
-                        if (!RTICdrStream_deserializeShort(
-                            stream, &sample->class_id_)) {
+                        if (!RTICdrStream_deserializeLongLong(
+                            stream, &sample->y_center_y_goal_)) {
+                            goto fin; 
+                        }
+                        if (!RTICdrStream_deserializeLongLong(
+                            stream, &sample->width_y_goal_)) {
+                            goto fin; 
+                        }
+                        if (!RTICdrStream_deserializeLongLong(
+                            stream, &sample->height_y_goal_)) {
+                            goto fin; 
+                        }
+                        if (!RTICdrStream_deserializeLongLong(
+                            stream, &sample->x_center_o_goal_)) {
+                            goto fin; 
+                        }
+                        if (!RTICdrStream_deserializeLongLong(
+                            stream, &sample->y_center_o_goal_)) {
+                            goto fin; 
+                        }
+                        if (!RTICdrStream_deserializeLongLong(
+                            stream, &sample->width_o_goal_)) {
+                            goto fin; 
+                        }
+                        if (!RTICdrStream_deserializeLongLong(
+                            stream, &sample->height_o_goal_)) {
                             goto fin; 
                         }
                     }
@@ -669,7 +750,11 @@ namespace yolo_msgs {
 
                 if (skip_sample) {
 
-                    if (!RTICdrStream_skipDouble (stream)) {
+                    if (!std_msgs::msg::dds_::Header_Plugin_skip(
+                        endpoint_data,
+                        stream, 
+                        RTI_FALSE, RTI_TRUE, 
+                        endpoint_plugin_qos)) {
                         goto fin; 
                     }
                     if (!RTICdrStream_skipLongLong (stream)) {
@@ -684,10 +769,28 @@ namespace yolo_msgs {
                     if (!RTICdrStream_skipLongLong (stream)) {
                         goto fin; 
                     }
-                    if (!RTICdrStream_skipShort (stream)) {
+                    if (!RTICdrStream_skipLongLong (stream)) {
                         goto fin; 
                     }
-                    if (!RTICdrStream_skipShort (stream)) {
+                    if (!RTICdrStream_skipLongLong (stream)) {
+                        goto fin; 
+                    }
+                    if (!RTICdrStream_skipLongLong (stream)) {
+                        goto fin; 
+                    }
+                    if (!RTICdrStream_skipLongLong (stream)) {
+                        goto fin; 
+                    }
+                    if (!RTICdrStream_skipLongLong (stream)) {
+                        goto fin; 
+                    }
+                    if (!RTICdrStream_skipLongLong (stream)) {
+                        goto fin; 
+                    }
+                    if (!RTICdrStream_skipLongLong (stream)) {
+                        goto fin; 
+                    }
+                    if (!RTICdrStream_skipLongLong (stream)) {
                         goto fin; 
                     }
                 }
@@ -719,9 +822,6 @@ namespace yolo_msgs {
 
                 unsigned int encapsulation_size = current_alignment;
 
-                if (endpoint_data) {} /* To avoid warnings */ 
-                if (overflow) {} /* To avoid warnings */
-
                 if (include_encapsulation) {
 
                     if (!RTICdrEncapsulation_validEncapsulationId(encapsulation_id)) {
@@ -733,7 +833,19 @@ namespace yolo_msgs {
                     initial_alignment = 0;
                 }
 
-                current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
+                current_alignment +=std_msgs::msg::dds_::Header_Plugin_get_serialized_sample_max_size_ex(
+                    endpoint_data, overflow, RTI_FALSE,encapsulation_id,current_alignment);
+
+                current_alignment +=RTICdrType_getLongLongMaxSizeSerialized(
+                    current_alignment);
+
+                current_alignment +=RTICdrType_getLongLongMaxSizeSerialized(
+                    current_alignment);
+
+                current_alignment +=RTICdrType_getLongLongMaxSizeSerialized(
+                    current_alignment);
+
+                current_alignment +=RTICdrType_getLongLongMaxSizeSerialized(
                     current_alignment);
 
                 current_alignment +=RTICdrType_getLongLongMaxSizeSerialized(
@@ -748,10 +860,16 @@ namespace yolo_msgs {
                 current_alignment +=RTICdrType_getLongLongMaxSizeSerialized(
                     current_alignment);
 
-                current_alignment +=RTICdrType_getShortMaxSizeSerialized(
+                current_alignment +=RTICdrType_getLongLongMaxSizeSerialized(
                     current_alignment);
 
-                current_alignment +=RTICdrType_getShortMaxSizeSerialized(
+                current_alignment +=RTICdrType_getLongLongMaxSizeSerialized(
+                    current_alignment);
+
+                current_alignment +=RTICdrType_getLongLongMaxSizeSerialized(
+                    current_alignment);
+
+                current_alignment +=RTICdrType_getLongLongMaxSizeSerialized(
                     current_alignment);
 
                 if (include_encapsulation) {
@@ -805,7 +923,15 @@ namespace yolo_msgs {
                     initial_alignment = 0;
                 }
 
-                current_alignment +=RTICdrType_getDoubleMaxSizeSerialized(
+                current_alignment +=std_msgs::msg::dds_::Header_Plugin_get_serialized_sample_min_size(
+                    endpoint_data,RTI_FALSE,encapsulation_id,current_alignment);
+                current_alignment +=RTICdrType_getLongLongMaxSizeSerialized(
+                    current_alignment);
+                current_alignment +=RTICdrType_getLongLongMaxSizeSerialized(
+                    current_alignment);
+                current_alignment +=RTICdrType_getLongLongMaxSizeSerialized(
+                    current_alignment);
+                current_alignment +=RTICdrType_getLongLongMaxSizeSerialized(
                     current_alignment);
                 current_alignment +=RTICdrType_getLongLongMaxSizeSerialized(
                     current_alignment);
@@ -815,9 +941,13 @@ namespace yolo_msgs {
                     current_alignment);
                 current_alignment +=RTICdrType_getLongLongMaxSizeSerialized(
                     current_alignment);
-                current_alignment +=RTICdrType_getShortMaxSizeSerialized(
+                current_alignment +=RTICdrType_getLongLongMaxSizeSerialized(
                     current_alignment);
-                current_alignment +=RTICdrType_getShortMaxSizeSerialized(
+                current_alignment +=RTICdrType_getLongLongMaxSizeSerialized(
+                    current_alignment);
+                current_alignment +=RTICdrType_getLongLongMaxSizeSerialized(
+                    current_alignment);
+                current_alignment +=RTICdrType_getLongLongMaxSizeSerialized(
                     current_alignment);
 
                 if (include_encapsulation) {
@@ -870,7 +1000,23 @@ namespace yolo_msgs {
                         current_alignment);
                 }
 
-                current_alignment += RTICdrType_getDoubleMaxSizeSerialized(
+                current_alignment += std_msgs::msg::dds_::Header_Plugin_get_serialized_sample_size(
+                    endpoint_data,RTI_FALSE, encapsulation_id,
+                    current_alignment, (const std_msgs::msg::dds_::Header_*) &sample->header_);
+
+                current_alignment += RTICdrType_getLongLongMaxSizeSerialized(
+                    PRESTypePluginDefaultEndpointData_getAlignment(
+                        endpoint_data, current_alignment));
+
+                current_alignment += RTICdrType_getLongLongMaxSizeSerialized(
+                    PRESTypePluginDefaultEndpointData_getAlignment(
+                        endpoint_data, current_alignment));
+
+                current_alignment += RTICdrType_getLongLongMaxSizeSerialized(
+                    PRESTypePluginDefaultEndpointData_getAlignment(
+                        endpoint_data, current_alignment));
+
+                current_alignment += RTICdrType_getLongLongMaxSizeSerialized(
                     PRESTypePluginDefaultEndpointData_getAlignment(
                         endpoint_data, current_alignment));
 
@@ -890,11 +1036,19 @@ namespace yolo_msgs {
                     PRESTypePluginDefaultEndpointData_getAlignment(
                         endpoint_data, current_alignment));
 
-                current_alignment += RTICdrType_getShortMaxSizeSerialized(
+                current_alignment += RTICdrType_getLongLongMaxSizeSerialized(
                     PRESTypePluginDefaultEndpointData_getAlignment(
                         endpoint_data, current_alignment));
 
-                current_alignment += RTICdrType_getShortMaxSizeSerialized(
+                current_alignment += RTICdrType_getLongLongMaxSizeSerialized(
+                    PRESTypePluginDefaultEndpointData_getAlignment(
+                        endpoint_data, current_alignment));
+
+                current_alignment += RTICdrType_getLongLongMaxSizeSerialized(
+                    PRESTypePluginDefaultEndpointData_getAlignment(
+                        endpoint_data, current_alignment));
+
+                current_alignment += RTICdrType_getLongLongMaxSizeSerialized(
                     PRESTypePluginDefaultEndpointData_getAlignment(
                         endpoint_data, current_alignment));
 

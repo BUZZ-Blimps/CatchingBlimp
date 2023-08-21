@@ -36,8 +36,20 @@ extern "C"
 {
 #endif
 
+// Include directives for member types
+// Member 'header'
+#include "std_msgs/msg/detail/header__struct.h"
+// Member 'header'
+#include "std_msgs/msg/detail/header__functions.h"
 
 // forward declare type support functions
+// Member 'header'
+ROSIDL_TYPESUPPORT_CONNEXT_C_IMPORT_yolo_msgs
+const rosidl_message_type_support_t *
+  ROSIDL_TYPESUPPORT_INTERFACE__MESSAGE_SYMBOL_NAME(
+  rosidl_typesupport_connext_c,
+  std_msgs, msg,
+  Header)();
 
 static DDS_TypeCode *
 _BoundingBox__get_type_code()
@@ -60,33 +72,66 @@ _BoundingBox__convert_ros_to_dds(const void * untyped_ros_message, void * untype
     static_cast<const yolo_msgs__msg__BoundingBox *>(untyped_ros_message);
   yolo_msgs::msg::dds_::BoundingBox_ * dds_message =
     static_cast<yolo_msgs::msg::dds_::BoundingBox_ *>(untyped_dds_message);
-  // Member name: probability
+  // Member name: header
   {
-    dds_message->probability_ = ros_message->probability;
+    const message_type_support_callbacks_t * std_msgs__msg__Header__callbacks =
+      static_cast<const message_type_support_callbacks_t *>(
+      ROSIDL_TYPESUPPORT_INTERFACE__MESSAGE_SYMBOL_NAME(
+        rosidl_typesupport_connext_c, std_msgs, msg, Header
+      )()->data);
+    if (!std_msgs__msg__Header__callbacks->convert_ros_to_dds(
+        &ros_message->header, &dds_message->header_))
+    {
+      return false;
+    }
   }
-  // Member name: x_center
+  // Member name: x_center_balloon
   {
-    dds_message->x_center_ = ros_message->x_center;
+    dds_message->x_center_balloon_ = ros_message->x_center_balloon;
   }
-  // Member name: y_center
+  // Member name: y_center_balloon
   {
-    dds_message->y_center_ = ros_message->y_center;
+    dds_message->y_center_balloon_ = ros_message->y_center_balloon;
   }
-  // Member name: width
+  // Member name: width_balloon
   {
-    dds_message->width_ = ros_message->width;
+    dds_message->width_balloon_ = ros_message->width_balloon;
   }
-  // Member name: height
+  // Member name: height_balloon
   {
-    dds_message->height_ = ros_message->height;
+    dds_message->height_balloon_ = ros_message->height_balloon;
   }
-  // Member name: track_id
+  // Member name: x_center_y_goal
   {
-    dds_message->track_id_ = ros_message->track_id;
+    dds_message->x_center_y_goal_ = ros_message->x_center_y_goal;
   }
-  // Member name: class_id
+  // Member name: y_center_y_goal
   {
-    dds_message->class_id_ = ros_message->class_id;
+    dds_message->y_center_y_goal_ = ros_message->y_center_y_goal;
+  }
+  // Member name: width_y_goal
+  {
+    dds_message->width_y_goal_ = ros_message->width_y_goal;
+  }
+  // Member name: height_y_goal
+  {
+    dds_message->height_y_goal_ = ros_message->height_y_goal;
+  }
+  // Member name: x_center_o_goal
+  {
+    dds_message->x_center_o_goal_ = ros_message->x_center_o_goal;
+  }
+  // Member name: y_center_o_goal
+  {
+    dds_message->y_center_o_goal_ = ros_message->y_center_o_goal;
+  }
+  // Member name: width_o_goal
+  {
+    dds_message->width_o_goal_ = ros_message->width_o_goal;
+  }
+  // Member name: height_o_goal
+  {
+    dds_message->height_o_goal_ = ros_message->height_o_goal;
   }
   return true;
 }
@@ -106,33 +151,64 @@ _BoundingBox__convert_dds_to_ros(const void * untyped_dds_message, void * untype
     static_cast<const yolo_msgs::msg::dds_::BoundingBox_ *>(untyped_dds_message);
   yolo_msgs__msg__BoundingBox * ros_message =
     static_cast<yolo_msgs__msg__BoundingBox *>(untyped_ros_message);
-  // Member name: probability
+  // Member name: header
   {
-    ros_message->probability = dds_message->probability_;
+    const rosidl_message_type_support_t * ts =
+      ROSIDL_TYPESUPPORT_INTERFACE__MESSAGE_SYMBOL_NAME(
+      rosidl_typesupport_connext_c,
+      std_msgs, msg,
+      Header)();
+    const message_type_support_callbacks_t * callbacks =
+      static_cast<const message_type_support_callbacks_t *>(ts->data);
+    callbacks->convert_dds_to_ros(&dds_message->header_, &ros_message->header);
   }
-  // Member name: x_center
+  // Member name: x_center_balloon
   {
-    ros_message->x_center = dds_message->x_center_;
+    ros_message->x_center_balloon = dds_message->x_center_balloon_;
   }
-  // Member name: y_center
+  // Member name: y_center_balloon
   {
-    ros_message->y_center = dds_message->y_center_;
+    ros_message->y_center_balloon = dds_message->y_center_balloon_;
   }
-  // Member name: width
+  // Member name: width_balloon
   {
-    ros_message->width = dds_message->width_;
+    ros_message->width_balloon = dds_message->width_balloon_;
   }
-  // Member name: height
+  // Member name: height_balloon
   {
-    ros_message->height = dds_message->height_;
+    ros_message->height_balloon = dds_message->height_balloon_;
   }
-  // Member name: track_id
+  // Member name: x_center_y_goal
   {
-    ros_message->track_id = dds_message->track_id_;
+    ros_message->x_center_y_goal = dds_message->x_center_y_goal_;
   }
-  // Member name: class_id
+  // Member name: y_center_y_goal
   {
-    ros_message->class_id = dds_message->class_id_;
+    ros_message->y_center_y_goal = dds_message->y_center_y_goal_;
+  }
+  // Member name: width_y_goal
+  {
+    ros_message->width_y_goal = dds_message->width_y_goal_;
+  }
+  // Member name: height_y_goal
+  {
+    ros_message->height_y_goal = dds_message->height_y_goal_;
+  }
+  // Member name: x_center_o_goal
+  {
+    ros_message->x_center_o_goal = dds_message->x_center_o_goal_;
+  }
+  // Member name: y_center_o_goal
+  {
+    ros_message->y_center_o_goal = dds_message->y_center_o_goal_;
+  }
+  // Member name: width_o_goal
+  {
+    ros_message->width_o_goal = dds_message->width_o_goal_;
+  }
+  // Member name: height_o_goal
+  {
+    ros_message->height_o_goal = dds_message->height_o_goal_;
   }
   return true;
 }

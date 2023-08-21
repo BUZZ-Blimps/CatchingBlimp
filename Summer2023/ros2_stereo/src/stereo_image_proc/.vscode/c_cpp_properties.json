@@ -6,7 +6,8 @@
                 "${workspaceFolder}/**",
                 "/opt/ros/foxy/include",
                 "/usr/local/include/opencv4",
-                "/home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg"
+                "/home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg",
+                "/home/corelab/ros2_stereo/install/yolo_msgs/include"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/clang-10",

@@ -1,6 +1,7 @@
 // generated from rosidl_generator_dds_idl/resource/idl.idl.em
 // with input from yolo_msgs:msg/BoundingBox.idl
 // generated code does not contain a copyright notice
+#include "std_msgs/msg/dds_connext/Header_.idl"
 
 #ifndef __yolo_msgs__msg__bounding_box__idl__
 #define __yolo_msgs__msg__bounding_box__idl__
@@ -14,13 +15,19 @@ module dds_ {
 
 
 struct BoundingBox_ {
-double probability_;
-long long x_center_;
-long long y_center_;
-long long width_;
-long long height_;
-short track_id_;
-short class_id_;
+std_msgs::msg::dds_::Header_ header_;
+long long x_center_balloon_;
+long long y_center_balloon_;
+long long width_balloon_;
+long long height_balloon_;
+long long x_center_y_goal_;
+long long y_center_y_goal_;
+long long width_y_goal_;
+long long height_y_goal_;
+long long x_center_o_goal_;
+long long y_center_o_goal_;
+long long width_o_goal_;
+long long height_o_goal_;
 
 };
 

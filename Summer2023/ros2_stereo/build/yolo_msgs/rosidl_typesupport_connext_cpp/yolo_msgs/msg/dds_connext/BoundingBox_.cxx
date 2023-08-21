@@ -43,11 +43,11 @@ namespace yolo_msgs {
             {
                 static RTIBool is_initialized = RTI_FALSE;
 
-                static DDS_TypeCode_Member BoundingBox__g_tc_members[7]=
+                static DDS_TypeCode_Member BoundingBox__g_tc_members[13]=
                 {
 
                     {
-                        (char *)"probability_",/* Member name */
+                        (char *)"header_",/* Member name */
                         {
                             0,/* Representation ID */          
                             DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -64,7 +64,7 @@ namespace yolo_msgs {
                         NULL/* Ignored */
                     }, 
                     {
-                        (char *)"x_center_",/* Member name */
+                        (char *)"x_center_balloon_",/* Member name */
                         {
                             1,/* Representation ID */          
                             DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -81,7 +81,7 @@ namespace yolo_msgs {
                         NULL/* Ignored */
                     }, 
                     {
-                        (char *)"y_center_",/* Member name */
+                        (char *)"y_center_balloon_",/* Member name */
                         {
                             2,/* Representation ID */          
                             DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -98,7 +98,7 @@ namespace yolo_msgs {
                         NULL/* Ignored */
                     }, 
                     {
-                        (char *)"width_",/* Member name */
+                        (char *)"width_balloon_",/* Member name */
                         {
                             3,/* Representation ID */          
                             DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -115,7 +115,7 @@ namespace yolo_msgs {
                         NULL/* Ignored */
                     }, 
                     {
-                        (char *)"height_",/* Member name */
+                        (char *)"height_balloon_",/* Member name */
                         {
                             4,/* Representation ID */          
                             DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -132,7 +132,7 @@ namespace yolo_msgs {
                         NULL/* Ignored */
                     }, 
                     {
-                        (char *)"track_id_",/* Member name */
+                        (char *)"x_center_y_goal_",/* Member name */
                         {
                             5,/* Representation ID */          
                             DDS_BOOLEAN_FALSE,/* Is a pointer? */
@@ -149,9 +149,111 @@ namespace yolo_msgs {
                         NULL/* Ignored */
                     }, 
                     {
-                        (char *)"class_id_",/* Member name */
+                        (char *)"y_center_y_goal_",/* Member name */
                         {
                             6,/* Representation ID */          
+                            DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                            -1, /* Bitfield bits */
+                            NULL/* Member type code is assigned later */
+                        },
+                        0, /* Ignored */
+                        0, /* Ignored */
+                        0, /* Ignored */
+                        NULL, /* Ignored */
+                        RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                        DDS_PUBLIC_MEMBER,/* Member visibility */
+                        1,
+                        NULL/* Ignored */
+                    }, 
+                    {
+                        (char *)"width_y_goal_",/* Member name */
+                        {
+                            7,/* Representation ID */          
+                            DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                            -1, /* Bitfield bits */
+                            NULL/* Member type code is assigned later */
+                        },
+                        0, /* Ignored */
+                        0, /* Ignored */
+                        0, /* Ignored */
+                        NULL, /* Ignored */
+                        RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                        DDS_PUBLIC_MEMBER,/* Member visibility */
+                        1,
+                        NULL/* Ignored */
+                    }, 
+                    {
+                        (char *)"height_y_goal_",/* Member name */
+                        {
+                            8,/* Representation ID */          
+                            DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                            -1, /* Bitfield bits */
+                            NULL/* Member type code is assigned later */
+                        },
+                        0, /* Ignored */
+                        0, /* Ignored */
+                        0, /* Ignored */
+                        NULL, /* Ignored */
+                        RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                        DDS_PUBLIC_MEMBER,/* Member visibility */
+                        1,
+                        NULL/* Ignored */
+                    }, 
+                    {
+                        (char *)"x_center_o_goal_",/* Member name */
+                        {
+                            9,/* Representation ID */          
+                            DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                            -1, /* Bitfield bits */
+                            NULL/* Member type code is assigned later */
+                        },
+                        0, /* Ignored */
+                        0, /* Ignored */
+                        0, /* Ignored */
+                        NULL, /* Ignored */
+                        RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                        DDS_PUBLIC_MEMBER,/* Member visibility */
+                        1,
+                        NULL/* Ignored */
+                    }, 
+                    {
+                        (char *)"y_center_o_goal_",/* Member name */
+                        {
+                            10,/* Representation ID */          
+                            DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                            -1, /* Bitfield bits */
+                            NULL/* Member type code is assigned later */
+                        },
+                        0, /* Ignored */
+                        0, /* Ignored */
+                        0, /* Ignored */
+                        NULL, /* Ignored */
+                        RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                        DDS_PUBLIC_MEMBER,/* Member visibility */
+                        1,
+                        NULL/* Ignored */
+                    }, 
+                    {
+                        (char *)"width_o_goal_",/* Member name */
+                        {
+                            11,/* Representation ID */          
+                            DDS_BOOLEAN_FALSE,/* Is a pointer? */
+                            -1, /* Bitfield bits */
+                            NULL/* Member type code is assigned later */
+                        },
+                        0, /* Ignored */
+                        0, /* Ignored */
+                        0, /* Ignored */
+                        NULL, /* Ignored */
+                        RTI_CDR_REQUIRED_MEMBER, /* Is a key? */
+                        DDS_PUBLIC_MEMBER,/* Member visibility */
+                        1,
+                        NULL/* Ignored */
+                    }, 
+                    {
+                        (char *)"height_o_goal_",/* Member name */
+                        {
+                            12,/* Representation ID */          
                             DDS_BOOLEAN_FALSE,/* Is a pointer? */
                             -1, /* Bitfield bits */
                             NULL/* Member type code is assigned later */
@@ -177,7 +279,7 @@ namespace yolo_msgs {
                         0, /* Ignored */
                         0, /* Ignored */
                         NULL, /* Ignored */
-                        7, /* Number of members */
+                        13, /* Number of members */
                         BoundingBox__g_tc_members, /* Members */
                         DDS_VM_NONE  /* Ignored */         
                     }}; /* Type code for BoundingBox_*/
@@ -186,7 +288,7 @@ namespace yolo_msgs {
                     return &BoundingBox__g_tc;
                 }
 
-                BoundingBox__g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_double;
+                BoundingBox__g_tc_members[0]._representation._typeCode = (RTICdrTypeCode *)std_msgs::msg::dds_::Header__get_typecode();
 
                 BoundingBox__g_tc_members[1]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_longlong;
 
@@ -196,9 +298,21 @@ namespace yolo_msgs {
 
                 BoundingBox__g_tc_members[4]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_longlong;
 
-                BoundingBox__g_tc_members[5]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_short;
+                BoundingBox__g_tc_members[5]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_longlong;
 
-                BoundingBox__g_tc_members[6]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_short;
+                BoundingBox__g_tc_members[6]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_longlong;
+
+                BoundingBox__g_tc_members[7]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_longlong;
+
+                BoundingBox__g_tc_members[8]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_longlong;
+
+                BoundingBox__g_tc_members[9]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_longlong;
+
+                BoundingBox__g_tc_members[10]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_longlong;
+
+                BoundingBox__g_tc_members[11]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_longlong;
+
+                BoundingBox__g_tc_members[12]._representation._typeCode = (RTICdrTypeCode *)&DDS_g_tc_longlong;
 
                 is_initialized = RTI_TRUE;
 
@@ -236,31 +350,56 @@ namespace yolo_msgs {
                     return RTI_FALSE;
                 }
 
-                if (!RTICdrType_initDouble(&sample->probability_)) {
+                if (!std_msgs::msg::dds_::Header__initialize_w_params(&sample->header_,
+                allocParams)) {
                     return RTI_FALSE;
                 }
 
-                if (!RTICdrType_initLongLong(&sample->x_center_)) {
+                if (!RTICdrType_initLongLong(&sample->x_center_balloon_)) {
                     return RTI_FALSE;
                 }
 
-                if (!RTICdrType_initLongLong(&sample->y_center_)) {
+                if (!RTICdrType_initLongLong(&sample->y_center_balloon_)) {
                     return RTI_FALSE;
                 }
 
-                if (!RTICdrType_initLongLong(&sample->width_)) {
+                if (!RTICdrType_initLongLong(&sample->width_balloon_)) {
                     return RTI_FALSE;
                 }
 
-                if (!RTICdrType_initLongLong(&sample->height_)) {
+                if (!RTICdrType_initLongLong(&sample->height_balloon_)) {
                     return RTI_FALSE;
                 }
 
-                if (!RTICdrType_initShort(&sample->track_id_)) {
+                if (!RTICdrType_initLongLong(&sample->x_center_y_goal_)) {
                     return RTI_FALSE;
                 }
 
-                if (!RTICdrType_initShort(&sample->class_id_)) {
+                if (!RTICdrType_initLongLong(&sample->y_center_y_goal_)) {
+                    return RTI_FALSE;
+                }
+
+                if (!RTICdrType_initLongLong(&sample->width_y_goal_)) {
+                    return RTI_FALSE;
+                }
+
+                if (!RTICdrType_initLongLong(&sample->height_y_goal_)) {
+                    return RTI_FALSE;
+                }
+
+                if (!RTICdrType_initLongLong(&sample->x_center_o_goal_)) {
+                    return RTI_FALSE;
+                }
+
+                if (!RTICdrType_initLongLong(&sample->y_center_o_goal_)) {
+                    return RTI_FALSE;
+                }
+
+                if (!RTICdrType_initLongLong(&sample->width_o_goal_)) {
+                    return RTI_FALSE;
+                }
+
+                if (!RTICdrType_initLongLong(&sample->height_o_goal_)) {
                     return RTI_FALSE;
                 }
 
@@ -302,6 +441,8 @@ namespace yolo_msgs {
                     return;
                 }
 
+                std_msgs::msg::dds_::Header__finalize_w_params(&sample->header_,deallocParams);
+
             }
 
             void BoundingBox__finalize_optional_members(
@@ -320,6 +461,7 @@ namespace yolo_msgs {
                 deallocParamsTmp.delete_pointers = (DDS_Boolean)deletePointers;
                 deallocParamsTmp.delete_optional_members = DDS_BOOLEAN_TRUE;
 
+                std_msgs::msg::dds_::Header__finalize_optional_members(&sample->header_, deallocParams->delete_pointers);
             }
 
             RTIBool BoundingBox__copy(
@@ -332,32 +474,56 @@ namespace yolo_msgs {
                         return RTI_FALSE;
                     }
 
-                    if (!RTICdrType_copyDouble (
-                        &dst->probability_, &src->probability_)) { 
+                    if (!std_msgs::msg::dds_::Header__copy(
+                        &dst->header_,(const std_msgs::msg::dds_::Header_*)&src->header_)) {
+                        return RTI_FALSE;
+                    } 
+                    if (!RTICdrType_copyLongLong (
+                        &dst->x_center_balloon_, &src->x_center_balloon_)) { 
                         return RTI_FALSE;
                     }
                     if (!RTICdrType_copyLongLong (
-                        &dst->x_center_, &src->x_center_)) { 
+                        &dst->y_center_balloon_, &src->y_center_balloon_)) { 
                         return RTI_FALSE;
                     }
                     if (!RTICdrType_copyLongLong (
-                        &dst->y_center_, &src->y_center_)) { 
+                        &dst->width_balloon_, &src->width_balloon_)) { 
                         return RTI_FALSE;
                     }
                     if (!RTICdrType_copyLongLong (
-                        &dst->width_, &src->width_)) { 
+                        &dst->height_balloon_, &src->height_balloon_)) { 
                         return RTI_FALSE;
                     }
                     if (!RTICdrType_copyLongLong (
-                        &dst->height_, &src->height_)) { 
+                        &dst->x_center_y_goal_, &src->x_center_y_goal_)) { 
                         return RTI_FALSE;
                     }
-                    if (!RTICdrType_copyShort (
-                        &dst->track_id_, &src->track_id_)) { 
+                    if (!RTICdrType_copyLongLong (
+                        &dst->y_center_y_goal_, &src->y_center_y_goal_)) { 
                         return RTI_FALSE;
                     }
-                    if (!RTICdrType_copyShort (
-                        &dst->class_id_, &src->class_id_)) { 
+                    if (!RTICdrType_copyLongLong (
+                        &dst->width_y_goal_, &src->width_y_goal_)) { 
+                        return RTI_FALSE;
+                    }
+                    if (!RTICdrType_copyLongLong (
+                        &dst->height_y_goal_, &src->height_y_goal_)) { 
+                        return RTI_FALSE;
+                    }
+                    if (!RTICdrType_copyLongLong (
+                        &dst->x_center_o_goal_, &src->x_center_o_goal_)) { 
+                        return RTI_FALSE;
+                    }
+                    if (!RTICdrType_copyLongLong (
+                        &dst->y_center_o_goal_, &src->y_center_o_goal_)) { 
+                        return RTI_FALSE;
+                    }
+                    if (!RTICdrType_copyLongLong (
+                        &dst->width_o_goal_, &src->width_o_goal_)) { 
+                        return RTI_FALSE;
+                    }
+                    if (!RTICdrType_copyLongLong (
+                        &dst->height_o_goal_, &src->height_o_goal_)) { 
                         return RTI_FALSE;
                     }
 

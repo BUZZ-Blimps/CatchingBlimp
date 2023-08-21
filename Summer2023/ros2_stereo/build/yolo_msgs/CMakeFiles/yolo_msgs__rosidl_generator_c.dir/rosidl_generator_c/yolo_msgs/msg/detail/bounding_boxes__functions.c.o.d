@@ -47,6 +47,10 @@ CMakeFiles/yolo_msgs__rosidl_generator_c.dir/rosidl_generator_c/yolo_msgs/msg/de
  /usr/include/x86_64-linux-gnu/bits/wchar.h \
  /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
  /home/corelab/ros2_stereo/build/yolo_msgs/rosidl_generator_c/yolo_msgs/msg/detail/bounding_box__struct.h \
+ /opt/ros/foxy/include/std_msgs/msg/detail/header__struct.h \
+ /opt/ros/foxy/include/builtin_interfaces/msg/detail/time__struct.h \
+ /opt/ros/foxy/include/rosidl_runtime_c/string.h \
+ /opt/ros/foxy/include/rosidl_runtime_c/primitives_sequence.h \
  /usr/include/assert.h /usr/include/string.h \
  /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \

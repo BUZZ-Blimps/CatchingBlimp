@@ -2,23 +2,36 @@
 // with input from yolo_msgs/msg/BoundingBox.msg
 // generated code does not contain a copyright notice
 
+#include "std_msgs/msg/Header.idl"
 
 module yolo_msgs {
   module msg {
     struct BoundingBox {
-      double probability;
+      std_msgs::msg::Header header;
 
-      int64 x_center;
+      int64 x_center_balloon;
 
-      int64 y_center;
+      int64 y_center_balloon;
 
-      int64 width;
+      int64 width_balloon;
 
-      int64 height;
+      int64 height_balloon;
 
-      int16 track_id;
+      int64 x_center_y_goal;
 
-      int16 class_id;
+      int64 y_center_y_goal;
+
+      int64 width_y_goal;
+
+      int64 height_y_goal;
+
+      int64 x_center_o_goal;
+
+      int64 y_center_o_goal;
+
+      int64 width_o_goal;
+
+      int64 height_o_goal;
     };
   };
 };

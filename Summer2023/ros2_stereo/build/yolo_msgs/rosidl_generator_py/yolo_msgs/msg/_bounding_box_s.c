@@ -16,6 +16,10 @@
 #include "yolo_msgs/msg/detail/bounding_box__struct.h"
 #include "yolo_msgs/msg/detail/bounding_box__functions.h"
 
+ROSIDL_GENERATOR_C_IMPORT
+bool std_msgs__msg__header__convert_from_py(PyObject * _pymsg, void * _ros_message);
+ROSIDL_GENERATOR_C_IMPORT
+PyObject * std_msgs__msg__header__convert_to_py(void * raw_ros_message);
 
 ROSIDL_GENERATOR_C_EXPORT
 bool yolo_msgs__msg__bounding_box__convert_from_py(PyObject * _pymsg, void * _ros_message)
@@ -50,67 +54,123 @@ bool yolo_msgs__msg__bounding_box__convert_from_py(PyObject * _pymsg, void * _ro
     assert(strncmp("yolo_msgs.msg._bounding_box.BoundingBox", full_classname_dest, 39) == 0);
   }
   yolo_msgs__msg__BoundingBox * ros_message = _ros_message;
-  {  // probability
-    PyObject * field = PyObject_GetAttrString(_pymsg, "probability");
+  {  // header
+    PyObject * field = PyObject_GetAttrString(_pymsg, "header");
     if (!field) {
       return false;
     }
-    assert(PyFloat_Check(field));
-    ros_message->probability = PyFloat_AS_DOUBLE(field);
+    if (!std_msgs__msg__header__convert_from_py(field, &ros_message->header)) {
+      Py_DECREF(field);
+      return false;
+    }
     Py_DECREF(field);
   }
-  {  // x_center
-    PyObject * field = PyObject_GetAttrString(_pymsg, "x_center");
+  {  // x_center_balloon
+    PyObject * field = PyObject_GetAttrString(_pymsg, "x_center_balloon");
     if (!field) {
       return false;
     }
     assert(PyLong_Check(field));
-    ros_message->x_center = PyLong_AsLongLong(field);
+    ros_message->x_center_balloon = PyLong_AsLongLong(field);
     Py_DECREF(field);
   }
-  {  // y_center
-    PyObject * field = PyObject_GetAttrString(_pymsg, "y_center");
+  {  // y_center_balloon
+    PyObject * field = PyObject_GetAttrString(_pymsg, "y_center_balloon");
     if (!field) {
       return false;
     }
     assert(PyLong_Check(field));
-    ros_message->y_center = PyLong_AsLongLong(field);
+    ros_message->y_center_balloon = PyLong_AsLongLong(field);
     Py_DECREF(field);
   }
-  {  // width
-    PyObject * field = PyObject_GetAttrString(_pymsg, "width");
+  {  // width_balloon
+    PyObject * field = PyObject_GetAttrString(_pymsg, "width_balloon");
     if (!field) {
       return false;
     }
     assert(PyLong_Check(field));
-    ros_message->width = PyLong_AsLongLong(field);
+    ros_message->width_balloon = PyLong_AsLongLong(field);
     Py_DECREF(field);
   }
-  {  // height
-    PyObject * field = PyObject_GetAttrString(_pymsg, "height");
+  {  // height_balloon
+    PyObject * field = PyObject_GetAttrString(_pymsg, "height_balloon");
     if (!field) {
       return false;
     }
     assert(PyLong_Check(field));
-    ros_message->height = PyLong_AsLongLong(field);
+    ros_message->height_balloon = PyLong_AsLongLong(field);
     Py_DECREF(field);
   }
-  {  // track_id
-    PyObject * field = PyObject_GetAttrString(_pymsg, "track_id");
+  {  // x_center_y_goal
+    PyObject * field = PyObject_GetAttrString(_pymsg, "x_center_y_goal");
     if (!field) {
       return false;
     }
     assert(PyLong_Check(field));
-    ros_message->track_id = (int16_t)PyLong_AsLong(field);
+    ros_message->x_center_y_goal = PyLong_AsLongLong(field);
     Py_DECREF(field);
   }
-  {  // class_id
-    PyObject * field = PyObject_GetAttrString(_pymsg, "class_id");
+  {  // y_center_y_goal
+    PyObject * field = PyObject_GetAttrString(_pymsg, "y_center_y_goal");
     if (!field) {
       return false;
     }
     assert(PyLong_Check(field));
-    ros_message->class_id = (int16_t)PyLong_AsLong(field);
+    ros_message->y_center_y_goal = PyLong_AsLongLong(field);
+    Py_DECREF(field);
+  }
+  {  // width_y_goal
+    PyObject * field = PyObject_GetAttrString(_pymsg, "width_y_goal");
+    if (!field) {
+      return false;
+    }
+    assert(PyLong_Check(field));
+    ros_message->width_y_goal = PyLong_AsLongLong(field);
+    Py_DECREF(field);
+  }
+  {  // height_y_goal
+    PyObject * field = PyObject_GetAttrString(_pymsg, "height_y_goal");
+    if (!field) {
+      return false;
+    }
+    assert(PyLong_Check(field));
+    ros_message->height_y_goal = PyLong_AsLongLong(field);
+    Py_DECREF(field);
+  }
+  {  // x_center_o_goal
+    PyObject * field = PyObject_GetAttrString(_pymsg, "x_center_o_goal");
+    if (!field) {
+      return false;
+    }
+    assert(PyLong_Check(field));
+    ros_message->x_center_o_goal = PyLong_AsLongLong(field);
+    Py_DECREF(field);
+  }
+  {  // y_center_o_goal
+    PyObject * field = PyObject_GetAttrString(_pymsg, "y_center_o_goal");
+    if (!field) {
+      return false;
+    }
+    assert(PyLong_Check(field));
+    ros_message->y_center_o_goal = PyLong_AsLongLong(field);
+    Py_DECREF(field);
+  }
+  {  // width_o_goal
+    PyObject * field = PyObject_GetAttrString(_pymsg, "width_o_goal");
+    if (!field) {
+      return false;
+    }
+    assert(PyLong_Check(field));
+    ros_message->width_o_goal = PyLong_AsLongLong(field);
+    Py_DECREF(field);
+  }
+  {  // height_o_goal
+    PyObject * field = PyObject_GetAttrString(_pymsg, "height_o_goal");
+    if (!field) {
+      return false;
+    }
+    assert(PyLong_Check(field));
+    ros_message->height_o_goal = PyLong_AsLongLong(field);
     Py_DECREF(field);
   }
 
@@ -135,77 +195,146 @@ PyObject * yolo_msgs__msg__bounding_box__convert_to_py(void * raw_ros_message)
     }
   }
   yolo_msgs__msg__BoundingBox * ros_message = (yolo_msgs__msg__BoundingBox *)raw_ros_message;
-  {  // probability
+  {  // header
     PyObject * field = NULL;
-    field = PyFloat_FromDouble(ros_message->probability);
+    field = std_msgs__msg__header__convert_to_py(&ros_message->header);
+    if (!field) {
+      return NULL;
+    }
     {
-      int rc = PyObject_SetAttrString(_pymessage, "probability", field);
+      int rc = PyObject_SetAttrString(_pymessage, "header", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;
       }
     }
   }
-  {  // x_center
+  {  // x_center_balloon
     PyObject * field = NULL;
-    field = PyLong_FromLongLong(ros_message->x_center);
+    field = PyLong_FromLongLong(ros_message->x_center_balloon);
     {
-      int rc = PyObject_SetAttrString(_pymessage, "x_center", field);
+      int rc = PyObject_SetAttrString(_pymessage, "x_center_balloon", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;
       }
     }
   }
-  {  // y_center
+  {  // y_center_balloon
     PyObject * field = NULL;
-    field = PyLong_FromLongLong(ros_message->y_center);
+    field = PyLong_FromLongLong(ros_message->y_center_balloon);
     {
-      int rc = PyObject_SetAttrString(_pymessage, "y_center", field);
+      int rc = PyObject_SetAttrString(_pymessage, "y_center_balloon", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;
       }
     }
   }
-  {  // width
+  {  // width_balloon
     PyObject * field = NULL;
-    field = PyLong_FromLongLong(ros_message->width);
+    field = PyLong_FromLongLong(ros_message->width_balloon);
     {
-      int rc = PyObject_SetAttrString(_pymessage, "width", field);
+      int rc = PyObject_SetAttrString(_pymessage, "width_balloon", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;
       }
     }
   }
-  {  // height
+  {  // height_balloon
     PyObject * field = NULL;
-    field = PyLong_FromLongLong(ros_message->height);
+    field = PyLong_FromLongLong(ros_message->height_balloon);
     {
-      int rc = PyObject_SetAttrString(_pymessage, "height", field);
+      int rc = PyObject_SetAttrString(_pymessage, "height_balloon", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;
       }
     }
   }
-  {  // track_id
+  {  // x_center_y_goal
     PyObject * field = NULL;
-    field = PyLong_FromLong(ros_message->track_id);
+    field = PyLong_FromLongLong(ros_message->x_center_y_goal);
     {
-      int rc = PyObject_SetAttrString(_pymessage, "track_id", field);
+      int rc = PyObject_SetAttrString(_pymessage, "x_center_y_goal", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;
       }
     }
   }
-  {  // class_id
+  {  // y_center_y_goal
     PyObject * field = NULL;
-    field = PyLong_FromLong(ros_message->class_id);
+    field = PyLong_FromLongLong(ros_message->y_center_y_goal);
     {
-      int rc = PyObject_SetAttrString(_pymessage, "class_id", field);
+      int rc = PyObject_SetAttrString(_pymessage, "y_center_y_goal", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
+  {  // width_y_goal
+    PyObject * field = NULL;
+    field = PyLong_FromLongLong(ros_message->width_y_goal);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "width_y_goal", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
+  {  // height_y_goal
+    PyObject * field = NULL;
+    field = PyLong_FromLongLong(ros_message->height_y_goal);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "height_y_goal", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
+  {  // x_center_o_goal
+    PyObject * field = NULL;
+    field = PyLong_FromLongLong(ros_message->x_center_o_goal);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "x_center_o_goal", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
+  {  // y_center_o_goal
+    PyObject * field = NULL;
+    field = PyLong_FromLongLong(ros_message->y_center_o_goal);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "y_center_o_goal", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
+  {  // width_o_goal
+    PyObject * field = NULL;
+    field = PyLong_FromLongLong(ros_message->width_o_goal);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "width_o_goal", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
+  {  // height_o_goal
+    PyObject * field = NULL;
+    field = PyLong_FromLongLong(ros_message->height_o_goal);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "height_o_goal", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;

@@ -1,0 +1,6 @@
+Invoking command in '/home/corelab/ros2_stereo/build/yolo_msgs': CMAKE_PREFIX_PATH=/opt/ros/foxy /home/corelab/.local/bin/cmake /home/corelab/ros2_stereo/src/yolo_msgs -DCMAKE_INSTALL_PREFIX=/home/corelab/ros2_stereo/install/yolo_msgs
+Invoked command in '/home/corelab/ros2_stereo/build/yolo_msgs' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /home/corelab/.local/bin/cmake /home/corelab/ros2_stereo/src/yolo_msgs -DCMAKE_INSTALL_PREFIX=/home/corelab/ros2_stereo/install/yolo_msgs
+Invoking command in '/home/corelab/ros2_stereo/build/yolo_msgs': CMAKE_PREFIX_PATH=/opt/ros/foxy /home/corelab/.local/bin/cmake --build /home/corelab/ros2_stereo/build/yolo_msgs -- -j16 -l16
+Invoked command in '/home/corelab/ros2_stereo/build/yolo_msgs' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /home/corelab/.local/bin/cmake --build /home/corelab/ros2_stereo/build/yolo_msgs -- -j16 -l16
+Invoking command in '/home/corelab/ros2_stereo/build/yolo_msgs': CMAKE_PREFIX_PATH=/opt/ros/foxy /home/corelab/.local/bin/cmake --install /home/corelab/ros2_stereo/build/yolo_msgs
+Invoked command in '/home/corelab/ros2_stereo/build/yolo_msgs' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /home/corelab/.local/bin/cmake --install /home/corelab/ros2_stereo/build/yolo_msgs

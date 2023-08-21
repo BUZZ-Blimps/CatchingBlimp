@@ -14,6 +14,27 @@
 #include "rosidl_typesupport_connext_cpp/wstring_conversion.hpp"
 
 // forward declaration of message dependencies and their conversion functions
+namespace std_msgs
+{
+namespace msg
+{
+namespace dds_
+{
+class Header_;
+}  // namespace dds_
+
+namespace typesupport_connext_cpp
+{
+
+bool convert_ros_message_to_dds(
+  const std_msgs::msg::Header &,
+  std_msgs::msg::dds_::Header_ &);
+bool convert_dds_message_to_ros(
+  const std_msgs::msg::dds_::Header_ &,
+  std_msgs::msg::Header &);
+}  // namespace typesupport_connext_cpp
+}  // namespace msg
+}  // namespace std_msgs
 
 
 namespace yolo_msgs
@@ -37,33 +58,62 @@ convert_ros_message_to_dds(
   const yolo_msgs::msg::BoundingBox & ros_message,
   yolo_msgs::msg::dds_::BoundingBox_ & dds_message)
 {
-  // member.name probability
-  dds_message.probability_ =
-    ros_message.probability;
+  // member.name header
+  if (
+    !std_msgs::msg::typesupport_connext_cpp::convert_ros_message_to_dds(
+      ros_message.header,
+      dds_message.header_))
+  {
+    return false;
+  }
 
-  // member.name x_center
-  dds_message.x_center_ =
-    ros_message.x_center;
+  // member.name x_center_balloon
+  dds_message.x_center_balloon_ =
+    ros_message.x_center_balloon;
 
-  // member.name y_center
-  dds_message.y_center_ =
-    ros_message.y_center;
+  // member.name y_center_balloon
+  dds_message.y_center_balloon_ =
+    ros_message.y_center_balloon;
 
-  // member.name width
-  dds_message.width_ =
-    ros_message.width;
+  // member.name width_balloon
+  dds_message.width_balloon_ =
+    ros_message.width_balloon;
 
-  // member.name height
-  dds_message.height_ =
-    ros_message.height;
+  // member.name height_balloon
+  dds_message.height_balloon_ =
+    ros_message.height_balloon;
 
-  // member.name track_id
-  dds_message.track_id_ =
-    ros_message.track_id;
+  // member.name x_center_y_goal
+  dds_message.x_center_y_goal_ =
+    ros_message.x_center_y_goal;
 
-  // member.name class_id
-  dds_message.class_id_ =
-    ros_message.class_id;
+  // member.name y_center_y_goal
+  dds_message.y_center_y_goal_ =
+    ros_message.y_center_y_goal;
+
+  // member.name width_y_goal
+  dds_message.width_y_goal_ =
+    ros_message.width_y_goal;
+
+  // member.name height_y_goal
+  dds_message.height_y_goal_ =
+    ros_message.height_y_goal;
+
+  // member.name x_center_o_goal
+  dds_message.x_center_o_goal_ =
+    ros_message.x_center_o_goal;
+
+  // member.name y_center_o_goal
+  dds_message.y_center_o_goal_ =
+    ros_message.y_center_o_goal;
+
+  // member.name width_o_goal
+  dds_message.width_o_goal_ =
+    ros_message.width_o_goal;
+
+  // member.name height_o_goal
+  dds_message.height_o_goal_ =
+    ros_message.height_o_goal;
 
   return true;
 }
@@ -73,33 +123,62 @@ convert_dds_message_to_ros(
   const yolo_msgs::msg::dds_::BoundingBox_ & dds_message,
   yolo_msgs::msg::BoundingBox & ros_message)
 {
-  // member.name probability
-  ros_message.probability =
-    dds_message.probability_;
+  // member.name header
+  if (
+    !std_msgs::msg::typesupport_connext_cpp::convert_dds_message_to_ros(
+      dds_message.header_,
+      ros_message.header))
+  {
+    return false;
+  }
 
-  // member.name x_center
-  ros_message.x_center =
-    dds_message.x_center_;
+  // member.name x_center_balloon
+  ros_message.x_center_balloon =
+    dds_message.x_center_balloon_;
 
-  // member.name y_center
-  ros_message.y_center =
-    dds_message.y_center_;
+  // member.name y_center_balloon
+  ros_message.y_center_balloon =
+    dds_message.y_center_balloon_;
 
-  // member.name width
-  ros_message.width =
-    dds_message.width_;
+  // member.name width_balloon
+  ros_message.width_balloon =
+    dds_message.width_balloon_;
 
-  // member.name height
-  ros_message.height =
-    dds_message.height_;
+  // member.name height_balloon
+  ros_message.height_balloon =
+    dds_message.height_balloon_;
 
-  // member.name track_id
-  ros_message.track_id =
-    dds_message.track_id_;
+  // member.name x_center_y_goal
+  ros_message.x_center_y_goal =
+    dds_message.x_center_y_goal_;
 
-  // member.name class_id
-  ros_message.class_id =
-    dds_message.class_id_;
+  // member.name y_center_y_goal
+  ros_message.y_center_y_goal =
+    dds_message.y_center_y_goal_;
+
+  // member.name width_y_goal
+  ros_message.width_y_goal =
+    dds_message.width_y_goal_;
+
+  // member.name height_y_goal
+  ros_message.height_y_goal =
+    dds_message.height_y_goal_;
+
+  // member.name x_center_o_goal
+  ros_message.x_center_o_goal =
+    dds_message.x_center_o_goal_;
+
+  // member.name y_center_o_goal
+  ros_message.y_center_o_goal =
+    dds_message.y_center_o_goal_;
+
+  // member.name width_o_goal
+  ros_message.width_o_goal =
+    dds_message.width_o_goal_;
+
+  // member.name height_o_goal
+  ros_message.height_o_goal =
+    dds_message.height_o_goal_;
 
   return true;
 }

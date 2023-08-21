@@ -8,8 +8,8 @@ For more information, type 'rtiddsgen -help' at a command shell
 or consult the RTI Connext manual.
 */
 
-#ifndef BoundingBox_Support_279539174_h
-#define BoundingBox_Support_279539174_h
+#ifndef BoundingBox_Support_279539451_h
+#define BoundingBox_Support_279539451_h
 
 /* Uses */
 #include "BoundingBox_.h"
@@ -64,5 +64,5 @@ namespace yolo_msgs {
     } /* namespace msg  */
 } /* namespace yolo_msgs  */
 
-#endif  /* BoundingBox_Support_279539174_h */
+#endif  /* BoundingBox_Support_279539451_h */
 

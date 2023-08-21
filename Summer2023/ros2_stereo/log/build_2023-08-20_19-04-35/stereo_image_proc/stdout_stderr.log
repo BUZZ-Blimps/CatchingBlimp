@@ -1,0 +1,10 @@
+[ 25%] Built target disparity_node
+[ 50%] Built target point_cloud_node
+[ 62%] [32mBuilding CXX object CMakeFiles/stereo_image_proc.dir/src/stereo_image_proc/point_cloud_node.cpp.o[0m
+[01m[K/home/corelab/ros2_stereo/src/stereo_image_proc/src/stereo_image_proc/point_cloud_node.cpp:[m[K In member function ‘[01m[Kvoid stereo_image_proc::PointCloudNode::imageCb(const ConstSharedPtr&, const ConstSharedPtr&, const ConstSharedPtr&, const ConstSharedPtr&, const ConstSharedPtr&)[m[K’:
+[01m[K/home/corelab/ros2_stereo/src/stereo_image_proc/src/stereo_image_proc/point_cloud_node.cpp:447:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kplace[m[K’ was not declared in this scope
+  447 |     [01;31m[Kplace[m[K all in one float64multiarray
+      |     [01;31m[K^~~~~[m[K
+make[2]: *** [CMakeFiles/stereo_image_proc.dir/build.make:104: CMakeFiles/stereo_image_proc.dir/src/stereo_image_proc/point_cloud_node.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:141: CMakeFiles/stereo_image_proc.dir/all] Error 2
+make: *** [Makefile:146: all] Error 2

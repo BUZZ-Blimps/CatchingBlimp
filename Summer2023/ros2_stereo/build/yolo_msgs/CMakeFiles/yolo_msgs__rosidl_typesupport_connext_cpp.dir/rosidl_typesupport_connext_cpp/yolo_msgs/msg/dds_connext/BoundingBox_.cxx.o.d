@@ -376,5 +376,7 @@ CMakeFiles/yolo_msgs__rosidl_typesupport_connext_cpp.dir/rosidl_typesupport_conn
  /opt/rti.com/rti_connext_dds-5.3.1/include/ndds/dds_c/dds_c_log_impl.h \
  /opt/rti.com/rti_connext_dds-5.3.1/include/ndds/advlog/advlog_context.h \
  /home/corelab/ros2_stereo/build/yolo_msgs/rosidl_typesupport_connext_cpp/yolo_msgs/msg/dds_connext/BoundingBox_.h \
+ /opt/ros/foxy/include/std_msgs/msg/dds_connext/Header_.h \
+ /opt/ros/foxy/include/builtin_interfaces/msg/dds_connext/Time_.h \
  /opt/rti.com/rti_connext_dds-5.3.1/include/ndds/dds_c/generic/dds_c_sequence_TSeq.gen \
  /opt/rti.com/rti_connext_dds-5.3.1/include/ndds/dds_cpp/generic/dds_cpp_sequence_TSeq.gen
