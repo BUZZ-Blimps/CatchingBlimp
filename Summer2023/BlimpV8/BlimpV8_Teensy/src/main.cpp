@@ -78,8 +78,8 @@ void error_loop() {
 #define GAME_BALL_WAIT_TIME_PENALTY   0    //should be set to 20, every catch assumed to be 20 seconds long  
 
 //number of catches attempted
-#define TOTAL_ATTEMPTS            100    // attempts at catching 
-#define MAX_ATTEMPTS              100    //should be set to 5
+#define TOTAL_ATTEMPTS            5    // attempts at catching 
+#define MAX_ATTEMPTS              5    //should be set to 5
 
 //flight area parameters
 #define CEIL_HEIGHT               8      //m
@@ -91,11 +91,11 @@ void error_loop() {
 
 //distance triggers
 #define GOAL_DISTANCE_TRIGGER    1.5 //m distance for blimp to trigger goal score 	
-#define BALL_GATE_OPEN_TRIGGER   2.5 //m distance for blimp to open the gate 	
-#define BALL_CATCH_TRIGGER       1  //m distance for blimp to start the open-loop control
+#define BALL_GATE_OPEN_TRIGGER   2 //m distance for blimp to open the gate 	
+#define BALL_CATCH_TRIGGER       1.2  //m distance for blimp to start the open-loop control
 
 //object avoidence motor coms
-#define FORWARD_AVOID             250  //25% throttle
+#define FORWARD_AVOID             125  //25% throttle
 #define YAW_AVOID                 10	 //deg/s
 #define UP_AVOID                  0.4  //m/s
 
@@ -103,44 +103,44 @@ void error_loop() {
 // the inputs are bounded from -2 to 2, yaw is maxed out at 120 deg/s
 #define GAME_BALL_YAW_SEARCH      -15  //deg/s
 #define GAME_BALL_FORWARD_SEARCH  250 //50% throttle 
-#define GAME_BALL_VERTICAL_SEARCH 0.7  //m/s
+#define GAME_BALL_VERTICAL_SEARCH 100  //m/s
 
 
-#define GAME_BALL_CLOSURE_COM     200  //approaching at 20% throttle cap
-#define GAME_BALL_APPROACH_ANGLE  -80  //0.2 approach magic number
-#define GAME_BaLL_X_OFFSET        0   //10 offset magic number
+#define GAME_BALL_CLOSURE_COM     150  //approaching at 25% throttle cap
+#define GAME_BALL_APPROACH_ANGLE  0  //approach magic number (TODO: reset)
+#define GAME_BaLL_X_OFFSET        0   //offset magic number (TODO: reset)
 
 #define CATCHING_FORWARD_COM      450  //catching at 90% throttle 
 #define CATCHING_UP_COM           1  //damp out pitch
 
 #define CAUGHT_FORWARD_COM        -420  //go back so that the game ball gets to the back 
-#define CAUGHT_UP_COM             -0.5
+#define CAUGHT_UP_COM             -100
 
 #define GOAL_YAW_SEARCH           20   
 #define GOAL_FORWARD_SEARCH       300  //200 40% throttle
-#define GOAL_UP_VELOCITY          2.5
+#define GOAL_UP_VELOCITY          200
 
 #define GOAL_CLOSURE_COM          400  //forward command 25% throttle
-#define GOAL_X_OFFSET             -10
-#define GOAL_APPROACH_ANGLE       -30  //height alignment (approach down)
+#define GOAL_X_OFFSET             0  
+#define GOAL_APPROACH_ANGLE       0  //height alignment (approach down)
 
 //goal alignment test
 #define ALIGNING_YAW_COM           10 //test
 #define ALIGNING_FORWARD_COM        100 //test
-#define ALIGNING_UP_COM            0.4 //test
+#define ALIGNING_UP_COM            100 //test
 #define ALIGNING_TRANSLATION_COM   300 //test
 
 
 #define SCORING_YAW_COM           0
-#define SCORING_FORWARD_COM       500 //40% throttle
-#define SCORING_UP_COM            1.5
+#define SCORING_FORWARD_COM       200 //40% throttle
+#define SCORING_UP_COM            150
 
-#define SHOOTING_FORWARD_COM      700  //counter back motion 
-#define SHOOTING_UP_COM           0.3
+#define SHOOTING_FORWARD_COM      420  //counter back motion 
+#define SHOOTING_UP_COM           100
 //counter moment (right now we do want to shoot up because ball sinks)
 
-#define SCORED_FORWARD_COM        -700
-#define SCORED_UP_COM             -0.2
+#define SCORED_FORWARD_COM        -420
+#define SCORED_UP_COM             -100
 
 //sensor and controller rates
 #define FAST_SENSOR_LOOP_FREQ           100.0
@@ -206,8 +206,8 @@ PID forwardPID(300, 0, 0);  //not used
 PID translationPID(300, 0, 0); //not used
 
 //Auto PID control (output fed into manual controller)
-PID yPixelPID(0.0075,0,0);    //change to just z at some point
-PID xPixelPID(0.2,0,0);       //change to just y at some point
+PID yPID(100,0,0);    //TODO:retune these
+PID xPID(100,0,0);       //TODO:retune these
 
 //Goal positioning controller
 BangBang goalPositionHold(GOAL_HEIGHT_DEADBAND, GOAL_UP_VELOCITY); //Dead band, velocity to center itself
@@ -221,9 +221,9 @@ EMAFilter yawRateFilter(0.2);
 EMAFilter rollRateFilter(0.5);
 
 //Low pass filter for computer vision parameters
-EMAFilter xPixFilter(0.5);
-EMAFilter yPixFilter(0.5);
-EMAFilter zPixFilter(0.5);
+EMAFilter xFilter(0.5);
+EMAFilter yFilter(0.5);
+EMAFilter zFilter(0.5);
 EMAFilter areaFilter(0.5);
 
 
@@ -1107,41 +1107,77 @@ void loop() {
       
     } else if (state == autonomous){
 
-
-      /*
-      //get auto data
-      std::vector<std::vector<double>> target = piData.target;
-
       //filter target data
       float tx = 0;
       float ty = 0;
-      float tz = 200;
-      float area = 0;
+      float tz = 1000;
+      // float area = 0;
+      
+      //new target (empty target)
+      std::vector<double> target;
 
-      //update target data if target exists
-      if (target.size() > 0 && target[0].size() == 4) {
-        float rawZ = target[0][2];
-        //if distance is too large, cap distance value
-        if (rawZ > 300) {
-          rawZ = 300;
-        }
-
+      //update targets data if any target exists
+      //balloon 
+      if (targets[2] != 1000 && (mode == searching || mode == approach || mode == catching)) {
+        float rawZ = targets[2]; //balloon distance
         //update filtered target coordinates (3D space, with center of camera as (0,0,0))
-        tx = xPixFilter.filter(-target[0][0]);
-        ty = yPixFilter.filter(-target[0][1]);
-        tz = zPixFilter.filter(rawZ);
-        area = areaFilter.filter(target[0][3]);
-        
+        tx = xFilter.filter(targets[0]);
+        ty = yFilter.filter(targets[1]);
+        tz = zFilter.filter(rawZ);
+        // area = areaFilter.filter(target[0][3]);
+        target.push_back(tx);
+        target.push_back(ty);
+        target.push_back(tz);
       } else {
         //no target, set to default value
-        xPixFilter.filter(0);
-        yPixFilter.filter(0);
-        zPixFilter.filter(300);
-        areaFilter.filter(0);
+        xFilter.filter(0);
+        yFilter.filter(0);
+        zFilter.filter(1000);
+        // areaFilter.filter(0);
+      }
+
+      //orange goal
+      //in goal scoring stages 
+      if (targets[5] != 1000 && goalColor == orange && (mode == goalSearch || mode == approachGoal || mode == scoringStart)) {
+        float rawZ = targets[5]; //balloon distance
+        //update filtered target coordinates (3D space, with center of camera as (0,0,0))
+        tx = xFilter.filter(targets[3]);
+        ty = yFilter.filter(targets[4]);
+        tz = zFilter.filter(rawZ);
+        // area = areaFilter.filter(target[0][3]);
+        target.push_back(tx);
+        target.push_back(ty);
+        target.push_back(tz);
+      } else {
+        //no target, set to default value
+        xFilter.filter(0);
+        yFilter.filter(0);
+        zFilter.filter(1000);
+        // areaFilter.filter(0);
+      }
+
+      //yellow goal
+            if (targets[8] != 1000 && goalColor == yellow && (mode == goalSearch || mode == approachGoal || mode == scoringStart)) {
+        float rawZ = targets[8]; //balloon distance
+        //update filtered target coordinates (3D space, with center of camera as (0,0,0))
+        tx = xFilter.filter(targets[6]);
+        ty = yFilter.filter(targets[7]);
+        tz = zFilter.filter(rawZ);
+        // area = areaFilter.filter(target[0][3]);
+        target.push_back(tx);
+        target.push_back(ty);
+        target.push_back(tz);
+      } else {
+        //no target, set to default value
+        xFilter.filter(0);
+        yFilter.filter(0);
+        zFilter.filter(1000);
+        // areaFilter.filter(0);
       }
 
       //modes for autonomous behavior
       switch (mode) {
+        //state machine
         case searching:
           //check if goal scoring should be attempted
 
@@ -1159,7 +1195,7 @@ void loop() {
 
           //begin search pattern spinning around at different heights
           if (target.size() == 0) {
-            //search behavoir
+            //search behavoir (no target)
             //spin in a small circle looking for a game ball
             yawCom = GAME_BALL_YAW_SEARCH;
             upCom = 0;    //is overriden later, defined here as a safety net
@@ -1177,9 +1213,7 @@ void loop() {
 
             //move up and down within the set boundry
             if (actualBaro > CEIL_HEIGHT || !wasUp) {
-              if (wasUp) wasUp = false;test_msgs__srv__BasicTypes_Response res;
-test_msgs__srv__BasicTypes_Request req;
-bool check = false;
+              if (wasUp) wasUp = false;
               upCom = -GAME_BALL_VERTICAL_SEARCH;
             }
             if (actualBaro < FLOOR_HEIGHT || wasUp) {
@@ -1193,11 +1227,11 @@ bool check = false;
             //start approaching timer
                 approachTimeStart = millis();
           }
-
           break;
+
         case approach:
           //check if target is still valid
-          if (target.size() > 0 && target[0].size() == 4) {
+          if (target.size() > 0) {
 
             if (catches >= 1 && micros()/MICROS_TO_SEC - lastCatch >= MAX_SEARCH_WAIT_AFTER_ONE - (catches-1)*(GAME_BALL_WAIT_TIME_PENALTY)) {
               catches = TOTAL_ATTEMPTS;
@@ -1210,8 +1244,8 @@ bool check = false;
             }
 
             //move toward the balloon
-            yawCom = xPixelPID.calculate(tx, GAME_BaLL_X_OFFSET, dt/1000);
-            upCom = yPixelPID.calculate(ty, GAME_BALL_APPROACH_ANGLE, dt/1000);
+            yawCom = xPID.calculate(tx, GAME_BaLL_X_OFFSET, dt/1000); 
+            upCom = yPID.calculate(ty, GAME_BALL_APPROACH_ANGLE, dt/1000);  
             forwardCom = GAME_BALL_CLOSURE_COM;
             translationCom = 0;
             
@@ -1238,12 +1272,12 @@ bool check = false;
             //no target, look for another
             mode = searching;
           }
-
           break;
+
         case catching:
           if (true) {
             //wait for 0.3 second
-            delay(300);
+            // delay(300);
 
             forwardCom = CATCHING_FORWARD_COM;
             upCom = CATCHING_UP_COM;
@@ -1264,18 +1298,20 @@ bool check = false;
               lastCatch = micros()/MICROS_TO_SEC;
             }
           }
-        
           break;
+
         case caught:
           if (catches > 0) {
 
-            if (target.size() > 0 && target[0].size() == 4) {
+            //if a target is seen right after the catch
+            if (target.size() > 0) {
               //approach next game ball if visible
               if (catches < TOTAL_ATTEMPTS) {
                 mode = searching;
               }
             }
-    
+
+            //decide if the blimp is going to game ball search or goal search
             if (caughtTimeStart < millis() - caughtTime) {
               if (catches >= TOTAL_ATTEMPTS) {
                 mode = goalSearch;
@@ -1291,8 +1327,8 @@ bool check = false;
           } else {
             mode = searching;
           }
-
           break;
+
         case goalSearch:
           if (catches >= TOTAL_ATTEMPTS) {
             yawCom = GOAL_YAW_SEARCH*goalYawDirection;
@@ -1319,14 +1355,12 @@ bool check = false;
             mode = searching;
           }
           break;
+
         case approachGoal:
           if (target.size() > 0 && catches >= TOTAL_ATTEMPTS) {
-            yawCom = xPixelPID.calculate(tx, 0, dt);
-            upCom = yPixelPID.calculate(ty, GOAL_APPROACH_ANGLE, dt);
+            yawCom = xPID.calculate(tx, 0, dt);
+            upCom = yPID.calculate(ty, GOAL_APPROACH_ANGLE, dt);
             forwardCom = GOAL_CLOSURE_COM;
-
-            Serial.println(tz);
-            print("tz", tz);
 
             if (tz < GOAL_DISTANCE_TRIGGER) {
               mode = scoringStart;
@@ -1351,6 +1385,7 @@ bool check = false;
           }
         }
           break;
+
         case shooting:
         if (true) {
           yawCom = 0;
@@ -1364,10 +1399,12 @@ bool check = false;
             ballGrabber.closeGrabber();
             scoredTimeStart = millis();
             mode = scored;
-            break;searching
+            break;
+            mode = searching;
           }
         }
         break;
+
         case scored:
         if (true) {
 
@@ -1382,13 +1419,14 @@ bool check = false;
             break;
           }
         }
+        //shouldn't get here
         default:
           yawCom = 0;
           forwardCom = 0;
           upCom = 0;
           break;
       }
-      */
+
     }else {
         //not a valid state
         forwardCom = 0.0;
