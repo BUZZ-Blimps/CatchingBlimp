@@ -279,13 +279,7 @@ scp InstallOpenCV4.sh pi@192.168.0.10#:/home/pi/
 
 
 **TO DO**
-1. Add streaming on Pi for vision processing.
-2. Document how to get OpenCV on Pi.
-    
-	
-
-  
-  
+1. Add the script "turnEyesOn.sh" for streaming on Pi for vision processing.
   
   
   
