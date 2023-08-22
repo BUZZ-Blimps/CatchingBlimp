@@ -276,7 +276,6 @@ enum goalType {
   yellow
 };
 
-//to Do: make two type of game ball color tracking
 enum gameballType{
   green,
   pink
@@ -391,7 +390,7 @@ rmw_request_id_t req_id;
 //ROS publishers
 rcl_publisher_t blimpid_publisher; //string
 rcl_publisher_t imu_publisher;    //imu
-rcl_publisher_t motor_publisher;  //float64_multi_array
+rcl_publisher_t debug_publisher;  //float64_multi_array
 rcl_publisher_t height_publisher; //float64
 rcl_publisher_t z_velocity_publisher; //float64
 rcl_publisher_t state_machine_publisher; //int64
@@ -434,7 +433,7 @@ std_msgs__msg__Float64  z_velocity_msg;
 
 //float64multiarray message
 std_msgs__msg__Float64MultiArray motor_msg;
-std_msgs__msg__Float64MultiArray motor_debug_msg;
+std_msgs__msg__Float64MultiArray debug_msg;
 std_msgs__msg__Float64MultiArray targets_msg;
 
 //String message
@@ -602,7 +601,7 @@ bool create_entities() {
   // create publishers (6 right now)
   RCCHECK(rclc_publisher_init_default(&blimpid_publisher, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, String), "/BurnCreamBlimp/blimpID"));
   RCCHECK(rclc_publisher_init_default(&imu_publisher, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(sensor_msgs, msg, Imu), "/BurnCreamBlimp/imu"));
-  RCCHECK(rclc_publisher_init_default(&motor_publisher, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg,Float64MultiArray ), "/BurnCreamBlimp/motorDebug"));
+  RCCHECK(rclc_publisher_init_default(&debug_publisher, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg,Float64MultiArray ), "/BurnCreamBlimp/debug"));
   RCCHECK(rclc_publisher_init_default(&height_publisher, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg,Float64), "/BurnCreamBlimp/height"));
   RCCHECK(rclc_publisher_init_default(&z_velocity_publisher, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg,Float64), "/BurnCreamBlimp/z_velocity"));
   RCCHECK(rclc_publisher_init_default(&state_machine_publisher, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg,Int64), "/BurnCreamBlimp/state_machine"));
@@ -658,7 +657,7 @@ void destroy_entities() {
   //finish publishers
   rcl_publisher_fini(&blimpid_publisher, &node);
   rcl_publisher_fini(&imu_publisher, &node);
-  rcl_publisher_fini(&motor_publisher, &node);
+  rcl_publisher_fini(&debug_publisher, &node);
   rcl_publisher_fini(&height_publisher, &node);
   rcl_publisher_fini(&z_velocity_publisher, &node);
   rcl_publisher_fini(&state_machine_publisher, &node);
@@ -735,9 +734,9 @@ void setup() {
   motor_msg.data.size = sizeof(motor_msg.data.data);
   motor_msg.data.capacity = BUFFER_LEN;
 
-  motor_debug_msg.data.data = (double *) malloc(BUFFER_LEN*sizeof(double));
-  motor_debug_msg.data.size = 0; 
-  motor_debug_msg.data.capacity = BUFFER_LEN;
+  debug_msg.data.data = (double *) malloc(BUFFER_LEN*sizeof(double));
+  debug_msg.data.size = 0; 
+  debug_msg.data.capacity = BUFFER_LEN;
 
   targets_msg.data.data = (double *) malloc(BUFFER_LEN*sizeof(double));
   targets_msg.data.size = sizeof(targets_msg.data.data);
@@ -1110,7 +1109,7 @@ void loop() {
       //filter target data
       float tx = 0;
       float ty = 0;
-      float tz = 1000;
+      float tz = 0;
       // float area = 0;
       
       //new target (empty target)
@@ -1132,7 +1131,7 @@ void loop() {
         //no target, set to default value
         xFilter.filter(0);
         yFilter.filter(0);
-        zFilter.filter(1000);
+        zFilter.filter(0);
         // areaFilter.filter(0);
       }
 
@@ -1152,12 +1151,12 @@ void loop() {
         //no target, set to default value
         xFilter.filter(0);
         yFilter.filter(0);
-        zFilter.filter(1000);
+        zFilter.filter(0);
         // areaFilter.filter(0);
       }
 
       //yellow goal
-            if (targets[8] != 1000 && goalColor == yellow && (mode == goalSearch || mode == approachGoal || mode == scoringStart)) {
+      if (targets[8] != 1000 && goalColor == yellow && (mode == goalSearch || mode == approachGoal || mode == scoringStart)) {
         float rawZ = targets[8]; //balloon distance
         //update filtered target coordinates (3D space, with center of camera as (0,0,0))
         tx = xFilter.filter(targets[6]);
@@ -1171,9 +1170,19 @@ void loop() {
         //no target, set to default value
         xFilter.filter(0);
         yFilter.filter(0);
-        zFilter.filter(1000);
+        zFilter.filter(0);
         // areaFilter.filter(0);
       }
+        //test target message
+
+        if (target.size() != 0){
+        debug_msg.data.data[0] = target[0];
+        debug_msg.data.data[1] = target[1];
+        debug_msg.data.data[2] = target[2];
+        debug_msg.data.size = 3;
+        }
+
+        RCSOFTCHECK(rcl_publish(&debug_publisher, &debug_msg, NULL));
 
       //modes for autonomous behavior
       switch (mode) {
@@ -1487,26 +1496,27 @@ void loop() {
     }
 
         //motor debug
-        motor_debug_msg.data.data[0] = yaw_msg;
-        motor_debug_msg.data.data[1] = up_msg;
-        motor_debug_msg.data.data[2] = translation_msg;
-        motor_debug_msg.data.data[3] = forward_msg;
-        motor_debug_msg.data.size = 4;
+        
+        // debug_msg.data.data[0] = yaw_msg;
+        // debug_msg.data.data[1] = up_msg;
+        // debug_msg.data.data[2] = translation_msg;
+        // debug_msg.data.data[3] = forward_msg;
+        // debug_msg.data.size = 4;
 
         //test target messages
 
-        // motor_debug_msg.data.data[0] = targets[0];
-        // motor_debug_msg.data.data[1] = targets[1];
-        // motor_debug_msg.data.data[2] = targets[2];
-        // motor_debug_msg.data.data[3] = targets[3];
-        // motor_debug_msg.data.data[4] = targets[4];
-        // motor_debug_msg.data.data[5] = targets[5];
-        // motor_debug_msg.data.data[6] = targets[6];
-        // motor_debug_msg.data.data[7] = targets[7];
-        // motor_debug_msg.data.data[8] = targets[8];
-        // motor_debug_msg.data.size = 9;
+        // debug_msg.data.data[0] = targets[0];
+        // debug_msg.data.data[1] = targets[1];
+        // debug_msg.data.data[2] = targets[2];
+        // debug_msg.data.data[3] = targets[3];
+        // debug_msg.data.data[4] = targets[4];
+        // debug_msg.data.data[5] = targets[5];
+        // debug_msg.data.data[6] = targets[6];
+        // debug_msg.data.data[7] = targets[7];
+        // debug_msg.data.data[8] = targets[8];
+        // debug_msg.data.size = 9;
 
-        RCSOFTCHECK(rcl_publish(&motor_publisher, &motor_debug_msg, NULL));
+        // RCSOFTCHECK(rcl_publish(&debug_publisher, &debug_msg, NULL));
 
     //Serial.print(">up current:");
     //Serial.println(kf.v);
