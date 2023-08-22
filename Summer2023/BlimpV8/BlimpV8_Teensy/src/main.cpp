@@ -1066,13 +1066,6 @@ void loop() {
           translationCom = translation_msg*500.0;
         }
 
-        //motor debug
-        motor_debug_msg.data.data[0] = yaw_msg;
-        motor_debug_msg.data.data[1] = up_msg;
-        motor_debug_msg.data.data[2] = translation_msg;
-        motor_debug_msg.data.data[3] = forward_msg;
-        motor_debug_msg.data.size = 4;
-        RCSOFTCHECK(rcl_publish(&motor_publisher, &motor_debug_msg, NULL));
 
       //check if shooting should be engaged
       //this block switches the state to the oposite that it is currently in
@@ -1113,6 +1106,8 @@ void loop() {
         }
       
     } else if (state == autonomous){
+
+
       /*
       //get auto data
       std::vector<std::vector<double>> target = piData.target;
@@ -1453,13 +1448,27 @@ bool check = false;
       translationMotor = translationCom;
     }
 
-    //motor debug
-    motor_debug_msg.data.data[0] = yawMotor;
-    motor_debug_msg.data.data[1] = upMotor;
-    motor_debug_msg.data.data[2] = translationMotor;
-    motor_debug_msg.data.data[3] = forwardMotor;
-    motor_debug_msg.data.size = 4;
-    RCSOFTCHECK(rcl_publish(&motor_publisher, &motor_debug_msg, NULL));
+        //motor debug
+        motor_debug_msg.data.data[0] = yaw_msg;
+        motor_debug_msg.data.data[1] = up_msg;
+        motor_debug_msg.data.data[2] = translation_msg;
+        motor_debug_msg.data.data[3] = forward_msg;
+        motor_debug_msg.data.size = 4;
+
+        //test target messages
+
+        // motor_debug_msg.data.data[0] = targets[0];
+        // motor_debug_msg.data.data[1] = targets[1];
+        // motor_debug_msg.data.data[2] = targets[2];
+        // motor_debug_msg.data.data[3] = targets[3];
+        // motor_debug_msg.data.data[4] = targets[4];
+        // motor_debug_msg.data.data[5] = targets[5];
+        // motor_debug_msg.data.data[6] = targets[6];
+        // motor_debug_msg.data.data[7] = targets[7];
+        // motor_debug_msg.data.data[8] = targets[8];
+        // motor_debug_msg.data.size = 9;
+
+        RCSOFTCHECK(rcl_publish(&motor_publisher, &motor_debug_msg, NULL));
 
     //Serial.print(">up current:");
     //Serial.println(kf.v);
