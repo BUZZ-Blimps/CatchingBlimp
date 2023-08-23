@@ -14,8 +14,8 @@ int main(int, char**) {
 		CV_Assert("Cam open failed");
 	}
 
-	inputVideo.set(CAP_PROP_FRAME_WIDTH, 1920);
-	inputVideo.set(CAP_PROP_FRAME_HEIGHT, 1080);
+	inputVideo.set(CAP_PROP_FRAME_WIDTH, 2560);
+	inputVideo.set(CAP_PROP_FRAME_HEIGHT, 960);
 
 	int fps = inputVideo.get(CAP_PROP_FPS);
 
