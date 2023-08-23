@@ -73,6 +73,7 @@ ros2 launch blimp_telemetry blimp_telemetry.launch.py
 ### Ubuntu
 
 To get Ubuntu on Rasberry Pi 4, follow the instructions here: https://ubuntu.com/tutorials/how-to-install-ubuntu-desktop-on-raspberry-pi-4#1-overview\
+(We are using Orange Pi 5 now, but the process is similar)
 	
 Note: Make sure the version is 20.04.5 LST (64-bit)
 
@@ -278,13 +279,7 @@ scp InstallOpenCV4.sh pi@192.168.0.10#:/home/pi/
 
 
 **TO DO**
-1. Add streaming on Pi for vision processing.
-2. Document how to get OpenCV on Pi.
-    
-	
-
-  
-  
+1. Add the script "turnEyesOn.sh" for streaming on Pi for vision processing.
   
   
   
