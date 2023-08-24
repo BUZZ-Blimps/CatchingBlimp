@@ -161,7 +161,7 @@ You can assign a static IP through the router and then restart the orange pi if 
 
 Next, SCP the microros_ws, turnOnEyes.sh, openDocker.sh, and the docker steps .md file from an old orange pi to a new one.
 Then we need to setup docker. Run the following commands:
-
+'''
 sudo apt-get update
 sudo apt-get install ca-certificates curl gnupg
 sudo install -m 0755 -d /etc/apt/keyrings
@@ -169,11 +169,14 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o 
 sudo chmod a+r /etc/apt/keyrings/docker.gpg
 sudo apt-get update
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+'''
 
 So we don't need to sudo to use docker:
 
+'''
 sudo groupadd docker
 sudo gpasswd -a $USER docker
+'''
 
 Now edit the openDocker.sh file and change the the file path at /home/orangepi# to whatever you named this orangepi you are setting up.
 The openDocker.sh file should now work without a problem and you should reference the readme file for where to navigate to use the micro_ros startup.
