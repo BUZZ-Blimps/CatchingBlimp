@@ -1,0 +1,7 @@
+path: ../datasets/ml_dataset/
+train: train/images 
+val: valid/images
+
+nc: 5
+names: ['Balloon','Blue Blimp','Red Blimp','Orange Goal','Yellow Goal']
+
