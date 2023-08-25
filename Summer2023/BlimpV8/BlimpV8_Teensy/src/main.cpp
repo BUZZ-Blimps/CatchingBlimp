@@ -102,25 +102,25 @@ void error_loop() {
 //autonomy tunning parameters
 // the inputs are bounded from -2 to 2, yaw is maxed out at 120 deg/s
 #define GAME_BALL_YAW_SEARCH      -15  //deg/s
-#define GAME_BALL_FORWARD_SEARCH  250 //50% throttle 
-#define GAME_BALL_VERTICAL_SEARCH 100  //m/s
+#define GAME_BALL_FORWARD_SEARCH  150 //30% throttle 
+#define GAME_BALL_VERTICAL_SEARCH 50  //m/s
 
 
 #define GAME_BALL_CLOSURE_COM     150  //approaching at 25% throttle cap
 #define GAME_BALL_APPROACH_ANGLE  0  //approach magic number (TODO: reset)
 #define GAME_BaLL_X_OFFSET        0   //offset magic number (TODO: reset)
 
-#define CATCHING_FORWARD_COM      450  //catching at 90% throttle 
-#define CATCHING_UP_COM           1  //damp out pitch
+#define CATCHING_FORWARD_COM      250  //catching at 50% throttle 
+#define CATCHING_UP_COM           0  //damp out pitch
 
-#define CAUGHT_FORWARD_COM        -420  //go back so that the game ball gets to the back 
-#define CAUGHT_UP_COM             -100
+#define CAUGHT_FORWARD_COM        -220  //go back so that the game ball gets to the back 
+#define CAUGHT_UP_COM             -50
 
 #define GOAL_YAW_SEARCH           20   
-#define GOAL_FORWARD_SEARCH       300  //200 40% throttle
-#define GOAL_UP_VELOCITY          200
+#define GOAL_FORWARD_SEARCH       150  //200 40% throttle
+#define GOAL_UP_VELOCITY          50
 
-#define GOAL_CLOSURE_COM          400  //forward command 25% throttle
+#define GOAL_CLOSURE_COM          150  //forward command 25% throttle
 #define GOAL_X_OFFSET             0  
 #define GOAL_APPROACH_ANGLE       0  //height alignment (approach down)
 
@@ -133,14 +133,14 @@ void error_loop() {
 
 #define SCORING_YAW_COM           0
 #define SCORING_FORWARD_COM       200 //40% throttle
-#define SCORING_UP_COM            150
+#define SCORING_UP_COM            50
 
-#define SHOOTING_FORWARD_COM      420  //counter back motion 
+#define SHOOTING_FORWARD_COM      250  //counter back motion 
 #define SHOOTING_UP_COM           100
 //counter moment (right now we do want to shoot up because ball sinks)
 
-#define SCORED_FORWARD_COM        -420
-#define SCORED_UP_COM             -100
+#define SCORED_FORWARD_COM        -250
+#define SCORED_UP_COM             -50
 
 //sensor and controller rates
 #define FAST_SENSOR_LOOP_FREQ           100.0
@@ -201,13 +201,13 @@ Gimbal rightGimbal(R_Yaw, R_Pitch, PWM_R, 25, 30, 1000, 2000, 135, 0.5);
 
 //Manual PID control
 PID verticalPID(350, 0, 0);  //not used for now due to baro reading malfunction
-PID yawPID(5.0, 0, 0);
+PID yawPID(12.0, 0, 0);  //can also tune kd with a little overshoot induced
 PID forwardPID(300, 0, 0);  //not used
 PID translationPID(300, 0, 0); //not used
 
 //Auto PID control (output fed into manual controller)
-PID yPID(100,0,0);    //TODO:retune these
-PID xPID(100,0,0);       //TODO:retune these
+PID yPID(0.0075,0,0);    //TODO:retune these (can also be in pixels depends on which one performs better) 0.0075 for pixel PID
+PID xPID(0.162,0,0);       //TODO:retune these 0.162 for pixel PID
 
 //Goal positioning controller
 BangBang goalPositionHold(GOAL_HEIGHT_DEADBAND, GOAL_UP_VELOCITY); //Dead band, velocity to center itself
@@ -365,10 +365,10 @@ float actualBaro = 0.0;
 
 float goalYawDirection = -1;
 
-//targets data (balloon, orange goal, yellow goal)
+//targets data and pixel data (balloon, orange goal, yellow goal)
 //1000 means object is not present
 std::vector<double> targets = {1000.0, 1000.0, 1000.0, 1000.0, 1000.0, 1000.0, 1000.0, 1000.0, 1000.0};
-
+std::vector<double> pixels = {1000.0, 1000.0, 0.0, 1000.0, 1000.0, 0.0, 1000.0, 1000.0, 0.0};
 //------------------MICRO ROS publishers/subscribers--------------
 //ROS node
 //executors
@@ -405,6 +405,7 @@ rcl_subscription_t motor_subscription; //float64_multi_array
 rcl_subscription_t kill_subscription; //boolean
 rcl_subscription_t goal_color_subscription; //int64
 rcl_subscription_t targets_subscription; //float64_multi_array
+rcl_subscription_t pixels_subscription; //float64_multi_array
 
 
 //message types: String Bool Float32 Float32 MultiArray
@@ -435,6 +436,7 @@ std_msgs__msg__Float64  z_velocity_msg;
 std_msgs__msg__Float64MultiArray motor_msg;
 std_msgs__msg__Float64MultiArray debug_msg;
 std_msgs__msg__Float64MultiArray targets_msg;
+std_msgs__msg__Float64MultiArray pixels_msg;
 
 //String message
 std_msgs__msg__String blimpid_msg;
@@ -584,6 +586,15 @@ void targets_subscription_callback(const void *msgin)
     }
 }
 
+void pixels_subscription_callback(const void *msgin)
+{
+  const std_msgs__msg__Float64MultiArray *pixels_msg = (const std_msgs__msg__Float64MultiArray *)msgin;
+  //3 objects with xyz (9 elements in total)
+    for (size_t i = 0; i < 9; ++i) {
+      pixels[i] = pixels_msg->data.data[i];
+    }
+}
+
 
 bool create_entities() {
   allocator = rcl_get_default_allocator();
@@ -616,6 +627,8 @@ bool create_entities() {
   RCCHECK(rclc_subscription_init_default(&kill_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Bool), "/BurnCreamBlimp/killed"));
   RCCHECK(rclc_subscription_init_default(&goal_color_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Int64), "/BurnCreamBlimp/goal_color"));
   RCCHECK(rclc_subscription_init_default(&targets_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Float64MultiArray), "/BurnCreamBlimp/targets"));
+  RCCHECK(rclc_subscription_init_default(&pixels_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Float64MultiArray), "/BurnCreamBlimp/pixels"));
+
 
   // create timer
   const unsigned int timer_period = 10;
@@ -647,6 +660,7 @@ bool create_entities() {
   RCCHECK(rclc_executor_add_subscription(&executor_sub, &motor_subscription, &motor_msg, &motor_subscription_callback, ON_NEW_DATA));
   RCCHECK(rclc_executor_add_subscription(&executor_sub, &goal_color_subscription, &goal_color_msg, &goal_color_subscription_callback, ON_NEW_DATA));
   RCCHECK(rclc_executor_add_subscription(&executor_sub, &targets_subscription, &targets_msg, &targets_subscription_callback, ON_NEW_DATA));
+  RCCHECK(rclc_executor_add_subscription(&executor_sub, &pixels_subscription, &pixels_msg, &pixels_subscription_callback, ON_NEW_DATA));
   return true;
 }
 
@@ -672,6 +686,7 @@ void destroy_entities() {
   rcl_subscription_fini(&kill_subscription, &node);
   rcl_subscription_fini(&goal_color_subscription, &node);
   rcl_subscription_fini(&targets_subscription, &node);
+  rcl_subscription_fini(&pixels_subscription, &node);
   
   //finish client
   rcl_client_fini(&client, &node);
@@ -741,6 +756,10 @@ void setup() {
   targets_msg.data.data = (double *) malloc(BUFFER_LEN*sizeof(double));
   targets_msg.data.size = sizeof(targets_msg.data.data);
   targets_msg.data.capacity = BUFFER_LEN;
+
+  pixels_msg.data.data = (double *) malloc(BUFFER_LEN*sizeof(double));
+  pixels_msg.data.size = sizeof(pixels_msg.data.data);
+  pixels_msg.data.capacity = BUFFER_LEN;
 
 
   delay(2000);
@@ -1116,12 +1135,15 @@ void loop() {
       std::vector<double> target;
 
       //update targets data if any target exists
+      //TODO: add area to verify distance 
       //balloon 
       if (targets[2] != 1000 && (mode == searching || mode == approach || mode == catching)) {
         float rawZ = targets[2]; //balloon distance
         //update filtered target coordinates (3D space, with center of camera as (0,0,0))
-        tx = xFilter.filter(targets[0]);
-        ty = yFilter.filter(targets[1]);
+        // tx = xFilter.filter(targets[0]); (3D)
+        // ty = yFilter.filter(targets[1]);
+        tx = xFilter.filter(pixels[0]);
+        tx = yFilter.filter(pixels[1]);
         tz = zFilter.filter(rawZ);
         // area = areaFilter.filter(target[0][3]);
         target.push_back(tx);
@@ -1140,8 +1162,10 @@ void loop() {
       if (targets[5] != 1000 && goalColor == orange && (mode == goalSearch || mode == approachGoal || mode == scoringStart)) {
         float rawZ = targets[5]; //balloon distance
         //update filtered target coordinates (3D space, with center of camera as (0,0,0))
-        tx = xFilter.filter(targets[3]);
-        ty = yFilter.filter(targets[4]);
+        // tx = xFilter.filter(targets[3]);
+        // ty = yFilter.filter(targets[4]); 
+        tx = xFilter.filter(pixels[3]);
+        ty = yFilter.filter(pixels[4]); 
         tz = zFilter.filter(rawZ);
         // area = areaFilter.filter(target[0][3]);
         target.push_back(tx);
@@ -1159,8 +1183,10 @@ void loop() {
       if (targets[8] != 1000 && goalColor == yellow && (mode == goalSearch || mode == approachGoal || mode == scoringStart)) {
         float rawZ = targets[8]; //balloon distance
         //update filtered target coordinates (3D space, with center of camera as (0,0,0))
-        tx = xFilter.filter(targets[6]);
-        ty = yFilter.filter(targets[7]);
+        // tx = xFilter.filter(targets[6]);
+        // ty = yFilter.filter(targets[7]);
+        tx = xFilter.filter(pixels[6]);
+        ty = yFilter.filter(pixels[7]);
         tz = zFilter.filter(rawZ);
         // area = areaFilter.filter(target[0][3]);
         target.push_back(tx);
