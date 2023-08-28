@@ -38,7 +38,7 @@
 #include <std_msgs/msg/float64.h>
 #include <std_msgs/msg/int64.h>
 #include <std_msgs/msg/float64_multi_array.h>
-
+#include <std_msgs/msg/int64_multi_array.h>
 //include service
 #include <test_msgs/srv/basic_types.h>
 
@@ -103,22 +103,22 @@ void error_loop() {
 // the inputs are bounded from -2 to 2, yaw is maxed out at 120 deg/s
 #define GAME_BALL_YAW_SEARCH      -15  //deg/s
 #define GAME_BALL_FORWARD_SEARCH  150 //30% throttle 
-#define GAME_BALL_VERTICAL_SEARCH 50  //m/s
+#define GAME_BALL_VERTICAL_SEARCH 30  //m/s
 
 
-#define GAME_BALL_CLOSURE_COM     150  //approaching at 25% throttle cap
-#define GAME_BALL_APPROACH_ANGLE  0  //approach magic number (TODO: reset)
+#define GAME_BALL_CLOSURE_COM     130  //approaching at 20% throttle cap
+#define GAME_BALL_APPROACH_ANGLE  70  //approach magic number (TODO: reset)
 #define GAME_BaLL_X_OFFSET        0   //offset magic number (TODO: reset)
 
-#define CATCHING_FORWARD_COM      250  //catching at 50% throttle 
-#define CATCHING_UP_COM           0  //damp out pitch
+#define CATCHING_FORWARD_COM      280  //catching at 50% throttle 
+#define CATCHING_UP_COM           10  //damp out pitch
 
 #define CAUGHT_FORWARD_COM        -220  //go back so that the game ball gets to the back 
 #define CAUGHT_UP_COM             -50
 
 #define GOAL_YAW_SEARCH           20   
 #define GOAL_FORWARD_SEARCH       150  //200 40% throttle
-#define GOAL_UP_VELOCITY          50
+#define GOAL_UP_VELOCITY          30
 
 #define GOAL_CLOSURE_COM          150  //forward command 25% throttle
 #define GOAL_X_OFFSET             0  
@@ -133,10 +133,10 @@ void error_loop() {
 
 #define SCORING_YAW_COM           0
 #define SCORING_FORWARD_COM       200 //40% throttle
-#define SCORING_UP_COM            50
+#define SCORING_UP_COM            30
 
 #define SHOOTING_FORWARD_COM      250  //counter back motion 
-#define SHOOTING_UP_COM           100
+#define SHOOTING_UP_COM           50
 //counter moment (right now we do want to shoot up because ball sinks)
 
 #define SCORED_FORWARD_COM        -250
@@ -206,8 +206,8 @@ PID forwardPID(300, 0, 0);  //not used
 PID translationPID(300, 0, 0); //not used
 
 //Auto PID control (output fed into manual controller)
-PID yPID(0.0075,0,0);    //TODO:retune these (can also be in pixels depends on which one performs better) 0.0075 for pixel PID
-PID xPID(0.162,0,0);       //TODO:retune these 0.162 for pixel PID
+PID yPID(0.5,0,0);    //TODO:retune these (can also be in pixels depends on which one performs better) 0.0075 for pixel PID
+PID xPID(0.04,0,0);       //TODO:retune these 0.162 for pixel PID
 
 //Goal positioning controller
 BangBang goalPositionHold(GOAL_HEIGHT_DEADBAND, GOAL_UP_VELOCITY); //Dead band, velocity to center itself
@@ -368,7 +368,7 @@ float goalYawDirection = -1;
 //targets data and pixel data (balloon, orange goal, yellow goal)
 //1000 means object is not present
 std::vector<double> targets = {1000.0, 1000.0, 1000.0, 1000.0, 1000.0, 1000.0, 1000.0, 1000.0, 1000.0};
-std::vector<double> pixels = {1000.0, 1000.0, 0.0, 1000.0, 1000.0, 0.0, 1000.0, 1000.0, 0.0};
+std::vector<int64_t> pixels = {1000, 1000, 0, 1000, 1000, 0, 1000, 1000, 0};
 //------------------MICRO ROS publishers/subscribers--------------
 //ROS node
 //executors
@@ -405,7 +405,7 @@ rcl_subscription_t motor_subscription; //float64_multi_array
 rcl_subscription_t kill_subscription; //boolean
 rcl_subscription_t goal_color_subscription; //int64
 rcl_subscription_t targets_subscription; //float64_multi_array
-rcl_subscription_t pixels_subscription; //float64_multi_array
+rcl_subscription_t pixels_subscription; //int64_multi_array
 
 
 //message types: String Bool Float32 Float32 MultiArray
@@ -436,7 +436,7 @@ std_msgs__msg__Float64  z_velocity_msg;
 std_msgs__msg__Float64MultiArray motor_msg;
 std_msgs__msg__Float64MultiArray debug_msg;
 std_msgs__msg__Float64MultiArray targets_msg;
-std_msgs__msg__Float64MultiArray pixels_msg;
+std_msgs__msg__Int64MultiArray pixels_msg;
 
 //String message
 std_msgs__msg__String blimpid_msg;
@@ -588,7 +588,7 @@ void targets_subscription_callback(const void *msgin)
 
 void pixels_subscription_callback(const void *msgin)
 {
-  const std_msgs__msg__Float64MultiArray *pixels_msg = (const std_msgs__msg__Float64MultiArray *)msgin;
+  const std_msgs__msg__Int64MultiArray *pixels_msg = (const std_msgs__msg__Int64MultiArray *)msgin;
   //3 objects with xyz (9 elements in total)
     for (size_t i = 0; i < 9; ++i) {
       pixels[i] = pixels_msg->data.data[i];
@@ -627,7 +627,7 @@ bool create_entities() {
   RCCHECK(rclc_subscription_init_default(&kill_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Bool), "/BurnCreamBlimp/killed"));
   RCCHECK(rclc_subscription_init_default(&goal_color_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Int64), "/BurnCreamBlimp/goal_color"));
   RCCHECK(rclc_subscription_init_default(&targets_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Float64MultiArray), "/BurnCreamBlimp/targets"));
-  RCCHECK(rclc_subscription_init_default(&pixels_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Float64MultiArray), "/BurnCreamBlimp/pixels"));
+  RCCHECK(rclc_subscription_init_default(&pixels_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Int64MultiArray), "/BurnCreamBlimp/pixels"));
 
 
   // create timer
@@ -757,7 +757,7 @@ void setup() {
   targets_msg.data.size = sizeof(targets_msg.data.data);
   targets_msg.data.capacity = BUFFER_LEN;
 
-  pixels_msg.data.data = (double *) malloc(BUFFER_LEN*sizeof(double));
+  pixels_msg.data.data = (int64_t *) malloc(BUFFER_LEN*sizeof(int64_t));
   pixels_msg.data.size = sizeof(pixels_msg.data.data);
   pixels_msg.data.capacity = BUFFER_LEN;
 
@@ -1126,6 +1126,8 @@ void loop() {
     } else if (state == autonomous){
 
       //filter target data
+      // float tx = 0;
+      // float ty = 0;
       float tx = 0;
       float ty = 0;
       float tz = 0;
@@ -1142,8 +1144,8 @@ void loop() {
         //update filtered target coordinates (3D space, with center of camera as (0,0,0))
         // tx = xFilter.filter(targets[0]); (3D)
         // ty = yFilter.filter(targets[1]);
-        tx = xFilter.filter(pixels[0]);
-        tx = yFilter.filter(pixels[1]);
+        tx = xFilter.filter(static_cast<float>(pixels[0]));
+        ty = yFilter.filter(static_cast<float>(pixels[1]));
         tz = zFilter.filter(rawZ);
         // area = areaFilter.filter(target[0][3]);
         target.push_back(tx);
@@ -1164,8 +1166,8 @@ void loop() {
         //update filtered target coordinates (3D space, with center of camera as (0,0,0))
         // tx = xFilter.filter(targets[3]);
         // ty = yFilter.filter(targets[4]); 
-        tx = xFilter.filter(pixels[3]);
-        ty = yFilter.filter(pixels[4]); 
+        tx = xFilter.filter(static_cast<float>(pixels[3]));
+        ty = yFilter.filter(static_cast<float>(pixels[4])); 
         tz = zFilter.filter(rawZ);
         // area = areaFilter.filter(target[0][3]);
         target.push_back(tx);
@@ -1185,8 +1187,8 @@ void loop() {
         //update filtered target coordinates (3D space, with center of camera as (0,0,0))
         // tx = xFilter.filter(targets[6]);
         // ty = yFilter.filter(targets[7]);
-        tx = xFilter.filter(pixels[6]);
-        ty = yFilter.filter(pixels[7]);
+        tx = xFilter.filter(static_cast<float>(pixels[6]));
+        ty = yFilter.filter(static_cast<float>(pixels[7]));
         tz = zFilter.filter(rawZ);
         // area = areaFilter.filter(target[0][3]);
         target.push_back(tx);
@@ -1279,8 +1281,8 @@ void loop() {
             }
 
             //move toward the balloon
-            yawCom = xPID.calculate(tx, GAME_BaLL_X_OFFSET, dt/1000); 
-            upCom = yPID.calculate(ty, GAME_BALL_APPROACH_ANGLE, dt/1000);  
+            yawCom = xPID.calculate(GAME_BaLL_X_OFFSET, tx, dt/1000); 
+            upCom = -yPID.calculate(GAME_BALL_APPROACH_ANGLE, ty, dt/1000);  
             forwardCom = GAME_BALL_CLOSURE_COM;
             translationCom = 0;
             
@@ -1289,7 +1291,7 @@ void loop() {
               ballGrabber.openGrabber();
 
               //check if the catching mode should be triggered
-              if (tz < BALL_CATCH_TRIGGER) {
+              if (tz < BALL_CATCH_TRIGGER && pixels[2] > 90000) {
                 mode = catching;
                 
                 //start catching timer
@@ -1393,8 +1395,8 @@ void loop() {
 
         case approachGoal:
           if (target.size() > 0 && catches >= TOTAL_ATTEMPTS) {
-            yawCom = xPID.calculate(tx, 0, dt);
-            upCom = yPID.calculate(ty, GOAL_APPROACH_ANGLE, dt);
+            yawCom = xPID.calculate(0, tx, dt);
+            upCom = -yPID.calculate(GOAL_APPROACH_ANGLE, ty, dt);
             forwardCom = GOAL_CLOSURE_COM;
 
             if (tz < GOAL_DISTANCE_TRIGGER) {
