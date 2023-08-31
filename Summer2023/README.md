@@ -183,6 +183,11 @@ sudo groupadd docker
 sudo gpasswd -a $USER docker
 ```
 
+Now install the foxy docker image 
+
+```
+sudo docker pull ros:foxy-ros-base-focal
+```
 Now edit the openDocker.sh file and change the the file path at /home/orangepi# to whatever you named this orangepi you are setting up.
 The openDocker.sh file should now work without a problem and you should reference the readme file for where to navigate to use the micro_ros startup.
 
