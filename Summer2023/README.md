@@ -359,9 +359,13 @@ This will start the stream line of the vision code from machine learning to poin
 this will start the UDP dump of the video feed, and the blimp is good to fly both manually and atonomously!
 
 Some commands on the X-box controller to be remembered:
+
 joysticks: three axis motions
+
 RT: auto/manual switch
+
 RB: open/close gate switch
+
 LB: shoot/stop fan+gate switch
 
 
