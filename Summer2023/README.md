@@ -319,7 +319,7 @@ This will show the port name for /dev/tty.
   
 ****Now you are ready to fly your blimp! Yay!****
 
-### Flying the Blimp
+## Flying the Blimp
 
 Follow the instructions for flying a blimp.
 
