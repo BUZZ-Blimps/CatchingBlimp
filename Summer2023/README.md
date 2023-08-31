@@ -340,6 +340,8 @@ ros2 run micro_ros_agent micro_ros_agent serial --dev /dev/ttyACM0
 ```
 The blimp will be activated, and it will self correct its yaw. You should check the polarity of the motors at this point to make sure the motors are plugged in correctly.
 
+To connect/switch to a blimp, click on the down bottom on the key pad on the X-box controller.
+
 5. In another shell (not in the two that's already in the orangepi), run:
 ```
 ./runTrackCode.sh 
