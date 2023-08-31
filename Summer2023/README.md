@@ -370,7 +370,7 @@ LB: shoot/stop fan+gate switch
 
 
 **TO DO**
-1. Add the script "turnEyesOn.sh" for streaming on Pi for vision processing.
+1. Combine every bash script into one for each blimp.
   
   
   
