@@ -20,6 +20,12 @@ ros2 run stereo_image_proc disparity_node
  ```
 ros2 run image_view disparity_view --ros-args --remap image:=disparity
 ```
+
+--to tune the disparity parameters, run:
+ ```
+ros2 run rqt_reconfigure rqt_reconfigure
+```
+
 5. create point clound:
 ```
 ros2 run stereo_image_proc point_cloud_node
