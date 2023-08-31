@@ -39,7 +39,7 @@ For more information, see the [Pi -> MICRO ROS](#micro-ros-1) section.
 
 ## ROS2
 
-For More info about ROS2, please refer to the official website of ROS2 (This is required for all software team to do): https://docs.ros.org/en/foxy/index.html
+*For More info about ROS2, please refer to the official website of ROS2 (This is required for all software team to do):* https://docs.ros.org/en/foxy/index.html
 
 The ROS2 publisher is in the ROS_tf2_test folder, make sure the teensy is plugged into the pi for the tf2 messages to be broadcasted!
 To enable the publisher, please build first:
