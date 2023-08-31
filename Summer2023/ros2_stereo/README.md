@@ -40,3 +40,5 @@ tutorial reference:
 for calibration: http://wiki.ros.org/camera_calibration?distro=noetic
 https://jeffzzq.medium.com/ros2-image-pipeline-tutorial-3b18903e7329
 
+
+*note: to exit out of a process in a shell, use "ctrl+c"
