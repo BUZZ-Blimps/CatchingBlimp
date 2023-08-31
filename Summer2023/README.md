@@ -339,6 +339,7 @@ source install/setup.bash
 ros2 run micro_ros_agent micro_ros_agent serial --dev /dev/ttyACM0
 ```
 The blimp will be activated, and it will self correct its yaw. You should check the polarity of the motors at this point to make sure the motors are plugged in correctly.
+
 5. In another shell (not in the two that's already in the orangepi), run:
 ```
 ./runTrackCode.sh 
@@ -352,6 +353,7 @@ and in another shell(XD), run:
 ./runMLNode.sh
 ```
 This will start the stream line of the vision code from machine learning to point cloud.
+
 6. In the second orange pi shell, run:  
 ```
 ./turnEyesOn.sh
