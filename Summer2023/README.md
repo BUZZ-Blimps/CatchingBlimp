@@ -159,7 +159,7 @@ Next connect to the COREBlimp wifi.
 
 You can assign a static IP through the router and then restart the orange pi if you want.
 
-Next, SCP the microros_ws, turnOnEyes.sh, openDocker.sh, and the docker steps .md file from an old orange pi to a new one.
+Next, SCP the microros_ws, turnEyesOn.sh, openDocker.sh, and the docker steps .md file from an old orange pi to a new one.
 Then we need to setup docker. Run the following commands:
 ```
 sudo apt-get update
@@ -191,7 +191,7 @@ sudo docker pull ros:foxy-ros-base-focal
 Now edit the openDocker.sh file and change the the file path at /home/orangepi# to whatever you named this orangepi you are setting up.
 The openDocker.sh file should now work without a problem and you should reference the readme file for where to navigate to use the micro_ros startup.
 
-The turnOnEyes.sh should work without any problems.
+The turnEyesOn.sh should work without any problems.
 
 Just start both of these scripts via an ssh terminal.
 You can use the "screen" command to run multiple bash scripts in one terminal if you want
@@ -314,14 +314,55 @@ diff dev.txt dev2.txt
 
 This will show the port name for /dev/tty.
 
-### OpenCV
-To get OpenCV on Pi for streaming camera footage, the bash script can be copied and used to download and install OpenCV:
-
-```
-scp InstallOpenCV4.sh pi@192.168.0.10#:/home/pi/
-```
   
 ****Now you are ready to fly your blimp! Yay!****
+
+### Flying the Blimp
+
+Follow the instructions for flying a blimp.
+
+1. Attach battery/batteries to the pcb with Orange pi and teensy connected, while the camera is also connected to the Orange pi
+2. Make sure that the base station is running and it's on "COREBlimp" Wifi
+3. ssh into the pi in **TWO** separate shells (# is the number of the pi):
+```
+ ssh orangepi#@192.168.0.11#
+```
+4. In the first shell, run:
+```
+./openDocker.sh
+```
+This will start the docker, and then:
+```
+./ros_entrypoint.sh 
+cd /home/ 
+source install/setup.bash 
+ros2 run micro_ros_agent micro_ros_agent serial --dev /dev/ttyACM0
+```
+The blimp will be activated, and it will self correct its yaw. You should check the polarity of the motors at this point to make sure the motors are plugged in correctly.
+5. In another shell (not in the two that's already in the orangepi), run:
+```
+./runTrackCode.sh 
+```
+and in another shell, run:
+```
+./ros2_stereo_launch.sh
+```
+and in another shell(XD), run:
+```
+./runMLNode.sh
+```
+This will start the stream line of the vision code from machine learning to point cloud.
+6. In the second orange pi shell, run:  
+```
+./turnEyesOn.sh
+```
+this will start the UDP dump of the video feed, and the blimp is good to fly both manually and atonomously!
+
+Some commands on the X-box controller to be remembered:
+joysticks: three axis motions
+RT: auto/manual switch
+RB: open/close gate switch
+LB: shoot/stop fan+gate switch
 
 
 **TO DO**
