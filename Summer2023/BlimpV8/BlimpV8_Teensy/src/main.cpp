@@ -6,6 +6,7 @@
 #include <cstdlib>
 #include <memory>
 #include <vector>
+#include <string>
 
 #include "MotorControl.h"
 #include "BerryIMU_v3.h"
@@ -407,6 +408,14 @@ rcl_subscription_t goal_color_subscription; //int64
 rcl_subscription_t targets_subscription; //float64_multi_array
 rcl_subscription_t pixels_subscription; //int64_multi_array
 
+//The following names can be commented/uncommented based on the blimp that is used
+// Define the name of the blimp/robot
+std::string blimpNameSpace = "BurnCreamBlimp";   
+// std::string blimpNameSpace = "SillyAhBlimp";
+// std::string blimpNameSpace = "TurboBlimp";
+// std::string blimpNameSpace = "GameChamberBlimp";
+// std::string blimpNameSpace = "FiveGuysBlimp";
+
 
 //message types: String Bool Float32 Float32 MultiArray
 //message topics : /auto /baseBarometer /blimpID /grabbing /killed /motorCommands /shooting /identify /imu /goal_color /state_machine
@@ -440,7 +449,7 @@ std_msgs__msg__Int64MultiArray pixels_msg;
 
 //String message
 std_msgs__msg__String blimpid_msg;
-const char* burn_cream_str = "BurnCreamBlimp"; //const char message
+const char* blimp_name_str = blimpNameSpace.c_str(); //const char message
 int counter = 0;
 
 //sensor message
@@ -460,7 +469,7 @@ void send_request(){
   // request
   int64_t seq;
   test_msgs__srv__BasicTypes_Request__init(&req);
-  snprintf(req.string_value.data, BUFFER_LEN,"%s",burn_cream_str);
+  snprintf(req.string_value.data, BUFFER_LEN,"%s",blimp_name_str);
   req.string_value.size = strlen(req.string_value.data);
   req.string_value.capacity = BUFFER_LEN;
   delay(2000);  //Sleep a while to ensure DDS matching before sending request
@@ -478,8 +487,8 @@ void receive_response(){
 void timer_callback(rcl_timer_t * timer, int64_t last_call_time) {
   RCLC_UNUSED(last_call_time);
   if (timer != NULL) {
-  // snprintf(msg.data.data, BUFFER_LEN, "%s for the %dth time!", burn_cream_str, counter++);
-  snprintf(blimpid_msg.data.data, BUFFER_LEN,"%s", burn_cream_str);
+  // snprintf(msg.data.data, BUFFER_LEN, "%s for the %dth time!", blimp_name_str, counter++);
+  snprintf(blimpid_msg.data.data, BUFFER_LEN,"%s", blimp_name_str);
   blimpid_msg.data.size = strlen(blimpid_msg.data.data);
   blimpid_msg.data.capacity = BUFFER_LEN;
   RCSOFTCHECK(rcl_publish(&blimpid_publisher, &blimpid_msg, NULL));
@@ -603,31 +612,31 @@ bool create_entities() {
   RCCHECK(rclc_support_init(&support, 0, NULL, &allocator));
 
   // create node
-  RCCHECK(rclc_node_init_default(&node, burn_cream_str, "", &support)); //name the robot
+  RCCHECK(rclc_node_init_default(&node, blimp_name_str, "", &support)); //name the robot
 
   //create client
   RCCHECK(rclc_client_init_default(&client, &node, ROSIDL_GET_SRV_TYPE_SUPPORT(test_msgs, srv, BasicTypes), "/BlimpID"));  
 
 
   // create publishers (6 right now)
-  RCCHECK(rclc_publisher_init_default(&blimpid_publisher, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, String), "/BurnCreamBlimp/blimpID"));
-  RCCHECK(rclc_publisher_init_default(&imu_publisher, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(sensor_msgs, msg, Imu), "/BurnCreamBlimp/imu"));
-  RCCHECK(rclc_publisher_init_default(&debug_publisher, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg,Float64MultiArray ), "/BurnCreamBlimp/debug"));
-  RCCHECK(rclc_publisher_init_default(&height_publisher, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg,Float64), "/BurnCreamBlimp/height"));
-  RCCHECK(rclc_publisher_init_default(&z_velocity_publisher, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg,Float64), "/BurnCreamBlimp/z_velocity"));
-  RCCHECK(rclc_publisher_init_default(&state_machine_publisher, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg,Int64), "/BurnCreamBlimp/state_machine"));
+  RCCHECK(rclc_publisher_init_default(&blimpid_publisher, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, String), (blimpNameSpace + "/blimpID").c_str()));
+  RCCHECK(rclc_publisher_init_default(&imu_publisher, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(sensor_msgs, msg, Imu), (blimpNameSpace + "/imu").c_str()));
+  RCCHECK(rclc_publisher_init_default(&debug_publisher, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg,Float64MultiArray ), (blimpNameSpace + "/debug").c_str()));
+  RCCHECK(rclc_publisher_init_default(&height_publisher, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg,Float64), (blimpNameSpace + "/height").c_str()));
+  RCCHECK(rclc_publisher_init_default(&z_velocity_publisher, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg,Float64), (blimpNameSpace + "/z_velocity").c_str()));
+  RCCHECK(rclc_publisher_init_default(&state_machine_publisher, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg,Int64), (blimpNameSpace + "/state_machine").c_str()));
 
   //create subscribers (9 right now)
   RCCHECK(rclc_subscription_init_default(&identity_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Bool), "/identify"));
-  RCCHECK(rclc_subscription_init_default(&auto_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Bool), "/BurnCreamBlimp/auto"));
-  RCCHECK(rclc_subscription_init_default(&baseBarometer_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Float64), "/BurnCreamBlimp/baseBarometer"));
-  RCCHECK(rclc_subscription_init_default(&grabber_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Bool), "/BurnCreamBlimp/grabbing"));
-  RCCHECK(rclc_subscription_init_default(&shooter_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Bool), "/BurnCreamBlimp/shooting"));
-  RCCHECK(rclc_subscription_init_default(&motor_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Float64MultiArray), "/BurnCreamBlimp/motorCommands"));
-  RCCHECK(rclc_subscription_init_default(&kill_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Bool), "/BurnCreamBlimp/killed"));
-  RCCHECK(rclc_subscription_init_default(&goal_color_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Int64), "/BurnCreamBlimp/goal_color"));
-  RCCHECK(rclc_subscription_init_default(&targets_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Float64MultiArray), "/BurnCreamBlimp/targets"));
-  RCCHECK(rclc_subscription_init_default(&pixels_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Int64MultiArray), "/BurnCreamBlimp/pixels"));
+  RCCHECK(rclc_subscription_init_default(&auto_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Bool), (blimpNameSpace + "/auto").c_str()));
+  RCCHECK(rclc_subscription_init_default(&baseBarometer_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Float64), (blimpNameSpace + "/baseBarometer").c_str()));
+  RCCHECK(rclc_subscription_init_default(&grabber_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Bool), (blimpNameSpace + "/grabbing").c_str()));
+  RCCHECK(rclc_subscription_init_default(&shooter_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Bool), (blimpNameSpace + "/shooting").c_str()));
+  RCCHECK(rclc_subscription_init_default(&motor_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Float64MultiArray), (blimpNameSpace + "/motorCommands").c_str()));
+  RCCHECK(rclc_subscription_init_default(&kill_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Bool), (blimpNameSpace + "/killed").c_str()));
+  RCCHECK(rclc_subscription_init_default(&goal_color_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Int64), (blimpNameSpace + "/goal_color").c_str()));
+  RCCHECK(rclc_subscription_init_default(&targets_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Float64MultiArray), (blimpNameSpace + "/targets").c_str()));
+  RCCHECK(rclc_subscription_init_default(&pixels_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Int64MultiArray), (blimpNameSpace + "/pixels").c_str()));
 
 
   // create timer
@@ -827,7 +836,7 @@ void loop() {
     
 
     //publish imu data
-    snprintf(imu_msg.header.frame_id.data, BUFFER_LEN, burn_cream_str);
+    snprintf(imu_msg.header.frame_id.data, BUFFER_LEN, blimp_name_str);
     imu_msg.header.frame_id.size = strlen(blimpid_msg.data.data);
     imu_msg.header.frame_id.capacity = BUFFER_LEN;
 
