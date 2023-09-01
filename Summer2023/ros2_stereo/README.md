@@ -18,7 +18,7 @@ ros2 run stereo_image_proc disparity_node
 	
  --to view the disparity image, run:
  ```
-ros2 run image_view disparity_view --ros-args --remap image:=disparity
+ros2 run image_view disparity_view --ros-args --remap image:=BurnCreamBlimp/disparity
 ```
 
 --to tune the disparity parameters, run:
