@@ -1,4 +1,4 @@
 #!/bin/bash
 
-ros2 run stereo_image_proc disparity_node
+ros2 launch stereo_image_proc disparity.launch.py namespace:=BurnCreamBlimp
 

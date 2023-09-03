@@ -45,6 +45,7 @@
 #include <sensor_msgs/point_cloud2_iterator.hpp>
 #include <stereo_msgs/msg/disparity_image.hpp>
 #include <std_msgs/msg/float64_multi_array.hpp>
+#include <std_msgs/msg/int64_multi_array.hpp>
 
 #include <yolo_msgs/msg/bounding_box.hpp>
 
@@ -95,6 +96,8 @@ class PointCloudNode : public rclcpp::Node
     std::shared_ptr<rclcpp::Publisher<sensor_msgs::msg::PointCloud2>> pub_points2_;
 
     std::shared_ptr<rclcpp::Publisher<std_msgs::msg::Float64MultiArray>> pub_targets_;
+
+    std::shared_ptr<rclcpp::Publisher<std_msgs::msg::Int64MultiArray>> pub_pixels_;
 
     // Processing state (note: only safe because we're single-threaded!)
     image_geometry::StereoCameraModel model_;
@@ -149,8 +152,9 @@ PointCloudNode::PointCloudNode(const rclcpp::NodeOptions & options)
 
     }
 
-    pub_targets_ = create_publisher<std_msgs::msg::Float64MultiArray>("targets", 10);
-    pub_points2_ = create_publisher<sensor_msgs::msg::PointCloud2>("points2", 10);
+    pub_targets_ = create_publisher<std_msgs::msg::Float64MultiArray>("BurnCreamBlimp/targets", 10);
+    pub_points2_ = create_publisher<sensor_msgs::msg::PointCloud2>("BurnCreamBlimp/points2", 10);
+    pub_pixels_ = create_publisher<std_msgs::msg::Int64MultiArray>("BurnCreamBlimp/pixels", 10);
 
     //Only subscribe if there's a subscription listening to our publisher.
     connectCb();
@@ -170,8 +174,8 @@ PointCloudNode::PointCloudNode(const rclcpp::NodeOptions & options)
     sub_l_image_.subscribe(this, "BurnCreamBlimp/left/image_rect_color", hints.getTransport(), image_sub_rmw_qos);
     sub_l_info_.subscribe(this, "BurnCreamBlimp/left/camera_info", image_sub_rmw_qos);
     sub_r_info_.subscribe(this, "BurnCreamBlimp/right/camera_info", image_sub_rmw_qos);
-    sub_disparity_.subscribe(this, "disparity", image_sub_rmw_qos);
-    sub_bbox_.subscribe(this, "track/bounding_box", image_sub_rmw_qos);
+    sub_disparity_.subscribe(this, "BurnCreamBlimp/disparity", image_sub_rmw_qos);
+    sub_bbox_.subscribe(this, "BurnCreamBlimp/bounding_box", image_sub_rmw_qos);
   }
 
   //check functions
@@ -246,7 +250,7 @@ PointCloudNode::PointCloudNode(const rclcpp::NodeOptions & options)
     const stereo_msgs::msg::DisparityImage::ConstSharedPtr & disp_msg,
     const yolo_msgs::msg::BoundingBox::ConstSharedPtr & bbox_msg)
   {
-      RCLCPP_INFO(this->get_logger(), "My name jame! 5");
+      // RCLCPP_INFO(this->get_logger(), "My name jame! 5");
       
       //uncomment for faster operation speeed while no subscirption is present
       // if (pub_points2_->get_subscription_count() == 0u) {
@@ -279,6 +283,9 @@ PointCloudNode::PointCloudNode(const rclcpp::NodeOptions & options)
 
       // Target message initialization 
       auto targets_msg = std::make_shared<std_msgs::msg::Float64MultiArray>();
+
+      // Pixel message initialization 
+      auto pixels_msg = std::make_shared<std_msgs::msg::Int64MultiArray>();
 
       if (!this->get_parameter("avoid_point_cloud_padding").as_bool()) {
         if (this->get_parameter("use_color").as_bool()) {
@@ -334,19 +341,39 @@ PointCloudNode::PointCloudNode(const rclcpp::NodeOptions & options)
       //initialize as if there is no objects
       std::vector<float> balloon_xyz;
       balloon_xyz.resize(3);
-      balloon_xyz[0] = -1.0;
-      balloon_xyz[1] = -1.0;
-      balloon_xyz[2] = -1.0;
+      balloon_xyz[0] = 1000.0;
+      balloon_xyz[1] = 1000.0;
+      balloon_xyz[2] = 1000.0;
       std::vector<float> o_goal_xyz;
       o_goal_xyz.resize(3);
-      o_goal_xyz[0] = -1.0;
-      o_goal_xyz[1] = -1.0;
-      o_goal_xyz[2] = -1.0;
+      o_goal_xyz[0] = 1000.0;
+      o_goal_xyz[1] = 1000.0;
+      o_goal_xyz[2] = 1000.0;
       std::vector<float> y_goal_xyz;
       y_goal_xyz.resize(3);
-      y_goal_xyz[0] = -1.0;
-      y_goal_xyz[1] = -1.0;
-      y_goal_xyz[2] = -1.0;
+      y_goal_xyz[0] = 1000.0;
+      y_goal_xyz[1] = 1000.0;
+      y_goal_xyz[2] = 1000.0;
+
+
+      //balloon pixel in integers
+      //initialize as if there is no objects
+
+      std::vector<int64_t> balloon_pixel;
+      balloon_pixel.resize(3);
+      balloon_pixel[0] = 1000;
+      balloon_pixel[1] = 1000;
+      balloon_pixel[2] = 0;
+      std::vector<int64_t> o_goal_pixel;
+      o_goal_pixel.resize(3);
+      o_goal_pixel[0] = 1000;
+      o_goal_pixel[1] = 1000;
+      o_goal_pixel[2] = 0;
+      std::vector<int64_t> y_goal_pixel;
+      y_goal_pixel.resize(3);
+      y_goal_pixel[0] = 1000;
+      y_goal_pixel[1] = 1000;
+      y_goal_pixel[2] = 0;
 
       float bad_point = std::numeric_limits<float>::quiet_NaN();
       for (int v = 0; v < mat.rows; ++v) {
@@ -386,8 +413,146 @@ PointCloudNode::PointCloudNode(const rclcpp::NodeOptions & options)
         }
       }
 
-      //check balloon xyz centroid
-    if (balloon_x_vec.size() != 0){
+    //check balloon xyz centroid
+    //Filter outliers using standard deviation
+
+    if (balloon_x_vec.size() != 0) {
+    const float numStdDevs = 1.96; // Adjust as needed
+
+    auto calculateFilteredMean = [&](const std::vector<float>& values) -> float {
+        float mean = std::accumulate(values.begin(), values.end(), 0.0) / values.size();
+        float sumSqDiff = std::accumulate(values.begin(), values.end(), 0.0,
+            [mean](float acc, float value) {
+                float diff = value - mean;
+                return acc + diff * diff;
+            });
+        float stdDev = std::sqrt(sumSqDiff / values.size());
+
+        std::vector<float> filteredValues;
+        std::copy_if(values.begin(), values.end(), std::back_inserter(filteredValues),
+            [mean, stdDev, numStdDevs](float value) {
+                return std::abs(value - mean) <= numStdDevs * stdDev;
+            });
+
+        return filteredValues.empty() ?
+            1000.0 :
+            std::accumulate(filteredValues.begin(), filteredValues.end(), 0.0) / filteredValues.size();
+    };
+
+        balloon_xyz[0] = calculateFilteredMean(balloon_x_vec);
+        balloon_xyz[1] = calculateFilteredMean(balloon_y_vec);
+        balloon_xyz[2] = calculateFilteredMean(balloon_z_vec);
+    } else {
+        balloon_xyz[0] = 1000.0;
+        balloon_xyz[1] = 1000.0;
+        balloon_xyz[2] = 1000.0;
+    }
+
+    if (o_goal_x_vec.size() != 0) {
+    const float numStdDevs = 1.96; // Adjust as needed
+
+    auto calculateFilteredMean = [&](const std::vector<float>& values) -> float {
+        float mean = std::accumulate(values.begin(), values.end(), 0.0) / values.size();
+        float sumSqDiff = std::accumulate(values.begin(), values.end(), 0.0,
+            [mean](float acc, float value) {
+                float diff = value - mean;
+                return acc + diff * diff;
+            });
+        float stdDev = std::sqrt(sumSqDiff / values.size());
+
+        std::vector<float> filteredValues;
+        std::copy_if(values.begin(), values.end(), std::back_inserter(filteredValues),
+            [mean, stdDev, numStdDevs](float value) {
+                return std::abs(value - mean) <= numStdDevs * stdDev;
+            });
+
+        return filteredValues.empty() ?
+            1000.0 :
+            std::accumulate(filteredValues.begin(), filteredValues.end(), 0.0) / filteredValues.size();
+    };
+
+        o_goal_xyz[0] = calculateFilteredMean(o_goal_x_vec);
+        o_goal_xyz[1] = calculateFilteredMean(o_goal_y_vec);
+        o_goal_xyz[2] = calculateFilteredMean(o_goal_z_vec);
+    } else {
+        o_goal_xyz[0] = 1000.0;
+        o_goal_xyz[1] = 1000.0;
+        o_goal_xyz[2] = 1000.0;
+    }
+
+    if (y_goal_x_vec.size() != 0) {
+    const float numStdDevs = 1.96; // Adjust as needed
+
+    auto calculateFilteredMean = [&](const std::vector<float>& values) -> float {
+        float mean = std::accumulate(values.begin(), values.end(), 0.0) / values.size();
+        float sumSqDiff = std::accumulate(values.begin(), values.end(), 0.0,
+            [mean](float acc, float value) {
+                float diff = value - mean;
+                return acc + diff * diff;
+            });
+        float stdDev = std::sqrt(sumSqDiff / values.size());
+
+        std::vector<float> filteredValues;
+        std::copy_if(values.begin(), values.end(), std::back_inserter(filteredValues),
+            [mean, stdDev, numStdDevs](float value) {
+                return std::abs(value - mean) <= numStdDevs * stdDev;
+            });
+
+        return filteredValues.empty() ?
+            1000.0 :
+            std::accumulate(filteredValues.begin(), filteredValues.end(), 0.0) / filteredValues.size();
+    };
+
+        y_goal_xyz[0] = calculateFilteredMean(y_goal_x_vec);
+        y_goal_xyz[1] = calculateFilteredMean(y_goal_y_vec);
+        y_goal_xyz[2] = calculateFilteredMean(y_goal_z_vec);
+    } else {
+        y_goal_xyz[0] = 1000.0;
+        y_goal_xyz[1] = 1000.0;
+        y_goal_xyz[2] = 1000.0;
+    }
+
+      // static_cast<double>(bbox_msg->x_center_balloon - 1280/2),
+      // static_cast<double>(bbox_msg->y_center_balloon - 960/2),
+      // static_cast<double>(bbox_msg->x_center_o_goal - 1280/2),
+      // static_cast<double>(bbox_msg->y_center_o_goal - 960/2),
+      // static_cast<double>(bbox_msg->x_center_y_goal - 1280/2),
+      // static_cast<double>(bbox_msg->y_center_y_goal - 960/2),
+    //check pixels
+    if (bbox_msg->x_center_balloon != -1){
+        balloon_pixel[0] = bbox_msg->x_center_balloon - (1280/2);
+        balloon_pixel[1] = bbox_msg->y_center_balloon - (960/2);
+        balloon_pixel[2] = (bbox_msg->height_balloon)*(bbox_msg->width_balloon); //pixel area
+    }else{
+        balloon_pixel[0] = 1000;
+        balloon_pixel[1] = 1000;
+        balloon_pixel[2] = 0;
+    }
+
+    if (bbox_msg->x_center_o_goal != -1){
+        o_goal_pixel[0] = bbox_msg->x_center_o_goal - (1280/2);
+        o_goal_pixel[1] = bbox_msg->y_center_o_goal - (960/2);
+        o_goal_pixel[2] = (bbox_msg->height_o_goal)*(bbox_msg->width_o_goal); //pixel area
+    }else{
+        o_goal_pixel[0] = 1000;
+        o_goal_pixel[1] = 1000;
+        o_goal_pixel[2] = 0;
+    }
+
+    if (bbox_msg->x_center_y_goal != -1){
+        y_goal_pixel[0] = bbox_msg->x_center_y_goal - (1280/2);
+        y_goal_pixel[1] = bbox_msg->y_center_y_goal - (960/2);
+        y_goal_pixel[2] = (bbox_msg->height_y_goal)*(bbox_msg->width_y_goal); //pixel area
+    }else{
+        y_goal_pixel[0] = 1000;
+        y_goal_pixel[1] = 1000;
+        y_goal_pixel[2] = 0;
+    }
+    
+    //basic averaging working code
+
+    /*
+        if (balloon_x_vec.size() != 0){
       float balloon_x_sum = std::accumulate(balloon_x_vec.begin(), balloon_x_vec.end(), 0);
       float balloon_x = balloon_x_sum/balloon_x_vec.size();
       float balloon_y_sum = std::accumulate(balloon_y_vec.begin(), balloon_y_vec.end(), 0);
@@ -400,9 +565,9 @@ PointCloudNode::PointCloudNode(const rclcpp::NodeOptions & options)
       balloon_xyz[2] = balloon_z;
 
     }else{
-      balloon_xyz[0] = -1.0;
-      balloon_xyz[1] = -1.0;
-      balloon_xyz[2] = -1.0;
+      balloon_xyz[0] = 1000.0;
+      balloon_xyz[1] = 1000.0;
+      balloon_xyz[2] = 1000.0;
     }
 
     //check orange goal xyz centroid
@@ -419,9 +584,9 @@ PointCloudNode::PointCloudNode(const rclcpp::NodeOptions & options)
       o_goal_xyz[2] = o_goal_z;
       
     }else{
-      o_goal_xyz[0] = -1.0;
-      o_goal_xyz[1] = -1.0;
-      o_goal_xyz[2] = -1.0;
+      o_goal_xyz[0] = 1000.0;
+      o_goal_xyz[1] = 1000.0;
+      o_goal_xyz[2] = 1000.0;
     }
 
     //check yellow goal xyz centroid
@@ -439,13 +604,14 @@ PointCloudNode::PointCloudNode(const rclcpp::NodeOptions & options)
       y_goal_xyz[2] = y_goal_z;
       
     }else{
-      y_goal_xyz[0] = -1.0;
-      y_goal_xyz[1] = -1.0;
-      y_goal_xyz[2] = -1.0;
+      y_goal_xyz[0] = 1000.0;
+      y_goal_xyz[1] = 1000.0;
+      y_goal_xyz[2] = 1000.0;
     }
+    */
 
-    //IMPORTANT YOU ARE THE PROBLEM!!!!! o_O
     // place all in one float64multiarray
+    //cast to double
 
       targets_msg->data = {
       static_cast<double>(balloon_xyz[0]),
@@ -457,6 +623,21 @@ PointCloudNode::PointCloudNode(const rclcpp::NodeOptions & options)
       static_cast<double>(y_goal_xyz[0]),
       static_cast<double>(y_goal_xyz[1]),
       static_cast<double>(y_goal_xyz[2])
+      };
+
+    //send pixel value (0,0 as the center of the camera frame)
+    //cast to double
+
+      pixels_msg->data = {
+      balloon_pixel[0],
+      balloon_pixel[1],
+      balloon_pixel[2],
+      o_goal_pixel[0],
+      o_goal_pixel[1],
+      o_goal_pixel[2],
+      y_goal_pixel[0],
+      y_goal_pixel[1],
+      y_goal_pixel[2]
       };
 
       if (this->get_parameter("use_color").as_bool()) {
@@ -515,6 +696,7 @@ PointCloudNode::PointCloudNode(const rclcpp::NodeOptions & options)
 
     pub_targets_->publish(*targets_msg);
     pub_points2_->publish(*points_msg);
+    pub_pixels_->publish(*pixels_msg);
   }
 
 } // namespace stereo_image_proc

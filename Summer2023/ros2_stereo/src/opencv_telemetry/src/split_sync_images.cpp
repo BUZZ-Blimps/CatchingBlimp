@@ -45,9 +45,16 @@ SplitImage::SplitImage() : Node("split_sync_image_node")
     cinfoLeft_ = std::make_shared<camera_info_manager::CameraInfoManager>(this, "elp_left");
     cinfoRight_ = std::make_shared<camera_info_manager::CameraInfoManager>(this, "elp_right");
 
+    this->declare_parameter<std::string>("calibration_file", "camera1");
+    std::string calibrationFile = this->get_parameter("calibration_file").as_string();
+    std::string cinfoLeftFilePath = "package://opencv_telemetry/calibration/" + calibrationFile + "_elp_left.yaml";
+    std::string cinfoRightFilePath = "package://opencv_telemetry/calibration/" + calibrationFile + "_elp_right.yaml";
+
     // Load calibration files
-    cinfoLeft_->loadCameraInfo("package://opencv_telemetry/calibration/elp_left.yaml");
-    cinfoRight_->loadCameraInfo("package://opencv_telemetry/calibration/elp_right.yaml");
+    cinfoLeft_->loadCameraInfo(cinfoLeftFilePath);
+    cinfoRight_->loadCameraInfo(cinfoRightFilePath);
+    // cinfoLeft_->loadCameraInfo("package://opencv_telemetry/calibration/elp_left.yaml");
+    // cinfoRight_->loadCameraInfo("package://opencv_telemetry/calibration/elp_right.yaml");
 
     // Set camera namespace
     this->declare_parameter<std::string>("camera_ns", "BurnCreamBlimp");

@@ -62,6 +62,7 @@
 /home/corelab/ros2_stereo/install/opencv_telemetry/lib/opencv_telemetry/split_sync_images
 /home/corelab/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/resized_subscriber.hpp
 /home/corelab/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/resized_publisher.hpp
+/home/corelab/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//launch/split_node.launch.py
 /home/corelab/ros2_stereo/install/opencv_telemetry/share/ament_index/resource_index/package_run_dependencies/opencv_telemetry
 /home/corelab/ros2_stereo/install/opencv_telemetry/share/ament_index/resource_index/parent_prefix_path/opencv_telemetry
 /home/corelab/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/environment/ament_prefix_path.sh

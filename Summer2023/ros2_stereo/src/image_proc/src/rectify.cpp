@@ -168,8 +168,6 @@ void RectifyNode::imageCb(
   cv::remap(resized_image,rect,map_1,map_2,interpolation);
   // model_.rectifyImage(resized_image, rect, interpolation);
 
-  // RCLCPP_ERROR(
-  //     this->get_logger(), "My name jame! ");
 
   // Allocate new rectified image message
   sensor_msgs::msg::Image::SharedPtr rect_msg = cv_bridge::CvImage(image_msg->header, image_msg->encoding, rect).toImageMsg();

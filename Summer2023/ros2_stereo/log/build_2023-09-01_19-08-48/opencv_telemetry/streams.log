@@ -1,0 +1,161 @@
+[0.011s] Invoking command in '/home/corelab/ros2_stereo/build/opencv_telemetry': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /home/corelab/.local/bin/cmake --build /home/corelab/ros2_stereo/build/opencv_telemetry -- -j16 -l16
+[0.044s] [  1%] Built target opencv_telemetry__dds_connext_idl
+[0.044s] [  3%] Built target opencv_telemetry__cpp
+[0.044s] [  8%] Built target opencv_telemetry__rosidl_generator_c
+[0.047s] [ 15%] Built target opencv_subscriber
+[0.047s] [ 15%] Built target minimal_opencv_ros2_node
+[0.050s] [ 20%] Built target opencv_telemetry__rosidl_typesupport_cpp
+[0.050s] [ 25%] Built target opencv_telemetry__rosidl_typesupport_introspection_c
+[0.050s] [ 30%] Built target opencv_telemetry__rosidl_typesupport_fastrtps_cpp
+[0.050s] [ 37%] Built target opencv_telemetry__rosidl_typesupport_introspection_cpp
+[0.050s] [ 40%] Built target opencv_telemetry__rosidl_typesupport_c
+[0.050s] [ 42%] [32mBuilding CXX object CMakeFiles/split_sync_images.dir/src/split_sync_images.cpp.o[0m
+[0.053s] [ 54%] Built target opencv_telemetry__rosidl_typesupport_connext_cpp
+[0.057s] [ 59%] Built target opencv_telemetry__rosidl_typesupport_fastrtps_c
+[0.063s] [ 72%] Built target opencv_telemetry__rosidl_typesupport_connext_c
+[0.067s] [ 72%] Built target opencv_telemetry
+[0.073s] [ 74%] Built target opencv_telemetry__py
+[0.076s] [ 81%] Built target resized_plugins
+[0.079s] [ 84%] Built target opencv_telemetry__python
+[0.085s] [ 88%] Built target opencv_telemetry__rosidl_typesupport_connext_c__pyext
+[0.085s] [ 91%] Built target opencv_telemetry__rosidl_typesupport_fastrtps_c__pyext
+[0.085s] [ 94%] Built target opencv_telemetry__rosidl_typesupport_c__pyext
+[0.085s] [ 98%] Built target opencv_telemetry__rosidl_typesupport_introspection_c__pyext
+[3.669s] [100%] [32m[1mLinking CXX executable split_sync_images[0m
+[3.986s] /usr/bin/ld: warning: libopencv_imgcodecs.so.4.2, needed by /opt/ros/foxy/lib/libcv_bridge.so, may conflict with libopencv_imgcodecs.so.407
+[3.986s] /usr/bin/ld: warning: libopencv_core.so.4.2, needed by /opt/ros/foxy/lib/libcv_bridge.so, may conflict with libopencv_core.so.407
+[3.996s] [100%] Built target split_sync_images
+[4.002s] Invoked command in '/home/corelab/ros2_stereo/build/opencv_telemetry' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /home/corelab/.local/bin/cmake --build /home/corelab/ros2_stereo/build/opencv_telemetry -- -j16 -l16
+[4.098s] Invoking command in '/home/corelab/ros2_stereo/build/opencv_telemetry': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /home/corelab/.local/bin/cmake --install /home/corelab/ros2_stereo/build/opencv_telemetry
+[4.119s] -- Install configuration: ""
+[4.119s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/share/ament_index/resource_index/rosidl_interfaces/opencv_telemetry
+[4.119s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry
+[4.119s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg
+[4.119s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/resized_image.h
+[4.119s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/detail
+[4.119s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/detail/resized_image__functions.c
+[4.119s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/detail/resized_image__struct.h
+[4.119s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/detail/resized_image__type_support.h
+[4.119s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/detail/resized_image__functions.h
+[4.120s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/rosidl_generator_c__visibility_control.h
+[4.120s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/environment/library_path.sh
+[4.120s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/environment/library_path.dsv
+[4.120s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/lib/libopencv_telemetry__rosidl_generator_c.so
+[4.120s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry
+[4.120s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg
+[4.120s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/rosidl_typesupport_connext_c__visibility_control.h
+[4.120s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/resized_image__rosidl_typesupport_connext_c.h
+[4.120s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/dds_connext
+[4.120s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/lib/libopencv_telemetry__rosidl_typesupport_connext_c.so
+[4.120s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/msg/dds_connext
+[4.120s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/msg/dds_connext/ResizedImage_.idl
+[4.120s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry
+[4.120s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg
+[4.120s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/rosidl_typesupport_connext_cpp__visibility_control.h
+[4.120s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/resized_image__rosidl_typesupport_connext_cpp.hpp
+[4.120s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/dds_connext
+[4.120s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/dds_connext/ResizedImage_Support.h
+[4.121s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/dds_connext/ResizedImage_Plugin.cxx
+[4.121s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/dds_connext/ResizedImage_.h
+[4.121s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/dds_connext/ResizedImage_.cxx
+[4.121s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/dds_connext/ResizedImage_Support.cxx
+[4.121s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/dds_connext/ResizedImage_Plugin.h
+[4.121s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/lib/libopencv_telemetry__rosidl_typesupport_connext_cpp.so
+[4.121s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry
+[4.121s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg
+[4.121s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/detail
+[4.121s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/detail/resized_image__rosidl_typesupport_fastrtps_c.h
+[4.121s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[4.121s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/lib/libopencv_telemetry__rosidl_typesupport_fastrtps_c.so
+[4.121s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry
+[4.121s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg
+[4.121s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[4.121s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/detail
+[4.121s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/detail/resized_image__rosidl_typesupport_fastrtps_cpp.hpp
+[4.121s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/detail/dds_fastrtps
+[4.121s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/lib/libopencv_telemetry__rosidl_typesupport_fastrtps_cpp.so
+[4.121s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry
+[4.121s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg
+[4.121s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/detail
+[4.121s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/detail/resized_image__rosidl_typesupport_introspection_c.h
+[4.121s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/detail/resized_image__type_support.c
+[4.121s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[4.121s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/lib/libopencv_telemetry__rosidl_typesupport_introspection_c.so
+[4.121s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/lib/libopencv_telemetry__rosidl_typesupport_c.so
+[4.121s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry
+[4.121s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg
+[4.122s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/rosidl_generator_cpp__visibility_control.hpp
+[4.122s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/resized_image.hpp
+[4.122s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/detail
+[4.122s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/detail/resized_image__struct.hpp
+[4.122s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/detail/resized_image__builder.hpp
+[4.122s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/detail/resized_image__traits.hpp
+[4.122s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/detail/resized_image__type_support.hpp
+[4.122s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry
+[4.122s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg
+[4.122s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/detail
+[4.122s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/detail/resized_image__type_support.cpp
+[4.122s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/detail/resized_image__rosidl_typesupport_introspection_cpp.hpp
+[4.122s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/lib/libopencv_telemetry__rosidl_typesupport_introspection_cpp.so
+[4.122s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/lib/libopencv_telemetry__rosidl_typesupport_cpp.so
+[4.122s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/environment/pythonpath.sh
+[4.122s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/environment/pythonpath.dsv
+[4.122s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/lib/python3.8/site-packages/opencv_telemetry/__init__.py
+[4.143s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/lib/python3.8/site-packages/opencv_telemetry/msg
+[4.143s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/lib/python3.8/site-packages/opencv_telemetry/msg/__init__.py
+[4.143s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/lib/python3.8/site-packages/opencv_telemetry/msg/_resized_image_s.c
+[4.143s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/lib/python3.8/site-packages/opencv_telemetry/msg/_resized_image.py
+[4.143s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/lib/python3.8/site-packages/opencv_telemetry/opencv_telemetry_s__rosidl_typesupport_connext_c.cpython-38-x86_64-linux-gnu.so
+[4.143s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/lib/python3.8/site-packages/opencv_telemetry/opencv_telemetry_s__rosidl_typesupport_fastrtps_c.cpython-38-x86_64-linux-gnu.so
+[4.143s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/lib/python3.8/site-packages/opencv_telemetry/opencv_telemetry_s__rosidl_typesupport_introspection_c.cpython-38-x86_64-linux-gnu.so
+[4.143s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/lib/python3.8/site-packages/opencv_telemetry/opencv_telemetry_s__rosidl_typesupport_c.cpython-38-x86_64-linux-gnu.so
+[4.144s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/lib/libopencv_telemetry__python.so
+[4.144s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/msg/ResizedImage.idl
+[4.144s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/msg/ResizedImage.msg
+[4.144s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/resized_plugins.xml
+[4.144s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/lib/opencv_telemetry/opencv_subscriber
+[4.144s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/lib/libresized_plugins.so
+[4.144s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/lib/opencv_telemetry/minimal_opencv_ros2_node
+[4.144s] -- Installing: /home/corelab/ros2_stereo/install/opencv_telemetry/lib/opencv_telemetry/split_sync_images
+[4.145s] -- Set runtime path of "/home/corelab/ros2_stereo/install/opencv_telemetry/lib/opencv_telemetry/split_sync_images" to ""
+[4.145s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/include
+[4.145s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry
+[4.145s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/resized_subscriber.hpp
+[4.145s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/resized_publisher.hpp
+[4.145s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//launch
+[4.145s] -- Installing: /home/corelab/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//launch/silly_ah_blimp_launch.py
+[4.145s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/share/ament_index/resource_index/package_run_dependencies/opencv_telemetry
+[4.145s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/share/ament_index/resource_index/parent_prefix_path/opencv_telemetry
+[4.145s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/environment/ament_prefix_path.sh
+[4.146s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/environment/ament_prefix_path.dsv
+[4.146s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/environment/path.sh
+[4.146s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/environment/path.dsv
+[4.146s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/local_setup.bash
+[4.146s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/local_setup.sh
+[4.146s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/local_setup.zsh
+[4.146s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/local_setup.dsv
+[4.146s] -- Installing: /home/corelab/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/package.dsv
+[4.146s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/share/ament_index/resource_index/packages/opencv_telemetry
+[4.146s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/share/ament_index/resource_index/opencv_telemetry__pluginlib__plugin/opencv_telemetry
+[4.146s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/opencv_telemetry__rosidl_generator_cExport.cmake
+[4.146s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/opencv_telemetry__rosidl_generator_cExport-noconfig.cmake
+[4.146s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/opencv_telemetry__rosidl_typesupport_introspection_cExport.cmake
+[4.146s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/opencv_telemetry__rosidl_typesupport_introspection_cExport-noconfig.cmake
+[4.146s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/opencv_telemetry__rosidl_typesupport_cExport.cmake
+[4.146s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/opencv_telemetry__rosidl_typesupport_cExport-noconfig.cmake
+[4.146s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/opencv_telemetry__rosidl_generator_cppExport.cmake
+[4.146s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/opencv_telemetry__rosidl_typesupport_introspection_cppExport.cmake
+[4.146s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/opencv_telemetry__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+[4.146s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/opencv_telemetry__rosidl_typesupport_cppExport.cmake
+[4.146s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/opencv_telemetry__rosidl_typesupport_cppExport-noconfig.cmake
+[4.146s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/rosidl_cmake-extras.cmake
+[4.146s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/ament_cmake_export_dependencies-extras.cmake
+[4.146s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/ament_cmake_export_libraries-extras.cmake
+[4.147s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/ament_cmake_export_targets-extras.cmake
+[4.147s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/ament_cmake_export_include_directories-extras.cmake
+[4.147s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+[4.147s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+[4.147s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/opencv_telemetryConfig.cmake
+[4.147s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/opencv_telemetryConfig-version.cmake
+[4.147s] -- Up-to-date: /home/corelab/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/package.xml
+[4.150s] Invoked command in '/home/corelab/ros2_stereo/build/opencv_telemetry' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /home/corelab/.local/bin/cmake --install /home/corelab/ros2_stereo/build/opencv_telemetry

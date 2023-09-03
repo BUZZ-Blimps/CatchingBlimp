@@ -5,15 +5,15 @@ ROS2 Image pipeline for creating a point cloud:
 ```
 2. split the images to left and right frames, and upload the camera info for both lenses:
 ```
-ros2 run opencv_telemetry split_sync_images
+ros2 launch opencv_telemetry split_node.launch.py namespace:=BurnCreamBlimp calibration_file:=camera1 camera_ns:=BurnCreamBlimp
 ``` 
 3. rectify each image by calling the launch file:
 ```
-ros2 launch image_proc image_proc.launch.py
+ros2 launch image_proc image_proc.launch.py namespace:=BurnCreamBlimp
 ``` 
 4. create disparity for the image:
 ```
-ros2 run stereo_image_proc disparity_node
+ros2 launch stereo_image_proc disparity.launch.py namespace:=BurnCreamBlimp
 ```
 	
  --to view the disparity image, run:
@@ -28,7 +28,7 @@ ros2 run rqt_reconfigure rqt_reconfigure
 
 5. create point clound:
 ```
-ros2 run stereo_image_proc point_cloud_node
+ros2 launch stereo_image_proc point_cloud.launch.py namespace:=BurnCreamBlimp
 ``` 
 
 To view the point cloud in rviz, run:
@@ -46,5 +46,3 @@ tutorial reference:
 for calibration: http://wiki.ros.org/camera_calibration?distro=noetic
 https://jeffzzq.medium.com/ros2-image-pipeline-tutorial-3b18903e7329
 
-
-*note: to exit out of a process in a shell, use "ctrl+c"

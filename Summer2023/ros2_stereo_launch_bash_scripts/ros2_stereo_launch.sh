@@ -14,3 +14,15 @@ sleep 0.1
 sleep 0.1
 
 ./point_cloud.sh
+var1=$(pgrep -P $$)
+
+read -r -d '' _ </dev/tty
+#for var2 in $var1
+#do
+#  :
+#  var3=$(pgrep -P $var2)
+#  kill -9 $var3
+#done
+
+#./point_cloud.sh
+

@@ -39,71 +39,84 @@ from launch_ros.actions import ComposableNodeContainer
 from launch_ros.actions import LoadComposableNodes
 from launch_ros.descriptions import ComposableNode
 
+# Add name space for each node
+
 
 def generate_launch_description():
+    DeclareLaunchArgument(
+            'namespace',
+            default_value='my_namespace',
+            description='Namespace for the node'
+        ),
     composable_nodes = [
         ComposableNode(
             package='image_proc',
             plugin='image_proc::DebayerNode',
             name='debayer_node_left',
-             remappings=[
-                ('image_raw', 'BurnCreamBlimp/left/image_raw'),
-                ('image_mono', 'BurnCreamBlimp/left/image_mono'),
-                ('image_color', 'BurnCreamBlimp/left/image_color')
+            namespace=LaunchConfiguration('namespace'),
+            remappings=[
+                ('image_raw', ['/', LaunchConfiguration('namespace'), '/left/image_raw']),
+                ('image_mono', ['/', LaunchConfiguration('namespace'), '/left/image_mono']),
+                ('image_color', ['/', LaunchConfiguration('namespace'), '/left/image_color'])
             ],
         ),
          ComposableNode(
             package='image_proc',
             plugin='image_proc::DebayerNode',
             name='debayer_node_right',
-             remappings=[
-                ('image_raw', 'BurnCreamBlimp/right/image_raw'),
-                ('image_mono', 'BurnCreamBlimp/right/image_mono'),
-                ('image_color', 'BurnCreamBlimp/right/image_color')
+            namespace=LaunchConfiguration('namespace'),
+            remappings=[
+                ('image_raw', ['/', LaunchConfiguration('namespace'), '/right/image_raw']),
+                ('image_mono', ['/', LaunchConfiguration('namespace'), '/right/image_mono']),
+                ('image_color', ['/', LaunchConfiguration('namespace'), '/right/image_color'])
             ],
         ),
         ComposableNode(
             package='image_proc',
             plugin='image_proc::RectifyNode',
             name='rectify_mono_node_left',
+            namespace=LaunchConfiguration('namespace'),
             # Remap subscribers and publishers
             remappings=[
-                ('image', 'BurnCreamBlimp/left/image_mono'),
-                ('camera_info', 'BurnCreamBlimp/left/camera_info'),
-                ('image_rect', 'BurnCreamBlimp/left/image_rect')
+                ('image', ['/', LaunchConfiguration('namespace'), '/left/image_mono']),
+                ('camera_info', ['/', LaunchConfiguration('namespace'), '/left/camera_info']),
+                ('image_rect', ['/', LaunchConfiguration('namespace'), '/left/image_rect'])
             ],
         ),
         ComposableNode(
             package='image_proc',
             plugin='image_proc::RectifyNode',
             name='rectify_mono_node_right',
+            namespace=LaunchConfiguration('namespace'),
             # Remap subscribers and publishers
             remappings=[
-                ('image', 'BurnCreamBlimp/right/image_mono'),
-                ('camera_info', 'BurnCreamBlimp/right/camera_info'),
-                ('image_rect', 'BurnCreamBlimp/right/image_rect')
+                ('image', ['/', LaunchConfiguration('namespace'), '/right/image_mono']),
+                ('camera_info', ['/', LaunchConfiguration('namespace'), '/right/camera_info']),
+                ('image_rect', ['/', LaunchConfiguration('namespace'), '/right/image_rect'])
             ],
         ),
         ComposableNode(
             package='image_proc',
             plugin='image_proc::RectifyNode',
             name='rectify_color_node_left',
+            namespace=LaunchConfiguration('namespace'),
             # Remap subscribers and publishers
             remappings=[
-                ('image', 'BurnCreamBlimp/left/image_color'),
-                ('image_rect', 'BurnCreamBlimp/left/image_rect_color'),
-                ('camera_info', 'BurnCreamBlimp/left/camera_info')
+                ('image', ['/', LaunchConfiguration('namespace'), '/left/image_color']),
+                ('camera_info', ['/', LaunchConfiguration('namespace'), '/left/camera_info']),
+                ('image_rect', ['/', LaunchConfiguration('namespace'), '/left/image_rect_color'])
             ],
         ),
         ComposableNode(
             package='image_proc',
             plugin='image_proc::RectifyNode',
             name='rectify_color_node_right',
+            namespace=LaunchConfiguration('namespace'),
             # Remap subscribers and publishers
             remappings=[
-                ('image', 'BurnCreamBlimp/right/image_color'),
-                ('image_rect', 'BurnCreamBlimp/right/image_rect_color'),
-                ('camera_info', 'BurnCreamBlimp/right/camera_info')
+                ('image', ['/', LaunchConfiguration('namespace'), '/right/image_color']),
+                ('camera_info', ['/', LaunchConfiguration('namespace'), '/right/camera_info']),
+                ('image_rect', ['/', LaunchConfiguration('namespace'), '/right/image_rect_color'])
             ],
         )
     ]
@@ -120,7 +133,7 @@ def generate_launch_description():
     image_processing_container = ComposableNodeContainer(
         condition=LaunchConfigurationEquals('container', ''),
         name='image_proc_container',
-        namespace='',
+        namespace=LaunchConfiguration('namespace'),
         package='rclcpp_components',
         executable='component_container',
         composable_node_descriptions=composable_nodes,

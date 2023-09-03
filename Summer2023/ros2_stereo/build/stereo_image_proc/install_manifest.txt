@@ -4,7 +4,9 @@
 /home/corelab/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/environment/library_path.sh
 /home/corelab/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/environment/library_path.dsv
 /home/corelab/ros2_stereo/install/stereo_image_proc/lib/libstereo_image_proc.so
+/home/corelab/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/launch/disparity.launch.py
 /home/corelab/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/launch/stereo_image_proc.launch.py
+/home/corelab/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/launch/point_cloud.launch.py
 /home/corelab/ros2_stereo/install/stereo_image_proc/share/ament_index/resource_index/package_run_dependencies/stereo_image_proc
 /home/corelab/ros2_stereo/install/stereo_image_proc/share/ament_index/resource_index/parent_prefix_path/stereo_image_proc
 /home/corelab/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/environment/ament_prefix_path.sh

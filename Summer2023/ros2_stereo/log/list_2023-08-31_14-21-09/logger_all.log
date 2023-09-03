@@ -1,0 +1,116 @@
+[0.564s] colcon DEBUG Command line arguments: ['/usr/bin/colcon', 'list', '-p', '--base-paths', '/home/corelab/ros2_stereo']
+[0.564s] colcon DEBUG Parsed command line arguments: Namespace(allow_overriding=[], base_paths=['/home/corelab/ros2_stereo'], build_base='build', ignore_user_meta=False, log_base=None, log_level=None, main=<bound method ListVerb.main of <colcon_package_information.verb.list.ListVerb object at 0x7f11e290c190>>, metas=['./colcon.meta'], names_only=False, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_end=None, packages_ignore=None, packages_ignore_regex=None, packages_select=None, packages_select_build_failed=False, packages_select_by_dep=None, packages_select_regex=None, packages_select_test_failures=False, packages_skip=None, packages_skip_build_finished=False, packages_skip_by_dep=None, packages_skip_regex=None, packages_skip_test_passed=False, packages_skip_up_to=None, packages_start=None, packages_up_to=None, packages_up_to_regex=None, paths=None, paths_only=True, topological_graph=False, topological_graph_density=False, topological_graph_dot=False, topological_graph_dot_cluster=False, topological_graph_dot_include_skipped=False, topological_graph_legend=False, topological_order=False, verb_extension=<colcon_package_information.verb.list.ListVerb object at 0x7f11e290c190>, verb_name='list', verb_parser=<colcon_defaults.argument_parser.defaults.DefaultArgumentsDecorator object at 0x7f11e289b040>)
+[0.609s] colcon.colcon_core.package_discovery Level 1 discover_packages(colcon_meta) check parameters
+[0.609s] colcon.colcon_core.package_discovery Level 1 discover_packages(recursive) check parameters
+[0.609s] colcon.colcon_core.package_discovery Level 1 discover_packages(ignore) check parameters
+[0.609s] colcon.colcon_core.package_discovery Level 1 discover_packages(path) check parameters
+[0.609s] colcon.colcon_core.package_discovery Level 1 discover_packages(recursive) discover
+[0.610s] colcon.colcon_core.package_discovery INFO Crawling recursively for packages in '/home/corelab/ros2_stereo'
+[0.610s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo) by extensions ['ignore', 'ignore_ament_install']
+[0.610s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo) by extension 'ignore'
+[0.610s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo) by extension 'ignore_ament_install'
+[0.610s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo) by extensions ['colcon_pkg']
+[0.610s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo) by extension 'colcon_pkg'
+[0.610s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo) by extensions ['colcon_meta']
+[0.610s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo) by extension 'colcon_meta'
+[0.610s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo) by extensions ['ros']
+[0.610s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo) by extension 'ros'
+[0.624s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo) by extensions ['cmake', 'python']
+[0.624s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo) by extension 'cmake'
+[0.624s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo) by extension 'python'
+[0.624s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo) by extensions ['python_setup_py']
+[0.624s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo) by extension 'python_setup_py'
+[0.640s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/build) by extensions ['ignore', 'ignore_ament_install']
+[0.640s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/build) by extension 'ignore'
+[0.640s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/build) ignored
+[0.640s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/install) by extensions ['ignore', 'ignore_ament_install']
+[0.640s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/install) by extension 'ignore'
+[0.640s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/install) ignored
+[0.640s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/log) by extensions ['ignore', 'ignore_ament_install']
+[0.640s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/log) by extension 'ignore'
+[0.641s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/log) ignored
+[0.641s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src) by extensions ['ignore', 'ignore_ament_install']
+[0.641s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src) by extension 'ignore'
+[0.641s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src) by extension 'ignore_ament_install'
+[0.641s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src) by extensions ['colcon_pkg']
+[0.641s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src) by extension 'colcon_pkg'
+[0.641s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src) by extensions ['colcon_meta']
+[0.641s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src) by extension 'colcon_meta'
+[0.641s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src) by extensions ['ros']
+[0.641s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src) by extension 'ros'
+[0.641s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src) by extensions ['cmake', 'python']
+[0.641s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src) by extension 'cmake'
+[0.641s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src) by extension 'python'
+[0.641s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src) by extensions ['python_setup_py']
+[0.641s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src) by extension 'python_setup_py'
+[0.641s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src/gscam2) by extensions ['ignore', 'ignore_ament_install']
+[0.641s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src/gscam2) by extension 'ignore'
+[0.641s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src/gscam2) by extension 'ignore_ament_install'
+[0.641s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src/gscam2) by extensions ['colcon_pkg']
+[0.642s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src/gscam2) by extension 'colcon_pkg'
+[0.642s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src/gscam2) by extensions ['colcon_meta']
+[0.642s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src/gscam2) by extension 'colcon_meta'
+[0.642s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src/gscam2) by extensions ['ros']
+[0.642s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src/gscam2) by extension 'ros'
+[0.645s] colcon.colcon_core.package_identification DEBUG Package '/home/corelab/ros2_stereo/src/gscam2' with type 'ros.ament_cmake' and name 'gscam2'
+[0.646s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src/image_proc) by extensions ['ignore', 'ignore_ament_install']
+[0.646s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src/image_proc) by extension 'ignore'
+[0.646s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src/image_proc) by extension 'ignore_ament_install'
+[0.646s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src/image_proc) by extensions ['colcon_pkg']
+[0.646s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src/image_proc) by extension 'colcon_pkg'
+[0.646s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src/image_proc) by extensions ['colcon_meta']
+[0.646s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src/image_proc) by extension 'colcon_meta'
+[0.646s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src/image_proc) by extensions ['ros']
+[0.646s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src/image_proc) by extension 'ros'
+[0.647s] colcon.colcon_core.package_identification DEBUG Package '/home/corelab/ros2_stereo/src/image_proc' with type 'ros.ament_cmake' and name 'image_proc'
+[0.648s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src/image_view) by extensions ['ignore', 'ignore_ament_install']
+[0.648s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src/image_view) by extension 'ignore'
+[0.648s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src/image_view) by extension 'ignore_ament_install'
+[0.648s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src/image_view) by extensions ['colcon_pkg']
+[0.648s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src/image_view) by extension 'colcon_pkg'
+[0.648s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src/image_view) by extensions ['colcon_meta']
+[0.648s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src/image_view) by extension 'colcon_meta'
+[0.648s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src/image_view) by extensions ['ros']
+[0.648s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src/image_view) by extension 'ros'
+[0.650s] colcon.colcon_core.package_identification DEBUG Package '/home/corelab/ros2_stereo/src/image_view' with type 'ros.ament_cmake' and name 'image_view'
+[0.650s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src/opencv_telemetry) by extensions ['ignore', 'ignore_ament_install']
+[0.650s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src/opencv_telemetry) by extension 'ignore'
+[0.650s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src/opencv_telemetry) by extension 'ignore_ament_install'
+[0.650s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src/opencv_telemetry) by extensions ['colcon_pkg']
+[0.650s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src/opencv_telemetry) by extension 'colcon_pkg'
+[0.650s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src/opencv_telemetry) by extensions ['colcon_meta']
+[0.650s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src/opencv_telemetry) by extension 'colcon_meta'
+[0.650s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src/opencv_telemetry) by extensions ['ros']
+[0.650s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src/opencv_telemetry) by extension 'ros'
+[0.651s] colcon.colcon_core.package_identification DEBUG Package '/home/corelab/ros2_stereo/src/opencv_telemetry' with type 'ros.ament_cmake' and name 'opencv_telemetry'
+[0.651s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src/ros2_shared) by extensions ['ignore', 'ignore_ament_install']
+[0.651s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src/ros2_shared) by extension 'ignore'
+[0.651s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src/ros2_shared) by extension 'ignore_ament_install'
+[0.651s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src/ros2_shared) by extensions ['colcon_pkg']
+[0.651s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src/ros2_shared) by extension 'colcon_pkg'
+[0.651s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src/ros2_shared) by extensions ['colcon_meta']
+[0.651s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src/ros2_shared) by extension 'colcon_meta'
+[0.651s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src/ros2_shared) by extensions ['ros']
+[0.651s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src/ros2_shared) by extension 'ros'
+[0.652s] colcon.colcon_core.package_identification DEBUG Package '/home/corelab/ros2_stereo/src/ros2_shared' with type 'ros.ament_cmake' and name 'ros2_shared'
+[0.652s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src/stereo_image_proc) by extensions ['ignore', 'ignore_ament_install']
+[0.652s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src/stereo_image_proc) by extension 'ignore'
+[0.652s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src/stereo_image_proc) by extension 'ignore_ament_install'
+[0.652s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src/stereo_image_proc) by extensions ['colcon_pkg']
+[0.652s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src/stereo_image_proc) by extension 'colcon_pkg'
+[0.652s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src/stereo_image_proc) by extensions ['colcon_meta']
+[0.652s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src/stereo_image_proc) by extension 'colcon_meta'
+[0.652s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src/stereo_image_proc) by extensions ['ros']
+[0.652s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src/stereo_image_proc) by extension 'ros'
+[0.655s] colcon.colcon_core.package_identification DEBUG Package '/home/corelab/ros2_stereo/src/stereo_image_proc' with type 'ros.ament_cmake' and name 'stereo_image_proc'
+[0.655s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src/yolo_msgs) by extensions ['ignore', 'ignore_ament_install']
+[0.655s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src/yolo_msgs) by extension 'ignore'
+[0.655s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src/yolo_msgs) by extension 'ignore_ament_install'
+[0.655s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src/yolo_msgs) by extensions ['colcon_pkg']
+[0.655s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src/yolo_msgs) by extension 'colcon_pkg'
+[0.655s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src/yolo_msgs) by extensions ['colcon_meta']
+[0.655s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src/yolo_msgs) by extension 'colcon_meta'
+[0.655s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src/yolo_msgs) by extensions ['ros']
+[0.655s] colcon.colcon_core.package_identification Level 1 _identify(/home/corelab/ros2_stereo/src/yolo_msgs) by extension 'ros'
+[0.656s] colcon.colcon_core.package_identification DEBUG Package '/home/corelab/ros2_stereo/src/yolo_msgs' with type 'ros.ament_cmake' and name 'yolo_msgs'
+[0.656s] colcon.colcon_core.package_discovery Level 1 discover_packages(recursive) using defaults
