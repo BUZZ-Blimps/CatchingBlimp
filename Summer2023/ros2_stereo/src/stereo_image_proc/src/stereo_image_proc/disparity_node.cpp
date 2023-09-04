@@ -265,7 +265,7 @@ DisparityNode::DisparityNode(const rclcpp::NodeOptions & options)
   this->declare_parameters("", double_params);
   this->declare_parameters("", bool_params);
 
-  pub_disparity_ = create_publisher<stereo_msgs::msg::DisparityImage>("disparity", 10);
+  pub_disparity_ = create_publisher<stereo_msgs::msg::DisparityImage>("BurnCreamBlimp/disparity", 10);
 
   // TODO(jacobperron): Replace this with a graph event.
   //                    Only subscribe if there's a subscription listening to our publisher.
