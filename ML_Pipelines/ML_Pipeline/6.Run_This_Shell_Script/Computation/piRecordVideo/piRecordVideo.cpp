@@ -21,7 +21,7 @@ int main(int, char**) {
 	if (!inputVideo.isOpened()) {
 		CV_Assert("Cam open failed");
 	}
-	inputVideo.set(CAP_PROP_FRAME_WIDTH, 1280);
+	inputVideo.set(CAP_PROP_FRAME_WIDTH, 2560);
 	inputVideo.set(CAP_PROP_FRAME_HEIGHT, 960);
 	int fps = inputVideo.get(CAP_PROP_FPS);
 	int secondsToRecord = 120;

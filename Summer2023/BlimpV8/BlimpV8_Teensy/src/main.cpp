@@ -364,6 +364,8 @@ bool wasUp = true;
 //corrected baro
 float actualBaro = 0.0;
 
+float searchYawDirection = -1;
+
 float goalYawDirection = -1;
 
 //targets data and pixel data (balloon, orange goal, yellow goal)
@@ -1109,6 +1111,8 @@ void loop() {
 
             //reset catch counter
             catches=0;
+            //go back to searching
+            mode = searching;
           }
 
      //check if grabbing should be engaged
@@ -1243,7 +1247,16 @@ void loop() {
           if (target.size() == 0) {
             //search behavoir (no target)
             //spin in a small circle looking for a game ball
-            yawCom = GAME_BALL_YAW_SEARCH;
+            //randomize the diretion selection
+
+            int rand = random(0,10);
+            if (rand <= 4){
+              searchYawDirection = 1;
+            }else if (rand > 4){
+              searchYawDirection = -1;
+            }
+
+            yawCom = GAME_BALL_YAW_SEARCH*searchYawDirection;
             upCom = 0;    //is overriden later, defined here as a safety net
             forwardCom = GAME_BALL_FORWARD_SEARCH;
 
@@ -1377,8 +1390,16 @@ void loop() {
 
         case goalSearch:
           if (catches >= TOTAL_ATTEMPTS) {
+            //randomize the diretion selection
+            int rand = random(0,10);
+            if (rand <= 4){
+              goalYawDirection = 1;
+            }else if (rand > 4){
+              goalYawDirection = -1;
+            }
             yawCom = GOAL_YAW_SEARCH*goalYawDirection;
-            upCom = goalPositionHold.calculate(GOAL_HEIGHT, actualBaro);
+            // upCom = goalPositionHold.calculate(GOAL_HEIGHT, actualBaro);
+            upCom = GOAL_UP_VELOCITY;
             forwardCom = GOAL_FORWARD_SEARCH;
             ballGrabber.closeGrabber();
 
@@ -1446,7 +1467,6 @@ void loop() {
             scoredTimeStart = millis();
             mode = scored;
             break;
-            mode = searching;
           }
         }
         break;
