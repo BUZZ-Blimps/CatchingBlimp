@@ -18,4 +18,4 @@
 
 # 8. Run Run_ML_Tracking.sh to test the machine learning model on Steve.
 
-# 9. Run Run_Pi_ML_Stream.sh to run the machine learning model on the Pi.
+# 9. Run Run_Pi_ML_Stream.sh to run the machine learning model on the Pi. (UNTESTED!!!)
