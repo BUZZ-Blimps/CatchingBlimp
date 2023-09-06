@@ -40,7 +40,12 @@ IMPORTANT:--The golbal frame MUST BE SET TO "BurnCreamBlimp_left_optical_frame"-
 for creating the reference frame:
 ```
 ros2 run tf2_ros static_transform_publisher   0.64 0 0.004  0 0 1.5708   BurnCreamBlimp_left_optical_frame   BurnCreamBlimp_left_optical_frame_child
-```	
+```
+
+To record video, run:
+```
+ros2 run image_view video_recorder --ros-args --remap image:=BurnCreamBlimp/left/image_raw
+```
 
 tutorial reference:
 for calibration: http://wiki.ros.org/camera_calibration?distro=noetic
