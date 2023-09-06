@@ -346,10 +346,11 @@ To connect/switch to a blimp, click on the down bottom on the key pad on the X-b
 
 5. In another shell (not in the two that's already in the orangepi), run:
 ```
-./runTrackCode.sh 
+./runCamera1.sh 
 ```
-and in another shell, run:
+and in another shell, run (first cd into the bash script directory):
 ```
+cd ros2_stereo_launch_bash_scripts/
 ./ros2_stereo_launch.sh
 ```
 and in another shell(XD), run:
