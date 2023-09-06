@@ -1,14 +1,16 @@
-
-# Consider dependencies only in project.
-set(CMAKE_DEPENDS_IN_PROJECT_ONLY OFF)
-
 # The set of languages for which implicit dependencies are needed:
 set(CMAKE_DEPENDS_LANGUAGES
+  "CXX"
   )
+# The set of files for implicit dependencies of each language:
+set(CMAKE_DEPENDS_CHECK_CXX
+  "/home/corelab-laptop2/GitHub/CatchingBlimp/ML_Pipelines/ML_Pipeline/6.Run_This_Shell_Script/Computation/piRecordVideo/piRecordVideo.cpp" "/home/corelab-laptop2/GitHub/CatchingBlimp/ML_Pipelines/ML_Pipeline/6.Run_This_Shell_Script/Computation/piRecordVideo/build/CMakeFiles/piRecordVideo.dir/piRecordVideo.cpp.o"
+  )
+set(CMAKE_CXX_COMPILER_ID "GNU")
 
-# The set of dependency files which are needed:
-set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/corelab/ML_Pipeline/6.Run_This_Shell_Script/Computation/piRecordVideo/piRecordVideo.cpp" "CMakeFiles/piRecordVideo.dir/piRecordVideo.cpp.o" "gcc" "CMakeFiles/piRecordVideo.dir/piRecordVideo.cpp.o.d"
+# The include file search paths:
+set(CMAKE_CXX_TARGET_INCLUDE_PATH
+  "/usr/include/opencv4"
   )
 
 # Targets to which this target links.

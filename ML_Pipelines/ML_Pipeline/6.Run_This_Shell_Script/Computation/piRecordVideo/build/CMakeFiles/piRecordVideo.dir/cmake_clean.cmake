@@ -1,6 +1,5 @@
 file(REMOVE_RECURSE
   "CMakeFiles/piRecordVideo.dir/piRecordVideo.cpp.o"
-  "CMakeFiles/piRecordVideo.dir/piRecordVideo.cpp.o.d"
   "piRecordVideo"
   "piRecordVideo.pdb"
 )
