@@ -325,7 +325,7 @@ Follow the instructions for flying a blimp.
 
 1. Attach battery/batteries to the pcb with Orange pi and teensy connected, while the camera is also connected to the Orange pi (Make sure the battery checkers are plugged in, and they should say approximately 8.4V)
 2. Make sure that the base station is running and it's on "COREBlimp" Wifi
-3. ssh into the pi in **TWO** separate shells (# is the number of the pi):
+3. ssh into the pi in **TWO** separate shells (# is the number of the pi) (password for all the pis should be 1234):
 ```
  ssh orangepi#@192.168.0.11#
 ```
