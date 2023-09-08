@@ -28,6 +28,8 @@ To launch the robot model:
 ros2 launch test_urdf_tool launch.py 
 ```
 Important: before launching this robot model, make sure the tf message is being broadcasted (see the launch file in the tf package)
+
+
 [tf_2 package](https://github.com/SWAMP-Blimps/CatchingBlimp/tree/main/Summer2023/ROS_tf2_test)
 
 ***TO DO:***
