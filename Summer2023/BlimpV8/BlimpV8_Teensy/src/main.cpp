@@ -75,7 +75,7 @@ void error_loop() {
 #define USE_OBJECT_AVOIDENCE      false     //use false to turn off the obstacle avoidance 
 
 //catch search time after one
-#define MAX_SEARCH_WAIT_AFTER_ONE     80    //max searching 
+#define MAX_SEARCH_WAIT_AFTER_ONE     80.0    //max searching 
 #define GAME_BALL_WAIT_TIME_PENALTY   0    //should be set to 20, every catch assumed to be 20 seconds long  
 
 //number of catches attempted
@@ -103,19 +103,19 @@ void error_loop() {
 //autonomy tunning parameters
 // the inputs are bounded from -2 to 2, yaw is maxed out at 120 deg/s
 #define GAME_BALL_YAW_SEARCH      -15  //deg/s
-#define GAME_BALL_FORWARD_SEARCH  150 //30% throttle 
-#define GAME_BALL_VERTICAL_SEARCH 30  //m/s
+#define GAME_BALL_FORWARD_SEARCH  130 //30% throttle 
+#define GAME_BALL_VERTICAL_SEARCH 10  //m/s
 
 
 #define GAME_BALL_CLOSURE_COM     130  //approaching at 20% throttle cap
-#define GAME_BALL_APPROACH_ANGLE  70  //approach magic number (TODO: reset)
+#define GAME_BALL_APPROACH_ANGLE  40  //approach magic number (TODO: reset)
 #define GAME_BaLL_X_OFFSET        0   //offset magic number (TODO: reset)
 
 #define CATCHING_FORWARD_COM      280  //catching at 50% throttle 
 #define CATCHING_UP_COM           10  //damp out pitch
 
 #define CAUGHT_FORWARD_COM        -220  //go back so that the game ball gets to the back 
-#define CAUGHT_UP_COM             -50
+#define CAUGHT_UP_COM             -40
 
 #define GOAL_YAW_SEARCH           20   
 #define GOAL_FORWARD_SEARCH       150  //200 40% throttle
@@ -538,8 +538,6 @@ void grab_subscription_callback(const void *msgin)
     grabCom = 0;
   } else if (grab_msg->data == true){
     grabCom = 1;
-    //increase catch counter
-    catches++;
   }
 }
 
@@ -727,6 +725,17 @@ void Pulse() {
     pulseInTimeEnd = micros();
     newPulseDurationAvailable = true;
   }
+}
+
+float searchDirection(){
+  int rand = random(0,10);
+  float binary = 1.0;
+   if (rand <= 4){
+    binary = 1.0;
+   }else if (rand > 4){
+    binary = -1.0;
+   }
+   return binary;
 }
 
 //set up
@@ -1106,13 +1115,14 @@ void loop() {
             //stop shooting
             ballGrabber.closeGrabber();
           } else {
-            //start shooting
-            ballGrabber.shoot();
-
             //reset catch counter
-            catches=0;
+            catches = 0;
             //go back to searching
             mode = searching;
+            searchYawDirection = searchDirection();  //randomize the search direction
+            
+            //start shooting
+            ballGrabber.shoot();
           }
 
      //check if grabbing should be engaged
@@ -1231,30 +1241,26 @@ void loop() {
         case searching:
           //check if goal scoring should be attempted
 
-          if (catches >= 1 && micros()/MICROS_TO_SEC - lastCatch >= MAX_SEARCH_WAIT_AFTER_ONE - (catches-1)*(GAME_BALL_WAIT_TIME_PENALTY)) {
+          if (catches >= 1 && ((micros()/MICROS_TO_SEC - lastCatch) >= (MAX_SEARCH_WAIT_AFTER_ONE - (catches-1)*GAME_BALL_WAIT_TIME_PENALTY))) {
             catches = TOTAL_ATTEMPTS;
             mode = goalSearch;
+            goalYawDirection = searchDirection();  //randomize search direction
             break;
           }
 
 
           if (catches >= TOTAL_ATTEMPTS) {
             mode = goalSearch;
+            goalYawDirection = searchDirection();  //randomize search direction
             break;
           }
+
 
           //begin search pattern spinning around at different heights
           if (target.size() == 0) {
             //search behavoir (no target)
             //spin in a small circle looking for a game ball
             //randomize the diretion selection
-
-            int rand = random(0,10);
-            if (rand <= 4){
-              searchYawDirection = 1;
-            }else if (rand > 4){
-              searchYawDirection = -1;
-            }
 
             yawCom = GAME_BALL_YAW_SEARCH*searchYawDirection;
             upCom = 0;    //is overriden later, defined here as a safety net
@@ -1292,15 +1298,17 @@ void loop() {
           //check if target is still valid
           if (target.size() > 0) {
 
-            if (catches >= 1 && micros()/MICROS_TO_SEC - lastCatch >= MAX_SEARCH_WAIT_AFTER_ONE - (catches-1)*(GAME_BALL_WAIT_TIME_PENALTY)) {
-              catches = TOTAL_ATTEMPTS;
-              mode = goalSearch;
-              break;
-            }
+            // if (catches >= 1 && micros()/MICROS_TO_SEC - lastCatch >= MAX_SEARCH_WAIT_AFTER_ONE - (catches-1)*(GAME_BALL_WAIT_TIME_PENALTY)) {
+            //   catches = TOTAL_ATTEMPTS;
+            //   mode = goalSearch;
+            //   goalYawDirection = searchDirection();  //randomize search direction
+            //   break;
+            // }
 
-            if (catches >= TOTAL_ATTEMPTS) {
-              mode = goalSearch;
-            }
+            // if (catches >= TOTAL_ATTEMPTS) {
+            //   mode = goalSearch;
+            //   goalYawDirection = searchDirection();  //randomize search direction
+            // }
 
             //move toward the balloon
             yawCom = xPID.calculate(GAME_BaLL_X_OFFSET, tx, dt/1000); 
@@ -1313,7 +1321,7 @@ void loop() {
               ballGrabber.openGrabber();
 
               //check if the catching mode should be triggered
-              if (tz < BALL_CATCH_TRIGGER && pixels[2] > 90000) {
+              if (tz < BALL_CATCH_TRIGGER && pixels[2] > 85000) {
                 mode = catching;
                 
                 //start catching timer
@@ -1330,6 +1338,7 @@ void loop() {
           } else {
             //no target, look for another
             mode = searching;
+            searchYawDirection = searchDirection();  //randomize the search direction
           }
           break;
 
@@ -1367,6 +1376,7 @@ void loop() {
               //approach next game ball if visible
               if (catches < TOTAL_ATTEMPTS) {
                 mode = searching;
+                searchYawDirection = searchDirection();  //randomize the search direction
               }
             }
 
@@ -1374,8 +1384,10 @@ void loop() {
             if (caughtTimeStart < millis() - caughtTime) {
               if (catches >= TOTAL_ATTEMPTS) {
                 mode = goalSearch;
+                goalYawDirection = searchDirection();  //randomize search direction
               } else {
                 mode = searching;
+                searchYawDirection = searchDirection();  //randomize the search direction
               }
             }
           
@@ -1385,18 +1397,13 @@ void loop() {
             
           } else {
             mode = searching;
+            searchYawDirection = searchDirection();  //randomize the search direction
           }
           break;
 
         case goalSearch:
           if (catches >= TOTAL_ATTEMPTS) {
             //randomize the diretion selection
-            int rand = random(0,10);
-            if (rand <= 4){
-              goalYawDirection = 1;
-            }else if (rand > 4){
-              goalYawDirection = -1;
-            }
             yawCom = GOAL_YAW_SEARCH*goalYawDirection;
             // upCom = goalPositionHold.calculate(GOAL_HEIGHT, actualBaro);
             upCom = GOAL_UP_VELOCITY;
@@ -1420,6 +1427,7 @@ void loop() {
             }
           } else {
             mode = searching;
+            searchYawDirection = searchDirection();  //randomize the search direction
           }
           break;
 
@@ -1435,6 +1443,7 @@ void loop() {
             }
           } else {
             mode = goalSearch;
+            goalYawDirection = searchDirection();  //randomize search direction
           }
           break;
           //after correction, we can do goal alignment with a yaw and a translation 
@@ -1482,6 +1491,7 @@ void loop() {
   
           if (scoredTimeStart < millis() - scoredTime) {
             mode = searching;
+            searchYawDirection = searchDirection();  //randomize the search direction
             break;
           }
         }
