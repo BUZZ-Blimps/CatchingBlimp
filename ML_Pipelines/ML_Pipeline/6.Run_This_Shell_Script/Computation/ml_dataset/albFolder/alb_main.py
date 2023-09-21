@@ -76,6 +76,10 @@ def readLabelsYolo(filename):
                 category = "Blue Blimp"
             elif(components[0]=='2'):
                 category = "Red Blimp"
+            elif(components[0]=='3'):
+                category = "Orange Goal"
+            elif(components[0]=='4'):
+                category = "Yellow Goal"
             labels.append(category)
  
     return labels
@@ -91,6 +95,10 @@ def writeYolo(coords,class_labels, count, name):
                 labelWrite = 1
             elif class_labels[i] == 'Red Blimp':
                 labelWrite = 2
+            elif class_labels[i] == 'Orange Goal':
+                labelWrite = 3
+            elif class_labels[i] == 'Yellow Goal':
+                labelWrite = 4
             # print("%s %s %s %s %s \n" % (labelWrite, x[0], x[1], x[2], x[3]))
             f.write("%s %s %s %s %s \n" % (labelWrite, x[0], x[1], x[2], x[3]))
             # f.write("%s %s %s %s %s \n" % (x[-1], x[0], x[1], x[2], x[3]))
