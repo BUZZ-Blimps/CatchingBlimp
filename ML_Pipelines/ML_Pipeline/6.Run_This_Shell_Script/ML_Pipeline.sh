@@ -38,7 +38,7 @@ mv yolo_gameball ../6.Run_This_Shell_Script/Computation/ml_dataset
 cd ../6.Run_This_Shell_Script/Computation/ml_dataset
 mkdir tempImages
 mkdir tempLabels
-cd yolo_gameball/images# Need to finish when ml_pipeline is complete
+cd yolo_gameball/images
 mv *.png ../../albFolder
 cd ../labels
 mv *.txt ../../albFolder
