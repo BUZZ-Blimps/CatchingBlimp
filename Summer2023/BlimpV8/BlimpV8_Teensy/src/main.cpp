@@ -91,7 +91,7 @@ void error_loop() {
 #define GOAL_HEIGHT_DEADBAND      0.3       //m
 
 //distance triggers
-#define GOAL_DISTANCE_TRIGGER    1.5 //m distance for blimp to trigger goal score 	
+#define GOAL_DISTANCE_TRIGGER    1.3 //m distance for blimp to trigger goal score 	
 #define BALL_GATE_OPEN_TRIGGER   2 //m distance for blimp to open the gate 	
 #define BALL_CATCH_TRIGGER       1.2  //m distance for blimp to start the open-loop control
 
@@ -121,9 +121,9 @@ void error_loop() {
 #define GOAL_FORWARD_SEARCH       150  //200 40% throttle
 #define GOAL_UP_VELOCITY          30
 
-#define GOAL_CLOSURE_COM          150  //forward command 25% throttle
-#define GOAL_X_OFFSET             0  
-#define GOAL_APPROACH_ANGLE       0  //height alignment (approach down)
+#define GOAL_CLOSURE_COM          90  //forward command 25% throttle
+#define GOAL_X_OFFSET             80  
+#define GOAL_APPROACH_ANGLE       45  //height alignment (approach down)
 
 //goal alignment test
 #define ALIGNING_YAW_COM           10 //test
@@ -133,11 +133,11 @@ void error_loop() {
 
 
 #define SCORING_YAW_COM           0
-#define SCORING_FORWARD_COM       200 //40% throttle
-#define SCORING_UP_COM            30
+#define SCORING_FORWARD_COM       400 //40% throttle
+#define SCORING_UP_COM            180
 
-#define SHOOTING_FORWARD_COM      250  //counter back motion 
-#define SHOOTING_UP_COM           50
+#define SHOOTING_FORWARD_COM      400  //counter back motion 
+#define SHOOTING_UP_COM           150
 //counter moment (right now we do want to shoot up because ball sinks)
 
 #define SCORED_FORWARD_COM        -250
@@ -208,7 +208,7 @@ PID translationPID(300, 0, 0); //not used
 
 //Auto PID control (output fed into manual controller)
 PID yPID(0.5,0,0);    //TODO:retune these (can also be in pixels depends on which one performs better) 0.0075 for pixel PID
-PID xPID(0.04,0,0);       //TODO:retune these 0.162 for pixel PID
+PID xPID(0.036,0,0);       //TODO:retune these 0.162 for pixel PID
 
 //Goal positioning controller
 BangBang goalPositionHold(GOAL_HEIGHT_DEADBAND, GOAL_UP_VELOCITY); //Dead band, velocity to center itself
@@ -1099,7 +1099,8 @@ void loop() {
         }else{
           //normal mapping using max esc command 
           // upCom = up_msg*2.0; //PID used and maxed out at 2m/s
-          upCom = -up_msg*500.0; //PID used and maxed out at 2m/s
+          upCom = -up_msg*500.0;
+          // upCom = -up_msg*500.0-0.5*pitch; //pitch correction? (pitch in degrees, conversion factor command/degree)
           forwardCom = forward_msg*500.0;
           translationCom = translation_msg*500.0;
         }
@@ -1226,14 +1227,14 @@ void loop() {
       }
         //test target message
 
-        if (target.size() != 0){
-        debug_msg.data.data[0] = target[0];
-        debug_msg.data.data[1] = target[1];
-        debug_msg.data.data[2] = target[2];
-        debug_msg.data.size = 3;
-        }
+        // if (target.size() != 0){
+        // debug_msg.data.data[0] = target[0];
+        // debug_msg.data.data[1] = target[1];
+        // debug_msg.data.data[2] = target[2];
+        // debug_msg.data.size = 3;
+        // }
 
-        RCSOFTCHECK(rcl_publish(&debug_publisher, &debug_msg, NULL));
+        // RCSOFTCHECK(rcl_publish(&debug_publisher, &debug_msg, NULL));
 
       //modes for autonomous behavior
       switch (mode) {
@@ -1433,13 +1434,13 @@ void loop() {
 
         case approachGoal:
           if (target.size() > 0 && catches >= TOTAL_ATTEMPTS) {
-            yawCom = xPID.calculate(0, tx, dt);
+            yawCom = xPID.calculate(GOAL_X_OFFSET, tx, dt);
             upCom = -yPID.calculate(GOAL_APPROACH_ANGLE, ty, dt);
             forwardCom = GOAL_CLOSURE_COM;
 
-            if (tz < GOAL_DISTANCE_TRIGGER) {
-              mode = scoringStart;
+            if ((tz < GOAL_DISTANCE_TRIGGER && goalColor == orange && pixels[5] > 203000) || (tz < GOAL_DISTANCE_TRIGGER && goalColor == yellow && pixels[8] > 203000)) {
               scoreTimeStart = millis();
+              mode = scoringStart;
             }
           } else {
             mode = goalSearch;
@@ -1452,10 +1453,10 @@ void loop() {
         if (true) {
           yawCom = SCORING_YAW_COM;
           forwardCom = SCORING_FORWARD_COM;
-          upCom = SCORING_UP_COM;
+          upCom = -SCORING_UP_COM;
   
           if (scoreTimeStart < millis() - scoreTime) {
-            mode = shooting;     //change this to add shooting mode
+            mode = shooting;     
             shootingTimeStart = millis();
             break;
           }
@@ -1466,7 +1467,7 @@ void loop() {
         if (true) {
           yawCom = 0;
           forwardCom = SHOOTING_FORWARD_COM;
-          upCom = SHOOTING_UP_COM;
+          upCom = -SHOOTING_UP_COM;
 
           ballGrabber.shoot();
           catches = 0;
@@ -1564,11 +1565,11 @@ void loop() {
 
         //motor debug
         
-        // debug_msg.data.data[0] = yaw_msg;
-        // debug_msg.data.data[1] = up_msg;
-        // debug_msg.data.data[2] = translation_msg;
-        // debug_msg.data.data[3] = forward_msg;
-        // debug_msg.data.size = 4;
+        debug_msg.data.data[0] = yawMotor;
+        debug_msg.data.data[1] = upMotor;
+        debug_msg.data.data[2] = translationMotor;
+        debug_msg.data.data[3] = forwardMotor;
+        debug_msg.data.size = 4;
 
         //test target messages
 
@@ -1583,7 +1584,7 @@ void loop() {
         // debug_msg.data.data[8] = targets[8];
         // debug_msg.data.size = 9;
 
-        // RCSOFTCHECK(rcl_publish(&debug_publisher, &debug_msg, NULL));
+        RCSOFTCHECK(rcl_publish(&debug_publisher, &debug_msg, NULL));
 
     //Serial.print(">up current:");
     //Serial.println(kf.v);

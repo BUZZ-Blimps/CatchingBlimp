@@ -1,4 +1,0 @@
-[0.000000] (-) TimerEvent: {}
-[0.000190] (-) JobUnselected: {'identifier': 'blimpTelemetry'}
-[0.000503] (-) JobUnselected: {'identifier': 'turtlesim'}
-[0.000533] (-) EventReactorShutdown: {}

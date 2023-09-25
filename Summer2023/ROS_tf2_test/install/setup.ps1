@@ -27,6 +27,7 @@ _colcon_prefix_chain_powershell_source_script "/home/corelab-laptop2/tf2_ws/inst
 _colcon_prefix_chain_powershell_source_script "/home/corelab-laptop2/microros_ws/install\local_setup.ps1"
 _colcon_prefix_chain_powershell_source_script "/home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install\local_setup.ps1"
 _colcon_prefix_chain_powershell_source_script "/home/corelab-laptop2/opencv_ros2/install\local_setup.ps1"
+_colcon_prefix_chain_powershell_source_script "/home/corelab-laptop2/test_urdf_tool_ws/install\local_setup.ps1"
 
 # source this prefix
 $env:COLCON_CURRENT_PREFIX=(Split-Path $PSCommandPath -Parent)

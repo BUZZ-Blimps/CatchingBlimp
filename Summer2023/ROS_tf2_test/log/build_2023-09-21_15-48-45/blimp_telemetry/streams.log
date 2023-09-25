@@ -1,0 +1,70 @@
+[0.013s] Invoking command in '/home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/ROS_tf2_test/build/blimp_telemetry': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/corelab-laptop2/test_urdf_tool_ws/install/test_urdf_tool:/opt/ros/foxy /usr/bin/cmake /home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/ROS_tf2_test/src/blimp_telemetry -DCMAKE_INSTALL_PREFIX=/home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/ROS_tf2_test/install/blimp_telemetry
+[0.051s] -- The C compiler identification is GNU 9.4.0
+[0.086s] -- The CXX compiler identification is GNU 9.4.0
+[0.089s] -- Check for working C compiler: /usr/bin/cc
+[0.138s] -- Check for working C compiler: /usr/bin/cc -- works
+[0.139s] -- Detecting C compiler ABI info
+[0.189s] -- Detecting C compiler ABI info - done
+[0.199s] -- Detecting C compile features
+[0.199s] -- Detecting C compile features - done
+[0.201s] -- Check for working CXX compiler: /usr/bin/c++
+[0.255s] -- Check for working CXX compiler: /usr/bin/c++ -- works
+[0.255s] -- Detecting CXX compiler ABI info
+[0.308s] -- Detecting CXX compiler ABI info - done
+[0.316s] -- Detecting CXX compile features
+[0.316s] -- Detecting CXX compile features - done
+[0.318s] -- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)
+[0.340s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") 
+[0.340s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[0.496s] -- Found rclcpp: 2.4.3 (/opt/ros/foxy/share/rclcpp/cmake)
+[0.528s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.533s] -- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+[0.585s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "1.1.1f")  
+[0.605s] -- Found FastRTPS: /opt/ros/foxy/include  
+[0.659s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.697s] -- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+[0.698s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.698s] -- Looking for pthread.h
+[0.750s] -- Looking for pthread.h - found
+[0.750s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[0.809s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+[0.809s] -- Looking for pthread_create in pthreads
+[0.853s] -- Looking for pthread_create in pthreads - not found
+[0.853s] -- Looking for pthread_create in pthread
+[0.901s] -- Looking for pthread_create in pthread - found
+[0.903s] -- Found Threads: TRUE  
+[1.004s] -- Found sensor_msgs: 2.0.5 (/opt/ros/foxy/share/sensor_msgs/cmake)
+[1.085s] -- Found tf2: 0.13.14 (/opt/ros/foxy/share/tf2/cmake)
+[1.092s] -- Found tf2_ros: 0.13.14 (/opt/ros/foxy/share/tf2_ros/cmake)
+[1.392s] -- Configuring done
+[1.402s] -- Generating done
+[1.403s] -- Build files have been written to: /home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/ROS_tf2_test/build/blimp_telemetry
+[1.411s] Invoked command in '/home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/ROS_tf2_test/build/blimp_telemetry' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/corelab-laptop2/test_urdf_tool_ws/install/test_urdf_tool:/opt/ros/foxy /usr/bin/cmake /home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/ROS_tf2_test/src/blimp_telemetry -DCMAKE_INSTALL_PREFIX=/home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/ROS_tf2_test/install/blimp_telemetry
+[1.412s] Invoking command in '/home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/ROS_tf2_test/build/blimp_telemetry': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/corelab-laptop2/test_urdf_tool_ws/install/test_urdf_tool:/opt/ros/foxy /usr/bin/cmake --build /home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/ROS_tf2_test/build/blimp_telemetry -- -j8 -l8
+[1.443s] [35m[1mScanning dependencies of target blimp_telemetry_node[0m
+[1.467s] [ 50%] [32mBuilding CXX object CMakeFiles/blimp_telemetry_node.dir/src/blimp_telemetry_node.cpp.o[0m
+[4.699s] [100%] [32m[1mLinking CXX executable blimp_telemetry_node[0m
+[4.880s] [100%] Built target blimp_telemetry_node
+[4.888s] Invoked command in '/home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/ROS_tf2_test/build/blimp_telemetry' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/corelab-laptop2/test_urdf_tool_ws/install/test_urdf_tool:/opt/ros/foxy /usr/bin/cmake --build /home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/ROS_tf2_test/build/blimp_telemetry -- -j8 -l8
+[4.914s] Invoking command in '/home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/ROS_tf2_test/build/blimp_telemetry': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/corelab-laptop2/test_urdf_tool_ws/install/test_urdf_tool:/opt/ros/foxy /usr/bin/cmake --install /home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/ROS_tf2_test/build/blimp_telemetry
+[4.920s] -- Install configuration: ""
+[4.920s] -- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/ROS_tf2_test/install/blimp_telemetry/lib/blimp_telemetry/blimp_telemetry_node
+[4.921s] -- Set runtime path of "/home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/ROS_tf2_test/install/blimp_telemetry/lib/blimp_telemetry/blimp_telemetry_node" to ""
+[4.921s] -- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/ROS_tf2_test/install/blimp_telemetry/share/blimp_telemetry/launch
+[4.921s] -- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/ROS_tf2_test/install/blimp_telemetry/share/blimp_telemetry/launch/blimp_telemetry.launch.py
+[4.922s] -- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/ROS_tf2_test/install/blimp_telemetry/share/ament_index/resource_index/package_run_dependencies/blimp_telemetry
+[4.922s] -- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/ROS_tf2_test/install/blimp_telemetry/share/ament_index/resource_index/parent_prefix_path/blimp_telemetry
+[4.922s] -- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/ROS_tf2_test/install/blimp_telemetry/share/blimp_telemetry/environment/ament_prefix_path.sh
+[4.922s] -- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/ROS_tf2_test/install/blimp_telemetry/share/blimp_telemetry/environment/ament_prefix_path.dsv
+[4.922s] -- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/ROS_tf2_test/install/blimp_telemetry/share/blimp_telemetry/environment/path.sh
+[4.922s] -- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/ROS_tf2_test/install/blimp_telemetry/share/blimp_telemetry/environment/path.dsv
+[4.922s] -- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/ROS_tf2_test/install/blimp_telemetry/share/blimp_telemetry/local_setup.bash
+[4.922s] -- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/ROS_tf2_test/install/blimp_telemetry/share/blimp_telemetry/local_setup.sh
+[4.922s] -- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/ROS_tf2_test/install/blimp_telemetry/share/blimp_telemetry/local_setup.zsh
+[4.922s] -- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/ROS_tf2_test/install/blimp_telemetry/share/blimp_telemetry/local_setup.dsv
+[4.922s] -- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/ROS_tf2_test/install/blimp_telemetry/share/blimp_telemetry/package.dsv
+[4.922s] -- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/ROS_tf2_test/install/blimp_telemetry/share/ament_index/resource_index/packages/blimp_telemetry
+[4.922s] -- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/ROS_tf2_test/install/blimp_telemetry/share/blimp_telemetry/cmake/blimp_telemetryConfig.cmake
+[4.923s] -- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/ROS_tf2_test/install/blimp_telemetry/share/blimp_telemetry/cmake/blimp_telemetryConfig-version.cmake
+[4.923s] -- Installing: /home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/ROS_tf2_test/install/blimp_telemetry/share/blimp_telemetry/package.xml
+[4.924s] Invoked command in '/home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/ROS_tf2_test/build/blimp_telemetry' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/corelab-laptop2/test_urdf_tool_ws/install/test_urdf_tool:/opt/ros/foxy /usr/bin/cmake --install /home/corelab-laptop2/GitHub/CatchingBlimp/Summer2023/ROS_tf2_test/build/blimp_telemetry
