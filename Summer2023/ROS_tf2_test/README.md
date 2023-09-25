@@ -5,7 +5,7 @@ This package will launch a node to bind the imu messages and publish it as a tf2
 To run this code, run the following on the linux window:
 
 ```	
-ros2 launch blimp_telemtry blimp_telemetry.launch.py
+ros2 launch blimp_telemetry blimp_telemetry.launch.py
 ```
 
 
