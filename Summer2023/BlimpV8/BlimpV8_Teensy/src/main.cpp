@@ -103,8 +103,8 @@ void error_loop() {
 //autonomy tunning parameters
 // the inputs are bounded from -2 to 2, yaw is maxed out at 120 deg/s
 #define GAME_BALL_YAW_SEARCH      -15  //deg/s
-#define GAME_BALL_FORWARD_SEARCH  130 //30% throttle 
-#define GAME_BALL_VERTICAL_SEARCH 10  //m/s
+#define GAME_BALL_FORWARD_SEARCH  90 //30% throttle 
+#define GAME_BALL_VERTICAL_SEARCH 40  //m/s
 
 
 #define GAME_BALL_CLOSURE_COM     130  //approaching at 20% throttle cap
@@ -412,11 +412,11 @@ rcl_subscription_t pixels_subscription; //int64_multi_array
 
 //The following names can be commented/uncommented based on the blimp that is used
 // Define the name of the blimp/robot
-std::string blimpNameSpace = "BurnCreamBlimp";   
-// std::string blimpNameSpace = "SillyAhBlimp";
-// std::string blimpNameSpace = "TurboBlimp";
-// std::string blimpNameSpace = "GameChamberBlimp";
-// std::string blimpNameSpace = "FiveGuysBlimp";
+//std::string blimpNameSpace = "BurnCreamBlimp";   
+std::string blimpNameSpace = "SillyAhBlimp";
+//std::string blimpNameSpace = "TurboBlimp";
+//std::string blimpNameSpace = "GameChamberBlimp";
+//std::string blimpNameSpace = "FiveGuysBlimp";
 
 
 //message types: String Bool Float32 Float32 MultiArray
@@ -836,6 +836,7 @@ void loop() {
 
     //read sensor values and update madgwick
     BerryIMU.IMU_read();
+    //printf("Baro Reading: %s\n", BerryIMU.alt);
     BerryIMU.IMU_ROTATION(rotation); // Rotate IMU
     madgwick.Madgwick_Update(BerryIMU.gyr_rateXraw,
                              BerryIMU.gyr_rateYraw,
@@ -943,6 +944,11 @@ void loop() {
 
     //get most current imu values
     BerryIMU.IMU_read();
+
+    if (BerryIMU.alt < 100000) {
+      BerryIMU.BerryIMU_v3_Setup();
+      BerryIMU.IMU_read();
+    }
     
     //update kalman with uncorreced barometer data
     kf.updateBaro(BerryIMU.alt);
@@ -1547,7 +1553,7 @@ void loop() {
              yawMotor = tanh(yawMotor)*abs(yawMotor);
          }
 
-    //TO DO: im prove velocity control
+    //TO DO: improve velocity control
     // upMotor = verticalPID.calculate(upCom, kf.v, dt); //up velocity from barometer
     upMotor = upCom;
 
