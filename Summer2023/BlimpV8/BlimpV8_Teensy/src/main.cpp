@@ -72,7 +72,7 @@ void error_loop() {
 
 //optional controllers
 #define USE_EST_VELOCITY_IN_MANUAL  false    //use false to turn off the velosity control to see the blimp's behavior 
-#define USE_OBJECT_AVOIDENCE      false     //use false to turn off the obstacle avoidance 
+#define USE_OBJECT_AVOIDENCE      true     //use false to turn off the obstacle avoidance 
 
 //catch search time after one
 #define MAX_SEARCH_WAIT_AFTER_ONE     80.0    //max searching 
@@ -91,14 +91,16 @@ void error_loop() {
 #define GOAL_HEIGHT_DEADBAND      0.3       //m
 
 //distance triggers
-#define GOAL_DISTANCE_TRIGGER    1.3 //m distance for blimp to trigger goal score 	
-#define BALL_GATE_OPEN_TRIGGER   2 //m distance for blimp to open the gate 	
+#define GOAL_DISTANCE_TRIGGER    1.3  //m distance for blimp to trigger goal score 	
+#define BALL_GATE_OPEN_TRIGGER   2    //m distance for blimp to open the gate 	
 #define BALL_CATCH_TRIGGER       1.2  //m distance for blimp to start the open-loop control
+#define AVOID_TRIGGER       1.2  //m distance for blimp to start the open-loop control
+
 
 //object avoidence motor coms
-#define FORWARD_AVOID             125  //25% throttle
-#define YAW_AVOID                 10	 //deg/s
-#define UP_AVOID                  0.4  //m/s
+#define FORWARD_AVOID             125  // 25% throttle
+#define YAW_AVOID                 10	 // deg/s
+#define UP_AVOID                  20   // % throttle 
 
 //autonomy tunning parameters
 // the inputs are bounded from -2 to 2, yaw is maxed out at 120 deg/s
@@ -127,7 +129,7 @@ void error_loop() {
 
 //goal alignment test
 #define ALIGNING_YAW_COM           10 //test
-#define ALIGNING_FORWARD_COM        100 //test
+#define ALIGNING_FORWARD_COM       100 //test
 #define ALIGNING_UP_COM            100 //test
 #define ALIGNING_TRANSLATION_COM   300 //test
 
@@ -353,7 +355,7 @@ const byte interruptPin = 22;
 float z_distance_m = 0;
 
 //avoidence data
-int quad = 10;
+int quadrant = 10;
 
 //base station baro
 float baseBaro = 0.0;
@@ -368,8 +370,9 @@ float searchYawDirection = -1;
 
 float goalYawDirection = -1;
 
-//targets data and pixel data (balloon, orange goal, yellow goal)
+//avoidance data (9 quadrants), targets data and pixel data (balloon, orange goal, yellow goal)
 //1000 means object is not present
+std::vector<double> avoidance = {1000.0, 1000.0, 1000.0, 1000.0, 1000.0, 1000.0, 1000.0, 1000.0, 1000.0};
 std::vector<double> targets = {1000.0, 1000.0, 1000.0, 1000.0, 1000.0, 1000.0, 1000.0, 1000.0, 1000.0};
 std::vector<int64_t> pixels = {1000, 1000, 0, 1000, 1000, 0, 1000, 1000, 0};
 //------------------MICRO ROS publishers/subscribers--------------
@@ -407,16 +410,17 @@ rcl_subscription_t shooter_subscription; //boolean
 rcl_subscription_t motor_subscription; //float64_multi_array
 rcl_subscription_t kill_subscription; //boolean
 rcl_subscription_t goal_color_subscription; //int64
+rcl_subscription_t avoidance_subscription; //float64_multi_array
 rcl_subscription_t targets_subscription; //float64_multi_array
 rcl_subscription_t pixels_subscription; //int64_multi_array
 
 //The following names can be commented/uncommented based on the blimp that is used
 // Define the name of the blimp/robot
-std::string blimpNameSpace = "BurnCreamBlimp";   
+//std::string blimpNameSpace = "BurnCreamBlimp";   
 // std::string blimpNameSpace = "SillyAhBlimp";
 // std::string blimpNameSpace = "TurboBlimp";
 // std::string blimpNameSpace = "GameChamberBlimp";
-// std::string blimpNameSpace = "FiveGuysBlimp";
+std::string blimpNameSpace = "FiveGuysBlimp";
 
 
 //message types: String Bool Float32 Float32 MultiArray
@@ -443,9 +447,10 @@ std_msgs__msg__Float64  baro_msg;
 std_msgs__msg__Float64  height_msg;
 std_msgs__msg__Float64  z_velocity_msg;
 
-//float64multiarray message
+//float64multiarray and int64multiarray messages
 std_msgs__msg__Float64MultiArray motor_msg;
 std_msgs__msg__Float64MultiArray debug_msg;
+std_msgs__msg__Float64MultiArray avoidance_msg;
 std_msgs__msg__Float64MultiArray targets_msg;
 std_msgs__msg__Int64MultiArray pixels_msg;
 
@@ -586,6 +591,15 @@ void goal_color_subscription_callback(const void *msgin)
   }
 }
 
+void avoidance_subscription_callback(const void *msgin)
+{
+  const std_msgs__msg__Float64MultiArray *avoidance_msg = (const std_msgs__msg__Float64MultiArray *)msgin;
+  //3 objects with xyz (9 elements in total)
+    for (size_t i = 0; i < 9; ++i) {
+      avoidance[i] = avoidance_msg->data.data[i];
+    }
+}
+
 void targets_subscription_callback(const void *msgin)
 {
   const std_msgs__msg__Float64MultiArray *targets_msg = (const std_msgs__msg__Float64MultiArray *)msgin;
@@ -637,6 +651,7 @@ bool create_entities() {
   RCCHECK(rclc_subscription_init_default(&goal_color_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Int64), (blimpNameSpace + "/goal_color").c_str()));
   RCCHECK(rclc_subscription_init_default(&targets_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Float64MultiArray), (blimpNameSpace + "/targets").c_str()));
   RCCHECK(rclc_subscription_init_default(&pixels_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Int64MultiArray), (blimpNameSpace + "/pixels").c_str()));
+  RCCHECK(rclc_subscription_init_default(&avoidance_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Float64MultiArray), (blimpNameSpace + "/avoidance").c_str()));
 
 
   // create timer
@@ -652,7 +667,7 @@ bool create_entities() {
   // RCCHECK(rclc_executor_init(&executor_srv, &support.context, 1, &allocator));
   RCCHECK(rclc_executor_init(&executor_pub, &support.context, 6, &allocator));
   RCCHECK(rclc_executor_add_timer(&executor_pub, &timer));
-  RCCHECK(rclc_executor_init(&executor_sub, &support.context, 10, &allocator));
+  RCCHECK(rclc_executor_init(&executor_sub, &support.context, 11, &allocator));
 
   //add client  
   // RCCHECK(rclc_executor_add_client(&executor_srv, &client, &res, client_callback));
@@ -670,6 +685,7 @@ bool create_entities() {
   RCCHECK(rclc_executor_add_subscription(&executor_sub, &goal_color_subscription, &goal_color_msg, &goal_color_subscription_callback, ON_NEW_DATA));
   RCCHECK(rclc_executor_add_subscription(&executor_sub, &targets_subscription, &targets_msg, &targets_subscription_callback, ON_NEW_DATA));
   RCCHECK(rclc_executor_add_subscription(&executor_sub, &pixels_subscription, &pixels_msg, &pixels_subscription_callback, ON_NEW_DATA));
+  RCCHECK(rclc_executor_add_subscription(&executor_sub, &avoidance_subscription, &avoidance_msg, &avoidance_subscription_callback, ON_NEW_DATA));
   return true;
 }
 
@@ -696,6 +712,7 @@ void destroy_entities() {
   rcl_subscription_fini(&goal_color_subscription, &node);
   rcl_subscription_fini(&targets_subscription, &node);
   rcl_subscription_fini(&pixels_subscription, &node);
+  rcl_subscription_fini(&avoidance_subscription, &node);
   
   //finish client
   rcl_client_fini(&client, &node);
@@ -780,6 +797,10 @@ void setup() {
   pixels_msg.data.data = (int64_t *) malloc(BUFFER_LEN*sizeof(int64_t));
   pixels_msg.data.size = sizeof(pixels_msg.data.data);
   pixels_msg.data.capacity = BUFFER_LEN;
+
+  avoidance_msg.data.data = (double *) malloc(BUFFER_LEN*sizeof(double));
+  avoidance_msg.data.size = sizeof(avoidance_msg.data.data);
+  avoidance_msg.data.capacity = BUFFER_LEN;
 
 
   delay(2000);
@@ -1026,7 +1047,7 @@ void loop() {
     float yawA = 0.0;
 
       //set avoidence command based on quadrant that contains object to avoid
-    switch (quad) {
+    switch (quadrant) {
       case 1:
         forwardA = -FORWARD_AVOID;
         upA = -UP_AVOID;
@@ -1259,22 +1280,49 @@ void loop() {
 
           //begin search pattern spinning around at different heights
           if (target.size() == 0) {
-            //search behavoir (no target)
-            //spin in a small circle looking for a game ball
-            //randomize the diretion selection
-
-            yawCom = GAME_BALL_YAW_SEARCH*searchYawDirection;
-            upCom = 0;    //is overriden later, defined here as a safety net
-            forwardCom = GAME_BALL_FORWARD_SEARCH;
 
             //keep ball grabber closed
             ballGrabber.closeGrabber();
 
             //use object avoidence
-            if (quad != 10 && USE_OBJECT_AVOIDENCE) {
+            double avoidanceMinVal = 1000.0; // Initialize 
+            int avoidanceMinIndex = 10;
+
+            // Iterate through the vector to find the minimum value and its index
+            // find the minimum distance and its corresponding quadrant number (1-9)
+            for (int i = 0; i < 9; ++i) {
+                if (avoidance[i] < avoidanceMinVal) {
+                    avoidanceMinVal = avoidance[i]; //distance
+                    avoidanceMinIndex = i+1; //quadrant number
+                }
+            }
+
+            //set the avoidance quadrant only when avoidance range is triggered
+            if (avoidanceMinVal < AVOID_TRIGGER){
+              //update quadrant
+              quadrant = avoidanceMinIndex;
+            }else{
+              //safe
+              //update quadrant
+              quadrant = 10;
+            }
+
+            //avoding obstacle
+            if (quadrant != 10 && USE_OBJECT_AVOIDENCE) {
+
               //overide search commands
-              //yawCom = yawA;
+              yawCom = yawA;
               forwardCom = forwardA;
+              upCom = upA;
+
+            }else{
+
+            //search behavoir (no target)
+            //spin in a small circle looking for a game ball
+            //randomize the diretion selection
+              yawCom = GAME_BALL_YAW_SEARCH*searchYawDirection;
+              upCom = 0;    //is overriden later, defined here as a safety net
+              forwardCom = GAME_BALL_FORWARD_SEARCH;
             }
 
             //move up and down within the set boundry
@@ -1291,7 +1339,7 @@ void loop() {
             //move to approaching game ball
             mode = approach;
             //start approaching timer
-                approachTimeStart = millis();
+            approachTimeStart = millis();
           }
           break;
 
@@ -1404,28 +1452,52 @@ void loop() {
 
         case goalSearch:
           if (catches >= TOTAL_ATTEMPTS) {
-            //randomize the diretion selection
-            yawCom = GOAL_YAW_SEARCH*goalYawDirection;
-            // upCom = goalPositionHold.calculate(GOAL_HEIGHT, actualBaro);
-            upCom = GOAL_UP_VELOCITY;
-            forwardCom = GOAL_FORWARD_SEARCH;
+            
+            //keep ball grabber closed
             ballGrabber.closeGrabber();
 
-            //implement avoidence here
-            if (quad != 10 && USE_OBJECT_AVOIDENCE) {
+            //use object avoidence
+            double avoidanceMinVal = 1000.0; // Initialize 
+            int avoidanceMinIndex = 10;
+
+            // Iterate through the vector to find the minimum value and its index
+            // find the minimum distance and its corresponding quadrant number (1-9)
+            for (int i = 0; i < 9; ++i) {
+                if (avoidance[i] < avoidanceMinVal) {
+                    avoidanceMinVal = avoidance[i]; //distance
+                    avoidanceMinIndex = i+1; //quadrant number
+                }
+            }
+
+            //set the avoidance quadrant only in range
+            if (avoidanceMinVal < AVOID_TRIGGER){
+              //update quadrant
+              quadrant = avoidanceMinIndex;
+            }else{
+              //update quadrant
+              //safe
+              quadrant = 10;
+            }
+
+            if (quadrant != 10 && USE_OBJECT_AVOIDENCE) {
+              //avoding obstacle
+              //overide search commands
               yawCom = yawA;
               forwardCom = forwardA;
-              goalYawDirection = random(0, 9);
-              if (yawCom > 0) {
-                goalYawDirection = 1;
-              } else if (yawA < 0) {
-                goalYawDirection = -1;
-              }
+              upCom = upA;
+            }else{
+              //goal search behavior
+              //randomize the diretion selection
+              yawCom = GOAL_YAW_SEARCH*goalYawDirection;
+              // upCom = goalPositionHold.calculate(GOAL_HEIGHT, actualBaro);
+              upCom = GOAL_UP_VELOCITY;
+              forwardCom = GOAL_FORWARD_SEARCH;
             }
             
             if (target.size() > 0) {
               mode = approachGoal;
             }
+            
           } else {
             mode = searching;
             searchYawDirection = searchDirection();  //randomize the search direction
