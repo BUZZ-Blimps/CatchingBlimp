@@ -1,29 +1,30 @@
 Performing C++ SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
-Change Dir: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/CMakeFiles/CMakeTmp
+Change Dir: /home/corelab/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/CMakeFiles/CMakeScratch/TryCompile-gPmteL
 
-Run Build Command(s):/usr/bin/make cmTC_ea64e/fast && make[3]: Entering directory '/home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/CMakeFiles/CMakeTmp'
-/usr/bin/make -f CMakeFiles/cmTC_ea64e.dir/build.make CMakeFiles/cmTC_ea64e.dir/build
-make[4]: Entering directory '/home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_ea64e.dir/src.cxx.o
-/usr/bin/c++    -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_ea64e.dir/src.cxx.o -c /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/CMakeFiles/CMakeTmp/src.cxx
-Linking CXX executable cmTC_ea64e
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ea64e.dir/link.txt --verbose=1
-/usr/bin/c++   -DCMAKE_HAVE_LIBC_PTHREAD    CMakeFiles/cmTC_ea64e.dir/src.cxx.o  -o cmTC_ea64e 
-/usr/bin/ld: CMakeFiles/cmTC_ea64e.dir/src.cxx.o: in function `main':
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_7dee7/fast && make[3]: Entering directory '/home/corelab/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/CMakeFiles/CMakeScratch/TryCompile-gPmteL'
+/usr/bin/make  -f CMakeFiles/cmTC_7dee7.dir/build.make CMakeFiles/cmTC_7dee7.dir/build
+make[4]: Entering directory '/home/corelab/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/CMakeFiles/CMakeScratch/TryCompile-gPmteL'
+Building CXX object CMakeFiles/cmTC_7dee7.dir/src.cxx.o
+/usr/bin/c++ -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_7dee7.dir/src.cxx.o -c /home/corelab/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/CMakeFiles/CMakeScratch/TryCompile-gPmteL/src.cxx
+Linking CXX executable cmTC_7dee7
+/home/corelab/.local/lib/python3.8/site-packages/cmake/data/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7dee7.dir/link.txt --verbose=1
+/usr/bin/c++ CMakeFiles/cmTC_7dee7.dir/src.cxx.o -o cmTC_7dee7 
+/usr/bin/ld: CMakeFiles/cmTC_7dee7.dir/src.cxx.o: in function `main':
 src.cxx:(.text+0x46): undefined reference to `pthread_create'
 /usr/bin/ld: src.cxx:(.text+0x52): undefined reference to `pthread_detach'
-/usr/bin/ld: src.cxx:(.text+0x63): undefined reference to `pthread_join'
+/usr/bin/ld: src.cxx:(.text+0x5e): undefined reference to `pthread_cancel'
+/usr/bin/ld: src.cxx:(.text+0x6f): undefined reference to `pthread_join'
 collect2: error: ld returned 1 exit status
-make[4]: *** [CMakeFiles/cmTC_ea64e.dir/build.make:87: cmTC_ea64e] Error 1
-make[4]: Leaving directory '/home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/CMakeFiles/CMakeTmp'
-make[3]: *** [Makefile:121: cmTC_ea64e/fast] Error 2
-make[3]: Leaving directory '/home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/CMakeFiles/CMakeTmp'
+make[4]: *** [CMakeFiles/cmTC_7dee7.dir/build.make:99: cmTC_7dee7] Error 1
+make[4]: Leaving directory '/home/corelab/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/CMakeFiles/CMakeScratch/TryCompile-gPmteL'
+make[3]: *** [Makefile:127: cmTC_7dee7/fast] Error 2
+make[3]: Leaving directory '/home/corelab/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/CMakeFiles/CMakeScratch/TryCompile-gPmteL'
 
 
 Source file was:
 #include <pthread.h>
 
-void* test_func(void* data)
+static void* test_func(void* data)
 {
   return data;
 }
@@ -33,6 +34,7 @@ int main(void)
   pthread_t thread;
   pthread_create(&thread, NULL, test_func, NULL);
   pthread_detach(thread);
+  pthread_cancel(thread);
   pthread_join(thread, NULL);
   pthread_atfork(NULL, NULL, NULL);
   pthread_exit(NULL);
@@ -40,23 +42,24 @@ int main(void)
   return 0;
 }
 
-Determining if the function pthread_create exists in the pthreads failed with the following output:
-Change Dir: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make cmTC_de87d/fast && make[3]: Entering directory '/home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/CMakeFiles/CMakeTmp'
-/usr/bin/make -f CMakeFiles/cmTC_de87d.dir/build.make CMakeFiles/cmTC_de87d.dir/build
-make[4]: Entering directory '/home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_de87d.dir/CheckFunctionExists.cxx.o
-/usr/bin/c++    -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_de87d.dir/CheckFunctionExists.cxx.o -c /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/CMakeFiles/CheckLibraryExists/CheckFunctionExists.cxx
-Linking CXX executable cmTC_de87d
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_de87d.dir/link.txt --verbose=1
-/usr/bin/c++   -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_de87d.dir/CheckFunctionExists.cxx.o  -o cmTC_de87d  -lpthreads 
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/corelab/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/CMakeFiles/CMakeScratch/TryCompile-iM367L
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_ac65a/fast && make[3]: Entering directory '/home/corelab/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/CMakeFiles/CMakeScratch/TryCompile-iM367L'
+/usr/bin/make  -f CMakeFiles/cmTC_ac65a.dir/build.make CMakeFiles/cmTC_ac65a.dir/build
+make[4]: Entering directory '/home/corelab/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/CMakeFiles/CMakeScratch/TryCompile-iM367L'
+Building CXX object CMakeFiles/cmTC_ac65a.dir/CheckFunctionExists.cxx.o
+/usr/bin/c++   -DCHECK_FUNCTION_EXISTS=pthread_create -o CMakeFiles/cmTC_ac65a.dir/CheckFunctionExists.cxx.o -c /home/corelab/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/CMakeFiles/CMakeScratch/TryCompile-iM367L/CheckFunctionExists.cxx
+Linking CXX executable cmTC_ac65a
+/home/corelab/.local/lib/python3.8/site-packages/cmake/data/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ac65a.dir/link.txt --verbose=1
+/usr/bin/c++  -DCHECK_FUNCTION_EXISTS=pthread_create CMakeFiles/cmTC_ac65a.dir/CheckFunctionExists.cxx.o -o cmTC_ac65a  -lpthreads 
 /usr/bin/ld: cannot find -lpthreads
 collect2: error: ld returned 1 exit status
-make[4]: *** [CMakeFiles/cmTC_de87d.dir/build.make:87: cmTC_de87d] Error 1
-make[4]: Leaving directory '/home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/CMakeFiles/CMakeTmp'
-make[3]: *** [Makefile:121: cmTC_de87d/fast] Error 2
-make[3]: Leaving directory '/home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/CMakeFiles/CMakeTmp'
+make[4]: *** [CMakeFiles/cmTC_ac65a.dir/build.make:99: cmTC_ac65a] Error 1
+make[4]: Leaving directory '/home/corelab/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/CMakeFiles/CMakeScratch/TryCompile-iM367L'
+make[3]: *** [Makefile:127: cmTC_ac65a/fast] Error 2
+make[3]: Leaving directory '/home/corelab/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/CMakeFiles/CMakeScratch/TryCompile-iM367L'
 
 
 

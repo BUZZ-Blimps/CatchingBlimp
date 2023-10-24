@@ -1,0 +1,1 @@
+cmd='/home/corelab/.local/lib/python3.8/site-packages/cmake/data/bin/cmake;-GUnix Makefiles;-C<TMP_DIR>/spdlog-cache-$<CONFIG>.cmake;<SOURCE_DIR><SOURCE_SUBDIR>'

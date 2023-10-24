@@ -1,3 +1,15 @@
-repository='https://github.com/eProsima/Micro-XRCE-DDS-Agent.git'
-module=''
-tag='origin'
+# This is a generated file and its contents are an internal implementation detail.
+# The download step will be re-executed if anything in this file changes.
+# No other meaning or use of this file is supported.
+
+method=git
+command=/home/corelab/.local/lib/python3.8/site-packages/cmake/data/bin/cmake;-P;/home/corelab/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/agent/tmp/xrceagent-gitclone.cmake
+source_dir=/home/corelab/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/agent/src/xrceagent
+work_dir=/home/corelab/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/agent/src
+repository=https://github.com/eProsima/Micro-XRCE-DDS-Agent.git
+remote=origin
+init_submodules=TRUE
+recurse_submodules=--recursive
+submodules=
+CMP0097=
+

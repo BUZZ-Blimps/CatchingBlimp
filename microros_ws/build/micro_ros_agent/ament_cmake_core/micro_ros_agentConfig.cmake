@@ -16,7 +16,7 @@ set(_micro_ros_agent_CONFIG_INCLUDED TRUE)
 
 # output package information
 if(NOT micro_ros_agent_FIND_QUIETLY)
-  message(STATUS "Found micro_ros_agent: 1.5.4 (${micro_ros_agent_DIR})")
+  message(STATUS "Found micro_ros_agent: 4.0.3 (${micro_ros_agent_DIR})")
 endif()
 
 # warn when using a deprecated package

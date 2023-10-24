@@ -1,8 +1,8 @@
-# Install script for directory: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/src/uros/micro-ROS-Agent/micro_ros_agent
+# Install script for directory: /home/corelab/GitHub/CatchingBlimp/microros_ws/src/micro-ROS-Agent/micro_ros_agent
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent")
+  set(CMAKE_INSTALL_PREFIX "/home/corelab/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -37,82 +37,87 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
   set(CMAKE_CROSSCOMPILING "FALSE")
 endif()
 
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/package_run_dependencies" TYPE FILE FILES "/home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/micro_ros_agent")
+# Set default install directory permissions.
+if(NOT DEFINED CMAKE_OBJDUMP)
+  set(CMAKE_OBJDUMP "/usr/bin/objdump")
 endif()
 
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/parent_prefix_path" TYPE FILE FILES "/home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/ament_cmake_index/share/ament_index/resource_index/parent_prefix_path/micro_ros_agent")
+if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/package_run_dependencies" TYPE FILE FILES "/home/corelab/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/micro_ros_agent")
 endif()
 
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/parent_prefix_path" TYPE FILE FILES "/home/corelab/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/ament_cmake_index/share/ament_index/resource_index/parent_prefix_path/micro_ros_agent")
+endif()
+
+if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/micro_ros_agent/environment" TYPE FILE FILES "/opt/ros/foxy/share/ament_cmake_core/cmake/environment_hooks/environment/ament_prefix_path.sh")
 endif()
 
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/micro_ros_agent/environment" TYPE FILE FILES "/home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/ament_cmake_environment_hooks/ament_prefix_path.dsv")
+if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/micro_ros_agent/environment" TYPE FILE FILES "/home/corelab/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/ament_cmake_environment_hooks/ament_prefix_path.dsv")
 endif()
 
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/micro_ros_agent/environment" TYPE FILE FILES "/opt/ros/foxy/share/ament_cmake_core/cmake/environment_hooks/environment/path.sh")
 endif()
 
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/micro_ros_agent/environment" TYPE FILE FILES "/home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/ament_cmake_environment_hooks/path.dsv")
+if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/micro_ros_agent/environment" TYPE FILE FILES "/home/corelab/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/ament_cmake_environment_hooks/path.dsv")
 endif()
 
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/micro_ros_agent" TYPE FILE FILES "/home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/ament_cmake_environment_hooks/local_setup.bash")
+if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/micro_ros_agent" TYPE FILE FILES "/home/corelab/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/ament_cmake_environment_hooks/local_setup.bash")
 endif()
 
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/micro_ros_agent" TYPE FILE FILES "/home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/ament_cmake_environment_hooks/local_setup.sh")
+if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/micro_ros_agent" TYPE FILE FILES "/home/corelab/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/ament_cmake_environment_hooks/local_setup.sh")
 endif()
 
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/micro_ros_agent" TYPE FILE FILES "/home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/ament_cmake_environment_hooks/local_setup.zsh")
+if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/micro_ros_agent" TYPE FILE FILES "/home/corelab/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/ament_cmake_environment_hooks/local_setup.zsh")
 endif()
 
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/micro_ros_agent" TYPE FILE FILES "/home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/ament_cmake_environment_hooks/local_setup.dsv")
+if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/micro_ros_agent" TYPE FILE FILES "/home/corelab/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/ament_cmake_environment_hooks/local_setup.dsv")
 endif()
 
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/micro_ros_agent" TYPE FILE FILES "/home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/ament_cmake_environment_hooks/package.dsv")
+if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/micro_ros_agent" TYPE FILE FILES "/home/corelab/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/ament_cmake_environment_hooks/package.dsv")
 endif()
 
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/packages" TYPE FILE FILES "/home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/ament_cmake_index/share/ament_index/resource_index/packages/micro_ros_agent")
+if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/packages" TYPE FILE FILES "/home/corelab/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/ament_cmake_index/share/ament_index/resource_index/packages/micro_ros_agent")
 endif()
 
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/micro_ros_agent/cmake" TYPE FILE FILES "/home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/ament_cmake_export_dependencies/ament_cmake_export_dependencies-extras.cmake")
+if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/micro_ros_agent/cmake" TYPE FILE FILES "/home/corelab/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/ament_cmake_export_dependencies/ament_cmake_export_dependencies-extras.cmake")
 endif()
 
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/micro_ros_agent/cmake" TYPE FILE FILES
-    "/home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/ament_cmake_core/micro_ros_agentConfig.cmake"
-    "/home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/ament_cmake_core/micro_ros_agentConfig-version.cmake"
+    "/home/corelab/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/ament_cmake_core/micro_ros_agentConfig.cmake"
+    "/home/corelab/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/ament_cmake_core/micro_ros_agentConfig-version.cmake"
     )
 endif()
 
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/micro_ros_agent" TYPE FILE FILES "/home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/src/uros/micro-ROS-Agent/micro_ros_agent/package.xml")
+if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/micro_ros_agent" TYPE FILE FILES "/home/corelab/GitHub/CatchingBlimp/microros_ws/src/micro-ROS-Agent/micro_ros_agent/package.xml")
 endif()
 
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/micro_ros_agent/micro_ros_agent" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/micro_ros_agent/micro_ros_agent")
     file(RPATH_CHECK
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/micro_ros_agent/micro_ros_agent"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/micro_ros_agent" TYPE EXECUTABLE FILES "/home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/micro_ros_agent")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/micro_ros_agent" TYPE EXECUTABLE FILES "/home/corelab/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/micro_ros_agent")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/micro_ros_agent/micro_ros_agent" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/micro_ros_agent/micro_ros_agent")
     file(RPATH_CHANGE
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/micro_ros_agent/micro_ros_agent"
-         OLD_RPATH "/opt/ros/foxy/lib:/home/corelab-laptop2/microros_ws/install/micro_ros_msgs/lib:/home/corelab-laptop2/microros_ws/install/micro_ros_agent/lib:"
+         OLD_RPATH "/opt/ros/foxy/lib:/home/corelab/GitHub/CatchingBlimp/microros_ws/install/micro_ros_agent/lib:"
          NEW_RPATH "")
     if(CMAKE_INSTALL_DO_STRIP)
       execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/micro_ros_agent/micro_ros_agent")
@@ -120,8 +125,8 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
   endif()
 endif()
 
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/micro_ros_agent" TYPE DIRECTORY FILES "/home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/src/uros/micro-ROS-Agent/micro_ros_agent/launch")
+if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/micro_ros_agent" TYPE DIRECTORY FILES "/home/corelab/GitHub/CatchingBlimp/microros_ws/src/micro-ROS-Agent/micro_ros_agent/launch")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
@@ -132,5 +137,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/corelab/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

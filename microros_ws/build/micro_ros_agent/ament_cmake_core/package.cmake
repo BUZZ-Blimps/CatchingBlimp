@@ -1,5 +1,5 @@
 set(_AMENT_PACKAGE_NAME "micro_ros_agent")
-set(micro_ros_agent_VERSION "1.5.4")
+set(micro_ros_agent_VERSION "4.0.3")
 set(micro_ros_agent_MAINTAINER "Pablo Garrido <pablogarrido@eprosima.com>, Antonio Cuadros <antoniocuadros@eprosima.com>")
 set(micro_ros_agent_BUILD_DEPENDS "rmw" "rcutils" "rmw_fastrtps_shared_cpp" "rmw_dds_common" "micro_ros_msgs")
 set(micro_ros_agent_BUILDTOOL_DEPENDS "ament_cmake")

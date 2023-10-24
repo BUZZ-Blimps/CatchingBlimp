@@ -1,29 +1,30 @@
 Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
-Change Dir: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/agent/src/xrceagent-build/CMakeFiles/CMakeTmp
+Change Dir: /home/corelab/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/agent/src/xrceagent-build/CMakeFiles/CMakeScratch/TryCompile-H5C8ed
 
-Run Build Command(s):/usr/bin/make cmTC_7332d/fast && make[3]: Entering directory '/home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/agent/src/xrceagent-build/CMakeFiles/CMakeTmp'
-/usr/bin/make -f CMakeFiles/cmTC_7332d.dir/build.make CMakeFiles/cmTC_7332d.dir/build
-make[4]: Entering directory '/home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/agent/src/xrceagent-build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_7332d.dir/src.c.o
-/usr/bin/cc   -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_7332d.dir/src.c.o   -c /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/agent/src/xrceagent-build/CMakeFiles/CMakeTmp/src.c
-Linking C executable cmTC_7332d
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7332d.dir/link.txt --verbose=1
-/usr/bin/cc  -DCMAKE_HAVE_LIBC_PTHREAD    CMakeFiles/cmTC_7332d.dir/src.c.o  -o cmTC_7332d 
-/usr/bin/ld: CMakeFiles/cmTC_7332d.dir/src.c.o: in function `main':
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_06519/fast && make[6]: Entering directory '/home/corelab/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/agent/src/xrceagent-build/CMakeFiles/CMakeScratch/TryCompile-H5C8ed'
+/usr/bin/make  -f CMakeFiles/cmTC_06519.dir/build.make CMakeFiles/cmTC_06519.dir/build
+make[7]: Entering directory '/home/corelab/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/agent/src/xrceagent-build/CMakeFiles/CMakeScratch/TryCompile-H5C8ed'
+Building C object CMakeFiles/cmTC_06519.dir/src.c.o
+/usr/bin/cc -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_06519.dir/src.c.o -c /home/corelab/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/agent/src/xrceagent-build/CMakeFiles/CMakeScratch/TryCompile-H5C8ed/src.c
+Linking C executable cmTC_06519
+/home/corelab/.local/lib/python3.8/site-packages/cmake/data/bin/cmake -E cmake_link_script CMakeFiles/cmTC_06519.dir/link.txt --verbose=1
+/usr/bin/cc CMakeFiles/cmTC_06519.dir/src.c.o -o cmTC_06519 
+/usr/bin/ld: CMakeFiles/cmTC_06519.dir/src.c.o: in function `main':
 src.c:(.text+0x46): undefined reference to `pthread_create'
 /usr/bin/ld: src.c:(.text+0x52): undefined reference to `pthread_detach'
-/usr/bin/ld: src.c:(.text+0x63): undefined reference to `pthread_join'
+/usr/bin/ld: src.c:(.text+0x5e): undefined reference to `pthread_cancel'
+/usr/bin/ld: src.c:(.text+0x6f): undefined reference to `pthread_join'
 collect2: error: ld returned 1 exit status
-make[4]: *** [CMakeFiles/cmTC_7332d.dir/build.make:87: cmTC_7332d] Error 1
-make[4]: Leaving directory '/home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/agent/src/xrceagent-build/CMakeFiles/CMakeTmp'
-make[3]: *** [Makefile:121: cmTC_7332d/fast] Error 2
-make[3]: Leaving directory '/home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/agent/src/xrceagent-build/CMakeFiles/CMakeTmp'
+make[7]: *** [CMakeFiles/cmTC_06519.dir/build.make:99: cmTC_06519] Error 1
+make[7]: Leaving directory '/home/corelab/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/agent/src/xrceagent-build/CMakeFiles/CMakeScratch/TryCompile-H5C8ed'
+make[6]: *** [Makefile:127: cmTC_06519/fast] Error 2
+make[6]: Leaving directory '/home/corelab/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/agent/src/xrceagent-build/CMakeFiles/CMakeScratch/TryCompile-H5C8ed'
 
 
 Source file was:
 #include <pthread.h>
 
-void* test_func(void* data)
+static void* test_func(void* data)
 {
   return data;
 }
@@ -33,6 +34,7 @@ int main(void)
   pthread_t thread;
   pthread_create(&thread, NULL, test_func, NULL);
   pthread_detach(thread);
+  pthread_cancel(thread);
   pthread_join(thread, NULL);
   pthread_atfork(NULL, NULL, NULL);
   pthread_exit(NULL);
@@ -40,23 +42,24 @@ int main(void)
   return 0;
 }
 
-Determining if the function pthread_create exists in the pthreads failed with the following output:
-Change Dir: /home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/agent/src/xrceagent-build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make cmTC_af712/fast && make[3]: Entering directory '/home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/agent/src/xrceagent-build/CMakeFiles/CMakeTmp'
-/usr/bin/make -f CMakeFiles/cmTC_af712.dir/build.make CMakeFiles/cmTC_af712.dir/build
-make[4]: Entering directory '/home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/agent/src/xrceagent-build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_af712.dir/CheckFunctionExists.c.o
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_af712.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.16/Modules/CheckFunctionExists.c
-Linking C executable cmTC_af712
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_af712.dir/link.txt --verbose=1
-/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_af712.dir/CheckFunctionExists.c.o  -o cmTC_af712  -lpthreads 
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/corelab/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/agent/src/xrceagent-build/CMakeFiles/CMakeScratch/TryCompile-cuODLa
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_a67de/fast && make[6]: Entering directory '/home/corelab/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/agent/src/xrceagent-build/CMakeFiles/CMakeScratch/TryCompile-cuODLa'
+/usr/bin/make  -f CMakeFiles/cmTC_a67de.dir/build.make CMakeFiles/cmTC_a67de.dir/build
+make[7]: Entering directory '/home/corelab/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/agent/src/xrceagent-build/CMakeFiles/CMakeScratch/TryCompile-cuODLa'
+Building C object CMakeFiles/cmTC_a67de.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create -o CMakeFiles/cmTC_a67de.dir/CheckFunctionExists.c.o -c /home/corelab/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/agent/src/xrceagent-build/CMakeFiles/CMakeScratch/TryCompile-cuODLa/CheckFunctionExists.c
+Linking C executable cmTC_a67de
+/home/corelab/.local/lib/python3.8/site-packages/cmake/data/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a67de.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create CMakeFiles/cmTC_a67de.dir/CheckFunctionExists.c.o -o cmTC_a67de  -lpthreads 
 /usr/bin/ld: cannot find -lpthreads
 collect2: error: ld returned 1 exit status
-make[4]: *** [CMakeFiles/cmTC_af712.dir/build.make:87: cmTC_af712] Error 1
-make[4]: Leaving directory '/home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/agent/src/xrceagent-build/CMakeFiles/CMakeTmp'
-make[3]: *** [Makefile:121: cmTC_af712/fast] Error 2
-make[3]: Leaving directory '/home/corelab-laptop2/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/agent/src/xrceagent-build/CMakeFiles/CMakeTmp'
+make[7]: *** [CMakeFiles/cmTC_a67de.dir/build.make:99: cmTC_a67de] Error 1
+make[7]: Leaving directory '/home/corelab/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/agent/src/xrceagent-build/CMakeFiles/CMakeScratch/TryCompile-cuODLa'
+make[6]: *** [Makefile:127: cmTC_a67de/fast] Error 2
+make[6]: Leaving directory '/home/corelab/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/agent/src/xrceagent-build/CMakeFiles/CMakeScratch/TryCompile-cuODLa'
 
 
 

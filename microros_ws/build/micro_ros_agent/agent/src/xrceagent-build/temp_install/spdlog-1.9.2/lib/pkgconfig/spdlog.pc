@@ -1,0 +1,13 @@
+prefix=/home/corelab/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/agent/src/xrceagent-build/temp_install/spdlog-1.9.2
+exec_prefix=${prefix}
+includedir=${prefix}/include
+libdir=${exec_prefix}/lib
+
+Name: libspdlog
+Description: Fast C++ logging library.
+URL: https://github.com/gabime/spdlog
+Version: 1.9.2
+CFlags: -I${includedir} -DSPDLOG_COMPILED_LIB
+Libs: -L${libdir} -lspdlog -pthread
+Requires: 
+

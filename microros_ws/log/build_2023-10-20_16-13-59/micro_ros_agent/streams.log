@@ -1,0 +1,45 @@
+[0.010s] Invoking command in '/home/corelab/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent': CMAKE_PREFIX_PATH=/opt/ros/foxy /home/corelab/.local/bin/cmake --build /home/corelab/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent -- -j16 -l16
+[0.045s] [ 16%] [32mBuilding CXX object CMakeFiles/micro_ros_agent.dir/src/agent/graph_manager/graph_manager.cpp.o[0m
+[0.045s] [ 33%] [32mBuilding CXX object CMakeFiles/micro_ros_agent.dir/src/agent/graph_manager/graph_typesupport.cpp.o[0m
+[0.594s] [01m[K/home/corelab/GitHub/CatchingBlimp/microros_ws/src/micro-ROS-Agent/micro_ros_agent/src/agent/graph_manager/graph_typesupport.cpp:[m[K In constructor ‘[01m[Kuros::agent::graph_manager::ParticipantEntitiesInfoTypeSupport::ParticipantEntitiesInfoTypeSupport()[m[K’:
+[0.594s] [01m[K/home/corelab/GitHub/CatchingBlimp/microros_ws/src/micro-ROS-Agent/micro_ros_agent/src/agent/graph_manager/graph_typesupport.cpp:47:54:[m[K [01;31m[Kerror: [m[Kcannot bind non-const lvalue reference of type ‘[01m[Kbool&[m[K’ to an rvalue of type ‘[01m[Kbool[m[K’
+[0.594s]    47 |     m_typeSize = 4 + callbacks_->max_serialized_size([01;31m[Kfull_bounded[m[K);
+[0.594s]       |                                                      [01;31m[K^~~~~~~~~~~~[m[K
+[0.595s] [01m[K/home/corelab/GitHub/CatchingBlimp/microros_ws/src/micro-ROS-Agent/micro_ros_agent/src/agent/graph_manager/graph_typesupport.cpp:[m[K In constructor ‘[01m[Kuros::agent::graph_manager::MicrorosGraphInfoTypeSupport::MicrorosGraphInfoTypeSupport()[m[K’:
+[0.595s] [01m[K/home/corelab/GitHub/CatchingBlimp/microros_ws/src/micro-ROS-Agent/micro_ros_agent/src/agent/graph_manager/graph_typesupport.cpp:139:54:[m[K [01;31m[Kerror: [m[Kcannot bind non-const lvalue reference of type ‘[01m[Kbool&[m[K’ to an rvalue of type ‘[01m[Kbool[m[K’
+[0.595s]   139 |     m_typeSize = 4 + callbacks_->max_serialized_size([01;31m[Kfull_bounded[m[K);
+[0.595s]       |                                                      [01;31m[K^~~~~~~~~~~~[m[K
+[0.689s] [01m[K/home/corelab/GitHub/CatchingBlimp/microros_ws/src/micro-ROS-Agent/micro_ros_agent/src/agent/graph_manager/graph_manager.cpp:[m[K In member function ‘[01m[Kvoid uros::agent::graph_manager::GraphManager::add_datawriter(const eprosima::fastrtps::rtps::GUID_t&, const string&, const string&, const eprosima::fastrtps::rtps::GUID_t&, const eprosima::fastdds::dds::DataWriterQos&)[m[K’:
+[0.689s] [01m[K/home/corelab/GitHub/CatchingBlimp/microros_ws/src/micro-ROS-Agent/micro_ros_agent/src/agent/graph_manager/graph_manager.cpp:378:9:[m[K [01;31m[Kerror: [m[K‘[01m[Krosidl_get_zero_initialized_type_hash[m[K’ was not declared in this scope; did you mean ‘[01m[Krcutils_get_zero_initialized_hash_map[m[K’?
+[0.689s]   378 |         [01;31m[Krosidl_get_zero_initialized_type_hash[m[K(), participant_gid, qos_profile, false);
+[0.689s]       |         [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[0.689s]       |         [32m[Krcutils_get_zero_initialized_hash_map[m[K
+[0.692s] [01m[K/home/corelab/GitHub/CatchingBlimp/microros_ws/src/micro-ROS-Agent/micro_ros_agent/src/agent/graph_manager/graph_manager.cpp:[m[K In member function ‘[01m[Kvoid uros::agent::graph_manager::GraphManager::add_datareader(const eprosima::fastrtps::rtps::GUID_t&, const string&, const string&, const eprosima::fastrtps::rtps::GUID_t&, const eprosima::fastdds::dds::DataReaderQos&)[m[K’:
+[0.692s] [01m[K/home/corelab/GitHub/CatchingBlimp/microros_ws/src/micro-ROS-Agent/micro_ros_agent/src/agent/graph_manager/graph_manager.cpp:420:9:[m[K [01;31m[Kerror: [m[K‘[01m[Krosidl_get_zero_initialized_type_hash[m[K’ was not declared in this scope; did you mean ‘[01m[Krcutils_get_zero_initialized_hash_map[m[K’?
+[0.692s]   420 |         [01;31m[Krosidl_get_zero_initialized_type_hash[m[K(), participant_gid, qos_profile, true);
+[0.692s]       |         [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[0.692s]       |         [32m[Krcutils_get_zero_initialized_hash_map[m[K
+[0.693s] [01m[K/home/corelab/GitHub/CatchingBlimp/microros_ws/src/micro-ROS-Agent/micro_ros_agent/src/agent/graph_manager/graph_manager.cpp:[m[K In member function ‘[01m[Kvoid uros::agent::graph_manager::GraphManager::update_node_entities_info()[m[K’:
+[0.693s] [01m[K/home/corelab/GitHub/CatchingBlimp/microros_ws/src/micro-ROS-Agent/micro_ros_agent/src/agent/graph_manager/graph_manager.cpp:555:86:[m[K [01;31m[Kerror: [m[K‘[01m[KALIVE_INSTANCE_STATE[m[K’ is not a member of ‘[01m[Keprosima::fastdds::dds::InstanceStateKind[m[K’
+[0.693s]   555 |         if (sample_info.instance_state == eprosima::fastdds::dds::InstanceStateKind::[01;31m[KALIVE_INSTANCE_STATE[m[K)
+[0.693s]       |                                                                                      [01;31m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[0.695s] [01m[K/home/corelab/GitHub/CatchingBlimp/microros_ws/src/micro-ROS-Agent/micro_ros_agent/src/agent/graph_manager/graph_manager.cpp:[m[K In function ‘[01m[Keprosima::fastdds::dds::DataWriterQos uros::agent::graph_manager::writer_qos_conversion(const eprosima::fastdds::dds::WriterQos&)[m[K’:
+[0.695s] [01m[K/home/corelab/GitHub/CatchingBlimp/microros_ws/src/micro-ROS-Agent/micro_ros_agent/src/agent/graph_manager/graph_manager.cpp:659:20:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass eprosima::fastdds::dds::DataWriterQos[m[K’ has no member named ‘[01m[Kdata_sharing[m[K’
+[0.695s]   659 |     datawriter_qos.[01;31m[Kdata_sharing[m[K(writer_qos.data_sharing);
+[0.695s]       |                    [01;31m[K^~~~~~~~~~~~[m[K
+[0.695s] [01m[K/home/corelab/GitHub/CatchingBlimp/microros_ws/src/micro-ROS-Agent/micro_ros_agent/src/agent/graph_manager/graph_manager.cpp:659:44:[m[K [01;31m[Kerror: [m[K‘[01m[Kconst class eprosima::fastdds::dds::WriterQos[m[K’ has no member named ‘[01m[Kdata_sharing[m[K’
+[0.695s]   659 |     datawriter_qos.data_sharing(writer_qos.[01;31m[Kdata_sharing[m[K);
+[0.695s]       |                                            [01;31m[K^~~~~~~~~~~~[m[K
+[0.695s] [01m[K/home/corelab/GitHub/CatchingBlimp/microros_ws/src/micro-ROS-Agent/micro_ros_agent/src/agent/graph_manager/graph_manager.cpp:[m[K In function ‘[01m[Keprosima::fastdds::dds::DataReaderQos uros::agent::graph_manager::reader_qos_conversion(const eprosima::fastdds::dds::ReaderQos&)[m[K’:
+[0.695s] [01m[K/home/corelab/GitHub/CatchingBlimp/microros_ws/src/micro-ROS-Agent/micro_ros_agent/src/agent/graph_manager/graph_manager.cpp:683:20:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass eprosima::fastdds::dds::DataReaderQos[m[K’ has no member named ‘[01m[Kdata_sharing[m[K’
+[0.695s]   683 |     datareader_qos.[01;31m[Kdata_sharing[m[K(reader_qos.data_sharing);
+[0.695s]       |                    [01;31m[K^~~~~~~~~~~~[m[K
+[0.695s] [01m[K/home/corelab/GitHub/CatchingBlimp/microros_ws/src/micro-ROS-Agent/micro_ros_agent/src/agent/graph_manager/graph_manager.cpp:683:44:[m[K [01;31m[Kerror: [m[K‘[01m[Kconst class eprosima::fastdds::dds::ReaderQos[m[K’ has no member named ‘[01m[Kdata_sharing[m[K’
+[0.695s]   683 |     datareader_qos.data_sharing(reader_qos.[01;31m[Kdata_sharing[m[K);
+[0.695s]       |                                            [01;31m[K^~~~~~~~~~~~[m[K
+[0.878s] make[2]: *** [CMakeFiles/micro_ros_agent.dir/build.make:118: CMakeFiles/micro_ros_agent.dir/src/agent/graph_manager/graph_typesupport.cpp.o] Error 1
+[0.878s] make[2]: *** Waiting for unfinished jobs....
+[1.099s] make[2]: *** [CMakeFiles/micro_ros_agent.dir/build.make:104: CMakeFiles/micro_ros_agent.dir/src/agent/graph_manager/graph_manager.cpp.o] Error 1
+[1.099s] make[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/micro_ros_agent.dir/all] Error 2
+[1.099s] make: *** [Makefile:146: all] Error 2
+[1.102s] Invoked command in '/home/corelab/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent' returned '2': CMAKE_PREFIX_PATH=/opt/ros/foxy /home/corelab/.local/bin/cmake --build /home/corelab/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent -- -j16 -l16

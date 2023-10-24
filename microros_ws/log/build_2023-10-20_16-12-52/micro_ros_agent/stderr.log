@@ -1,0 +1,211 @@
+Cloning into 'xrceagent'...
+Switched to a new branch 'ros2'
+Cloning into 'spdlog'...
+HEAD is now at eb322062 Bump version to 1.9.2
+[33mCMake Warning (dev) at /home/corelab/.local/lib/python3.8/site-packages/cmake/data/share/cmake-3.25/Modules/FindPackageHandleStandardArgs.cmake:438 (message):
+  The package name passed to `find_package_handle_standard_args` (tinyxml2)
+  does not match the name of the calling package (TinyXML2).  This can lead
+  to problems in calling code that expects `find_package` result variables
+  (e.g., `_FOUND`) to follow a certain pattern.
+Call Stack (most recent call first):
+  cmake/modules/FindTinyXML2.cmake:40 (find_package_handle_standard_args)
+  /opt/ros/foxy/share/fastrtps/cmake/fastrtps-config.cmake:51 (find_package)
+  CMakeLists.txt:153 (find_package)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+[0m
+[33mCMake Warning (dev) at /opt/ros/foxy/share/connext_cmake_module/cmake/Modules/FindConnext.cmake:163 (list):
+  Policy CMP0121 is not set: The list() command now validates parsing of
+  index arguments.  Run "cmake --help-policy CMP0121" for policy details.
+  Use the cmake_policy command to set the policy and suppress this warning.
+  Invalid list index "libnddsc.so".
+Call Stack (most recent call first):
+  /opt/ros/foxy/share/connext_cmake_module/cmake/Modules/FindConnext.cmake:198 (_count_found_libraries)
+  /opt/ros/foxy/share/rosidl_typesupport_connext_c/cmake/rosidl_typesupport_connext_c-extras.cmake:5 (find_package)
+  /opt/ros/foxy/share/rosidl_typesupport_connext_c/cmake/rosidl_typesupport_connext_cConfig.cmake:41 (include)
+  /opt/ros/foxy/share/rosidl_typesupport_c/cmake/rosidl_typesupport_c-extras.cmake:13 (find_package)
+  /opt/ros/foxy/share/rosidl_typesupport_c/cmake/rosidl_typesupport_cConfig.cmake:41 (include)
+  /opt/ros/foxy/share/rosidl_default_runtime/cmake/rosidl_default_runtime-extras.cmake:12 (find_package)
+  /opt/ros/foxy/share/rosidl_default_runtime/cmake/rosidl_default_runtimeConfig.cmake:41 (include)
+  /opt/ros/foxy/share/rmw_dds_common/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+  /opt/ros/foxy/share/rmw_dds_common/cmake/rmw_dds_commonConfig.cmake:41 (include)
+  CMakeLists.txt:39 (find_package)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+[0m
+[33mCMake Warning (dev) at /opt/ros/foxy/share/connext_cmake_module/cmake/Modules/FindConnext.cmake:163 (list):
+  Policy CMP0121 is not set: The list() command now validates parsing of
+  index arguments.  Run "cmake --help-policy CMP0121" for policy details.
+  Use the cmake_policy command to set the policy and suppress this warning.
+  Invalid list index "libnddscore.so".
+Call Stack (most recent call first):
+  /opt/ros/foxy/share/connext_cmake_module/cmake/Modules/FindConnext.cmake:198 (_count_found_libraries)
+  /opt/ros/foxy/share/rosidl_typesupport_connext_c/cmake/rosidl_typesupport_connext_c-extras.cmake:5 (find_package)
+  /opt/ros/foxy/share/rosidl_typesupport_connext_c/cmake/rosidl_typesupport_connext_cConfig.cmake:41 (include)
+  /opt/ros/foxy/share/rosidl_typesupport_c/cmake/rosidl_typesupport_c-extras.cmake:13 (find_package)
+  /opt/ros/foxy/share/rosidl_typesupport_c/cmake/rosidl_typesupport_cConfig.cmake:41 (include)
+  /opt/ros/foxy/share/rosidl_default_runtime/cmake/rosidl_default_runtime-extras.cmake:12 (find_package)
+  /opt/ros/foxy/share/rosidl_default_runtime/cmake/rosidl_default_runtimeConfig.cmake:41 (include)
+  /opt/ros/foxy/share/rmw_dds_common/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+  /opt/ros/foxy/share/rmw_dds_common/cmake/rmw_dds_commonConfig.cmake:41 (include)
+  CMakeLists.txt:39 (find_package)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+[0m
+[33mCMake Warning (dev) at /opt/ros/foxy/share/connext_cmake_module/cmake/Modules/FindConnext.cmake:163 (list):
+  Policy CMP0121 is not set: The list() command now validates parsing of
+  index arguments.  Run "cmake --help-policy CMP0121" for policy details.
+  Use the cmake_policy command to set the policy and suppress this warning.
+  Invalid list index "libnddscpp.so".
+Call Stack (most recent call first):
+  /opt/ros/foxy/share/connext_cmake_module/cmake/Modules/FindConnext.cmake:198 (_count_found_libraries)
+  /opt/ros/foxy/share/rosidl_typesupport_connext_c/cmake/rosidl_typesupport_connext_c-extras.cmake:5 (find_package)
+  /opt/ros/foxy/share/rosidl_typesupport_connext_c/cmake/rosidl_typesupport_connext_cConfig.cmake:41 (include)
+  /opt/ros/foxy/share/rosidl_typesupport_c/cmake/rosidl_typesupport_c-extras.cmake:13 (find_package)
+  /opt/ros/foxy/share/rosidl_typesupport_c/cmake/rosidl_typesupport_cConfig.cmake:41 (include)
+  /opt/ros/foxy/share/rosidl_default_runtime/cmake/rosidl_default_runtime-extras.cmake:12 (find_package)
+  /opt/ros/foxy/share/rosidl_default_runtime/cmake/rosidl_default_runtimeConfig.cmake:41 (include)
+  /opt/ros/foxy/share/rmw_dds_common/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+  /opt/ros/foxy/share/rmw_dds_common/cmake/rmw_dds_commonConfig.cmake:41 (include)
+  CMakeLists.txt:39 (find_package)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+[0m
+[33mCMake Warning (dev) at /opt/ros/foxy/share/connext_cmake_module/cmake/Modules/FindConnext.cmake:163 (list):
+  Policy CMP0121 is not set: The list() command now validates parsing of
+  index arguments.  Run "cmake --help-policy CMP0121" for policy details.
+  Use the cmake_policy command to set the policy and suppress this warning.
+  Invalid list index "librticonnextmsgcpp.so".
+Call Stack (most recent call first):
+  /opt/ros/foxy/share/connext_cmake_module/cmake/Modules/FindConnext.cmake:198 (_count_found_libraries)
+  /opt/ros/foxy/share/rosidl_typesupport_connext_c/cmake/rosidl_typesupport_connext_c-extras.cmake:5 (find_package)
+  /opt/ros/foxy/share/rosidl_typesupport_connext_c/cmake/rosidl_typesupport_connext_cConfig.cmake:41 (include)
+  /opt/ros/foxy/share/rosidl_typesupport_c/cmake/rosidl_typesupport_c-extras.cmake:13 (find_package)
+  /opt/ros/foxy/share/rosidl_typesupport_c/cmake/rosidl_typesupport_cConfig.cmake:41 (include)
+  /opt/ros/foxy/share/rosidl_default_runtime/cmake/rosidl_default_runtime-extras.cmake:12 (find_package)
+  /opt/ros/foxy/share/rosidl_default_runtime/cmake/rosidl_default_runtimeConfig.cmake:41 (include)
+  /opt/ros/foxy/share/rmw_dds_common/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+  /opt/ros/foxy/share/rmw_dds_common/cmake/rmw_dds_commonConfig.cmake:41 (include)
+  CMakeLists.txt:39 (find_package)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+[0m
+[33mCMake Warning (dev) at /opt/ros/foxy/share/connext_cmake_module/cmake/Modules/FindConnext.cmake:163 (list):
+  Policy CMP0121 is not set: The list() command now validates parsing of
+  index arguments.  Run "cmake --help-policy CMP0121" for policy details.
+  Use the cmake_policy command to set the policy and suppress this warning.
+  Invalid list index "libnddscd.so".
+Call Stack (most recent call first):
+  /opt/ros/foxy/share/connext_cmake_module/cmake/Modules/FindConnext.cmake:199 (_count_found_libraries)
+  /opt/ros/foxy/share/rosidl_typesupport_connext_c/cmake/rosidl_typesupport_connext_c-extras.cmake:5 (find_package)
+  /opt/ros/foxy/share/rosidl_typesupport_connext_c/cmake/rosidl_typesupport_connext_cConfig.cmake:41 (include)
+  /opt/ros/foxy/share/rosidl_typesupport_c/cmake/rosidl_typesupport_c-extras.cmake:13 (find_package)
+  /opt/ros/foxy/share/rosidl_typesupport_c/cmake/rosidl_typesupport_cConfig.cmake:41 (include)
+  /opt/ros/foxy/share/rosidl_default_runtime/cmake/rosidl_default_runtime-extras.cmake:12 (find_package)
+  /opt/ros/foxy/share/rosidl_default_runtime/cmake/rosidl_default_runtimeConfig.cmake:41 (include)
+  /opt/ros/foxy/share/rmw_dds_common/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+  /opt/ros/foxy/share/rmw_dds_common/cmake/rmw_dds_commonConfig.cmake:41 (include)
+  CMakeLists.txt:39 (find_package)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+[0m
+[33mCMake Warning (dev) at /opt/ros/foxy/share/connext_cmake_module/cmake/Modules/FindConnext.cmake:163 (list):
+  Policy CMP0121 is not set: The list() command now validates parsing of
+  index arguments.  Run "cmake --help-policy CMP0121" for policy details.
+  Use the cmake_policy command to set the policy and suppress this warning.
+  Invalid list index "libnddscored.so".
+Call Stack (most recent call first):
+  /opt/ros/foxy/share/connext_cmake_module/cmake/Modules/FindConnext.cmake:199 (_count_found_libraries)
+  /opt/ros/foxy/share/rosidl_typesupport_connext_c/cmake/rosidl_typesupport_connext_c-extras.cmake:5 (find_package)
+  /opt/ros/foxy/share/rosidl_typesupport_connext_c/cmake/rosidl_typesupport_connext_cConfig.cmake:41 (include)
+  /opt/ros/foxy/share/rosidl_typesupport_c/cmake/rosidl_typesupport_c-extras.cmake:13 (find_package)
+  /opt/ros/foxy/share/rosidl_typesupport_c/cmake/rosidl_typesupport_cConfig.cmake:41 (include)
+  /opt/ros/foxy/share/rosidl_default_runtime/cmake/rosidl_default_runtime-extras.cmake:12 (find_package)
+  /opt/ros/foxy/share/rosidl_default_runtime/cmake/rosidl_default_runtimeConfig.cmake:41 (include)
+  /opt/ros/foxy/share/rmw_dds_common/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+  /opt/ros/foxy/share/rmw_dds_common/cmake/rmw_dds_commonConfig.cmake:41 (include)
+  CMakeLists.txt:39 (find_package)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+[0m
+[33mCMake Warning (dev) at /opt/ros/foxy/share/connext_cmake_module/cmake/Modules/FindConnext.cmake:163 (list):
+  Policy CMP0121 is not set: The list() command now validates parsing of
+  index arguments.  Run "cmake --help-policy CMP0121" for policy details.
+  Use the cmake_policy command to set the policy and suppress this warning.
+  Invalid list index "libnddscppd.so".
+Call Stack (most recent call first):
+  /opt/ros/foxy/share/connext_cmake_module/cmake/Modules/FindConnext.cmake:199 (_count_found_libraries)
+  /opt/ros/foxy/share/rosidl_typesupport_connext_c/cmake/rosidl_typesupport_connext_c-extras.cmake:5 (find_package)
+  /opt/ros/foxy/share/rosidl_typesupport_connext_c/cmake/rosidl_typesupport_connext_cConfig.cmake:41 (include)
+  /opt/ros/foxy/share/rosidl_typesupport_c/cmake/rosidl_typesupport_c-extras.cmake:13 (find_package)
+  /opt/ros/foxy/share/rosidl_typesupport_c/cmake/rosidl_typesupport_cConfig.cmake:41 (include)
+  /opt/ros/foxy/share/rosidl_default_runtime/cmake/rosidl_default_runtime-extras.cmake:12 (find_package)
+  /opt/ros/foxy/share/rosidl_default_runtime/cmake/rosidl_default_runtimeConfig.cmake:41 (include)
+  /opt/ros/foxy/share/rmw_dds_common/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+  /opt/ros/foxy/share/rmw_dds_common/cmake/rmw_dds_commonConfig.cmake:41 (include)
+  CMakeLists.txt:39 (find_package)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+[0m
+[33mCMake Warning (dev) at /opt/ros/foxy/share/connext_cmake_module/cmake/Modules/FindConnext.cmake:163 (list):
+  Policy CMP0121 is not set: The list() command now validates parsing of
+  index arguments.  Run "cmake --help-policy CMP0121" for policy details.
+  Use the cmake_policy command to set the policy and suppress this warning.
+  Invalid list index "librticonnextmsgcppd.so".
+Call Stack (most recent call first):
+  /opt/ros/foxy/share/connext_cmake_module/cmake/Modules/FindConnext.cmake:199 (_count_found_libraries)
+  /opt/ros/foxy/share/rosidl_typesupport_connext_c/cmake/rosidl_typesupport_connext_c-extras.cmake:5 (find_package)
+  /opt/ros/foxy/share/rosidl_typesupport_connext_c/cmake/rosidl_typesupport_connext_cConfig.cmake:41 (include)
+  /opt/ros/foxy/share/rosidl_typesupport_c/cmake/rosidl_typesupport_c-extras.cmake:13 (find_package)
+  /opt/ros/foxy/share/rosidl_typesupport_c/cmake/rosidl_typesupport_cConfig.cmake:41 (include)
+  /opt/ros/foxy/share/rosidl_default_runtime/cmake/rosidl_default_runtime-extras.cmake:12 (find_package)
+  /opt/ros/foxy/share/rosidl_default_runtime/cmake/rosidl_default_runtimeConfig.cmake:41 (include)
+  /opt/ros/foxy/share/rmw_dds_common/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+  /opt/ros/foxy/share/rmw_dds_common/cmake/rmw_dds_commonConfig.cmake:41 (include)
+  CMakeLists.txt:39 (find_package)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+[0m
+[0mCMake Deprecation Warning at /home/corelab/GitHub/CatchingBlimp/microros_ws/build/micro_ros_agent/connext_cmake_module/check_abi/CMakeLists.txt:15 (cmake_minimum_required):
+  Compatibility with CMake < 2.8.12 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+[0m
+[01m[K/home/corelab/GitHub/CatchingBlimp/microros_ws/src/micro-ROS-Agent/micro_ros_agent/src/agent/graph_manager/graph_typesupport.cpp:[m[K In constructor ‘[01m[Kuros::agent::graph_manager::ParticipantEntitiesInfoTypeSupport::ParticipantEntitiesInfoTypeSupport()[m[K’:
+[01m[K/home/corelab/GitHub/CatchingBlimp/microros_ws/src/micro-ROS-Agent/micro_ros_agent/src/agent/graph_manager/graph_typesupport.cpp:47:54:[m[K [01;31m[Kerror: [m[Kcannot bind non-const lvalue reference of type ‘[01m[Kbool&[m[K’ to an rvalue of type ‘[01m[Kbool[m[K’
+   47 |     m_typeSize = 4 + callbacks_->max_serialized_size([01;31m[Kfull_bounded[m[K);
+      |                                                      [01;31m[K^~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/microros_ws/src/micro-ROS-Agent/micro_ros_agent/src/agent/graph_manager/graph_typesupport.cpp:[m[K In constructor ‘[01m[Kuros::agent::graph_manager::MicrorosGraphInfoTypeSupport::MicrorosGraphInfoTypeSupport()[m[K’:
+[01m[K/home/corelab/GitHub/CatchingBlimp/microros_ws/src/micro-ROS-Agent/micro_ros_agent/src/agent/graph_manager/graph_typesupport.cpp:139:54:[m[K [01;31m[Kerror: [m[Kcannot bind non-const lvalue reference of type ‘[01m[Kbool&[m[K’ to an rvalue of type ‘[01m[Kbool[m[K’
+  139 |     m_typeSize = 4 + callbacks_->max_serialized_size([01;31m[Kfull_bounded[m[K);
+      |                                                      [01;31m[K^~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/microros_ws/src/micro-ROS-Agent/micro_ros_agent/src/agent/graph_manager/graph_manager.cpp:[m[K In member function ‘[01m[Kvoid uros::agent::graph_manager::GraphManager::add_datawriter(const eprosima::fastrtps::rtps::GUID_t&, const string&, const string&, const eprosima::fastrtps::rtps::GUID_t&, const eprosima::fastdds::dds::DataWriterQos&)[m[K’:
+[01m[K/home/corelab/GitHub/CatchingBlimp/microros_ws/src/micro-ROS-Agent/micro_ros_agent/src/agent/graph_manager/graph_manager.cpp:378:9:[m[K [01;31m[Kerror: [m[K‘[01m[Krosidl_get_zero_initialized_type_hash[m[K’ was not declared in this scope; did you mean ‘[01m[Krcutils_get_zero_initialized_hash_map[m[K’?
+  378 |         [01;31m[Krosidl_get_zero_initialized_type_hash[m[K(), participant_gid, qos_profile, false);
+      |         [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+      |         [32m[Krcutils_get_zero_initialized_hash_map[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/microros_ws/src/micro-ROS-Agent/micro_ros_agent/src/agent/graph_manager/graph_manager.cpp:[m[K In member function ‘[01m[Kvoid uros::agent::graph_manager::GraphManager::add_datareader(const eprosima::fastrtps::rtps::GUID_t&, const string&, const string&, const eprosima::fastrtps::rtps::GUID_t&, const eprosima::fastdds::dds::DataReaderQos&)[m[K’:
+[01m[K/home/corelab/GitHub/CatchingBlimp/microros_ws/src/micro-ROS-Agent/micro_ros_agent/src/agent/graph_manager/graph_manager.cpp:420:9:[m[K [01;31m[Kerror: [m[K‘[01m[Krosidl_get_zero_initialized_type_hash[m[K’ was not declared in this scope; did you mean ‘[01m[Krcutils_get_zero_initialized_hash_map[m[K’?
+  420 |         [01;31m[Krosidl_get_zero_initialized_type_hash[m[K(), participant_gid, qos_profile, true);
+      |         [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+      |         [32m[Krcutils_get_zero_initialized_hash_map[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/microros_ws/src/micro-ROS-Agent/micro_ros_agent/src/agent/graph_manager/graph_manager.cpp:[m[K In member function ‘[01m[Kvoid uros::agent::graph_manager::GraphManager::update_node_entities_info()[m[K’:
+[01m[K/home/corelab/GitHub/CatchingBlimp/microros_ws/src/micro-ROS-Agent/micro_ros_agent/src/agent/graph_manager/graph_manager.cpp:555:86:[m[K [01;31m[Kerror: [m[K‘[01m[KALIVE_INSTANCE_STATE[m[K’ is not a member of ‘[01m[Keprosima::fastdds::dds::InstanceStateKind[m[K’
+  555 |         if (sample_info.instance_state == eprosima::fastdds::dds::InstanceStateKind::[01;31m[KALIVE_INSTANCE_STATE[m[K)
+      |                                                                                      [01;31m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/microros_ws/src/micro-ROS-Agent/micro_ros_agent/src/agent/graph_manager/graph_manager.cpp:[m[K In function ‘[01m[Keprosima::fastdds::dds::DataWriterQos uros::agent::graph_manager::writer_qos_conversion(const eprosima::fastdds::dds::WriterQos&)[m[K’:
+[01m[K/home/corelab/GitHub/CatchingBlimp/microros_ws/src/micro-ROS-Agent/micro_ros_agent/src/agent/graph_manager/graph_manager.cpp:659:20:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass eprosima::fastdds::dds::DataWriterQos[m[K’ has no member named ‘[01m[Kdata_sharing[m[K’
+  659 |     datawriter_qos.[01;31m[Kdata_sharing[m[K(writer_qos.data_sharing);
+      |                    [01;31m[K^~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/microros_ws/src/micro-ROS-Agent/micro_ros_agent/src/agent/graph_manager/graph_manager.cpp:659:44:[m[K [01;31m[Kerror: [m[K‘[01m[Kconst class eprosima::fastdds::dds::WriterQos[m[K’ has no member named ‘[01m[Kdata_sharing[m[K’
+  659 |     datawriter_qos.data_sharing(writer_qos.[01;31m[Kdata_sharing[m[K);
+      |                                            [01;31m[K^~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/microros_ws/src/micro-ROS-Agent/micro_ros_agent/src/agent/graph_manager/graph_manager.cpp:[m[K In function ‘[01m[Keprosima::fastdds::dds::DataReaderQos uros::agent::graph_manager::reader_qos_conversion(const eprosima::fastdds::dds::ReaderQos&)[m[K’:
+[01m[K/home/corelab/GitHub/CatchingBlimp/microros_ws/src/micro-ROS-Agent/micro_ros_agent/src/agent/graph_manager/graph_manager.cpp:683:20:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass eprosima::fastdds::dds::DataReaderQos[m[K’ has no member named ‘[01m[Kdata_sharing[m[K’
+  683 |     datareader_qos.[01;31m[Kdata_sharing[m[K(reader_qos.data_sharing);
+      |                    [01;31m[K^~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/microros_ws/src/micro-ROS-Agent/micro_ros_agent/src/agent/graph_manager/graph_manager.cpp:683:44:[m[K [01;31m[Kerror: [m[K‘[01m[Kconst class eprosima::fastdds::dds::ReaderQos[m[K’ has no member named ‘[01m[Kdata_sharing[m[K’
+  683 |     datareader_qos.data_sharing(reader_qos.[01;31m[Kdata_sharing[m[K);
+      |                                            [01;31m[K^~~~~~~~~~~~[m[K
+make[5]: *** [CMakeFiles/micro_ros_agent.dir/build.make:118: CMakeFiles/micro_ros_agent.dir/src/agent/graph_manager/graph_typesupport.cpp.o] Error 1
+make[5]: *** Waiting for unfinished jobs....
+make[5]: *** [CMakeFiles/micro_ros_agent.dir/build.make:104: CMakeFiles/micro_ros_agent.dir/src/agent/graph_manager/graph_manager.cpp.o] Error 1
+make[4]: *** [CMakeFiles/Makefile2:137: CMakeFiles/micro_ros_agent.dir/all] Error 2
+make[3]: *** [Makefile:146: all] Error 2
+make[2]: *** [CMakeFiles/micro_ros_agent.dir/build.make:86: micro_ros_agent-prefix/src/micro_ros_agent-stamp/micro_ros_agent-build] Error 2
+make[1]: *** [CMakeFiles/Makefile2:111: CMakeFiles/micro_ros_agent.dir/all] Error 2
+make: *** [Makefile:91: all] Error 2
