@@ -214,7 +214,7 @@ void BerryIMU_v3::IMU_read(){
   // Bit shift done by 256^3 = 16777216 and 16777216/3 = 5592405
   pressRaw = (int)(buff[0] | (buff[1] << 8) | (buff[2] << 16));
   comp_press = press_compensation(pressRaw, comp_temp);
-  //Serial.println(comp_press); //Pressure in Pa
+  // Serial.println(comp_press); //Pressure in Pa
 
   //Altitude (in meters)
   //https://www.circuitbasics.com/set-bmp180-barometric-pressure-sensor-arduino/
@@ -224,6 +224,8 @@ void BerryIMU_v3::IMU_read(){
     ref_pressure_found = false;
   }
   alt = 44330 * (1 - pow((comp_press / ref_ground_press), (1 / 5.255))); //In meters
+
+  // alt = comp_press;  // plus something from base station
 
   //---------------------------------------------------------------------------------------
 }

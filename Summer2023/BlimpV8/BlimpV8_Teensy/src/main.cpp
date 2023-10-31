@@ -75,6 +75,30 @@ void auto_subscription_callback(const void *msgin)
     }
 }
 
+void calibrateBarometer_subscription_callback(const void *msgin)
+{
+    const std_msgs__msg__Bool *calibration_msg = (const std_msgs__msg__Bool *)msgin;
+    calibrateBaro = calibration_msg->data;
+    const char * boolAsConstCharPtr = calibrateBaro ? "true" : "false";
+    //publish_log(boolAsConstCharPtr);
+
+    // Barometer Calibration
+    if (calibrateBaro == true) {
+        baroCalibrationOffset = BerryIMU.comp_press - baseBaro;
+
+        std::string floatAsString = std::to_string(BerryIMU.comp_press);
+        const char* floatAsConstCharPtr = floatAsString.c_str();
+        publish_log(floatAsConstCharPtr);
+        std::string floatAsString2 = std::to_string(baseBaro);
+        const char* floatAsConstCharPtr2 = floatAsString2.c_str();
+        publish_log(floatAsConstCharPtr2);
+        std::string floatAsString3 = std::to_string(baroCalibrationOffset);
+        const char* floatAsConstCharPtr3 = floatAsString3.c_str();
+        publish_log(floatAsConstCharPtr3);
+        publish_log("Calibrating Barometer");
+    }
+}
+
 void baro_subscription_callback(const void *msgin)
 {
     const std_msgs__msg__Float64 *baro_msg = (const std_msgs__msg__Float64 *)msgin;
@@ -128,6 +152,12 @@ void motor_subscription_callback(const void *msgin)
     up_msg = motor_msg->data.data[1];
     yaw_msg = motor_msg->data.data[0];
     translation_msg = motor_msg->data.data[2];
+
+    char motorCommands[100];  // Size depending on the expected maximum length of your combined string
+
+    sprintf(motorCommands, "Teensy Motor Commands\nYaw: %.2f\nUp: %.2f\nTranslation: %.2f\nForward: %.2f\n", yaw_msg, up_msg, translation_msg, forward_msg);
+
+    publish_log(motorCommands);
 }
 
 void goal_color_subscription_callback(const void *msgin)
@@ -195,6 +225,7 @@ bool create_entities() {
     //Base station
     RCCHECK(rclc_subscription_init_default(&auto_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Bool), (blimpNameSpace + "/auto").c_str()));
     RCCHECK(rclc_subscription_init_default(&baseBarometer_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Float64), (blimpNameSpace + "/baseBarometer").c_str()));
+    RCCHECK(rclc_subscription_init_default(&calibrateBarometer_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Bool), (blimpNameSpace + "/calibrateBarometer").c_str()));
     RCCHECK(rclc_subscription_init_default(&grabber_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Bool), (blimpNameSpace + "/grabbing").c_str()));
     RCCHECK(rclc_subscription_init_default(&shooter_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Bool), (blimpNameSpace + "/shooting").c_str()));
     RCCHECK(rclc_subscription_init_default(&motor_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Float64MultiArray), (blimpNameSpace + "/motorCommands").c_str()));
@@ -229,6 +260,7 @@ bool create_entities() {
     //add all subscriptions (9)
     RCCHECK(rclc_executor_add_subscription(&executor_sub, &auto_subscription, &auto_msg, &auto_subscription_callback, ON_NEW_DATA));
     RCCHECK(rclc_executor_add_subscription(&executor_sub, &baseBarometer_subscription, &baro_msg, &baro_subscription_callback, ON_NEW_DATA));
+    RCCHECK(rclc_executor_add_subscription(&executor_sub, &calibrateBarometer_subscription, &calibration_msg, &calibrateBarometer_subscription_callback, ON_NEW_DATA));
     RCCHECK(rclc_executor_add_subscription(&executor_sub, &grabber_subscription, &grab_msg, &grab_subscription_callback, ON_NEW_DATA));
     RCCHECK(rclc_executor_add_subscription(&executor_sub, &shooter_subscription, &shoot_msg, &shoot_subscription_callback, ON_NEW_DATA));
     RCCHECK(rclc_executor_add_subscription(&executor_sub, &kill_subscription, &kill_msg, &kill_subscription_callback, ON_NEW_DATA));
@@ -254,9 +286,10 @@ void destroy_entities() {
     rcl_publisher_fini(&state_machine_publisher, &node);
     rcl_publisher_fini(&log_publisher, &node);
 
-    //finnish subscriptions
+    //finish subscriptions
     rcl_subscription_fini(&auto_subscription, &node);
     rcl_subscription_fini(&baseBarometer_subscription, &node);
+    rcl_subscription_fini(&calibrateBarometer_subscription, &node);
     rcl_subscription_fini(&grabber_subscription, &node);
     rcl_subscription_fini(&shooter_subscription, &node);
     rcl_subscription_fini(&motor_subscription, &node); 
@@ -597,22 +630,28 @@ void loop() {
     //update barometere at set barometere frequency
     dt = loop_time-lastBaroLoopTick;
     if (dt >= 1.0/BARO_LOOP_FREQ) {
-
         lastBaroLoopTick = loop_time;
 
         //get most current imu values
         BerryIMU.IMU_read();
+
+        // Check for invalid value
+        if (BerryIMU.comp_press < 95000 || BerryIMU.comp_press > 115000) {
+            BerryIMU.BerryIMU_v3_Setup();
+            BerryIMU.IMU_read();
+        }
 
         //update kalman with uncorreced barometer data
         kf.updateBaro(BerryIMU.alt);
 
         //compute the corrected height with base station baro data and offset
         if (baseBaro != 0) {
-            actualBaro = 44330 * (1 - pow((BerryIMU.comp_press/baseBaro), (1/5.255))); //In meters Base Baro is the pressure
+            actualBaro = 44330 * (1 - pow(((BerryIMU.comp_press - baroCalibrationOffset)/baseBaro), (1/5.255))); //In meters Base Baro is the pressure
 
             //publish Height
             height_msg.data = actualBaro;
             RCSOFTCHECK(rcl_publish(&height_publisher, &height_msg, NULL));
+
         } else    {
             actualBaro = 1000;
         }
@@ -1277,7 +1316,7 @@ void loop() {
         //gimbal + motor updates
         if (loop_time < 10 + firstMessageTime) {
             //filter base station data
-            baroOffset.filter(baseBaro-BerryIMU.alt);
+            baroOffset.filter(baseBaro-BerryIMU.comp_press);
             rollOffset.filter(BerryIMU.gyr_rateXraw);
 
             //zero motors while filters converge and esc arms

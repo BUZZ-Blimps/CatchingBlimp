@@ -241,7 +241,8 @@ void publish_log(const char *message);
 void timer_callback(rcl_timer_t * timer, int64_t last_call_time);
 // void id_subscription_callback(const void *msgin);
 void auto_subscription_callback(const void *msgin);
-void baro_subscription_callback(const void *msgin);;
+void baro_subscription_callback(const void *msgin);
+void calibrateBarometer_subscription_callback(const void *msgin);
 void kill_subscription_callback(const void *msgin);
 void shoot_subscription_callback(const void *msgin);
 void motor_subscription_callback(const void *msgin);
@@ -381,6 +382,12 @@ int quadrant = 10;
 //base station baro
 float baseBaro = 0.0;
 
+//base station calibrate baro
+bool calibrateBaro = false;
+
+//base station baro offset
+float baroCalibrationOffset = 0.0;
+
 //direction from last ball search
 bool wasUp = true;
 
@@ -429,6 +436,7 @@ rcl_publisher_t log_publisher;
 //ROS subscribers
 rcl_subscription_t auto_subscription; //boolean
 rcl_subscription_t baseBarometer_subscription; //float64
+rcl_subscription_t calibrateBarometer_subscription; //boolean
 rcl_subscription_t grabber_subscription; //boolean
 rcl_subscription_t shooter_subscription; //boolean
 rcl_subscription_t motor_subscription; //float64_multi_array
@@ -440,10 +448,10 @@ rcl_subscription_t pixels_subscription; //int64_multi_array
 
 //The following names can be commented/uncommented based on the blimp that is used
 // Define the name of the blimp/robot
- std::string blimpNameSpace = "BurnCreamBlimp";
-// std::string blimpNameSpace = "SillyAhBlimp";
-// std::string blimpNameSpace = "TurboBlimp";
-// std::string blimpNameSpace = "GameChamberBlimp";
+//std::string blimpNameSpace = "BurnCreamBlimp";
+std::string blimpNameSpace = "SillyAhBlimp";
+//std::string blimpNameSpace = "TurboBlimp";
+//std::string blimpNameSpace = "GameChamberBlimp";
 //std::string blimpNameSpace = "FiveGuysBlimp";
 
 //message types: String Bool Float32 Float32 MultiArray
@@ -459,6 +467,7 @@ std_msgs__msg__Bool auto_msg;
 std_msgs__msg__Bool grab_msg;
 std_msgs__msg__Bool shoot_msg;
 std_msgs__msg__Bool kill_msg;
+std_msgs__msg__Bool calibration_msg;
 
 //int64 message
 std_msgs__msg__Int64 goal_color_msg;
