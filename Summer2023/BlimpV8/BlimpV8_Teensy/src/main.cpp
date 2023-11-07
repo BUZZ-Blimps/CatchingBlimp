@@ -61,17 +61,11 @@ void auto_subscription_callback(const void *msgin)
             publish_log("Activating Auto Mode");
         }
         state = autonomous;
-
-        //update last message time
-        lastMsgTime = micros()/MICROS_TO_SEC;
     } else {
         if (state == autonomous) {
             publish_log("Going Manual for a Bit...");
         }
         state = manual;
-
-        //update last message time
-        lastMsgTime = micros()/MICROS_TO_SEC;
     }
 }
 
@@ -80,7 +74,7 @@ void calibrateBarometer_subscription_callback(const void *msgin)
     const std_msgs__msg__Bool *calibration_msg = (const std_msgs__msg__Bool *)msgin;
     calibrateBaro = calibration_msg->data;
     const char * boolAsConstCharPtr = calibrateBaro ? "true" : "false";
-    //publish_log(boolAsConstCharPtr);
+    // publish_log(boolAsConstCharPtr);
 
     // Barometer Calibration
     if (calibrateBaro == true) {
@@ -103,6 +97,15 @@ void baro_subscription_callback(const void *msgin)
 {
     const std_msgs__msg__Float64 *baro_msg = (const std_msgs__msg__Float64 *)msgin;
     baseBaro = baro_msg->data;
+    
+    //heartbeat
+    //update last message time
+    lastMsgTime = micros()/MICROS_TO_SEC;
+
+    //If teensy comes out of lost state, put it in manual control mode
+    if (state == lost) {
+        state = manual;
+    }
 }
 
 void grab_subscription_callback(const void *msgin)
@@ -153,11 +156,9 @@ void motor_subscription_callback(const void *msgin)
     yaw_msg = motor_msg->data.data[0];
     translation_msg = motor_msg->data.data[2];
 
-    char motorCommands[100];  // Size depending on the expected maximum length of your combined string
-
-    sprintf(motorCommands, "Teensy Motor Commands\nYaw: %.2f\nUp: %.2f\nTranslation: %.2f\nForward: %.2f\n", yaw_msg, up_msg, translation_msg, forward_msg);
-
-    publish_log(motorCommands);
+    // char motorCommands[100];  // Size depending on the expected maximum length of your combined string
+    // sprintf(motorCommands, "Teensy Motor Commands\nYaw: %.2f\nUp: %.2f\nTranslation: %.2f\nForward: %.2f\n", yaw_msg, up_msg, translation_msg, forward_msg);
+    // publish_log(motorCommands);
 }
 
 void goal_color_subscription_callback(const void *msgin)
@@ -635,12 +636,6 @@ void loop() {
         //get most current imu values
         BerryIMU.IMU_read();
 
-        // Check for invalid value
-        if (BerryIMU.comp_press < 95000 || BerryIMU.comp_press > 115000) {
-            BerryIMU.BerryIMU_v3_Setup();
-            BerryIMU.IMU_read();
-        }
-
         //update kalman with uncorreced barometer data
         kf.updateBaro(BerryIMU.alt);
 
@@ -769,7 +764,6 @@ void loop() {
             yawA = YAW_AVOID;
             break;
         default:
-
             break;
         }
 
@@ -1250,7 +1244,6 @@ void loop() {
         // Serial.println(translationCom);
 
         //PID controllers
-
         float yawMotor = 0.0;
         float upMotor = 0.0;
         float forwardMotor = 0.0;
@@ -1283,11 +1276,17 @@ void loop() {
         }
 
         //motor debug
-        debug_msg.data.data[0] = yawMotor;
-        debug_msg.data.data[1] = upMotor;
-        debug_msg.data.data[2] = translationMotor;
-        debug_msg.data.data[3] = forwardMotor;
+        debug_msg.data.data[0] = yawCom;
+        debug_msg.data.data[1] = upCom;
+        debug_msg.data.data[2] = translationCom;
+        debug_msg.data.data[3] = forwardCom;
         debug_msg.data.size = 4;
+
+        // debug_msg.data.data[0] = forward_msg;
+        // debug_msg.data.data[1] = yaw_msg;
+        // debug_msg.data.data[2] = up_msg;
+        // debug_msg.data.data[3] = translation_msg;
+        // debug_msg.data.size = 4;
 
         //test target messages
         // debug_msg.data.data[0] = targets[0];

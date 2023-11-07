@@ -17,7 +17,7 @@ void TripleBallGrabber::openGrabber() {
 }
 
 void TripleBallGrabber::closeGrabber() {
-  this->servo.write(83);
+  this->servo.write(135);
   this->motor.write(1500);
   this->state = 0;
 }

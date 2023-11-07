@@ -9,6 +9,9 @@ then
 elif ( [ "$#" -eq 1 ] );
 then
 
+    # Very Slow
+    #sshpass -p 1234 ssh orangepi$1@orangepi$1 ./stopMicroros.sh
+
     sed -i '/std::string blimpNameSpace = /s/^\/\?\/\?/\/\//' "src/catching_blimp.h"
     if [ "$1" = "1" ]; then
     	sed -i "/std::string blimpNameSpace = \"BurnCreamBlimp\"/s/^\/\///" "src/catching_blimp.h"
@@ -33,5 +36,8 @@ then
 
     #Enter into the Orange Pi
     #Flash the Teensy (For some reason we have to do this twice)
-    sshpass -p 1234 ssh orangepi$1@orangepi$1 "/home/orangepi$1/teensy_loader_cli/teensy_loader_cli -mmcu=TEENSY40 -s -w -v /home/orangepi$1/teensyCode/firmware.hex; /home/orangepi$1/teensy_loader_cli/teensy_loader_cli -mmcu=TEENSY40 -s -w -v /home/orangepi$1/teensyCode/firmware.hex"
+    ssh orangepi$1@orangepi$1 "/home/orangepi$1/teensy_loader_cli/teensy_loader_cli -mmcu=TEENSY40 -s -w -v /home/orangepi$1/teensyCode/firmware.hex; /home/orangepi$1/teensy_loader_cli/teensy_loader_cli -mmcu=TEENSY40 -s -w -v /home/orangepi$1/teensyCode/firmware.hex"
+
+    # Doesn't work without password
+    #sshpass -p 1234 ssh orangepi$1@orangepi$1 ./restartMicroros.sh
 fi

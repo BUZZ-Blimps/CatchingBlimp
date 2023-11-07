@@ -146,7 +146,7 @@ if (uxr_millis() - init > MS) { X; init = uxr_millis();} \
 //sensor and controller rates
 #define FAST_SENSOR_LOOP_FREQ           100.0
 #define BARO_LOOP_FREQ                  50.0
-#define STATE_MACHINE_FREQ              20.0
+#define STATE_MACHINE_FREQ              30.0
 #define OPTICAL_LOOP_FREQ               55.0
 
 #define DIST_CONSTANT             0.002
@@ -398,7 +398,7 @@ float searchYawDirection = -1;
 
 float goalYawDirection = -1;
 
-char log_buf[BUFFER_LEN];
+// char log_buf[BUFFER_LEN];
 
 //avoidance data (9 quadrants), targets data and pixel data (balloon, orange goal, yellow goal)
 //1000 means object is not present
@@ -450,7 +450,7 @@ rcl_subscription_t pixels_subscription; //int64_multi_array
 // Define the name of the blimp/robot
 //std::string blimpNameSpace = "BurnCreamBlimp";
 //std::string blimpNameSpace = "SillyAhBlimp";
-std::string blimpNameSpace = "TurboBlimp";
+ std::string blimpNameSpace = "TurboBlimp";
 //std::string blimpNameSpace = "GameChamberBlimp";
 //std::string blimpNameSpace = "FiveGuysBlimp";
 
