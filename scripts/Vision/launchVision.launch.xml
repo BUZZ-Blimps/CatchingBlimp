@@ -1,0 +1,31 @@
+<launch>
+    <!-- Launch opi1 BurnCreamBlimp-->
+    <!-- <include file="launchVisionGeneric.launch.xml">
+        <arg name="blimp_name" value="BurnCreamBlimp"/>
+        <arg name="calibration_file_name" value="camera1"/>
+    </include> -->
+
+    <!-- Launch opi2 SillyAhBlimp-->
+    <!-- <include file="launchVisionGeneric.launch.xml">
+        <arg name="blimp_name" value="SillyAhBlimp"/>
+        <arg name="calibration_file_name" value="camera2"/>
+    </include> -->
+
+    <!-- Launch opi3 TurboBlimp-->
+    <include file="launchVisionGeneric.launch.xml">
+        <arg name="blimp_name" value="TurboBlimp"/>
+        <arg name="calibration_file_name" value="camera3"/>
+    </include>
+
+    <!-- Launch opi4 GameChamberBlimp -->
+    <!-- <include file="launchVisionGeneric.launch.xml">
+        <arg name="blimp_name" value="GameChamberBlimp"/>
+        <arg name="calibration_file_name" value="camera4"/>
+    </include> -->
+
+    <!-- Launch opi5 FiveGuysBlimp-->
+    <!-- <include file="launchVisionGeneric.launch.xml">
+        <arg name="blimp_name" value="FiveGuysBlimp"/>
+        <arg name="calibration_file_name" value="camera5"/>
+    </include> -->
+</launch>

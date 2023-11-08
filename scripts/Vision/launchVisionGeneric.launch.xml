@@ -1,0 +1,33 @@
+<launch>
+    <!-- Arguments -->
+    <arg name="blimp_name"/>
+    <arg name="calibration_file_name"/>
+
+    <!-- ros2 launch files-->
+    <!-- Makes blimp publish raw camera feed -->
+    <include file="$(find-pkg-share gscam2)/launch/node_param_launch.py">
+        <arg name="camera_name" value="$(var blimp_name)"/>
+    </include>
+
+    <include file="$(find-pkg-share opencv_telemetry)/launch/split_node.launch.py">
+        <arg name="namespace" value="$(var blimp_name)"/>
+        <arg name="calibration_file" value="$(var calibration_file_name)"/>
+        <arg name="camera_ns" value="$(var blimp_name)"/>
+    </include>
+
+    <include file="$(find-pkg-share image_proc)/launch/image_proc.launch.py">
+        <arg name="namespace" value="$(var blimp_name)"/>
+    </include>
+
+    <include file="$(find-pkg-share stereo_image_proc)/launch/disparity.launch.py">
+        <arg name="namespace" value="$(var blimp_name)"/>
+    </include>
+
+    <include file="$(find-pkg-share stereo_image_proc)/launch/point_cloud.launch.py">
+        <arg name="namespace" value="$(var blimp_name)"/>
+    </include>
+
+    <include file="$(find-pkg-share track_ros2)/launch/track_ros2_node.launch.py">
+        <arg name="namespace" value="$(var blimp_name)"/>
+    </include>
+</launch>
