@@ -3,7 +3,7 @@
 ## Links
 - [Current Teensy Code](/Summer2023/BlimpV8/BlimpV8_Teensy/)
 - [Vision Scripts](/scripts/Vision/)
-- [Older Documentation]()
+- [Older Documentation](/Summer2023/README.md)
 
 ## Vision
 - To start vision, go to [/scripts/Vision/](/scripts/Vision/).
