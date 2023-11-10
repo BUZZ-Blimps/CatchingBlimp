@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = -DRCUTILS_ENABLE_FAULT_INJECTION -DROS_PACKAGE_NAME=\"opencv_telemetry\" -Dopencv_telemetry__rosidl_typesupport_introspection_cpp_EXPORTS
 
-CXX_INCLUDES = -I/home/corelab/ros2_stereo/src/opencv_telemetry/include -I/home/corelab/ros2_stereo/build/opencv_telemetry/rosidl_generator_cpp -isystem /opt/ros/foxy/include
+CXX_INCLUDES = -I/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry/include -I/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/rosidl_generator_cpp -isystem /opt/ros/foxy/include
 
 CXX_FLAGS = -fPIC -Wall -std=gnu++14
 

@@ -1,0 +1,1 @@
+/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined/ament_cmake_environment_hooks/local_setup.bash

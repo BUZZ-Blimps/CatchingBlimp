@@ -1,0 +1,263 @@
+[0.031s] Invoking command in '/home/corelab/ros2_stereo/build/yolo_msgs': CMAKE_PREFIX_PATH=/opt/ros/foxy /home/corelab/.local/bin/cmake --build /home/corelab/ros2_stereo/build/yolo_msgs -- -j16 -l16
+[0.086s] [  1%] Built target yolo_msgs__cpp
+[0.086s] [  2%] Built target yolo_msgs__dds_connext_idl
+[0.094s] [  8%] Built target yolo_msgs__rosidl_generator_c
+[0.097s] [  9%] [32mBuilding CXX object CMakeFiles/yolo_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/yolo_msgs/msg/bounding_box__type_support.cpp.o[0m
+[0.097s] [ 12%] [32mBuilding CXX object CMakeFiles/yolo_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/yolo_msgs/msg/object_count__type_support.cpp.o[0m
+[0.097s] [ 12%] [32mBuilding CXX object CMakeFiles/yolo_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/yolo_msgs/msg/detail/dds_fastrtps/bounding_boxes__type_support.cpp.o[0m
+[0.097s] [ 13%] [32mBuilding CXX object CMakeFiles/yolo_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/yolo_msgs/msg/detail/bounding_box__type_support.cpp.o[0m
+[0.097s] [ 14%] [32mBuilding CXX object CMakeFiles/yolo_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/yolo_msgs/msg/bounding_boxes__type_support.cpp.o[0m
+[0.097s] [ 16%] [32mBuilding CXX object CMakeFiles/yolo_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/yolo_msgs/msg/detail/dds_fastrtps/object_count__type_support.cpp.o[0m
+[0.098s] [ 17%] [32mBuilding CXX object CMakeFiles/yolo_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/yolo_msgs/msg/detail/bounding_boxes__type_support.cpp.o[0m
+[0.098s] [ 18%] [32mBuilding CXX object CMakeFiles/yolo_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/yolo_msgs/msg/detail/dds_fastrtps/bounding_box__type_support.cpp.o[0m
+[0.099s] [ 19%] [32mBuilding CXX object CMakeFiles/yolo_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/yolo_msgs/msg/detail/object_count__type_support.cpp.o[0m
+[0.105s] [ 25%] Built target yolo_msgs__rosidl_typesupport_c
+[0.107s] [ 32%] Built target yolo_msgs__rosidl_typesupport_introspection_c
+[0.133s] [ 33%] [32mBuilding CXX object CMakeFiles/yolo_msgs__rosidl_typesupport_connext_cpp.dir/rosidl_typesupport_connext_cpp/yolo_msgs/msg/dds_connext/bounding_box__type_support.cpp.o[0m
+[0.153s] [ 34%] [32mBuilding CXX object CMakeFiles/yolo_msgs__rosidl_typesupport_connext_cpp.dir/rosidl_typesupport_connext_cpp/yolo_msgs/msg/dds_connext/bounding_boxes__type_support.cpp.o[0m
+[0.161s] [ 35%] [32mBuilding CXX object CMakeFiles/yolo_msgs__rosidl_typesupport_connext_cpp.dir/rosidl_typesupport_connext_cpp/yolo_msgs/msg/dds_connext/object_count__type_support.cpp.o[0m
+[0.178s] [ 37%] [32mBuilding CXX object CMakeFiles/yolo_msgs__rosidl_typesupport_connext_cpp.dir/rosidl_typesupport_connext_cpp/yolo_msgs/msg/dds_connext/BoundingBox_.cxx.o[0m
+[0.200s] [ 38%] [32mBuilding CXX object CMakeFiles/yolo_msgs__rosidl_typesupport_connext_cpp.dir/rosidl_typesupport_connext_cpp/yolo_msgs/msg/dds_connext/BoundingBox_Support.cxx.o[0m
+[0.207s] [ 39%] [32mBuilding CXX object CMakeFiles/yolo_msgs__rosidl_typesupport_connext_cpp.dir/rosidl_typesupport_connext_cpp/yolo_msgs/msg/dds_connext/BoundingBox_Plugin.cxx.o[0m
+[0.225s] [ 40%] [32mBuilding CXX object CMakeFiles/yolo_msgs__rosidl_typesupport_connext_cpp.dir/rosidl_typesupport_connext_cpp/yolo_msgs/msg/dds_connext/BoundingBoxes_.cxx.o[0m
+[0.517s] [ 41%] [32mBuilding CXX object CMakeFiles/yolo_msgs__rosidl_typesupport_connext_cpp.dir/rosidl_typesupport_connext_cpp/yolo_msgs/msg/dds_connext/BoundingBoxes_Plugin.cxx.o[0m
+[0.520s] [ 43%] [32mBuilding CXX object CMakeFiles/yolo_msgs__rosidl_typesupport_connext_cpp.dir/rosidl_typesupport_connext_cpp/yolo_msgs/msg/dds_connext/BoundingBoxes_Support.cxx.o[0m
+[0.586s] [ 44%] [32mBuilding CXX object CMakeFiles/yolo_msgs__rosidl_typesupport_connext_cpp.dir/rosidl_typesupport_connext_cpp/yolo_msgs/msg/dds_connext/ObjectCount_.cxx.o[0m
+[0.618s] [ 45%] [32mBuilding CXX object CMakeFiles/yolo_msgs__rosidl_typesupport_connext_cpp.dir/rosidl_typesupport_connext_cpp/yolo_msgs/msg/dds_connext/ObjectCount_Plugin.cxx.o[0m
+[0.626s] [ 46%] [32m[1mLinking CXX shared library libyolo_msgs__rosidl_typesupport_cpp.so[0m
+[0.634s] [ 48%] [32mBuilding CXX object CMakeFiles/yolo_msgs__rosidl_typesupport_connext_cpp.dir/rosidl_typesupport_connext_cpp/yolo_msgs/msg/dds_connext/ObjectCount_Support.cxx.o[0m
+[0.688s] [ 49%] [32m[1mLinking CXX shared library libyolo_msgs__rosidl_typesupport_introspection_cpp.so[0m
+[0.794s] [ 50%] Built target yolo_msgs__rosidl_typesupport_cpp
+[0.930s] [ 51%] Built target yolo_msgs__rosidl_typesupport_introspection_cpp
+[1.007s] [ 53%] [32m[1mLinking CXX shared library libyolo_msgs__rosidl_typesupport_fastrtps_cpp.so[0m
+[1.234s] [ 54%] Built target yolo_msgs__rosidl_typesupport_fastrtps_cpp
+[1.277s] [ 55%] [32mBuilding CXX object CMakeFiles/yolo_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/yolo_msgs/msg/detail/bounding_box__type_support_c.cpp.o[0m
+[1.279s] [ 56%] [32mBuilding CXX object CMakeFiles/yolo_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/yolo_msgs/msg/detail/bounding_boxes__type_support_c.cpp.o[0m
+[1.299s] [ 58%] [32mBuilding CXX object CMakeFiles/yolo_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/yolo_msgs/msg/detail/object_count__type_support_c.cpp.o[0m
+[1.518s] [ 59%] [32m[1mLinking CXX shared library libyolo_msgs__rosidl_typesupport_connext_cpp.so[0m
+[1.743s] [ 60%] [32m[1mLinking CXX shared library libyolo_msgs__rosidl_typesupport_fastrtps_c.so[0m
+[1.883s] [ 61%] Built target yolo_msgs__rosidl_typesupport_fastrtps_c
+[1.886s] [ 64%] Built target yolo_msgs__rosidl_typesupport_connext_cpp
+[1.926s] [ 65%] [32mBuilding CXX object CMakeFiles/yolo_msgs__rosidl_typesupport_connext_c.dir/rosidl_typesupport_connext_c/yolo_msgs/msg/dds_connext/bounding_box__type_support_c.cpp.o[0m
+[1.927s] [ 66%] [32mBuilding CXX object CMakeFiles/yolo_msgs__rosidl_typesupport_connext_c.dir/rosidl_typesupport_connext_c/yolo_msgs/msg/dds_connext/bounding_boxes__type_support_c.cpp.o[0m
+[1.927s] [ 67%] [32mBuilding CXX object CMakeFiles/yolo_msgs__rosidl_typesupport_connext_c.dir/rosidl_typesupport_connext_cpp/yolo_msgs/msg/dds_connext/BoundingBox_Plugin.cxx.o[0m
+[1.927s] [ 69%] [32mBuilding CXX object CMakeFiles/yolo_msgs__rosidl_typesupport_connext_c.dir/rosidl_typesupport_connext_cpp/yolo_msgs/msg/dds_connext/BoundingBox_.cxx.o[0m
+[1.930s] [ 70%] [32mBuilding CXX object CMakeFiles/yolo_msgs__rosidl_typesupport_connext_c.dir/rosidl_typesupport_connext_cpp/yolo_msgs/msg/dds_connext/BoundingBox_Support.cxx.o[0m
+[1.936s] [ 71%] [32mBuilding CXX object CMakeFiles/yolo_msgs__rosidl_typesupport_connext_c.dir/rosidl_typesupport_connext_c/yolo_msgs/msg/dds_connext/object_count__type_support_c.cpp.o[0m
+[1.961s] [ 72%] [32mBuilding CXX object CMakeFiles/yolo_msgs__rosidl_typesupport_connext_c.dir/rosidl_typesupport_connext_cpp/yolo_msgs/msg/dds_connext/BoundingBoxes_.cxx.o[0m
+[1.993s] [ 74%] [32mBuilding CXX object CMakeFiles/yolo_msgs__rosidl_typesupport_connext_c.dir/rosidl_typesupport_connext_cpp/yolo_msgs/msg/dds_connext/BoundingBoxes_Plugin.cxx.o[0m
+[2.010s] [ 75%] [32mBuilding CXX object CMakeFiles/yolo_msgs__rosidl_typesupport_connext_c.dir/rosidl_typesupport_connext_cpp/yolo_msgs/msg/dds_connext/BoundingBoxes_Support.cxx.o[0m
+[2.075s] [ 76%] [32mBuilding CXX object CMakeFiles/yolo_msgs__rosidl_typesupport_connext_c.dir/rosidl_typesupport_connext_cpp/yolo_msgs/msg/dds_connext/ObjectCount_.cxx.o[0m
+[2.076s] [ 77%] [32mBuilding CXX object CMakeFiles/yolo_msgs__rosidl_typesupport_connext_c.dir/rosidl_typesupport_connext_cpp/yolo_msgs/msg/dds_connext/ObjectCount_Plugin.cxx.o[0m
+[2.085s] [ 79%] [32mBuilding CXX object CMakeFiles/yolo_msgs__rosidl_typesupport_connext_c.dir/rosidl_typesupport_connext_cpp/yolo_msgs/msg/dds_connext/ObjectCount_Support.cxx.o[0m
+[3.015s] [ 80%] [32m[1mLinking CXX shared library libyolo_msgs__rosidl_typesupport_connext_c.so[0m
+[3.418s] [ 83%] Built target yolo_msgs__rosidl_typesupport_connext_c
+[3.434s] [ 83%] Built target yolo_msgs
+[3.447s] [ 85%] Built target yolo_msgs__py
+[3.462s] [ 87%] [32mBuilding C object CMakeFiles/yolo_msgs__python.dir/rosidl_generator_py/yolo_msgs/msg/_bounding_box_s.c.o[0m
+[3.462s] [ 88%] [32mBuilding C object CMakeFiles/yolo_msgs__python.dir/rosidl_generator_py/yolo_msgs/msg/_object_count_s.c.o[0m
+[3.463s] [ 87%] [32mBuilding C object CMakeFiles/yolo_msgs__python.dir/rosidl_generator_py/yolo_msgs/msg/_bounding_boxes_s.c.o[0m
+[3.576s] [ 90%] [32m[1mLinking C shared library rosidl_generator_py/yolo_msgs/libyolo_msgs__python.so[0m
+[3.610s] [ 90%] Built target yolo_msgs__python
+[3.622s] [ 91%] [32mBuilding C object CMakeFiles/yolo_msgs__rosidl_typesupport_introspection_c__pyext.dir/rosidl_generator_py/yolo_msgs/_yolo_msgs_s.ep.rosidl_typesupport_introspection_c.c.o[0m
+[3.626s] [ 92%] [32mBuilding C object CMakeFiles/yolo_msgs__rosidl_typesupport_connext_c__pyext.dir/rosidl_generator_py/yolo_msgs/_yolo_msgs_s.ep.rosidl_typesupport_connext_c.c.o[0m
+[3.631s] [ 93%] [32mBuilding C object CMakeFiles/yolo_msgs__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py/yolo_msgs/_yolo_msgs_s.ep.rosidl_typesupport_fastrtps_c.c.o[0m
+[3.646s] [ 95%] [32mBuilding C object CMakeFiles/yolo_msgs__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/yolo_msgs/_yolo_msgs_s.ep.rosidl_typesupport_c.c.o[0m
+[3.710s] [ 96%] [32m[1mLinking CXX shared library rosidl_generator_py/yolo_msgs/yolo_msgs_s__rosidl_typesupport_fastrtps_c.cpython-38-x86_64-linux-gnu.so[0m
+[3.728s] [ 97%] [32m[1mLinking C shared library rosidl_generator_py/yolo_msgs/yolo_msgs_s__rosidl_typesupport_introspection_c.cpython-38-x86_64-linux-gnu.so[0m
+[3.730s] [ 98%] [32m[1mLinking C shared library rosidl_generator_py/yolo_msgs/yolo_msgs_s__rosidl_typesupport_connext_c.cpython-38-x86_64-linux-gnu.so[0m
+[3.762s] [ 98%] Built target yolo_msgs__rosidl_typesupport_introspection_c__pyext
+[3.766s] [100%] [32m[1mLinking C shared library rosidl_generator_py/yolo_msgs/yolo_msgs_s__rosidl_typesupport_c.cpython-38-x86_64-linux-gnu.so[0m
+[3.788s] [100%] Built target yolo_msgs__rosidl_typesupport_c__pyext
+[3.794s] [100%] Built target yolo_msgs__rosidl_typesupport_fastrtps_c__pyext
+[3.841s] [100%] Built target yolo_msgs__rosidl_typesupport_connext_c__pyext
+[3.851s] Invoked command in '/home/corelab/ros2_stereo/build/yolo_msgs' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /home/corelab/.local/bin/cmake --build /home/corelab/ros2_stereo/build/yolo_msgs -- -j16 -l16
+[4.004s] Invoking command in '/home/corelab/ros2_stereo/build/yolo_msgs': CMAKE_PREFIX_PATH=/opt/ros/foxy /home/corelab/.local/bin/cmake --install /home/corelab/ros2_stereo/build/yolo_msgs
+[4.035s] -- Install configuration: ""
+[4.036s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/share/ament_index/resource_index/rosidl_interfaces/yolo_msgs
+[4.036s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs
+[4.036s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg
+[4.036s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/bounding_boxes.h
+[4.036s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/bounding_box.h
+[4.036s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/object_count.h
+[4.036s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail
+[4.036s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_boxes__functions.h
+[4.036s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_box__functions.h
+[4.036s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_boxes__functions.c
+[4.036s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/object_count__functions.h
+[4.036s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/object_count__type_support.h
+[4.036s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_boxes__type_support.h
+[4.036s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/object_count__struct.h
+[4.037s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/object_count__functions.c
+[4.037s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_boxes__struct.h
+[4.037s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_box__type_support.h
+[4.037s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_box__struct.h
+[4.037s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_box__functions.c
+[4.037s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/rosidl_generator_c__visibility_control.h
+[4.037s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/share/yolo_msgs/environment/library_path.sh
+[4.037s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/share/yolo_msgs/environment/library_path.dsv
+[4.037s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/lib/libyolo_msgs__rosidl_generator_c.so
+[4.037s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs
+[4.037s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg
+[4.037s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/rosidl_typesupport_connext_c__visibility_control.h
+[4.038s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/bounding_box__rosidl_typesupport_connext_c.h
+[4.038s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/bounding_boxes__rosidl_typesupport_connext_c.h
+[4.038s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/object_count__rosidl_typesupport_connext_c.h
+[4.038s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/dds_connext
+[4.038s] -- Installing: /home/corelab/ros2_stereo/install/yolo_msgs/lib/libyolo_msgs__rosidl_typesupport_connext_c.so
+[4.038s] -- Set runtime path of "/home/corelab/ros2_stereo/install/yolo_msgs/lib/libyolo_msgs__rosidl_typesupport_connext_c.so" to ""
+[4.038s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/share/yolo_msgs/msg/dds_connext
+[4.038s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/share/yolo_msgs/msg/dds_connext/ObjectCount_.idl
+[4.038s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/share/yolo_msgs/msg/dds_connext/BoundingBoxes_.idl
+[4.038s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/share/yolo_msgs/msg/dds_connext/BoundingBox_.idl
+[4.038s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs
+[4.038s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg
+[4.038s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/bounding_box__rosidl_typesupport_connext_cpp.hpp
+[4.038s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/rosidl_typesupport_connext_cpp__visibility_control.h
+[4.038s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/object_count__rosidl_typesupport_connext_cpp.hpp
+[4.038s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/bounding_boxes__rosidl_typesupport_connext_cpp.hpp
+[4.038s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/dds_connext
+[4.039s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/dds_connext/BoundingBox_.h
+[4.039s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/dds_connext/ObjectCount_Plugin.cxx
+[4.039s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/dds_connext/ObjectCount_Support.h
+[4.039s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/dds_connext/BoundingBoxes_Plugin.h
+[4.039s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/dds_connext/BoundingBoxes_Plugin.cxx
+[4.039s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/dds_connext/BoundingBox_Plugin.h
+[4.039s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/dds_connext/ObjectCount_Support.cxx
+[4.039s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/dds_connext/BoundingBox_Support.cxx
+[4.039s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/dds_connext/ObjectCount_.cxx
+[4.039s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/dds_connext/BoundingBox_.cxx
+[4.040s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/dds_connext/BoundingBoxes_.h
+[4.040s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/dds_connext/BoundingBoxes_.cxx
+[4.040s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/dds_connext/BoundingBox_Support.h
+[4.040s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/dds_connext/BoundingBoxes_Support.cxx
+[4.040s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/dds_connext/BoundingBox_Plugin.cxx
+[4.040s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/dds_connext/BoundingBoxes_Support.h
+[4.040s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/dds_connext/ObjectCount_.h
+[4.040s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/dds_connext/ObjectCount_Plugin.h
+[4.041s] -- Installing: /home/corelab/ros2_stereo/install/yolo_msgs/lib/libyolo_msgs__rosidl_typesupport_connext_cpp.so
+[4.041s] -- Set runtime path of "/home/corelab/ros2_stereo/install/yolo_msgs/lib/libyolo_msgs__rosidl_typesupport_connext_cpp.so" to ""
+[4.041s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs
+[4.041s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg
+[4.041s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail
+[4.041s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/object_count__rosidl_typesupport_fastrtps_c.h
+[4.041s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_boxes__rosidl_typesupport_fastrtps_c.h
+[4.041s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_box__rosidl_typesupport_fastrtps_c.h
+[4.041s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[4.041s] -- Installing: /home/corelab/ros2_stereo/install/yolo_msgs/lib/libyolo_msgs__rosidl_typesupport_fastrtps_c.so
+[4.041s] -- Set runtime path of "/home/corelab/ros2_stereo/install/yolo_msgs/lib/libyolo_msgs__rosidl_typesupport_fastrtps_c.so" to ""
+[4.041s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs
+[4.041s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg
+[4.041s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[4.042s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail
+[4.042s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/dds_fastrtps
+[4.042s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_box__rosidl_typesupport_fastrtps_cpp.hpp
+[4.042s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/object_count__rosidl_typesupport_fastrtps_cpp.hpp
+[4.042s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_boxes__rosidl_typesupport_fastrtps_cpp.hpp
+[4.042s] -- Installing: /home/corelab/ros2_stereo/install/yolo_msgs/lib/libyolo_msgs__rosidl_typesupport_fastrtps_cpp.so
+[4.042s] -- Set runtime path of "/home/corelab/ros2_stereo/install/yolo_msgs/lib/libyolo_msgs__rosidl_typesupport_fastrtps_cpp.so" to ""
+[4.042s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs
+[4.042s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg
+[4.042s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail
+[4.042s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_boxes__type_support.c
+[4.042s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_boxes__rosidl_typesupport_introspection_c.h
+[4.042s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/object_count__type_support.c
+[4.042s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_box__rosidl_typesupport_introspection_c.h
+[4.042s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_box__type_support.c
+[4.042s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/object_count__rosidl_typesupport_introspection_c.h
+[4.042s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[4.043s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/lib/libyolo_msgs__rosidl_typesupport_introspection_c.so
+[4.043s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/lib/libyolo_msgs__rosidl_typesupport_c.so
+[4.043s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs
+[4.043s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg
+[4.043s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/bounding_boxes.hpp
+[4.043s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/object_count.hpp
+[4.043s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/rosidl_generator_cpp__visibility_control.hpp
+[4.043s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/bounding_box.hpp
+[4.043s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail
+[4.043s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_box__struct.hpp
+[4.043s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_box__type_support.hpp
+[4.043s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_boxes__type_support.hpp
+[4.043s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/object_count__type_support.hpp
+[4.043s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_box__traits.hpp
+[4.043s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_box__builder.hpp
+[4.043s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_boxes__struct.hpp
+[4.043s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/object_count__traits.hpp
+[4.044s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/object_count__struct.hpp
+[4.044s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_boxes__traits.hpp
+[4.044s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/object_count__builder.hpp
+[4.044s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_boxes__builder.hpp
+[4.044s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs
+[4.044s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg
+[4.044s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail
+[4.044s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_box__type_support.cpp
+[4.044s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_boxes__rosidl_typesupport_introspection_cpp.hpp
+[4.044s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/object_count__rosidl_typesupport_introspection_cpp.hpp
+[4.044s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/object_count__type_support.cpp
+[4.044s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_box__rosidl_typesupport_introspection_cpp.hpp
+[4.044s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_boxes__type_support.cpp
+[4.044s] -- Installing: /home/corelab/ros2_stereo/install/yolo_msgs/lib/libyolo_msgs__rosidl_typesupport_introspection_cpp.so
+[4.044s] -- Set runtime path of "/home/corelab/ros2_stereo/install/yolo_msgs/lib/libyolo_msgs__rosidl_typesupport_introspection_cpp.so" to ""
+[4.044s] -- Installing: /home/corelab/ros2_stereo/install/yolo_msgs/lib/libyolo_msgs__rosidl_typesupport_cpp.so
+[4.044s] -- Set runtime path of "/home/corelab/ros2_stereo/install/yolo_msgs/lib/libyolo_msgs__rosidl_typesupport_cpp.so" to ""
+[4.044s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/share/yolo_msgs/environment/pythonpath.sh
+[4.045s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/share/yolo_msgs/environment/pythonpath.dsv
+[4.045s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/lib/python3.8/site-packages/yolo_msgs/__init__.py
+[4.073s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/lib/python3.8/site-packages/yolo_msgs/msg
+[4.073s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/lib/python3.8/site-packages/yolo_msgs/msg/__init__.py
+[4.073s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/lib/python3.8/site-packages/yolo_msgs/msg/_bounding_box.py
+[4.073s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/lib/python3.8/site-packages/yolo_msgs/msg/_bounding_boxes.py
+[4.073s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/lib/python3.8/site-packages/yolo_msgs/msg/_bounding_box_s.c
+[4.074s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/lib/python3.8/site-packages/yolo_msgs/msg/_object_count.py
+[4.074s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/lib/python3.8/site-packages/yolo_msgs/msg/_object_count_s.c
+[4.074s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/lib/python3.8/site-packages/yolo_msgs/msg/_bounding_boxes_s.c
+[4.074s] -- Installing: /home/corelab/ros2_stereo/install/yolo_msgs/lib/python3.8/site-packages/yolo_msgs/yolo_msgs_s__rosidl_typesupport_connext_c.cpython-38-x86_64-linux-gnu.so
+[4.074s] -- Set runtime path of "/home/corelab/ros2_stereo/install/yolo_msgs/lib/python3.8/site-packages/yolo_msgs/yolo_msgs_s__rosidl_typesupport_connext_c.cpython-38-x86_64-linux-gnu.so" to ""
+[4.074s] -- Installing: /home/corelab/ros2_stereo/install/yolo_msgs/lib/python3.8/site-packages/yolo_msgs/yolo_msgs_s__rosidl_typesupport_fastrtps_c.cpython-38-x86_64-linux-gnu.so
+[4.074s] -- Set runtime path of "/home/corelab/ros2_stereo/install/yolo_msgs/lib/python3.8/site-packages/yolo_msgs/yolo_msgs_s__rosidl_typesupport_fastrtps_c.cpython-38-x86_64-linux-gnu.so" to ""
+[4.075s] -- Installing: /home/corelab/ros2_stereo/install/yolo_msgs/lib/python3.8/site-packages/yolo_msgs/yolo_msgs_s__rosidl_typesupport_introspection_c.cpython-38-x86_64-linux-gnu.so
+[4.075s] -- Set runtime path of "/home/corelab/ros2_stereo/install/yolo_msgs/lib/python3.8/site-packages/yolo_msgs/yolo_msgs_s__rosidl_typesupport_introspection_c.cpython-38-x86_64-linux-gnu.so" to ""
+[4.075s] -- Installing: /home/corelab/ros2_stereo/install/yolo_msgs/lib/python3.8/site-packages/yolo_msgs/yolo_msgs_s__rosidl_typesupport_c.cpython-38-x86_64-linux-gnu.so
+[4.075s] -- Set runtime path of "/home/corelab/ros2_stereo/install/yolo_msgs/lib/python3.8/site-packages/yolo_msgs/yolo_msgs_s__rosidl_typesupport_c.cpython-38-x86_64-linux-gnu.so" to ""
+[4.075s] -- Installing: /home/corelab/ros2_stereo/install/yolo_msgs/lib/libyolo_msgs__python.so
+[4.075s] -- Set runtime path of "/home/corelab/ros2_stereo/install/yolo_msgs/lib/libyolo_msgs__python.so" to ""
+[4.076s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/share/yolo_msgs/msg/BoundingBox.idl
+[4.076s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/share/yolo_msgs/msg/BoundingBoxes.idl
+[4.076s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/share/yolo_msgs/msg/ObjectCount.idl
+[4.076s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/share/yolo_msgs/msg/BoundingBox.msg
+[4.076s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/share/yolo_msgs/msg/BoundingBoxes.msg
+[4.076s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/share/yolo_msgs/msg/ObjectCount.msg
+[4.076s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/share/ament_index/resource_index/package_run_dependencies/yolo_msgs
+[4.076s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/share/ament_index/resource_index/parent_prefix_path/yolo_msgs
+[4.076s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/share/yolo_msgs/environment/ament_prefix_path.sh
+[4.076s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/share/yolo_msgs/environment/ament_prefix_path.dsv
+[4.076s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/share/yolo_msgs/environment/path.sh
+[4.076s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/share/yolo_msgs/environment/path.dsv
+[4.076s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/share/yolo_msgs/local_setup.bash
+[4.077s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/share/yolo_msgs/local_setup.sh
+[4.077s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/share/yolo_msgs/local_setup.zsh
+[4.077s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/share/yolo_msgs/local_setup.dsv
+[4.077s] -- Installing: /home/corelab/ros2_stereo/install/yolo_msgs/share/yolo_msgs/package.dsv
+[4.077s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/share/ament_index/resource_index/packages/yolo_msgs
+[4.077s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/share/yolo_msgs/cmake/yolo_msgs__rosidl_generator_cExport.cmake
+[4.077s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/share/yolo_msgs/cmake/yolo_msgs__rosidl_generator_cExport-noconfig.cmake
+[4.077s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/share/yolo_msgs/cmake/yolo_msgs__rosidl_typesupport_introspection_cExport.cmake
+[4.077s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/share/yolo_msgs/cmake/yolo_msgs__rosidl_typesupport_introspection_cExport-noconfig.cmake
+[4.077s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/share/yolo_msgs/cmake/yolo_msgs__rosidl_typesupport_cExport.cmake
+[4.077s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/share/yolo_msgs/cmake/yolo_msgs__rosidl_typesupport_cExport-noconfig.cmake
+[4.078s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/share/yolo_msgs/cmake/yolo_msgs__rosidl_generator_cppExport.cmake
+[4.078s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/share/yolo_msgs/cmake/yolo_msgs__rosidl_typesupport_introspection_cppExport.cmake
+[4.078s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/share/yolo_msgs/cmake/yolo_msgs__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+[4.078s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/share/yolo_msgs/cmake/yolo_msgs__rosidl_typesupport_cppExport.cmake
+[4.078s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/share/yolo_msgs/cmake/yolo_msgs__rosidl_typesupport_cppExport-noconfig.cmake
+[4.078s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/share/yolo_msgs/cmake/rosidl_cmake-extras.cmake
+[4.079s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/share/yolo_msgs/cmake/ament_cmake_export_dependencies-extras.cmake
+[4.079s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/share/yolo_msgs/cmake/ament_cmake_export_libraries-extras.cmake
+[4.079s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/share/yolo_msgs/cmake/ament_cmake_export_targets-extras.cmake
+[4.079s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/share/yolo_msgs/cmake/ament_cmake_export_include_directories-extras.cmake
+[4.079s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/share/yolo_msgs/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+[4.079s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/share/yolo_msgs/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+[4.079s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/share/yolo_msgs/cmake/yolo_msgsConfig.cmake
+[4.079s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/share/yolo_msgs/cmake/yolo_msgsConfig-version.cmake
+[4.079s] -- Up-to-date: /home/corelab/ros2_stereo/install/yolo_msgs/share/yolo_msgs/package.xml
+[4.089s] Invoked command in '/home/corelab/ros2_stereo/build/yolo_msgs' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /home/corelab/.local/bin/cmake --install /home/corelab/ros2_stereo/build/yolo_msgs

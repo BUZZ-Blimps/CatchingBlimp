@@ -1,0 +1,36 @@
+-- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)
+-- Using PYTHON_EXECUTABLE: /usr/bin/python3
+-- Override CMake install command with custom implementation using symlinks instead of copying resources
+-- Found rclcpp: 2.4.3 (/opt/ros/foxy/share/rclcpp/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_connext_c;rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+-- Found RTI Connext: /opt/rti.com/rti_connext_dds-5.3.1
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_connext_cpp;rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+-- Using RMW implementation 'rmw_fastrtps_cpp' as default
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/ros2_shared
+-- Install configuration: ""
+-- Execute custom install script
+-- Symlinking: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared/include/ros2_shared/context_macros.hpp
+-- Symlinking: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared/include/ros2_shared/param_macros.hpp
+-- Symlinking: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared/include/ros2_shared/string_printf.hpp
+-- Symlinking: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared/share/ament_index/resource_index/package_run_dependencies/ros2_shared
+-- Symlinking: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared/share/ament_index/resource_index/parent_prefix_path/ros2_shared
+-- Symlinking: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared/share/ros2_shared/environment/ament_prefix_path.sh
+-- Symlinking: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared/share/ros2_shared/environment/ament_prefix_path.dsv
+-- Symlinking: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared/share/ros2_shared/environment/path.sh
+-- Symlinking: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared/share/ros2_shared/environment/path.dsv
+-- Symlinking: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared/share/ros2_shared/local_setup.bash
+-- Symlinking: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared/share/ros2_shared/local_setup.sh
+-- Symlinking: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared/share/ros2_shared/local_setup.zsh
+-- Symlinking: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared/share/ros2_shared/local_setup.dsv
+-- Symlinking: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared/share/ros2_shared/package.dsv
+-- Symlinking: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared/share/ament_index/resource_index/packages/ros2_shared
+-- Symlinking: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared/share/ros2_shared/cmake/ament_cmake_export_targets-extras.cmake
+-- Symlinking: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared/share/ros2_shared/cmake/ament_cmake_export_dependencies-extras.cmake
+-- Symlinking: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared/share/ros2_shared/cmake/ros2_sharedConfig.cmake
+-- Symlinking: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared/share/ros2_shared/cmake/ros2_sharedConfig-version.cmake
+-- Symlinking: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared/share/ros2_shared/package.xml
+-- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared/share/ros2_shared/cmake/ros2_shared_targetsExport.cmake

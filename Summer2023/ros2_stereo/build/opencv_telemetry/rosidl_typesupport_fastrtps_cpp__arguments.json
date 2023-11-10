@@ -1,9 +1,9 @@
 {
   "package_name": "opencv_telemetry",
-  "output_dir": "/home/corelab/ros2_stereo/build/opencv_telemetry/rosidl_typesupport_fastrtps_cpp/opencv_telemetry",
+  "output_dir": "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/rosidl_typesupport_fastrtps_cpp/opencv_telemetry",
   "template_dir": "/opt/ros/foxy/share/rosidl_typesupport_fastrtps_cpp/resource",
   "idl_tuples": [
-    "/home/corelab/ros2_stereo/build/opencv_telemetry/rosidl_adapter/opencv_telemetry:msg/ResizedImage.idl"
+    "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/rosidl_adapter/opencv_telemetry:msg/ResizedImage.idl"
   ],
   "ros_interface_dependencies": [
     "sensor_msgs:/opt/ros/foxy/share/sensor_msgs/msg/BatteryState.idl",
@@ -105,7 +105,7 @@
     "/opt/ros/foxy/share/rosidl_typesupport_fastrtps_cpp/resource/msg__type_support.cpp.em",
     "/opt/ros/foxy/share/rosidl_typesupport_fastrtps_cpp/resource/srv__rosidl_typesupport_fastrtps_cpp.hpp.em",
     "/opt/ros/foxy/share/rosidl_typesupport_fastrtps_cpp/resource/srv__type_support.cpp.em",
-    "/home/corelab/ros2_stereo/build/opencv_telemetry/rosidl_adapter/opencv_telemetry/msg/ResizedImage.idl",
+    "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/rosidl_adapter/opencv_telemetry/msg/ResizedImage.idl",
     "/opt/ros/foxy/share/sensor_msgs/msg/BatteryState.idl",
     "/opt/ros/foxy/share/sensor_msgs/msg/CameraInfo.idl",
     "/opt/ros/foxy/share/sensor_msgs/msg/ChannelFloat32.idl",

@@ -101,4 +101,9 @@ install(DIRECTORY
   DESTINATION share/${PROJECT_NAME}/
 )
 
+install(DIRECTORY
+    calibration
+    DESTINATION share/${PROJECT_NAME}/
+)
+
 ament_package()

@@ -1,0 +1,109 @@
+[0.037s] Invoking command in '/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/corelab/Luke_ML_Blimp/ros2_tracks_ws/install/track_ros2:/opt/ros/foxy /home/corelab/.local/bin/cmake --build /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined -- -j16 -l16
+[0.101s] [ 25%] [32mBuilding CXX object CMakeFiles/stereo_combined_node.dir/src/StereoCombined.cpp.o[0m
+[1.787s] [01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:[m[K In member function ‘[01m[Kvoid StereoCombined::syncImageCallback(sensor_msgs::msg::Image_<std::allocator<void> >::SharedPtr)[m[K’:
+[1.788s] [01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:108:21:[m[K [01;31m[Kerror: [m[K‘[01m[Kenc[m[K’ has not been declared
+[1.788s]   108 |     int bit_depth = [01;31m[Kenc[m[K::bitDepth(image_raw_left.encoding);
+[1.788s]       |                     [01;31m[K^~~[m[K
+[1.788s] [01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:111:36:[m[K [01;31m[Kerror: [m[K‘[01m[Kenc[m[K’ has not been declared
+[1.788s]   111 |     if (image_raw_left.encoding == [01;31m[Kenc[m[K::YUV422) {
+[1.788s]       |                                    [01;31m[K^~~[m[K
+[1.788s] [01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:117:10:[m[K [01;31m[Kerror: [m[K‘[01m[Kenc[m[K’ has not been declared
+[1.788s]   117 |      if ([01;31m[Kenc[m[K::isMono(image_raw_left.encoding)) {
+[1.788s]       |          [01;31m[K^~~[m[K
+[1.790s] In file included from [01m[K/opt/ros/foxy/include/rclcpp/client.hpp:40[m[K,
+[1.791s]                  from [01m[K/opt/ros/foxy/include/rclcpp/callback_group.hpp:23[m[K,
+[1.791s]                  from [01m[K/opt/ros/foxy/include/rclcpp/any_executable.hpp:20[m[K,
+[1.791s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategy.hpp:24[m[K,
+[1.791s]                  from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategies.hpp:18[m[K,
+[1.791s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor_options.hpp:20[m[K,
+[1.791s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executor.hpp:33[m[K,
+[1.791s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:26[m[K,
+[1.791s]                  from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:21[m[K,
+[1.791s]                  from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146[m[K,
+[1.791s]                  from [01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/include/StereoCombined.hpp:6[m[K,
+[1.791s]                  from [01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:1[m[K:
+[1.791s] [01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:124:9:[m[K [01;31m[Kerror: [m[K‘[01m[Ksub_raw_[m[K’ was not declared in this scope
+[1.791s]   124 |         [01;31m[Ksub_raw_[m[K.getTopic().c_str(), bit_depth);
+[1.791s]       |         [01;31m[K^~~~~~~~[m[K
+[1.791s] [01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:132:57:[m[K [01;31m[Kerror: [m[K‘[01m[Kenc[m[K’ has not been declared
+[1.791s]   132 |          gray_msg = cv_bridge::toCvCopy(image_raw_left, [01;31m[Kenc[m[K::MONO8)->toImageMsg();
+[1.792s]       |                                                         [01;31m[K^~~[m[K
+[1.792s] [01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:134:57:[m[K [01;31m[Kerror: [m[K‘[01m[Kenc[m[K’ has not been declared
+[1.792s]   134 |          gray_msg = cv_bridge::toCvCopy(image_raw_left, [01;31m[Kenc[m[K::MONO16)->toImageMsg();
+[1.792s]       |                                                         [01;31m[K^~~[m[K
+[1.792s] [01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:150:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kenc[m[K’ has not been declared
+[1.792s]   150 |     if ([01;31m[Kenc[m[K::isMono(image_raw_left.encoding)) {
+[1.792s]       |         [01;31m[K^~~[m[K
+[1.792s] [01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:159:16:[m[K [01;31m[Kerror: [m[K‘[01m[Kenc[m[K’ has not been declared
+[1.792s]   159 |     } else if ([01;31m[Kenc[m[K::isColor(image_raw_left.encoding)) {
+[1.792s]       |                [01;31m[K^~~[m[K
+[1.792s] [01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:161:16:[m[K [01;31m[Kerror: [m[K‘[01m[Kenc[m[K’ has not been declared
+[1.792s]   161 |     } else if ([01;31m[Kenc[m[K::isBayer(image_raw_left.encoding)) {
+[1.792s]       |                [01;31m[K^~~[m[K
+[1.792s] [01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:172:45:[m[K [01;31m[Kerror: [m[K‘[01m[Kenc[m[K’ has not been declared
+[1.792s]   172 |      color_msg->encoding = bit_depth == 8 ? [01;31m[Kenc[m[K::BGR8 : enc::BGR16;
+[1.792s]       |                                             [01;31m[K^~~[m[K
+[1.792s] [01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:172:57:[m[K [01;31m[Kerror: [m[K‘[01m[Kenc[m[K’ has not been declared
+[1.792s]   172 |      color_msg->encoding = bit_depth == 8 ? enc::BGR8 : [01;31m[Kenc[m[K::BGR16;
+[1.792s]       |                                                         [01;31m[K^~~[m[K
+[1.792s] [01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:188:38:[m[K [01;31m[Kerror: [m[K‘[01m[Kenc[m[K’ has not been declared
+[1.792s]   188 |       if (image_raw_left.encoding != [01;31m[Kenc[m[K::BAYER_GRBG8) {
+[1.792s]       |                                      [01;31m[K^~~[m[K
+[1.793s] [01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:195:9:[m[K [01;31m[Kerror: [m[K‘[01m[KdebayerEdgeAware[m[K’ was not declared in this scope; did you mean ‘[01m[Kimage_proc::debayerEdgeAware[m[K’?
+[1.793s]   195 |         [01;31m[KdebayerEdgeAware[m[K(bayer, color);
+[1.793s]       |         [01;31m[K^~~~~~~~~~~~~~~~[m[K
+[1.793s]       |         [32m[Kimage_proc::debayerEdgeAware[m[K
+[1.793s] In file included from [01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/include/StereoCombined.hpp:20[m[K,
+[1.793s]                  from [01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:1[m[K:
+[1.793s] [01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/include/edge_aware.hpp:43:6:[m[K [01;36m[Knote: [m[K‘[01m[Kimage_proc::debayerEdgeAware[m[K’ declared here
+[1.793s]    43 | void [01;36m[KdebayerEdgeAware[m[K(const cv::Mat & bayer, cv::Mat & color);
+[1.794s]       |      [01;36m[K^~~~~~~~~~~~~~~~[m[K
+[1.794s] [01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:197:9:[m[K [01;31m[Kerror: [m[K‘[01m[KdebayerEdgeAwareWeighted[m[K’ was not declared in this scope; did you mean ‘[01m[Kimage_proc::debayerEdgeAwareWeighted[m[K’?
+[1.794s]   197 |         [01;31m[KdebayerEdgeAwareWeighted[m[K(bayer, color);
+[1.794s]       |         [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[1.794s]       |         [32m[Kimage_proc::debayerEdgeAwareWeighted[m[K
+[1.794s] In file included from [01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/include/StereoCombined.hpp:20[m[K,
+[1.794s]                  from [01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:1[m[K:
+[1.794s] [01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/include/edge_aware.hpp:44:6:[m[K [01;36m[Knote: [m[K‘[01m[Kimage_proc::debayerEdgeAwareWeighted[m[K’ declared here
+[1.794s]    44 | void [01;36m[KdebayerEdgeAwareWeighted[m[K(const cv::Mat & bayer, cv::Mat & color);
+[1.794s]       |      [01;36m[K^~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[1.794s] [01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:205:38:[m[K [01;31m[Kerror: [m[K‘[01m[Kenc[m[K’ has not been declared
+[1.794s]   205 |       if (image_raw_left.encoding == [01;31m[Kenc[m[K::BAYER_RGGB8 || image_raw_left.encoding == enc::BAYER_RGGB16) {
+[1.794s]       |                                      [01;31m[K^~~[m[K
+[1.795s] [01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:205:85:[m[K [01;31m[Kerror: [m[K‘[01m[Kenc[m[K’ has not been declared
+[1.795s]   205 |       if (image_raw_left.encoding == enc::BAYER_RGGB8 || image_raw_left.encoding == [01;31m[Kenc[m[K::BAYER_RGGB16) {
+[1.795s]       |                                                                                     [01;31m[K^~~[m[K
+[1.795s] [01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:207:45:[m[K [01;31m[Kerror: [m[K‘[01m[Kenc[m[K’ has not been declared
+[1.795s]   207 |       } else if (image_raw_left.encoding == [01;31m[Kenc[m[K::BAYER_BGGR8 || image_raw_left.encoding == enc::BAYER_BGGR16) {
+[1.795s]       |                                             [01;31m[K^~~[m[K
+[1.795s] [01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:207:92:[m[K [01;31m[Kerror: [m[K‘[01m[Kenc[m[K’ has not been declared
+[1.795s]   207 |       } else if (image_raw_left.encoding == enc::BAYER_BGGR8 || image_raw_left.encoding == [01;31m[Kenc[m[K::BAYER_BGGR16) {
+[1.795s]       |                                                                                            [01;31m[K^~~[m[K
+[1.795s] [01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:209:45:[m[K [01;31m[Kerror: [m[K‘[01m[Kenc[m[K’ has not been declared
+[1.795s]   209 |       } else if (image_raw_left.encoding == [01;31m[Kenc[m[K::BAYER_GBRG8 || image_raw_left.encoding == enc::BAYER_GBRG16) {
+[1.795s]       |                                             [01;31m[K^~~[m[K
+[1.795s] [01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:209:92:[m[K [01;31m[Kerror: [m[K‘[01m[Kenc[m[K’ has not been declared
+[1.795s]   209 |       } else if (image_raw_left.encoding == enc::BAYER_GBRG8 || image_raw_left.encoding == [01;31m[Kenc[m[K::BAYER_GBRG16) {
+[1.795s]       |                                                                                            [01;31m[K^~~[m[K
+[1.795s] [01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:211:45:[m[K [01;31m[Kerror: [m[K‘[01m[Kenc[m[K’ has not been declared
+[1.795s]   211 |       } else if (image_raw_left.encoding == [01;31m[Kenc[m[K::BAYER_GRBG8 || image_raw_left.encoding == enc::BAYER_GRBG16) {
+[1.795s]       |                                             [01;31m[K^~~[m[K
+[1.795s] [01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:211:92:[m[K [01;31m[Kerror: [m[K‘[01m[Kenc[m[K’ has not been declared
+[1.795s]   211 |       } else if (image_raw_left.encoding == enc::BAYER_GRBG8 || image_raw_left.encoding == [01;31m[Kenc[m[K::BAYER_GRBG16) {
+[1.795s]       |                                                                                            [01;31m[K^~~[m[K
+[1.796s] [01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:223:43:[m[K [01;31m[Kerror: [m[K‘[01m[Kenc[m[K’ has not been declared
+[1.796s]   223 |     } else if (image_raw_left.encoding == [01;31m[Kenc[m[K::YUV422 || image_raw_left.encoding == enc::YUV422_YUY2) {
+[1.796s]       |                                           [01;31m[K^~~[m[K
+[1.796s] [01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:223:85:[m[K [01;31m[Kerror: [m[K‘[01m[Kenc[m[K’ has not been declared
+[1.796s]   223 |     } else if (image_raw_left.encoding == enc::YUV422 || image_raw_left.encoding == [01;31m[Kenc[m[K::YUV422_YUY2) {
+[1.796s]       |                                                                                     [01;31m[K^~~[m[K
+[1.796s] [01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:228:55:[m[K [01;31m[Kerror: [m[K‘[01m[Kenc[m[K’ has not been declared
+[1.796s]   228 |       color_msg = cv_bridge::toCvCopy(image_raw_left, [01;31m[Kenc[m[K::BGR8)->toImageMsg();
+[1.796s]       |                                                       [01;31m[K^~~[m[K
+[1.796s] [01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:233:43:[m[K [01;31m[Kerror: [m[K‘[01m[Kenc[m[K’ has not been declared
+[1.796s]   233 |     } else if (image_raw_left.encoding == [01;31m[Kenc[m[K::TYPE_8UC3) {
+[1.796s]       |                                           [01;31m[K^~~[m[K
+[3.165s] make[2]: *** [CMakeFiles/stereo_combined_node.dir/build.make:90: CMakeFiles/stereo_combined_node.dir/src/StereoCombined.cpp.o] Error 1
+[3.165s] make[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/stereo_combined_node.dir/all] Error 2
+[3.165s] make: *** [Makefile:146: all] Error 2
+[3.169s] Invoked command in '/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/corelab/Luke_ML_Blimp/ros2_tracks_ws/install/track_ros2:/opt/ros/foxy /home/corelab/.local/bin/cmake --build /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined -- -j16 -l16

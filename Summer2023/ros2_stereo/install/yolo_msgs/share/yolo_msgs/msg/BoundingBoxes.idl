@@ -1,13 +1,1 @@
-// generated from rosidl_adapter/resource/msg.idl.em
-// with input from yolo_msgs/msg/BoundingBoxes.msg
-// generated code does not contain a copyright notice
-
-#include "yolo_msgs/msg/BoundingBox.idl"
-
-module yolo_msgs {
-  module msg {
-    struct BoundingBoxes {
-      sequence<yolo_msgs::msg::BoundingBox> bounding_boxes;
-    };
-  };
-};
+/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/yolo_msgs/rosidl_adapter/yolo_msgs/msg/BoundingBoxes.idl

@@ -1,0 +1,10 @@
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_image_proc/src/stereo_image_proc/disparity_node.cpp:[m[K In member function ‘[01m[Krcl_interfaces::msg::SetParametersResult stereo_image_proc::DisparityNode::parameterSetCb(const std::vector<rclcpp::Parameter>&)[m[K’:
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_image_proc/src/stereo_image_proc/disparity_node.cpp:345:11:[m[K [01;31m[Kerror: [m[K‘[01m[KBLOCK_MATCHING[m[K’ was not declared in this scope
+  345 |       if ([01;31m[KBLOCK_MATCHING[m[K == stereo_algorithm_value) {
+      |           [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_image_proc/src/stereo_image_proc/disparity_node.cpp:347:18:[m[K [01;31m[Kerror: [m[K‘[01m[KSEMI_GLOBAL_BLOCK_MATCHING[m[K’ was not declared in this scope
+  347 |       } else if ([01;31m[KSEMI_GLOBAL_BLOCK_MATCHING[m[K == stereo_algorithm_value) {
+      |                  [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+make[2]: *** [CMakeFiles/stereo_image_proc.dir/build.make:90: CMakeFiles/stereo_image_proc.dir/src/stereo_image_proc/disparity_node.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:141: CMakeFiles/stereo_image_proc.dir/all] Error 2
+make: *** [Makefile:146: all] Error 2

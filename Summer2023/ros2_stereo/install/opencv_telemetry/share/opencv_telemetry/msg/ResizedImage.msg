@@ -1,3 +1,1 @@
-uint32 original_height
-uint32 original_width
-sensor_msgs/Image image
+/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry/msg/ResizedImage.msg

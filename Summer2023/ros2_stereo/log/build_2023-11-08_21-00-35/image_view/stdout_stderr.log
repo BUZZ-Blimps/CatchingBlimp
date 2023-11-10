@@ -1,0 +1,7 @@
+[ 36%] Built target image_view_nodes
+[ 47%] Built target image_view
+[ 57%] Built target disparity_view
+[ 68%] Built target video_recorder
+[ 78%] Built target extract_images
+[ 89%] Built target image_saver
+[100%] Built target stereo_view

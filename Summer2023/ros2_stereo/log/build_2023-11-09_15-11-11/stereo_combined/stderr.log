@@ -1,0 +1,10 @@
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:[m[K In member function ‘[01m[Kvoid StereoCombined::syncImageCallback(sensor_msgs::msg::Image_<std::allocator<void> >::SharedPtr)[m[K’:
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:736:24:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass std::shared_ptr<rclcpp::Publisher<stereo_msgs::msg::DisparityImage_<std::allocator<void> > > >[m[K’ has no member named ‘[01m[KgetNumSubscribers[m[K’
+  736 |     if (pub_disparity_.[01;31m[KgetNumSubscribers[m[K()) pub_disparity_->publish(*disp_msg);
+      |                        [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:737:28:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass std::shared_ptr<rclcpp::Publisher<sensor_msgs::msg::Image_<std::allocator<void> > > >[m[K’ has no member named ‘[01m[KgetNumSubscribers[m[K’
+  737 |     if (pub_disparity_img_.[01;31m[KgetNumSubscribers[m[K()) pub_disparity_img_->publish(disp_msg->image);
+      |                            [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+make[2]: *** [CMakeFiles/stereo_combined_node.dir/build.make:90: CMakeFiles/stereo_combined_node.dir/src/StereoCombined.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/stereo_combined_node.dir/all] Error 2
+make: *** [Makefile:146: all] Error 2

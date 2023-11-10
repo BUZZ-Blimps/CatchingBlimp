@@ -1,1 +1,1 @@
-BoundingBox[] bounding_boxes
+/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/yolo_msgs/msg/BoundingBoxes.msg

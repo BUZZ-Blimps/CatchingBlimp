@@ -1,0 +1,14 @@
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:[m[K In member function ‘[01m[Kvoid StereoCombined::syncImageCallback(sensor_msgs::msg::Image_<std::allocator<void> >::SharedPtr)[m[K’:
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:763:46:[m[K [01;31m[Kerror: [m[K‘[01m[Kdisp_msg[m[K’ was not declared in this scope
+  763 |     const sensor_msgs::msg::Image & dimage = [01;31m[Kdisp_msg[m[K->image;
+      |                                              [01;31m[K^~~~~~~~[m[K
+In file included from [01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/stereo_combined_node.cpp:3[m[K:
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/include/StereoCombined.hpp:132:13:[m[K [01;35m[Kwarning: [m[K‘[01m[Kvoid add_param_to_map(std::map<std::__cxx11::basic_string<char>, std::pair<double, rcl_interfaces::msg::ParameterDescriptor_<std::allocator<void> > > >&, const string&, const string&, double, double, double, double)[m[K’ defined but not used [[01;35m[K-Wunused-function[m[K]
+  132 | static void [01;35m[Kadd_param_to_map[m[K(
+      |             [01;35m[K^~~~~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/include/StereoCombined.hpp:114:13:[m[K [01;35m[Kwarning: [m[K‘[01m[Kvoid add_param_to_map(std::map<std::__cxx11::basic_string<char>, std::pair<int, rcl_interfaces::msg::ParameterDescriptor_<std::allocator<void> > > >&, const string&, const string&, int, int, int, int)[m[K’ defined but not used [[01;35m[K-Wunused-function[m[K]
+  114 | static void [01;35m[Kadd_param_to_map[m[K(
+      |             [01;35m[K^~~~~~~~~~~~~~~~[m[K
+make[2]: *** [CMakeFiles/stereo_combined_node.dir/build.make:90: CMakeFiles/stereo_combined_node.dir/src/StereoCombined.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/stereo_combined_node.dir/all] Error 2
+make: *** [Makefile:146: all] Error 2

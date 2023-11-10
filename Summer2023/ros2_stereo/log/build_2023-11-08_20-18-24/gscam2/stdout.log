@@ -1,0 +1,9 @@
+[ 14%] Built target gtest_main
+[ 28%] Built target gtest
+[ 42%] Built target gscam_node
+[ 57%] Built target subscriber_node
+[ 92%] Built target smoke_test
+[ 92%] [32mBuilding CXX object CMakeFiles/gscam_main.dir/src/gscam_main.cpp.o[0m
+[ 92%] Built target ipc_test_main
+[100%] [32m[1mLinking CXX executable gscam_main[0m
+[100%] Built target gscam_main

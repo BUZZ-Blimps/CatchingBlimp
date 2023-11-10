@@ -1,0 +1,24 @@
+[0.027s] Invoking command in '/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry': CMAKE_PREFIX_PATH=/opt/ros/foxy /home/corelab/.local/bin/cmake --build /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry -- -j16 -l16
+[0.061s] [  1%] Built target opencv_telemetry__dds_connext_idl
+[0.063s] [  3%] Built target opencv_telemetry__cpp
+[0.063s] [  8%] Built target opencv_telemetry__rosidl_generator_c
+[0.065s] [ 11%] Built target opencv_subscriber
+[0.067s] [ 15%] Built target minimal_opencv_ros2_node
+[0.067s] [ 18%] Built target split_sync_images
+[0.072s] [ 23%] Built target opencv_telemetry__rosidl_typesupport_c
+[0.072s] [ 28%] Built target opencv_telemetry__rosidl_typesupport_cpp
+[0.074s] [ 33%] Built target opencv_telemetry__rosidl_typesupport_introspection_cpp
+[0.074s] [ 38%] Built target opencv_telemetry__rosidl_typesupport_introspection_c
+[0.074s] [ 44%] Built target opencv_telemetry__rosidl_typesupport_fastrtps_cpp
+[0.076s] [ 55%] Built target opencv_telemetry__rosidl_typesupport_connext_cpp
+[0.082s] [ 61%] Built target opencv_telemetry__rosidl_typesupport_fastrtps_c
+[0.088s] [ 74%] Built target opencv_telemetry__rosidl_typesupport_connext_c
+[0.092s] [ 74%] Built target opencv_telemetry
+[0.098s] [ 76%] Built target opencv_telemetry__py
+[0.103s] [ 83%] Built target resized_plugins
+[0.105s] [ 86%] Built target opencv_telemetry__python
+[0.112s] [ 89%] Built target opencv_telemetry__rosidl_typesupport_c__pyext
+[0.112s] [ 93%] Built target opencv_telemetry__rosidl_typesupport_connext_c__pyext
+[0.112s] [ 96%] Built target opencv_telemetry__rosidl_typesupport_fastrtps_c__pyext
+[0.113s] [100%] Built target opencv_telemetry__rosidl_typesupport_introspection_c__pyext
+[0.125s] Invoked command in '/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /home/corelab/.local/bin/cmake --build /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry -- -j16 -l16

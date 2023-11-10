@@ -1,4 +1,1 @@
-source;share/opencv_telemetry/environment/ament_prefix_path.sh
-source;share/opencv_telemetry/environment/library_path.sh
-source;share/opencv_telemetry/environment/path.sh
-source;share/opencv_telemetry/environment/pythonpath.sh
+/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_environment_hooks/local_setup.dsv

@@ -1,17 +1,1 @@
-// generated from rosidl_adapter/resource/msg.idl.em
-// with input from opencv_telemetry/msg/ResizedImage.msg
-// generated code does not contain a copyright notice
-
-#include "sensor_msgs/msg/Image.idl"
-
-module opencv_telemetry {
-  module msg {
-    struct ResizedImage {
-      uint32 original_height;
-
-      uint32 original_width;
-
-      sensor_msgs::msg::Image image;
-    };
-  };
-};
+/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/rosidl_adapter/opencv_telemetry/msg/ResizedImage.idl

@@ -1,0 +1,33 @@
+In file included from [01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:1[m[K:
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/include/StereoCombined.hpp:99:66:[m[K [01;31m[Kerror: [m[Kredeclaration of ‘[01m[Krclcpp::Subscription<yolo_msgs::msg::BoundingBox_<std::allocator<void> > >::SharedPtr StereoCombined::syncImageSub_[m[K’
+   99 |     rclcpp::Subscription<yolo_msgs::msg::BoundingBox>::SharedPtr [01;31m[KsyncImageSub_[m[K;
+      |                                                                  [01;31m[K^~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/include/StereoCombined.hpp:48:62:[m[K [01;36m[Knote: [m[Kprevious declaration ‘[01m[Krclcpp::Subscription<sensor_msgs::msg::Image_<std::allocator<void> > >::SharedPtr StereoCombined::syncImageSub_[m[K’
+   48 |     rclcpp::Subscription<sensor_msgs::msg::Image>::SharedPtr [01;36m[KsyncImageSub_[m[K;
+      |                                                              [01;36m[K^~~~~~~~~~~~~[m[K
+In file included from [01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/stereo_combined_node.cpp:3[m[K:
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/include/StereoCombined.hpp:99:66:[m[K [01;31m[Kerror: [m[Kredeclaration of ‘[01m[Krclcpp::Subscription<yolo_msgs::msg::BoundingBox_<std::allocator<void> > >::SharedPtr StereoCombined::syncImageSub_[m[K’
+   99 |     rclcpp::Subscription<yolo_msgs::msg::BoundingBox>::SharedPtr [01;31m[KsyncImageSub_[m[K;
+      |                                                                  [01;31m[K^~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/include/StereoCombined.hpp:48:62:[m[K [01;36m[Knote: [m[Kprevious declaration ‘[01m[Krclcpp::Subscription<sensor_msgs::msg::Image_<std::allocator<void> > >::SharedPtr StereoCombined::syncImageSub_[m[K’
+   48 |     rclcpp::Subscription<sensor_msgs::msg::Image>::SharedPtr [01;36m[KsyncImageSub_[m[K;
+      |                                                              [01;36m[K^~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:223:6:[m[K [01;31m[Kerror: [m[Kno declaration matches ‘[01m[Kvoid StereoCombined::boundingBoxCallback(const ConstSharedPtr&)[m[K’
+  223 | void [01;31m[KStereoCombined[m[K::boundingBoxCallback(const yolo_msgs::msg::BoundingBox::ConstSharedPtr &bounding_box_msg) {
+      |      [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:223:6:[m[K [01;36m[Knote: [m[Kno functions named ‘[01m[Kvoid StereoCombined::boundingBoxCallback(const ConstSharedPtr&)[m[K’
+In file included from [01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:1[m[K:
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/include/StereoCombined.hpp:44:7:[m[K [01;36m[Knote: [m[K‘[01m[Kclass StereoCombined[m[K’ defined here
+   44 | class [01;36m[KStereoCombined[m[K : public rclcpp::Node {
+      |       [01;36m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/include/StereoCombined.hpp:133:13:[m[K [01;35m[Kwarning: [m[K‘[01m[Kvoid add_param_to_map(std::map<std::__cxx11::basic_string<char>, std::pair<double, rcl_interfaces::msg::ParameterDescriptor_<std::allocator<void> > > >&, const string&, const string&, double, double, double, double)[m[K’ defined but not used [[01;35m[K-Wunused-function[m[K]
+  133 | static void [01;35m[Kadd_param_to_map[m[K(
+      |             [01;35m[K^~~~~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/include/StereoCombined.hpp:115:13:[m[K [01;35m[Kwarning: [m[K‘[01m[Kvoid add_param_to_map(std::map<std::__cxx11::basic_string<char>, std::pair<int, rcl_interfaces::msg::ParameterDescriptor_<std::allocator<void> > > >&, const string&, const string&, int, int, int, int)[m[K’ defined but not used [[01;35m[K-Wunused-function[m[K]
+  115 | static void [01;35m[Kadd_param_to_map[m[K(
+      |             [01;35m[K^~~~~~~~~~~~~~~~[m[K
+make[2]: *** [CMakeFiles/stereo_combined_node.dir/build.make:76: CMakeFiles/stereo_combined_node.dir/src/stereo_combined_node.cpp.o] Error 1
+make[2]: *** Waiting for unfinished jobs....
+make[2]: *** [CMakeFiles/stereo_combined_node.dir/build.make:90: CMakeFiles/stereo_combined_node.dir/src/StereoCombined.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/stereo_combined_node.dir/all] Error 2
+make: *** [Makefile:146: all] Error 2

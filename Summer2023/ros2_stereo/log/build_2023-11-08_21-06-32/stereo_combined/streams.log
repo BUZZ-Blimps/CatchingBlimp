@@ -1,0 +1,25 @@
+[0.032s] Invoking command in '/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/corelab/Luke_ML_Blimp/ros2_tracks_ws/install/track_ros2:/opt/ros/foxy /home/corelab/.local/bin/cmake --build /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined -- -j16 -l16
+[0.080s] [100%] Built target stereo_combined_node
+[0.094s] Invoked command in '/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/corelab/Luke_ML_Blimp/ros2_tracks_ws/install/track_ros2:/opt/ros/foxy /home/corelab/.local/bin/cmake --build /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined -- -j16 -l16
+[0.149s] Invoking command in '/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/corelab/Luke_ML_Blimp/ros2_tracks_ws/install/track_ros2:/opt/ros/foxy /home/corelab/.local/bin/cmake --install /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined
+[0.178s] -- Install configuration: ""
+[0.179s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/lib/stereo_combined/stereo_combined_node
+[0.179s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//launch
+[0.179s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//launch/vision_test.launch.xml
+[0.179s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//launch/combined_node.launch.py
+[0.179s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/ament_index/resource_index/package_run_dependencies/stereo_combined
+[0.179s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/ament_index/resource_index/parent_prefix_path/stereo_combined
+[0.179s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined/environment/ament_prefix_path.sh
+[0.179s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined/environment/ament_prefix_path.dsv
+[0.179s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined/environment/path.sh
+[0.179s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined/environment/path.dsv
+[0.179s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined/local_setup.bash
+[0.179s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined/local_setup.sh
+[0.180s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined/local_setup.zsh
+[0.180s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined/local_setup.dsv
+[0.180s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined/package.dsv
+[0.180s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/ament_index/resource_index/packages/stereo_combined
+[0.181s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined/cmake/stereo_combinedConfig.cmake
+[0.181s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined/cmake/stereo_combinedConfig-version.cmake
+[0.183s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined/package.xml
+[0.191s] Invoked command in '/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/corelab/Luke_ML_Blimp/ros2_tracks_ws/install/track_ros2:/opt/ros/foxy /home/corelab/.local/bin/cmake --install /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined

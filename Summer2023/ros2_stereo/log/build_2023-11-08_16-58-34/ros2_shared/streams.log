@@ -1,0 +1,6 @@
+[0.034s] Invoking command in '/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/ros2_shared': CMAKE_PREFIX_PATH=/opt/ros/foxy /home/corelab/.local/bin/cmake --build /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/ros2_shared -- -j16 -l16
+[0.054s] [0mCMake Error: The current CMakeCache.txt directory /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/ros2_shared/CMakeCache.txt is different than the directory /home/corelab/ros2_stereo/build/ros2_shared where CMakeCache.txt was created. This may result in binaries being created in the wrong place. If you are not sure, reedit the CMakeCache.txt[0m
+[0.057s] [0mCMake Error: The source directory "/home/corelab/ros2_stereo/src/ros2_shared" does not exist.
+[0.057s] Specify --help for usage, or press the help button on the CMake GUI.[0m
+[0.058s] make: *** [Makefile:226: cmake_check_build_system] Error 1
+[0.063s] Invoked command in '/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/ros2_shared' returned '2': CMAKE_PREFIX_PATH=/opt/ros/foxy /home/corelab/.local/bin/cmake --build /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/ros2_shared -- -j16 -l16

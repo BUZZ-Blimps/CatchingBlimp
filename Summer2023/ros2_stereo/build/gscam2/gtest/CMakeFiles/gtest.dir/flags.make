@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/opt/ros/foxy/src/gtest_vendor/include -I/home/corelab/ros2_stereo/src/gscam2/include -I/opt/ros/foxy/src/gtest_vendor/.
+CXX_INCLUDES = -I/opt/ros/foxy/src/gtest_vendor/include -I/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/gscam2/include -I/opt/ros/foxy/src/gtest_vendor/.
 
 CXX_FLAGS = -Wno-missing-field-initializers -Wall -Wextra -Wpedantic -std=gnu++14
 

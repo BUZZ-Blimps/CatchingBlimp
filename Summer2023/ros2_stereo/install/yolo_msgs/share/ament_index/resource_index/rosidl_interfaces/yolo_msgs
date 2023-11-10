@@ -1,6 +1,1 @@
-msg/BoundingBox.idl
-msg/BoundingBox.msg
-msg/BoundingBoxes.idl
-msg/BoundingBoxes.msg
-msg/ObjectCount.idl
-msg/ObjectCount.msg
+/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/yolo_msgs/ament_cmake_index/share/ament_index/resource_index/rosidl_interfaces/yolo_msgs

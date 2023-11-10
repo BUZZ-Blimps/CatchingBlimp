@@ -1,0 +1,1 @@
+camera_info_manager:cv_bridge:image_geometry:image_proc:image_transport:libopencv-dev:rclcpp:sensor_msgs:std_msgs:stereo_msgs:yolo_msgs

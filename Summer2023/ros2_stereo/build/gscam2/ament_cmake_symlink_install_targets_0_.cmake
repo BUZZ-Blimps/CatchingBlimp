@@ -1,0 +1,1 @@
+ament_cmake_symlink_install_targets("TARGET_FILES" "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/gscam2/gscam_main" "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/gscam2/ipc_test_main" "TARGETS" "gscam_main" "ipc_test_main" "DESTINATION" "lib/gscam2")

@@ -1,0 +1,15 @@
+[ 20%] [32mBuilding CXX object CMakeFiles/stereo_combined_node.dir/src/StereoCombined.cpp.o[0m
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:[m[K In constructor ‘[01m[KStereoCombined::StereoCombined()[m[K’:
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:59:9:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kqueue_size[m[K’ [[01;35m[K-Wunused-variable[m[K]
+   59 |     int [01;35m[Kqueue_size[m[K = this->declare_parameter("queue_size", 7);
+      |         [01;35m[K^~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:[m[K In member function ‘[01m[Kvoid StereoCombined::syncImageCallback(sensor_msgs::msg::Image_<std::allocator<void> >::SharedPtr)[m[K’:
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:708:41:[m[K [01;31m[Kerror: [m[Kbase operand of ‘[01m[K->[m[K’ has non-pointer type ‘[01m[Ksensor_msgs::msg::CameraInfo[m[K’ {aka ‘[01m[Ksensor_msgs::msg::CameraInfo_<std::allocator<void> >[m[K’}
+  708 |     disp_msg->header = camera_info_left_[01;31m[K->[m[Kheader;
+      |                                         [01;31m[K^~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:709:47:[m[K [01;31m[Kerror: [m[Kbase operand of ‘[01m[K->[m[K’ has non-pointer type ‘[01m[Ksensor_msgs::msg::CameraInfo[m[K’ {aka ‘[01m[Ksensor_msgs::msg::CameraInfo_<std::allocator<void> >[m[K’}
+  709 |     disp_msg->image.header = camera_info_left_[01;31m[K->[m[Kheader;
+      |                                               [01;31m[K^~[m[K
+make[2]: *** [CMakeFiles/stereo_combined_node.dir/build.make:90: CMakeFiles/stereo_combined_node.dir/src/StereoCombined.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/stereo_combined_node.dir/all] Error 2
+make: *** [Makefile:146: all] Error 2

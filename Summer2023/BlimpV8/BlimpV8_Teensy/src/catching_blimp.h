@@ -448,9 +448,9 @@ rcl_subscription_t pixels_subscription; //int64_multi_array
 
 //The following names can be commented/uncommented based on the blimp that is used
 // Define the name of the blimp/robot
-std::string blimpNameSpace = "BurnCreamBlimp";
+//std::string blimpNameSpace = "BurnCreamBlimp";
 //std::string blimpNameSpace = "SillyAhBlimp";
-// std::string blimpNameSpace = "TurboBlimp";
+ std::string blimpNameSpace = "TurboBlimp";
 //std::string blimpNameSpace = "GameChamberBlimp";
 //std::string blimpNameSpace = "FiveGuysBlimp";
 //std::string blimpNameSpace = "SuperBeefBlimp";

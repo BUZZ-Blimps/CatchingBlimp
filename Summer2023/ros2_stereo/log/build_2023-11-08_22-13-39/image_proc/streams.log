@@ -1,0 +1,14 @@
+[0.054s] Invoking command in '/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/image_proc': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/corelab/Luke_ML_Blimp/ros2_tracks_ws/install/track_ros2:/opt/ros/foxy /home/corelab/.local/bin/cmake --build /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/image_proc -- -j16 -l16
+[0.093s] [ 13%] Built target image_proc
+[0.104s] [ 26%] Built target rectify
+[0.118s] [ 33%] [32mBuilding CXX object CMakeFiles/debayer.dir/src/debayer.cpp.o[0m
+[1.715s] [ 40%] [32m[1mLinking CXX shared library libdebayer.so[0m
+[1.867s] [ 46%] Built target debayer
+[1.876s] [ 53%] [32m[1mLinking CXX shared library libresize.so[0m
+[2.029s] [ 60%] Built target resize
+[2.038s] [ 66%] [32m[1mLinking CXX shared library libcrop_decimate.so[0m
+[2.173s] [ 73%] Built target crop_decimate
+[2.182s] [ 80%] [32m[1mLinking CXX shared library libcrop_non_zero.so[0m
+[2.314s] [ 86%] Built target crop_non_zero
+[2.324s] [ 93%] [32m[1mLinking CXX executable image_proc[0m
+[2.592s] [100%] Built target image_proc_exe

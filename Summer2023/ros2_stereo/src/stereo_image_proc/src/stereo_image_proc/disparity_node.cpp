@@ -178,8 +178,7 @@ DisparityNode::DisparityNode(const rclcpp::NodeOptions & options)
   }
 
   // Register a callback for when parameters are set
-  on_set_parameters_callback_handle_ = this->add_on_set_parameters_callback(
-    std::bind(&DisparityNode::parameterSetCb, this, _1));
+  on_set_parameters_callback_handle_ = this->add_on_set_parameters_callback(std::bind(&DisparityNode::parameterSetCb, this, _1));
 
   // Describe int parameters
   std::map<std::string, std::pair<int, rcl_interfaces::msg::ParameterDescriptor>> int_params;
@@ -192,12 +191,12 @@ DisparityNode::DisparityNode(const rclcpp::NodeOptions & options)
     int_params,
     "prefilter_size",
     "Normalization window size in pixels (must be odd)",
-    9, 5, 255, 2);
+    11, 5, 255, 2);
   add_param_to_map(
     int_params,
     "prefilter_cap",
     "Bound on normalized pixel values",
-    31, 1, 63, 1);
+    63, 1, 63, 1);
   add_param_to_map(
     int_params,
     "correlation_window_size",
@@ -207,33 +206,33 @@ DisparityNode::DisparityNode(const rclcpp::NodeOptions & options)
     int_params,
     "min_disparity",
     "Disparity to begin search at in pixels",
-    10, -2048, 2048, 1);
+    0, -2048, 2048, 1);
   add_param_to_map(
     int_params,
     "disparity_range",
     "Number of disparities to search in pixels (must be a multiple of 16)",
-    64, 32, 4096, 16);
+    128, 32, 4096, 16);
   add_param_to_map(
     int_params,
     "texture_threshold",
     "Filter out if SAD window response does not exceed texture threshold",
-    10, 0, 10000, 1);
+    2175, 0, 10000, 1);
   add_param_to_map(
     int_params,
     "speckle_size",
     "Reject regions smaller than this size in pixels",
-    100, 0, 1000, 1);
+    138, 0, 1000, 1);
   add_param_to_map(
     int_params,
     "speckle_range",
     "Maximum allowed difference between detected disparities",
-    4, 0, 31, 1);
+    31, 0, 31, 1);
   add_param_to_map(
     int_params,
     "disp12_max_diff",
     "Maximum allowed difference in the left-right disparity check in pixels"
     " (Semi-Global Block Matching only)",
-    0, 0, 128, 1);
+    5, 0, 128, 1);
 
   // Describe double parameters
   std::map<std::string, std::pair<double, rcl_interfaces::msg::ParameterDescriptor>> double_params;
@@ -241,7 +240,7 @@ DisparityNode::DisparityNode(const rclcpp::NodeOptions & options)
     double_params,
     "uniqueness_ratio",
     "Filter out if best match does not sufficiently exceed the next-best match",
-    15.0, 0.0, 100.0, 0.0);
+    5.0, 0.0, 100.0, 0.0);
   add_param_to_map(
     double_params,
     "P1",

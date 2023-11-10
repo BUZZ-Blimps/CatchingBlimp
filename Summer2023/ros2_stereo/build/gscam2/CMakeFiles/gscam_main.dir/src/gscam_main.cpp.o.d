@@ -1,7 +1,7 @@
 CMakeFiles/gscam_main.dir/src/gscam_main.cpp.o: \
- /home/corelab/ros2_stereo/src/gscam2/src/gscam_main.cpp \
+ /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/gscam2/src/gscam_main.cpp \
  /usr/include/stdc-predef.h \
- /home/corelab/ros2_stereo/src/gscam2/include/gscam2/gscam_node.hpp \
+ /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/gscam2/include/gscam2/gscam_node.hpp \
  /opt/ros/foxy/include/rclcpp/rclcpp.hpp /usr/include/c++/9/csignal \
  /usr/include/x86_64-linux-gnu/c++/9/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/9/bits/os_defines.h \

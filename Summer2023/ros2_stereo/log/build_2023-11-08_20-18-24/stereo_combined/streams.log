@@ -1,0 +1,264 @@
+[0.026s] Invoking command in '/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined': CMAKE_PREFIX_PATH=/opt/ros/foxy /home/corelab/.local/bin/cmake /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined -DCMAKE_INSTALL_PREFIX=/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined
+[0.084s] -- The C compiler identification is GNU 9.4.0
+[0.119s] -- The CXX compiler identification is GNU 9.4.0
+[0.127s] -- Detecting C compiler ABI info
+[0.162s] -- Detecting C compiler ABI info - done
+[0.169s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.169s] -- Detecting C compile features
+[0.169s] -- Detecting C compile features - done
+[0.174s] -- Detecting CXX compiler ABI info
+[0.212s] -- Detecting CXX compiler ABI info - done
+[0.219s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.219s] -- Detecting CXX compile features
+[0.219s] -- Detecting CXX compile features - done
+[0.222s] -- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)
+[0.247s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") 
+[0.247s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[0.482s] -- Found rclcpp: 2.4.3 (/opt/ros/foxy/share/rclcpp/cmake)
+[0.531s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_connext_c;rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.541s] -- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+[0.548s] -- Found RTI Connext: /opt/rti.com/rti_connext_dds-5.3.1
+[0.549s] [33mCMake Warning (dev) at /opt/ros/foxy/share/connext_cmake_module/cmake/Modules/FindConnext.cmake:163 (list):
+[0.549s]   Policy CMP0121 is not set: The list() command now validates parsing of
+[0.549s]   index arguments.  Run "cmake --help-policy CMP0121" for policy details.
+[0.549s]   Use the cmake_policy command to set the policy and suppress this warning.
+[0.549s]   Invalid list index "libnddsc.so".
+[0.549s] Call Stack (most recent call first):
+[0.550s]   /opt/ros/foxy/share/connext_cmake_module/cmake/Modules/FindConnext.cmake:198 (_count_found_libraries)
+[0.550s]   /opt/ros/foxy/share/rosidl_typesupport_connext_c/cmake/rosidl_typesupport_connext_c-extras.cmake:5 (find_package)
+[0.550s]   /opt/ros/foxy/share/rosidl_typesupport_connext_c/cmake/rosidl_typesupport_connext_cConfig.cmake:41 (include)
+[0.550s]   /opt/ros/foxy/share/rosidl_typesupport_c/cmake/rosidl_typesupport_c-extras.cmake:13 (find_package)
+[0.550s]   /opt/ros/foxy/share/rosidl_typesupport_c/cmake/rosidl_typesupport_cConfig.cmake:41 (include)
+[0.550s]   /opt/ros/foxy/share/rosidl_default_runtime/cmake/rosidl_default_runtime-extras.cmake:12 (find_package)
+[0.550s]   /opt/ros/foxy/share/rosidl_default_runtime/cmake/rosidl_default_runtimeConfig.cmake:41 (include)
+[0.550s]   /opt/ros/foxy/share/builtin_interfaces/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.550s]   /opt/ros/foxy/share/builtin_interfaces/cmake/builtin_interfacesConfig.cmake:41 (include)
+[0.550s]   /opt/ros/foxy/share/rcl_interfaces/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.550s]   /opt/ros/foxy/share/rcl_interfaces/cmake/rcl_interfacesConfig.cmake:41 (include)
+[0.550s]   /opt/ros/foxy/share/rcl/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.550s]   /opt/ros/foxy/share/rcl/cmake/rclConfig.cmake:41 (include)
+[0.550s]   /opt/ros/foxy/share/libstatistics_collector/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.550s]   /opt/ros/foxy/share/libstatistics_collector/cmake/libstatistics_collectorConfig.cmake:41 (include)
+[0.550s]   /opt/ros/foxy/share/rclcpp/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.550s]   /opt/ros/foxy/share/rclcpp/cmake/rclcppConfig.cmake:41 (include)
+[0.550s]   CMakeLists.txt:20 (find_package)
+[0.550s] This warning is for project developers.  Use -Wno-dev to suppress it.
+[0.550s] [0m
+[0.550s] [33mCMake Warning (dev) at /opt/ros/foxy/share/connext_cmake_module/cmake/Modules/FindConnext.cmake:163 (list):
+[0.551s]   Policy CMP0121 is not set: The list() command now validates parsing of
+[0.551s]   index arguments.  Run "cmake --help-policy CMP0121" for policy details.
+[0.551s]   Use the cmake_policy command to set the policy and suppress this warning.
+[0.551s]   Invalid list index "libnddscore.so".
+[0.551s] Call Stack (most recent call first):
+[0.551s]   /opt/ros/foxy/share/connext_cmake_module/cmake/Modules/FindConnext.cmake:198 (_count_found_libraries)
+[0.551s]   /opt/ros/foxy/share/rosidl_typesupport_connext_c/cmake/rosidl_typesupport_connext_c-extras.cmake:5 (find_package)
+[0.551s]   /opt/ros/foxy/share/rosidl_typesupport_connext_c/cmake/rosidl_typesupport_connext_cConfig.cmake:41 (include)
+[0.551s]   /opt/ros/foxy/share/rosidl_typesupport_c/cmake/rosidl_typesupport_c-extras.cmake:13 (find_package)
+[0.551s]   /opt/ros/foxy/share/rosidl_typesupport_c/cmake/rosidl_typesupport_cConfig.cmake:41 (include)
+[0.551s]   /opt/ros/foxy/share/rosidl_default_runtime/cmake/rosidl_default_runtime-extras.cmake:12 (find_package)
+[0.551s]   /opt/ros/foxy/share/rosidl_default_runtime/cmake/rosidl_default_runtimeConfig.cmake:41 (include)
+[0.551s]   /opt/ros/foxy/share/builtin_interfaces/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.551s]   /opt/ros/foxy/share/builtin_interfaces/cmake/builtin_interfacesConfig.cmake:41 (include)
+[0.551s]   /opt/ros/foxy/share/rcl_interfaces/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.551s]   /opt/ros/foxy/share/rcl_interfaces/cmake/rcl_interfacesConfig.cmake:41 (include)
+[0.551s]   /opt/ros/foxy/share/rcl/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.551s]   /opt/ros/foxy/share/rcl/cmake/rclConfig.cmake:41 (include)
+[0.551s]   /opt/ros/foxy/share/libstatistics_collector/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.551s]   /opt/ros/foxy/share/libstatistics_collector/cmake/libstatistics_collectorConfig.cmake:41 (include)
+[0.551s]   /opt/ros/foxy/share/rclcpp/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.551s]   /opt/ros/foxy/share/rclcpp/cmake/rclcppConfig.cmake:41 (include)
+[0.551s]   CMakeLists.txt:20 (find_package)
+[0.551s] This warning is for project developers.  Use -Wno-dev to suppress it.
+[0.551s] [0m
+[0.551s] [33mCMake Warning (dev) at /opt/ros/foxy/share/connext_cmake_module/cmake/Modules/FindConnext.cmake:163 (list):
+[0.552s]   Policy CMP0121 is not set: The list() command now validates parsing of
+[0.552s]   index arguments.  Run "cmake --help-policy CMP0121" for policy details.
+[0.552s]   Use the cmake_policy command to set the policy and suppress this warning.
+[0.552s]   Invalid list index "libnddscpp.so".
+[0.552s] Call Stack (most recent call first):
+[0.552s]   /opt/ros/foxy/share/connext_cmake_module/cmake/Modules/FindConnext.cmake:198 (_count_found_libraries)
+[0.552s]   /opt/ros/foxy/share/rosidl_typesupport_connext_c/cmake/rosidl_typesupport_connext_c-extras.cmake:5 (find_package)
+[0.552s]   /opt/ros/foxy/share/rosidl_typesupport_connext_c/cmake/rosidl_typesupport_connext_cConfig.cmake:41 (include)
+[0.552s]   /opt/ros/foxy/share/rosidl_typesupport_c/cmake/rosidl_typesupport_c-extras.cmake:13 (find_package)
+[0.552s]   /opt/ros/foxy/share/rosidl_typesupport_c/cmake/rosidl_typesupport_cConfig.cmake:41 (include)
+[0.552s]   /opt/ros/foxy/share/rosidl_default_runtime/cmake/rosidl_default_runtime-extras.cmake:12 (find_package)
+[0.552s]   /opt/ros/foxy/share/rosidl_default_runtime/cmake/rosidl_default_runtimeConfig.cmake:41 (include)
+[0.552s]   /opt/ros/foxy/share/builtin_interfaces/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.552s]   /opt/ros/foxy/share/builtin_interfaces/cmake/builtin_interfacesConfig.cmake:41 (include)
+[0.552s]   /opt/ros/foxy/share/rcl_interfaces/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.552s]   /opt/ros/foxy/share/rcl_interfaces/cmake/rcl_interfacesConfig.cmake:41 (include)
+[0.552s]   /opt/ros/foxy/share/rcl/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.552s]   /opt/ros/foxy/share/rcl/cmake/rclConfig.cmake:41 (include)
+[0.552s]   /opt/ros/foxy/share/libstatistics_collector/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.552s]   /opt/ros/foxy/share/libstatistics_collector/cmake/libstatistics_collectorConfig.cmake:41 (include)
+[0.552s]   /opt/ros/foxy/share/rclcpp/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.552s]   /opt/ros/foxy/share/rclcpp/cmake/rclcppConfig.cmake:41 (include)
+[0.552s]   CMakeLists.txt:20 (find_package)
+[0.552s] This warning is for project developers.  Use -Wno-dev to suppress it.
+[0.552s] [0m
+[0.552s] [33mCMake Warning (dev) at /opt/ros/foxy/share/connext_cmake_module/cmake/Modules/FindConnext.cmake:163 (list):
+[0.552s]   Policy CMP0121 is not set: The list() command now validates parsing of
+[0.553s]   index arguments.  Run "cmake --help-policy CMP0121" for policy details.
+[0.553s]   Use the cmake_policy command to set the policy and suppress this warning.
+[0.553s]   Invalid list index "librticonnextmsgcpp.so".
+[0.553s] Call Stack (most recent call first):
+[0.553s]   /opt/ros/foxy/share/connext_cmake_module/cmake/Modules/FindConnext.cmake:198 (_count_found_libraries)
+[0.553s]   /opt/ros/foxy/share/rosidl_typesupport_connext_c/cmake/rosidl_typesupport_connext_c-extras.cmake:5 (find_package)
+[0.553s]   /opt/ros/foxy/share/rosidl_typesupport_connext_c/cmake/rosidl_typesupport_connext_cConfig.cmake:41 (include)
+[0.553s]   /opt/ros/foxy/share/rosidl_typesupport_c/cmake/rosidl_typesupport_c-extras.cmake:13 (find_package)
+[0.553s]   /opt/ros/foxy/share/rosidl_typesupport_c/cmake/rosidl_typesupport_cConfig.cmake:41 (include)
+[0.553s]   /opt/ros/foxy/share/rosidl_default_runtime/cmake/rosidl_default_runtime-extras.cmake:12 (find_package)
+[0.553s]   /opt/ros/foxy/share/rosidl_default_runtime/cmake/rosidl_default_runtimeConfig.cmake:41 (include)
+[0.553s]   /opt/ros/foxy/share/builtin_interfaces/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.553s]   /opt/ros/foxy/share/builtin_interfaces/cmake/builtin_interfacesConfig.cmake:41 (include)
+[0.553s]   /opt/ros/foxy/share/rcl_interfaces/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.553s]   /opt/ros/foxy/share/rcl_interfaces/cmake/rcl_interfacesConfig.cmake:41 (include)
+[0.553s]   /opt/ros/foxy/share/rcl/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.553s]   /opt/ros/foxy/share/rcl/cmake/rclConfig.cmake:41 (include)
+[0.553s]   /opt/ros/foxy/share/libstatistics_collector/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.553s]   /opt/ros/foxy/share/libstatistics_collector/cmake/libstatistics_collectorConfig.cmake:41 (include)
+[0.553s]   /opt/ros/foxy/share/rclcpp/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.553s]   /opt/ros/foxy/share/rclcpp/cmake/rclcppConfig.cmake:41 (include)
+[0.553s]   CMakeLists.txt:20 (find_package)
+[0.553s] This warning is for project developers.  Use -Wno-dev to suppress it.
+[0.553s] [0m
+[0.553s] [33mCMake Warning (dev) at /opt/ros/foxy/share/connext_cmake_module/cmake/Modules/FindConnext.cmake:163 (list):
+[0.553s]   Policy CMP0121 is not set: The list() command now validates parsing of
+[0.553s]   index arguments.  Run "cmake --help-policy CMP0121" for policy details.
+[0.553s]   Use the cmake_policy command to set the policy and suppress this warning.
+[0.553s]   Invalid list index "libnddscd.so".
+[0.554s] Call Stack (most recent call first):
+[0.554s]   /opt/ros/foxy/share/connext_cmake_module/cmake/Modules/FindConnext.cmake:199 (_count_found_libraries)
+[0.554s]   /opt/ros/foxy/share/rosidl_typesupport_connext_c/cmake/rosidl_typesupport_connext_c-extras.cmake:5 (find_package)
+[0.554s]   /opt/ros/foxy/share/rosidl_typesupport_connext_c/cmake/rosidl_typesupport_connext_cConfig.cmake:41 (include)
+[0.554s]   /opt/ros/foxy/share/rosidl_typesupport_c/cmake/rosidl_typesupport_c-extras.cmake:13 (find_package)
+[0.554s]   /opt/ros/foxy/share/rosidl_typesupport_c/cmake/rosidl_typesupport_cConfig.cmake:41 (include)
+[0.554s]   /opt/ros/foxy/share/rosidl_default_runtime/cmake/rosidl_default_runtime-extras.cmake:12 (find_package)
+[0.554s]   /opt/ros/foxy/share/rosidl_default_runtime/cmake/rosidl_default_runtimeConfig.cmake:41 (include)
+[0.554s]   /opt/ros/foxy/share/builtin_interfaces/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.554s]   /opt/ros/foxy/share/builtin_interfaces/cmake/builtin_interfacesConfig.cmake:41 (include)
+[0.554s]   /opt/ros/foxy/share/rcl_interfaces/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.554s]   /opt/ros/foxy/share/rcl_interfaces/cmake/rcl_interfacesConfig.cmake:41 (include)
+[0.554s]   /opt/ros/foxy/share/rcl/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.554s]   /opt/ros/foxy/share/rcl/cmake/rclConfig.cmake:41 (include)
+[0.554s]   /opt/ros/foxy/share/libstatistics_collector/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.554s]   /opt/ros/foxy/share/libstatistics_collector/cmake/libstatistics_collectorConfig.cmake:41 (include)
+[0.554s]   /opt/ros/foxy/share/rclcpp/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.554s]   /opt/ros/foxy/share/rclcpp/cmake/rclcppConfig.cmake:41 (include)
+[0.554s]   CMakeLists.txt:20 (find_package)
+[0.554s] This warning is for project developers.  Use -Wno-dev to suppress it.
+[0.554s] [0m
+[0.554s] [33mCMake Warning (dev) at /opt/ros/foxy/share/connext_cmake_module/cmake/Modules/FindConnext.cmake:163 (list):
+[0.554s]   Policy CMP0121 is not set: The list() command now validates parsing of
+[0.554s]   index arguments.  Run "cmake --help-policy CMP0121" for policy details.
+[0.554s]   Use the cmake_policy command to set the policy and suppress this warning.
+[0.554s]   Invalid list index "libnddscored.so".
+[0.554s] Call Stack (most recent call first):
+[0.554s]   /opt/ros/foxy/share/connext_cmake_module/cmake/Modules/FindConnext.cmake:199 (_count_found_libraries)
+[0.554s]   /opt/ros/foxy/share/rosidl_typesupport_connext_c/cmake/rosidl_typesupport_connext_c-extras.cmake:5 (find_package)
+[0.555s]   /opt/ros/foxy/share/rosidl_typesupport_connext_c/cmake/rosidl_typesupport_connext_cConfig.cmake:41 (include)
+[0.555s]   /opt/ros/foxy/share/rosidl_typesupport_c/cmake/rosidl_typesupport_c-extras.cmake:13 (find_package)
+[0.555s]   /opt/ros/foxy/share/rosidl_typesupport_c/cmake/rosidl_typesupport_cConfig.cmake:41 (include)
+[0.555s]   /opt/ros/foxy/share/rosidl_default_runtime/cmake/rosidl_default_runtime-extras.cmake:12 (find_package)
+[0.555s]   /opt/ros/foxy/share/rosidl_default_runtime/cmake/rosidl_default_runtimeConfig.cmake:41 (include)
+[0.555s]   /opt/ros/foxy/share/builtin_interfaces/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.555s]   /opt/ros/foxy/share/builtin_interfaces/cmake/builtin_interfacesConfig.cmake:41 (include)
+[0.555s]   /opt/ros/foxy/share/rcl_interfaces/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.555s]   /opt/ros/foxy/share/rcl_interfaces/cmake/rcl_interfacesConfig.cmake:41 (include)
+[0.555s]   /opt/ros/foxy/share/rcl/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.555s]   /opt/ros/foxy/share/rcl/cmake/rclConfig.cmake:41 (include)
+[0.555s]   /opt/ros/foxy/share/libstatistics_collector/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.555s]   /opt/ros/foxy/share/libstatistics_collector/cmake/libstatistics_collectorConfig.cmake:41 (include)
+[0.555s]   /opt/ros/foxy/share/rclcpp/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.555s]   /opt/ros/foxy/share/rclcpp/cmake/rclcppConfig.cmake:41 (include)
+[0.555s]   CMakeLists.txt:20 (find_package)
+[0.555s] This warning is for project developers.  Use -Wno-dev to suppress it.
+[0.555s] [0m
+[0.555s] [33mCMake Warning (dev) at /opt/ros/foxy/share/connext_cmake_module/cmake/Modules/FindConnext.cmake:163 (list):
+[0.555s]   Policy CMP0121 is not set: The list() command now validates parsing of
+[0.555s]   index arguments.  Run "cmake --help-policy CMP0121" for policy details.
+[0.555s]   Use the cmake_policy command to set the policy and suppress this warning.
+[0.555s]   Invalid list index "libnddscppd.so".
+[0.555s] Call Stack (most recent call first):
+[0.555s]   /opt/ros/foxy/share/connext_cmake_module/cmake/Modules/FindConnext.cmake:199 (_count_found_libraries)
+[0.555s]   /opt/ros/foxy/share/rosidl_typesupport_connext_c/cmake/rosidl_typesupport_connext_c-extras.cmake:5 (find_package)
+[0.555s]   /opt/ros/foxy/share/rosidl_typesupport_connext_c/cmake/rosidl_typesupport_connext_cConfig.cmake:41 (include)
+[0.555s]   /opt/ros/foxy/share/rosidl_typesupport_c/cmake/rosidl_typesupport_c-extras.cmake:13 (find_package)
+[0.556s]   /opt/ros/foxy/share/rosidl_typesupport_c/cmake/rosidl_typesupport_cConfig.cmake:41 (include)
+[0.556s]   /opt/ros/foxy/share/rosidl_default_runtime/cmake/rosidl_default_runtime-extras.cmake:12 (find_package)
+[0.556s]   /opt/ros/foxy/share/rosidl_default_runtime/cmake/rosidl_default_runtimeConfig.cmake:41 (include)
+[0.556s]   /opt/ros/foxy/share/builtin_interfaces/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.556s]   /opt/ros/foxy/share/builtin_interfaces/cmake/builtin_interfacesConfig.cmake:41 (include)
+[0.556s]   /opt/ros/foxy/share/rcl_interfaces/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.556s]   /opt/ros/foxy/share/rcl_interfaces/cmake/rcl_interfacesConfig.cmake:41 (include)
+[0.556s]   /opt/ros/foxy/share/rcl/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.556s]   /opt/ros/foxy/share/rcl/cmake/rclConfig.cmake:41 (include)
+[0.556s]   /opt/ros/foxy/share/libstatistics_collector/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.556s]   /opt/ros/foxy/share/libstatistics_collector/cmake/libstatistics_collectorConfig.cmake:41 (include)
+[0.556s]   /opt/ros/foxy/share/rclcpp/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.556s]   /opt/ros/foxy/share/rclcpp/cmake/rclcppConfig.cmake:41 (include)
+[0.556s]   CMakeLists.txt:20 (find_package)
+[0.556s] This warning is for project developers.  Use -Wno-dev to suppress it.
+[0.556s] [0m
+[0.556s] [33mCMake Warning (dev) at /opt/ros/foxy/share/connext_cmake_module/cmake/Modules/FindConnext.cmake:163 (list):
+[0.556s]   Policy CMP0121 is not set: The list() command now validates parsing of
+[0.556s]   index arguments.  Run "cmake --help-policy CMP0121" for policy details.
+[0.556s]   Use the cmake_policy command to set the policy and suppress this warning.
+[0.556s]   Invalid list index "librticonnextmsgcppd.so".
+[0.556s] Call Stack (most recent call first):
+[0.556s]   /opt/ros/foxy/share/connext_cmake_module/cmake/Modules/FindConnext.cmake:199 (_count_found_libraries)
+[0.556s]   /opt/ros/foxy/share/rosidl_typesupport_connext_c/cmake/rosidl_typesupport_connext_c-extras.cmake:5 (find_package)
+[0.556s]   /opt/ros/foxy/share/rosidl_typesupport_connext_c/cmake/rosidl_typesupport_connext_cConfig.cmake:41 (include)
+[0.556s]   /opt/ros/foxy/share/rosidl_typesupport_c/cmake/rosidl_typesupport_c-extras.cmake:13 (find_package)
+[0.556s]   /opt/ros/foxy/share/rosidl_typesupport_c/cmake/rosidl_typesupport_cConfig.cmake:41 (include)
+[0.557s]   /opt/ros/foxy/share/rosidl_default_runtime/cmake/rosidl_default_runtime-extras.cmake:12 (find_package)
+[0.557s]   /opt/ros/foxy/share/rosidl_default_runtime/cmake/rosidl_default_runtimeConfig.cmake:41 (include)
+[0.557s]   /opt/ros/foxy/share/builtin_interfaces/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.557s]   /opt/ros/foxy/share/builtin_interfaces/cmake/builtin_interfacesConfig.cmake:41 (include)
+[0.557s]   /opt/ros/foxy/share/rcl_interfaces/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.557s]   /opt/ros/foxy/share/rcl_interfaces/cmake/rcl_interfacesConfig.cmake:41 (include)
+[0.557s]   /opt/ros/foxy/share/rcl/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.557s]   /opt/ros/foxy/share/rcl/cmake/rclConfig.cmake:41 (include)
+[0.557s]   /opt/ros/foxy/share/libstatistics_collector/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.557s]   /opt/ros/foxy/share/libstatistics_collector/cmake/libstatistics_collectorConfig.cmake:41 (include)
+[0.557s]   /opt/ros/foxy/share/rclcpp/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.557s]   /opt/ros/foxy/share/rclcpp/cmake/rclcppConfig.cmake:41 (include)
+[0.557s]   CMakeLists.txt:20 (find_package)
+[0.557s] This warning is for project developers.  Use -Wno-dev to suppress it.
+[0.557s] [0m
+[0.557s] [0mCMake Deprecation Warning at /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined/connext_cmake_module/check_abi/CMakeLists.txt:15 (cmake_minimum_required):
+[0.557s]   Compatibility with CMake < 2.8.12 will be removed from a future version of
+[0.557s]   CMake.
+[0.557s] 
+[0.557s]   Update the VERSION argument <min> value or use a ...<max> suffix to tell
+[0.557s]   CMake that the project does not need compatibility with older versions.
+[0.557s] 
+[0.557s] [0m
+[1.069s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "1.1.1f")  
+[1.097s] -- Found FastRTPS: /opt/ros/foxy/include  
+[1.163s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_connext_cpp;rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.206s] -- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+[1.207s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[1.208s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[1.240s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+[1.241s] -- Looking for pthread_create in pthreads
+[1.266s] -- Looking for pthread_create in pthreads - not found
+[1.266s] -- Looking for pthread_create in pthread
+[1.298s] -- Looking for pthread_create in pthread - found
+[1.298s] -- Found Threads: TRUE  
+[1.432s] -- Configuring done
+[1.434s] [31mCMake Error at CMakeLists.txt:23 (add_executable):
+[1.434s]   Cannot find source file:
+[1.434s] 
+[1.434s]     include/StereoCombined.h
+[1.434s] 
+[1.434s]   Tried extensions .c .C .c++ .cc .cpp .cxx .cu .mpp .m .M .mm .ixx .cppm .h
+[1.434s]   .hh .h++ .hm .hpp .hxx .in .txx .f .F .for .f77 .f90 .f95 .f03 .hip .ispc
+[1.434s] 
+[1.434s] [0m
+[1.434s] [31mCMake Error at CMakeLists.txt:23 (add_executable):
+[1.434s]   No SOURCES given to target: stereo_combined_node
+[1.434s] 
+[1.434s] [0m
+[1.434s] [0mCMake Generate step failed.  Build files cannot be regenerated correctly.[0m
+[1.443s] Invoked command in '/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined' returned '1': CMAKE_PREFIX_PATH=/opt/ros/foxy /home/corelab/.local/bin/cmake /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined -DCMAKE_INSTALL_PREFIX=/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined

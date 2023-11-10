@@ -1,0 +1,27 @@
+[ 20%] [32mBuilding CXX object CMakeFiles/stereo_combined_node.dir/src/StereoCombined.cpp.o[0m
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:[m[K In member function ‘[01m[Kvoid StereoCombined::syncImageCallback(sensor_msgs::msg::Image_<std::allocator<void> >::SharedPtr)[m[K’:
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:915:48:[m[K [01;31m[Kerror: [m[K‘[01m[Kbbox_msg[m[K’ was not declared in this scope
+  915 |                     if (isInBoundingBoxBalloon([01;31m[Kbbox_msg[m[K,u,v)) {
+      |                                                [01;31m[K^~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:922:46:[m[K [01;31m[Kerror: [m[K‘[01m[Kbbox_msg[m[K’ was not declared in this scope
+  922 |                     if (isInBoundingBoxOgoal([01;31m[Kbbox_msg[m[K,u,v)) {
+      |                                              [01;31m[K^~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:929:46:[m[K [01;31m[Kerror: [m[K‘[01m[Kbbox_msg[m[K’ was not declared in this scope
+  929 |                     if (isInBoundingBoxYgoal([01;31m[Kbbox_msg[m[K,u,v)) {
+      |                                              [01;31m[K^~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:1061:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kbbox_msg[m[K’ was not declared in this scope
+ 1061 |     if ([01;31m[Kbbox_msg[m[K->x_center_balloon != -1){
+      |         [01;31m[K^~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:1071:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kbbox_msg[m[K’ was not declared in this scope
+ 1071 |     if ([01;31m[Kbbox_msg[m[K->x_center_o_goal != -1){
+      |         [01;31m[K^~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:1081:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kbbox_msg[m[K’ was not declared in this scope
+ 1081 |     if ([01;31m[Kbbox_msg[m[K->x_center_y_goal != -1){
+      |         [01;31m[K^~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:1205:40:[m[K [01;31m[Kerror: [m[K‘[01m[Kl_image_msg[m[K’ was not declared in this scope; did you mean ‘[01m[Kl_image[m[K’?
+ 1205 |         const std::string & encoding = [01;31m[Kl_image_msg[m[K->encoding;
+      |                                        [01;31m[K^~~~~~~~~~~[m[K
+      |                                        [32m[Kl_image[m[K
+make[2]: *** [CMakeFiles/stereo_combined_node.dir/build.make:90: CMakeFiles/stereo_combined_node.dir/src/StereoCombined.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/stereo_combined_node.dir/all] Error 2
+make: *** [Makefile:146: all] Error 2

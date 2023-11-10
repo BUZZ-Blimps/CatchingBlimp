@@ -1,0 +1,40 @@
+[0mCMake Deprecation Warning at /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined/connext_cmake_module/check_abi/CMakeLists.txt:15 (cmake_minimum_required):
+  Compatibility with CMake < 2.8.12 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+[0m
+In file included from [01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/stereo_combined_node.cpp:3[m[K:
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/include/StereoCombined.hpp:38:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kimage_transport[m[K’ does not name a type
+   38 |     [01;31m[Kimage_transport[m[K::Publisher pub_mono_;
+      |     [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/include/StereoCombined.hpp:39:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kimage_transport[m[K’ does not name a type
+   39 |     [01;31m[Kimage_transport[m[K::Publisher pub_color_;
+      |     [01;31m[K^~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:1[m[K:
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/include/StereoCombined.hpp:38:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kimage_transport[m[K’ does not name a type
+   38 |     [01;31m[Kimage_transport[m[K::Publisher pub_mono_;
+      |     [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/include/StereoCombined.hpp:39:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kimage_transport[m[K’ does not name a type
+   39 |     [01;31m[Kimage_transport[m[K::Publisher pub_color_;
+      |     [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:[m[K In constructor ‘[01m[KStereoCombined::StereoCombined()[m[K’:
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:37:2:[m[K [01;31m[Kerror: [m[K‘[01m[Kpub_mono_[m[K’ was not declared in this scope
+   37 |  [01;31m[Kpub_mono_[m[K = image_transport::create_publisher(this, "image_mono");
+      |  [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:37:14:[m[K [01;31m[Kerror: [m[K‘[01m[Kimage_transport[m[K’ has not been declared
+   37 |  pub_mono_ = [01;31m[Kimage_transport[m[K::create_publisher(this, "image_mono");
+      |              [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:38:2:[m[K [01;31m[Kerror: [m[K‘[01m[Kpub_color_[m[K’ was not declared in this scope
+   38 |  [01;31m[Kpub_color_[m[K = image_transport::create_publisher(this, "image_color");
+      |  [01;31m[K^~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:38:15:[m[K [01;31m[Kerror: [m[K‘[01m[Kimage_transport[m[K’ has not been declared
+   38 |  pub_color_ = [01;31m[Kimage_transport[m[K::create_publisher(this, "image_color");
+      |               [01;31m[K^~~~~~~~~~~~~~~[m[K
+make[2]: *** [CMakeFiles/stereo_combined_node.dir/build.make:76: CMakeFiles/stereo_combined_node.dir/src/stereo_combined_node.cpp.o] Error 1
+make[2]: *** Waiting for unfinished jobs....
+make[2]: *** [CMakeFiles/stereo_combined_node.dir/build.make:90: CMakeFiles/stereo_combined_node.dir/src/StereoCombined.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/stereo_combined_node.dir/all] Error 2
+make: *** [Makefile:146: all] Error 2

@@ -1,13 +1,1 @@
-std_msgs/Header header
-int64 x_center_balloon
-int64 y_center_balloon
-int64 width_balloon
-int64 height_balloon
-int64 x_center_y_goal
-int64 y_center_y_goal
-int64 width_y_goal
-int64 height_y_goal
-int64 x_center_o_goal
-int64 y_center_o_goal
-int64 width_o_goal
-int64 height_o_goal
+/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/yolo_msgs/msg/BoundingBox.msg

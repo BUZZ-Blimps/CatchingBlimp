@@ -1,0 +1,34 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/corelab/ros2_stereo/install/stereo_image_proc/include/**",
+        "/home/corelab/ros2_stereo/install/yolo_msgs/include/**",
+        "/home/corelab/ros2_stereo/install/gscam2/include/**",
+        "/home/corelab/ros2_stereo/install/ros2_shared/include/**",
+        "/home/corelab/ros2_stereo/install/opencv_telemetry/include/**",
+        "/home/corelab/ros2_stereo/install/image_view/include/**",
+        "/home/corelab/ros2_stereo/install/image_proc/include/**",
+        "/opt/ros/foxy/include/**",
+        "/home/corelab/ros2_stereo/src/gscam2/include/**",
+        "/home/corelab/ros2_stereo/src/image_proc/include/**",
+        "/home/corelab/ros2_stereo/src/image_view/include/**",
+        "/home/corelab/ros2_stereo/src/opencv_telemetry/include/**",
+        "/home/corelab/ros2_stereo/src/ros2_shared/include/**",
+        "/home/corelab/ros2_stereo/src/stereo_image_proc/include/**",
+        "/home/corelab/ros2_stereo/src/yolo_msgs/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}

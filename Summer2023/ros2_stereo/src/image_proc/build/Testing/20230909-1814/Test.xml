@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Site BuildName="(empty)"
+	BuildStamp="20230909-1814-Experimental"
+	Name="corelab-steve"
+	Generator="ctest-3.25.0"
+	CompilerName="/usr/bin/g++"
+	CompilerVersion="9.4.0"
+	OSName="Linux"
+	Hostname="corelab-steve"
+	OSRelease="5.15.0-83-generic"
+	OSVersion="#92~20.04.1-Ubuntu SMP Mon Aug 21 14:00:49 UTC 2023"
+	OSPlatform="x86_64"
+	Is64Bits="1"
+	VendorString="GenuineIntel"
+	VendorID="Intel Corporation"
+	FamilyID="6"
+	ModelID="167"
+	ProcessorCacheSize="16384"
+	NumberOfLogicalCPU="16"
+	NumberOfPhysicalCPU="8"
+	TotalVirtualMemory="2047"
+	TotalPhysicalMemory="128638"
+	LogicalProcessorsPerPhysical="2"
+	ProcessorClockFrequency="4759.22"
+	>
+	<Testing>
+		<StartDateTime>Sep 09 14:14 EDT</StartDateTime>
+		<StartTestTime>1694283283</StartTestTime>
+		<TestList/>
+		<EndDateTime>Sep 09 14:14 EDT</EndDateTime>
+		<EndTestTime>1694283283</EndTestTime>
+		<ElapsedMinutes>0</ElapsedMinutes>
+	</Testing>
+</Site>

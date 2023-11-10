@@ -33,6 +33,8 @@ int main(int argc, char ** argv)
   if (!(video_sourceCmd >> video_source)) {return 1;}
 
   cv::VideoCapture cap(video_source);
+  // std::string vid = std::string("/dev/elp_sync");
+  // cv::VideoCapture cap(vid);
 
   // Set the desired resolution (2560x960)
   cap.set(cv::CAP_PROP_FRAME_WIDTH, 2560);

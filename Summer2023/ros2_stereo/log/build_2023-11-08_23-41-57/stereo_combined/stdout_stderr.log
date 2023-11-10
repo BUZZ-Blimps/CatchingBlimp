@@ -1,0 +1,71 @@
+[ 25%] [32mBuilding CXX object CMakeFiles/stereo_combined_node.dir/src/StereoCombined.cpp.o[0m
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:[m[K In member function ‘[01m[Kvoid StereoCombined::syncImageCallback(sensor_msgs::msg::Image_<std::allocator<void> >::SharedPtr)[m[K’:
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:462:10:[m[K [01;31m[Kerror: [m[Kredeclaration of ‘[01m[Kbool zero_distortion[m[K’
+  462 |     bool [01;31m[Kzero_distortion[m[K = true;
+      |          [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:397:10:[m[K [01;36m[Knote: [m[K‘[01m[Kbool zero_distortion[m[K’ previously declared here
+  397 |     bool [01;36m[Kzero_distortion[m[K = true;
+      |          [01;36m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:477:27:[m[K [01;31m[Kerror: [m[Kredeclaration of ‘[01m[Kcv_bridge::CvImagePtr cv_image[m[K’
+  477 |     cv_bridge::CvImagePtr [01;31m[Kcv_image[m[K = cv_bridge::toCvCopy(color_msg_left);
+      |                           [01;31m[K^~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:412:27:[m[K [01;36m[Knote: [m[K‘[01m[Kcv_bridge::CvImagePtr cv_image[m[K’ previously declared here
+  412 |     cv_bridge::CvImagePtr [01;36m[Kcv_image[m[K = cv_bridge::toCvCopy(mono_msg_left);
+      |                           [01;36m[K^~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:478:13:[m[K [01;31m[Kerror: [m[Kredeclaration of ‘[01m[Kcv::Mat resized_image[m[K’
+  478 |     cv::Mat [01;31m[Kresized_image[m[K;
+      |             [01;31m[K^~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:413:13:[m[K [01;36m[Knote: [m[K‘[01m[Kcv::Mat resized_image[m[K’ previously declared here
+  413 |     cv::Mat [01;36m[Kresized_image[m[K;
+      |             [01;36m[K^~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:481:13:[m[K [01;31m[Kerror: [m[Kredeclaration of ‘[01m[Kcv::Mat rect[m[K’
+  481 |     cv::Mat [01;31m[Krect[m[K; //empty matrix
+      |             [01;31m[K^~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:416:13:[m[K [01;36m[Knote: [m[K‘[01m[Kcv::Mat rect[m[K’ previously declared here
+  416 |     cv::Mat [01;36m[Krect[m[K; //empty matrix
+      |             [01;36m[K^~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:484:13:[m[K [01;31m[Kerror: [m[Kredeclaration of ‘[01m[Kcv::Mat map_1[m[K’
+  484 |     cv::Mat [01;31m[Kmap_1[m[K,map_2;
+      |             [01;31m[K^~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:419:13:[m[K [01;36m[Knote: [m[K‘[01m[Kcv::Mat map_1[m[K’ previously declared here
+  419 |     cv::Mat [01;36m[Kmap_1[m[K,map_2;
+      |             [01;36m[K^~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:484:19:[m[K [01;31m[Kerror: [m[Kredeclaration of ‘[01m[Kcv::Mat map_2[m[K’
+  484 |     cv::Mat map_1,[01;31m[Kmap_2[m[K;
+      |                   [01;31m[K^~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:419:19:[m[K [01;36m[Knote: [m[K‘[01m[Kcv::Mat map_2[m[K’ previously declared here
+  419 |     cv::Mat map_1,[01;36m[Kmap_2[m[K;
+      |                   [01;36m[K^~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:485:14:[m[K [01;31m[Kerror: [m[Kredeclaration of ‘[01m[Kcv::Size size[m[K’
+  485 |     cv::Size [01;31m[Ksize[m[K = cv::Size(camera_info_left_.width,camera_info_left_.height);
+      |              [01;31m[K^~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:420:14:[m[K [01;36m[Knote: [m[K‘[01m[Kcv::Size size[m[K’ previously declared here
+  420 |     cv::Size [01;36m[Ksize[m[K = cv::Size(camera_info_left_.width,camera_info_left_.height);
+      |              [01;36m[K^~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:487:17:[m[K [01;31m[Kerror: [m[Kredeclaration of ‘[01m[Kcv::Matx33d K[m[K’
+  487 |     cv::Matx33d [01;31m[KK[m[K(camera_info_left_.k[0], camera_info_left_.k[1], camera_info_left_.k[2],
+      |                 [01;31m[K^[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:422:17:[m[K [01;36m[Knote: [m[K‘[01m[Kcv::Matx33d K[m[K’ previously declared here
+  422 |     cv::Matx33d [01;36m[KK[m[K(camera_info_left_.k[0], camera_info_left_.k[1], camera_info_left_.k[2],
+      |                 [01;36m[K^[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:491:17:[m[K [01;31m[Kerror: [m[Kredeclaration of ‘[01m[Kcv::Matx33d R[m[K’
+  491 |     cv::Matx33d [01;31m[KR[m[K(camera_info_left_.r[0], camera_info_left_.r[1], camera_info_left_.r[2],
+      |                 [01;31m[K^[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:426:17:[m[K [01;36m[Knote: [m[K‘[01m[Kcv::Matx33d R[m[K’ previously declared here
+  426 |     cv::Matx33d [01;36m[KR[m[K(camera_info_left_.r[0], camera_info_left_.r[1], camera_info_left_.r[2],
+      |                 [01;36m[K^[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:495:17:[m[K [01;31m[Kerror: [m[Kredeclaration of ‘[01m[Kcv::Matx34d P[m[K’
+  495 |     cv::Matx34d [01;31m[KP[m[K(camera_info_left_.p[0], camera_info_left_.p[1], camera_info_left_.p[2], camera_info_left_.p[3],
+      |                 [01;31m[K^[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:430:17:[m[K [01;36m[Knote: [m[K‘[01m[Kcv::Matx34d P[m[K’ previously declared here
+  430 |     cv::Matx34d [01;36m[KP[m[K(camera_info_left_.p[0], camera_info_left_.p[1], camera_info_left_.p[2], camera_info_left_.p[3],
+      |                 [01;36m[K^[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:499:13:[m[K [01;31m[Kerror: [m[Kredeclaration of ‘[01m[Kcv::Mat D[m[K’
+  499 |     cv::Mat [01;31m[KD[m[K(1, 5, CV_32F);
+      |             [01;31m[K^[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:434:13:[m[K [01;36m[Knote: [m[K‘[01m[Kcv::Mat D[m[K’ previously declared here
+  434 |     cv::Mat [01;36m[KD[m[K(1, 5, CV_32F);
+      |             [01;36m[K^[m[K
+make[2]: *** [CMakeFiles/stereo_combined_node.dir/build.make:90: CMakeFiles/stereo_combined_node.dir/src/StereoCombined.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/stereo_combined_node.dir/all] Error 2
+make: *** [Makefile:146: all] Error 2

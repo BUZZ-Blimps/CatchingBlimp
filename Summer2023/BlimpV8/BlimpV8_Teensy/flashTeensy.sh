@@ -24,8 +24,7 @@ then
     elif [ "$1" = "5" ]; then
     	sed -i "/std::string blimpNameSpace = \"FiveGuysBlimp\"/s/^\/\///" "src/catching_blimp.h"
     elif [ "$1" = "6" ]; then
-    	echo "Blimp namespace not assigned in code."
-    	exit 0
+    	sed -i "/std::string blimpNameSpace = \"SuperBeefBlimp\"/s/^\/\///" "src/catching_blimp.h"
     fi
 
     #Build firmware.hex file
@@ -36,8 +35,12 @@ then
 
     #Enter into the Orange Pi
     #Flash the Teensy (For some reason we have to do this twice)
+    #Must press the button if the Teensy has never been flashed before
     ssh orangepi$1@orangepi$1 "/home/orangepi$1/teensy_loader_cli/teensy_loader_cli -mmcu=TEENSY40 -s -w -v /home/orangepi$1/teensyCode/firmware.hex; /home/orangepi$1/teensy_loader_cli/teensy_loader_cli -mmcu=TEENSY40 -s -w -v /home/orangepi$1/teensyCode/firmware.hex"
 
     # Doesn't work without password
     #sshpass -p 1234 ssh orangepi$1@orangepi$1 ./restartMicroros.sh
 fi
+
+#WARNING: IF THE BLIMP DOES NOT APPEAR ON THE BASE STATION, THEN SSH INTO THE PI AND CHECK THAT
+#	  MICROROS IS RUNNING

@@ -1,0 +1,25 @@
+In file included from [01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/stereo_combined_node.cpp:3[m[K:
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/include/StereoCombined.hpp:139:13:[m[K [01;35m[Kwarning: [m[K‘[01m[Kvoid add_param_to_map(std::map<std::__cxx11::basic_string<char>, std::pair<double, rcl_interfaces::msg::ParameterDescriptor_<std::allocator<void> > > >&, const string&, const string&, double, double, double, double)[m[K’ defined but not used [[01;35m[K-Wunused-function[m[K]
+  139 | static void [01;35m[Kadd_param_to_map[m[K(
+      |             [01;35m[K^~~~~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/include/StereoCombined.hpp:121:13:[m[K [01;35m[Kwarning: [m[K‘[01m[Kvoid add_param_to_map(std::map<std::__cxx11::basic_string<char>, std::pair<int, rcl_interfaces::msg::ParameterDescriptor_<std::allocator<void> > > >&, const string&, const string&, int, int, int, int)[m[K’ defined but not used [[01;35m[K-Wunused-function[m[K]
+  121 | static void [01;35m[Kadd_param_to_map[m[K(
+      |             [01;35m[K^~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:1[m[K:
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/include/StereoCombined.hpp:139:13:[m[K [01;35m[Kwarning: [m[K‘[01m[Kvoid add_param_to_map(std::map<std::__cxx11::basic_string<char>, std::pair<double, rcl_interfaces::msg::ParameterDescriptor_<std::allocator<void> > > >&, const string&, const string&, double, double, double, double)[m[K’ defined but not used [[01;35m[K-Wunused-function[m[K]
+  139 | static void [01;35m[Kadd_param_to_map[m[K(
+      |             [01;35m[K^~~~~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/include/StereoCombined.hpp:121:13:[m[K [01;35m[Kwarning: [m[K‘[01m[Kvoid add_param_to_map(std::map<std::__cxx11::basic_string<char>, std::pair<int, rcl_interfaces::msg::ParameterDescriptor_<std::allocator<void> > > >&, const string&, const string&, int, int, int, int)[m[K’ defined but not used [[01;35m[K-Wunused-function[m[K]
+  121 | static void [01;35m[Kadd_param_to_map[m[K(
+      |             [01;35m[K^~~~~~~~~~~~~~~~[m[K
+/usr/bin/ld: warning: libopencv_imgcodecs.so.4.2, needed by /opt/ros/foxy/lib/libcv_bridge.so, may conflict with libopencv_imgcodecs.so.407
+/usr/bin/ld: warning: libopencv_imgproc.so.4.2, needed by /opt/ros/foxy/lib/libcv_bridge.so, may conflict with libopencv_imgproc.so.407
+/usr/bin/ld: warning: libopencv_core.so.4.2, needed by /opt/ros/foxy/lib/libcv_bridge.so, may conflict with libopencv_core.so.407
+/usr/bin/ld: warning: libopencv_calib3d.so.4.2, needed by /opt/ros/foxy/lib/libimage_geometry.so, may conflict with libopencv_calib3d.so.407
+/usr/bin/ld: CMakeFiles/stereo_combined_node.dir/src/stereo_processor.cpp.o: in function `StereoProcessor::process(std::shared_ptr<sensor_msgs::msg::Image_<std::allocator<void> > const> const&, std::shared_ptr<sensor_msgs::msg::Image_<std::allocator<void> > const> const&, image_geometry::StereoCameraModel const&, StereoImageSet&, int) const':
+stereo_processor.cpp:(.text+0x93): undefined reference to `image_proc::Processor::process(std::shared_ptr<sensor_msgs::msg::Image_<std::allocator<void> > const> const&, image_geometry::PinholeCameraModel const&, image_proc::ImageSet&, int) const'
+/usr/bin/ld: stereo_processor.cpp:(.text+0xe0): undefined reference to `image_proc::Processor::process(std::shared_ptr<sensor_msgs::msg::Image_<std::allocator<void> > const> const&, image_geometry::PinholeCameraModel const&, image_proc::ImageSet&, int) const'
+collect2: error: ld returned 1 exit status
+make[2]: *** [CMakeFiles/stereo_combined_node.dir/build.make:281: stereo_combined_node] Error 1
+make[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/stereo_combined_node.dir/all] Error 2
+make: *** [Makefile:146: all] Error 2

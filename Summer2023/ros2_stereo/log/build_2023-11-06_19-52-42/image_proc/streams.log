@@ -1,0 +1,75 @@
+[0.049s] Invoking command in '/home/corelab/ros2_stereo/build/image_proc': CMAKE_PREFIX_PATH=/opt/ros/foxy /home/corelab/.local/bin/cmake --build /home/corelab/ros2_stereo/build/image_proc -- -j16 -l16
+[0.119s] [  6%] [32mBuilding CXX object CMakeFiles/image_proc.dir/src/image_proc/processor.cpp.o[0m
+[1.595s] [ 13%] [32m[1mLinking CXX shared library libimage_proc.so[0m
+[1.936s] [ 13%] Built target image_proc
+[1.951s] [ 20%] [32mBuilding CXX object CMakeFiles/rectify.dir/src/rectify.cpp.o[0m
+[5.240s] [ 26%] [32m[1mLinking CXX shared library librectify.so[0m
+[5.418s] [ 26%] Built target rectify
+[5.431s] [ 33%] [32mBuilding CXX object CMakeFiles/debayer.dir/src/debayer.cpp.o[0m
+[5.431s] [ 40%] [32mBuilding CXX object CMakeFiles/debayer.dir/src/edge_aware.cpp.o[0m
+[7.580s] [ 46%] [32m[1mLinking CXX shared library libdebayer.so[0m
+[7.813s] [ 46%] Built target debayer
+[7.825s] [ 53%] [32mBuilding CXX object CMakeFiles/resize.dir/src/resize.cpp.o[0m
+[9.921s] [ 60%] [32m[1mLinking CXX shared library libresize.so[0m
+[10.143s] [ 60%] Built target resize
+[10.163s] [ 66%] [32mBuilding CXX object CMakeFiles/crop_decimate.dir/src/crop_decimate.cpp.o[0m
+[13.164s] [ 73%] [32m[1mLinking CXX shared library libcrop_decimate.so[0m
+[13.396s] [ 73%] Built target crop_decimate
+[13.408s] [ 80%] [32mBuilding CXX object CMakeFiles/crop_non_zero.dir/src/crop_non_zero.cpp.o[0m
+[15.058s] [ 86%] [32m[1mLinking CXX shared library libcrop_non_zero.so[0m
+[15.200s] [ 86%] Built target crop_non_zero
+[15.217s] [ 93%] [32mBuilding CXX object CMakeFiles/image_proc_exe.dir/src/image_proc.cpp.o[0m
+[16.785s] [100%] [32m[1mLinking CXX executable image_proc[0m
+[17.085s] [100%] Built target image_proc_exe
+[17.097s] Invoked command in '/home/corelab/ros2_stereo/build/image_proc' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /home/corelab/.local/bin/cmake --build /home/corelab/ros2_stereo/build/image_proc -- -j16 -l16
+[17.141s] Invoking command in '/home/corelab/ros2_stereo/build/image_proc': CMAKE_PREFIX_PATH=/opt/ros/foxy /home/corelab/.local/bin/cmake --install /home/corelab/ros2_stereo/build/image_proc
+[17.162s] -- Install configuration: ""
+[17.162s] -- Installing: /home/corelab/ros2_stereo/install/image_proc/bin/image_proc
+[17.163s] -- Set runtime path of "/home/corelab/ros2_stereo/install/image_proc/bin/image_proc" to ""
+[17.163s] -- Up-to-date: /home/corelab/ros2_stereo/install/image_proc/include
+[17.163s] -- Up-to-date: /home/corelab/ros2_stereo/install/image_proc/include/image_proc
+[17.163s] -- Up-to-date: /home/corelab/ros2_stereo/install/image_proc/include/image_proc/debayer.hpp
+[17.163s] -- Up-to-date: /home/corelab/ros2_stereo/install/image_proc/include/image_proc/edge_aware.hpp
+[17.163s] -- Up-to-date: /home/corelab/ros2_stereo/install/image_proc/include/image_proc/processor.hpp
+[17.163s] -- Up-to-date: /home/corelab/ros2_stereo/install/image_proc/include/image_proc/crop_decimate.hpp
+[17.163s] -- Up-to-date: /home/corelab/ros2_stereo/install/image_proc/include/image_proc/rectify.hpp
+[17.163s] -- Up-to-date: /home/corelab/ros2_stereo/install/image_proc/include/image_proc/resize.hpp
+[17.163s] -- Up-to-date: /home/corelab/ros2_stereo/install/image_proc/include/image_proc/crop_non_zero.hpp
+[17.163s] -- Up-to-date: /home/corelab/ros2_stereo/install/image_proc/share/image_proc/environment/library_path.sh
+[17.163s] -- Up-to-date: /home/corelab/ros2_stereo/install/image_proc/share/image_proc/environment/library_path.dsv
+[17.163s] -- Installing: /home/corelab/ros2_stereo/install/image_proc/lib/libimage_proc.so
+[17.163s] -- Set runtime path of "/home/corelab/ros2_stereo/install/image_proc/lib/libimage_proc.so" to ""
+[17.163s] -- Installing: /home/corelab/ros2_stereo/install/image_proc/lib/librectify.so
+[17.163s] -- Set runtime path of "/home/corelab/ros2_stereo/install/image_proc/lib/librectify.so" to ""
+[17.163s] -- Installing: /home/corelab/ros2_stereo/install/image_proc/lib/libdebayer.so
+[17.164s] -- Set runtime path of "/home/corelab/ros2_stereo/install/image_proc/lib/libdebayer.so" to ""
+[17.164s] -- Installing: /home/corelab/ros2_stereo/install/image_proc/lib/libresize.so
+[17.164s] -- Set runtime path of "/home/corelab/ros2_stereo/install/image_proc/lib/libresize.so" to ""
+[17.165s] -- Installing: /home/corelab/ros2_stereo/install/image_proc/lib/libcrop_decimate.so
+[17.165s] -- Set runtime path of "/home/corelab/ros2_stereo/install/image_proc/lib/libcrop_decimate.so" to ""
+[17.165s] -- Installing: /home/corelab/ros2_stereo/install/image_proc/lib/libcrop_non_zero.so
+[17.166s] -- Set runtime path of "/home/corelab/ros2_stereo/install/image_proc/lib/libcrop_non_zero.so" to ""
+[17.166s] -- Installing: /home/corelab/ros2_stereo/install/image_proc/lib/image_proc/image_proc
+[17.166s] -- Set runtime path of "/home/corelab/ros2_stereo/install/image_proc/lib/image_proc/image_proc" to ""
+[17.166s] -- Up-to-date: /home/corelab/ros2_stereo/install/image_proc/share/image_proc/launch
+[17.166s] -- Up-to-date: /home/corelab/ros2_stereo/install/image_proc/share/image_proc/launch/image_proc.launch.py
+[17.166s] -- Up-to-date: /home/corelab/ros2_stereo/install/image_proc/share/ament_index/resource_index/package_run_dependencies/image_proc
+[17.167s] -- Up-to-date: /home/corelab/ros2_stereo/install/image_proc/share/ament_index/resource_index/parent_prefix_path/image_proc
+[17.167s] -- Up-to-date: /home/corelab/ros2_stereo/install/image_proc/share/image_proc/environment/ament_prefix_path.sh
+[17.167s] -- Up-to-date: /home/corelab/ros2_stereo/install/image_proc/share/image_proc/environment/ament_prefix_path.dsv
+[17.167s] -- Up-to-date: /home/corelab/ros2_stereo/install/image_proc/share/image_proc/environment/path.sh
+[17.167s] -- Up-to-date: /home/corelab/ros2_stereo/install/image_proc/share/image_proc/environment/path.dsv
+[17.167s] -- Up-to-date: /home/corelab/ros2_stereo/install/image_proc/share/image_proc/local_setup.bash
+[17.167s] -- Up-to-date: /home/corelab/ros2_stereo/install/image_proc/share/image_proc/local_setup.sh
+[17.167s] -- Up-to-date: /home/corelab/ros2_stereo/install/image_proc/share/image_proc/local_setup.zsh
+[17.167s] -- Up-to-date: /home/corelab/ros2_stereo/install/image_proc/share/image_proc/local_setup.dsv
+[17.167s] -- Installing: /home/corelab/ros2_stereo/install/image_proc/share/image_proc/package.dsv
+[17.167s] -- Up-to-date: /home/corelab/ros2_stereo/install/image_proc/share/ament_index/resource_index/packages/image_proc
+[17.167s] -- Up-to-date: /home/corelab/ros2_stereo/install/image_proc/share/ament_index/resource_index/rclcpp_components/image_proc
+[17.167s] -- Up-to-date: /home/corelab/ros2_stereo/install/image_proc/share/image_proc/cmake/ament_cmake_export_dependencies-extras.cmake
+[17.167s] -- Up-to-date: /home/corelab/ros2_stereo/install/image_proc/share/image_proc/cmake/ament_cmake_export_include_directories-extras.cmake
+[17.167s] -- Up-to-date: /home/corelab/ros2_stereo/install/image_proc/share/image_proc/cmake/ament_cmake_export_libraries-extras.cmake
+[17.167s] -- Up-to-date: /home/corelab/ros2_stereo/install/image_proc/share/image_proc/cmake/image_procConfig.cmake
+[17.167s] -- Up-to-date: /home/corelab/ros2_stereo/install/image_proc/share/image_proc/cmake/image_procConfig-version.cmake
+[17.167s] -- Up-to-date: /home/corelab/ros2_stereo/install/image_proc/share/image_proc/package.xml
+[17.172s] Invoked command in '/home/corelab/ros2_stereo/build/image_proc' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /home/corelab/.local/bin/cmake --install /home/corelab/ros2_stereo/build/image_proc

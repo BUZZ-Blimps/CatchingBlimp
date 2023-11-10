@@ -1,0 +1,1 @@
+ament_cmake_symlink_install_targets("TARGET_FILES" "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined/stereo_combined_node" "TARGETS" "stereo_combined_node" "DESTINATION" "lib/stereo_combined")

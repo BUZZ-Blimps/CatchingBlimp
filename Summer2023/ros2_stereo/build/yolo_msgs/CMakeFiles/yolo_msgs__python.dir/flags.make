@@ -4,7 +4,7 @@
 # compile C with /usr/bin/cc
 C_DEFINES = -DRCUTILS_ENABLE_FAULT_INJECTION -DROS_PACKAGE_NAME=\"yolo_msgs\" -Dyolo_msgs__python_EXPORTS
 
-C_INCLUDES = -I/home/corelab/ros2_stereo/build/yolo_msgs/rosidl_generator_c -I/home/corelab/ros2_stereo/build/yolo_msgs/rosidl_generator_py -I/usr/include/python3.8 -I/home/corelab/ros2_stereo/build/yolo_msgs/rosidl_typesupport_c -isystem /opt/ros/foxy/include
+C_INCLUDES = -I/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/yolo_msgs/rosidl_generator_c -I/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/yolo_msgs/rosidl_generator_py -I/usr/include/python3.8 -I/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/yolo_msgs/rosidl_typesupport_c -isystem /opt/ros/foxy/include
 
 C_FLAGS = -fPIC -Wall -Wextra -std=gnu99
 

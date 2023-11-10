@@ -1,0 +1,1 @@
+rclcpp;std_msgs;sensor_msgs;stereo_msgs;libopencv-dev;cv_bridge;image_geometry;image_proc;image_transport;camera_info_manager;yolo_msgs;ament_lint_auto;ament_lint_common

@@ -1,0 +1,6 @@
+[0.022s] Invoking command in '/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry': CMAKE_PREFIX_PATH=/opt/ros/foxy /home/corelab/.local/bin/cmake --build /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry -- -j16 -l16
+[0.047s] [0mCMake Error: The current CMakeCache.txt directory /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/CMakeCache.txt is different than the directory /home/corelab/ros2_stereo/build/opencv_telemetry where CMakeCache.txt was created. This may result in binaries being created in the wrong place. If you are not sure, reedit the CMakeCache.txt[0m
+[0.050s] [0mCMake Error: The source directory "/home/corelab/ros2_stereo/src/opencv_telemetry" does not exist.
+[0.050s] Specify --help for usage, or press the help button on the CMake GUI.[0m
+[0.050s] make: *** [Makefile:1164: cmake_check_build_system] Error 1
+[0.054s] Invoked command in '/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry' returned '2': CMAKE_PREFIX_PATH=/opt/ros/foxy /home/corelab/.local/bin/cmake --build /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry -- -j16 -l16

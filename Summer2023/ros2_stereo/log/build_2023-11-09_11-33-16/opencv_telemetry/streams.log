@@ -1,0 +1,123 @@
+[0.041s] Invoking command in '/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/corelab/Luke_ML_Blimp/ros2_tracks_ws/install/track_ros2:/opt/ros/foxy /home/corelab/.local/bin/cmake --build /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry -- -j16 -l16
+[0.087s] [  1%] Built target opencv_telemetry__dds_connext_idl
+[0.088s] [  6%] Built target opencv_telemetry__rosidl_generator_c
+[0.089s] [  8%] Built target opencv_telemetry__cpp
+[0.093s] [ 15%] Built target minimal_opencv_ros2_node
+[0.093s] [ 15%] Built target split_sync_images
+[0.098s] [ 18%] Built target opencv_subscriber
+[0.099s] [ 25%] Built target opencv_telemetry__rosidl_typesupport_introspection_c
+[0.099s] [ 28%] Built target opencv_telemetry__rosidl_typesupport_cpp
+[0.100s] [ 33%] Built target opencv_telemetry__rosidl_typesupport_c
+[0.102s] [ 38%] Built target opencv_telemetry__rosidl_typesupport_fastrtps_cpp
+[0.103s] [ 44%] Built target opencv_telemetry__rosidl_typesupport_introspection_cpp
+[0.107s] [ 55%] Built target opencv_telemetry__rosidl_typesupport_connext_cpp
+[0.113s] [ 61%] Built target opencv_telemetry__rosidl_typesupport_fastrtps_c
+[0.120s] [ 74%] Built target opencv_telemetry__rosidl_typesupport_connext_c
+[0.126s] [ 74%] Built target opencv_telemetry
+[0.134s] [ 76%] Built target opencv_telemetry__py
+[0.138s] [ 83%] Built target resized_plugins
+[0.142s] [ 86%] Built target opencv_telemetry__python
+[0.153s] [ 89%] Built target opencv_telemetry__rosidl_typesupport_connext_c__pyext
+[0.154s] [ 93%] Built target opencv_telemetry__rosidl_typesupport_introspection_c__pyext
+[0.155s] [ 96%] Built target opencv_telemetry__rosidl_typesupport_fastrtps_c__pyext
+[0.156s] [100%] Built target opencv_telemetry__rosidl_typesupport_c__pyext
+[0.166s] Invoked command in '/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/corelab/Luke_ML_Blimp/ros2_tracks_ws/install/track_ros2:/opt/ros/foxy /home/corelab/.local/bin/cmake --build /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry -- -j16 -l16
+[0.300s] Invoking command in '/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/corelab/Luke_ML_Blimp/ros2_tracks_ws/install/track_ros2:/opt/ros/foxy /home/corelab/.local/bin/cmake --install /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry
+[0.328s] -- Install configuration: ""
+[0.328s] -- Execute custom install script
+[0.328s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/ament_index/resource_index/rosidl_interfaces/opencv_telemetry
+[0.328s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/detail/resized_image__functions.h
+[0.329s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/detail/resized_image__struct.h
+[0.329s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/detail/resized_image__type_support.h
+[0.329s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/resized_image.h
+[0.329s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/rosidl_generator_c__visibility_control.h
+[0.329s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/environment/library_path.sh
+[0.329s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/environment/library_path.dsv
+[0.329s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/resized_image__rosidl_typesupport_connext_c.h
+[0.329s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/rosidl_typesupport_connext_c__visibility_control.h
+[0.329s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/libopencv_telemetry__rosidl_typesupport_connext_c.so
+[0.330s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/msg/dds_connext/ResizedImage_.idl
+[0.330s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/dds_connext/ResizedImage_.cxx
+[0.330s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/dds_connext/ResizedImage_.h
+[0.330s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/dds_connext/ResizedImage_Plugin.cxx
+[0.330s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/dds_connext/ResizedImage_Plugin.h
+[0.330s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/dds_connext/ResizedImage_Support.cxx
+[0.331s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/dds_connext/ResizedImage_Support.h
+[0.331s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/resized_image__rosidl_typesupport_connext_cpp.hpp
+[0.331s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/rosidl_typesupport_connext_cpp__visibility_control.h
+[0.331s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/libopencv_telemetry__rosidl_typesupport_connext_cpp.so
+[0.331s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/detail/resized_image__rosidl_typesupport_fastrtps_c.h
+[0.331s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[0.332s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/libopencv_telemetry__rosidl_typesupport_fastrtps_c.so
+[0.332s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/detail/resized_image__rosidl_typesupport_fastrtps_cpp.hpp
+[0.332s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[0.332s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/libopencv_telemetry__rosidl_typesupport_fastrtps_cpp.so
+[0.333s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/detail/resized_image__rosidl_typesupport_introspection_c.h
+[0.333s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[0.333s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/detail/resized_image__builder.hpp
+[0.333s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/detail/resized_image__struct.hpp
+[0.333s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/detail/resized_image__traits.hpp
+[0.333s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/detail/resized_image__type_support.hpp
+[0.333s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/resized_image.hpp
+[0.333s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/rosidl_generator_cpp__visibility_control.hpp
+[0.333s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/detail/resized_image__rosidl_typesupport_introspection_cpp.hpp
+[0.333s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/environment/pythonpath.sh
+[0.334s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/environment/pythonpath.dsv
+[0.334s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/python3.8/site-packages/opencv_telemetry/__init__.py
+[0.334s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/python3.8/site-packages/opencv_telemetry/msg/__init__.py
+[0.334s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/python3.8/site-packages/opencv_telemetry/msg/_resized_image.py
+[0.334s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/python3.8/site-packages/opencv_telemetry/opencv_telemetry_s__rosidl_typesupport_connext_c.cpython-38-x86_64-linux-gnu.so
+[0.335s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/python3.8/site-packages/opencv_telemetry/opencv_telemetry_s__rosidl_typesupport_fastrtps_c.cpython-38-x86_64-linux-gnu.so
+[0.335s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/python3.8/site-packages/opencv_telemetry/opencv_telemetry_s__rosidl_typesupport_introspection_c.cpython-38-x86_64-linux-gnu.so
+[0.335s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/python3.8/site-packages/opencv_telemetry/opencv_telemetry_s__rosidl_typesupport_c.cpython-38-x86_64-linux-gnu.so
+[0.336s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/libopencv_telemetry__python.so
+[0.336s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/msg/ResizedImage.idl
+[0.336s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/msg/ResizedImage.msg
+[0.337s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//resized_plugins.xml
+[0.337s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/opencv_telemetry/opencv_subscriber
+[0.337s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry//libresized_plugins.so
+[0.337s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/opencv_telemetry/minimal_opencv_ros2_node
+[0.337s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/opencv_telemetry/split_sync_images
+[0.337s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/resized_publisher.hpp
+[0.337s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/resized_subscriber.hpp
+[0.338s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//launch/split_node.launch.py
+[0.338s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/ament_index/resource_index/package_run_dependencies/opencv_telemetry
+[0.338s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/ament_index/resource_index/parent_prefix_path/opencv_telemetry
+[0.338s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/environment/ament_prefix_path.sh
+[0.338s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/environment/ament_prefix_path.dsv
+[0.338s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/environment/path.sh
+[0.338s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/environment/path.dsv
+[0.339s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/local_setup.bash
+[0.339s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/local_setup.sh
+[0.339s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/local_setup.zsh
+[0.339s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/local_setup.dsv
+[0.339s] -- Symlinking: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/package.dsv
+[0.342s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/ament_index/resource_index/packages/opencv_telemetry
+[0.343s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/ament_index/resource_index/opencv_telemetry__pluginlib__plugin/opencv_telemetry
+[0.343s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/rosidl_cmake-extras.cmake
+[0.343s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/ament_cmake_export_dependencies-extras.cmake
+[0.343s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/ament_cmake_export_libraries-extras.cmake
+[0.343s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/ament_cmake_export_targets-extras.cmake
+[0.343s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/ament_cmake_export_include_directories-extras.cmake
+[0.343s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+[0.344s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+[0.344s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/opencv_telemetryConfig.cmake
+[0.344s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/opencv_telemetryConfig-version.cmake
+[0.344s] -- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/package.xml
+[0.344s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/libopencv_telemetry__rosidl_generator_c.so
+[0.344s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/libopencv_telemetry__rosidl_typesupport_introspection_c.so
+[0.345s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/libopencv_telemetry__rosidl_typesupport_c.so
+[0.345s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/libopencv_telemetry__rosidl_typesupport_introspection_cpp.so
+[0.345s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/libopencv_telemetry__rosidl_typesupport_cpp.so
+[0.391s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/opencv_telemetry__rosidl_generator_cExport.cmake
+[0.391s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/opencv_telemetry__rosidl_generator_cExport-noconfig.cmake
+[0.391s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/opencv_telemetry__rosidl_typesupport_introspection_cExport.cmake
+[0.391s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/opencv_telemetry__rosidl_typesupport_introspection_cExport-noconfig.cmake
+[0.391s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/opencv_telemetry__rosidl_typesupport_cExport.cmake
+[0.391s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/opencv_telemetry__rosidl_typesupport_cExport-noconfig.cmake
+[0.391s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/opencv_telemetry__rosidl_generator_cppExport.cmake
+[0.391s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/opencv_telemetry__rosidl_typesupport_introspection_cppExport.cmake
+[0.391s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/opencv_telemetry__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+[0.391s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/opencv_telemetry__rosidl_typesupport_cppExport.cmake
+[0.391s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/opencv_telemetry__rosidl_typesupport_cppExport-noconfig.cmake
+[0.415s] Invoked command in '/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/corelab/Luke_ML_Blimp/ros2_tracks_ws/install/track_ros2:/opt/ros/foxy /home/corelab/.local/bin/cmake --install /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry

@@ -1,0 +1,6 @@
+[0.041s] Invoking command in '/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/image_proc': CMAKE_PREFIX_PATH=/opt/ros/foxy /home/corelab/.local/bin/cmake --build /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/image_proc -- -j16 -l16
+[0.063s] [0mCMake Error: The current CMakeCache.txt directory /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/image_proc/CMakeCache.txt is different than the directory /home/corelab/ros2_stereo/build/image_proc where CMakeCache.txt was created. This may result in binaries being created in the wrong place. If you are not sure, reedit the CMakeCache.txt[0m
+[0.066s] [0mCMake Error: The source directory "/home/corelab/ros2_stereo/src/image_proc" does not exist.
+[0.066s] Specify --help for usage, or press the help button on the CMake GUI.[0m
+[0.067s] make: *** [Makefile:540: cmake_check_build_system] Error 1
+[0.070s] Invoked command in '/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/image_proc' returned '2': CMAKE_PREFIX_PATH=/opt/ros/foxy /home/corelab/.local/bin/cmake --build /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/image_proc -- -j16 -l16

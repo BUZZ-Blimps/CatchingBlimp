@@ -3,7 +3,7 @@
 
 # Relative path conversion top directories.
 set(CMAKE_RELATIVE_PATH_TOP_SOURCE "/opt/ros/foxy/src/gtest_vendor")
-set(CMAKE_RELATIVE_PATH_TOP_BINARY "/home/corelab/ros2_stereo/build/gscam2")
+set(CMAKE_RELATIVE_PATH_TOP_BINARY "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/gscam2")
 
 # Force unix paths in dependencies.
 set(CMAKE_FORCE_UNIX_PATHS 1)

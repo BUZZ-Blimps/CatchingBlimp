@@ -1,2 +1,1 @@
-gscam2::GSCamNode;lib/libgscam_node.so
-gscam2::ImageSubscriberNode;lib/libsubscriber_node.so
+/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/gscam2/ament_cmake_index/share/ament_index/resource_index/rclcpp_components/gscam2

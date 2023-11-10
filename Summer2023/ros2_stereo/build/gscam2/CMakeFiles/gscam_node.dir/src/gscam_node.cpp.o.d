@@ -1,7 +1,7 @@
 CMakeFiles/gscam_node.dir/src/gscam_node.cpp.o: \
- /home/corelab/ros2_stereo/src/gscam2/src/gscam_node.cpp \
+ /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/gscam2/src/gscam_node.cpp \
  /usr/include/stdc-predef.h \
- /home/corelab/ros2_stereo/src/gscam2/include/gscam2/gscam_node.hpp \
+ /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/gscam2/include/gscam2/gscam_node.hpp \
  /opt/ros/foxy/include/rclcpp/rclcpp.hpp /usr/include/c++/9/csignal \
  /usr/include/x86_64-linux-gnu/c++/9/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/9/bits/os_defines.h \
@@ -684,7 +684,7 @@ CMakeFiles/gscam_node.dir/src/gscam_node.cpp.o: \
  /usr/include/gstreamer-1.0/gst/base/gstbasesink.h \
  /usr/include/gstreamer-1.0/gst/base/base-prelude.h \
  /usr/include/gstreamer-1.0/gst/app/app-prelude.h \
- /home/corelab/ros2_stereo/install/ros2_shared/include/ros2_shared/context_macros.hpp \
+ /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared/include/ros2_shared/context_macros.hpp \
  /opt/ros/foxy/include/sensor_msgs/image_encodings.hpp \
  /opt/ros/foxy/include/sensor_msgs/msg/compressed_image.hpp \
  /opt/ros/foxy/include/sensor_msgs/msg/detail/compressed_image__struct.hpp \

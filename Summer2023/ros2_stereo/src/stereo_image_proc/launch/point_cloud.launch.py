@@ -20,6 +20,7 @@ def generate_launch_description():
                 ('BurnCreamBlimp/targets', ['/', LaunchConfiguration('namespace'), '/targets']),
                 ('BurnCreamBlimp/points2', ['/', LaunchConfiguration('namespace'), '/points2']),
                 ('BurnCreamBlimp/pixels', ['/', LaunchConfiguration('namespace'), '/pixels']),
+                ('BurnCreamBlimp/avoidance', ['/', LaunchConfiguration('namespace'), '/avoidance']),
                 ('BurnCreamBlimp/left/image_rect_color', ['/', LaunchConfiguration('namespace'), '/left/image_rect_color']),
                 ('BurnCreamBlimp/left/camera_info', ['/', LaunchConfiguration('namespace'), '/left/camera_info']),
                 ('BurnCreamBlimp/right/camera_info', ['/', LaunchConfiguration('namespace'), '/right/camera_info']),

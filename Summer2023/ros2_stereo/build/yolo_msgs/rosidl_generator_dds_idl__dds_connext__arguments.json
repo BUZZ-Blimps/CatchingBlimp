@@ -1,11 +1,11 @@
 {
   "package_name": "yolo_msgs",
-  "output_dir": "/home/corelab/ros2_stereo/build/yolo_msgs/rosidl_generator_dds_idl/yolo_msgs",
+  "output_dir": "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/yolo_msgs/rosidl_generator_dds_idl/yolo_msgs",
   "template_dir": "/opt/ros/foxy/share/rosidl_generator_dds_idl/resource",
   "idl_tuples": [
-    "/home/corelab/ros2_stereo/build/yolo_msgs/rosidl_adapter/yolo_msgs:msg/BoundingBox.idl",
-    "/home/corelab/ros2_stereo/build/yolo_msgs/rosidl_adapter/yolo_msgs:msg/BoundingBoxes.idl",
-    "/home/corelab/ros2_stereo/build/yolo_msgs/rosidl_adapter/yolo_msgs:msg/ObjectCount.idl"
+    "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/yolo_msgs/rosidl_adapter/yolo_msgs:msg/BoundingBox.idl",
+    "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/yolo_msgs/rosidl_adapter/yolo_msgs:msg/BoundingBoxes.idl",
+    "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/yolo_msgs/rosidl_adapter/yolo_msgs:msg/ObjectCount.idl"
   ],
   "ros_interface_dependencies": [
     "std_msgs:/opt/ros/foxy/share/std_msgs/msg/Bool.idl",
@@ -48,9 +48,9 @@
     "/opt/ros/foxy/share/rosidl_generator_dds_idl/resource/idl.idl.em",
     "/opt/ros/foxy/share/rosidl_generator_dds_idl/resource/msg.idl.em",
     "/opt/ros/foxy/share/rosidl_generator_dds_idl/resource/srv.idl.em",
-    "/home/corelab/ros2_stereo/build/yolo_msgs/rosidl_adapter/yolo_msgs/msg/BoundingBox.idl",
-    "/home/corelab/ros2_stereo/build/yolo_msgs/rosidl_adapter/yolo_msgs/msg/BoundingBoxes.idl",
-    "/home/corelab/ros2_stereo/build/yolo_msgs/rosidl_adapter/yolo_msgs/msg/ObjectCount.idl",
+    "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/yolo_msgs/rosidl_adapter/yolo_msgs/msg/BoundingBox.idl",
+    "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/yolo_msgs/rosidl_adapter/yolo_msgs/msg/BoundingBoxes.idl",
+    "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/yolo_msgs/rosidl_adapter/yolo_msgs/msg/ObjectCount.idl",
     "/opt/ros/foxy/share/std_msgs/msg/Bool.idl",
     "/opt/ros/foxy/share/std_msgs/msg/Byte.idl",
     "/opt/ros/foxy/share/std_msgs/msg/ByteMultiArray.idl",

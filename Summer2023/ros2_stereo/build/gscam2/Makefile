@@ -57,10 +57,10 @@ RM = /home/corelab/.local/lib/python3.8/site-packages/cmake/data/bin/cmake -E rm
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/corelab/ros2_stereo/src/gscam2
+CMAKE_SOURCE_DIR = /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/gscam2
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/corelab/ros2_stereo/build/gscam2
+CMAKE_BINARY_DIR = /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/gscam2
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -142,9 +142,9 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/corelab/ros2_stereo/build/gscam2/CMakeFiles /home/corelab/ros2_stereo/build/gscam2//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/gscam2/CMakeFiles /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/gscam2//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/corelab/ros2_stereo/build/gscam2/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/gscam2/CMakeFiles 0
 .PHONY : all
 
 # The main clean target

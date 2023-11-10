@@ -53,10 +53,10 @@ RM = /home/corelab/.local/lib/python3.8/site-packages/cmake/data/bin/cmake -E rm
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/corelab/ros2_stereo/src/gscam2
+CMAKE_SOURCE_DIR = /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/gscam2
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/corelab/ros2_stereo/build/gscam2
+CMAKE_BINARY_DIR = /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/gscam2
 
 # Utility rule file for uninstall.
 
@@ -78,6 +78,6 @@ CMakeFiles/uninstall.dir/clean:
 .PHONY : CMakeFiles/uninstall.dir/clean
 
 CMakeFiles/uninstall.dir/depend:
-	cd /home/corelab/ros2_stereo/build/gscam2 && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/corelab/ros2_stereo/src/gscam2 /home/corelab/ros2_stereo/src/gscam2 /home/corelab/ros2_stereo/build/gscam2 /home/corelab/ros2_stereo/build/gscam2 /home/corelab/ros2_stereo/build/gscam2/CMakeFiles/uninstall.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/gscam2 && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/gscam2 /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/gscam2 /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/gscam2 /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/gscam2 /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/gscam2/CMakeFiles/uninstall.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/uninstall.dir/depend
 

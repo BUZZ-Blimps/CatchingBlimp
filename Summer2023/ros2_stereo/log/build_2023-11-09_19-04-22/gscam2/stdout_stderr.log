@@ -1,0 +1,50 @@
+[ 14%] Built target gtest
+[ 28%] Built target gtest_main
+[ 57%] Built target gscam_node
+[ 57%] Built target subscriber_node
+[ 71%] Built target smoke_test
+[ 85%] Built target gscam_main
+[100%] Built target ipc_test_main
+-- Install configuration: ""
+-- Execute custom install script
+-- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/environment/library_path.sh
+-- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/environment/library_path.dsv
+-- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/ament_index/resource_index/package_run_dependencies/gscam2
+-- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/ament_index/resource_index/parent_prefix_path/gscam2
+-- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/environment/ament_prefix_path.sh
+-- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/environment/ament_prefix_path.dsv
+-- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/environment/path.sh
+-- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/environment/path.dsv
+-- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/local_setup.bash
+-- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/local_setup.sh
+-- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/local_setup.zsh
+-- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/local_setup.dsv
+-- Symlinking: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/package.dsv
+-- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/ament_index/resource_index/packages/gscam2
+-- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/ament_index/resource_index/rclcpp_components/gscam2
+-- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/cmake/ament_cmake_export_dependencies-extras.cmake
+-- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/cmake/ament_cmake_export_include_directories-extras.cmake
+-- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/cmake/ament_cmake_export_targets-extras.cmake
+-- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/cmake/ament_cmake_export_libraries-extras.cmake
+-- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/cmake/gscam2Config.cmake
+-- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/cmake/gscam2Config-version.cmake
+-- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/package.xml
+-- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/include/gscam2/gscam_node.hpp
+-- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/include/gscam2/subscriber_node.hpp
+-- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/lib/gscam2/gscam_main
+-- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/lib/gscam2/ipc_test_main
+-- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/cfg/elp_left.yaml
+-- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/cfg/my_camera.ini
+-- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/cfg/params.yaml
+-- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/cfg/workaround_params.yaml
+-- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/launch/.vscode/c_cpp_properties.json
+-- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/launch/.vscode/settings.json
+-- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/launch/composition_launch.py
+-- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/launch/container_param_launch.py
+-- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/launch/node_param_launch.py
+-- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/cmake/export_gscam_nodeExport.cmake
+-- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/cmake/export_gscam_nodeExport-noconfig.cmake
+-- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/cmake/export_subscriber_nodeExport.cmake
+-- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/cmake/export_subscriber_nodeExport-noconfig.cmake
+-- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/lib/libgscam_node.so
+-- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/lib/libsubscriber_node.so

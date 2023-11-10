@@ -1,0 +1,43 @@
+[ 36%] Built target image_view_nodes
+[ 47%] Built target disparity_view
+[ 63%] Built target image_view
+[ 68%] Built target stereo_view
+[ 94%] Built target video_recorder
+[ 94%] Built target extract_images
+[100%] Built target image_saver
+-- Install configuration: ""
+-- Execute custom install script
+-- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/include/image_view/disparity_view_node.hpp
+-- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/include/image_view/extract_images_node.hpp
+-- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/include/image_view/image_saver_node.hpp
+-- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/include/image_view/image_view_node.hpp
+-- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/include/image_view/stereo_view_node.hpp
+-- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/include/image_view/video_recorder_node.hpp
+-- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/environment/library_path.sh
+-- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/environment/library_path.dsv
+-- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/lib/libimage_view_nodes.so
+-- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/lib/image_view/disparity_view
+-- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/lib/image_view/image_view
+-- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/lib/image_view/stereo_view
+-- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/lib/image_view/extract_images
+-- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/lib/image_view/image_saver
+-- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/lib/image_view/video_recorder
+-- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/ament_index/resource_index/package_run_dependencies/image_view
+-- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/ament_index/resource_index/parent_prefix_path/image_view
+-- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/environment/ament_prefix_path.sh
+-- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/environment/ament_prefix_path.dsv
+-- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/environment/path.sh
+-- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/environment/path.dsv
+-- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/local_setup.bash
+-- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/local_setup.sh
+-- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/local_setup.zsh
+-- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/local_setup.dsv
+-- Symlinking: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/package.dsv
+-- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/ament_index/resource_index/packages/image_view
+-- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/ament_index/resource_index/rclcpp_components/image_view
+-- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/cmake/ament_cmake_export_dependencies-extras.cmake
+-- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/cmake/ament_cmake_export_include_directories-extras.cmake
+-- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/cmake/ament_cmake_export_libraries-extras.cmake
+-- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/cmake/image_viewConfig.cmake
+-- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/cmake/image_viewConfig-version.cmake
+-- Up-to-date symlink: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/package.xml

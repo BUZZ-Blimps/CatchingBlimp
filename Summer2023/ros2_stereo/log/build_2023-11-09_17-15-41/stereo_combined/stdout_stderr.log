@@ -1,0 +1,106 @@
+[ 20%] [32mBuilding CXX object CMakeFiles/stereo_combined_node.dir/src/stereo_combined_node.cpp.o[0m
+[ 40%] [32mBuilding CXX object CMakeFiles/stereo_combined_node.dir/src/StereoCombined.cpp.o[0m
+In file included from [01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:1[m[K:
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/include/StereoCombined.hpp:99:66:[m[K [01;31m[Kerror: [m[Kredeclaration of ‘[01m[Krclcpp::Subscription<yolo_msgs::msg::BoundingBox_<std::allocator<void> > >::SharedPtr StereoCombined::syncImageSub_[m[K’
+   99 |     rclcpp::Subscription<yolo_msgs::msg::BoundingBox>::SharedPtr [01;31m[KsyncImageSub_[m[K;
+      |                                                                  [01;31m[K^~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/include/StereoCombined.hpp:48:62:[m[K [01;36m[Knote: [m[Kprevious declaration ‘[01m[Krclcpp::Subscription<sensor_msgs::msg::Image_<std::allocator<void> > >::SharedPtr StereoCombined::syncImageSub_[m[K’
+   48 |     rclcpp::Subscription<sensor_msgs::msg::Image>::SharedPtr [01;36m[KsyncImageSub_[m[K;
+      |                                                              [01;36m[K^~~~~~~~~~~~~[m[K
+In file included from [01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/stereo_combined_node.cpp:3[m[K:
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/include/StereoCombined.hpp:99:66:[m[K [01;31m[Kerror: [m[Kredeclaration of ‘[01m[Krclcpp::Subscription<yolo_msgs::msg::BoundingBox_<std::allocator<void> > >::SharedPtr StereoCombined::syncImageSub_[m[K’
+   99 |     rclcpp::Subscription<yolo_msgs::msg::BoundingBox>::SharedPtr [01;31m[KsyncImageSub_[m[K;
+      |                                                                  [01;31m[K^~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/include/StereoCombined.hpp:48:62:[m[K [01;36m[Knote: [m[Kprevious declaration ‘[01m[Krclcpp::Subscription<sensor_msgs::msg::Image_<std::allocator<void> > >::SharedPtr StereoCombined::syncImageSub_[m[K’
+   48 |     rclcpp::Subscription<sensor_msgs::msg::Image>::SharedPtr [01;36m[KsyncImageSub_[m[K;
+      |                                                              [01;36m[K^~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:221:6:[m[K [01;31m[Kerror: [m[Kno declaration matches ‘[01m[Kvoid StereoCombined::boundingBoxCallback(const ConstSharedPtr&)[m[K’
+  221 | void [01;31m[KStereoCombined[m[K::boundingBoxCallback(const yolo_msgs::msg::BoundingBox::ConstSharedPtr &bounding_box_msg) {
+      |      [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:221:6:[m[K [01;36m[Knote: [m[Kno functions named ‘[01m[Kvoid StereoCombined::boundingBoxCallback(const ConstSharedPtr&)[m[K’
+In file included from [01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:1[m[K:
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/include/StereoCombined.hpp:44:7:[m[K [01;36m[Knote: [m[K‘[01m[Kclass StereoCombined[m[K’ defined here
+   44 | class [01;36m[KStereoCombined[m[K : public rclcpp::Node {
+      |       [01;36m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:[m[K In member function ‘[01m[Kvoid StereoCombined::syncImageCallback(sensor_msgs::msg::Image_<std::allocator<void> >::SharedPtr)[m[K’:
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:919:44:[m[K [01;31m[Kerror: [m[Kinvalid initialization of reference of type ‘[01m[Kconst ConstSharedPtr&[m[K’ {aka ‘[01m[Kconst std::shared_ptr<const yolo_msgs::msg::BoundingBox_<std::allocator<void> > >&[m[K’} from expression of type ‘[01m[Kyolo_msgs::msg::BoundingBox[m[K’ {aka ‘[01m[Kyolo_msgs::msg::BoundingBox_<std::allocator<void> >[m[K’}
+  919 |                 if (isInBoundingBoxBalloon([01;31m[Kbbox_msg[m[K,u,v)) {
+      |                                            [01;31m[K^~~~~~~~[m[K
+In file included from [01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:1[m[K:
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/include/StereoCombined.hpp:167:90:[m[K [01;36m[Knote: [m[Kin passing argument 1 of ‘[01m[Kbool isInBoundingBoxBalloon(const ConstSharedPtr&, int, int)[m[K’
+  167 |   inline bool isInBoundingBoxBalloon([01;36m[Kconst yolo_msgs::msg::BoundingBox::ConstSharedPtr & bbox_msg[m[K, int u, int v)
+      |                                      [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:926:42:[m[K [01;31m[Kerror: [m[Kinvalid initialization of reference of type ‘[01m[Kconst ConstSharedPtr&[m[K’ {aka ‘[01m[Kconst std::shared_ptr<const yolo_msgs::msg::BoundingBox_<std::allocator<void> > >&[m[K’} from expression of type ‘[01m[Kyolo_msgs::msg::BoundingBox[m[K’ {aka ‘[01m[Kyolo_msgs::msg::BoundingBox_<std::allocator<void> >[m[K’}
+  926 |                 if (isInBoundingBoxOgoal([01;31m[Kbbox_msg[m[K,u,v)) {
+      |                                          [01;31m[K^~~~~~~~[m[K
+In file included from [01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:1[m[K:
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/include/StereoCombined.hpp:183:88:[m[K [01;36m[Knote: [m[Kin passing argument 1 of ‘[01m[Kbool isInBoundingBoxOgoal(const ConstSharedPtr&, int, int)[m[K’
+  183 |   inline bool isInBoundingBoxOgoal([01;36m[Kconst yolo_msgs::msg::BoundingBox::ConstSharedPtr & bbox_msg[m[K, int u, int v)
+      |                                    [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:933:42:[m[K [01;31m[Kerror: [m[Kinvalid initialization of reference of type ‘[01m[Kconst ConstSharedPtr&[m[K’ {aka ‘[01m[Kconst std::shared_ptr<const yolo_msgs::msg::BoundingBox_<std::allocator<void> > >&[m[K’} from expression of type ‘[01m[Kyolo_msgs::msg::BoundingBox[m[K’ {aka ‘[01m[Kyolo_msgs::msg::BoundingBox_<std::allocator<void> >[m[K’}
+  933 |                 if (isInBoundingBoxYgoal([01;31m[Kbbox_msg[m[K,u,v)) {
+      |                                          [01;31m[K^~~~~~~~[m[K
+In file included from [01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:1[m[K:
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/include/StereoCombined.hpp:199:88:[m[K [01;36m[Knote: [m[Kin passing argument 1 of ‘[01m[Kbool isInBoundingBoxYgoal(const ConstSharedPtr&, int, int)[m[K’
+  199 |   inline bool isInBoundingBoxYgoal([01;36m[Kconst yolo_msgs::msg::BoundingBox::ConstSharedPtr & bbox_msg[m[K, int u, int v)
+      |                                    [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:1065:17:[m[K [01;31m[Kerror: [m[Kbase operand of ‘[01m[K->[m[K’ has non-pointer type ‘[01m[Kyolo_msgs::msg::BoundingBox[m[K’ {aka ‘[01m[Kyolo_msgs::msg::BoundingBox_<std::allocator<void> >[m[K’}
+ 1065 |     if (bbox_msg[01;31m[K->[m[Kx_center_balloon != -1){
+      |                 [01;31m[K^~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:1066:36:[m[K [01;31m[Kerror: [m[Kbase operand of ‘[01m[K->[m[K’ has non-pointer type ‘[01m[Kyolo_msgs::msg::BoundingBox[m[K’ {aka ‘[01m[Kyolo_msgs::msg::BoundingBox_<std::allocator<void> >[m[K’}
+ 1066 |         balloon_pixel[0] = bbox_msg[01;31m[K->[m[Kx_center_balloon - (1280/2);
+      |                                    [01;31m[K^~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:1067:36:[m[K [01;31m[Kerror: [m[Kbase operand of ‘[01m[K->[m[K’ has non-pointer type ‘[01m[Kyolo_msgs::msg::BoundingBox[m[K’ {aka ‘[01m[Kyolo_msgs::msg::BoundingBox_<std::allocator<void> >[m[K’}
+ 1067 |         balloon_pixel[1] = bbox_msg[01;31m[K->[m[Ky_center_balloon - (960/2);
+      |                                    [01;31m[K^~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:1068:33:[m[K [01;31m[Kerror: [m[Kbase operand of ‘[01m[K->[m[K’ has non-pointer type ‘[01m[Kyolo_msgs::msg::BoundingBox[m[K’ {aka ‘[01m[Kyolo_msgs::msg::BoundingBox_<std::allocator<void> >[m[K’}
+ 1068 |     balloon_pixel[2] = (bbox_msg[01;31m[K->[m[Kheight_balloon)*(bbox_msg->width_balloon); //pixel area
+      |                                 [01;31m[K^~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:1068:60:[m[K [01;31m[Kerror: [m[Kbase operand of ‘[01m[K->[m[K’ has non-pointer type ‘[01m[Kyolo_msgs::msg::BoundingBox[m[K’ {aka ‘[01m[Kyolo_msgs::msg::BoundingBox_<std::allocator<void> >[m[K’}
+ 1068 |     balloon_pixel[2] = (bbox_msg->height_balloon)*(bbox_msg[01;31m[K->[m[Kwidth_balloon); //pixel area
+      |                                                            [01;31m[K^~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:1075:17:[m[K [01;31m[Kerror: [m[Kbase operand of ‘[01m[K->[m[K’ has non-pointer type ‘[01m[Kyolo_msgs::msg::BoundingBox[m[K’ {aka ‘[01m[Kyolo_msgs::msg::BoundingBox_<std::allocator<void> >[m[K’}
+ 1075 |     if (bbox_msg[01;31m[K->[m[Kx_center_o_goal != -1){
+      |                 [01;31m[K^~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:1076:35:[m[K [01;31m[Kerror: [m[Kbase operand of ‘[01m[K->[m[K’ has non-pointer type ‘[01m[Kyolo_msgs::msg::BoundingBox[m[K’ {aka ‘[01m[Kyolo_msgs::msg::BoundingBox_<std::allocator<void> >[m[K’}
+ 1076 |         o_goal_pixel[0] = bbox_msg[01;31m[K->[m[Kx_center_o_goal - (1280/2);
+      |                                   [01;31m[K^~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:1077:35:[m[K [01;31m[Kerror: [m[Kbase operand of ‘[01m[K->[m[K’ has non-pointer type ‘[01m[Kyolo_msgs::msg::BoundingBox[m[K’ {aka ‘[01m[Kyolo_msgs::msg::BoundingBox_<std::allocator<void> >[m[K’}
+ 1077 |         o_goal_pixel[1] = bbox_msg[01;31m[K->[m[Ky_center_o_goal - (960/2);
+      |                                   [01;31m[K^~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:1078:32:[m[K [01;31m[Kerror: [m[Kbase operand of ‘[01m[K->[m[K’ has non-pointer type ‘[01m[Kyolo_msgs::msg::BoundingBox[m[K’ {aka ‘[01m[Kyolo_msgs::msg::BoundingBox_<std::allocator<void> >[m[K’}
+ 1078 |     o_goal_pixel[2] = (bbox_msg[01;31m[K->[m[Kheight_o_goal)*(bbox_msg->width_o_goal); //pixel area
+      |                                [01;31m[K^~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:1078:58:[m[K [01;31m[Kerror: [m[Kbase operand of ‘[01m[K->[m[K’ has non-pointer type ‘[01m[Kyolo_msgs::msg::BoundingBox[m[K’ {aka ‘[01m[Kyolo_msgs::msg::BoundingBox_<std::allocator<void> >[m[K’}
+ 1078 |     o_goal_pixel[2] = (bbox_msg->height_o_goal)*(bbox_msg[01;31m[K->[m[Kwidth_o_goal); //pixel area
+      |                                                          [01;31m[K^~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:1085:17:[m[K [01;31m[Kerror: [m[Kbase operand of ‘[01m[K->[m[K’ has non-pointer type ‘[01m[Kyolo_msgs::msg::BoundingBox[m[K’ {aka ‘[01m[Kyolo_msgs::msg::BoundingBox_<std::allocator<void> >[m[K’}
+ 1085 |     if (bbox_msg[01;31m[K->[m[Kx_center_y_goal != -1){
+      |                 [01;31m[K^~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:1086:35:[m[K [01;31m[Kerror: [m[Kbase operand of ‘[01m[K->[m[K’ has non-pointer type ‘[01m[Kyolo_msgs::msg::BoundingBox[m[K’ {aka ‘[01m[Kyolo_msgs::msg::BoundingBox_<std::allocator<void> >[m[K’}
+ 1086 |         y_goal_pixel[0] = bbox_msg[01;31m[K->[m[Kx_center_y_goal - (1280/2);
+      |                                   [01;31m[K^~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:1087:35:[m[K [01;31m[Kerror: [m[Kbase operand of ‘[01m[K->[m[K’ has non-pointer type ‘[01m[Kyolo_msgs::msg::BoundingBox[m[K’ {aka ‘[01m[Kyolo_msgs::msg::BoundingBox_<std::allocator<void> >[m[K’}
+ 1087 |         y_goal_pixel[1] = bbox_msg[01;31m[K->[m[Ky_center_y_goal - (960/2);
+      |                                   [01;31m[K^~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:1088:32:[m[K [01;31m[Kerror: [m[Kbase operand of ‘[01m[K->[m[K’ has non-pointer type ‘[01m[Kyolo_msgs::msg::BoundingBox[m[K’ {aka ‘[01m[Kyolo_msgs::msg::BoundingBox_<std::allocator<void> >[m[K’}
+ 1088 |     y_goal_pixel[2] = (bbox_msg[01;31m[K->[m[Kheight_y_goal)*(bbox_msg->width_y_goal); //pixel area
+      |                                [01;31m[K^~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:1088:58:[m[K [01;31m[Kerror: [m[Kbase operand of ‘[01m[K->[m[K’ has non-pointer type ‘[01m[Kyolo_msgs::msg::BoundingBox[m[K’ {aka ‘[01m[Kyolo_msgs::msg::BoundingBox_<std::allocator<void> >[m[K’}
+ 1088 |     y_goal_pixel[2] = (bbox_msg->height_y_goal)*(bbox_msg[01;31m[K->[m[Kwidth_y_goal); //pixel area
+      |                                                          [01;31m[K^~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:1209:40:[m[K [01;31m[Kerror: [m[K‘[01m[Kl_image_msg[m[K’ was not declared in this scope; did you mean ‘[01m[Kl_image[m[K’?
+ 1209 |         const std::string & encoding = [01;31m[Kl_image_msg[m[K->encoding;
+      |                                        [01;31m[K^~~~~~~~~~~[m[K
+      |                                        [32m[Kl_image[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/include/StereoCombined.hpp:133:13:[m[K [01;35m[Kwarning: [m[K‘[01m[Kvoid add_param_to_map(std::map<std::__cxx11::basic_string<char>, std::pair<double, rcl_interfaces::msg::ParameterDescriptor_<std::allocator<void> > > >&, const string&, const string&, double, double, double, double)[m[K’ defined but not used [[01;35m[K-Wunused-function[m[K]
+  133 | static void [01;35m[Kadd_param_to_map[m[K(
+      |             [01;35m[K^~~~~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/include/StereoCombined.hpp:115:13:[m[K [01;35m[Kwarning: [m[K‘[01m[Kvoid add_param_to_map(std::map<std::__cxx11::basic_string<char>, std::pair<int, rcl_interfaces::msg::ParameterDescriptor_<std::allocator<void> > > >&, const string&, const string&, int, int, int, int)[m[K’ defined but not used [[01;35m[K-Wunused-function[m[K]
+  115 | static void [01;35m[Kadd_param_to_map[m[K(
+      |             [01;35m[K^~~~~~~~~~~~~~~~[m[K
+make[2]: *** [CMakeFiles/stereo_combined_node.dir/build.make:76: CMakeFiles/stereo_combined_node.dir/src/stereo_combined_node.cpp.o] Error 1
+make[2]: *** Waiting for unfinished jobs....
+make[2]: *** [CMakeFiles/stereo_combined_node.dir/build.make:90: CMakeFiles/stereo_combined_node.dir/src/StereoCombined.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/stereo_combined_node.dir/all] Error 2
+make: *** [Makefile:146: all] Error 2

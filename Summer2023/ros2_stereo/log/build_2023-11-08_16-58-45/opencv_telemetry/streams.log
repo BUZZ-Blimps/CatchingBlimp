@@ -1,0 +1,487 @@
+[0.021s] Invoking command in '/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry': CMAKE_PREFIX_PATH=/opt/ros/foxy /home/corelab/.local/bin/cmake /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry -DCMAKE_INSTALL_PREFIX=/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry
+[0.076s] -- The C compiler identification is GNU 9.4.0
+[0.114s] -- The CXX compiler identification is GNU 9.4.0
+[0.122s] -- Detecting C compiler ABI info
+[0.160s] -- Detecting C compiler ABI info - done
+[0.166s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.167s] -- Detecting C compile features
+[0.167s] -- Detecting C compile features - done
+[0.170s] -- Detecting CXX compiler ABI info
+[0.209s] -- Detecting CXX compiler ABI info - done
+[0.217s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.218s] -- Detecting CXX compile features
+[0.218s] -- Detecting CXX compile features - done
+[0.222s] -- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)
+[0.251s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") 
+[0.251s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[0.530s] -- Found cv_bridge: 3.0.7 (/opt/ros/foxy/share/cv_bridge/cmake)
+[0.578s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_connext_c;rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.588s] -- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+[0.599s] -- Found RTI Connext: /opt/rti.com/rti_connext_dds-5.3.1
+[0.599s] [33mCMake Warning (dev) at /opt/ros/foxy/share/connext_cmake_module/cmake/Modules/FindConnext.cmake:163 (list):
+[0.599s]   Policy CMP0121 is not set: The list() command now validates parsing of
+[0.599s]   index arguments.  Run "cmake --help-policy CMP0121" for policy details.
+[0.599s]   Use the cmake_policy command to set the policy and suppress this warning.
+[0.599s]   Invalid list index "libnddsc.so".
+[0.599s] Call Stack (most recent call first):
+[0.599s]   /opt/ros/foxy/share/connext_cmake_module/cmake/Modules/FindConnext.cmake:198 (_count_found_libraries)
+[0.599s]   /opt/ros/foxy/share/rosidl_typesupport_connext_c/cmake/rosidl_typesupport_connext_c-extras.cmake:5 (find_package)
+[0.599s]   /opt/ros/foxy/share/rosidl_typesupport_connext_c/cmake/rosidl_typesupport_connext_cConfig.cmake:41 (include)
+[0.599s]   /opt/ros/foxy/share/rosidl_typesupport_c/cmake/rosidl_typesupport_c-extras.cmake:13 (find_package)
+[0.599s]   /opt/ros/foxy/share/rosidl_typesupport_c/cmake/rosidl_typesupport_cConfig.cmake:41 (include)
+[0.599s]   /opt/ros/foxy/share/rosidl_default_runtime/cmake/rosidl_default_runtime-extras.cmake:12 (find_package)
+[0.599s]   /opt/ros/foxy/share/rosidl_default_runtime/cmake/rosidl_default_runtimeConfig.cmake:41 (include)
+[0.599s]   /opt/ros/foxy/share/builtin_interfaces/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.599s]   /opt/ros/foxy/share/builtin_interfaces/cmake/builtin_interfacesConfig.cmake:41 (include)
+[0.599s]   /opt/ros/foxy/share/sensor_msgs/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.599s]   /opt/ros/foxy/share/sensor_msgs/cmake/sensor_msgsConfig.cmake:41 (include)
+[0.599s]   /opt/ros/foxy/share/cv_bridge/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.599s]   /opt/ros/foxy/share/cv_bridge/cmake/cv_bridgeConfig.cmake:41 (include)
+[0.599s]   CMakeLists.txt:20 (find_package)
+[0.600s] This warning is for project developers.  Use -Wno-dev to suppress it.
+[0.600s] [0m
+[0.600s] [33mCMake Warning (dev) at /opt/ros/foxy/share/connext_cmake_module/cmake/Modules/FindConnext.cmake:163 (list):
+[0.600s]   Policy CMP0121 is not set: The list() command now validates parsing of
+[0.600s]   index arguments.  Run "cmake --help-policy CMP0121" for policy details.
+[0.600s]   Use the cmake_policy command to set the policy and suppress this warning.
+[0.600s]   Invalid list index "libnddscore.so".
+[0.600s] Call Stack (most recent call first):
+[0.600s]   /opt/ros/foxy/share/connext_cmake_module/cmake/Modules/FindConnext.cmake:198 (_count_found_libraries)
+[0.600s]   /opt/ros/foxy/share/rosidl_typesupport_connext_c/cmake/rosidl_typesupport_connext_c-extras.cmake:5 (find_package)
+[0.600s]   /opt/ros/foxy/share/rosidl_typesupport_connext_c/cmake/rosidl_typesupport_connext_cConfig.cmake:41 (include)
+[0.600s]   /opt/ros/foxy/share/rosidl_typesupport_c/cmake/rosidl_typesupport_c-extras.cmake:13 (find_package)
+[0.600s]   /opt/ros/foxy/share/rosidl_typesupport_c/cmake/rosidl_typesupport_cConfig.cmake:41 (include)
+[0.600s]   /opt/ros/foxy/share/rosidl_default_runtime/cmake/rosidl_default_runtime-extras.cmake:12 (find_package)
+[0.600s]   /opt/ros/foxy/share/rosidl_default_runtime/cmake/rosidl_default_runtimeConfig.cmake:41 (include)
+[0.600s]   /opt/ros/foxy/share/builtin_interfaces/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.600s]   /opt/ros/foxy/share/builtin_interfaces/cmake/builtin_interfacesConfig.cmake:41 (include)
+[0.600s]   /opt/ros/foxy/share/sensor_msgs/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.600s]   /opt/ros/foxy/share/sensor_msgs/cmake/sensor_msgsConfig.cmake:41 (include)
+[0.600s]   /opt/ros/foxy/share/cv_bridge/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.600s]   /opt/ros/foxy/share/cv_bridge/cmake/cv_bridgeConfig.cmake:41 (include)
+[0.601s]   CMakeLists.txt:20 (find_package)
+[0.601s] This warning is for project developers.  Use -Wno-dev to suppress it.
+[0.601s] [0m
+[0.601s] [33mCMake Warning (dev) at /opt/ros/foxy/share/connext_cmake_module/cmake/Modules/FindConnext.cmake:163 (list):
+[0.601s]   Policy CMP0121 is not set: The list() command now validates parsing of
+[0.601s]   index arguments.  Run "cmake --help-policy CMP0121" for policy details.
+[0.601s]   Use the cmake_policy command to set the policy and suppress this warning.
+[0.601s]   Invalid list index "libnddscpp.so".
+[0.601s] Call Stack (most recent call first):
+[0.601s]   /opt/ros/foxy/share/connext_cmake_module/cmake/Modules/FindConnext.cmake:198 (_count_found_libraries)
+[0.601s]   /opt/ros/foxy/share/rosidl_typesupport_connext_c/cmake/rosidl_typesupport_connext_c-extras.cmake:5 (find_package)
+[0.601s]   /opt/ros/foxy/share/rosidl_typesupport_connext_c/cmake/rosidl_typesupport_connext_cConfig.cmake:41 (include)
+[0.601s]   /opt/ros/foxy/share/rosidl_typesupport_c/cmake/rosidl_typesupport_c-extras.cmake:13 (find_package)
+[0.601s]   /opt/ros/foxy/share/rosidl_typesupport_c/cmake/rosidl_typesupport_cConfig.cmake:41 (include)
+[0.601s]   /opt/ros/foxy/share/rosidl_default_runtime/cmake/rosidl_default_runtime-extras.cmake:12 (find_package)
+[0.601s]   /opt/ros/foxy/share/rosidl_default_runtime/cmake/rosidl_default_runtimeConfig.cmake:41 (include)
+[0.601s]   /opt/ros/foxy/share/builtin_interfaces/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.601s]   /opt/ros/foxy/share/builtin_interfaces/cmake/builtin_interfacesConfig.cmake:41 (include)
+[0.601s]   /opt/ros/foxy/share/sensor_msgs/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.601s]   /opt/ros/foxy/share/sensor_msgs/cmake/sensor_msgsConfig.cmake:41 (include)
+[0.601s]   /opt/ros/foxy/share/cv_bridge/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.601s]   /opt/ros/foxy/share/cv_bridge/cmake/cv_bridgeConfig.cmake:41 (include)
+[0.601s]   CMakeLists.txt:20 (find_package)
+[0.601s] This warning is for project developers.  Use -Wno-dev to suppress it.
+[0.601s] [0m
+[0.602s] [33mCMake Warning (dev) at /opt/ros/foxy/share/connext_cmake_module/cmake/Modules/FindConnext.cmake:163 (list):
+[0.602s]   Policy CMP0121 is not set: The list() command now validates parsing of
+[0.602s]   index arguments.  Run "cmake --help-policy CMP0121" for policy details.
+[0.602s]   Use the cmake_policy command to set the policy and suppress this warning.
+[0.602s]   Invalid list index "librticonnextmsgcpp.so".
+[0.602s] Call Stack (most recent call first):
+[0.602s]   /opt/ros/foxy/share/connext_cmake_module/cmake/Modules/FindConnext.cmake:198 (_count_found_libraries)
+[0.602s]   /opt/ros/foxy/share/rosidl_typesupport_connext_c/cmake/rosidl_typesupport_connext_c-extras.cmake:5 (find_package)
+[0.602s]   /opt/ros/foxy/share/rosidl_typesupport_connext_c/cmake/rosidl_typesupport_connext_cConfig.cmake:41 (include)
+[0.602s]   /opt/ros/foxy/share/rosidl_typesupport_c/cmake/rosidl_typesupport_c-extras.cmake:13 (find_package)
+[0.602s]   /opt/ros/foxy/share/rosidl_typesupport_c/cmake/rosidl_typesupport_cConfig.cmake:41 (include)
+[0.602s]   /opt/ros/foxy/share/rosidl_default_runtime/cmake/rosidl_default_runtime-extras.cmake:12 (find_package)
+[0.602s]   /opt/ros/foxy/share/rosidl_default_runtime/cmake/rosidl_default_runtimeConfig.cmake:41 (include)
+[0.602s]   /opt/ros/foxy/share/builtin_interfaces/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.602s]   /opt/ros/foxy/share/builtin_interfaces/cmake/builtin_interfacesConfig.cmake:41 (include)
+[0.602s]   /opt/ros/foxy/share/sensor_msgs/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.602s]   /opt/ros/foxy/share/sensor_msgs/cmake/sensor_msgsConfig.cmake:41 (include)
+[0.602s]   /opt/ros/foxy/share/cv_bridge/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.602s]   /opt/ros/foxy/share/cv_bridge/cmake/cv_bridgeConfig.cmake:41 (include)
+[0.602s]   CMakeLists.txt:20 (find_package)
+[0.602s] This warning is for project developers.  Use -Wno-dev to suppress it.
+[0.602s] [0m
+[0.602s] [33mCMake Warning (dev) at /opt/ros/foxy/share/connext_cmake_module/cmake/Modules/FindConnext.cmake:163 (list):
+[0.602s]   Policy CMP0121 is not set: The list() command now validates parsing of
+[0.602s]   index arguments.  Run "cmake --help-policy CMP0121" for policy details.
+[0.602s]   Use the cmake_policy command to set the policy and suppress this warning.
+[0.602s]   Invalid list index "libnddscd.so".
+[0.602s] Call Stack (most recent call first):
+[0.603s]   /opt/ros/foxy/share/connext_cmake_module/cmake/Modules/FindConnext.cmake:199 (_count_found_libraries)
+[0.603s]   /opt/ros/foxy/share/rosidl_typesupport_connext_c/cmake/rosidl_typesupport_connext_c-extras.cmake:5 (find_package)
+[0.603s]   /opt/ros/foxy/share/rosidl_typesupport_connext_c/cmake/rosidl_typesupport_connext_cConfig.cmake:41 (include)
+[0.603s]   /opt/ros/foxy/share/rosidl_typesupport_c/cmake/rosidl_typesupport_c-extras.cmake:13 (find_package)
+[0.603s]   /opt/ros/foxy/share/rosidl_typesupport_c/cmake/rosidl_typesupport_cConfig.cmake:41 (include)
+[0.603s]   /opt/ros/foxy/share/rosidl_default_runtime/cmake/rosidl_default_runtime-extras.cmake:12 (find_package)
+[0.603s]   /opt/ros/foxy/share/rosidl_default_runtime/cmake/rosidl_default_runtimeConfig.cmake:41 (include)
+[0.603s]   /opt/ros/foxy/share/builtin_interfaces/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.603s]   /opt/ros/foxy/share/builtin_interfaces/cmake/builtin_interfacesConfig.cmake:41 (include)
+[0.603s]   /opt/ros/foxy/share/sensor_msgs/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.603s]   /opt/ros/foxy/share/sensor_msgs/cmake/sensor_msgsConfig.cmake:41 (include)
+[0.603s]   /opt/ros/foxy/share/cv_bridge/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.603s]   /opt/ros/foxy/share/cv_bridge/cmake/cv_bridgeConfig.cmake:41 (include)
+[0.603s]   CMakeLists.txt:20 (find_package)
+[0.603s] This warning is for project developers.  Use -Wno-dev to suppress it.
+[0.603s] [0m
+[0.603s] [33mCMake Warning (dev) at /opt/ros/foxy/share/connext_cmake_module/cmake/Modules/FindConnext.cmake:163 (list):
+[0.603s]   Policy CMP0121 is not set: The list() command now validates parsing of
+[0.603s]   index arguments.  Run "cmake --help-policy CMP0121" for policy details.
+[0.603s]   Use the cmake_policy command to set the policy and suppress this warning.
+[0.603s]   Invalid list index "libnddscored.so".
+[0.603s] Call Stack (most recent call first):
+[0.603s]   /opt/ros/foxy/share/connext_cmake_module/cmake/Modules/FindConnext.cmake:199 (_count_found_libraries)
+[0.604s]   /opt/ros/foxy/share/rosidl_typesupport_connext_c/cmake/rosidl_typesupport_connext_c-extras.cmake:5 (find_package)
+[0.604s]   /opt/ros/foxy/share/rosidl_typesupport_connext_c/cmake/rosidl_typesupport_connext_cConfig.cmake:41 (include)
+[0.604s]   /opt/ros/foxy/share/rosidl_typesupport_c/cmake/rosidl_typesupport_c-extras.cmake:13 (find_package)
+[0.604s]   /opt/ros/foxy/share/rosidl_typesupport_c/cmake/rosidl_typesupport_cConfig.cmake:41 (include)
+[0.604s]   /opt/ros/foxy/share/rosidl_default_runtime/cmake/rosidl_default_runtime-extras.cmake:12 (find_package)
+[0.604s]   /opt/ros/foxy/share/rosidl_default_runtime/cmake/rosidl_default_runtimeConfig.cmake:41 (include)
+[0.604s]   /opt/ros/foxy/share/builtin_interfaces/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.604s]   /opt/ros/foxy/share/builtin_interfaces/cmake/builtin_interfacesConfig.cmake:41 (include)
+[0.604s]   /opt/ros/foxy/share/sensor_msgs/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.604s]   /opt/ros/foxy/share/sensor_msgs/cmake/sensor_msgsConfig.cmake:41 (include)
+[0.604s]   /opt/ros/foxy/share/cv_bridge/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.604s]   /opt/ros/foxy/share/cv_bridge/cmake/cv_bridgeConfig.cmake:41 (include)
+[0.604s]   CMakeLists.txt:20 (find_package)
+[0.604s] This warning is for project developers.  Use -Wno-dev to suppress it.
+[0.604s] [0m
+[0.604s] [33mCMake Warning (dev) at /opt/ros/foxy/share/connext_cmake_module/cmake/Modules/FindConnext.cmake:163 (list):
+[0.604s]   Policy CMP0121 is not set: The list() command now validates parsing of
+[0.604s]   index arguments.  Run "cmake --help-policy CMP0121" for policy details.
+[0.604s]   Use the cmake_policy command to set the policy and suppress this warning.
+[0.604s]   Invalid list index "libnddscppd.so".
+[0.604s] Call Stack (most recent call first):
+[0.604s]   /opt/ros/foxy/share/connext_cmake_module/cmake/Modules/FindConnext.cmake:199 (_count_found_libraries)
+[0.604s]   /opt/ros/foxy/share/rosidl_typesupport_connext_c/cmake/rosidl_typesupport_connext_c-extras.cmake:5 (find_package)
+[0.604s]   /opt/ros/foxy/share/rosidl_typesupport_connext_c/cmake/rosidl_typesupport_connext_cConfig.cmake:41 (include)
+[0.604s]   /opt/ros/foxy/share/rosidl_typesupport_c/cmake/rosidl_typesupport_c-extras.cmake:13 (find_package)
+[0.604s]   /opt/ros/foxy/share/rosidl_typesupport_c/cmake/rosidl_typesupport_cConfig.cmake:41 (include)
+[0.604s]   /opt/ros/foxy/share/rosidl_default_runtime/cmake/rosidl_default_runtime-extras.cmake:12 (find_package)
+[0.605s]   /opt/ros/foxy/share/rosidl_default_runtime/cmake/rosidl_default_runtimeConfig.cmake:41 (include)
+[0.605s]   /opt/ros/foxy/share/builtin_interfaces/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.605s]   /opt/ros/foxy/share/builtin_interfaces/cmake/builtin_interfacesConfig.cmake:41 (include)
+[0.605s]   /opt/ros/foxy/share/sensor_msgs/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.605s]   /opt/ros/foxy/share/sensor_msgs/cmake/sensor_msgsConfig.cmake:41 (include)
+[0.605s]   /opt/ros/foxy/share/cv_bridge/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.605s]   /opt/ros/foxy/share/cv_bridge/cmake/cv_bridgeConfig.cmake:41 (include)
+[0.605s]   CMakeLists.txt:20 (find_package)
+[0.605s] This warning is for project developers.  Use -Wno-dev to suppress it.
+[0.605s] [0m
+[0.605s] [33mCMake Warning (dev) at /opt/ros/foxy/share/connext_cmake_module/cmake/Modules/FindConnext.cmake:163 (list):
+[0.605s]   Policy CMP0121 is not set: The list() command now validates parsing of
+[0.605s]   index arguments.  Run "cmake --help-policy CMP0121" for policy details.
+[0.605s]   Use the cmake_policy command to set the policy and suppress this warning.
+[0.605s]   Invalid list index "librticonnextmsgcppd.so".
+[0.605s] Call Stack (most recent call first):
+[0.605s]   /opt/ros/foxy/share/connext_cmake_module/cmake/Modules/FindConnext.cmake:199 (_count_found_libraries)
+[0.605s]   /opt/ros/foxy/share/rosidl_typesupport_connext_c/cmake/rosidl_typesupport_connext_c-extras.cmake:5 (find_package)
+[0.605s]   /opt/ros/foxy/share/rosidl_typesupport_connext_c/cmake/rosidl_typesupport_connext_cConfig.cmake:41 (include)
+[0.605s]   /opt/ros/foxy/share/rosidl_typesupport_c/cmake/rosidl_typesupport_c-extras.cmake:13 (find_package)
+[0.605s]   /opt/ros/foxy/share/rosidl_typesupport_c/cmake/rosidl_typesupport_cConfig.cmake:41 (include)
+[0.605s]   /opt/ros/foxy/share/rosidl_default_runtime/cmake/rosidl_default_runtime-extras.cmake:12 (find_package)
+[0.605s]   /opt/ros/foxy/share/rosidl_default_runtime/cmake/rosidl_default_runtimeConfig.cmake:41 (include)
+[0.605s]   /opt/ros/foxy/share/builtin_interfaces/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.605s]   /opt/ros/foxy/share/builtin_interfaces/cmake/builtin_interfacesConfig.cmake:41 (include)
+[0.605s]   /opt/ros/foxy/share/sensor_msgs/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.606s]   /opt/ros/foxy/share/sensor_msgs/cmake/sensor_msgsConfig.cmake:41 (include)
+[0.606s]   /opt/ros/foxy/share/cv_bridge/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[0.606s]   /opt/ros/foxy/share/cv_bridge/cmake/cv_bridgeConfig.cmake:41 (include)
+[0.606s]   CMakeLists.txt:20 (find_package)
+[0.606s] This warning is for project developers.  Use -Wno-dev to suppress it.
+[0.606s] [0m
+[0.606s] [0mCMake Deprecation Warning at /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/connext_cmake_module/check_abi/CMakeLists.txt:15 (cmake_minimum_required):
+[0.606s]   Compatibility with CMake < 2.8.12 will be removed from a future version of
+[0.606s]   CMake.
+[0.606s] 
+[0.606s]   Update the VERSION argument <min> value or use a ...<max> suffix to tell
+[0.606s]   CMake that the project does not need compatibility with older versions.
+[0.606s] 
+[0.606s] [0m
+[1.261s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "1.1.1f")  
+[1.289s] -- Found FastRTPS: /opt/ros/foxy/include  
+[1.356s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_connext_cpp;rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.519s] -- Found image_transport: 2.4.0 (/opt/ros/foxy/share/image_transport/cmake)
+[1.581s] -- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+[1.582s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[1.582s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[1.619s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+[1.619s] -- Looking for pthread_create in pthreads
+[1.645s] -- Looking for pthread_create in pthreads - not found
+[1.645s] -- Looking for pthread_create in pthread
+[1.680s] -- Looking for pthread_create in pthread - found
+[1.681s] -- Found Threads: TRUE  
+[1.825s] -- Found OpenCV: /usr/local (found version "4.7.0") 
+[1.828s] -- Found rosidl_default_generators: 1.0.1 (/opt/ros/foxy/share/rosidl_default_generators/cmake)
+[1.840s] -- Found camera_info_manager: 2.4.0 (/opt/ros/foxy/share/camera_info_manager/cmake)
+[1.855s] -- Setting yaml-cpp_DIR to: '/opt/ros/foxy/share/yaml_cpp_vendor/cmake/../../../opt/yaml_cpp_vendor/lib/cmake/yaml-cpp'
+[1.901s] -- Found PythonInterp: /usr/bin/python3 (found version "3.8.10") 
+[2.157s] -- Found ament_cmake_ros: 0.9.2 (/opt/ros/foxy/share/ament_cmake_ros/cmake)
+[2.431s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_connext_c;rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[2.617s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_connext_cpp;rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[2.666s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3.5") 
+[2.667s] -- Found python_cmake_module: 0.8.1 (/opt/ros/foxy/share/python_cmake_module/cmake)
+[2.717s] -- Found PythonLibs: /usr/lib/x86_64-linux-gnu/libpython3.8.so (found suitable version "3.8.10", minimum required is "3.5") 
+[2.717s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[2.717s] -- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.8
+[2.717s] -- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.8.so
+[2.766s] -- Found PythonExtra: .so  
+[3.244s] -- Found ament_lint_auto: 0.9.8 (/opt/ros/foxy/share/ament_lint_auto/cmake)
+[3.288s] -- Added test 'copyright' to check source files copyright and LICENSE
+[3.294s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[3.297s] -- Configured cppcheck include dirs: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry/include
+[3.297s] -- Configured cppcheck exclude dirs and/or files: 
+[3.308s] -- Added test 'cpplint' to check C / C++ code against the Google style
+[3.308s] -- Configured cpplint exclude dirs and/or files: 
+[3.310s] -- Added test 'flake8' to check Python code syntax and style conventions
+[3.314s] -- Added test 'lint_cmake' to check CMake code style
+[3.317s] -- Added test 'pep257' to check Python code against some of the style conventions in PEP 257
+[3.327s] -- Added test 'uncrustify' to check C / C++ code style
+[3.328s] -- Configured uncrustify additional arguments: 
+[3.330s] -- Added test 'xmllint' to check XML markup files
+[3.337s] -- Configuring done
+[3.605s] -- Generating done
+[3.615s] -- Build files have been written to: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry
+[3.648s] Invoked command in '/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /home/corelab/.local/bin/cmake /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry -DCMAKE_INSTALL_PREFIX=/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry
+[3.653s] Invoking command in '/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry': CMAKE_PREFIX_PATH=/opt/ros/foxy /home/corelab/.local/bin/cmake --build /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry -- -j16 -l16
+[3.737s] [  1%] [34m[1mGenerating C code for ROS interfaces[0m
+[3.754s] [  3%] [34m[1mGenerating C++ code for ROS interfaces[0m
+[3.760s] [  5%] [32mBuilding CXX object CMakeFiles/split_sync_images.dir/src/split_sync_images.cpp.o[0m
+[3.786s] [  6%] [32mBuilding CXX object CMakeFiles/opencv_subscriber.dir/src/opencv_subscriber.cpp.o[0m
+[3.790s] [  8%] [34m[1mGenerating DDS interfaces[0m
+[3.826s] [ 10%] [32mBuilding CXX object CMakeFiles/minimal_opencv_ros2_node.dir/src/minimal_opencv_ros2_node.cpp.o[0m
+[4.033s] [ 10%] Built target opencv_telemetry__dds_connext_idl
+[4.064s] [ 10%] Built target opencv_telemetry__cpp
+[4.068s] [ 11%] [32mBuilding C object CMakeFiles/opencv_telemetry__rosidl_generator_c.dir/rosidl_generator_c/opencv_telemetry/msg/detail/resized_image__functions.c.o[0m
+[4.072s] [ 15%] [34m[1mGenerating C++ type support for eProsima Fast-RTPS[0m
+[4.072s] [ 15%] [34m[1mGenerating C++ type support dispatch for ROS interfaces[0m
+[4.094s] [ 16%] [34m[1mGenerating C++ type support for RTI Connext (using '/opt/rti.com/rti_connext_dds-5.3.1/bin/rtiddsgen_server')[0m
+[4.121s] [ 18%] [34m[1mGenerating C++ introspection for ROS interfaces[0m
+[4.146s] [ 20%] [32m[1mLinking C shared library libopencv_telemetry__rosidl_generator_c.so[0m
+[4.178s] [ 20%] Built target opencv_telemetry__rosidl_generator_c
+[4.185s] [ 22%] [34m[1mGenerating C type support dispatch for ROS interfaces[0m
+[4.222s] [ 23%] [34m[1mGenerating C introspection for ROS interfaces[0m
+[4.443s] [ 25%] [32mBuilding CXX object CMakeFiles/opencv_telemetry__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/opencv_telemetry/msg/resized_image__type_support.cpp.o[0m
+[4.499s] [ 27%] [32mBuilding CXX object CMakeFiles/opencv_telemetry__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/opencv_telemetry/msg/detail/dds_fastrtps/resized_image__type_support.cpp.o[0m
+[4.553s] [ 28%] [32mBuilding CXX object CMakeFiles/opencv_telemetry__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/opencv_telemetry/msg/detail/resized_image__type_support.cpp.o[0m
+[4.764s] [ 30%] [32mBuilding CXX object CMakeFiles/opencv_telemetry__rosidl_typesupport_c.dir/rosidl_typesupport_c/opencv_telemetry/msg/resized_image__type_support.cpp.o[0m
+[4.796s] [ 32%] [32m[1mLinking CXX shared library libopencv_telemetry__rosidl_typesupport_cpp.so[0m
+[4.805s] [ 33%] [32mBuilding C object CMakeFiles/opencv_telemetry__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/opencv_telemetry/msg/detail/resized_image__type_support.c.o[0m
+[4.850s] [ 35%] [32m[1mLinking CXX shared library libopencv_telemetry__rosidl_typesupport_c.so[0m
+[4.899s] [ 37%] [32m[1mLinking C shared library libopencv_telemetry__rosidl_typesupport_introspection_c.so[0m
+[4.907s] [ 37%] Built target opencv_telemetry__rosidl_typesupport_cpp
+[4.938s] [ 37%] Built target opencv_telemetry__rosidl_typesupport_c
+[4.971s] [ 37%] Built target opencv_telemetry__rosidl_typesupport_introspection_c
+[5.040s] [ 38%] [32m[1mLinking CXX shared library libopencv_telemetry__rosidl_typesupport_introspection_cpp.so[0m
+[5.121s] [ 38%] Built target opencv_telemetry__rosidl_typesupport_introspection_cpp
+[5.170s] [ 40%] [32m[1mLinking CXX shared library libopencv_telemetry__rosidl_typesupport_fastrtps_cpp.so[0m
+[5.336s] [ 40%] Built target opencv_telemetry__rosidl_typesupport_fastrtps_cpp
+[5.357s] [ 42%] [34m[1mGenerating C type support for eProsima Fast-RTPS[0m
+[5.507s] INFO com.rti.ndds.nddsgen.Main Running rtiddsgen version 2.5.2, please wait ...
+[5.507s] INFO com.rti.ndds.nddsgen.Main Done
+[5.616s] [ 44%] [32mBuilding CXX object CMakeFiles/opencv_telemetry__rosidl_typesupport_connext_cpp.dir/rosidl_typesupport_connext_cpp/opencv_telemetry/msg/dds_connext/resized_image__type_support.cpp.o[0m
+[5.621s] [ 45%] [32mBuilding CXX object CMakeFiles/opencv_telemetry__rosidl_typesupport_connext_cpp.dir/rosidl_typesupport_connext_cpp/opencv_telemetry/msg/dds_connext/ResizedImage_.cxx.o[0m
+[5.630s] [ 47%] [32mBuilding CXX object CMakeFiles/opencv_telemetry__rosidl_typesupport_connext_cpp.dir/rosidl_typesupport_connext_cpp/opencv_telemetry/msg/dds_connext/ResizedImage_Support.cxx.o[0m
+[5.635s] [ 49%] [32mBuilding CXX object CMakeFiles/opencv_telemetry__rosidl_typesupport_connext_cpp.dir/rosidl_typesupport_connext_cpp/opencv_telemetry/msg/dds_connext/ResizedImage_Plugin.cxx.o[0m
+[5.745s] [ 50%] [32mBuilding CXX object CMakeFiles/opencv_telemetry__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/opencv_telemetry/msg/detail/resized_image__type_support_c.cpp.o[0m
+[6.394s] [ 52%] [32m[1mLinking CXX shared library libopencv_telemetry__rosidl_typesupport_fastrtps_c.so[0m
+[6.519s] [ 54%] [32m[1mLinking CXX shared library libopencv_telemetry__rosidl_typesupport_connext_cpp.so[0m
+[6.630s] [ 54%] Built target opencv_telemetry__rosidl_typesupport_fastrtps_c
+[7.202s] [ 55%] Built target opencv_telemetry__rosidl_typesupport_connext_cpp
+[7.240s] [ 57%] [34m[1mGenerating C type support for RTI Connext[0m
+[7.703s] [ 59%] [32mBuilding CXX object CMakeFiles/opencv_telemetry__rosidl_typesupport_connext_c.dir/rosidl_typesupport_connext_cpp/opencv_telemetry/msg/dds_connext/ResizedImage_Support.cxx.o[0m
+[7.705s] [ 61%] [32mBuilding CXX object CMakeFiles/opencv_telemetry__rosidl_typesupport_connext_c.dir/rosidl_typesupport_connext_cpp/opencv_telemetry/msg/dds_connext/ResizedImage_Plugin.cxx.o[0m
+[7.706s] [ 62%] [32mBuilding CXX object CMakeFiles/opencv_telemetry__rosidl_typesupport_connext_c.dir/rosidl_typesupport_connext_c/opencv_telemetry/msg/dds_connext/resized_image__type_support_c.cpp.o[0m
+[7.710s] [ 64%] [32mBuilding CXX object CMakeFiles/opencv_telemetry__rosidl_typesupport_connext_c.dir/rosidl_typesupport_connext_cpp/opencv_telemetry/msg/dds_connext/ResizedImage_.cxx.o[0m
+[7.841s] [ 66%] [32m[1mLinking CXX executable opencv_subscriber[0m
+[8.034s] [ 67%] [32m[1mLinking CXX executable minimal_opencv_ros2_node[0m
+[8.463s] [ 69%] [32m[1mLinking CXX shared library libopencv_telemetry__rosidl_typesupport_connext_c.so[0m
+[8.710s] /usr/bin/ld: warning: libopencv_imgproc.so.4.2, needed by /opt/ros/foxy/lib/libcv_bridge.so, may conflict with libopencv_imgproc.so.407
+[8.710s] /usr/bin/ld: warning: libopencv_core.so.4.2, needed by /opt/ros/foxy/lib/libcv_bridge.so, may conflict with libopencv_core.so.407
+[8.715s] [ 69%] Built target opencv_subscriber
+[8.969s] [ 72%] Built target opencv_telemetry__rosidl_typesupport_connext_c
+[8.980s] [ 72%] Built target opencv_telemetry
+[9.017s] /usr/bin/ld: warning: libopencv_core.so.4.2, needed by /opt/ros/foxy/lib/libcv_bridge.so, may conflict with libopencv_core.so.407
+[9.049s] [ 74%] [34m[1mGenerating Python code for ROS interfaces[0m
+[9.054s] [ 74%] Built target minimal_opencv_ros2_node
+[9.073s] [ 76%] [32mBuilding CXX object CMakeFiles/resized_plugins.dir/src/manifest.cpp.o[0m
+[9.111s] [ 79%] [32mBuilding CXX object CMakeFiles/resized_plugins.dir/src/resized_publisher.cpp.o[0m
+[9.111s] [ 79%] [32mBuilding CXX object CMakeFiles/resized_plugins.dir/src/resized_subscriber.cpp.o[0m
+[9.936s] [ 79%] Built target opencv_telemetry__py
+[10.021s] [ 81%] [32mBuilding C object CMakeFiles/opencv_telemetry__python.dir/rosidl_generator_py/opencv_telemetry/msg/_resized_image_s.c.o[0m
+[10.145s] [ 83%] [32m[1mLinking C shared library rosidl_generator_py/opencv_telemetry/libopencv_telemetry__python.so[0m
+[10.199s] [ 83%] Built target opencv_telemetry__python
+[10.208s] [ 84%] [32mBuilding C object CMakeFiles/opencv_telemetry__rosidl_typesupport_connext_c__pyext.dir/rosidl_generator_py/opencv_telemetry/_opencv_telemetry_s.ep.rosidl_typesupport_connext_c.c.o[0m
+[10.213s] [ 88%] [32mBuilding C object CMakeFiles/opencv_telemetry__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/opencv_telemetry/_opencv_telemetry_s.ep.rosidl_typesupport_c.c.o[0m
+[10.214s] [ 88%] [32mBuilding C object CMakeFiles/opencv_telemetry__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py/opencv_telemetry/_opencv_telemetry_s.ep.rosidl_typesupport_fastrtps_c.c.o[0m
+[10.216s] [ 89%] [32mBuilding C object CMakeFiles/opencv_telemetry__rosidl_typesupport_introspection_c__pyext.dir/rosidl_generator_py/opencv_telemetry/_opencv_telemetry_s.ep.rosidl_typesupport_introspection_c.c.o[0m
+[10.297s] [ 91%] [32m[1mLinking C shared library rosidl_generator_py/opencv_telemetry/opencv_telemetry_s__rosidl_typesupport_introspection_c.cpython-38-x86_64-linux-gnu.so[0m
+[10.299s] [ 93%] [32m[1mLinking C shared library rosidl_generator_py/opencv_telemetry/opencv_telemetry_s__rosidl_typesupport_connext_c.cpython-38-x86_64-linux-gnu.so[0m
+[10.299s] [ 94%] [32m[1mLinking C shared library rosidl_generator_py/opencv_telemetry/opencv_telemetry_s__rosidl_typesupport_c.cpython-38-x86_64-linux-gnu.so[0m
+[10.302s] [ 96%] [32m[1mLinking CXX shared library rosidl_generator_py/opencv_telemetry/opencv_telemetry_s__rosidl_typesupport_fastrtps_c.cpython-38-x86_64-linux-gnu.so[0m
+[10.329s] [ 96%] Built target opencv_telemetry__rosidl_typesupport_introspection_c__pyext
+[10.332s] [ 96%] Built target opencv_telemetry__rosidl_typesupport_c__pyext
+[10.394s] [ 96%] Built target opencv_telemetry__rosidl_typesupport_fastrtps_c__pyext
+[10.447s] [ 96%] Built target opencv_telemetry__rosidl_typesupport_connext_c__pyext
+[13.177s] [ 98%] [32m[1mLinking CXX executable split_sync_images[0m
+[13.741s] /usr/bin/ld: warning: libopencv_imgcodecs.so.4.2, needed by /opt/ros/foxy/lib/libcv_bridge.so, may conflict with libopencv_imgcodecs.so.407
+[13.741s] /usr/bin/ld: warning: libopencv_core.so.4.2, needed by /opt/ros/foxy/lib/libcv_bridge.so, may conflict with libopencv_core.so.407
+[13.743s] [ 98%] Built target split_sync_images
+[13.923s] [100%] [32m[1mLinking CXX shared library libresized_plugins.so[0m
+[14.327s] [100%] Built target resized_plugins
+[14.335s] Invoked command in '/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /home/corelab/.local/bin/cmake --build /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry -- -j16 -l16
+[14.413s] Invoking command in '/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry': CMAKE_PREFIX_PATH=/opt/ros/foxy /home/corelab/.local/bin/cmake --install /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry
+[14.445s] -- Install configuration: ""
+[14.445s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/ament_index/resource_index/rosidl_interfaces/opencv_telemetry
+[14.445s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry
+[14.445s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg
+[14.445s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/resized_image.h
+[14.445s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/detail
+[14.445s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/detail/resized_image__functions.c
+[14.445s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/detail/resized_image__struct.h
+[14.445s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/detail/resized_image__type_support.h
+[14.445s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/detail/resized_image__functions.h
+[14.445s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/rosidl_generator_c__visibility_control.h
+[14.445s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/environment/library_path.sh
+[14.445s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/environment/library_path.dsv
+[14.445s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/libopencv_telemetry__rosidl_generator_c.so
+[14.446s] -- Set runtime path of "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/libopencv_telemetry__rosidl_generator_c.so" to ""
+[14.446s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry
+[14.446s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg
+[14.446s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/rosidl_typesupport_connext_c__visibility_control.h
+[14.446s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/resized_image__rosidl_typesupport_connext_c.h
+[14.446s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/dds_connext
+[14.446s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/libopencv_telemetry__rosidl_typesupport_connext_c.so
+[14.446s] -- Set runtime path of "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/libopencv_telemetry__rosidl_typesupport_connext_c.so" to ""
+[14.446s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/msg/dds_connext
+[14.446s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/msg/dds_connext/ResizedImage_.idl
+[14.446s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry
+[14.446s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg
+[14.446s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/rosidl_typesupport_connext_cpp__visibility_control.h
+[14.447s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/resized_image__rosidl_typesupport_connext_cpp.hpp
+[14.447s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/dds_connext
+[14.447s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/dds_connext/ResizedImage_Support.h
+[14.447s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/dds_connext/ResizedImage_Plugin.cxx
+[14.447s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/dds_connext/ResizedImage_.h
+[14.447s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/dds_connext/ResizedImage_.cxx
+[14.447s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/dds_connext/ResizedImage_Support.cxx
+[14.447s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/dds_connext/ResizedImage_Plugin.h
+[14.447s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/libopencv_telemetry__rosidl_typesupport_connext_cpp.so
+[14.447s] -- Set runtime path of "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/libopencv_telemetry__rosidl_typesupport_connext_cpp.so" to ""
+[14.447s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry
+[14.447s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg
+[14.447s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/detail
+[14.447s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/detail/resized_image__rosidl_typesupport_fastrtps_c.h
+[14.447s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[14.447s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/libopencv_telemetry__rosidl_typesupport_fastrtps_c.so
+[14.448s] -- Set runtime path of "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/libopencv_telemetry__rosidl_typesupport_fastrtps_c.so" to ""
+[14.448s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry
+[14.448s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg
+[14.448s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[14.448s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/detail
+[14.448s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/detail/resized_image__rosidl_typesupport_fastrtps_cpp.hpp
+[14.448s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/detail/dds_fastrtps
+[14.448s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/libopencv_telemetry__rosidl_typesupport_fastrtps_cpp.so
+[14.448s] -- Set runtime path of "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/libopencv_telemetry__rosidl_typesupport_fastrtps_cpp.so" to ""
+[14.448s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry
+[14.448s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg
+[14.448s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/detail
+[14.448s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/detail/resized_image__rosidl_typesupport_introspection_c.h
+[14.448s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/detail/resized_image__type_support.c
+[14.448s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[14.448s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/libopencv_telemetry__rosidl_typesupport_introspection_c.so
+[14.448s] -- Set runtime path of "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/libopencv_telemetry__rosidl_typesupport_introspection_c.so" to ""
+[14.449s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/libopencv_telemetry__rosidl_typesupport_c.so
+[14.449s] -- Set runtime path of "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/libopencv_telemetry__rosidl_typesupport_c.so" to ""
+[14.449s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry
+[14.449s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg
+[14.449s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/rosidl_generator_cpp__visibility_control.hpp
+[14.449s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/resized_image.hpp
+[14.449s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/detail
+[14.449s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/detail/resized_image__struct.hpp
+[14.449s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/detail/resized_image__builder.hpp
+[14.449s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/detail/resized_image__traits.hpp
+[14.449s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/detail/resized_image__type_support.hpp
+[14.449s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry
+[14.449s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg
+[14.449s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/detail
+[14.449s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/detail/resized_image__type_support.cpp
+[14.449s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/detail/resized_image__rosidl_typesupport_introspection_cpp.hpp
+[14.449s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/libopencv_telemetry__rosidl_typesupport_introspection_cpp.so
+[14.450s] -- Set runtime path of "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/libopencv_telemetry__rosidl_typesupport_introspection_cpp.so" to ""
+[14.450s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/libopencv_telemetry__rosidl_typesupport_cpp.so
+[14.450s] -- Set runtime path of "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/libopencv_telemetry__rosidl_typesupport_cpp.so" to ""
+[14.450s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/environment/pythonpath.sh
+[14.450s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/environment/pythonpath.dsv
+[14.450s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/python3.8/site-packages/opencv_telemetry/__init__.py
+[14.481s] Compiling '/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/python3.8/site-packages/opencv_telemetry/__init__.py'...
+[14.486s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/python3.8/site-packages/opencv_telemetry/msg
+[14.486s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/python3.8/site-packages/opencv_telemetry/msg/__init__.py
+[14.486s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/python3.8/site-packages/opencv_telemetry/msg/_resized_image_s.c
+[14.487s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/python3.8/site-packages/opencv_telemetry/msg/_resized_image.py
+[14.487s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/python3.8/site-packages/opencv_telemetry/opencv_telemetry_s__rosidl_typesupport_connext_c.cpython-38-x86_64-linux-gnu.so
+[14.487s] -- Set runtime path of "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/python3.8/site-packages/opencv_telemetry/opencv_telemetry_s__rosidl_typesupport_connext_c.cpython-38-x86_64-linux-gnu.so" to ""
+[14.487s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/python3.8/site-packages/opencv_telemetry/opencv_telemetry_s__rosidl_typesupport_fastrtps_c.cpython-38-x86_64-linux-gnu.so
+[14.487s] -- Set runtime path of "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/python3.8/site-packages/opencv_telemetry/opencv_telemetry_s__rosidl_typesupport_fastrtps_c.cpython-38-x86_64-linux-gnu.so" to ""
+[14.487s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/python3.8/site-packages/opencv_telemetry/opencv_telemetry_s__rosidl_typesupport_introspection_c.cpython-38-x86_64-linux-gnu.so
+[14.487s] -- Set runtime path of "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/python3.8/site-packages/opencv_telemetry/opencv_telemetry_s__rosidl_typesupport_introspection_c.cpython-38-x86_64-linux-gnu.so" to ""
+[14.487s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/python3.8/site-packages/opencv_telemetry/opencv_telemetry_s__rosidl_typesupport_c.cpython-38-x86_64-linux-gnu.so
+[14.487s] -- Set runtime path of "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/python3.8/site-packages/opencv_telemetry/opencv_telemetry_s__rosidl_typesupport_c.cpython-38-x86_64-linux-gnu.so" to ""
+[14.487s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/libopencv_telemetry__python.so
+[14.487s] -- Set runtime path of "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/libopencv_telemetry__python.so" to ""
+[14.487s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/msg/ResizedImage.idl
+[14.488s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/msg/ResizedImage.msg
+[14.488s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/resized_plugins.xml
+[14.488s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/opencv_telemetry/opencv_subscriber
+[14.488s] -- Set runtime path of "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/opencv_telemetry/opencv_subscriber" to ""
+[14.488s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/libresized_plugins.so
+[14.490s] -- Set runtime path of "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/libresized_plugins.so" to ""
+[14.490s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/opencv_telemetry/minimal_opencv_ros2_node
+[14.491s] -- Set runtime path of "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/opencv_telemetry/minimal_opencv_ros2_node" to ""
+[14.491s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/opencv_telemetry/split_sync_images
+[14.492s] -- Set runtime path of "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/opencv_telemetry/split_sync_images" to ""
+[14.492s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include
+[14.492s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry
+[14.492s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/resized_subscriber.hpp
+[14.492s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/resized_publisher.hpp
+[14.492s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//launch
+[14.493s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//launch/split_node.launch.py
+[14.493s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/ament_index/resource_index/package_run_dependencies/opencv_telemetry
+[14.493s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/ament_index/resource_index/parent_prefix_path/opencv_telemetry
+[14.493s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/environment/ament_prefix_path.sh
+[14.493s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/environment/ament_prefix_path.dsv
+[14.493s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/environment/path.sh
+[14.493s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/environment/path.dsv
+[14.493s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/local_setup.bash
+[14.493s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/local_setup.sh
+[14.493s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/local_setup.zsh
+[14.493s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/local_setup.dsv
+[14.493s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/package.dsv
+[14.493s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/ament_index/resource_index/packages/opencv_telemetry
+[14.493s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/ament_index/resource_index/opencv_telemetry__pluginlib__plugin/opencv_telemetry
+[14.493s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/opencv_telemetry__rosidl_generator_cExport.cmake
+[14.493s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/opencv_telemetry__rosidl_generator_cExport-noconfig.cmake
+[14.494s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/opencv_telemetry__rosidl_typesupport_introspection_cExport.cmake
+[14.494s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/opencv_telemetry__rosidl_typesupport_introspection_cExport-noconfig.cmake
+[14.494s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/opencv_telemetry__rosidl_typesupport_cExport.cmake
+[14.494s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/opencv_telemetry__rosidl_typesupport_cExport-noconfig.cmake
+[14.494s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/opencv_telemetry__rosidl_generator_cppExport.cmake
+[14.494s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/opencv_telemetry__rosidl_typesupport_introspection_cppExport.cmake
+[14.494s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/opencv_telemetry__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+[14.494s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/opencv_telemetry__rosidl_typesupport_cppExport.cmake
+[14.494s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/opencv_telemetry__rosidl_typesupport_cppExport-noconfig.cmake
+[14.494s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/rosidl_cmake-extras.cmake
+[14.494s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/ament_cmake_export_dependencies-extras.cmake
+[14.494s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/ament_cmake_export_libraries-extras.cmake
+[14.495s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/ament_cmake_export_targets-extras.cmake
+[14.495s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/ament_cmake_export_include_directories-extras.cmake
+[14.495s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+[14.495s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+[14.495s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/opencv_telemetryConfig.cmake
+[14.495s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/opencv_telemetryConfig-version.cmake
+[14.495s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/package.xml
+[14.505s] Invoked command in '/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /home/corelab/.local/bin/cmake --install /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry

@@ -8,12 +8,12 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/corelab/ros2_stereo/src/gscam2/src/gscam_main.cpp" "CMakeFiles/gscam_main.dir/src/gscam_main.cpp.o" "gcc" "CMakeFiles/gscam_main.dir/src/gscam_main.cpp.o.d"
+  "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/gscam2/src/gscam_main.cpp" "CMakeFiles/gscam_main.dir/src/gscam_main.cpp.o" "gcc" "CMakeFiles/gscam_main.dir/src/gscam_main.cpp.o.d"
   )
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/corelab/ros2_stereo/build/gscam2/CMakeFiles/gscam_node.dir/DependInfo.cmake"
+  "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/gscam2/CMakeFiles/gscam_node.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

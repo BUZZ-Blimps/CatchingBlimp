@@ -1,0 +1,7 @@
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:[m[K In member function ‘[01m[Kvoid StereoCombined::boundingBoxCallback(yolo_msgs::msg::BoundingBox_<std::allocator<void> >::SharedPtr)[m[K’:
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:172:87:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kbounding_box_msg[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+  172 | void StereoCombined::boundingBoxCallback([01;35m[Kconst yolo_msgs::msg::BoundingBox::SharedPtr bounding_box_msg[m[K) {
+      |                                          [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~[m[K
+/usr/bin/ld: warning: libopencv_imgproc.so.4.2, needed by /opt/ros/foxy/lib/libcv_bridge.so, may conflict with libopencv_imgproc.so.407
+/usr/bin/ld: warning: libopencv_core.so.4.2, needed by /opt/ros/foxy/lib/libcv_bridge.so, may conflict with libopencv_core.so.407
+/usr/bin/ld: warning: libopencv_calib3d.so.4.2, needed by /opt/ros/foxy/lib/libimage_geometry.so, may conflict with libopencv_calib3d.so.407

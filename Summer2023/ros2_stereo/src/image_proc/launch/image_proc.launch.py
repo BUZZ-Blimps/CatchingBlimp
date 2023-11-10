@@ -40,8 +40,6 @@ from launch_ros.actions import LoadComposableNodes
 from launch_ros.descriptions import ComposableNode
 
 # Add name space for each node
-
-
 def generate_launch_description():
     DeclareLaunchArgument(
             'namespace',

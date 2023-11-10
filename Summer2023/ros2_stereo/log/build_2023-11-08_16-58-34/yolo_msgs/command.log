@@ -1,0 +1,2 @@
+Invoking command in '/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/yolo_msgs': CMAKE_PREFIX_PATH=/opt/ros/foxy /home/corelab/.local/bin/cmake --build /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/yolo_msgs -- -j16 -l16
+Invoked command in '/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/yolo_msgs' returned '2': CMAKE_PREFIX_PATH=/opt/ros/foxy /home/corelab/.local/bin/cmake --build /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/yolo_msgs -- -j16 -l16

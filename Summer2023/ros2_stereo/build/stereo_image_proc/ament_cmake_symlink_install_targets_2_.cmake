@@ -1,0 +1,1 @@
+ament_cmake_symlink_install_targets("TARGET_FILES" "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_image_proc/libstereo_image_proc.so" "TARGETS" "stereo_image_proc" "ARCHIVE_DESTINATION" "lib" "LIBRARY_DESTINATION" "lib" "RUNTIME_DESTINATION" "bin")

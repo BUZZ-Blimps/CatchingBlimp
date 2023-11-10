@@ -1,3 +1,1 @@
-source;share/stereo_image_proc/environment/ament_prefix_path.sh
-source;share/stereo_image_proc/environment/library_path.sh
-source;share/stereo_image_proc/environment/path.sh
+/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_image_proc/ament_cmake_environment_hooks/local_setup.dsv

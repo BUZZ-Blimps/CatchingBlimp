@@ -1,0 +1,23 @@
+<launch>
+    <!-- Arguments -->
+    <arg name="blimp_name" default="FiveGuysBlimp" />
+    <arg name="calibration_file_name" default="camera5" />
+    <arg name="gscam_config" default="udpsrc port=3005 ! application/x-rtp, encoding-name=H264, payload=96 ! rtph264depay ! h264parse ! queue ! avdec_h264 ! videoconvert" />
+
+    <!-- ros2 launch files-->
+    <!-- Makes blimp publish raw camera feed -->
+    <include file="$(find-pkg-share gscam2)/launch/node_param_launch.py">
+        <arg name="camera_name" value="$(var blimp_name)" />
+        <arg name="gscam_config" value="$(var gscam_config)" />
+    </include>
+
+    <include file="$(find-pkg-share stereo_combined)/launch/combined_node.launch.py">
+        <arg name="namespace" value="$(var blimp_name)" />
+        <arg name="calibration_file" value="$(var calibration_file_name)" />
+        <arg name="camera_ns" value="$(var blimp_name)" />
+    </include>
+
+<!--     <include file="$(find-pkg-share track_ros2)/launch/track_ros2_node.launch.py">
+        <arg name="namespace" value="$(var blimp_name)"/>
+    </include> -->
+</launch>

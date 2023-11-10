@@ -1,0 +1,73 @@
+In file included from [01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/stereo_combined_node.cpp:3[m[K:
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/include/StereoCombined.hpp:106:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kstereo_image_proc[m[K’ does not name a type
+  106 |     [01;31m[Kstereo_image_proc[m[K::StereoProcessor block_matcher_;
+      |     [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:1[m[K:
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/include/StereoCombined.hpp:106:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kstereo_image_proc[m[K’ does not name a type
+  106 |     [01;31m[Kstereo_image_proc[m[K::StereoProcessor block_matcher_;
+      |     [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:[m[K In member function ‘[01m[Krcl_interfaces::msg::SetParametersResult StereoCombined::parameterSetCb(const std::vector<rclcpp::Parameter>&)[m[K’:
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:163:17:[m[K [01;31m[Kerror: [m[K‘[01m[Kblock_matcher_[m[K’ was not declared in this scope
+  163 |                 [01;31m[Kblock_matcher_[m[K.setStereoType(StereoProcessor::BM);
+      |                 [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:165:17:[m[K [01;31m[Kerror: [m[K‘[01m[Kblock_matcher_[m[K’ was not declared in this scope
+  165 |                 [01;31m[Kblock_matcher_[m[K.setStereoType(StereoProcessor::SGBM);
+      |                 [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:173:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kblock_matcher_[m[K’ was not declared in this scope
+  173 |             [01;31m[Kblock_matcher_[m[K.setPreFilterSize(param.as_int());
+      |             [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:175:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kblock_matcher_[m[K’ was not declared in this scope
+  175 |             [01;31m[Kblock_matcher_[m[K.setPreFilterCap(param.as_int());
+      |             [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:177:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kblock_matcher_[m[K’ was not declared in this scope
+  177 |             [01;31m[Kblock_matcher_[m[K.setCorrelationWindowSize(param.as_int());
+      |             [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:179:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kblock_matcher_[m[K’ was not declared in this scope
+  179 |             [01;31m[Kblock_matcher_[m[K.setMinDisparity(param.as_int());
+      |             [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:181:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kblock_matcher_[m[K’ was not declared in this scope
+  181 |             [01;31m[Kblock_matcher_[m[K.setDisparityRange(param.as_int());
+      |             [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:183:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kblock_matcher_[m[K’ was not declared in this scope
+  183 |             [01;31m[Kblock_matcher_[m[K.setUniquenessRatio(param.as_double());
+      |             [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:185:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kblock_matcher_[m[K’ was not declared in this scope
+  185 |             [01;31m[Kblock_matcher_[m[K.setTextureThreshold(param.as_int());
+      |             [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:187:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kblock_matcher_[m[K’ was not declared in this scope
+  187 |             [01;31m[Kblock_matcher_[m[K.setSpeckleSize(param.as_int());
+      |             [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:189:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kblock_matcher_[m[K’ was not declared in this scope
+  189 |             [01;31m[Kblock_matcher_[m[K.setSpeckleRange(param.as_int());
+      |             [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:191:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kblock_matcher_[m[K’ was not declared in this scope
+  191 |             [01;31m[Kblock_matcher_[m[K.setSgbmMode(param.as_bool());
+      |             [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:193:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kblock_matcher_[m[K’ was not declared in this scope
+  193 |             [01;31m[Kblock_matcher_[m[K.setP1(param.as_double());
+      |             [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:195:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kblock_matcher_[m[K’ was not declared in this scope
+  195 |             [01;31m[Kblock_matcher_[m[K.setP2(param.as_double());
+      |             [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:197:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kblock_matcher_[m[K’ was not declared in this scope
+  197 |             [01;31m[Kblock_matcher_[m[K.setDisp12MaxDiff(param.as_int());
+      |             [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/include/StereoCombined.hpp:139:13:[m[K [01;35m[Kwarning: [m[K‘[01m[Kvoid add_param_to_map(std::map<std::__cxx11::basic_string<char>, std::pair<double, rcl_interfaces::msg::ParameterDescriptor_<std::allocator<void> > > >&, const string&, const string&, double, double, double, double)[m[K’ defined but not used [[01;35m[K-Wunused-function[m[K]
+  139 | static void [01;35m[Kadd_param_to_map[m[K(
+      |             [01;35m[K^~~~~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/include/StereoCombined.hpp:121:13:[m[K [01;35m[Kwarning: [m[K‘[01m[Kvoid add_param_to_map(std::map<std::__cxx11::basic_string<char>, std::pair<int, rcl_interfaces::msg::ParameterDescriptor_<std::allocator<void> > > >&, const string&, const string&, int, int, int, int)[m[K’ defined but not used [[01;35m[K-Wunused-function[m[K]
+  121 | static void [01;35m[Kadd_param_to_map[m[K(
+      |             [01;35m[K^~~~~~~~~~~~~~~~[m[K
+make[2]: *** [CMakeFiles/stereo_combined_node.dir/build.make:76: CMakeFiles/stereo_combined_node.dir/src/stereo_combined_node.cpp.o] Error 1
+make[2]: *** Waiting for unfinished jobs....
+In file included from [01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:1[m[K:
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/include/StereoCombined.hpp:[m[K At global scope:
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/include/StereoCombined.hpp:139:13:[m[K [01;35m[Kwarning: [m[K‘[01m[Kvoid add_param_to_map(std::map<std::__cxx11::basic_string<char>, std::pair<double, rcl_interfaces::msg::ParameterDescriptor_<std::allocator<void> > > >&, const string&, const string&, double, double, double, double)[m[K’ defined but not used [[01;35m[K-Wunused-function[m[K]
+  139 | static void [01;35m[Kadd_param_to_map[m[K(
+      |             [01;35m[K^~~~~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/include/StereoCombined.hpp:121:13:[m[K [01;35m[Kwarning: [m[K‘[01m[Kvoid add_param_to_map(std::map<std::__cxx11::basic_string<char>, std::pair<int, rcl_interfaces::msg::ParameterDescriptor_<std::allocator<void> > > >&, const string&, const string&, int, int, int, int)[m[K’ defined but not used [[01;35m[K-Wunused-function[m[K]
+  121 | static void [01;35m[Kadd_param_to_map[m[K(
+      |             [01;35m[K^~~~~~~~~~~~~~~~[m[K
+make[2]: *** [CMakeFiles/stereo_combined_node.dir/build.make:90: CMakeFiles/stereo_combined_node.dir/src/StereoCombined.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/stereo_combined_node.dir/all] Error 2
+make: *** [Makefile:146: all] Error 2

@@ -57,10 +57,10 @@ RM = /home/corelab/.local/lib/python3.8/site-packages/cmake/data/bin/cmake -E rm
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/corelab/ros2_stereo/src/opencv_telemetry
+CMAKE_SOURCE_DIR = /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/corelab/ros2_stereo/build/opencv_telemetry
+CMAKE_BINARY_DIR = /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -142,9 +142,9 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/corelab/ros2_stereo/build/opencv_telemetry/CMakeFiles /home/corelab/ros2_stereo/build/opencv_telemetry//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/CMakeFiles /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/corelab/ros2_stereo/build/opencv_telemetry/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -480,7 +480,7 @@ opencv_telemetry__py: cmake_check_build_system
 
 # fast build rule for target.
 opencv_telemetry__py/fast:
-	$(MAKE) $(MAKESILENT) -f /home/corelab/ros2_stereo/build/opencv_telemetry/opencv_telemetry__py/CMakeFiles/opencv_telemetry__py.dir/build.make /home/corelab/ros2_stereo/build/opencv_telemetry/opencv_telemetry__py/CMakeFiles/opencv_telemetry__py.dir/build
+	$(MAKE) $(MAKESILENT) -f /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/opencv_telemetry__py/CMakeFiles/opencv_telemetry__py.dir/build.make /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/opencv_telemetry__py/CMakeFiles/opencv_telemetry__py.dir/build
 .PHONY : opencv_telemetry__py/fast
 
 rosidl_generator_c/opencv_telemetry/msg/detail/resized_image__functions.o: rosidl_generator_c/opencv_telemetry/msg/detail/resized_image__functions.c.o

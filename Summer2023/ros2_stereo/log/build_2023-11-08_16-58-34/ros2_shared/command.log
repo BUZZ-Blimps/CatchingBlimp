@@ -1,0 +1,2 @@
+Invoking command in '/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/ros2_shared': CMAKE_PREFIX_PATH=/opt/ros/foxy /home/corelab/.local/bin/cmake --build /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/ros2_shared -- -j16 -l16
+Invoked command in '/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/ros2_shared' returned '2': CMAKE_PREFIX_PATH=/opt/ros/foxy /home/corelab/.local/bin/cmake --build /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/ros2_shared -- -j16 -l16

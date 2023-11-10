@@ -63,8 +63,8 @@ DebayerNode::DebayerNode(const rclcpp::NodeOptions & options)
   debayer_ = this->declare_parameter("debayer", 3);
 }
 
-void DebayerNode::imageCb(const sensor_msgs::msg::Image::ConstSharedPtr & raw_msg)
-{
+void DebayerNode::imageCb(const sensor_msgs::msg::Image::ConstSharedPtr & raw_msg) {
+
   int bit_depth = enc::bitDepth(raw_msg->encoding);
   // TODO(someone): Fix as soon as bitDepth fixes it
   if (raw_msg->encoding == enc::YUV422) {
@@ -124,7 +124,7 @@ void DebayerNode::imageCb(const sensor_msgs::msg::Image::ConstSharedPtr & raw_ms
       const_cast<uint8_t *>(&raw_msg->data[0]), raw_msg->step);
 
     sensor_msgs::msg::Image::SharedPtr color_msg =
-      std::make_shared<sensor_msgs::msg::Image>();
+    std::make_shared<sensor_msgs::msg::Image>();
     color_msg->header = raw_msg->header;
     color_msg->height = raw_msg->height;
     color_msg->width = raw_msg->width;
@@ -201,6 +201,7 @@ void DebayerNode::imageCb(const sensor_msgs::msg::Image::ConstSharedPtr & raw_ms
       this->get_logger(), "Raw image topic '%s' has unsupported encoding '%s'",
       sub_raw_.getTopic().c_str(), raw_msg->encoding.c_str());
   }
+  
 }
 
 }  // namespace image_proc

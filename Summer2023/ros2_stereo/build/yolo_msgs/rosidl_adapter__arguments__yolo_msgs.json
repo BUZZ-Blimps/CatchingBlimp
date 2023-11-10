@@ -1,8 +1,8 @@
 {
   "package_name": "yolo_msgs",
   "non_idl_tuples": [
-    "/home/corelab/ros2_stereo/src/yolo_msgs:msg/BoundingBox.msg",
-    "/home/corelab/ros2_stereo/src/yolo_msgs:msg/BoundingBoxes.msg",
-    "/home/corelab/ros2_stereo/src/yolo_msgs:msg/ObjectCount.msg"
+    "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/yolo_msgs:msg/BoundingBox.msg",
+    "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/yolo_msgs:msg/BoundingBoxes.msg",
+    "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/yolo_msgs:msg/ObjectCount.msg"
   ]
 }

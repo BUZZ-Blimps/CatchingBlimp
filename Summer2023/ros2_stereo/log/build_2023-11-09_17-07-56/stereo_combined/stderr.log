@@ -1,0 +1,16 @@
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:[m[K In member function ‘[01m[Kvoid StereoCombined::syncImageCallback(sensor_msgs::msg::Image_<std::allocator<void> >::SharedPtr)[m[K’:
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:883:9:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[KnumRowsPerQuadrant[m[K’ [[01;35m[K-Wunused-variable[m[K]
+  883 |     int [01;35m[KnumRowsPerQuadrant[m[K = numRows / 3;
+      |         [01;35m[K^~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:884:9:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[KnumColsPerQuadrant[m[K’ [[01;35m[K-Wunused-variable[m[K]
+  884 |     int [01;35m[KnumColsPerQuadrant[m[K = numCols / 3;
+      |         [01;35m[K^~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:887:11:[m[K [01;35m[Kwarning: [m[Kvariable ‘[01m[KquadrantSums[m[K’ set but not used [[01;35m[K-Wunused-but-set-variable[m[K]
+  887 |     float [01;35m[KquadrantSums[m[K[3][3];
+      |           [01;35m[K^~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:888:9:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[KquadrantCounts[m[K’ [[01;35m[K-Wunused-variable[m[K]
+  888 |     int [01;35m[KquadrantCounts[m[K[3][3] = {0};
+      |         [01;35m[K^~~~~~~~~~~~~~[m[K
+/usr/bin/ld: warning: libopencv_imgproc.so.4.2, needed by /opt/ros/foxy/lib/libcv_bridge.so, may conflict with libopencv_imgproc.so.407
+/usr/bin/ld: warning: libopencv_core.so.4.2, needed by /opt/ros/foxy/lib/libcv_bridge.so, may conflict with libopencv_core.so.407
+/usr/bin/ld: warning: libopencv_calib3d.so.4.2, needed by /opt/ros/foxy/lib/libimage_geometry.so, may conflict with libopencv_calib3d.so.407

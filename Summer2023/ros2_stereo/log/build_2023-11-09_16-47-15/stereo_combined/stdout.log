@@ -1,0 +1,3 @@
+[ 20%] [32mBuilding CXX object CMakeFiles/stereo_combined_node.dir/src/StereoCombined.cpp.o[0m
+[ 40%] [32m[1mLinking CXX executable stereo_combined_node[0m
+[100%] Built target stereo_combined_node

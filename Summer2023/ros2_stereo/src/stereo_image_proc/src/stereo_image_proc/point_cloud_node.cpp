@@ -78,7 +78,6 @@ class PointCloudNode : public rclcpp::Node
       stereo_msgs::msg::DisparityImage,
       yolo_msgs::msg::BoundingBox>;
 
-
     using ApproximatePolicy = message_filters::sync_policies::ApproximateTime<
       sensor_msgs::msg::Image,
       sensor_msgs::msg::CameraInfo,
@@ -94,10 +93,9 @@ class PointCloudNode : public rclcpp::Node
 
     // Publications
     std::shared_ptr<rclcpp::Publisher<sensor_msgs::msg::PointCloud2>> pub_points2_;
-
     std::shared_ptr<rclcpp::Publisher<std_msgs::msg::Float64MultiArray>> pub_targets_;
-
     std::shared_ptr<rclcpp::Publisher<std_msgs::msg::Int64MultiArray>> pub_pixels_;
+    std::shared_ptr<rclcpp::Publisher<std_msgs::msg::Float64MultiArray>> pub_avoidance_;
 
     // Processing state (note: only safe because we're single-threaded!)
     image_geometry::StereoCameraModel model_;
@@ -155,6 +153,7 @@ PointCloudNode::PointCloudNode(const rclcpp::NodeOptions & options)
     pub_targets_ = create_publisher<std_msgs::msg::Float64MultiArray>("BurnCreamBlimp/targets", 10);
     pub_points2_ = create_publisher<sensor_msgs::msg::PointCloud2>("BurnCreamBlimp/points2", 10);
     pub_pixels_ = create_publisher<std_msgs::msg::Int64MultiArray>("BurnCreamBlimp/pixels", 10);
+    pub_avoidance_ = create_publisher<std_msgs::msg::Float64MultiArray>("BurnCreamBlimp/avoidance", 10);
 
     //Only subscribe if there's a subscription listening to our publisher.
     connectCb();
@@ -281,6 +280,9 @@ PointCloudNode::PointCloudNode(const rclcpp::NodeOptions & options)
 
       sensor_msgs::PointCloud2Modifier pcd_modifier(*points_msg);
 
+      // Avoidance message initialization 
+      auto avoidance_msg = std::make_shared<std_msgs::msg::Float64MultiArray>();
+
       // Target message initialization 
       auto targets_msg = std::make_shared<std_msgs::msg::Float64MultiArray>();
 
@@ -325,6 +327,7 @@ PointCloudNode::PointCloudNode(const rclcpp::NodeOptions & options)
       sensor_msgs::PointCloud2Iterator<float> iter_x(*points_msg, "x");
       sensor_msgs::PointCloud2Iterator<float> iter_y(*points_msg, "y");
       sensor_msgs::PointCloud2Iterator<float> iter_z(*points_msg, "z");
+      
 
       //position vectors for each object (separated to x,y,z vecs and x,y,z)
       std::vector<float> balloon_x_vec;
@@ -375,6 +378,23 @@ PointCloudNode::PointCloudNode(const rclcpp::NodeOptions & options)
       y_goal_pixel[1] = 1000;
       y_goal_pixel[2] = 0;
 
+      // Define the boundaries for the 9 quadrants
+      int numRows = mat.rows;
+      int numCols = mat.cols;
+      int numRowsPerQuadrant = numRows / 3;
+      int numColsPerQuadrant = numCols / 3;
+
+      // Variables to store the mat(v,u)[2] values for each quadrant
+     float quadrantSums[3][3];
+     int quadrantCounts[3][3] = {0};
+
+      // Set every value to 1000.0f
+     for (int i = 0; i < 3; ++i) {
+        for (int j = 0; j < 3; ++j) {
+              quadrantSums[i][j] = 1000.0f;
+        }
+      }
+
       float bad_point = std::numeric_limits<float>::quiet_NaN();
       for (int v = 0; v < mat.rows; ++v) {
         for (int u = 0; u < mat.cols; ++u, ++iter_x, ++iter_y, ++iter_z) {
@@ -384,27 +404,35 @@ PointCloudNode::PointCloudNode(const rclcpp::NodeOptions & options)
             *iter_y = mat(v, u)[1];
             *iter_z = mat(v, u)[2];
 
+            // Determine the quadrant
+            int quadrantRow = v / numRowsPerQuadrant;
+            int quadrantCol = u / numColsPerQuadrant;
+
+            // Add mat(v,u)[2] to the sum of the corresponding quadrant, also record the number of points that are good
+            quadrantSums[quadrantRow][quadrantCol] += mat(v, u)[2];
+            quadrantCounts[quadrantRow][quadrantCol]++;
+
              // check if points belong in any of the 3 objects 
-          if (isInBoundingBoxBalloon(bbox_msg,u,v)) {
-            // x,y,z
-          balloon_x_vec.push_back(mat(v, u)[0]);
-          balloon_y_vec.push_back(mat(v, u)[1]);
-          balloon_z_vec.push_back(mat(v, u)[2]);
-          }
-          
-          if (isInBoundingBoxOgoal(bbox_msg,u,v)) {
-            // x,y,z
-          o_goal_x_vec.push_back(mat(v, u)[0]);
-          o_goal_y_vec.push_back(mat(v, u)[1]);
-          o_goal_z_vec.push_back(mat(v, u)[2]);
-          }
-  
-          if (isInBoundingBoxYgoal(bbox_msg,u,v)) {
-            // x,y,z
-          y_goal_x_vec.push_back(mat(v, u)[0]);
-          y_goal_y_vec.push_back(mat(v, u)[1]);
-          y_goal_z_vec.push_back(mat(v, u)[2]);  
-          }
+              if (isInBoundingBoxBalloon(bbox_msg,u,v)) {
+                // x,y,z
+              balloon_x_vec.push_back(mat(v, u)[0]);
+              balloon_y_vec.push_back(mat(v, u)[1]);
+              balloon_z_vec.push_back(mat(v, u)[2]);
+              }
+              
+              if (isInBoundingBoxOgoal(bbox_msg,u,v)) {
+                // x,y,z
+              o_goal_x_vec.push_back(mat(v, u)[0]);
+              o_goal_y_vec.push_back(mat(v, u)[1]);
+              o_goal_z_vec.push_back(mat(v, u)[2]);
+              }
+      
+              if (isInBoundingBoxYgoal(bbox_msg,u,v)) {
+                // x,y,z
+              y_goal_x_vec.push_back(mat(v, u)[0]);
+              y_goal_y_vec.push_back(mat(v, u)[1]);
+              y_goal_z_vec.push_back(mat(v, u)[2]);  
+              }
 
             //else the point is bad
           } else {
@@ -412,6 +440,19 @@ PointCloudNode::PointCloudNode(const rclcpp::NodeOptions & options)
           }
         }
       }
+
+
+    // Calculate the average for each quadrant
+    float quadrantAverages[3][3];
+    for (int i = 0; i < 3; ++i) {
+        for (int j = 0; j < 3; ++j) {
+            if (quadrantCounts[i][j] > 0) {
+                quadrantAverages[i][j] = quadrantSums[i][j] / quadrantCounts[i][j];
+            } else {
+                quadrantAverages[i][j] = 1000.0f;
+            }
+        }
+    }
 
     //check balloon xyz centroid
     //Filter outliers using standard deviation
@@ -610,7 +651,23 @@ PointCloudNode::PointCloudNode(const rclcpp::NodeOptions & options)
     }
     */
 
-    // place all in one float64multiarray
+    // place all avoidance data in one float64multiarray
+    //cast to double
+
+      avoidance_msg->data = {
+      static_cast<double>(quadrantAverages[0][0]),
+      static_cast<double>(quadrantAverages[0][1]),
+      static_cast<double>(quadrantAverages[0][2]),
+      static_cast<double>(quadrantAverages[1][0]),
+      static_cast<double>(quadrantAverages[1][1]),
+      static_cast<double>(quadrantAverages[1][2]),
+      static_cast<double>(quadrantAverages[2][0]),
+      static_cast<double>(quadrantAverages[2][1]),
+      static_cast<double>(quadrantAverages[2][2])
+      };
+
+
+    // place all target data in one float64multiarray
     //cast to double
 
       targets_msg->data = {
@@ -693,7 +750,7 @@ PointCloudNode::PointCloudNode(const rclcpp::NodeOptions & options)
             "unsupported encoding '%s'", encoding.c_str());
         }
       }
-
+    pub_avoidance_->publish(*avoidance_msg);
     pub_targets_->publish(*targets_msg);
     pub_points2_->publish(*points_msg);
     pub_pixels_->publish(*pixels_msg);

@@ -1,0 +1,48 @@
+[0.040s] Invoking command in '/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/image_view': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/corelab/Luke_ML_Blimp/ros2_tracks_ws/install/track_ros2:/opt/ros/foxy /home/corelab/.local/bin/cmake --build /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/image_view -- -j16 -l16
+[0.094s] [ 36%] Built target image_view_nodes
+[0.106s] [ 47%] Built target disparity_view
+[0.108s] [ 57%] Built target video_recorder
+[0.108s] [ 68%] Built target extract_images
+[0.108s] [ 78%] Built target stereo_view
+[0.108s] [ 89%] Built target image_view
+[0.109s] [100%] Built target image_saver
+[0.116s] Invoked command in '/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/image_view' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/corelab/Luke_ML_Blimp/ros2_tracks_ws/install/track_ros2:/opt/ros/foxy /home/corelab/.local/bin/cmake --build /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/image_view -- -j16 -l16
+[0.183s] Invoking command in '/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/image_view': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/corelab/Luke_ML_Blimp/ros2_tracks_ws/install/track_ros2:/opt/ros/foxy /home/corelab/.local/bin/cmake --install /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/image_view
+[0.211s] -- Install configuration: ""
+[0.211s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/include
+[0.211s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/include/image_view
+[0.211s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/include/image_view/disparity_view_node.hpp
+[0.212s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/include/image_view/image_saver_node.hpp
+[0.212s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/include/image_view/extract_images_node.hpp
+[0.212s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/include/image_view/video_recorder_node.hpp
+[0.212s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/include/image_view/stereo_view_node.hpp
+[0.212s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/include/image_view/image_view_node.hpp
+[0.212s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/environment/library_path.sh
+[0.213s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/environment/library_path.dsv
+[0.213s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/lib/libimage_view_nodes.so
+[0.213s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/lib/image_view/disparity_view
+[0.215s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/lib/image_view/image_view
+[0.215s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/lib/image_view/stereo_view
+[0.215s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/lib/image_view/extract_images
+[0.215s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/lib/image_view/image_saver
+[0.216s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/lib/image_view/video_recorder
+[0.216s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/ament_index/resource_index/package_run_dependencies/image_view
+[0.216s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/ament_index/resource_index/parent_prefix_path/image_view
+[0.216s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/environment/ament_prefix_path.sh
+[0.216s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/environment/ament_prefix_path.dsv
+[0.217s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/environment/path.sh
+[0.217s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/environment/path.dsv
+[0.217s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/local_setup.bash
+[0.217s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/local_setup.sh
+[0.217s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/local_setup.zsh
+[0.217s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/local_setup.dsv
+[0.217s] -- Installing: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/package.dsv
+[0.218s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/ament_index/resource_index/packages/image_view
+[0.218s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/ament_index/resource_index/rclcpp_components/image_view
+[0.219s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/cmake/ament_cmake_export_dependencies-extras.cmake
+[0.219s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/cmake/ament_cmake_export_include_directories-extras.cmake
+[0.219s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/cmake/ament_cmake_export_libraries-extras.cmake
+[0.219s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/cmake/image_viewConfig.cmake
+[0.219s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/cmake/image_viewConfig-version.cmake
+[0.219s] -- Up-to-date: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/package.xml
+[0.228s] Invoked command in '/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/image_view' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/corelab/Luke_ML_Blimp/ros2_tracks_ws/install/track_ros2:/opt/ros/foxy /home/corelab/.local/bin/cmake --install /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/image_view

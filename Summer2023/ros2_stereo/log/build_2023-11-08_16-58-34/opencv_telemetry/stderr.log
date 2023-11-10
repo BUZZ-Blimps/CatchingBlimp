@@ -1,0 +1,4 @@
+[0mCMake Error: The current CMakeCache.txt directory /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/CMakeCache.txt is different than the directory /home/corelab/ros2_stereo/build/opencv_telemetry where CMakeCache.txt was created. This may result in binaries being created in the wrong place. If you are not sure, reedit the CMakeCache.txt[0m
+[0mCMake Error: The source directory "/home/corelab/ros2_stereo/src/opencv_telemetry" does not exist.
+Specify --help for usage, or press the help button on the CMake GUI.[0m
+make: *** [Makefile:1164: cmake_check_build_system] Error 1

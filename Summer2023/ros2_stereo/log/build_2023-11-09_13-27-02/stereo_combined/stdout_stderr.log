@@ -1,0 +1,234 @@
+[ 20%] [32mBuilding CXX object CMakeFiles/stereo_combined_node.dir/src/stereo_combined_node.cpp.o[0m
+[ 40%] [32mBuilding CXX object CMakeFiles/stereo_combined_node.dir/src/StereoCombined.cpp.o[0m
+[ 60%] [32mBuilding CXX object CMakeFiles/stereo_combined_node.dir/src/stereo_processor.cpp.o[0m
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/stereo_processor.cpp:49:6:[m[K [01;31m[Kerror: [m[K‘[01m[KStereoProcessor[m[K’ has not been declared
+   49 | bool [01;31m[KStereoProcessor[m[K::process(
+      |      [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/stereo_processor.cpp:53:3:[m[K [01;31m[Kerror: [m[K‘[01m[KStereoImageSet[m[K’ has not been declared
+   53 |   [01;31m[KStereoImageSet[m[K & output,
+      |   [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/stereo_processor.cpp:54:14:[m[K [01;31m[Kerror: [m[Knon-member function ‘[01m[Kbool process(const ConstSharedPtr&, const ConstSharedPtr&, const image_geometry::StereoCameraModel&, int&, int)[m[K’ cannot have cv-qualifier
+   54 |   int flags) [01;31m[Kconst[m[K
+      |              [01;31m[K^~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/stereo_processor.cpp:[m[K In function ‘[01m[Kbool process(const ConstSharedPtr&, const ConstSharedPtr&, const image_geometry::StereoCameraModel&, int&, int)[m[K’:
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/stereo_processor.cpp:57:28:[m[K [01;31m[Kerror: [m[K‘[01m[KLEFT_ALL[m[K’ was not declared in this scope; did you mean ‘[01m[KLC_ALL[m[K’?
+   57 |   int left_flags = flags & [01;31m[KLEFT_ALL[m[K;
+      |                            [01;31m[K^~~~~~~~[m[K
+      |                            [32m[KLC_ALL[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/stereo_processor.cpp:58:29:[m[K [01;31m[Kerror: [m[K‘[01m[KRIGHT_ALL[m[K’ was not declared in this scope
+   58 |   int right_flags = flags & [01;31m[KRIGHT_ALL[m[K;
+      |                             [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/stereo_processor.cpp:59:15:[m[K [01;31m[Kerror: [m[K‘[01m[KSTEREO_ALL[m[K’ was not declared in this scope
+   59 |   if (flags & [01;31m[KSTEREO_ALL[m[K) {
+      |               [01;31m[K^~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/stereo_processor.cpp:61:19:[m[K [01;31m[Kerror: [m[K‘[01m[KLEFT_RECT[m[K’ was not declared in this scope
+   61 |     left_flags |= [01;31m[KLEFT_RECT[m[K;
+      |                   [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/stereo_processor.cpp:62:20:[m[K [01;31m[Kerror: [m[K‘[01m[KRIGHT_RECT[m[K’ was not declared in this scope
+   62 |     right_flags |= [01;31m[KRIGHT_RECT[m[K;
+      |                    [01;31m[K^~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/stereo_processor.cpp:64:16:[m[K [01;31m[Kerror: [m[K‘[01m[KPOINT_CLOUD[m[K’ was not declared in this scope
+   64 |   if (flags & ([01;31m[KPOINT_CLOUD[m[K | POINT_CLOUD2)) {
+      |                [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/stereo_processor.cpp:64:30:[m[K [01;31m[Kerror: [m[K‘[01m[KPOINT_CLOUD2[m[K’ was not declared in this scope
+   64 |   if (flags & (POINT_CLOUD | [01;31m[KPOINT_CLOUD2[m[K)) {
+      |                              [01;31m[K^~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/stereo_processor.cpp:65:14:[m[K [01;31m[Kerror: [m[K‘[01m[KDISPARITY[m[K’ was not declared in this scope
+   65 |     flags |= [01;31m[KDISPARITY[m[K;
+      |              [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/stereo_processor.cpp:67:19:[m[K [01;31m[Kerror: [m[K‘[01m[KLEFT_RECT_COLOR[m[K’ was not declared in this scope
+   67 |     left_flags |= [01;31m[KLEFT_RECT_COLOR[m[K;
+      |                   [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/stereo_processor.cpp:69:8:[m[K [01;31m[Kerror: [m[K‘[01m[Kmono_processor_[m[K’ was not declared in this scope
+   69 |   if (![01;31m[Kmono_processor_[m[K.process(left_raw, model.left(), output.left, left_flags)) {
+      |        [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/stereo_processor.cpp:69:63:[m[K [01;31m[Kerror: [m[Krequest for member ‘[01m[Kleft[m[K’ in ‘[01m[Koutput[m[K’, which is of non-class type ‘[01m[Kint[m[K’
+   69 |   if (!mono_processor_.process(left_raw, model.left(), output.[01;31m[Kleft[m[K, left_flags)) {
+      |                                                               [01;31m[K^~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/stereo_processor.cpp:72:8:[m[K [01;31m[Kerror: [m[K‘[01m[Kmono_processor_[m[K’ was not declared in this scope
+   72 |   if (![01;31m[Kmono_processor_[m[K.process(right_raw, model.right(), output.right, right_flags >> 4)) {
+      |        [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/stereo_processor.cpp:72:65:[m[K [01;31m[Kerror: [m[Krequest for member ‘[01m[Kright[m[K’ in ‘[01m[Koutput[m[K’, which is of non-class type ‘[01m[Kint[m[K’
+   72 |   if (!mono_processor_.process(right_raw, model.right(), output.[01;31m[Kright[m[K, right_flags >> 4)) {
+      |                                                                 [01;31m[K^~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/stereo_processor.cpp:77:15:[m[K [01;31m[Kerror: [m[K‘[01m[KDISPARITY[m[K’ was not declared in this scope
+   77 |   if (flags & [01;31m[KDISPARITY[m[K) {
+      |               [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/stereo_processor.cpp:78:29:[m[K [01;31m[Kerror: [m[Krequest for member ‘[01m[Kleft[m[K’ in ‘[01m[Koutput[m[K’, which is of non-class type ‘[01m[Kint[m[K’
+   78 |     processDisparity(output.[01;31m[Kleft[m[K.rect, output.right.rect, model, output.disparity);
+      |                             [01;31m[K^~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/stereo_processor.cpp:78:47:[m[K [01;31m[Kerror: [m[Krequest for member ‘[01m[Kright[m[K’ in ‘[01m[Koutput[m[K’, which is of non-class type ‘[01m[Kint[m[K’
+   78 |     processDisparity(output.left.rect, output.[01;31m[Kright[m[K.rect, model, output.disparity);
+      |                                               [01;31m[K^~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/stereo_processor.cpp:78:73:[m[K [01;31m[Kerror: [m[Krequest for member ‘[01m[Kdisparity[m[K’ in ‘[01m[Koutput[m[K’, which is of non-class type ‘[01m[Kint[m[K’
+   78 |     processDisparity(output.left.rect, output.right.rect, model, output.[01;31m[Kdisparity[m[K);
+      |                                                                         [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/stereo_processor.cpp:78:5:[m[K [01;31m[Kerror: [m[K‘[01m[KprocessDisparity[m[K’ was not declared in this scope
+   78 |     [01;31m[KprocessDisparity[m[K(output.left.rect, output.right.rect, model, output.disparity);
+      |     [01;31m[K^~~~~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/stereo_processor.cpp:82:15:[m[K [01;31m[Kerror: [m[K‘[01m[KPOINT_CLOUD[m[K’ was not declared in this scope
+   82 |   if (flags & [01;31m[KPOINT_CLOUD[m[K) {
+      |               [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/stereo_processor.cpp:84:14:[m[K [01;31m[Kerror: [m[Krequest for member ‘[01m[Kdisparity[m[K’ in ‘[01m[Koutput[m[K’, which is of non-class type ‘[01m[Kint[m[K’
+   84 |       output.[01;31m[Kdisparity[m[K, output.left.rect_color, output.left.color_encoding, model, output.points);
+      |              [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/stereo_processor.cpp:84:32:[m[K [01;31m[Kerror: [m[Krequest for member ‘[01m[Kleft[m[K’ in ‘[01m[Koutput[m[K’, which is of non-class type ‘[01m[Kint[m[K’
+   84 |       output.disparity, output.[01;31m[Kleft[m[K.rect_color, output.left.color_encoding, model, output.points);
+      |                                [01;31m[K^~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/stereo_processor.cpp:84:56:[m[K [01;31m[Kerror: [m[Krequest for member ‘[01m[Kleft[m[K’ in ‘[01m[Koutput[m[K’, which is of non-class type ‘[01m[Kint[m[K’
+   84 |       output.disparity, output.left.rect_color, output.[01;31m[Kleft[m[K.color_encoding, model, output.points);
+      |                                                        [01;31m[K^~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/stereo_processor.cpp:84:91:[m[K [01;31m[Kerror: [m[Krequest for member ‘[01m[Kpoints[m[K’ in ‘[01m[Koutput[m[K’, which is of non-class type ‘[01m[Kint[m[K’
+   84 |       output.disparity, output.left.rect_color, output.left.color_encoding, model, output.[01;31m[Kpoints[m[K);
+      |                                                                                           [01;31m[K^~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/stereo_processor.cpp:83:5:[m[K [01;31m[Kerror: [m[K‘[01m[KprocessPoints[m[K’ was not declared in this scope
+   83 |     [01;31m[KprocessPoints[m[K(
+      |     [01;31m[K^~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/stereo_processor.cpp:88:15:[m[K [01;31m[Kerror: [m[K‘[01m[KPOINT_CLOUD2[m[K’ was not declared in this scope
+   88 |   if (flags & [01;31m[KPOINT_CLOUD2[m[K) {
+      |               [01;31m[K^~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/stereo_processor.cpp:90:14:[m[K [01;31m[Kerror: [m[Krequest for member ‘[01m[Kdisparity[m[K’ in ‘[01m[Koutput[m[K’, which is of non-class type ‘[01m[Kint[m[K’
+   90 |       output.[01;31m[Kdisparity[m[K, output.left.rect_color, output.left.color_encoding, model, output.points2);
+      |              [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/stereo_processor.cpp:90:32:[m[K [01;31m[Kerror: [m[Krequest for member ‘[01m[Kleft[m[K’ in ‘[01m[Koutput[m[K’, which is of non-class type ‘[01m[Kint[m[K’
+   90 |       output.disparity, output.[01;31m[Kleft[m[K.rect_color, output.left.color_encoding, model, output.points2);
+      |                                [01;31m[K^~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/stereo_processor.cpp:90:56:[m[K [01;31m[Kerror: [m[Krequest for member ‘[01m[Kleft[m[K’ in ‘[01m[Koutput[m[K’, which is of non-class type ‘[01m[Kint[m[K’
+   90 |       output.disparity, output.left.rect_color, output.[01;31m[Kleft[m[K.color_encoding, model, output.points2);
+      |                                                        [01;31m[K^~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/stereo_processor.cpp:90:91:[m[K [01;31m[Kerror: [m[Krequest for member ‘[01m[Kpoints2[m[K’ in ‘[01m[Koutput[m[K’, which is of non-class type ‘[01m[Kint[m[K’
+   90 |       output.disparity, output.left.rect_color, output.left.color_encoding, model, output.[01;31m[Kpoints2[m[K);
+      |                                                                                           [01;31m[K^~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/stereo_processor.cpp:89:5:[m[K [01;31m[Kerror: [m[K‘[01m[KprocessPoints2[m[K’ was not declared in this scope
+   89 |     [01;31m[KprocessPoints2[m[K(
+      |     [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/stereo_processor.cpp:[m[K At global scope:
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/stereo_processor.cpp:96:6:[m[K [01;31m[Kerror: [m[K‘[01m[KStereoProcessor[m[K’ has not been declared
+   96 | void [01;31m[KStereoProcessor[m[K::processDisparity(
+      |      [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/stereo_processor.cpp:100:49:[m[K [01;31m[Kerror: [m[Knon-member function ‘[01m[Kvoid processDisparity(const cv::Mat&, const cv::Mat&, const image_geometry::StereoCameraModel&, stereo_msgs::msg::DisparityImage&)[m[K’ cannot have cv-qualifier
+  100 |   stereo_msgs::msg::DisparityImage & disparity) [01;31m[Kconst[m[K
+      |                                                 [01;31m[K^~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/stereo_processor.cpp:[m[K In function ‘[01m[Kvoid processDisparity(const cv::Mat&, const cv::Mat&, const image_geometry::StereoCameraModel&, stereo_msgs::msg::DisparityImage&)[m[K’:
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/stereo_processor.cpp:107:7:[m[K [01;31m[Kerror: [m[K‘[01m[Kcurrent_stereo_algorithm_[m[K’ was not declared in this scope
+  107 |   if ([01;31m[Kcurrent_stereo_algorithm_[m[K == BM) {
+      |       [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/stereo_processor.cpp:107:36:[m[K [01;31m[Kerror: [m[K‘[01m[KBM[m[K’ was not declared in this scope
+  107 |   if (current_stereo_algorithm_ == [01;31m[KBM[m[K) {
+      |                                    [01;31m[K^~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/stereo_processor.cpp:108:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kblock_matcher_[m[K’ was not declared in this scope
+  108 |     [01;31m[Kblock_matcher_[m[K->compute(left_rect, right_rect, disparity16_);
+      |     [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/stereo_processor.cpp:108:52:[m[K [01;31m[Kerror: [m[K‘[01m[Kdisparity16_[m[K’ was not declared in this scope; did you mean ‘[01m[Kdisparity[m[K’?
+  108 |     block_matcher_->compute(left_rect, right_rect, [01;31m[Kdisparity16_[m[K);
+      |                                                    [01;31m[K^~~~~~~~~~~~[m[K
+      |                                                    [32m[Kdisparity[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/stereo_processor.cpp:110:5:[m[K [01;31m[Kerror: [m[K‘[01m[Ksg_block_matcher_[m[K’ was not declared in this scope
+  110 |     [01;31m[Ksg_block_matcher_[m[K->compute(left_rect, right_rect, disparity16_);
+      |     [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/stereo_processor.cpp:110:55:[m[K [01;31m[Kerror: [m[K‘[01m[Kdisparity16_[m[K’ was not declared in this scope; did you mean ‘[01m[Kdisparity[m[K’?
+  110 |     sg_block_matcher_->compute(left_rect, right_rect, [01;31m[Kdisparity16_[m[K);
+      |                                                       [01;31m[K^~~~~~~~~~~~[m[K
+      |                                                       [32m[Kdisparity[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/stereo_processor.cpp:115:19:[m[K [01;31m[Kerror: [m[K‘[01m[Kdisparity16_[m[K’ was not declared in this scope; did you mean ‘[01m[Kdisparity[m[K’?
+  115 |   dimage.height = [01;31m[Kdisparity16_[m[K.rows;
+      |                   [01;31m[K^~~~~~~~~~~~[m[K
+      |                   [32m[Kdisparity[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/stereo_processor.cpp:135:29:[m[K [01;31m[Kerror: [m[K‘[01m[KgetMinDisparity[m[K’ was not declared in this scope
+  135 |   disparity.min_disparity = [01;31m[KgetMinDisparity[m[K();
+      |                             [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/stereo_processor.cpp:136:49:[m[K [01;31m[Kerror: [m[K‘[01m[KgetDisparityRange[m[K’ was not declared in this scope
+  136 |   disparity.max_disparity = getMinDisparity() + [01;31m[KgetDisparityRange[m[K() - 1;
+      |                                                 [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/stereo_processor.cpp:[m[K At global scope:
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/stereo_processor.cpp:147:6:[m[K [01;31m[Kerror: [m[K‘[01m[KStereoProcessor[m[K’ has not been declared
+  147 | void [01;31m[KStereoProcessor[m[K::processPoints(
+      |      [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/stereo_processor.cpp:152:42:[m[K [01;31m[Kerror: [m[Knon-member function ‘[01m[Kvoid processPoints(const DisparityImage&, const cv::Mat&, const string&, const image_geometry::StereoCameraModel&, sensor_msgs::msg::PointCloud&)[m[K’ cannot have cv-qualifier
+  152 |   sensor_msgs::msg::PointCloud & points) [01;31m[Kconst[m[K
+      |                                          [01;31m[K^~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/stereo_processor.cpp:[m[K In function ‘[01m[Kvoid processPoints(const DisparityImage&, const cv::Mat&, const string&, const image_geometry::StereoCameraModel&, sensor_msgs::msg::PointCloud&)[m[K’:
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/stereo_processor.cpp:161:41:[m[K [01;31m[Kerror: [m[K‘[01m[Kdense_points_[m[K’ was not declared in this scope
+  161 |   model.projectDisparityImageTo3d(dmat, [01;31m[Kdense_points_[m[K, true);
+      |                                         [01;31m[K^~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/stereo_processor.cpp:[m[K At global scope:
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/stereo_processor.cpp:229:6:[m[K [01;31m[Kerror: [m[K‘[01m[KStereoProcessor[m[K’ has not been declared
+  229 | void [01;31m[KStereoProcessor[m[K::processPoints2(
+      |      [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/stereo_processor.cpp:234:43:[m[K [01;31m[Kerror: [m[Knon-member function ‘[01m[Kvoid processPoints2(const DisparityImage&, const cv::Mat&, const string&, const image_geometry::StereoCameraModel&, sensor_msgs::msg::PointCloud2&)[m[K’ cannot have cv-qualifier
+  234 |   sensor_msgs::msg::PointCloud2 & points) [01;31m[Kconst[m[K
+      |                                           [01;31m[K^~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/stereo_processor.cpp:[m[K In function ‘[01m[Kvoid processPoints2(const DisparityImage&, const cv::Mat&, const string&, const image_geometry::StereoCameraModel&, sensor_msgs::msg::PointCloud2&)[m[K’:
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/stereo_processor.cpp:243:41:[m[K [01;31m[Kerror: [m[K‘[01m[Kdense_points_[m[K’ was not declared in this scope
+  243 |   model.projectDisparityImageTo3d(dmat, [01;31m[Kdense_points_[m[K, true);
+      |                                         [01;31m[K^~~~~~~~~~~~~[m[K
+make[2]: *** [CMakeFiles/stereo_combined_node.dir/build.make:118: CMakeFiles/stereo_combined_node.dir/src/stereo_processor.cpp.o] Error 1
+make[2]: *** Waiting for unfinished jobs....
+In file included from [01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/stereo_combined_node.cpp:3[m[K:
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/include/StereoCombined.hpp:110:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kstereo_image_proc[m[K’ does not name a type
+  110 |     [01;31m[Kstereo_image_proc[m[K::StereoProcessor block_matcher_;
+      |     [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:1[m[K:
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/include/StereoCombined.hpp:110:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kstereo_image_proc[m[K’ does not name a type
+  110 |     [01;31m[Kstereo_image_proc[m[K::StereoProcessor block_matcher_;
+      |     [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:[m[K In constructor ‘[01m[KStereoCombined::StereoCombined()[m[K’:
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:60:9:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kqueue_size[m[K’ [[01;35m[K-Wunused-variable[m[K]
+   60 |     int [01;35m[Kqueue_size[m[K = this->declare_parameter("queue_size", 7);
+      |         [01;35m[K^~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:[m[K In member function ‘[01m[Krcl_interfaces::msg::SetParametersResult StereoCombined::parameterSetCb(const std::vector<rclcpp::Parameter>&)[m[K’:
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:163:17:[m[K [01;31m[Kerror: [m[K‘[01m[Kblock_matcher_[m[K’ was not declared in this scope
+  163 |                 [01;31m[Kblock_matcher_[m[K.setStereoType(StereoProcessor::BM);
+      |                 [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:165:17:[m[K [01;31m[Kerror: [m[K‘[01m[Kblock_matcher_[m[K’ was not declared in this scope
+  165 |                 [01;31m[Kblock_matcher_[m[K.setStereoType(StereoProcessor::SGBM);
+      |                 [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:173:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kblock_matcher_[m[K’ was not declared in this scope
+  173 |             [01;31m[Kblock_matcher_[m[K.setPreFilterSize(param.as_int());
+      |             [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:175:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kblock_matcher_[m[K’ was not declared in this scope
+  175 |             [01;31m[Kblock_matcher_[m[K.setPreFilterCap(param.as_int());
+      |             [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:177:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kblock_matcher_[m[K’ was not declared in this scope
+  177 |             [01;31m[Kblock_matcher_[m[K.setCorrelationWindowSize(param.as_int());
+      |             [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:179:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kblock_matcher_[m[K’ was not declared in this scope
+  179 |             [01;31m[Kblock_matcher_[m[K.setMinDisparity(param.as_int());
+      |             [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:181:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kblock_matcher_[m[K’ was not declared in this scope
+  181 |             [01;31m[Kblock_matcher_[m[K.setDisparityRange(param.as_int());
+      |             [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:183:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kblock_matcher_[m[K’ was not declared in this scope
+  183 |             [01;31m[Kblock_matcher_[m[K.setUniquenessRatio(param.as_double());
+      |             [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:185:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kblock_matcher_[m[K’ was not declared in this scope
+  185 |             [01;31m[Kblock_matcher_[m[K.setTextureThreshold(param.as_int());
+      |             [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:187:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kblock_matcher_[m[K’ was not declared in this scope
+  187 |             [01;31m[Kblock_matcher_[m[K.setSpeckleSize(param.as_int());
+      |             [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:189:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kblock_matcher_[m[K’ was not declared in this scope
+  189 |             [01;31m[Kblock_matcher_[m[K.setSpeckleRange(param.as_int());
+      |             [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:191:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kblock_matcher_[m[K’ was not declared in this scope
+  191 |             [01;31m[Kblock_matcher_[m[K.setSgbmMode(param.as_bool());
+      |             [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:193:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kblock_matcher_[m[K’ was not declared in this scope
+  193 |             [01;31m[Kblock_matcher_[m[K.setP1(param.as_double());
+      |             [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:195:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kblock_matcher_[m[K’ was not declared in this scope
+  195 |             [01;31m[Kblock_matcher_[m[K.setP2(param.as_double());
+      |             [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:197:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kblock_matcher_[m[K’ was not declared in this scope
+  197 |             [01;31m[Kblock_matcher_[m[K.setDisp12MaxDiff(param.as_int());
+      |             [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/include/StereoCombined.hpp:143:13:[m[K [01;35m[Kwarning: [m[K‘[01m[Kvoid add_param_to_map(std::map<std::__cxx11::basic_string<char>, std::pair<double, rcl_interfaces::msg::ParameterDescriptor_<std::allocator<void> > > >&, const string&, const string&, double, double, double, double)[m[K’ defined but not used [[01;35m[K-Wunused-function[m[K]
+  143 | static void [01;35m[Kadd_param_to_map[m[K(
+      |             [01;35m[K^~~~~~~~~~~~~~~~[m[K
+[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/include/StereoCombined.hpp:125:13:[m[K [01;35m[Kwarning: [m[K‘[01m[Kvoid add_param_to_map(std::map<std::__cxx11::basic_string<char>, std::pair<int, rcl_interfaces::msg::ParameterDescriptor_<std::allocator<void> > > >&, const string&, const string&, int, int, int, int)[m[K’ defined but not used [[01;35m[K-Wunused-function[m[K]
+  125 | static void [01;35m[Kadd_param_to_map[m[K(
+      |             [01;35m[K^~~~~~~~~~~~~~~~[m[K
+make[2]: *** [CMakeFiles/stereo_combined_node.dir/build.make:76: CMakeFiles/stereo_combined_node.dir/src/stereo_combined_node.cpp.o] Error 1
+make[2]: *** [CMakeFiles/stereo_combined_node.dir/build.make:90: CMakeFiles/stereo_combined_node.dir/src/StereoCombined.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/stereo_combined_node.dir/all] Error 2
+make: *** [Makefile:146: all] Error 2
