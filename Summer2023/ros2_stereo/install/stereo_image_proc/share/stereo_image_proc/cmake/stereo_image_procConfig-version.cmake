@@ -1,1 +1,0 @@
-/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_image_proc/ament_cmake_core/stereo_image_procConfig-version.cmake

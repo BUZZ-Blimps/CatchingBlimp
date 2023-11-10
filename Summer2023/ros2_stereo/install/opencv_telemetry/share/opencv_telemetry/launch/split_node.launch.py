@@ -1,1 +1,0 @@
-/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry/launch/split_node.launch.py

@@ -1,1 +1,0 @@
-ament_cmake_symlink_install_targets("TARGET_FILES" "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_image_proc/point_cloud_node" "TARGETS" "point_cloud_node" "DESTINATION" "lib/stereo_image_proc")
