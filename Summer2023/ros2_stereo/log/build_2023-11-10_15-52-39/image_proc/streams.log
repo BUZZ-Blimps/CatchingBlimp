@@ -1,0 +1,35 @@
+[0.203s] Invoking command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_proc': /usr/bin/cmake /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/image_proc -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc
+[0.347s] -- The C compiler identification is GNU 9.4.0
+[0.463s] -- The CXX compiler identification is GNU 9.4.0
+[0.471s] -- Check for working C compiler: /usr/bin/cc
+[0.517s] -- Check for working C compiler: /usr/bin/cc -- works
+[0.518s] -- Detecting C compiler ABI info
+[0.566s] -- Detecting C compiler ABI info - done
+[0.575s] -- Detecting C compile features
+[0.575s] -- Detecting C compile features - done
+[0.578s] -- Check for working CXX compiler: /usr/bin/c++
+[0.631s] -- Check for working CXX compiler: /usr/bin/c++ -- works
+[0.632s] -- Detecting CXX compiler ABI info
+[0.686s] -- Detecting CXX compiler ABI info - done
+[0.696s] -- Detecting CXX compile features
+[0.696s] -- Detecting CXX compile features - done
+[0.710s] CMake Error at CMakeLists.txt:13 (find_package):
+[0.710s]   By not providing "Findament_cmake_auto.cmake" in CMAKE_MODULE_PATH this
+[0.710s]   project has asked CMake to find a package configuration file provided by
+[0.710s]   "ament_cmake_auto", but CMake did not find one.
+[0.710s] 
+[0.710s]   Could not find a package configuration file provided by "ament_cmake_auto"
+[0.710s]   with any of the following names:
+[0.710s] 
+[0.710s]     ament_cmake_autoConfig.cmake
+[0.710s]     ament_cmake_auto-config.cmake
+[0.710s] 
+[0.710s]   Add the installation prefix of "ament_cmake_auto" to CMAKE_PREFIX_PATH or
+[0.710s]   set "ament_cmake_auto_DIR" to a directory containing one of the above
+[0.711s]   files.  If "ament_cmake_auto" provides a separate development package or
+[0.711s]   SDK, be sure it has been installed.
+[0.711s] 
+[0.711s] 
+[0.712s] -- Configuring incomplete, errors occurred!
+[0.713s] See also "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_proc/CMakeFiles/CMakeOutput.log".
+[0.714s] Invoked command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_proc' returned '1': /usr/bin/cmake /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/image_proc -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc

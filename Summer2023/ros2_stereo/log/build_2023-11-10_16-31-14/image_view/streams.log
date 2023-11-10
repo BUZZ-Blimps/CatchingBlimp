@@ -1,0 +1,70 @@
+[0.238s] Invoking command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_view': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_view -- -j8 -l8
+[0.256s] -- Found ament_cmake_auto: 0.9.12 (/opt/ros/foxy/share/ament_cmake_auto/cmake)
+[0.274s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[0.445s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[0.537s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.542s] -- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+[0.622s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.660s] -- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+[0.660s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.882s] -- Setting yaml-cpp_DIR to: '/opt/ros/foxy/share/yaml_cpp_vendor/cmake/../../../opt/yaml_cpp_vendor/lib/cmake/yaml-cpp'
+[1.521s] -- Found ament_lint_auto: 0.9.8 (/opt/ros/foxy/share/ament_lint_auto/cmake)
+[1.532s] -- Added test 'copyright' to check source files copyright and LICENSE
+[1.534s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[1.534s] -- Configured cppcheck include dirs: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/image_view/include
+[1.535s] -- Configured cppcheck exclude dirs and/or files: 
+[1.536s] -- Added test 'cpplint' to check C / C++ code against the Google style
+[1.536s] -- Configured cpplint exclude dirs and/or files: 
+[1.537s] -- Added test 'lint_cmake' to check CMake code style
+[1.537s] -- Added test 'uncrustify' to check C / C++ code style
+[1.537s] -- Configured uncrustify additional arguments: 
+[1.537s] -- Added test 'xmllint' to check XML markup files
+[1.538s] -- Configuring done
+[1.711s] -- Generating done
+[1.712s] -- Build files have been written to: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_view
+[1.760s] [ 36%] Built target image_view_nodes
+[1.782s] [ 57%] Built target image_saver
+[1.782s] [ 57%] Built target extract_images
+[1.783s] [ 78%] Built target image_view
+[1.783s] [ 78%] Built target disparity_view
+[1.783s] [ 89%] Built target video_recorder
+[1.783s] [100%] Built target stereo_view
+[2.144s] Invoked command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_view' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_view -- -j8 -l8
+[2.172s] Invoking command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_view': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --install /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_view
+[2.178s] -- Install configuration: ""
+[2.178s] -- Execute custom install script
+[2.179s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/include/image_view/disparity_view_node.hpp
+[2.185s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/include/image_view/extract_images_node.hpp
+[2.191s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/include/image_view/image_saver_node.hpp
+[2.197s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/include/image_view/image_view_node.hpp
+[2.203s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/include/image_view/stereo_view_node.hpp
+[2.209s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/include/image_view/video_recorder_node.hpp
+[2.215s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/environment/library_path.sh
+[2.222s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/environment/library_path.dsv
+[2.228s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/lib/libimage_view_nodes.so
+[2.235s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/lib/image_view/disparity_view
+[2.241s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/lib/image_view/image_view
+[2.247s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/lib/image_view/stereo_view
+[2.254s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/lib/image_view/extract_images
+[2.260s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/lib/image_view/image_saver
+[2.266s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/lib/image_view/video_recorder
+[2.273s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/ament_index/resource_index/package_run_dependencies/image_view
+[2.279s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/ament_index/resource_index/parent_prefix_path/image_view
+[2.285s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/environment/ament_prefix_path.sh
+[2.291s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/environment/ament_prefix_path.dsv
+[2.297s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/environment/path.sh
+[2.304s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/environment/path.dsv
+[2.309s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/local_setup.bash
+[2.316s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/local_setup.sh
+[2.322s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/local_setup.zsh
+[2.329s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/local_setup.dsv
+[2.335s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/package.dsv
+[2.341s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/ament_index/resource_index/packages/image_view
+[2.347s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/ament_index/resource_index/rclcpp_components/image_view
+[2.354s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/cmake/ament_cmake_export_dependencies-extras.cmake
+[2.360s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/cmake/ament_cmake_export_include_directories-extras.cmake
+[2.367s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/cmake/ament_cmake_export_libraries-extras.cmake
+[2.373s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/cmake/image_viewConfig.cmake
+[2.379s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/cmake/image_viewConfig-version.cmake
+[2.385s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/package.xml
+[2.392s] Invoked command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_view' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --install /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_view

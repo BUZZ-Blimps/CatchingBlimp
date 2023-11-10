@@ -1,0 +1,380 @@
+[0.000000] (-) TimerEvent: {}
+[0.000098] (image_proc) JobQueued: {'identifier': 'image_proc', 'dependencies': OrderedDict()}
+[0.000160] (image_view) JobQueued: {'identifier': 'image_view', 'dependencies': OrderedDict()}
+[0.000176] (opencv_telemetry) JobQueued: {'identifier': 'opencv_telemetry', 'dependencies': OrderedDict()}
+[0.000206] (yolo_msgs) JobQueued: {'identifier': 'yolo_msgs', 'dependencies': OrderedDict()}
+[0.000233] (stereo_combined) JobQueued: {'identifier': 'stereo_combined', 'dependencies': OrderedDict([('image_proc', '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc'), ('yolo_msgs', '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs')])}
+[0.000278] (stereo_image_proc) JobQueued: {'identifier': 'stereo_image_proc', 'dependencies': OrderedDict([('image_proc', '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc'), ('yolo_msgs', '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs')])}
+[0.000500] (image_proc) JobStarted: {'identifier': 'image_proc'}
+[0.096722] (yolo_msgs) JobStarted: {'identifier': 'yolo_msgs'}
+[0.099743] (-) TimerEvent: {}
+[0.193664] (image_view) JobStarted: {'identifier': 'image_view'}
+[0.199914] (-) TimerEvent: {}
+[0.290915] (opencv_telemetry) JobStarted: {'identifier': 'opencv_telemetry'}
+[0.301257] (-) TimerEvent: {}
+[0.389291] (image_proc) JobProgress: {'identifier': 'image_proc', 'progress': 'cmake'}
+[0.389861] (image_proc) JobProgress: {'identifier': 'image_proc', 'progress': 'build'}
+[0.390418] (image_proc) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_proc', '--', '-j8', '-l8'], 'cwd': '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_proc', 'env': OrderedDict([('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'corelab'), ('SSH_AGENT_PID', '2206'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/home/corelab'), ('OLDPWD', '/home/corelab/CatchingBlimp/Summer2023'), ('DESKTOP_SESSION', 'ubuntu'), ('GIO_LAUNCHED_DESKTOP_FILE', '/usr/share/applications/terminator.desktop'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('MANAGERPID', '2008'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1001/bus'), ('COLORTERM', 'truecolor'), ('TERMINATOR_DBUS_NAME', 'net.tenshu.Terminator23558193cd9818af7fe4d2c2f5bd9d00f'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '2799'), ('IM_CONFIG_PHASE', '1'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'corelab'), ('JOURNAL_STREAM', '8:54927'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'corelab'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('SESSION_MANAGER', 'local/willie-Precision-3630-Tower:@/tmp/.ICE-unix/2257,unix/willie-Precision-3630-Tower:/tmp/.ICE-unix/2257'), ('INVOCATION_ID', '24630d09def043f494267e4fb68ed9a3'), ('XDG_MENU_PREFIX', 'gnome-'), ('XDG_RUNTIME_DIR', '/run/user/1001'), ('DISPLAY', ':1'), ('TERMINATOR_DBUS_PATH', '/net/tenshu/Terminator2'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1001/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('SSH_AUTH_SOCK', '/run/user/1001/keyring/ssh'), ('AMENT_PREFIX_PATH', '/opt/ros/foxy'), ('SHELL', '/bin/bash'), ('TERMINATOR_UUID', 'urn:uuid:856db5a6-c17c-4610-abe3-54959134648c'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GPG_AGENT_INFO', '/run/user/1001/gnupg/S.gpg-agent:0:1'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_proc'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('COLCON', '1'), ('VTE_VERSION', '6003'), ('CMAKE_PREFIX_PATH', '/opt/ros/foxy')]), 'shell': False}
+[0.393114] (yolo_msgs) JobProgress: {'identifier': 'yolo_msgs', 'progress': 'cmake'}
+[0.394345] (yolo_msgs) JobProgress: {'identifier': 'yolo_msgs', 'progress': 'build'}
+[0.394460] (yolo_msgs) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/yolo_msgs', '--', '-j8', '-l8'], 'cwd': '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/yolo_msgs', 'env': OrderedDict([('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'corelab'), ('SSH_AGENT_PID', '2206'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/home/corelab'), ('OLDPWD', '/home/corelab/CatchingBlimp/Summer2023'), ('DESKTOP_SESSION', 'ubuntu'), ('GIO_LAUNCHED_DESKTOP_FILE', '/usr/share/applications/terminator.desktop'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('MANAGERPID', '2008'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1001/bus'), ('COLORTERM', 'truecolor'), ('TERMINATOR_DBUS_NAME', 'net.tenshu.Terminator23558193cd9818af7fe4d2c2f5bd9d00f'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '2799'), ('IM_CONFIG_PHASE', '1'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'corelab'), ('JOURNAL_STREAM', '8:54927'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'corelab'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('SESSION_MANAGER', 'local/willie-Precision-3630-Tower:@/tmp/.ICE-unix/2257,unix/willie-Precision-3630-Tower:/tmp/.ICE-unix/2257'), ('INVOCATION_ID', '24630d09def043f494267e4fb68ed9a3'), ('XDG_MENU_PREFIX', 'gnome-'), ('XDG_RUNTIME_DIR', '/run/user/1001'), ('DISPLAY', ':1'), ('TERMINATOR_DBUS_PATH', '/net/tenshu/Terminator2'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1001/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('SSH_AUTH_SOCK', '/run/user/1001/keyring/ssh'), ('AMENT_PREFIX_PATH', '/opt/ros/foxy'), ('SHELL', '/bin/bash'), ('TERMINATOR_UUID', 'urn:uuid:856db5a6-c17c-4610-abe3-54959134648c'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GPG_AGENT_INFO', '/run/user/1001/gnupg/S.gpg-agent:0:1'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/yolo_msgs'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('COLCON', '1'), ('VTE_VERSION', '6003'), ('CMAKE_PREFIX_PATH', '/opt/ros/foxy')]), 'shell': False}
+[0.396128] (image_view) JobProgress: {'identifier': 'image_view', 'progress': 'cmake'}
+[0.396270] (image_view) JobProgress: {'identifier': 'image_view', 'progress': 'build'}
+[0.396479] (image_view) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_view', '--', '-j8', '-l8'], 'cwd': '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_view', 'env': OrderedDict([('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'corelab'), ('SSH_AGENT_PID', '2206'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/home/corelab'), ('OLDPWD', '/home/corelab/CatchingBlimp/Summer2023'), ('DESKTOP_SESSION', 'ubuntu'), ('GIO_LAUNCHED_DESKTOP_FILE', '/usr/share/applications/terminator.desktop'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('MANAGERPID', '2008'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1001/bus'), ('COLORTERM', 'truecolor'), ('TERMINATOR_DBUS_NAME', 'net.tenshu.Terminator23558193cd9818af7fe4d2c2f5bd9d00f'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '2799'), ('IM_CONFIG_PHASE', '1'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'corelab'), ('JOURNAL_STREAM', '8:54927'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'corelab'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('SESSION_MANAGER', 'local/willie-Precision-3630-Tower:@/tmp/.ICE-unix/2257,unix/willie-Precision-3630-Tower:/tmp/.ICE-unix/2257'), ('INVOCATION_ID', '24630d09def043f494267e4fb68ed9a3'), ('XDG_MENU_PREFIX', 'gnome-'), ('XDG_RUNTIME_DIR', '/run/user/1001'), ('DISPLAY', ':1'), ('TERMINATOR_DBUS_PATH', '/net/tenshu/Terminator2'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1001/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('SSH_AUTH_SOCK', '/run/user/1001/keyring/ssh'), ('AMENT_PREFIX_PATH', '/opt/ros/foxy'), ('SHELL', '/bin/bash'), ('TERMINATOR_UUID', 'urn:uuid:856db5a6-c17c-4610-abe3-54959134648c'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GPG_AGENT_INFO', '/run/user/1001/gnupg/S.gpg-agent:0:1'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_view'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('COLCON', '1'), ('VTE_VERSION', '6003'), ('CMAKE_PREFIX_PATH', '/opt/ros/foxy')]), 'shell': False}
+[0.398851] (opencv_telemetry) JobProgress: {'identifier': 'opencv_telemetry', 'progress': 'cmake'}
+[0.399408] (opencv_telemetry) Command: {'cmd': ['/usr/bin/cmake', '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry', '-DAMENT_CMAKE_SYMLINK_INSTALL=1', '-DCMAKE_INSTALL_PREFIX=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry'], 'cwd': '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry', 'env': OrderedDict([('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'corelab'), ('SSH_AGENT_PID', '2206'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/home/corelab'), ('OLDPWD', '/home/corelab/CatchingBlimp/Summer2023'), ('DESKTOP_SESSION', 'ubuntu'), ('GIO_LAUNCHED_DESKTOP_FILE', '/usr/share/applications/terminator.desktop'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('MANAGERPID', '2008'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1001/bus'), ('COLORTERM', 'truecolor'), ('TERMINATOR_DBUS_NAME', 'net.tenshu.Terminator23558193cd9818af7fe4d2c2f5bd9d00f'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '2799'), ('IM_CONFIG_PHASE', '1'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'corelab'), ('JOURNAL_STREAM', '8:54927'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'corelab'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('SESSION_MANAGER', 'local/willie-Precision-3630-Tower:@/tmp/.ICE-unix/2257,unix/willie-Precision-3630-Tower:/tmp/.ICE-unix/2257'), ('INVOCATION_ID', '24630d09def043f494267e4fb68ed9a3'), ('XDG_MENU_PREFIX', 'gnome-'), ('XDG_RUNTIME_DIR', '/run/user/1001'), ('DISPLAY', ':1'), ('TERMINATOR_DBUS_PATH', '/net/tenshu/Terminator2'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1001/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('SSH_AUTH_SOCK', '/run/user/1001/keyring/ssh'), ('AMENT_PREFIX_PATH', '/opt/ros/foxy'), ('SHELL', '/bin/bash'), ('TERMINATOR_UUID', 'urn:uuid:856db5a6-c17c-4610-abe3-54959134648c'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GPG_AGENT_INFO', '/run/user/1001/gnupg/S.gpg-agent:0:1'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('COLCON', '1'), ('VTE_VERSION', '6003'), ('CMAKE_PREFIX_PATH', '/opt/ros/foxy')]), 'shell': False}
+[0.401988] (-) TimerEvent: {}
+[0.410181] (opencv_telemetry) StdoutLine: {'line': b'-- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)\n'}
+[0.419245] (image_proc) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target image_proc\x1b[0m\n'}
+[0.424938] (image_view) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target image_view_nodes\x1b[0m\n'}
+[0.426119] (opencv_telemetry) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[0.428589] (yolo_msgs) StdoutLine: {'line': b'[  2%] Built target yolo_msgs__cpp\n'}
+[0.430905] (yolo_msgs) StdoutLine: {'line': b'[ 12%] Built target yolo_msgs__rosidl_generator_c\n'}
+[0.445563] (yolo_msgs) StdoutLine: {'line': b'[ 34%] Built target yolo_msgs__rosidl_typesupport_introspection_cpp\n'}
+[0.445739] (yolo_msgs) StdoutLine: {'line': b'[ 34%] Built target yolo_msgs__rosidl_typesupport_cpp\n'}
+[0.448424] (yolo_msgs) StdoutLine: {'line': b'[ 55%] Built target yolo_msgs__rosidl_typesupport_c\n'}
+[0.448547] (yolo_msgs) StdoutLine: {'line': b'[ 55%] Built target yolo_msgs__rosidl_typesupport_fastrtps_cpp\n'}
+[0.449132] (yolo_msgs) StdoutLine: {'line': b'[ 65%] Built target yolo_msgs__rosidl_typesupport_introspection_c\n'}
+[0.466680] (yolo_msgs) StdoutLine: {'line': b'[ 76%] Built target yolo_msgs__rosidl_typesupport_fastrtps_c\n'}
+[0.480213] (yolo_msgs) StdoutLine: {'line': b'[ 76%] Built target yolo_msgs\n'}
+[0.481417] (image_proc) StdoutLine: {'line': b'[  6%] \x1b[32mBuilding CXX object CMakeFiles/image_proc.dir/src/image_proc/processor.cpp.o\x1b[0m\n'}
+[0.494153] (yolo_msgs) StdoutLine: {'line': b'[ 78%] Built target yolo_msgs__py\n'}
+[0.502115] (-) TimerEvent: {}
+[0.512587] (yolo_msgs) StdoutLine: {'line': b'[ 87%] Built target yolo_msgs__python\n'}
+[0.532022] (yolo_msgs) StdoutLine: {'line': b'[100%] Built target yolo_msgs__rosidl_typesupport_c__pyext\n'}
+[0.532170] (yolo_msgs) StdoutLine: {'line': b'[100%] Built target yolo_msgs__rosidl_typesupport_fastrtps_c__pyext\n'}
+[0.532231] (yolo_msgs) StdoutLine: {'line': b'[100%] Built target yolo_msgs__rosidl_typesupport_introspection_c__pyext\n'}
+[0.540654] (yolo_msgs) CommandEnded: {'returncode': 0}
+[0.559653] (image_view) StdoutLine: {'line': b'[ 10%] \x1b[32mBuilding CXX object CMakeFiles/image_view_nodes.dir/src/disparity_view_node.cpp.o\x1b[0m\n'}
+[0.559808] (image_view) StdoutLine: {'line': b'[ 10%] \x1b[32mBuilding CXX object CMakeFiles/image_view_nodes.dir/src/extract_images_node.cpp.o\x1b[0m\n'}
+[0.559988] (image_view) StdoutLine: {'line': b'[ 15%] \x1b[32mBuilding CXX object CMakeFiles/image_view_nodes.dir/src/image_view_node.cpp.o\x1b[0m\n'}
+[0.560550] (image_view) StdoutLine: {'line': b'[ 21%] \x1b[32mBuilding CXX object CMakeFiles/image_view_nodes.dir/src/image_saver_node.cpp.o\x1b[0m\n'}
+[0.566404] (image_view) StdoutLine: {'line': b'[ 26%] \x1b[32mBuilding CXX object CMakeFiles/image_view_nodes.dir/src/stereo_view_node.cpp.o\x1b[0m\n'}
+[0.568367] (image_view) StdoutLine: {'line': b'[ 31%] \x1b[32mBuilding CXX object CMakeFiles/image_view_nodes.dir/src/video_recorder_node.cpp.o\x1b[0m\n'}
+[0.576473] (opencv_telemetry) StdoutLine: {'line': b'-- Override CMake install command with custom implementation using symlinks instead of copying resources\n'}
+[0.582373] (opencv_telemetry) StdoutLine: {'line': b'-- Found cv_bridge: 3.0.7 (/opt/ros/foxy/share/cv_bridge/cmake)\n'}
+[0.602213] (-) TimerEvent: {}
+[0.611818] (opencv_telemetry) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.615322] (opencv_telemetry) StdoutLine: {'line': b'-- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)\n'}
+[0.656480] (yolo_msgs) JobProgress: {'identifier': 'yolo_msgs', 'progress': 'install'}
+[0.665553] (yolo_msgs) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/yolo_msgs'], 'cwd': '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/yolo_msgs', 'env': OrderedDict([('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'corelab'), ('SSH_AGENT_PID', '2206'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/home/corelab'), ('OLDPWD', '/home/corelab/CatchingBlimp/Summer2023'), ('DESKTOP_SESSION', 'ubuntu'), ('GIO_LAUNCHED_DESKTOP_FILE', '/usr/share/applications/terminator.desktop'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('MANAGERPID', '2008'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1001/bus'), ('COLORTERM', 'truecolor'), ('TERMINATOR_DBUS_NAME', 'net.tenshu.Terminator23558193cd9818af7fe4d2c2f5bd9d00f'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '2799'), ('IM_CONFIG_PHASE', '1'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'corelab'), ('JOURNAL_STREAM', '8:54927'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'corelab'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('SESSION_MANAGER', 'local/willie-Precision-3630-Tower:@/tmp/.ICE-unix/2257,unix/willie-Precision-3630-Tower:/tmp/.ICE-unix/2257'), ('INVOCATION_ID', '24630d09def043f494267e4fb68ed9a3'), ('XDG_MENU_PREFIX', 'gnome-'), ('XDG_RUNTIME_DIR', '/run/user/1001'), ('DISPLAY', ':1'), ('TERMINATOR_DBUS_PATH', '/net/tenshu/Terminator2'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1001/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('SSH_AUTH_SOCK', '/run/user/1001/keyring/ssh'), ('AMENT_PREFIX_PATH', '/opt/ros/foxy'), ('SHELL', '/bin/bash'), ('TERMINATOR_UUID', 'urn:uuid:856db5a6-c17c-4610-abe3-54959134648c'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GPG_AGENT_INFO', '/run/user/1001/gnupg/S.gpg-agent:0:1'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/yolo_msgs'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('COLCON', '1'), ('VTE_VERSION', '6003'), ('CMAKE_PREFIX_PATH', '/opt/ros/foxy')]), 'shell': False}
+[0.674931] (yolo_msgs) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[0.675074] (yolo_msgs) StdoutLine: {'line': b'-- Execute custom install script\n'}
+[0.675137] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/ament_index/resource_index/rosidl_interfaces/yolo_msgs\n'}
+[0.681937] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/bounding_box.h\n'}
+[0.688550] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/bounding_boxes.h\n'}
+[0.695095] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_box__functions.h\n'}
+[0.701601] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_box__struct.h\n'}
+[0.702281] (-) TimerEvent: {}
+[0.729451] (opencv_telemetry) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[0.732512] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_box__type_support.h\n'}
+[0.744706] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_boxes__functions.h\n'}
+[0.769707] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_boxes__struct.h\n'}
+[0.793545] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_boxes__type_support.h\n'}
+[0.802383] (-) TimerEvent: {}
+[0.813218] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/object_count__functions.h\n'}
+[0.830647] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/object_count__struct.h\n'}
+[0.846500] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/object_count__type_support.h\n'}
+[0.866531] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/object_count.h\n'}
+[0.882215] (opencv_telemetry) StdoutLine: {'line': b'-- Found image_transport: 2.4.0 (/opt/ros/foxy/share/image_transport/cmake)\n'}
+[0.890785] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/rosidl_generator_c__visibility_control.h\n'}
+[0.902482] (-) TimerEvent: {}
+[0.910827] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/environment/library_path.sh\n'}
+[0.917401] (opencv_telemetry) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)\n'}
+[0.918648] (opencv_telemetry) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[0.934667] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/environment/library_path.dsv\n'}
+[0.954963] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_box__rosidl_typesupport_fastrtps_c.h\n'}
+[0.974743] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_boxes__rosidl_typesupport_fastrtps_c.h\n'}
+[0.994579] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/object_count__rosidl_typesupport_fastrtps_c.h\n'}
+[1.002581] (-) TimerEvent: {}
+[1.022555] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/rosidl_typesupport_fastrtps_c__visibility_control.h\n'}
+[1.043143] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/lib/libyolo_msgs__rosidl_typesupport_fastrtps_c.so\n'}
+[1.062920] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_box__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[1.075112] (opencv_telemetry) StdoutLine: {'line': b'-- Found rosidl_default_generators: 1.0.1 (/opt/ros/foxy/share/rosidl_default_generators/cmake)\n'}
+[1.082689] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_boxes__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[1.083800] (opencv_telemetry) StdoutLine: {'line': b'-- Found camera_info_manager: 2.4.0 (/opt/ros/foxy/share/camera_info_manager/cmake)\n'}
+[1.101281] (opencv_telemetry) StdoutLine: {'line': b"-- Setting yaml-cpp_DIR to: '/opt/ros/foxy/share/yaml_cpp_vendor/cmake/../../../opt/yaml_cpp_vendor/lib/cmake/yaml-cpp'\n"}
+[1.102664] (-) TimerEvent: {}
+[1.102885] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/object_count__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[1.122638] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h\n'}
+[1.147012] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/lib/libyolo_msgs__rosidl_typesupport_fastrtps_cpp.so\n'}
+[1.158330] (opencv_telemetry) StdoutLine: {'line': b'-- Found PythonInterp: /usr/bin/python3 (found version "3.8.10") \n'}
+[1.167266] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_box__rosidl_typesupport_introspection_c.h\n'}
+[1.173976] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_boxes__rosidl_typesupport_introspection_c.h\n'}
+[1.180859] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/object_count__rosidl_typesupport_introspection_c.h\n'}
+[1.187872] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/rosidl_typesupport_introspection_c__visibility_control.h\n'}
+[1.200549] (image_proc) StdoutLine: {'line': b'[ 13%] \x1b[32m\x1b[1mLinking CXX shared library libimage_proc.so\x1b[0m\n'}
+[1.202755] (-) TimerEvent: {}
+[1.210993] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/bounding_box.hpp\n'}
+[1.217775] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/bounding_boxes.hpp\n'}
+[1.224598] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_box__builder.hpp\n'}
+[1.231662] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_box__struct.hpp\n'}
+[1.238930] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_box__traits.hpp\n'}
+[1.246592] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_box__type_support.hpp\n'}
+[1.253900] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_boxes__builder.hpp\n'}
+[1.261083] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_boxes__struct.hpp\n'}
+[1.268095] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_boxes__traits.hpp\n'}
+[1.275231] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_boxes__type_support.hpp\n'}
+[1.282718] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/object_count__builder.hpp\n'}
+[1.289964] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/object_count__struct.hpp\n'}
+[1.297455] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/object_count__traits.hpp\n'}
+[1.302841] (-) TimerEvent: {}
+[1.304948] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/object_count__type_support.hpp\n'}
+[1.312472] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/object_count.hpp\n'}
+[1.320453] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/rosidl_generator_cpp__visibility_control.hpp\n'}
+[1.327969] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_box__rosidl_typesupport_introspection_cpp.hpp\n'}
+[1.336269] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_boxes__rosidl_typesupport_introspection_cpp.hpp\n'}
+[1.343555] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/object_count__rosidl_typesupport_introspection_cpp.hpp\n'}
+[1.350932] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/environment/pythonpath.sh\n'}
+[1.358347] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/environment/pythonpath.dsv\n'}
+[1.363535] (opencv_telemetry) StdoutLine: {'line': b'-- Found ament_cmake_ros: 0.9.2 (/opt/ros/foxy/share/ament_cmake_ros/cmake)\n'}
+[1.365884] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/lib/python3.8/site-packages/yolo_msgs/__init__.py\n'}
+[1.373566] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/lib/python3.8/site-packages/yolo_msgs/msg/__init__.py\n'}
+[1.381462] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/lib/python3.8/site-packages/yolo_msgs/msg/_bounding_box.py\n'}
+[1.388982] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/lib/python3.8/site-packages/yolo_msgs/msg/_bounding_boxes.py\n'}
+[1.395815] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/lib/python3.8/site-packages/yolo_msgs/msg/_object_count.py\n'}
+[1.402952] (-) TimerEvent: {}
+[1.404009] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/lib/python3.8/site-packages/yolo_msgs/yolo_msgs_s__rosidl_typesupport_fastrtps_c.cpython-38-x86_64-linux-gnu.so\n'}
+[1.411572] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/lib/python3.8/site-packages/yolo_msgs/yolo_msgs_s__rosidl_typesupport_introspection_c.cpython-38-x86_64-linux-gnu.so\n'}
+[1.419057] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/lib/python3.8/site-packages/yolo_msgs/yolo_msgs_s__rosidl_typesupport_c.cpython-38-x86_64-linux-gnu.so\n'}
+[1.426292] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/lib/libyolo_msgs__python.so\n'}
+[1.435435] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/msg/BoundingBox.idl\n'}
+[1.442371] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/msg/BoundingBoxes.idl\n'}
+[1.455187] (image_proc) StdoutLine: {'line': b'[ 13%] Built target image_proc\n'}
+[1.456100] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/msg/ObjectCount.idl\n'}
+[1.464210] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/msg/BoundingBox.msg\n'}
+[1.476964] (image_proc) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target rectify\x1b[0m\n'}
+[1.484662] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/msg/BoundingBoxes.msg\n'}
+[1.501556] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/msg/ObjectCount.msg\n'}
+[1.503029] (-) TimerEvent: {}
+[1.522353] (image_proc) StdoutLine: {'line': b'[ 20%] \x1b[32mBuilding CXX object CMakeFiles/rectify.dir/src/rectify.cpp.o\x1b[0m\n'}
+[1.542775] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/ament_index/resource_index/package_run_dependencies/yolo_msgs\n'}
+[1.566634] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/ament_index/resource_index/parent_prefix_path/yolo_msgs\n'}
+[1.590793] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/environment/ament_prefix_path.sh\n'}
+[1.603136] (-) TimerEvent: {}
+[1.606644] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/environment/ament_prefix_path.dsv\n'}
+[1.622878] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/environment/path.sh\n'}
+[1.635585] (image_proc) StderrLine: {'line': b'\x1b[01m\x1b[K/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/image_proc/src/rectify.cpp:43:10:\x1b[m\x1b[K \x1b[01;31m\x1b[Kfatal error: \x1b[m\x1b[Ktracetools_image_pipeline/tracetools.h: No such file or directory\n'}
+[1.635748] (image_proc) StderrLine: {'line': b'   43 | #include \x1b[01;31m\x1b[K"tracetools_image_pipeline/tracetools.h"\x1b[m\x1b[K\n'}
+[1.635813] (image_proc) StderrLine: {'line': b'      |          \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[1.635866] (image_proc) StderrLine: {'line': b'compilation terminated.\n'}
+[1.637241] (image_proc) StderrLine: {'line': b'make[2]: *** [CMakeFiles/rectify.dir/build.make:63: CMakeFiles/rectify.dir/src/rectify.cpp.o] Error 1\n'}
+[1.637391] (image_proc) StderrLine: {'line': b'make[1]: *** [CMakeFiles/Makefile2:144: CMakeFiles/rectify.dir/all] Error 2\n'}
+[1.637522] (image_proc) StderrLine: {'line': b'make: *** [Makefile:141: all] Error 2\n'}
+[1.638971] (image_proc) CommandEnded: {'returncode': 2}
+[1.642997] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/environment/path.dsv\n'}
+[1.657770] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/local_setup.bash\n'}
+[1.658149] (opencv_telemetry) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[1.664794] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/local_setup.sh\n'}
+[1.672024] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/local_setup.zsh\n'}
+[1.679176] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/local_setup.dsv\n'}
+[1.686484] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/package.dsv\n'}
+[1.693296] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/ament_index/resource_index/packages/yolo_msgs\n'}
+[1.700382] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/cmake/rosidl_cmake-extras.cmake\n'}
+[1.703239] (-) TimerEvent: {}
+[1.707221] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/cmake/ament_cmake_export_dependencies-extras.cmake\n'}
+[1.714686] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/cmake/ament_cmake_export_libraries-extras.cmake\n'}
+[1.721851] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/cmake/ament_cmake_export_targets-extras.cmake\n'}
+[1.728925] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[1.736388] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake\n'}
+[1.743373] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake\n'}
+[1.750662] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/cmake/yolo_msgsConfig.cmake\n'}
+[1.757427] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/cmake/yolo_msgsConfig-version.cmake\n'}
+[1.764982] (yolo_msgs) StdoutLine: {'line': b'-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/package.xml\n'}
+[1.772000] (yolo_msgs) StdoutLine: {'line': b'-- Installing: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/lib/libyolo_msgs__rosidl_generator_c.so\n'}
+[1.772191] (yolo_msgs) StdoutLine: {'line': b'-- Set runtime path of "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/lib/libyolo_msgs__rosidl_generator_c.so" to ""\n'}
+[1.772303] (yolo_msgs) StdoutLine: {'line': b'-- Installing: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/lib/libyolo_msgs__rosidl_typesupport_introspection_c.so\n'}
+[1.772617] (yolo_msgs) StdoutLine: {'line': b'-- Set runtime path of "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/lib/libyolo_msgs__rosidl_typesupport_introspection_c.so" to ""\n'}
+[1.772714] (yolo_msgs) StdoutLine: {'line': b'-- Installing: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/lib/libyolo_msgs__rosidl_typesupport_c.so\n'}
+[1.772831] (yolo_msgs) StdoutLine: {'line': b'-- Set runtime path of "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/lib/libyolo_msgs__rosidl_typesupport_c.so" to ""\n'}
+[1.772918] (yolo_msgs) StdoutLine: {'line': b'-- Installing: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/lib/libyolo_msgs__rosidl_typesupport_introspection_cpp.so\n'}
+[1.773175] (yolo_msgs) StdoutLine: {'line': b'-- Set runtime path of "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/lib/libyolo_msgs__rosidl_typesupport_introspection_cpp.so" to ""\n'}
+[1.773273] (yolo_msgs) StdoutLine: {'line': b'-- Installing: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/lib/libyolo_msgs__rosidl_typesupport_cpp.so\n'}
+[1.773457] (yolo_msgs) StdoutLine: {'line': b'-- Set runtime path of "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/lib/libyolo_msgs__rosidl_typesupport_cpp.so" to ""\n'}
+[1.798444] (yolo_msgs) StdoutLine: {'line': b"Compiling '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/lib/python3.8/site-packages/yolo_msgs/__init__.py'...\n"}
+[1.800770] (opencv_telemetry) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[1.802069] (yolo_msgs) StdoutLine: {'line': b'-- Installing: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/cmake/yolo_msgs__rosidl_generator_cExport.cmake\n'}
+[1.802331] (yolo_msgs) StdoutLine: {'line': b'-- Installing: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/cmake/yolo_msgs__rosidl_generator_cExport-noconfig.cmake\n'}
+[1.802443] (yolo_msgs) StdoutLine: {'line': b'-- Installing: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/cmake/yolo_msgs__rosidl_typesupport_introspection_cExport.cmake\n'}
+[1.802533] (yolo_msgs) StdoutLine: {'line': b'-- Installing: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/cmake/yolo_msgs__rosidl_typesupport_introspection_cExport-noconfig.cmake\n'}
+[1.802620] (yolo_msgs) StdoutLine: {'line': b'-- Installing: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/cmake/yolo_msgs__rosidl_typesupport_cExport.cmake\n'}
+[1.802703] (yolo_msgs) StdoutLine: {'line': b'-- Installing: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/cmake/yolo_msgs__rosidl_typesupport_cExport-noconfig.cmake\n'}
+[1.802852] (yolo_msgs) StdoutLine: {'line': b'-- Installing: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/cmake/yolo_msgs__rosidl_generator_cppExport.cmake\n'}
+[1.802962] (yolo_msgs) StdoutLine: {'line': b'-- Installing: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/cmake/yolo_msgs__rosidl_typesupport_introspection_cppExport.cmake\n'}
+[1.803062] (yolo_msgs) StdoutLine: {'line': b'-- Installing: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/cmake/yolo_msgs__rosidl_typesupport_introspection_cppExport-noconfig.cmake\n'}
+[1.803195] (yolo_msgs) StdoutLine: {'line': b'-- Installing: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/cmake/yolo_msgs__rosidl_typesupport_cppExport.cmake\n'}
+[1.803280] (-) TimerEvent: {}
+[1.803605] (yolo_msgs) StdoutLine: {'line': b'-- Installing: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/cmake/yolo_msgs__rosidl_typesupport_cppExport-noconfig.cmake\n'}
+[1.811398] (yolo_msgs) CommandEnded: {'returncode': 0}
+[1.831762] (opencv_telemetry) StdoutLine: {'line': b'-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3.5") \n'}
+[1.831899] (opencv_telemetry) StdoutLine: {'line': b'-- Found python_cmake_module: 0.8.1 (/opt/ros/foxy/share/python_cmake_module/cmake)\n'}
+[1.853289] (opencv_telemetry) StdoutLine: {'line': b'-- Found PythonLibs: /usr/lib/x86_64-linux-gnu/libpython3.8.so (found suitable version "3.8.10", minimum required is "3.5") \n'}
+[1.853426] (opencv_telemetry) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[1.853487] (opencv_telemetry) StdoutLine: {'line': b'-- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.8\n'}
+[1.853541] (opencv_telemetry) StdoutLine: {'line': b'-- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.8.so\n'}
+[1.871194] (opencv_telemetry) StdoutLine: {'line': b'-- Found PythonExtra: .so  \n'}
+[1.903505] (-) TimerEvent: {}
+[2.003895] (-) TimerEvent: {}
+[2.104467] (-) TimerEvent: {}
+[2.121926] (opencv_telemetry) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.9.8 (/opt/ros/foxy/share/ament_lint_auto/cmake)\n'}
+[2.125194] (image_proc) JobEnded: {'identifier': 'image_proc', 'rc': 2}
+[2.142216] (opencv_telemetry) StdoutLine: {'line': b"-- Added test 'copyright' to check source files copyright and LICENSE\n"}
+[2.150436] (opencv_telemetry) StdoutLine: {'line': b"-- Added test 'cppcheck' to perform static code analysis on C / C++ code\n"}
+[2.152560] (opencv_telemetry) StdoutLine: {'line': b'-- Configured cppcheck include dirs: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry/include\n'}
+[2.152697] (opencv_telemetry) StdoutLine: {'line': b'-- Configured cppcheck exclude dirs and/or files: \n'}
+[2.159102] (opencv_telemetry) StdoutLine: {'line': b"-- Added test 'cpplint' to check C / C++ code against the Google style\n"}
+[2.159315] (opencv_telemetry) StdoutLine: {'line': b'-- Configured cpplint exclude dirs and/or files: \n'}
+[2.161046] (opencv_telemetry) StdoutLine: {'line': b"-- Added test 'flake8' to check Python code syntax and style conventions\n"}
+[2.163191] (opencv_telemetry) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[2.164664] (opencv_telemetry) StdoutLine: {'line': b"-- Added test 'pep257' to check Python code against some of the style conventions in PEP 257\n"}
+[2.167752] (yolo_msgs) JobEnded: {'identifier': 'yolo_msgs', 'rc': 'SIGINT'}
+[2.171178] (opencv_telemetry) StdoutLine: {'line': b"-- Added test 'uncrustify' to check C / C++ code style\n"}
+[2.171328] (opencv_telemetry) StdoutLine: {'line': b'-- Configured uncrustify additional arguments: \n'}
+[2.172449] (opencv_telemetry) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[2.177557] (opencv_telemetry) StdoutLine: {'line': b'-- Configuring done\n'}
+[2.204597] (-) TimerEvent: {}
+[2.294992] (opencv_telemetry) StdoutLine: {'line': b'-- Generating done\n'}
+[2.297643] (opencv_telemetry) StdoutLine: {'line': b'-- Build files have been written to: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry\n'}
+[2.304727] (-) TimerEvent: {}
+[2.307488] (opencv_telemetry) JobEnded: {'identifier': 'opencv_telemetry', 'rc': 'SIGINT'}
+[2.404859] (-) TimerEvent: {}
+[2.505150] (-) TimerEvent: {}
+[2.605430] (-) TimerEvent: {}
+[2.705726] (-) TimerEvent: {}
+[2.806004] (-) TimerEvent: {}
+[2.906334] (-) TimerEvent: {}
+[3.006653] (-) TimerEvent: {}
+[3.106939] (-) TimerEvent: {}
+[3.207260] (-) TimerEvent: {}
+[3.307570] (-) TimerEvent: {}
+[3.407828] (-) TimerEvent: {}
+[3.508074] (-) TimerEvent: {}
+[3.608357] (-) TimerEvent: {}
+[3.708645] (-) TimerEvent: {}
+[3.808893] (-) TimerEvent: {}
+[3.909159] (-) TimerEvent: {}
+[4.009411] (-) TimerEvent: {}
+[4.109659] (-) TimerEvent: {}
+[4.209907] (-) TimerEvent: {}
+[4.310152] (-) TimerEvent: {}
+[4.410399] (-) TimerEvent: {}
+[4.510646] (-) TimerEvent: {}
+[4.610894] (-) TimerEvent: {}
+[4.711159] (-) TimerEvent: {}
+[4.811411] (-) TimerEvent: {}
+[4.911649] (-) TimerEvent: {}
+[5.011952] (-) TimerEvent: {}
+[5.112241] (-) TimerEvent: {}
+[5.212496] (-) TimerEvent: {}
+[5.312753] (-) TimerEvent: {}
+[5.413022] (-) TimerEvent: {}
+[5.513290] (-) TimerEvent: {}
+[5.613547] (-) TimerEvent: {}
+[5.713805] (-) TimerEvent: {}
+[5.814069] (-) TimerEvent: {}
+[5.914345] (-) TimerEvent: {}
+[6.014597] (-) TimerEvent: {}
+[6.114848] (-) TimerEvent: {}
+[6.215103] (-) TimerEvent: {}
+[6.315363] (-) TimerEvent: {}
+[6.415626] (-) TimerEvent: {}
+[6.515881] (-) TimerEvent: {}
+[6.616139] (-) TimerEvent: {}
+[6.716388] (-) TimerEvent: {}
+[6.816644] (-) TimerEvent: {}
+[6.916896] (-) TimerEvent: {}
+[7.017150] (-) TimerEvent: {}
+[7.117405] (-) TimerEvent: {}
+[7.217716] (-) TimerEvent: {}
+[7.317961] (-) TimerEvent: {}
+[7.418228] (-) TimerEvent: {}
+[7.518492] (-) TimerEvent: {}
+[7.618723] (-) TimerEvent: {}
+[7.635736] (image_view) StdoutLine: {'line': b'[ 36%] \x1b[32m\x1b[1mLinking CXX shared library libimage_view_nodes.so\x1b[0m\n'}
+[7.718844] (-) TimerEvent: {}
+[7.819095] (-) TimerEvent: {}
+[7.919355] (-) TimerEvent: {}
+[8.019632] (-) TimerEvent: {}
+[8.119907] (-) TimerEvent: {}
+[8.153411] (image_view) StdoutLine: {'line': b'[ 36%] Built target image_view_nodes\n'}
+[8.161013] (image_view) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target image_view\x1b[0m\n'}
+[8.161146] (image_view) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target image_saver\x1b[0m\n'}
+[8.161207] (image_view) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target video_recorder\x1b[0m\n'}
+[8.161262] (image_view) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target stereo_view\x1b[0m\n'}
+[8.161313] (image_view) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target disparity_view\x1b[0m\n'}
+[8.161364] (image_view) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target extract_images\x1b[0m\n'}
+[8.186705] (image_view) StdoutLine: {'line': b'[ 47%] \x1b[32mBuilding CXX object CMakeFiles/image_saver.dir/src/image_saver.cpp.o\x1b[0m\n'}
+[8.186860] (image_view) StdoutLine: {'line': b'[ 47%] \x1b[32mBuilding CXX object CMakeFiles/extract_images.dir/src/extract_images.cpp.o\x1b[0m\n'}
+[8.198985] (image_view) StdoutLine: {'line': b'[ 57%] \x1b[32mBuilding CXX object CMakeFiles/video_recorder.dir/src/video_recorder.cpp.o\x1b[0m\n'}
+[8.199140] (image_view) StdoutLine: {'line': b'[ 57%] \x1b[32mBuilding CXX object CMakeFiles/disparity_view.dir/src/disparity_view.cpp.o\x1b[0m\n'}
+[8.203091] (image_view) StdoutLine: {'line': b'[ 63%] \x1b[32mBuilding CXX object CMakeFiles/image_view.dir/src/image_view.cpp.o\x1b[0m\n'}
+[8.204007] (image_view) StdoutLine: {'line': b'[ 68%] \x1b[32mBuilding CXX object CMakeFiles/stereo_view.dir/src/stereo_view.cpp.o\x1b[0m\n'}
+[8.220043] (-) TimerEvent: {}
+[8.320305] (-) TimerEvent: {}
+[8.420640] (-) TimerEvent: {}
+[8.520979] (-) TimerEvent: {}
+[8.621319] (-) TimerEvent: {}
+[8.721653] (-) TimerEvent: {}
+[8.821994] (-) TimerEvent: {}
+[8.922340] (-) TimerEvent: {}
+[9.022687] (-) TimerEvent: {}
+[9.123038] (-) TimerEvent: {}
+[9.223391] (-) TimerEvent: {}
+[9.323736] (-) TimerEvent: {}
+[9.424060] (-) TimerEvent: {}
+[9.524394] (-) TimerEvent: {}
+[9.624723] (-) TimerEvent: {}
+[9.725059] (-) TimerEvent: {}
+[9.825410] (-) TimerEvent: {}
+[9.925698] (-) TimerEvent: {}
+[9.933698] (image_view) StdoutLine: {'line': b'[ 73%] \x1b[32m\x1b[1mLinking CXX executable extract_images\x1b[0m\n'}
+[9.954507] (image_view) StdoutLine: {'line': b'[ 78%] \x1b[32m\x1b[1mLinking CXX executable image_saver\x1b[0m\n'}
+[9.954919] (image_view) StdoutLine: {'line': b'[ 84%] \x1b[32m\x1b[1mLinking CXX executable disparity_view\x1b[0m\n'}
+[9.977445] (image_view) StdoutLine: {'line': b'[ 89%] \x1b[32m\x1b[1mLinking CXX executable video_recorder\x1b[0m\n'}
+[10.025834] (-) TimerEvent: {}
+[10.126276] (-) TimerEvent: {}
+[10.226679] (-) TimerEvent: {}
+[10.327137] (-) TimerEvent: {}
+[10.331960] (image_view) StdoutLine: {'line': b'[ 94%] \x1b[32m\x1b[1mLinking CXX executable image_view\x1b[0m\n'}
+[10.427364] (-) TimerEvent: {}
+[10.504204] (image_view) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable stereo_view\x1b[0m\n'}
+[10.527608] (-) TimerEvent: {}
+[10.628259] (-) TimerEvent: {}
+[10.728901] (-) TimerEvent: {}
+[10.829453] (-) TimerEvent: {}
+[10.929821] (-) TimerEvent: {}
+[11.030193] (-) TimerEvent: {}
+[11.130577] (-) TimerEvent: {}
+[11.230985] (-) TimerEvent: {}
+[11.305646] (image_view) StderrLine: {'line': b"/usr/bin/ld: libimage_view_nodes.so: undefined reference to `camera_calibration_parsers::writeCalibration(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, sensor_msgs::msg::CameraInfo_<std::allocator<void> > const&)'\n"}
+[11.306007] (image_view) StderrLine: {'line': b'collect2: error: ld returned 1 exit status\n'}
+[11.307078] (image_view) StderrLine: {'line': b'make[2]: *** [CMakeFiles/image_saver.dir/build.make:302: image_saver] Error 1\n'}
+[11.307357] (image_view) StderrLine: {'line': b'make[1]: *** [CMakeFiles/Makefile2:252: CMakeFiles/image_saver.dir/all] Error 2\n'}
+[11.307458] (image_view) StderrLine: {'line': b'make[1]: *** Waiting for unfinished jobs....\n'}
+[11.308040] (image_view) StderrLine: {'line': b"/usr/bin/ld: libimage_view_nodes.so: undefined /reference to `camera_calibration_parsers::writeCalibration(std::__cxx11::basic_stringusr<char, std:/:char_traits<char>,bin std::allocator<char/> > const&ld, std::__cxx11:::basic_string<char, std ::libimage_view_nodes.sochar_traits<char>,: std::allocator< char> >undefined const&,  sensor_msgsreference: :tomsg :`:camera_calibration_parsersCameraInfo_:<:stdwriteCalibration:(:stdallocator:<:void__cxx11> > const&)'\n"}
+[11.308170] (image_view) StderrLine: {'line': b'::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > collect2: error: ld returned 1 exit status\n'}
+[11.308256] (image_view) StderrLine: {'line': b"const&, sensor_msgs::msg::CameraInfo_<std::allocator<void> > const&)'\n"}
+[11.308315] (image_view) StderrLine: {'line': b'collect2: error: ld returned 1 exit status\n'}
+[11.309142] (image_view) StderrLine: {'line': b'make[2]: *** [CMakeFiles/disparity_view.dir/build.make:302: disparity_view] Error 1\n'}
+[11.309405] (image_view) StderrLine: {'line': b'make[2]: *** [CMakeFiles/extract_images.dir/build.make:302: extract_images] Error 1\n'}
+[11.309550] (image_view) StderrLine: {'line': b'make[1]: *** [CMakeFiles/Makefile2:144: CMakeFiles/disparity_view.dir/all] Error 2\n'}
+[11.309611] (image_view) StderrLine: {'line': b'make[1]: *** [CMakeFiles/Makefile2:198: CMakeFiles/extract_images.dir/all] Error 2\n'}
+[11.318637] (image_view) StderrLine: {'line': b"/usr/bin/ld: libimage_view_nodes.so: undefined reference to `camera_calibration_parsers::writeCalibration(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, sensor_msgs::msg::CameraInfo_<std::allocator<void> > const&)'\n"}
+[11.318874] (image_view) StderrLine: {'line': b'collect2: error: ld returned 1 exit status\n'}
+[11.319829] (image_view) StderrLine: {'line': b'make[2]: *** [CMakeFiles/video_recorder.dir/build.make:302: video_recorder] Error 1\n'}
+[11.319950] (image_view) StderrLine: {'line': b'make[1]: *** [CMakeFiles/Makefile2:306: CMakeFiles/video_recorder.dir/all] Error 2\n'}
+[11.331101] (-) TimerEvent: {}
+[11.431381] (-) TimerEvent: {}
+[11.440532] (image_view) StderrLine: {'line': b"/usr/bin/ld: libimage_view_nodes.so: undefined reference to `camera_calibration_parsers::writeCalibration(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, sensor_msgs::msg::CameraInfo_<std::allocator<void> > const&)'\n"}
+[11.440771] (image_view) StderrLine: {'line': b'collect2: error: ld returned 1 exit status\n'}
+[11.441595] (image_view) StderrLine: {'line': b'make[2]: *** [CMakeFiles/image_view.dir/build.make:302: image_view] Error 1\n'}
+[11.441759] (image_view) StderrLine: {'line': b'make[1]: *** [CMakeFiles/Makefile2:171: CMakeFiles/image_view.dir/all] Error 2\n'}
+[11.473187] (image_view) StderrLine: {'line': b"/usr/bin/ld: libimage_view_nodes.so: undefined reference to `camera_calibration_parsers::writeCalibration(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, sensor_msgs::msg::CameraInfo_<std::allocator<void> > const&)'\n"}
+[11.473319] (image_view) StderrLine: {'line': b'collect2: error: ld returned 1 exit status\n'}
+[11.474247] (image_view) StderrLine: {'line': b'make[2]: *** [CMakeFiles/stereo_view.dir/build.make:302: stereo_view] Error 1\n'}
+[11.474405] (image_view) StderrLine: {'line': b'make[1]: *** [CMakeFiles/Makefile2:225: CMakeFiles/stereo_view.dir/all] Error 2\n'}
+[11.474559] (image_view) StderrLine: {'line': b'make: *** [Makefile:141: all] Error 2\n'}
+[11.475727] (image_view) JobEnded: {'identifier': 'image_view', 'rc': 'SIGINT'}
+[11.486511] (stereo_combined) JobSkipped: {'identifier': 'stereo_combined'}
+[11.486556] (stereo_image_proc) JobSkipped: {'identifier': 'stereo_image_proc'}
+[11.486654] (-) EventReactorShutdown: {}

@@ -1,6 +1,5 @@
 file(REMOVE_RECURSE
   "CMakeFiles/opencv_subscriber.dir/src/opencv_subscriber.cpp.o"
-  "CMakeFiles/opencv_subscriber.dir/src/opencv_subscriber.cpp.o.d"
   "opencv_subscriber"
   "opencv_subscriber.pdb"
 )

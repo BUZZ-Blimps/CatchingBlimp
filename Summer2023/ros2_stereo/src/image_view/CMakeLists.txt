@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.5)
 project(image_view)
 
+# cmake_policy(SET CMP0121 OLD)
+
 # Default to C99
 if(NOT CMAKE_C_STANDARD)
   set(CMAKE_C_STANDARD 99)
@@ -24,12 +26,20 @@ find_package(OpenCV REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 
+find_package(camera_calibration_parsers REQUIRED)
+find_package(message_filters REQUIRED)
+find_package(sensor_msgs REQUIRED)
+find_package(std_srvs REQUIRED)
+find_package(stereo_msgs REQUIRED)
+
 include_directories(include)
 
 # Deal with the GUI's
 if(ANDROID)
   return()
 endif()
+
+
 
 ament_auto_add_library(${PROJECT_NAME}_nodes SHARED
   src/disparity_view_node.cpp
@@ -39,6 +49,19 @@ ament_auto_add_library(${PROJECT_NAME}_nodes SHARED
   src/stereo_view_node.cpp
   src/video_recorder_node.cpp
 )
+
+ament_target_dependencies(${PROJECT_NAME}_nodes
+  camera_calibration_parsers
+  cv_bridge
+  image_transport
+  message_filters
+  rclcpp
+  rclcpp_components
+  sensor_msgs
+  std_srvs
+  stereo_msgs
+)
+
 target_link_libraries(${PROJECT_NAME}_nodes
   ${OpenCV_LIBRARIES}
   ${Boost_LIBRARIES}

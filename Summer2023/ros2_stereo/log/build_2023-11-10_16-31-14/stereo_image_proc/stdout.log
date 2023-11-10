@@ -1,0 +1,33 @@
+[ 25%] Built target point_cloud_node
+[ 50%] Built target disparity_node
+[100%] Built target stereo_image_proc
+-- Install configuration: ""
+-- Execute custom install script
+-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/lib/stereo_image_proc/disparity_node
+-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/lib/stereo_image_proc/point_cloud_node
+-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/include/stereo_image_proc/stereo_processor.hpp
+-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/environment/library_path.sh
+-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/environment/library_path.dsv
+-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/lib/libstereo_image_proc.so
+-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/launch/disparity.launch.py
+-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/launch/point_cloud.launch.py
+-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/launch/stereo_image_proc.launch.py
+-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/share/ament_index/resource_index/package_run_dependencies/stereo_image_proc
+-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/share/ament_index/resource_index/parent_prefix_path/stereo_image_proc
+-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/environment/ament_prefix_path.sh
+-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/environment/ament_prefix_path.dsv
+-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/environment/path.sh
+-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/environment/path.dsv
+-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/local_setup.bash
+-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/local_setup.sh
+-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/local_setup.zsh
+-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/local_setup.dsv
+-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/package.dsv
+-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/share/ament_index/resource_index/packages/stereo_image_proc
+-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/share/ament_index/resource_index/rclcpp_components/stereo_image_proc
+-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/cmake/ament_cmake_export_dependencies-extras.cmake
+-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/cmake/ament_cmake_export_include_directories-extras.cmake
+-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/cmake/ament_cmake_export_libraries-extras.cmake
+-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/cmake/stereo_image_procConfig.cmake
+-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/cmake/stereo_image_procConfig-version.cmake
+-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/package.xml

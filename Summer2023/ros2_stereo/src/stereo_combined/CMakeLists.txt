@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.5)
 project(stereo_combined)
 
-cmake_policy(SET CMP0121 OLD)
+# cmake_policy(SET CMP0121 OLD)
 
 # Default to C99
 if(NOT CMAKE_C_STANDARD)

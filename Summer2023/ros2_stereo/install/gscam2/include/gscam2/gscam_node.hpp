@@ -1,1 +1,0 @@
-/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/gscam2/include/gscam2/gscam_node.hpp

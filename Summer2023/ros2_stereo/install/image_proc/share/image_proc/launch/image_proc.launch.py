@@ -1,1 +1,1 @@
-/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/image_proc/launch/image_proc.launch.py
+/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/image_proc/launch/image_proc.launch.py

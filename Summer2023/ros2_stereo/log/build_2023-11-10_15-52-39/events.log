@@ -1,0 +1,169 @@
+[0.000000] (-) TimerEvent: {}
+[0.000085] (image_proc) JobQueued: {'identifier': 'image_proc', 'dependencies': OrderedDict()}
+[0.000109] (image_view) JobQueued: {'identifier': 'image_view', 'dependencies': OrderedDict()}
+[0.000126] (opencv_telemetry) JobQueued: {'identifier': 'opencv_telemetry', 'dependencies': OrderedDict()}
+[0.000141] (yolo_msgs) JobQueued: {'identifier': 'yolo_msgs', 'dependencies': OrderedDict()}
+[0.000155] (stereo_combined) JobQueued: {'identifier': 'stereo_combined', 'dependencies': OrderedDict([('image_proc', '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc'), ('yolo_msgs', '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs')])}
+[0.000172] (stereo_image_proc) JobQueued: {'identifier': 'stereo_image_proc', 'dependencies': OrderedDict([('image_proc', '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc'), ('yolo_msgs', '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs')])}
+[0.000345] (image_proc) JobStarted: {'identifier': 'image_proc'}
+[0.050206] (yolo_msgs) JobStarted: {'identifier': 'yolo_msgs'}
+[0.099873] (image_view) JobStarted: {'identifier': 'image_view'}
+[0.099999] (-) TimerEvent: {}
+[0.149396] (opencv_telemetry) JobStarted: {'identifier': 'opencv_telemetry'}
+[0.200901] (image_proc) JobProgress: {'identifier': 'image_proc', 'progress': 'cmake'}
+[0.201493] (-) TimerEvent: {}
+[0.201688] (image_proc) Command: {'cmd': ['/usr/bin/cmake', '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/image_proc', '-DAMENT_CMAKE_SYMLINK_INSTALL=1', '-DCMAKE_INSTALL_PREFIX=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc'], 'cwd': '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_proc', 'env': OrderedDict([('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'corelab'), ('SSH_AGENT_PID', '2206'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('HOME', '/home/corelab'), ('OLDPWD', '/home/corelab/CatchingBlimp/Summer2023'), ('DESKTOP_SESSION', 'ubuntu'), ('GIO_LAUNCHED_DESKTOP_FILE', '/usr/share/applications/terminator.desktop'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('MANAGERPID', '2008'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1001/bus'), ('COLORTERM', 'truecolor'), ('TERMINATOR_DBUS_NAME', 'net.tenshu.Terminator23558193cd9818af7fe4d2c2f5bd9d00f'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '2799'), ('IM_CONFIG_PHASE', '1'), ('LOGNAME', 'corelab'), ('JOURNAL_STREAM', '8:54927'), ('_', '/usr/bin/colcon'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'corelab'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('WINDOWPATH', '2'), ('PATH', '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('SESSION_MANAGER', 'local/willie-Precision-3630-Tower:@/tmp/.ICE-unix/2257,unix/willie-Precision-3630-Tower:/tmp/.ICE-unix/2257'), ('INVOCATION_ID', '24630d09def043f494267e4fb68ed9a3'), ('XDG_MENU_PREFIX', 'gnome-'), ('XDG_RUNTIME_DIR', '/run/user/1001'), ('DISPLAY', ':1'), ('TERMINATOR_DBUS_PATH', '/net/tenshu/Terminator2'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1001/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('SSH_AUTH_SOCK', '/run/user/1001/keyring/ssh'), ('SHELL', '/bin/bash'), ('TERMINATOR_UUID', 'urn:uuid:856db5a6-c17c-4610-abe3-54959134648c'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GPG_AGENT_INFO', '/run/user/1001/gnupg/S.gpg-agent:0:1'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_proc'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('COLCON', '1'), ('VTE_VERSION', '6003')]), 'shell': False}
+[0.203863] (yolo_msgs) JobProgress: {'identifier': 'yolo_msgs', 'progress': 'cmake'}
+[0.203905] (yolo_msgs) Command: {'cmd': ['/usr/bin/cmake', '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/yolo_msgs', '-DAMENT_CMAKE_SYMLINK_INSTALL=1', '-DCMAKE_INSTALL_PREFIX=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs'], 'cwd': '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/yolo_msgs', 'env': OrderedDict([('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'corelab'), ('SSH_AGENT_PID', '2206'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('HOME', '/home/corelab'), ('OLDPWD', '/home/corelab/CatchingBlimp/Summer2023'), ('DESKTOP_SESSION', 'ubuntu'), ('GIO_LAUNCHED_DESKTOP_FILE', '/usr/share/applications/terminator.desktop'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('MANAGERPID', '2008'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1001/bus'), ('COLORTERM', 'truecolor'), ('TERMINATOR_DBUS_NAME', 'net.tenshu.Terminator23558193cd9818af7fe4d2c2f5bd9d00f'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '2799'), ('IM_CONFIG_PHASE', '1'), ('LOGNAME', 'corelab'), ('JOURNAL_STREAM', '8:54927'), ('_', '/usr/bin/colcon'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'corelab'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('WINDOWPATH', '2'), ('PATH', '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('SESSION_MANAGER', 'local/willie-Precision-3630-Tower:@/tmp/.ICE-unix/2257,unix/willie-Precision-3630-Tower:/tmp/.ICE-unix/2257'), ('INVOCATION_ID', '24630d09def043f494267e4fb68ed9a3'), ('XDG_MENU_PREFIX', 'gnome-'), ('XDG_RUNTIME_DIR', '/run/user/1001'), ('DISPLAY', ':1'), ('TERMINATOR_DBUS_PATH', '/net/tenshu/Terminator2'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1001/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('SSH_AUTH_SOCK', '/run/user/1001/keyring/ssh'), ('SHELL', '/bin/bash'), ('TERMINATOR_UUID', 'urn:uuid:856db5a6-c17c-4610-abe3-54959134648c'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GPG_AGENT_INFO', '/run/user/1001/gnupg/S.gpg-agent:0:1'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/yolo_msgs'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('COLCON', '1'), ('VTE_VERSION', '6003')]), 'shell': False}
+[0.204965] (image_view) JobProgress: {'identifier': 'image_view', 'progress': 'cmake'}
+[0.205178] (image_view) Command: {'cmd': ['/usr/bin/cmake', '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/image_view', '-DAMENT_CMAKE_SYMLINK_INSTALL=1', '-DCMAKE_INSTALL_PREFIX=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view'], 'cwd': '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_view', 'env': OrderedDict([('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'corelab'), ('SSH_AGENT_PID', '2206'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('HOME', '/home/corelab'), ('OLDPWD', '/home/corelab/CatchingBlimp/Summer2023'), ('DESKTOP_SESSION', 'ubuntu'), ('GIO_LAUNCHED_DESKTOP_FILE', '/usr/share/applications/terminator.desktop'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('MANAGERPID', '2008'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1001/bus'), ('COLORTERM', 'truecolor'), ('TERMINATOR_DBUS_NAME', 'net.tenshu.Terminator23558193cd9818af7fe4d2c2f5bd9d00f'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '2799'), ('IM_CONFIG_PHASE', '1'), ('LOGNAME', 'corelab'), ('JOURNAL_STREAM', '8:54927'), ('_', '/usr/bin/colcon'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'corelab'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('WINDOWPATH', '2'), ('PATH', '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('SESSION_MANAGER', 'local/willie-Precision-3630-Tower:@/tmp/.ICE-unix/2257,unix/willie-Precision-3630-Tower:/tmp/.ICE-unix/2257'), ('INVOCATION_ID', '24630d09def043f494267e4fb68ed9a3'), ('XDG_MENU_PREFIX', 'gnome-'), ('XDG_RUNTIME_DIR', '/run/user/1001'), ('DISPLAY', ':1'), ('TERMINATOR_DBUS_PATH', '/net/tenshu/Terminator2'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1001/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('SSH_AUTH_SOCK', '/run/user/1001/keyring/ssh'), ('SHELL', '/bin/bash'), ('TERMINATOR_UUID', 'urn:uuid:856db5a6-c17c-4610-abe3-54959134648c'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GPG_AGENT_INFO', '/run/user/1001/gnupg/S.gpg-agent:0:1'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_view'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('COLCON', '1'), ('VTE_VERSION', '6003')]), 'shell': False}
+[0.207180] (opencv_telemetry) JobProgress: {'identifier': 'opencv_telemetry', 'progress': 'cmake'}
+[0.208120] (opencv_telemetry) Command: {'cmd': ['/usr/bin/cmake', '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry', '-DAMENT_CMAKE_SYMLINK_INSTALL=1', '-DCMAKE_INSTALL_PREFIX=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry'], 'cwd': '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry', 'env': OrderedDict([('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'corelab'), ('SSH_AGENT_PID', '2206'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('HOME', '/home/corelab'), ('OLDPWD', '/home/corelab/CatchingBlimp/Summer2023'), ('DESKTOP_SESSION', 'ubuntu'), ('GIO_LAUNCHED_DESKTOP_FILE', '/usr/share/applications/terminator.desktop'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('MANAGERPID', '2008'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1001/bus'), ('COLORTERM', 'truecolor'), ('TERMINATOR_DBUS_NAME', 'net.tenshu.Terminator23558193cd9818af7fe4d2c2f5bd9d00f'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '2799'), ('IM_CONFIG_PHASE', '1'), ('LOGNAME', 'corelab'), ('JOURNAL_STREAM', '8:54927'), ('_', '/usr/bin/colcon'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'corelab'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('WINDOWPATH', '2'), ('PATH', '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('SESSION_MANAGER', 'local/willie-Precision-3630-Tower:@/tmp/.ICE-unix/2257,unix/willie-Precision-3630-Tower:/tmp/.ICE-unix/2257'), ('INVOCATION_ID', '24630d09def043f494267e4fb68ed9a3'), ('XDG_MENU_PREFIX', 'gnome-'), ('XDG_RUNTIME_DIR', '/run/user/1001'), ('DISPLAY', ':1'), ('TERMINATOR_DBUS_PATH', '/net/tenshu/Terminator2'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1001/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('SSH_AUTH_SOCK', '/run/user/1001/keyring/ssh'), ('SHELL', '/bin/bash'), ('TERMINATOR_UUID', 'urn:uuid:856db5a6-c17c-4610-abe3-54959134648c'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GPG_AGENT_INFO', '/run/user/1001/gnupg/S.gpg-agent:0:1'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('COLCON', '1'), ('VTE_VERSION', '6003')]), 'shell': False}
+[0.301587] (-) TimerEvent: {}
+[0.346652] (yolo_msgs) StdoutLine: {'line': b'-- The C compiler identification is GNU 9.4.0\n'}
+[0.346940] (opencv_telemetry) StdoutLine: {'line': b'-- The C compiler identification is GNU 9.4.0\n'}
+[0.347068] (image_proc) StdoutLine: {'line': b'-- The C compiler identification is GNU 9.4.0\n'}
+[0.347188] (image_view) StdoutLine: {'line': b'-- The C compiler identification is GNU 9.4.0\n'}
+[0.401706] (-) TimerEvent: {}
+[0.463550] (image_view) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 9.4.0\n'}
+[0.463908] (image_proc) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 9.4.0\n'}
+[0.463990] (opencv_telemetry) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 9.4.0\n'}
+[0.464051] (yolo_msgs) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 9.4.0\n'}
+[0.470899] (image_view) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc\n'}
+[0.471145] (image_proc) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc\n'}
+[0.471210] (opencv_telemetry) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc\n'}
+[0.471342] (yolo_msgs) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc\n'}
+[0.501827] (-) TimerEvent: {}
+[0.516966] (opencv_telemetry) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc -- works\n'}
+[0.517296] (image_view) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc -- works\n'}
+[0.517358] (image_proc) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc -- works\n'}
+[0.517415] (yolo_msgs) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc -- works\n'}
+[0.518276] (image_proc) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.518369] (yolo_msgs) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.518425] (image_view) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.518477] (opencv_telemetry) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.565867] (yolo_msgs) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.566054] (opencv_telemetry) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.566119] (image_proc) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.566175] (image_view) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.574927] (yolo_msgs) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.575192] (opencv_telemetry) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.575250] (image_view) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.575303] (image_proc) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.575595] (image_proc) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.575670] (image_view) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.575724] (yolo_msgs) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.575773] (opencv_telemetry) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.578025] (image_proc) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++\n'}
+[0.578101] (opencv_telemetry) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++\n'}
+[0.578156] (yolo_msgs) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++\n'}
+[0.578206] (image_view) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++\n'}
+[0.601945] (-) TimerEvent: {}
+[0.631362] (image_proc) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ -- works\n'}
+[0.631658] (opencv_telemetry) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ -- works\n'}
+[0.631920] (image_view) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ -- works\n'}
+[0.632019] (yolo_msgs) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ -- works\n'}
+[0.632339] (image_proc) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.632484] (image_view) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.632535] (yolo_msgs) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.632584] (opencv_telemetry) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.686562] (yolo_msgs) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.686722] (image_proc) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.686820] (opencv_telemetry) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.686903] (image_view) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.695845] (image_view) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.696076] (image_proc) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.696139] (yolo_msgs) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.696301] (opencv_telemetry) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.696640] (image_view) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[0.696704] (image_proc) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[0.696756] (opencv_telemetry) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[0.696871] (yolo_msgs) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[0.701998] (-) TimerEvent: {}
+[0.705356] (image_view) StderrLine: {'line': b'CMake Error at CMakeLists.txt:17 (find_package):\n'}
+[0.705707] (image_view) StderrLine: {'line': b'  By not providing "Findament_cmake_auto.cmake" in CMAKE_MODULE_PATH this\n'}
+[0.705774] (image_view) StderrLine: {'line': b'  project has asked CMake to find a package configuration file provided by\n'}
+[0.705827] (image_view) StderrLine: {'line': b'  "ament_cmake_auto", but CMake did not find one.\n'}
+[0.705877] (image_view) StderrLine: {'line': b'\n'}
+[0.705925] (image_view) StderrLine: {'line': b'  Could not find a package configuration file provided by "ament_cmake_auto"\n'}
+[0.705973] (image_view) StderrLine: {'line': b'  with any of the following names:\n'}
+[0.706020] (image_view) StderrLine: {'line': b'\n'}
+[0.706067] (image_view) StderrLine: {'line': b'    ament_cmake_autoConfig.cmake\n'}
+[0.706115] (image_view) StderrLine: {'line': b'    ament_cmake_auto-config.cmake\n'}
+[0.706161] (image_view) StderrLine: {'line': b'\n'}
+[0.706206] (image_view) StderrLine: {'line': b'  Add the installation prefix of "ament_cmake_auto" to CMAKE_PREFIX_PATH or\n'}
+[0.706258] (image_view) StderrLine: {'line': b'  set "ament_cmake_auto_DIR" to a directory containing one of the above\n'}
+[0.706305] (image_view) StderrLine: {'line': b'  files.  If "ament_cmake_auto" provides a separate development package or\n'}
+[0.706351] (image_view) StderrLine: {'line': b'  SDK, be sure it has been installed.\n'}
+[0.706397] (image_view) StderrLine: {'line': b'\n'}
+[0.706442] (image_view) StderrLine: {'line': b'\n'}
+[0.706488] (opencv_telemetry) StderrLine: {'line': b'CMake Error at CMakeLists.txt:19 (find_package):\n'}
+[0.706545] (opencv_telemetry) StderrLine: {'line': b'  By not providing "Findament_cmake.cmake" in CMAKE_MODULE_PATH this project\n'}
+[0.706592] (opencv_telemetry) StderrLine: {'line': b'  has asked CMake to find a package configuration file provided by\n'}
+[0.706638] (opencv_telemetry) StderrLine: {'line': b'  "ament_cmake", but CMake did not find one.\n'}
+[0.706684] (opencv_telemetry) StderrLine: {'line': b'\n'}
+[0.706730] (opencv_telemetry) StderrLine: {'line': b'  Could not find a package configuration file provided by "ament_cmake" with\n'}
+[0.706776] (opencv_telemetry) StderrLine: {'line': b'  any of the following names:\n'}
+[0.706823] (opencv_telemetry) StderrLine: {'line': b'\n'}
+[0.707054] (opencv_telemetry) StderrLine: {'line': b'    ament_cmakeConfig.cmake\n'}
+[0.707232] (opencv_telemetry) StderrLine: {'line': b'    ament_cmake-config.cmake\n'}
+[0.707582] (opencv_telemetry) StderrLine: {'line': b'\n'}
+[0.707981] (opencv_telemetry) StderrLine: {'line': b'  Add the installation prefix of "ament_cmake" to CMAKE_PREFIX_PATH or set\n'}
+[0.708714] (opencv_telemetry) StderrLine: {'line': b'  "ament_cmake_DIR" to a directory containing one of the above files.  If\n'}
+[0.708792] (opencv_telemetry) StderrLine: {'line': b'  "ament_cmake" provides a separate development package or SDK, be sure it\n'}
+[0.709065] (opencv_telemetry) StderrLine: {'line': b'  has been installed.\n'}
+[0.709121] (opencv_telemetry) StderrLine: {'line': b'\n'}
+[0.710049] (opencv_telemetry) StderrLine: {'line': b'\n'}
+[0.710169] (image_proc) StderrLine: {'line': b'CMake Error at CMakeLists.txt:13 (find_package):\n'}
+[0.710239] (image_proc) StderrLine: {'line': b'  By not providing "Findament_cmake_auto.cmake" in CMAKE_MODULE_PATH this\n'}
+[0.710292] (image_proc) StderrLine: {'line': b'  project has asked CMake to find a package configuration file provided by\n'}
+[0.710344] (image_proc) StderrLine: {'line': b'  "ament_cmake_auto", but CMake did not find one.\n'}
+[0.710395] (image_proc) StderrLine: {'line': b'\n'}
+[0.710447] (image_proc) StderrLine: {'line': b'  Could not find a package configuration file provided by "ament_cmake_auto"\n'}
+[0.710499] (image_proc) StderrLine: {'line': b'  with any of the following names:\n'}
+[0.710550] (image_proc) StderrLine: {'line': b'\n'}
+[0.710599] (image_proc) StderrLine: {'line': b'    ament_cmake_autoConfig.cmake\n'}
+[0.710649] (image_proc) StderrLine: {'line': b'    ament_cmake_auto-config.cmake\n'}
+[0.710699] (image_proc) StderrLine: {'line': b'\n'}
+[0.710749] (image_proc) StderrLine: {'line': b'  Add the installation prefix of "ament_cmake_auto" to CMAKE_PREFIX_PATH or\n'}
+[0.710799] (image_proc) StderrLine: {'line': b'  set "ament_cmake_auto_DIR" to a directory containing one of the above\n'}
+[0.710848] (image_proc) StderrLine: {'line': b'  files.  If "ament_cmake_auto" provides a separate development package or\n'}
+[0.711476] (image_proc) StderrLine: {'line': b'  SDK, be sure it has been installed.\n'}
+[0.711531] (image_proc) StderrLine: {'line': b'\n'}
+[0.711581] (image_proc) StderrLine: {'line': b'\n'}
+[0.711631] (yolo_msgs) StderrLine: {'line': b'CMake Error at CMakeLists.txt:19 (find_package):\n'}
+[0.711726] (yolo_msgs) StderrLine: {'line': b'  By not providing "Findament_cmake.cmake" in CMAKE_MODULE_PATH this project\n'}
+[0.711779] (yolo_msgs) StderrLine: {'line': b'  has asked CMake to find a package configuration file provided by\n'}
+[0.711828] (yolo_msgs) StderrLine: {'line': b'  "ament_cmake", but CMake did not find one.\n'}
+[0.711968] (yolo_msgs) StderrLine: {'line': b'\n'}
+[0.712018] (yolo_msgs) StderrLine: {'line': b'  Could not find a package configuration file provided by "ament_cmake" with\n'}
+[0.712068] (yolo_msgs) StderrLine: {'line': b'  any of the following names:\n'}
+[0.712117] (yolo_msgs) StderrLine: {'line': b'\n'}
+[0.712165] (yolo_msgs) StderrLine: {'line': b'    ament_cmakeConfig.cmake\n'}
+[0.712214] (yolo_msgs) StderrLine: {'line': b'    ament_cmake-config.cmake\n'}
+[0.712265] (yolo_msgs) StderrLine: {'line': b'\n'}
+[0.712315] (yolo_msgs) StderrLine: {'line': b'  Add the installation prefix of "ament_cmake" to CMAKE_PREFIX_PATH or set\n'}
+[0.712364] (yolo_msgs) StderrLine: {'line': b'  "ament_cmake_DIR" to a directory containing one of the above files.  If\n'}
+[0.712413] (yolo_msgs) StderrLine: {'line': b'  "ament_cmake" provides a separate development package or SDK, be sure it\n'}
+[0.712462] (yolo_msgs) StderrLine: {'line': b'  has been installed.\n'}
+[0.712511] (yolo_msgs) StderrLine: {'line': b'\n'}
+[0.712559] (yolo_msgs) StderrLine: {'line': b'\n'}
+[0.712607] (opencv_telemetry) StdoutLine: {'line': b'-- Configuring incomplete, errors occurred!\n'}
+[0.712707] (opencv_telemetry) StdoutLine: {'line': b'See also "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/CMakeFiles/CMakeOutput.log".\n'}
+[0.712776] (image_proc) StdoutLine: {'line': b'-- Configuring incomplete, errors occurred!\n'}
+[0.712948] (image_proc) StdoutLine: {'line': b'See also "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_proc/CMakeFiles/CMakeOutput.log".\n'}
+[0.713001] (yolo_msgs) StdoutLine: {'line': b'-- Configuring incomplete, errors occurred!\n'}
+[0.713784] (yolo_msgs) StdoutLine: {'line': b'See also "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/yolo_msgs/CMakeFiles/CMakeOutput.log".\n'}
+[0.713876] (image_view) StdoutLine: {'line': b'-- Configuring incomplete, errors occurred!\n'}
+[0.714316] (image_view) StdoutLine: {'line': b'See also "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_view/CMakeFiles/CMakeOutput.log".\n'}
+[0.714521] (image_proc) CommandEnded: {'returncode': 1}
+[0.714982] (image_view) CommandEnded: {'returncode': 1}
+[0.716011] (yolo_msgs) CommandEnded: {'returncode': 1}
+[0.716472] (opencv_telemetry) CommandEnded: {'returncode': 1}
+[0.773742] (image_proc) JobEnded: {'identifier': 'image_proc', 'rc': 1}
+[0.774496] (image_view) JobEnded: {'identifier': 'image_view', 'rc': 'SIGINT'}
+[0.774662] (yolo_msgs) JobEnded: {'identifier': 'yolo_msgs', 'rc': 'SIGINT'}
+[0.774817] (opencv_telemetry) JobEnded: {'identifier': 'opencv_telemetry', 'rc': 'SIGINT'}
+[0.784904] (stereo_combined) JobSkipped: {'identifier': 'stereo_combined'}
+[0.785010] (stereo_image_proc) JobSkipped: {'identifier': 'stereo_image_proc'}
+[0.785035] (-) EventReactorShutdown: {}

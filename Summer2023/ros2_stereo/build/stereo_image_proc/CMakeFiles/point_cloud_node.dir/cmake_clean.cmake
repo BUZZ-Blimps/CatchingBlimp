@@ -1,6 +1,5 @@
 file(REMOVE_RECURSE
   "CMakeFiles/point_cloud_node.dir/rclcpp_components/node_main_point_cloud_node.cpp.o"
-  "CMakeFiles/point_cloud_node.dir/rclcpp_components/node_main_point_cloud_node.cpp.o.d"
   "point_cloud_node"
   "point_cloud_node.pdb"
 )

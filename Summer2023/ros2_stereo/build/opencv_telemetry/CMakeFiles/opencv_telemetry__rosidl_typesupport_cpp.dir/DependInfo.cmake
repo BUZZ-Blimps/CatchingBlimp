@@ -1,14 +1,25 @@
-
-# Consider dependencies only in project.
-set(CMAKE_DEPENDS_IN_PROJECT_ONLY OFF)
-
 # The set of languages for which implicit dependencies are needed:
 set(CMAKE_DEPENDS_LANGUAGES
+  "CXX"
+  )
+# The set of files for implicit dependencies of each language:
+set(CMAKE_DEPENDS_CHECK_CXX
+  "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/rosidl_typesupport_cpp/opencv_telemetry/msg/resized_image__type_support.cpp" "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/CMakeFiles/opencv_telemetry__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/opencv_telemetry/msg/resized_image__type_support.cpp.o"
+  )
+set(CMAKE_CXX_COMPILER_ID "GNU")
+
+# Preprocessor definitions for this target.
+set(CMAKE_TARGET_DEFINITIONS_CXX
+  "RCUTILS_ENABLE_FAULT_INJECTION"
+  "ROS_PACKAGE_NAME=\"opencv_telemetry\""
+  "opencv_telemetry__rosidl_typesupport_cpp_EXPORTS"
   )
 
-# The set of dependency files which are needed:
-set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/rosidl_typesupport_cpp/opencv_telemetry/msg/resized_image__type_support.cpp" "CMakeFiles/opencv_telemetry__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/opencv_telemetry/msg/resized_image__type_support.cpp.o" "gcc" "CMakeFiles/opencv_telemetry__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/opencv_telemetry/msg/resized_image__type_support.cpp.o.d"
+# The include file search paths:
+set(CMAKE_CXX_TARGET_INCLUDE_PATH
+  "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry/include"
+  "rosidl_generator_cpp"
+  "/opt/ros/foxy/include"
   )
 
 # Targets to which this target links.

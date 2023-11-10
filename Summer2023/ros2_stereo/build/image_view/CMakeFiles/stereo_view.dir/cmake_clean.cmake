@@ -1,6 +1,5 @@
 file(REMOVE_RECURSE
   "CMakeFiles/stereo_view.dir/src/stereo_view.cpp.o"
-  "CMakeFiles/stereo_view.dir/src/stereo_view.cpp.o.d"
   "stereo_view"
   "stereo_view.pdb"
 )

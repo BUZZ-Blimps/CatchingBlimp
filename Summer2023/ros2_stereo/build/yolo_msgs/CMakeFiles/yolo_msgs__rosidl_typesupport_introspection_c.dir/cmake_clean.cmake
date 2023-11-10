@@ -1,10 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/yolo_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/yolo_msgs/msg/detail/bounding_box__type_support.c.o"
-  "CMakeFiles/yolo_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/yolo_msgs/msg/detail/bounding_box__type_support.c.o.d"
   "CMakeFiles/yolo_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/yolo_msgs/msg/detail/bounding_boxes__type_support.c.o"
-  "CMakeFiles/yolo_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/yolo_msgs/msg/detail/bounding_boxes__type_support.c.o.d"
   "CMakeFiles/yolo_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/yolo_msgs/msg/detail/object_count__type_support.c.o"
-  "CMakeFiles/yolo_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/yolo_msgs/msg/detail/object_count__type_support.c.o.d"
   "libyolo_msgs__rosidl_typesupport_introspection_c.pdb"
   "libyolo_msgs__rosidl_typesupport_introspection_c.so"
   "rosidl_typesupport_introspection_c/yolo_msgs/msg/detail/bounding_box__rosidl_typesupport_introspection_c.h"

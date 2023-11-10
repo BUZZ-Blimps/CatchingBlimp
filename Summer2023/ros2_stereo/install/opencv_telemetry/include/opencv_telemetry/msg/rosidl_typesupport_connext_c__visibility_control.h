@@ -1,1 +1,0 @@
-/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/rosidl_typesupport_connext_c/opencv_telemetry/msg/rosidl_typesupport_connext_c__visibility_control.h

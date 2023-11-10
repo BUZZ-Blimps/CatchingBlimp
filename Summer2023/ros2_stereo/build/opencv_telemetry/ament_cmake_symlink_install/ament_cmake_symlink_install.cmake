@@ -23,7 +23,7 @@ function(ament_cmake_symlink_install_directory cmake_current_source_dir)
 
   # make destination absolute path and ensure that it exists
   if(NOT IS_ABSOLUTE "${ARG_DESTINATION}")
-    set(ARG_DESTINATION "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/${ARG_DESTINATION}")
+    set(ARG_DESTINATION "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/${ARG_DESTINATION}")
   endif()
   if(NOT EXISTS "${ARG_DESTINATION}")
     file(MAKE_DIRECTORY "${ARG_DESTINATION}")
@@ -123,7 +123,7 @@ function(ament_cmake_symlink_install_files cmake_current_source_dir)
 
   # make destination an absolute path and ensure that it exists
   if(NOT IS_ABSOLUTE "${ARG_DESTINATION}")
-    set(ARG_DESTINATION "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/${ARG_DESTINATION}")
+    set(ARG_DESTINATION "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/${ARG_DESTINATION}")
   endif()
   if(NOT EXISTS "${ARG_DESTINATION}")
     file(MAKE_DIRECTORY "${ARG_DESTINATION}")
@@ -181,7 +181,7 @@ function(ament_cmake_symlink_install_programs cmake_current_source_dir)
 
   # make destination an absolute path and ensure that it exists
   if(NOT IS_ABSOLUTE "${ARG_DESTINATION}")
-    set(ARG_DESTINATION "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/${ARG_DESTINATION}")
+    set(ARG_DESTINATION "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/${ARG_DESTINATION}")
   endif()
   if(NOT EXISTS "${ARG_DESTINATION}")
     file(MAKE_DIRECTORY "${ARG_DESTINATION}")
@@ -251,7 +251,7 @@ function(ament_cmake_symlink_install_targets)
 
     # make destination an absolute path and ensure that it exists
     if(NOT IS_ABSOLUTE "${destination}")
-      set(destination "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/${destination}")
+      set(destination "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/${destination}")
     endif()
     if(NOT EXISTS "${destination}")
       file(MAKE_DIRECTORY "${destination}")
@@ -292,7 +292,7 @@ function(_ament_cmake_symlink_install_create_symlink absolute_file symlink)
   endif()
 
   execute_process(
-    COMMAND "/home/corelab/.local/lib/python3.8/site-packages/cmake/data/bin/cmake" "-E" "create_symlink"
+    COMMAND "/usr/bin/cmake" "-E" "create_symlink"
       "${absolute_file}"
       "${symlink}"
   )
@@ -310,164 +310,146 @@ message(STATUS "Execute custom install script")
 
 # begin of custom install code
 
-# install(FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_index/share/ament_index/resource_index/rosidl_interfaces/opencv_telemetry" "DESTINATION" "share/ament_index/resource_index/rosidl_interfaces")
-ament_cmake_symlink_install_files("/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_index/share/ament_index/resource_index/rosidl_interfaces/opencv_telemetry" "DESTINATION" "share/ament_index/resource_index/rosidl_interfaces")
+# install(FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_index/share/ament_index/resource_index/rosidl_interfaces/opencv_telemetry" "DESTINATION" "share/ament_index/resource_index/rosidl_interfaces")
+ament_cmake_symlink_install_files("/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_index/share/ament_index/resource_index/rosidl_interfaces/opencv_telemetry" "DESTINATION" "share/ament_index/resource_index/rosidl_interfaces")
 
-# install(DIRECTORY "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/rosidl_generator_c/opencv_telemetry/" "DESTINATION" "include/opencv_telemetry" "PATTERN" "*.h")
-ament_cmake_symlink_install_directory("/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" DIRECTORY "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/rosidl_generator_c/opencv_telemetry/" "DESTINATION" "include/opencv_telemetry" "PATTERN" "*.h")
+# install(DIRECTORY "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/rosidl_generator_c/opencv_telemetry/" "DESTINATION" "include/opencv_telemetry" "PATTERN" "*.h")
+ament_cmake_symlink_install_directory("/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" DIRECTORY "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/rosidl_generator_c/opencv_telemetry/" "DESTINATION" "include/opencv_telemetry" "PATTERN" "*.h")
 
 # install(FILES "/opt/ros/foxy/lib/python3.8/site-packages/ament_package/template/environment_hook/library_path.sh" "DESTINATION" "share/opencv_telemetry/environment")
-ament_cmake_symlink_install_files("/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" FILES "/opt/ros/foxy/lib/python3.8/site-packages/ament_package/template/environment_hook/library_path.sh" "DESTINATION" "share/opencv_telemetry/environment")
+ament_cmake_symlink_install_files("/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" FILES "/opt/ros/foxy/lib/python3.8/site-packages/ament_package/template/environment_hook/library_path.sh" "DESTINATION" "share/opencv_telemetry/environment")
 
-# install(FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_environment_hooks/library_path.dsv" "DESTINATION" "share/opencv_telemetry/environment")
-ament_cmake_symlink_install_files("/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_environment_hooks/library_path.dsv" "DESTINATION" "share/opencv_telemetry/environment")
+# install(FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_environment_hooks/library_path.dsv" "DESTINATION" "share/opencv_telemetry/environment")
+ament_cmake_symlink_install_files("/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_environment_hooks/library_path.dsv" "DESTINATION" "share/opencv_telemetry/environment")
 
-# install(DIRECTORY "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/rosidl_typesupport_connext_c/opencv_telemetry/" "DESTINATION" "include/opencv_telemetry" "PATTERN_EXCLUDE" "*.cpp")
-ament_cmake_symlink_install_directory("/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" DIRECTORY "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/rosidl_typesupport_connext_c/opencv_telemetry/" "DESTINATION" "include/opencv_telemetry" "PATTERN_EXCLUDE" "*.cpp")
-
-# install("TARGETS" "opencv_telemetry__rosidl_typesupport_connext_c" "ARCHIVE_DESTINATION" "lib" "LIBRARY_DESTINATION" "lib" "RUNTIME_DESTINATION" "bin")
-include("/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_symlink_install_targets_0_${CMAKE_INSTALL_CONFIG_NAME}.cmake")
-
-# install(DIRECTORY "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/rosidl_generator_dds_idl/opencv_telemetry/msg/dds_connext/" "DESTINATION" "share/opencv_telemetry/msg/dds_connext")
-ament_cmake_symlink_install_directory("/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" DIRECTORY "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/rosidl_generator_dds_idl/opencv_telemetry/msg/dds_connext/" "DESTINATION" "share/opencv_telemetry/msg/dds_connext")
-
-# install(DIRECTORY "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/rosidl_typesupport_connext_cpp/opencv_telemetry/" "DESTINATION" "include/opencv_telemetry" "PATTERN_EXCLUDE" "*.cpp")
-ament_cmake_symlink_install_directory("/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" DIRECTORY "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/rosidl_typesupport_connext_cpp/opencv_telemetry/" "DESTINATION" "include/opencv_telemetry" "PATTERN_EXCLUDE" "*.cpp")
-
-# install("TARGETS" "opencv_telemetry__rosidl_typesupport_connext_cpp" "ARCHIVE_DESTINATION" "lib" "LIBRARY_DESTINATION" "lib" "RUNTIME_DESTINATION" "bin")
-include("/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_symlink_install_targets_1_${CMAKE_INSTALL_CONFIG_NAME}.cmake")
-
-# install(DIRECTORY "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/rosidl_typesupport_fastrtps_c/opencv_telemetry/" "DESTINATION" "include/opencv_telemetry" "PATTERN_EXCLUDE" "*.cpp")
-ament_cmake_symlink_install_directory("/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" DIRECTORY "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/rosidl_typesupport_fastrtps_c/opencv_telemetry/" "DESTINATION" "include/opencv_telemetry" "PATTERN_EXCLUDE" "*.cpp")
+# install(DIRECTORY "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/rosidl_typesupport_fastrtps_c/opencv_telemetry/" "DESTINATION" "include/opencv_telemetry" "PATTERN_EXCLUDE" "*.cpp")
+ament_cmake_symlink_install_directory("/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" DIRECTORY "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/rosidl_typesupport_fastrtps_c/opencv_telemetry/" "DESTINATION" "include/opencv_telemetry" "PATTERN_EXCLUDE" "*.cpp")
 
 # install("TARGETS" "opencv_telemetry__rosidl_typesupport_fastrtps_c" "ARCHIVE_DESTINATION" "lib" "LIBRARY_DESTINATION" "lib" "RUNTIME_DESTINATION" "bin")
-include("/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_symlink_install_targets_2_${CMAKE_INSTALL_CONFIG_NAME}.cmake")
+include("/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_symlink_install_targets_0_${CMAKE_INSTALL_CONFIG_NAME}.cmake")
 
-# install(DIRECTORY "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/rosidl_typesupport_fastrtps_cpp/opencv_telemetry/" "DESTINATION" "include/opencv_telemetry" "PATTERN_EXCLUDE" "*.cpp")
-ament_cmake_symlink_install_directory("/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" DIRECTORY "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/rosidl_typesupport_fastrtps_cpp/opencv_telemetry/" "DESTINATION" "include/opencv_telemetry" "PATTERN_EXCLUDE" "*.cpp")
+# install(DIRECTORY "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/rosidl_typesupport_fastrtps_cpp/opencv_telemetry/" "DESTINATION" "include/opencv_telemetry" "PATTERN_EXCLUDE" "*.cpp")
+ament_cmake_symlink_install_directory("/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" DIRECTORY "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/rosidl_typesupport_fastrtps_cpp/opencv_telemetry/" "DESTINATION" "include/opencv_telemetry" "PATTERN_EXCLUDE" "*.cpp")
 
 # install("TARGETS" "opencv_telemetry__rosidl_typesupport_fastrtps_cpp" "ARCHIVE_DESTINATION" "lib" "LIBRARY_DESTINATION" "lib" "RUNTIME_DESTINATION" "bin")
-include("/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_symlink_install_targets_3_${CMAKE_INSTALL_CONFIG_NAME}.cmake")
+include("/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_symlink_install_targets_1_${CMAKE_INSTALL_CONFIG_NAME}.cmake")
 
-# install(DIRECTORY "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/rosidl_typesupport_introspection_c/opencv_telemetry/" "DESTINATION" "include/opencv_telemetry" "PATTERN" "*.h")
-ament_cmake_symlink_install_directory("/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" DIRECTORY "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/rosidl_typesupport_introspection_c/opencv_telemetry/" "DESTINATION" "include/opencv_telemetry" "PATTERN" "*.h")
+# install(DIRECTORY "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/rosidl_typesupport_introspection_c/opencv_telemetry/" "DESTINATION" "include/opencv_telemetry" "PATTERN" "*.h")
+ament_cmake_symlink_install_directory("/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" DIRECTORY "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/rosidl_typesupport_introspection_c/opencv_telemetry/" "DESTINATION" "include/opencv_telemetry" "PATTERN" "*.h")
 
-# install(DIRECTORY "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/rosidl_generator_cpp/opencv_telemetry/" "DESTINATION" "include/opencv_telemetry" "PATTERN" "*.hpp")
-ament_cmake_symlink_install_directory("/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" DIRECTORY "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/rosidl_generator_cpp/opencv_telemetry/" "DESTINATION" "include/opencv_telemetry" "PATTERN" "*.hpp")
+# install(DIRECTORY "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/rosidl_generator_cpp/opencv_telemetry/" "DESTINATION" "include/opencv_telemetry" "PATTERN" "*.hpp")
+ament_cmake_symlink_install_directory("/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" DIRECTORY "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/rosidl_generator_cpp/opencv_telemetry/" "DESTINATION" "include/opencv_telemetry" "PATTERN" "*.hpp")
 
-# install(DIRECTORY "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/rosidl_typesupport_introspection_cpp/opencv_telemetry/" "DESTINATION" "include/opencv_telemetry" "PATTERN" "*.hpp")
-ament_cmake_symlink_install_directory("/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" DIRECTORY "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/rosidl_typesupport_introspection_cpp/opencv_telemetry/" "DESTINATION" "include/opencv_telemetry" "PATTERN" "*.hpp")
+# install(DIRECTORY "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/rosidl_typesupport_introspection_cpp/opencv_telemetry/" "DESTINATION" "include/opencv_telemetry" "PATTERN" "*.hpp")
+ament_cmake_symlink_install_directory("/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" DIRECTORY "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/rosidl_typesupport_introspection_cpp/opencv_telemetry/" "DESTINATION" "include/opencv_telemetry" "PATTERN" "*.hpp")
 
-# install(FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_environment_hooks/pythonpath.sh" "DESTINATION" "share/opencv_telemetry/environment")
-ament_cmake_symlink_install_files("/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_environment_hooks/pythonpath.sh" "DESTINATION" "share/opencv_telemetry/environment")
+# install(FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_environment_hooks/pythonpath.sh" "DESTINATION" "share/opencv_telemetry/environment")
+ament_cmake_symlink_install_files("/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_environment_hooks/pythonpath.sh" "DESTINATION" "share/opencv_telemetry/environment")
 
-# install(FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_environment_hooks/pythonpath.dsv" "DESTINATION" "share/opencv_telemetry/environment")
-ament_cmake_symlink_install_files("/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_environment_hooks/pythonpath.dsv" "DESTINATION" "share/opencv_telemetry/environment")
+# install(FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_environment_hooks/pythonpath.dsv" "DESTINATION" "share/opencv_telemetry/environment")
+ament_cmake_symlink_install_files("/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_environment_hooks/pythonpath.dsv" "DESTINATION" "share/opencv_telemetry/environment")
 
-# install(FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/rosidl_generator_py/opencv_telemetry/__init__.py" "DESTINATION" "lib/python3.8/site-packages/opencv_telemetry")
-ament_cmake_symlink_install_files("/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/rosidl_generator_py/opencv_telemetry/__init__.py" "DESTINATION" "lib/python3.8/site-packages/opencv_telemetry")
+# install(FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/rosidl_generator_py/opencv_telemetry/__init__.py" "DESTINATION" "lib/python3.8/site-packages/opencv_telemetry")
+ament_cmake_symlink_install_files("/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/rosidl_generator_py/opencv_telemetry/__init__.py" "DESTINATION" "lib/python3.8/site-packages/opencv_telemetry")
 
-# install(DIRECTORY "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/rosidl_generator_py/opencv_telemetry/msg/" "DESTINATION" "lib/python3.8/site-packages/opencv_telemetry/msg" "PATTERN" "*.py")
-ament_cmake_symlink_install_directory("/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" DIRECTORY "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/rosidl_generator_py/opencv_telemetry/msg/" "DESTINATION" "lib/python3.8/site-packages/opencv_telemetry/msg" "PATTERN" "*.py")
-
-# install("TARGETS" "opencv_telemetry__rosidl_typesupport_connext_c__pyext" "DESTINATION" "lib/python3.8/site-packages/opencv_telemetry")
-include("/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_symlink_install_targets_4_${CMAKE_INSTALL_CONFIG_NAME}.cmake")
+# install(DIRECTORY "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/rosidl_generator_py/opencv_telemetry/msg/" "DESTINATION" "lib/python3.8/site-packages/opencv_telemetry/msg" "PATTERN" "*.py")
+ament_cmake_symlink_install_directory("/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" DIRECTORY "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/rosidl_generator_py/opencv_telemetry/msg/" "DESTINATION" "lib/python3.8/site-packages/opencv_telemetry/msg" "PATTERN" "*.py")
 
 # install("TARGETS" "opencv_telemetry__rosidl_typesupport_fastrtps_c__pyext" "DESTINATION" "lib/python3.8/site-packages/opencv_telemetry")
-include("/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_symlink_install_targets_5_${CMAKE_INSTALL_CONFIG_NAME}.cmake")
+include("/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_symlink_install_targets_2_${CMAKE_INSTALL_CONFIG_NAME}.cmake")
 
 # install("TARGETS" "opencv_telemetry__rosidl_typesupport_introspection_c__pyext" "DESTINATION" "lib/python3.8/site-packages/opencv_telemetry")
-include("/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_symlink_install_targets_6_${CMAKE_INSTALL_CONFIG_NAME}.cmake")
+include("/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_symlink_install_targets_3_${CMAKE_INSTALL_CONFIG_NAME}.cmake")
 
 # install("TARGETS" "opencv_telemetry__rosidl_typesupport_c__pyext" "DESTINATION" "lib/python3.8/site-packages/opencv_telemetry")
-include("/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_symlink_install_targets_7_${CMAKE_INSTALL_CONFIG_NAME}.cmake")
+include("/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_symlink_install_targets_4_${CMAKE_INSTALL_CONFIG_NAME}.cmake")
 
 # install("TARGETS" "opencv_telemetry__python" "ARCHIVE_DESTINATION" "lib" "LIBRARY_DESTINATION" "lib" "RUNTIME_DESTINATION" "bin")
-include("/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_symlink_install_targets_8_${CMAKE_INSTALL_CONFIG_NAME}.cmake")
+include("/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_symlink_install_targets_5_${CMAKE_INSTALL_CONFIG_NAME}.cmake")
 
-# install(FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/rosidl_adapter/opencv_telemetry/msg/ResizedImage.idl" "DESTINATION" "share/opencv_telemetry/msg")
-ament_cmake_symlink_install_files("/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/rosidl_adapter/opencv_telemetry/msg/ResizedImage.idl" "DESTINATION" "share/opencv_telemetry/msg")
+# install(FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/rosidl_adapter/opencv_telemetry/msg/ResizedImage.idl" "DESTINATION" "share/opencv_telemetry/msg")
+ament_cmake_symlink_install_files("/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/rosidl_adapter/opencv_telemetry/msg/ResizedImage.idl" "DESTINATION" "share/opencv_telemetry/msg")
 
-# install(FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry/msg/ResizedImage.msg" "DESTINATION" "share/opencv_telemetry/msg")
-ament_cmake_symlink_install_files("/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry/msg/ResizedImage.msg" "DESTINATION" "share/opencv_telemetry/msg")
+# install(FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry/msg/ResizedImage.msg" "DESTINATION" "share/opencv_telemetry/msg")
+ament_cmake_symlink_install_files("/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry/msg/ResizedImage.msg" "DESTINATION" "share/opencv_telemetry/msg")
 
 # install(FILES "resized_plugins.xml" "DESTINATION" "share/opencv_telemetry/")
-ament_cmake_symlink_install_files("/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" FILES "resized_plugins.xml" "DESTINATION" "share/opencv_telemetry/")
+ament_cmake_symlink_install_files("/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" FILES "resized_plugins.xml" "DESTINATION" "share/opencv_telemetry/")
 
 # install("TARGETS" "opencv_subscriber" "resized_plugins" "minimal_opencv_ros2_node" "split_sync_images" "RUNTIME_DESTINATION" "lib/opencv_telemetry")
-include("/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_symlink_install_targets_9_${CMAKE_INSTALL_CONFIG_NAME}.cmake")
+include("/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_symlink_install_targets_6_${CMAKE_INSTALL_CONFIG_NAME}.cmake")
 
 # install(DIRECTORY "include/" "DESTINATION" "include")
-ament_cmake_symlink_install_directory("/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" DIRECTORY "include/" "DESTINATION" "include")
+ament_cmake_symlink_install_directory("/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" DIRECTORY "include/" "DESTINATION" "include")
 
 # install(DIRECTORY "launch" "DESTINATION" "share/opencv_telemetry/")
-ament_cmake_symlink_install_directory("/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" DIRECTORY "launch" "DESTINATION" "share/opencv_telemetry/")
+ament_cmake_symlink_install_directory("/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" DIRECTORY "launch" "DESTINATION" "share/opencv_telemetry/")
 
 # install(DIRECTORY "calibration" "DESTINATION" "share/opencv_telemetry/")
-ament_cmake_symlink_install_directory("/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" DIRECTORY "calibration" "DESTINATION" "share/opencv_telemetry/")
+ament_cmake_symlink_install_directory("/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" DIRECTORY "calibration" "DESTINATION" "share/opencv_telemetry/")
 
-# install(FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/opencv_telemetry" "DESTINATION" "share/ament_index/resource_index/package_run_dependencies")
-ament_cmake_symlink_install_files("/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/opencv_telemetry" "DESTINATION" "share/ament_index/resource_index/package_run_dependencies")
+# install(FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/opencv_telemetry" "DESTINATION" "share/ament_index/resource_index/package_run_dependencies")
+ament_cmake_symlink_install_files("/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/opencv_telemetry" "DESTINATION" "share/ament_index/resource_index/package_run_dependencies")
 
-# install(FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_index/share/ament_index/resource_index/parent_prefix_path/opencv_telemetry" "DESTINATION" "share/ament_index/resource_index/parent_prefix_path")
-ament_cmake_symlink_install_files("/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_index/share/ament_index/resource_index/parent_prefix_path/opencv_telemetry" "DESTINATION" "share/ament_index/resource_index/parent_prefix_path")
+# install(FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_index/share/ament_index/resource_index/parent_prefix_path/opencv_telemetry" "DESTINATION" "share/ament_index/resource_index/parent_prefix_path")
+ament_cmake_symlink_install_files("/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_index/share/ament_index/resource_index/parent_prefix_path/opencv_telemetry" "DESTINATION" "share/ament_index/resource_index/parent_prefix_path")
 
 # install(FILES "/opt/ros/foxy/share/ament_cmake_core/cmake/environment_hooks/environment/ament_prefix_path.sh" "DESTINATION" "share/opencv_telemetry/environment")
-ament_cmake_symlink_install_files("/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" FILES "/opt/ros/foxy/share/ament_cmake_core/cmake/environment_hooks/environment/ament_prefix_path.sh" "DESTINATION" "share/opencv_telemetry/environment")
+ament_cmake_symlink_install_files("/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" FILES "/opt/ros/foxy/share/ament_cmake_core/cmake/environment_hooks/environment/ament_prefix_path.sh" "DESTINATION" "share/opencv_telemetry/environment")
 
-# install(FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_environment_hooks/ament_prefix_path.dsv" "DESTINATION" "share/opencv_telemetry/environment")
-ament_cmake_symlink_install_files("/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_environment_hooks/ament_prefix_path.dsv" "DESTINATION" "share/opencv_telemetry/environment")
+# install(FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_environment_hooks/ament_prefix_path.dsv" "DESTINATION" "share/opencv_telemetry/environment")
+ament_cmake_symlink_install_files("/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_environment_hooks/ament_prefix_path.dsv" "DESTINATION" "share/opencv_telemetry/environment")
 
 # install(FILES "/opt/ros/foxy/share/ament_cmake_core/cmake/environment_hooks/environment/path.sh" "DESTINATION" "share/opencv_telemetry/environment")
-ament_cmake_symlink_install_files("/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" FILES "/opt/ros/foxy/share/ament_cmake_core/cmake/environment_hooks/environment/path.sh" "DESTINATION" "share/opencv_telemetry/environment")
+ament_cmake_symlink_install_files("/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" FILES "/opt/ros/foxy/share/ament_cmake_core/cmake/environment_hooks/environment/path.sh" "DESTINATION" "share/opencv_telemetry/environment")
 
-# install(FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_environment_hooks/path.dsv" "DESTINATION" "share/opencv_telemetry/environment")
-ament_cmake_symlink_install_files("/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_environment_hooks/path.dsv" "DESTINATION" "share/opencv_telemetry/environment")
+# install(FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_environment_hooks/path.dsv" "DESTINATION" "share/opencv_telemetry/environment")
+ament_cmake_symlink_install_files("/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_environment_hooks/path.dsv" "DESTINATION" "share/opencv_telemetry/environment")
 
-# install(FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_environment_hooks/local_setup.bash" "DESTINATION" "share/opencv_telemetry")
-ament_cmake_symlink_install_files("/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_environment_hooks/local_setup.bash" "DESTINATION" "share/opencv_telemetry")
+# install(FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_environment_hooks/local_setup.bash" "DESTINATION" "share/opencv_telemetry")
+ament_cmake_symlink_install_files("/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_environment_hooks/local_setup.bash" "DESTINATION" "share/opencv_telemetry")
 
-# install(FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_environment_hooks/local_setup.sh" "DESTINATION" "share/opencv_telemetry")
-ament_cmake_symlink_install_files("/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_environment_hooks/local_setup.sh" "DESTINATION" "share/opencv_telemetry")
+# install(FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_environment_hooks/local_setup.sh" "DESTINATION" "share/opencv_telemetry")
+ament_cmake_symlink_install_files("/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_environment_hooks/local_setup.sh" "DESTINATION" "share/opencv_telemetry")
 
-# install(FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_environment_hooks/local_setup.zsh" "DESTINATION" "share/opencv_telemetry")
-ament_cmake_symlink_install_files("/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_environment_hooks/local_setup.zsh" "DESTINATION" "share/opencv_telemetry")
+# install(FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_environment_hooks/local_setup.zsh" "DESTINATION" "share/opencv_telemetry")
+ament_cmake_symlink_install_files("/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_environment_hooks/local_setup.zsh" "DESTINATION" "share/opencv_telemetry")
 
-# install(FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_environment_hooks/local_setup.dsv" "DESTINATION" "share/opencv_telemetry")
-ament_cmake_symlink_install_files("/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_environment_hooks/local_setup.dsv" "DESTINATION" "share/opencv_telemetry")
+# install(FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_environment_hooks/local_setup.dsv" "DESTINATION" "share/opencv_telemetry")
+ament_cmake_symlink_install_files("/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_environment_hooks/local_setup.dsv" "DESTINATION" "share/opencv_telemetry")
 
-# install(FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_environment_hooks/package.dsv" "DESTINATION" "share/opencv_telemetry")
-ament_cmake_symlink_install_files("/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_environment_hooks/package.dsv" "DESTINATION" "share/opencv_telemetry")
+# install(FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_environment_hooks/package.dsv" "DESTINATION" "share/opencv_telemetry")
+ament_cmake_symlink_install_files("/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_environment_hooks/package.dsv" "DESTINATION" "share/opencv_telemetry")
 
-# install(FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_index/share/ament_index/resource_index/packages/opencv_telemetry" "DESTINATION" "share/ament_index/resource_index/packages")
-ament_cmake_symlink_install_files("/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_index/share/ament_index/resource_index/packages/opencv_telemetry" "DESTINATION" "share/ament_index/resource_index/packages")
+# install(FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_index/share/ament_index/resource_index/packages/opencv_telemetry" "DESTINATION" "share/ament_index/resource_index/packages")
+ament_cmake_symlink_install_files("/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_index/share/ament_index/resource_index/packages/opencv_telemetry" "DESTINATION" "share/ament_index/resource_index/packages")
 
-# install(FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_index/share/ament_index/resource_index/opencv_telemetry__pluginlib__plugin/opencv_telemetry" "DESTINATION" "share/ament_index/resource_index/opencv_telemetry__pluginlib__plugin")
-ament_cmake_symlink_install_files("/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_index/share/ament_index/resource_index/opencv_telemetry__pluginlib__plugin/opencv_telemetry" "DESTINATION" "share/ament_index/resource_index/opencv_telemetry__pluginlib__plugin")
+# install(FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_index/share/ament_index/resource_index/opencv_telemetry__pluginlib__plugin/opencv_telemetry" "DESTINATION" "share/ament_index/resource_index/opencv_telemetry__pluginlib__plugin")
+ament_cmake_symlink_install_files("/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_index/share/ament_index/resource_index/opencv_telemetry__pluginlib__plugin/opencv_telemetry" "DESTINATION" "share/ament_index/resource_index/opencv_telemetry__pluginlib__plugin")
 
-# install(FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/rosidl_cmake/rosidl_cmake-extras.cmake" "DESTINATION" "share/opencv_telemetry/cmake")
-ament_cmake_symlink_install_files("/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/rosidl_cmake/rosidl_cmake-extras.cmake" "DESTINATION" "share/opencv_telemetry/cmake")
+# install(FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/rosidl_cmake/rosidl_cmake-extras.cmake" "DESTINATION" "share/opencv_telemetry/cmake")
+ament_cmake_symlink_install_files("/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/rosidl_cmake/rosidl_cmake-extras.cmake" "DESTINATION" "share/opencv_telemetry/cmake")
 
-# install(FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_export_dependencies/ament_cmake_export_dependencies-extras.cmake" "DESTINATION" "share/opencv_telemetry/cmake")
-ament_cmake_symlink_install_files("/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_export_dependencies/ament_cmake_export_dependencies-extras.cmake" "DESTINATION" "share/opencv_telemetry/cmake")
+# install(FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_export_dependencies/ament_cmake_export_dependencies-extras.cmake" "DESTINATION" "share/opencv_telemetry/cmake")
+ament_cmake_symlink_install_files("/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_export_dependencies/ament_cmake_export_dependencies-extras.cmake" "DESTINATION" "share/opencv_telemetry/cmake")
 
-# install(FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_export_libraries/ament_cmake_export_libraries-extras.cmake" "DESTINATION" "share/opencv_telemetry/cmake")
-ament_cmake_symlink_install_files("/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_export_libraries/ament_cmake_export_libraries-extras.cmake" "DESTINATION" "share/opencv_telemetry/cmake")
+# install(FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_export_libraries/ament_cmake_export_libraries-extras.cmake" "DESTINATION" "share/opencv_telemetry/cmake")
+ament_cmake_symlink_install_files("/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_export_libraries/ament_cmake_export_libraries-extras.cmake" "DESTINATION" "share/opencv_telemetry/cmake")
 
-# install(FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_export_targets/ament_cmake_export_targets-extras.cmake" "DESTINATION" "share/opencv_telemetry/cmake")
-ament_cmake_symlink_install_files("/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_export_targets/ament_cmake_export_targets-extras.cmake" "DESTINATION" "share/opencv_telemetry/cmake")
+# install(FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_export_targets/ament_cmake_export_targets-extras.cmake" "DESTINATION" "share/opencv_telemetry/cmake")
+ament_cmake_symlink_install_files("/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_export_targets/ament_cmake_export_targets-extras.cmake" "DESTINATION" "share/opencv_telemetry/cmake")
 
-# install(FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_export_include_directories/ament_cmake_export_include_directories-extras.cmake" "DESTINATION" "share/opencv_telemetry/cmake")
-ament_cmake_symlink_install_files("/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_export_include_directories/ament_cmake_export_include_directories-extras.cmake" "DESTINATION" "share/opencv_telemetry/cmake")
+# install(FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_export_include_directories/ament_cmake_export_include_directories-extras.cmake" "DESTINATION" "share/opencv_telemetry/cmake")
+ament_cmake_symlink_install_files("/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_export_include_directories/ament_cmake_export_include_directories-extras.cmake" "DESTINATION" "share/opencv_telemetry/cmake")
 
-# install(FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/rosidl_cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake" "DESTINATION" "share/opencv_telemetry/cmake")
-ament_cmake_symlink_install_files("/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/rosidl_cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake" "DESTINATION" "share/opencv_telemetry/cmake")
+# install(FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/rosidl_cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake" "DESTINATION" "share/opencv_telemetry/cmake")
+ament_cmake_symlink_install_files("/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/rosidl_cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake" "DESTINATION" "share/opencv_telemetry/cmake")
 
-# install(FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/rosidl_cmake/rosidl_cmake_export_typesupport_targets-extras.cmake" "DESTINATION" "share/opencv_telemetry/cmake")
-ament_cmake_symlink_install_files("/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/rosidl_cmake/rosidl_cmake_export_typesupport_targets-extras.cmake" "DESTINATION" "share/opencv_telemetry/cmake")
+# install(FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/rosidl_cmake/rosidl_cmake_export_typesupport_targets-extras.cmake" "DESTINATION" "share/opencv_telemetry/cmake")
+ament_cmake_symlink_install_files("/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/rosidl_cmake/rosidl_cmake_export_typesupport_targets-extras.cmake" "DESTINATION" "share/opencv_telemetry/cmake")
 
-# install(FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_core/opencv_telemetryConfig.cmake" "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_core/opencv_telemetryConfig-version.cmake" "DESTINATION" "share/opencv_telemetry/cmake")
-ament_cmake_symlink_install_files("/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_core/opencv_telemetryConfig.cmake" "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_core/opencv_telemetryConfig-version.cmake" "DESTINATION" "share/opencv_telemetry/cmake")
+# install(FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_core/opencv_telemetryConfig.cmake" "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_core/opencv_telemetryConfig-version.cmake" "DESTINATION" "share/opencv_telemetry/cmake")
+ament_cmake_symlink_install_files("/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_core/opencv_telemetryConfig.cmake" "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/ament_cmake_core/opencv_telemetryConfig-version.cmake" "DESTINATION" "share/opencv_telemetry/cmake")
 
-# install(FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry/package.xml" "DESTINATION" "share/opencv_telemetry")
-ament_cmake_symlink_install_files("/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry/package.xml" "DESTINATION" "share/opencv_telemetry")
+# install(FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry/package.xml" "DESTINATION" "share/opencv_telemetry")
+ament_cmake_symlink_install_files("/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry" FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry/package.xml" "DESTINATION" "share/opencv_telemetry")

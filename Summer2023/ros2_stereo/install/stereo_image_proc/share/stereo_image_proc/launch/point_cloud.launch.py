@@ -1,1 +1,1 @@
-/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_image_proc/launch/point_cloud.launch.py
+/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_image_proc/launch/point_cloud.launch.py

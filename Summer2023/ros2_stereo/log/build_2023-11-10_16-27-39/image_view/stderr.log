@@ -1,0 +1,18 @@
+CMake Error at CMakeLists.txt:28 (find_package):
+  By not providing "Findlibboost-dev.cmake" in CMAKE_MODULE_PATH this project
+  has asked CMake to find a package configuration file provided by
+  "libboost-dev", but CMake did not find one.
+
+  Could not find a package configuration file provided by "libboost-dev" with
+  any of the following names:
+
+    libboost-devConfig.cmake
+    libboost-dev-config.cmake
+
+  Add the installation prefix of "libboost-dev" to CMAKE_PREFIX_PATH or set
+  "libboost-dev_DIR" to a directory containing one of the above files.  If
+  "libboost-dev" provides a separate development package or SDK, be sure it
+  has been installed.
+
+
+make: *** [Makefile:680: cmake_check_build_system] Error 1

@@ -1,0 +1,31 @@
+[0.394s] Invoking command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_proc': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_proc -- -j8 -l8
+[0.439s] [ 13%] Built target image_proc
+[0.491s] [ 20%] [32mBuilding CXX object CMakeFiles/rectify.dir/src/rectify.cpp.o[0m
+[4.036s] [ 26%] [32m[1mLinking CXX shared library librectify.so[0m
+[4.182s] [ 26%] Built target rectify
+[4.190s] [35m[1mScanning dependencies of target debayer[0m
+[4.229s] [ 40%] [32mBuilding CXX object CMakeFiles/debayer.dir/src/edge_aware.cpp.o[0m
+[4.230s] [ 40%] [32mBuilding CXX object CMakeFiles/debayer.dir/src/debayer.cpp.o[0m
+[6.333s] [ 46%] [32m[1mLinking CXX shared library libdebayer.so[0m
+[6.503s] [ 46%] Built target debayer
+[6.510s] [35m[1mScanning dependencies of target resize[0m
+[6.549s] [ 53%] [32mBuilding CXX object CMakeFiles/resize.dir/src/resize.cpp.o[0m
+[8.516s] [ 60%] [32m[1mLinking CXX shared library libresize.so[0m
+[8.662s] [ 60%] Built target resize
+[8.669s] [35m[1mScanning dependencies of target crop_decimate[0m
+[8.704s] [ 66%] [32mBuilding CXX object CMakeFiles/crop_decimate.dir/src/crop_decimate.cpp.o[0m
+[10.565s] [ 73%] [32m[1mLinking CXX shared library libcrop_decimate.so[0m
+[10.718s] [ 73%] Built target crop_decimate
+[10.725s] [35m[1mScanning dependencies of target crop_non_zero[0m
+[10.761s] [ 80%] [32mBuilding CXX object CMakeFiles/crop_non_zero.dir/src/crop_non_zero.cpp.o[0m
+[12.552s] [ 86%] [32m[1mLinking CXX shared library libcrop_non_zero.so[0m
+[12.705s] [ 86%] Built target crop_non_zero
+[12.711s] [35m[1mScanning dependencies of target image_proc_exe[0m
+[12.746s] [ 93%] [32mBuilding CXX object CMakeFiles/image_proc_exe.dir/src/image_proc.cpp.o[0m
+[14.404s] [100%] [32m[1mLinking CXX executable image_proc[0m
+[14.693s] /usr/bin/ld: librectify.so: undefined reference to `ros_trace_image_proc_rectify_fini'
+[14.693s] /usr/bin/ld: librectify.so: undefined reference to `ros_trace_image_proc_rectify_init'
+[14.693s] collect2: error: ld returned 1 exit status
+[14.694s] make[2]: *** [CMakeFiles/image_proc_exe.dir/build.make:298: image_proc] Error 1
+[14.694s] make[1]: *** [CMakeFiles/Makefile2:321: CMakeFiles/image_proc_exe.dir/all] Error 2
+[14.694s] make: *** [Makefile:141: all] Error 2

@@ -1,6 +1,5 @@
 file(REMOVE_RECURSE
   "CMakeFiles/opencv_telemetry__rosidl_generator_c.dir/rosidl_generator_c/opencv_telemetry/msg/detail/resized_image__functions.c.o"
-  "CMakeFiles/opencv_telemetry__rosidl_generator_c.dir/rosidl_generator_c/opencv_telemetry/msg/detail/resized_image__functions.c.o.d"
   "libopencv_telemetry__rosidl_generator_c.pdb"
   "libopencv_telemetry__rosidl_generator_c.so"
   "rosidl_generator_c/opencv_telemetry/msg/detail/resized_image__functions.c"

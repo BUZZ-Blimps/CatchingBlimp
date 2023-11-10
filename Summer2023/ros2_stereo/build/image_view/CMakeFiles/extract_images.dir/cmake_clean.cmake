@@ -1,6 +1,5 @@
 file(REMOVE_RECURSE
   "CMakeFiles/extract_images.dir/src/extract_images.cpp.o"
-  "CMakeFiles/extract_images.dir/src/extract_images.cpp.o.d"
   "extract_images"
   "extract_images.pdb"
 )

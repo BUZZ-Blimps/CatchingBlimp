@@ -1,6 +1,5 @@
 file(REMOVE_RECURSE
   "CMakeFiles/rectify.dir/src/rectify.cpp.o"
-  "CMakeFiles/rectify.dir/src/rectify.cpp.o.d"
   "librectify.pdb"
   "librectify.so"
 )

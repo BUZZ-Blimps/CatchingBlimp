@@ -1,0 +1,35 @@
+[0.242s] Invoking command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_view': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_view -- -j8 -l8
+[0.321s] [ 36%] Built target image_view_nodes
+[0.349s] [ 42%] [32m[1mLinking CXX executable disparity_view[0m
+[0.351s] [ 47%] [32m[1mLinking CXX executable image_view[0m
+[0.358s] [ 52%] [32m[1mLinking CXX executable extract_images[0m
+[0.363s] [ 57%] [32m[1mLinking CXX executable stereo_view[0m
+[0.363s] [ 63%] [32m[1mLinking CXX executable image_saver[0m
+[0.375s] [ 68%] [32m[1mLinking CXX executable video_recorder[0m
+[2.061s] /usr/bin/ld: libimage_view_nodes.so: undefined reference to `camera_calibration_parsers::writeCalibration(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, sensor_msgs::msg::CameraInfo_<std::allocator<void> > const&)'
+[2.061s] collect2: error: ld returned 1 exit status
+[2.061s] /usr/bin/ld: libimage_view_nodes.so: undefined reference to `camera_calibration_parsers::writeCalibration(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, sensor_msgs::msg::CameraInfo_<std::allocator<void> > const&)'
+[2.061s] collect2: error: ld returned 1 exit status
+[2.062s] make[2]: *** [CMakeFiles/extract_images.dir/build.make:302: extract_images] Error 1
+[2.062s] make[1]: *** [CMakeFiles/Makefile2:198: CMakeFiles/extract_images.dir/all] Error 2
+[2.062s] make[1]: *** Waiting for unfinished jobs....
+[2.062s] make[2]: *** [CMakeFiles/image_view.dir/build.make:302: image_view] Error 1
+[2.062s] make[1]: *** [CMakeFiles/Makefile2:171: CMakeFiles/image_view.dir/all] Error 2
+[2.065s] /usr/bin/ld: libimage_view_nodes.so: undefined reference to `camera_calibration_parsers::writeCalibration(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, sensor_msgs::msg::CameraInfo_<std::allocator<void> > const&)'
+[2.066s] collect2: error: ld returned 1 exit status
+[2.066s] /usr/bin/ld: libimage_view_nodes.so: undefined reference to `camera_calibration_parsers::writeCalibration(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, sensor_msgs::msg::CameraInfo_<std::allocator<void> > const&)'
+[2.066s] collect2: error: ld returned 1 exit status
+[2.067s] make[2]: *** [CMakeFiles/stereo_view.dir/build.make:302: stereo_view] Error 1
+[2.067s] make[2]: *** [CMakeFiles/disparity_view.dir/build.make:302: disparity_view] Error 1
+[2.068s] make[1]: *** [CMakeFiles/Makefile2:144: CMakeFiles/disparity_view.dir/all] Error 2
+[2.069s] make[1]: *** [CMakeFiles/Makefile2:225: CMakeFiles/stereo_view.dir/all] Error 2
+[2.092s] /usr/bin/ld: libimage_view_nodes.so: undefined reference to `camera_calibration_parsers::writeCalibration(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, sensor_msgs::msg::CameraInfo_<std::allocator<void> > const&)'
+[2.093s] collect2: error: ld returned 1 exit status
+[2.094s] make[2]: *** [CMakeFiles/image_saver.dir/build.make:302: image_saver] Error 1
+[2.095s] make[1]: *** [CMakeFiles/Makefile2:252: CMakeFiles/image_saver.dir/all] Error 2
+[2.104s] /usr/bin/ld: libimage_view_nodes.so: undefined reference to `camera_calibration_parsers::writeCalibration(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, sensor_msgs::msg::CameraInfo_<std::allocator<void> > const&)'
+[2.107s] collect2: error: ld returned 1 exit status
+[2.107s] make[2]: *** [CMakeFiles/video_recorder.dir/build.make:302: video_recorder] Error 1
+[2.107s] make[1]: *** [CMakeFiles/Makefile2:306: CMakeFiles/video_recorder.dir/all] Error 2
+[2.108s] make: *** [Makefile:141: all] Error 2
+[2.387s] Invoked command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_view' returned '2': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_view -- -j8 -l8

@@ -1,6 +1,6 @@
 # generated from ament_cmake_export_dependencies/cmake/ament_cmake_export_dependencies-extras.cmake.in
 
-set(_exported_dependencies "cv_bridge;image_geometry;image_transport;rclcpp;rclcpp_components;rcutils;sensor_msgs;tracetools_image_pipeline")
+set(_exported_dependencies "cv_bridge;image_geometry;image_transport;rclcpp;rclcpp_components;rcutils;sensor_msgs")
 
 find_package(ament_cmake_libraries QUIET REQUIRED)
 

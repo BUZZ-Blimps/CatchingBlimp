@@ -1,6 +1,5 @@
 file(REMOVE_RECURSE
   "CMakeFiles/video_recorder.dir/src/video_recorder.cpp.o"
-  "CMakeFiles/video_recorder.dir/src/video_recorder.cpp.o.d"
   "video_recorder"
   "video_recorder.pdb"
 )

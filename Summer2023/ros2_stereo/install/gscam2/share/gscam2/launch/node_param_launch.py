@@ -1,1 +1,0 @@
-/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/gscam2/launch/node_param_launch.py

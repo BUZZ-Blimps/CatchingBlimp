@@ -1,6 +1,5 @@
 file(REMOVE_RECURSE
   "CMakeFiles/opencv_telemetry__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/opencv_telemetry/msg/detail/resized_image__type_support.c.o"
-  "CMakeFiles/opencv_telemetry__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/opencv_telemetry/msg/detail/resized_image__type_support.c.o.d"
   "libopencv_telemetry__rosidl_typesupport_introspection_c.pdb"
   "libopencv_telemetry__rosidl_typesupport_introspection_c.so"
   "rosidl_typesupport_introspection_c/opencv_telemetry/msg/detail/resized_image__rosidl_typesupport_introspection_c.h"

@@ -1,0 +1,1 @@
+Invoking command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/yolo_msgs': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/yolo_msgs -- -j8 -l8

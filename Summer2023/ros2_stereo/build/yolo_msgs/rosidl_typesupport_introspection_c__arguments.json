@@ -1,11 +1,11 @@
 {
   "package_name": "yolo_msgs",
-  "output_dir": "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/yolo_msgs/rosidl_typesupport_introspection_c/yolo_msgs",
+  "output_dir": "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/yolo_msgs/rosidl_typesupport_introspection_c/yolo_msgs",
   "template_dir": "/opt/ros/foxy/share/rosidl_typesupport_introspection_c/resource",
   "idl_tuples": [
-    "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/yolo_msgs/rosidl_adapter/yolo_msgs:msg/BoundingBox.idl",
-    "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/yolo_msgs/rosidl_adapter/yolo_msgs:msg/BoundingBoxes.idl",
-    "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/yolo_msgs/rosidl_adapter/yolo_msgs:msg/ObjectCount.idl"
+    "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/yolo_msgs/rosidl_adapter/yolo_msgs:msg/BoundingBox.idl",
+    "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/yolo_msgs/rosidl_adapter/yolo_msgs:msg/BoundingBoxes.idl",
+    "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/yolo_msgs/rosidl_adapter/yolo_msgs:msg/ObjectCount.idl"
   ],
   "ros_interface_dependencies": [
     "std_msgs:/opt/ros/foxy/share/std_msgs/msg/Bool.idl",
@@ -50,9 +50,9 @@
     "/opt/ros/foxy/share/rosidl_typesupport_introspection_c/resource/msg__type_support.c.em",
     "/opt/ros/foxy/share/rosidl_typesupport_introspection_c/resource/srv__rosidl_typesupport_introspection_c.h.em",
     "/opt/ros/foxy/share/rosidl_typesupport_introspection_c/resource/srv__type_support.c.em",
-    "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/yolo_msgs/rosidl_adapter/yolo_msgs/msg/BoundingBox.idl",
-    "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/yolo_msgs/rosidl_adapter/yolo_msgs/msg/BoundingBoxes.idl",
-    "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/yolo_msgs/rosidl_adapter/yolo_msgs/msg/ObjectCount.idl",
+    "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/yolo_msgs/rosidl_adapter/yolo_msgs/msg/BoundingBox.idl",
+    "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/yolo_msgs/rosidl_adapter/yolo_msgs/msg/BoundingBoxes.idl",
+    "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/yolo_msgs/rosidl_adapter/yolo_msgs/msg/ObjectCount.idl",
     "/opt/ros/foxy/share/std_msgs/msg/Bool.idl",
     "/opt/ros/foxy/share/std_msgs/msg/Byte.idl",
     "/opt/ros/foxy/share/std_msgs/msg/ByteMultiArray.idl",

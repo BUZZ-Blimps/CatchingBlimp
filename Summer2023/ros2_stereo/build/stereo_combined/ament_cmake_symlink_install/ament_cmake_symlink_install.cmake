@@ -23,7 +23,7 @@ function(ament_cmake_symlink_install_directory cmake_current_source_dir)
 
   # make destination absolute path and ensure that it exists
   if(NOT IS_ABSOLUTE "${ARG_DESTINATION}")
-    set(ARG_DESTINATION "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/${ARG_DESTINATION}")
+    set(ARG_DESTINATION "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/${ARG_DESTINATION}")
   endif()
   if(NOT EXISTS "${ARG_DESTINATION}")
     file(MAKE_DIRECTORY "${ARG_DESTINATION}")
@@ -123,7 +123,7 @@ function(ament_cmake_symlink_install_files cmake_current_source_dir)
 
   # make destination an absolute path and ensure that it exists
   if(NOT IS_ABSOLUTE "${ARG_DESTINATION}")
-    set(ARG_DESTINATION "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/${ARG_DESTINATION}")
+    set(ARG_DESTINATION "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/${ARG_DESTINATION}")
   endif()
   if(NOT EXISTS "${ARG_DESTINATION}")
     file(MAKE_DIRECTORY "${ARG_DESTINATION}")
@@ -181,7 +181,7 @@ function(ament_cmake_symlink_install_programs cmake_current_source_dir)
 
   # make destination an absolute path and ensure that it exists
   if(NOT IS_ABSOLUTE "${ARG_DESTINATION}")
-    set(ARG_DESTINATION "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/${ARG_DESTINATION}")
+    set(ARG_DESTINATION "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/${ARG_DESTINATION}")
   endif()
   if(NOT EXISTS "${ARG_DESTINATION}")
     file(MAKE_DIRECTORY "${ARG_DESTINATION}")
@@ -251,7 +251,7 @@ function(ament_cmake_symlink_install_targets)
 
     # make destination an absolute path and ensure that it exists
     if(NOT IS_ABSOLUTE "${destination}")
-      set(destination "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/${destination}")
+      set(destination "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/${destination}")
     endif()
     if(NOT EXISTS "${destination}")
       file(MAKE_DIRECTORY "${destination}")
@@ -292,7 +292,7 @@ function(_ament_cmake_symlink_install_create_symlink absolute_file symlink)
   endif()
 
   execute_process(
-    COMMAND "/home/corelab/.local/lib/python3.8/site-packages/cmake/data/bin/cmake" "-E" "create_symlink"
+    COMMAND "/usr/bin/cmake" "-E" "create_symlink"
       "${absolute_file}"
       "${symlink}"
   )
@@ -311,52 +311,52 @@ message(STATUS "Execute custom install script")
 # begin of custom install code
 
 # install("TARGETS" "stereo_combined_node" "DESTINATION" "lib/stereo_combined")
-include("/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined/ament_cmake_symlink_install_targets_0_${CMAKE_INSTALL_CONFIG_NAME}.cmake")
+include("/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined/ament_cmake_symlink_install_targets_0_${CMAKE_INSTALL_CONFIG_NAME}.cmake")
 
 # install(DIRECTORY "launch" "DESTINATION" "share/stereo_combined/")
-ament_cmake_symlink_install_directory("/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined" DIRECTORY "launch" "DESTINATION" "share/stereo_combined/")
+ament_cmake_symlink_install_directory("/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined" DIRECTORY "launch" "DESTINATION" "share/stereo_combined/")
 
 # install(DIRECTORY "calibration" "DESTINATION" "share/stereo_combined/")
-ament_cmake_symlink_install_directory("/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined" DIRECTORY "calibration" "DESTINATION" "share/stereo_combined/")
+ament_cmake_symlink_install_directory("/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined" DIRECTORY "calibration" "DESTINATION" "share/stereo_combined/")
 
-# install(FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/stereo_combined" "DESTINATION" "share/ament_index/resource_index/package_run_dependencies")
-ament_cmake_symlink_install_files("/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined" FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/stereo_combined" "DESTINATION" "share/ament_index/resource_index/package_run_dependencies")
+# install(FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/stereo_combined" "DESTINATION" "share/ament_index/resource_index/package_run_dependencies")
+ament_cmake_symlink_install_files("/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined" FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/stereo_combined" "DESTINATION" "share/ament_index/resource_index/package_run_dependencies")
 
-# install(FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined/ament_cmake_index/share/ament_index/resource_index/parent_prefix_path/stereo_combined" "DESTINATION" "share/ament_index/resource_index/parent_prefix_path")
-ament_cmake_symlink_install_files("/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined" FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined/ament_cmake_index/share/ament_index/resource_index/parent_prefix_path/stereo_combined" "DESTINATION" "share/ament_index/resource_index/parent_prefix_path")
+# install(FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined/ament_cmake_index/share/ament_index/resource_index/parent_prefix_path/stereo_combined" "DESTINATION" "share/ament_index/resource_index/parent_prefix_path")
+ament_cmake_symlink_install_files("/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined" FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined/ament_cmake_index/share/ament_index/resource_index/parent_prefix_path/stereo_combined" "DESTINATION" "share/ament_index/resource_index/parent_prefix_path")
 
 # install(FILES "/opt/ros/foxy/share/ament_cmake_core/cmake/environment_hooks/environment/ament_prefix_path.sh" "DESTINATION" "share/stereo_combined/environment")
-ament_cmake_symlink_install_files("/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined" FILES "/opt/ros/foxy/share/ament_cmake_core/cmake/environment_hooks/environment/ament_prefix_path.sh" "DESTINATION" "share/stereo_combined/environment")
+ament_cmake_symlink_install_files("/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined" FILES "/opt/ros/foxy/share/ament_cmake_core/cmake/environment_hooks/environment/ament_prefix_path.sh" "DESTINATION" "share/stereo_combined/environment")
 
-# install(FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined/ament_cmake_environment_hooks/ament_prefix_path.dsv" "DESTINATION" "share/stereo_combined/environment")
-ament_cmake_symlink_install_files("/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined" FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined/ament_cmake_environment_hooks/ament_prefix_path.dsv" "DESTINATION" "share/stereo_combined/environment")
+# install(FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined/ament_cmake_environment_hooks/ament_prefix_path.dsv" "DESTINATION" "share/stereo_combined/environment")
+ament_cmake_symlink_install_files("/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined" FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined/ament_cmake_environment_hooks/ament_prefix_path.dsv" "DESTINATION" "share/stereo_combined/environment")
 
 # install(FILES "/opt/ros/foxy/share/ament_cmake_core/cmake/environment_hooks/environment/path.sh" "DESTINATION" "share/stereo_combined/environment")
-ament_cmake_symlink_install_files("/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined" FILES "/opt/ros/foxy/share/ament_cmake_core/cmake/environment_hooks/environment/path.sh" "DESTINATION" "share/stereo_combined/environment")
+ament_cmake_symlink_install_files("/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined" FILES "/opt/ros/foxy/share/ament_cmake_core/cmake/environment_hooks/environment/path.sh" "DESTINATION" "share/stereo_combined/environment")
 
-# install(FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined/ament_cmake_environment_hooks/path.dsv" "DESTINATION" "share/stereo_combined/environment")
-ament_cmake_symlink_install_files("/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined" FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined/ament_cmake_environment_hooks/path.dsv" "DESTINATION" "share/stereo_combined/environment")
+# install(FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined/ament_cmake_environment_hooks/path.dsv" "DESTINATION" "share/stereo_combined/environment")
+ament_cmake_symlink_install_files("/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined" FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined/ament_cmake_environment_hooks/path.dsv" "DESTINATION" "share/stereo_combined/environment")
 
-# install(FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined/ament_cmake_environment_hooks/local_setup.bash" "DESTINATION" "share/stereo_combined")
-ament_cmake_symlink_install_files("/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined" FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined/ament_cmake_environment_hooks/local_setup.bash" "DESTINATION" "share/stereo_combined")
+# install(FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined/ament_cmake_environment_hooks/local_setup.bash" "DESTINATION" "share/stereo_combined")
+ament_cmake_symlink_install_files("/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined" FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined/ament_cmake_environment_hooks/local_setup.bash" "DESTINATION" "share/stereo_combined")
 
-# install(FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined/ament_cmake_environment_hooks/local_setup.sh" "DESTINATION" "share/stereo_combined")
-ament_cmake_symlink_install_files("/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined" FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined/ament_cmake_environment_hooks/local_setup.sh" "DESTINATION" "share/stereo_combined")
+# install(FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined/ament_cmake_environment_hooks/local_setup.sh" "DESTINATION" "share/stereo_combined")
+ament_cmake_symlink_install_files("/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined" FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined/ament_cmake_environment_hooks/local_setup.sh" "DESTINATION" "share/stereo_combined")
 
-# install(FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined/ament_cmake_environment_hooks/local_setup.zsh" "DESTINATION" "share/stereo_combined")
-ament_cmake_symlink_install_files("/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined" FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined/ament_cmake_environment_hooks/local_setup.zsh" "DESTINATION" "share/stereo_combined")
+# install(FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined/ament_cmake_environment_hooks/local_setup.zsh" "DESTINATION" "share/stereo_combined")
+ament_cmake_symlink_install_files("/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined" FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined/ament_cmake_environment_hooks/local_setup.zsh" "DESTINATION" "share/stereo_combined")
 
-# install(FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined/ament_cmake_environment_hooks/local_setup.dsv" "DESTINATION" "share/stereo_combined")
-ament_cmake_symlink_install_files("/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined" FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined/ament_cmake_environment_hooks/local_setup.dsv" "DESTINATION" "share/stereo_combined")
+# install(FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined/ament_cmake_environment_hooks/local_setup.dsv" "DESTINATION" "share/stereo_combined")
+ament_cmake_symlink_install_files("/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined" FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined/ament_cmake_environment_hooks/local_setup.dsv" "DESTINATION" "share/stereo_combined")
 
-# install(FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined/ament_cmake_environment_hooks/package.dsv" "DESTINATION" "share/stereo_combined")
-ament_cmake_symlink_install_files("/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined" FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined/ament_cmake_environment_hooks/package.dsv" "DESTINATION" "share/stereo_combined")
+# install(FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined/ament_cmake_environment_hooks/package.dsv" "DESTINATION" "share/stereo_combined")
+ament_cmake_symlink_install_files("/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined" FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined/ament_cmake_environment_hooks/package.dsv" "DESTINATION" "share/stereo_combined")
 
-# install(FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined/ament_cmake_index/share/ament_index/resource_index/packages/stereo_combined" "DESTINATION" "share/ament_index/resource_index/packages")
-ament_cmake_symlink_install_files("/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined" FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined/ament_cmake_index/share/ament_index/resource_index/packages/stereo_combined" "DESTINATION" "share/ament_index/resource_index/packages")
+# install(FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined/ament_cmake_index/share/ament_index/resource_index/packages/stereo_combined" "DESTINATION" "share/ament_index/resource_index/packages")
+ament_cmake_symlink_install_files("/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined" FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined/ament_cmake_index/share/ament_index/resource_index/packages/stereo_combined" "DESTINATION" "share/ament_index/resource_index/packages")
 
-# install(FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined/ament_cmake_core/stereo_combinedConfig.cmake" "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined/ament_cmake_core/stereo_combinedConfig-version.cmake" "DESTINATION" "share/stereo_combined/cmake")
-ament_cmake_symlink_install_files("/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined" FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined/ament_cmake_core/stereo_combinedConfig.cmake" "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined/ament_cmake_core/stereo_combinedConfig-version.cmake" "DESTINATION" "share/stereo_combined/cmake")
+# install(FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined/ament_cmake_core/stereo_combinedConfig.cmake" "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined/ament_cmake_core/stereo_combinedConfig-version.cmake" "DESTINATION" "share/stereo_combined/cmake")
+ament_cmake_symlink_install_files("/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined" FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined/ament_cmake_core/stereo_combinedConfig.cmake" "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined/ament_cmake_core/stereo_combinedConfig-version.cmake" "DESTINATION" "share/stereo_combined/cmake")
 
-# install(FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/package.xml" "DESTINATION" "share/stereo_combined")
-ament_cmake_symlink_install_files("/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined" FILES "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/package.xml" "DESTINATION" "share/stereo_combined")
+# install(FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/package.xml" "DESTINATION" "share/stereo_combined")
+ament_cmake_symlink_install_files("/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined" FILES "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/package.xml" "DESTINATION" "share/stereo_combined")

@@ -1,0 +1,397 @@
+[0.223s] Invoking command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined': AMENT_PREFIX_PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc:/opt/ros/foxy LD_LIBRARY_PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/lib:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/lib:${LD_LIBRARY_PATH} PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/bin:${PATH} PYTHONPATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/cmake /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined
+[0.233s] -- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)
+[0.249s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[0.417s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[0.423s] -- Found rclcpp: 2.4.3 (/opt/ros/foxy/share/rclcpp/cmake)
+[0.448s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.451s] -- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+[0.538s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.576s] -- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+[0.578s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.690s] -- Found sensor_msgs: 2.0.5 (/opt/ros/foxy/share/sensor_msgs/cmake)
+[0.779s] -- Found stereo_msgs: 2.0.5 (/opt/ros/foxy/share/stereo_msgs/cmake)
+[0.870s] -- Found cv_bridge: 3.0.7 (/opt/ros/foxy/share/cv_bridge/cmake)
+[0.890s] -- Found image_transport: 2.4.0 (/opt/ros/foxy/share/image_transport/cmake)
+[0.920s] -- Found image_geometry: 3.0.7 (/opt/ros/foxy/share/image_geometry/cmake)
+[0.927s] -- Found camera_info_manager: 2.4.0 (/opt/ros/foxy/share/camera_info_manager/cmake)
+[0.940s] -- Setting yaml-cpp_DIR to: '/opt/ros/foxy/share/yaml_cpp_vendor/cmake/../../../opt/yaml_cpp_vendor/lib/cmake/yaml-cpp'
+[0.975s] -- Found image_proc: 2.3.0 (/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/image_proc/cmake)
+[1.061s] -- Found yolo_msgs: 0.0.0 (/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/cmake)
+[1.369s] -- Configuring done
+[1.391s] -- Generating done
+[1.392s] -- Build files have been written to: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined
+[1.399s] Invoked command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined' returned '0': AMENT_PREFIX_PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc:/opt/ros/foxy LD_LIBRARY_PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/lib:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/lib:${LD_LIBRARY_PATH} PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/bin:${PATH} PYTHONPATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/cmake /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined
+[1.399s] Invoking command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined': AMENT_PREFIX_PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc:/opt/ros/foxy LD_LIBRARY_PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/lib:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/lib:${LD_LIBRARY_PATH} PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/bin:${PATH} PYTHONPATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/cmake --build /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined -- -j8 -l8
+[1.427s] [35m[1mScanning dependencies of target stereo_combined_node[0m
+[1.486s] [ 60%] [32mBuilding CXX object CMakeFiles/stereo_combined_node.dir/src/stereo_processor.cpp.o[0m
+[1.486s] [ 60%] [32mBuilding CXX object CMakeFiles/stereo_combined_node.dir/src/stereo_combined_node.cpp.o[0m
+[1.486s] [ 60%] [32mBuilding CXX object CMakeFiles/stereo_combined_node.dir/src/StereoCombined.cpp.o[0m
+[1.491s] [ 80%] [32mBuilding CXX object CMakeFiles/stereo_combined_node.dir/src/edge_aware.cpp.o[0m
+[4.116s] In file included from [01m[K/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/stereo_combined_node.cpp:3[m[K:
+[4.116s] [01m[K/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/include/StereoCombined.hpp:137:13:[m[K [01;35m[Kwarning: [m[K‘[01m[Kvoid add_param_to_map(std::map<std::__cxx11::basic_string<char>, std::pair<double, rcl_interfaces::msg::ParameterDescriptor_<std::allocator<void> > > >&, const string&, const string&, double, double, double, double)[m[K’ defined but not used [[01;35m[K-Wunused-function[m[K]
+[4.117s]   137 | static void [01;35m[Kadd_param_to_map[m[K(
+[4.117s]       |             [01;35m[K^~~~~~~~~~~~~~~~[m[K
+[4.117s] [01m[K/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/include/StereoCombined.hpp:119:13:[m[K [01;35m[Kwarning: [m[K‘[01m[Kvoid add_param_to_map(std::map<std::__cxx11::basic_string<char>, std::pair<int, rcl_interfaces::msg::ParameterDescriptor_<std::allocator<void> > > >&, const string&, const string&, int, int, int, int)[m[K’ defined but not used [[01;35m[K-Wunused-function[m[K]
+[4.117s]   119 | static void [01;35m[Kadd_param_to_map[m[K(
+[4.117s]       |             [01;35m[K^~~~~~~~~~~~~~~~[m[K
+[8.451s] [100%] [32m[1mLinking CXX executable stereo_combined_node[0m
+[8.959s] [100%] Built target stereo_combined_node
+[8.967s] Invoked command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined' returned '0': AMENT_PREFIX_PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc:/opt/ros/foxy LD_LIBRARY_PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/lib:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/lib:${LD_LIBRARY_PATH} PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/bin:${PATH} PYTHONPATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/cmake --build /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined -- -j8 -l8
+[8.985s] Invoking command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined': AMENT_PREFIX_PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc:/opt/ros/foxy LD_LIBRARY_PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/lib:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/lib:${LD_LIBRARY_PATH} PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/bin:${PATH} PYTHONPATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/cmake --install /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined
+[8.991s] -- Install configuration: ""
+[8.991s] -- Execute custom install script
+[8.991s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/lib/stereo_combined/stereo_combined_node
+[8.998s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//launch/combined_node.launch.py
+[9.003s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//launch/james_vision.launch.xml
+[9.009s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//launch/vision_test.launch.xml
+[9.017s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata.tar.gz
+[9.023s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/left-0000.png
+[9.029s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/left-0001.png
+[9.035s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/left-0002.png
+[9.041s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/left-0003.png
+[9.046s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/left-0004.png
+[9.052s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/left-0005.png
+[9.057s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/left-0006.png
+[9.063s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/left-0007.png
+[9.068s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/left-0008.png
+[9.074s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/left-0009.png
+[9.079s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/left-0010.png
+[9.085s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/left-0011.png
+[9.090s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/left-0012.png
+[9.096s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/left-0013.png
+[9.101s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/left-0014.png
+[9.107s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/left-0015.png
+[9.113s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/left-0016.png
+[9.118s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/left-0017.png
+[9.124s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/left-0018.png
+[9.130s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/left-0019.png
+[9.136s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/left-0020.png
+[9.141s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/left-0021.png
+[9.147s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/left-0022.png
+[9.153s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/left-0023.png
+[9.158s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/left-0024.png
+[9.164s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/left-0025.png
+[9.169s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/left-0026.png
+[9.175s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/left-0027.png
+[9.180s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/left-0028.png
+[9.186s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/left-0029.png
+[9.191s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/left-0030.png
+[9.197s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/left-0031.png
+[9.203s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/left-0032.png
+[9.208s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/left-0033.png
+[9.214s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/left-0034.png
+[9.220s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/left-0035.png
+[9.225s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/left-0036.png
+[9.231s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/left-0037.png
+[9.237s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/left-0038.png
+[9.243s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/left-0039.png
+[9.249s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/left-0040.png
+[9.254s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/left-0041.png
+[9.260s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/left-0042.png
+[9.266s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/left-0043.png
+[9.272s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/left-0044.png
+[9.277s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/left-0045.png
+[9.283s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/left-0046.png
+[9.288s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/left-0047.png
+[9.293s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/left-0048.png
+[9.299s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/left-0049.png
+[9.305s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/left-0050.png
+[9.310s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/left.yaml
+[9.316s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/ost.txt
+[9.322s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/right-0000.png
+[9.328s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/right-0001.png
+[9.334s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/right-0002.png
+[9.340s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/right-0003.png
+[9.345s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/right-0004.png
+[9.351s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/right-0005.png
+[9.357s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/right-0006.png
+[9.364s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/right-0007.png
+[9.371s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/right-0008.png
+[9.377s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/right-0009.png
+[9.384s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/right-0010.png
+[9.390s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/right-0011.png
+[9.396s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/right-0012.png
+[9.403s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/right-0013.png
+[9.409s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/right-0014.png
+[9.416s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/right-0015.png
+[9.423s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/right-0016.png
+[9.429s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/right-0017.png
+[9.436s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/right-0018.png
+[9.442s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/right-0019.png
+[9.450s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/right-0020.png
+[9.456s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/right-0021.png
+[9.462s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/right-0022.png
+[9.469s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/right-0023.png
+[9.476s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/right-0024.png
+[9.483s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/right-0025.png
+[9.490s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/right-0026.png
+[9.496s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/right-0027.png
+[9.503s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/right-0028.png
+[9.509s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/right-0029.png
+[9.515s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/right-0030.png
+[9.521s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/right-0031.png
+[9.527s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/right-0032.png
+[9.534s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/right-0033.png
+[9.540s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/right-0034.png
+[9.546s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/right-0035.png
+[9.552s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/right-0036.png
+[9.558s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/right-0037.png
+[9.563s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/right-0038.png
+[9.569s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/right-0039.png
+[9.575s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/right-0040.png
+[9.580s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/right-0041.png
+[9.586s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/right-0042.png
+[9.591s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/right-0043.png
+[9.597s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/right-0044.png
+[9.603s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/right-0045.png
+[9.608s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/right-0046.png
+[9.614s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/right-0047.png
+[9.620s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/right-0048.png
+[9.626s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/right-0049.png
+[9.632s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/right-0050.png
+[9.638s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibration_data_test_flight/calibrationdata/right.yaml
+[9.644s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata.tar.gz
+[9.650s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/left-0000.png
+[9.655s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/left-0001.png
+[9.661s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/left-0002.png
+[9.666s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/left-0003.png
+[9.672s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/left-0004.png
+[9.678s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/left-0005.png
+[9.683s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/left-0006.png
+[9.689s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/left-0007.png
+[9.695s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/left-0008.png
+[9.700s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/left-0009.png
+[9.706s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/left-0010.png
+[9.712s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/left-0011.png
+[9.717s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/left-0012.png
+[9.723s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/left-0013.png
+[9.729s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/left-0014.png
+[9.735s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/left-0015.png
+[9.741s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/left-0016.png
+[9.746s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/left-0017.png
+[9.752s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/left-0018.png
+[9.758s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/left-0019.png
+[9.764s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/left-0020.png
+[9.770s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/left-0021.png
+[9.775s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/left-0022.png
+[9.781s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/left-0023.png
+[9.787s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/left-0024.png
+[9.792s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/left-0025.png
+[9.797s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/left-0026.png
+[9.803s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/left-0027.png
+[9.808s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/left-0028.png
+[9.814s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/left-0029.png
+[9.819s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/left-0030.png
+[9.825s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/left-0031.png
+[9.831s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/left-0032.png
+[9.837s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/left-0033.png
+[9.843s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/left-0034.png
+[9.849s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/left-0035.png
+[9.854s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/left-0036.png
+[9.860s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/left-0037.png
+[9.866s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/left-0038.png
+[9.872s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/left-0039.png
+[9.877s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/left-0040.png
+[9.883s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/left-0041.png
+[9.888s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/left-0042.png
+[9.893s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/left-0043.png
+[9.899s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/left-0044.png
+[9.904s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/left-0045.png
+[9.910s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/left-0046.png
+[9.915s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/left-0047.png
+[9.921s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/left-0048.png
+[9.927s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/left-0049.png
+[9.932s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/left-0050.png
+[9.938s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/left-0051.png
+[9.944s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/left-0052.png
+[9.950s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/left-0053.png
+[9.956s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/left-0054.png
+[9.961s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/left.yaml
+[9.968s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/ost.txt
+[9.973s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/right-0000.png
+[9.979s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/right-0001.png
+[9.985s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/right-0002.png
+[9.990s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/right-0003.png
+[9.996s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/right-0004.png
+[10.001s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/right-0005.png
+[10.006s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/right-0006.png
+[10.012s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/right-0007.png
+[10.018s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/right-0008.png
+[10.023s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/right-0009.png
+[10.029s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/right-0010.png
+[10.035s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/right-0011.png
+[10.041s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/right-0012.png
+[10.047s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/right-0013.png
+[10.053s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/right-0014.png
+[10.059s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/right-0015.png
+[10.064s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/right-0016.png
+[10.071s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/right-0017.png
+[10.076s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/right-0018.png
+[10.081s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/right-0019.png
+[10.087s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/right-0020.png
+[10.092s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/right-0021.png
+[10.097s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/right-0022.png
+[10.103s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/right-0023.png
+[10.108s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/right-0024.png
+[10.114s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/right-0025.png
+[10.120s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/right-0026.png
+[10.125s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/right-0027.png
+[10.131s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/right-0028.png
+[10.137s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/right-0029.png
+[10.143s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/right-0030.png
+[10.149s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/right-0031.png
+[10.154s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/right-0032.png
+[10.160s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/right-0033.png
+[10.166s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/right-0034.png
+[10.172s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/right-0035.png
+[10.177s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/right-0036.png
+[10.183s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/right-0037.png
+[10.188s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/right-0038.png
+[10.194s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/right-0039.png
+[10.199s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/right-0040.png
+[10.204s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/right-0041.png
+[10.210s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/right-0042.png
+[10.215s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/right-0043.png
+[10.221s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/right-0044.png
+[10.227s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/right-0045.png
+[10.233s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/right-0046.png
+[10.238s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/right-0047.png
+[10.244s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/right-0048.png
+[10.250s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/right-0049.png
+[10.256s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/right-0050.png
+[10.262s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/right-0051.png
+[10.268s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/right-0052.png
+[10.273s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/right-0053.png
+[10.279s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/right-0054.png
+[10.284s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test1/right.yaml
+[10.290s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/left-0000.png
+[10.295s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/left-0001.png
+[10.301s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/left-0002.png
+[10.306s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/left-0003.png
+[10.312s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/left-0004.png
+[10.317s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/left-0005.png
+[10.323s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/left-0006.png
+[10.329s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/left-0007.png
+[10.335s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/left-0008.png
+[10.340s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/left-0009.png
+[10.346s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/left-0010.png
+[10.352s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/left-0011.png
+[10.358s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/left-0012.png
+[10.364s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/left-0013.png
+[10.370s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/left-0014.png
+[10.375s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/left-0015.png
+[10.381s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/left-0016.png
+[10.386s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/left-0017.png
+[10.392s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/left-0018.png
+[10.397s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/left-0019.png
+[10.403s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/left-0020.png
+[10.408s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/left-0021.png
+[10.413s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/left-0022.png
+[10.419s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/left-0023.png
+[10.424s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/left-0024.png
+[10.430s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/left-0025.png
+[10.436s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/left-0026.png
+[10.442s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/left-0027.png
+[10.448s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/left-0028.png
+[10.453s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/left-0029.png
+[10.459s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/left-0030.png
+[10.465s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/left-0031.png
+[10.472s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/left-0032.png
+[10.477s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/left-0033.png
+[10.483s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/left-0034.png
+[10.488s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/left-0035.png
+[10.494s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/left-0036.png
+[10.499s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/left-0037.png
+[10.505s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/left-0038.png
+[10.511s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/left-0039.png
+[10.516s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/left-0040.png
+[10.523s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/left-0041.png
+[10.530s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/left-0042.png
+[10.537s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/left-0043.png
+[10.543s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/left-0044.png
+[10.549s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/left-0045.png
+[10.556s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/left-0046.png
+[10.562s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/left-0047.png
+[10.569s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/left-0048.png
+[10.575s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/left-0049.png
+[10.581s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/left-0050.png
+[10.588s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/left.yaml
+[10.594s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/ost.txt
+[10.600s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/right-0000.png
+[10.606s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/right-0001.png
+[10.612s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/right-0002.png
+[10.618s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/right-0003.png
+[10.625s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/right-0004.png
+[10.631s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/right-0005.png
+[10.637s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/right-0006.png
+[10.643s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/right-0007.png
+[10.649s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/right-0008.png
+[10.655s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/right-0009.png
+[10.661s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/right-0010.png
+[10.667s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/right-0011.png
+[10.673s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/right-0012.png
+[10.679s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/right-0013.png
+[10.685s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/right-0014.png
+[10.690s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/right-0015.png
+[10.696s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/right-0016.png
+[10.701s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/right-0017.png
+[10.707s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/right-0018.png
+[10.712s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/right-0019.png
+[10.718s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/right-0020.png
+[10.723s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/right-0021.png
+[10.729s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/right-0022.png
+[10.735s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/right-0023.png
+[10.741s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/right-0024.png
+[10.747s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/right-0025.png
+[10.753s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/right-0026.png
+[10.758s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/right-0027.png
+[10.764s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/right-0028.png
+[10.771s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/right-0029.png
+[10.776s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/right-0030.png
+[10.782s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/right-0031.png
+[10.788s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/right-0032.png
+[10.793s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/right-0033.png
+[10.799s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/right-0034.png
+[10.804s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/right-0035.png
+[10.809s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/right-0036.png
+[10.815s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/right-0037.png
+[10.820s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/right-0038.png
+[10.826s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/right-0039.png
+[10.832s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/right-0040.png
+[10.837s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/right-0041.png
+[10.843s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/right-0042.png
+[10.849s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/right-0043.png
+[10.854s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/right-0044.png
+[10.860s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/right-0045.png
+[10.866s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/right-0046.png
+[10.872s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/right-0047.png
+[10.878s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/right-0048.png
+[10.884s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/right-0049.png
+[10.889s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/right-0050.png
+[10.895s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/calibrationdata_test2/right.yaml
+[10.900s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/camera1_elp_left.yaml
+[10.906s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/camera1_elp_right.yaml
+[10.911s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/camera3_elp_left.yaml
+[10.917s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/camera3_elp_right.yaml
+[10.922s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/camera5_elp_left.yaml
+[10.928s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/camera5_elp_right.yaml
+[10.933s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/elp_left.yaml
+[10.939s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/elp_right.yaml
+[10.945s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/temp/elp_left.yaml
+[10.950s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined//calibration/temp/elp_right.yaml
+[10.956s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/ament_index/resource_index/package_run_dependencies/stereo_combined
+[10.962s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/ament_index/resource_index/parent_prefix_path/stereo_combined
+[10.969s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined/environment/ament_prefix_path.sh
+[10.975s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined/environment/ament_prefix_path.dsv
+[10.981s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined/environment/path.sh
+[10.987s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined/environment/path.dsv
+[10.992s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined/local_setup.bash
+[10.998s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined/local_setup.sh
+[11.004s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined/local_setup.zsh
+[11.009s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined/local_setup.dsv
+[11.015s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined/package.dsv
+[11.021s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/ament_index/resource_index/packages/stereo_combined
+[11.026s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined/cmake/stereo_combinedConfig.cmake
+[11.032s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined/cmake/stereo_combinedConfig-version.cmake
+[11.037s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined/package.xml
+[11.044s] Invoked command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined' returned '0': AMENT_PREFIX_PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc:/opt/ros/foxy LD_LIBRARY_PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/lib:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/lib:${LD_LIBRARY_PATH} PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/bin:${PATH} PYTHONPATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/cmake --install /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined

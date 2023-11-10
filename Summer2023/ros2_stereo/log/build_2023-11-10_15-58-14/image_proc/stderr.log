@@ -1,0 +1,6 @@
+/usr/bin/ld: librectify.so: undefined reference to `ros_trace_image_proc_rectify_fini'
+/usr/bin/ld: librectify.so: undefined reference to `ros_trace_image_proc_rectify_init'
+collect2: error: ld returned 1 exit status
+make[2]: *** [CMakeFiles/image_proc_exe.dir/build.make:298: image_proc] Error 1
+make[1]: *** [CMakeFiles/Makefile2:321: CMakeFiles/image_proc_exe.dir/all] Error 2
+make: *** [Makefile:141: all] Error 2

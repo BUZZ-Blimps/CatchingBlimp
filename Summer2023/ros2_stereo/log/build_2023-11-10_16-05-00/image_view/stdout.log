@@ -1,0 +1,7 @@
+[ 36%] Built target image_view_nodes
+[ 42%] [32m[1mLinking CXX executable video_recorder[0m
+[ 47%] [32m[1mLinking CXX executable stereo_view[0m
+[ 52%] [32m[1mLinking CXX executable disparity_view[0m
+[ 57%] [32m[1mLinking CXX executable extract_images[0m
+[ 63%] [32m[1mLinking CXX executable image_view[0m
+[ 68%] [32m[1mLinking CXX executable image_saver[0m

@@ -1,28 +1,27 @@
 Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
-Change Dir: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/CMakeFiles/CMakeScratch/TryCompile-Zwm2dU
+Change Dir: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make -f Makefile cmTC_49e00/fast && /usr/bin/make  -f CMakeFiles/cmTC_49e00.dir/build.make CMakeFiles/cmTC_49e00.dir/build
-make[1]: Entering directory '/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/CMakeFiles/CMakeScratch/TryCompile-Zwm2dU'
-Building C object CMakeFiles/cmTC_49e00.dir/src.c.o
-/usr/bin/cc -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_49e00.dir/src.c.o -c /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/CMakeFiles/CMakeScratch/TryCompile-Zwm2dU/src.c
-Linking C executable cmTC_49e00
-/home/corelab/.local/lib/python3.8/site-packages/cmake/data/bin/cmake -E cmake_link_script CMakeFiles/cmTC_49e00.dir/link.txt --verbose=1
-/usr/bin/cc CMakeFiles/cmTC_49e00.dir/src.c.o -o cmTC_49e00 
-/usr/bin/ld: CMakeFiles/cmTC_49e00.dir/src.c.o: in function `main':
+Run Build Command(s):/usr/bin/make cmTC_ccd3d/fast && /usr/bin/make -f CMakeFiles/cmTC_ccd3d.dir/build.make CMakeFiles/cmTC_ccd3d.dir/build
+make[1]: Entering directory '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_ccd3d.dir/src.c.o
+/usr/bin/cc   -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_ccd3d.dir/src.c.o   -c /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_ccd3d
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ccd3d.dir/link.txt --verbose=1
+/usr/bin/cc  -DCMAKE_HAVE_LIBC_PTHREAD    CMakeFiles/cmTC_ccd3d.dir/src.c.o  -o cmTC_ccd3d 
+/usr/bin/ld: CMakeFiles/cmTC_ccd3d.dir/src.c.o: in function `main':
 src.c:(.text+0x46): undefined reference to `pthread_create'
 /usr/bin/ld: src.c:(.text+0x52): undefined reference to `pthread_detach'
-/usr/bin/ld: src.c:(.text+0x5e): undefined reference to `pthread_cancel'
-/usr/bin/ld: src.c:(.text+0x6f): undefined reference to `pthread_join'
+/usr/bin/ld: src.c:(.text+0x63): undefined reference to `pthread_join'
 collect2: error: ld returned 1 exit status
-make[1]: *** [CMakeFiles/cmTC_49e00.dir/build.make:99: cmTC_49e00] Error 1
-make[1]: Leaving directory '/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/CMakeFiles/CMakeScratch/TryCompile-Zwm2dU'
-make: *** [Makefile:127: cmTC_49e00/fast] Error 2
+make[1]: *** [CMakeFiles/cmTC_ccd3d.dir/build.make:87: cmTC_ccd3d] Error 1
+make[1]: Leaving directory '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_ccd3d/fast] Error 2
 
 
 Source file was:
 #include <pthread.h>
 
-static void* test_func(void* data)
+void* test_func(void* data)
 {
   return data;
 }
@@ -32,7 +31,6 @@ int main(void)
   pthread_t thread;
   pthread_create(&thread, NULL, test_func, NULL);
   pthread_detach(thread);
-  pthread_cancel(thread);
   pthread_join(thread, NULL);
   pthread_atfork(NULL, NULL, NULL);
   pthread_exit(NULL);
@@ -40,22 +38,21 @@ int main(void)
   return 0;
 }
 
-
 Determining if the function pthread_create exists in the pthreads failed with the following output:
-Change Dir: /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/CMakeFiles/CMakeScratch/TryCompile-XWdOGV
+Change Dir: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make -f Makefile cmTC_82217/fast && /usr/bin/make  -f CMakeFiles/cmTC_82217.dir/build.make CMakeFiles/cmTC_82217.dir/build
-make[1]: Entering directory '/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/CMakeFiles/CMakeScratch/TryCompile-XWdOGV'
-Building C object CMakeFiles/cmTC_82217.dir/CheckFunctionExists.c.o
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create -o CMakeFiles/cmTC_82217.dir/CheckFunctionExists.c.o -c /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/CMakeFiles/CMakeScratch/TryCompile-XWdOGV/CheckFunctionExists.c
-Linking C executable cmTC_82217
-/home/corelab/.local/lib/python3.8/site-packages/cmake/data/bin/cmake -E cmake_link_script CMakeFiles/cmTC_82217.dir/link.txt --verbose=1
-/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create CMakeFiles/cmTC_82217.dir/CheckFunctionExists.c.o -o cmTC_82217  -lpthreads 
+Run Build Command(s):/usr/bin/make cmTC_1e776/fast && /usr/bin/make -f CMakeFiles/cmTC_1e776.dir/build.make CMakeFiles/cmTC_1e776.dir/build
+make[1]: Entering directory '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_1e776.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_1e776.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.16/Modules/CheckFunctionExists.c
+Linking C executable cmTC_1e776
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1e776.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_1e776.dir/CheckFunctionExists.c.o  -o cmTC_1e776  -lpthreads 
 /usr/bin/ld: cannot find -lpthreads
 collect2: error: ld returned 1 exit status
-make[1]: *** [CMakeFiles/cmTC_82217.dir/build.make:99: cmTC_82217] Error 1
-make[1]: Leaving directory '/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/CMakeFiles/CMakeScratch/TryCompile-XWdOGV'
-make: *** [Makefile:127: cmTC_82217/fast] Error 2
+make[1]: *** [CMakeFiles/cmTC_1e776.dir/build.make:87: cmTC_1e776] Error 1
+make[1]: Leaving directory '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_1e776/fast] Error 2
 
 
 

@@ -1,8 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/debayer.dir/src/debayer.cpp.o"
-  "CMakeFiles/debayer.dir/src/debayer.cpp.o.d"
   "CMakeFiles/debayer.dir/src/edge_aware.cpp.o"
-  "CMakeFiles/debayer.dir/src/edge_aware.cpp.o.d"
   "libdebayer.pdb"
   "libdebayer.so"
 )

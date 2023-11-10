@@ -1,3 +1,0 @@
-/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/image_proc/connext_cmake_module/check_abi/build/CMakeFiles/exe.dir
-/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/image_proc/connext_cmake_module/check_abi/build/CMakeFiles/edit_cache.dir
-/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/image_proc/connext_cmake_module/check_abi/build/CMakeFiles/rebuild_cache.dir

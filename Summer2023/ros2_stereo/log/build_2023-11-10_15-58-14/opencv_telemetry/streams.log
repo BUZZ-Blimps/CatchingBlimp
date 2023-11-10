@@ -1,0 +1,78 @@
+[0.112s] Invoking command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry -- -j8 -l8
+[0.140s] [35m[1mScanning dependencies of target opencv_subscriber[0m
+[0.140s] [  2%] [34m[1mGenerating C code for ROS interfaces[0m
+[0.140s] [35m[1mScanning dependencies of target opencv_telemetry__cpp[0m
+[0.142s] [35m[1mScanning dependencies of target minimal_opencv_ros2_node[0m
+[0.144s] [35m[1mScanning dependencies of target split_sync_images[0m
+[0.150s] [  4%] [34m[1mGenerating C++ code for ROS interfaces[0m
+[0.183s] [  9%] [32mBuilding CXX object CMakeFiles/opencv_subscriber.dir/src/opencv_subscriber.cpp.o[0m
+[0.183s] [  9%] [32mBuilding CXX object CMakeFiles/minimal_opencv_ros2_node.dir/src/minimal_opencv_ros2_node.cpp.o[0m
+[0.197s] [ 12%] [32mBuilding CXX object CMakeFiles/split_sync_images.dir/src/split_sync_images.cpp.o[0m
+[0.656s] [ 12%] Built target opencv_telemetry__cpp
+[0.674s] [35m[1mScanning dependencies of target opencv_telemetry__rosidl_generator_c[0m
+[0.717s] [ 14%] [34m[1mGenerating C++ type support dispatch for ROS interfaces[0m
+[0.751s] [ 17%] [34m[1mGenerating C++ type support for eProsima Fast-RTPS[0m
+[0.765s] [ 19%] [32mBuilding C object CMakeFiles/opencv_telemetry__rosidl_generator_c.dir/rosidl_generator_c/opencv_telemetry/msg/detail/resized_image__functions.c.o[0m
+[0.766s] [ 21%] [34m[1mGenerating C++ introspection for ROS interfaces[0m
+[0.923s] [ 24%] [32m[1mLinking C shared library libopencv_telemetry__rosidl_generator_c.so[0m
+[1.117s] [ 24%] Built target opencv_telemetry__rosidl_generator_c
+[1.175s] [ 26%] [34m[1mGenerating C type support dispatch for ROS interfaces[0m
+[1.207s] [ 29%] [34m[1mGenerating C introspection for ROS interfaces[0m
+[1.221s] [35m[1mScanning dependencies of target opencv_telemetry__rosidl_typesupport_cpp[0m
+[1.288s] [ 31%] [32mBuilding CXX object CMakeFiles/opencv_telemetry__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/opencv_telemetry/msg/resized_image__type_support.cpp.o[0m
+[1.299s] [35m[1mScanning dependencies of target opencv_telemetry__rosidl_typesupport_introspection_cpp[0m
+[1.310s] [35m[1mScanning dependencies of target opencv_telemetry__rosidl_typesupport_fastrtps_cpp[0m
+[1.358s] [ 34%] [32mBuilding CXX object CMakeFiles/opencv_telemetry__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/opencv_telemetry/msg/detail/resized_image__type_support.cpp.o[0m
+[1.367s] [ 36%] [32mBuilding CXX object CMakeFiles/opencv_telemetry__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/opencv_telemetry/msg/detail/dds_fastrtps/resized_image__type_support.cpp.o[0m
+[1.647s] [35m[1mScanning dependencies of target opencv_telemetry__rosidl_typesupport_c[0m
+[1.702s] [ 39%] [32mBuilding CXX object CMakeFiles/opencv_telemetry__rosidl_typesupport_c.dir/rosidl_typesupport_c/opencv_telemetry/msg/resized_image__type_support.cpp.o[0m
+[1.705s] [35m[1mScanning dependencies of target opencv_telemetry__rosidl_typesupport_introspection_c[0m
+[1.765s] [ 41%] [32mBuilding C object CMakeFiles/opencv_telemetry__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/opencv_telemetry/msg/detail/resized_image__type_support.c.o[0m
+[1.808s] [ 43%] [32m[1mLinking CXX shared library libopencv_telemetry__rosidl_typesupport_c.so[0m
+[1.838s] [ 46%] [32m[1mLinking CXX shared library libopencv_telemetry__rosidl_typesupport_cpp.so[0m
+[1.875s] [ 48%] [32m[1mLinking C shared library libopencv_telemetry__rosidl_typesupport_introspection_c.so[0m
+[1.930s] [ 51%] [32m[1mLinking CXX shared library libopencv_telemetry__rosidl_typesupport_introspection_cpp.so[0m
+[1.948s] [ 51%] Built target opencv_telemetry__rosidl_typesupport_c
+[1.956s] [ 51%] Built target opencv_telemetry__rosidl_typesupport_cpp
+[2.025s] [ 51%] Built target opencv_telemetry__rosidl_typesupport_introspection_c
+[2.077s] [ 51%] Built target opencv_telemetry__rosidl_typesupport_introspection_cpp
+[2.112s] [ 53%] [32m[1mLinking CXX shared library libopencv_telemetry__rosidl_typesupport_fastrtps_cpp.so[0m
+[2.291s] [ 53%] Built target opencv_telemetry__rosidl_typesupport_fastrtps_cpp
+[2.300s] [ 56%] [34m[1mGenerating C type support for eProsima Fast-RTPS[0m
+[2.474s] [35m[1mScanning dependencies of target opencv_telemetry__rosidl_typesupport_fastrtps_c[0m
+[2.487s] [ 58%] [32mBuilding CXX object CMakeFiles/opencv_telemetry__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/opencv_telemetry/msg/detail/resized_image__type_support_c.cpp.o[0m
+[2.748s] [ 60%] [32m[1mLinking CXX shared library libopencv_telemetry__rosidl_typesupport_fastrtps_c.so[0m
+[2.822s] [ 60%] Built target opencv_telemetry__rosidl_typesupport_fastrtps_c
+[2.829s] [35m[1mScanning dependencies of target opencv_telemetry[0m
+[2.836s] [ 60%] Built target opencv_telemetry
+[2.845s] [35m[1mScanning dependencies of target opencv_telemetry__py[0m
+[2.845s] [35m[1mScanning dependencies of target resized_plugins[0m
+[2.854s] [ 63%] [34m[1mGenerating Python code for ROS interfaces[0m
+[2.878s] [ 65%] [32m[1mLinking CXX executable opencv_subscriber[0m
+[2.887s] [ 68%] [32mBuilding CXX object CMakeFiles/resized_plugins.dir/src/manifest.cpp.o[0m
+[2.888s] [ 70%] [32mBuilding CXX object CMakeFiles/resized_plugins.dir/src/resized_publisher.cpp.o[0m
+[2.893s] [ 73%] [32mBuilding CXX object CMakeFiles/resized_plugins.dir/src/resized_subscriber.cpp.o[0m
+[2.991s] [ 75%] [32m[1mLinking CXX executable minimal_opencv_ros2_node[0m
+[3.276s] [ 75%] Built target opencv_telemetry__py
+[3.284s] [35m[1mScanning dependencies of target opencv_telemetry__python[0m
+[3.302s] [ 78%] [32mBuilding C object CMakeFiles/opencv_telemetry__python.dir/rosidl_generator_py/opencv_telemetry/msg/_resized_image_s.c.o[0m
+[3.375s] [ 80%] [32m[1mLinking C shared library rosidl_generator_py/opencv_telemetry/libopencv_telemetry__python.so[0m
+[3.394s] [ 80%] Built target opencv_subscriber
+[3.412s] [ 80%] Built target opencv_telemetry__python
+[3.420s] [35m[1mScanning dependencies of target opencv_telemetry__rosidl_typesupport_c__pyext[0m
+[3.421s] [35m[1mScanning dependencies of target opencv_telemetry__rosidl_typesupport_introspection_c__pyext[0m
+[3.432s] [35m[1mScanning dependencies of target opencv_telemetry__rosidl_typesupport_fastrtps_c__pyext[0m
+[3.448s] [ 82%] [32mBuilding C object CMakeFiles/opencv_telemetry__rosidl_typesupport_introspection_c__pyext.dir/rosidl_generator_py/opencv_telemetry/_opencv_telemetry_s.ep.rosidl_typesupport_introspection_c.c.o[0m
+[3.452s] [ 85%] [32mBuilding C object CMakeFiles/opencv_telemetry__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/opencv_telemetry/_opencv_telemetry_s.ep.rosidl_typesupport_c.c.o[0m
+[3.455s] [ 87%] [32mBuilding C object CMakeFiles/opencv_telemetry__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py/opencv_telemetry/_opencv_telemetry_s.ep.rosidl_typesupport_fastrtps_c.c.o[0m
+[3.516s] [ 90%] [32m[1mLinking C shared library rosidl_generator_py/opencv_telemetry/opencv_telemetry_s__rosidl_typesupport_introspection_c.cpython-38-x86_64-linux-gnu.so[0m
+[3.553s] [ 92%] [32m[1mLinking CXX shared library rosidl_generator_py/opencv_telemetry/opencv_telemetry_s__rosidl_typesupport_fastrtps_c.cpython-38-x86_64-linux-gnu.so[0m
+[3.557s] [ 92%] Built target opencv_telemetry__rosidl_typesupport_introspection_c__pyext
+[3.564s] [ 95%] [32m[1mLinking C shared library rosidl_generator_py/opencv_telemetry/opencv_telemetry_s__rosidl_typesupport_c.cpython-38-x86_64-linux-gnu.so[0m
+[3.581s] [ 95%] Built target minimal_opencv_ros2_node
+[3.612s] [ 95%] Built target opencv_telemetry__rosidl_typesupport_fastrtps_c__pyext
+[3.619s] [ 95%] Built target opencv_telemetry__rosidl_typesupport_c__pyext
+[6.581s] [ 97%] [32m[1mLinking CXX shared library libresized_plugins.so[0m
+[6.906s] [ 97%] Built target resized_plugins
+[7.245s] [100%] [32m[1mLinking CXX executable split_sync_images[0m
+[7.659s] [100%] Built target split_sync_images

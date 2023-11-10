@@ -1,6 +1,5 @@
 file(REMOVE_RECURSE
   "CMakeFiles/image_view.dir/src/image_view.cpp.o"
-  "CMakeFiles/image_view.dir/src/image_view.cpp.o.d"
   "image_view"
   "image_view.pdb"
 )

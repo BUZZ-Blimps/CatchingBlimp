@@ -1,6 +1,5 @@
 file(REMOVE_RECURSE
   "CMakeFiles/image_saver.dir/src/image_saver.cpp.o"
-  "CMakeFiles/image_saver.dir/src/image_saver.cpp.o.d"
   "image_saver"
   "image_saver.pdb"
 )

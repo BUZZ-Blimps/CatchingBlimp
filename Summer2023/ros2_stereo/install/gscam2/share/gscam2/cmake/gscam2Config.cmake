@@ -1,1 +1,0 @@
-/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/gscam2/ament_cmake_core/gscam2Config.cmake

@@ -1,0 +1,26 @@
+/usr/bin/ld: libimage_view_nodes.so: undefined reference to `camera_calibration_parsers::writeCalibration(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, sensor_msgs::msg::CameraInfo_<std::allocator<void> > const&)'
+collect2: error: ld returned 1 exit status
+make[2]: *** [CMakeFiles/image_saver.dir/build.make:302: image_saver] Error 1
+make[1]: *** [CMakeFiles/Makefile2:252: CMakeFiles/image_saver.dir/all] Error 2
+make[1]: *** Waiting for unfinished jobs....
+/usr/bin/ld: libimage_view_nodes.so: undefined /reference to `camera_calibration_parsers::writeCalibration(std::__cxx11::basic_stringusr<char, std:/:char_traits<char>,bin std::allocator<char/> > const&ld, std::__cxx11:::basic_string<char, std ::libimage_view_nodes.sochar_traits<char>,: std::allocator< char> >undefined const&,  sensor_msgsreference: :tomsg :`:camera_calibration_parsersCameraInfo_:<:stdwriteCalibration:(:stdallocator:<:void__cxx11> > const&)'
+::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > collect2: error: ld returned 1 exit status
+const&, sensor_msgs::msg::CameraInfo_<std::allocator<void> > const&)'
+collect2: error: ld returned 1 exit status
+make[2]: *** [CMakeFiles/disparity_view.dir/build.make:302: disparity_view] Error 1
+make[2]: *** [CMakeFiles/extract_images.dir/build.make:302: extract_images] Error 1
+make[1]: *** [CMakeFiles/Makefile2:144: CMakeFiles/disparity_view.dir/all] Error 2
+make[1]: *** [CMakeFiles/Makefile2:198: CMakeFiles/extract_images.dir/all] Error 2
+/usr/bin/ld: libimage_view_nodes.so: undefined reference to `camera_calibration_parsers::writeCalibration(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, sensor_msgs::msg::CameraInfo_<std::allocator<void> > const&)'
+collect2: error: ld returned 1 exit status
+make[2]: *** [CMakeFiles/video_recorder.dir/build.make:302: video_recorder] Error 1
+make[1]: *** [CMakeFiles/Makefile2:306: CMakeFiles/video_recorder.dir/all] Error 2
+/usr/bin/ld: libimage_view_nodes.so: undefined reference to `camera_calibration_parsers::writeCalibration(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, sensor_msgs::msg::CameraInfo_<std::allocator<void> > const&)'
+collect2: error: ld returned 1 exit status
+make[2]: *** [CMakeFiles/image_view.dir/build.make:302: image_view] Error 1
+make[1]: *** [CMakeFiles/Makefile2:171: CMakeFiles/image_view.dir/all] Error 2
+/usr/bin/ld: libimage_view_nodes.so: undefined reference to `camera_calibration_parsers::writeCalibration(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, sensor_msgs::msg::CameraInfo_<std::allocator<void> > const&)'
+collect2: error: ld returned 1 exit status
+make[2]: *** [CMakeFiles/stereo_view.dir/build.make:302: stereo_view] Error 1
+make[1]: *** [CMakeFiles/Makefile2:225: CMakeFiles/stereo_view.dir/all] Error 2
+make: *** [Makefile:141: all] Error 2

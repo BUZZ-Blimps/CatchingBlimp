@@ -1,6 +1,5 @@
 file(REMOVE_RECURSE
   "CMakeFiles/crop_decimate.dir/src/crop_decimate.cpp.o"
-  "CMakeFiles/crop_decimate.dir/src/crop_decimate.cpp.o.d"
   "libcrop_decimate.pdb"
   "libcrop_decimate.so"
 )

@@ -1,10 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/yolo_msgs__rosidl_generator_c.dir/rosidl_generator_c/yolo_msgs/msg/detail/bounding_box__functions.c.o"
-  "CMakeFiles/yolo_msgs__rosidl_generator_c.dir/rosidl_generator_c/yolo_msgs/msg/detail/bounding_box__functions.c.o.d"
   "CMakeFiles/yolo_msgs__rosidl_generator_c.dir/rosidl_generator_c/yolo_msgs/msg/detail/bounding_boxes__functions.c.o"
-  "CMakeFiles/yolo_msgs__rosidl_generator_c.dir/rosidl_generator_c/yolo_msgs/msg/detail/bounding_boxes__functions.c.o.d"
   "CMakeFiles/yolo_msgs__rosidl_generator_c.dir/rosidl_generator_c/yolo_msgs/msg/detail/object_count__functions.c.o"
-  "CMakeFiles/yolo_msgs__rosidl_generator_c.dir/rosidl_generator_c/yolo_msgs/msg/detail/object_count__functions.c.o.d"
   "libyolo_msgs__rosidl_generator_c.pdb"
   "libyolo_msgs__rosidl_generator_c.so"
   "rosidl_generator_c/yolo_msgs/msg/bounding_box.h"

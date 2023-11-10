@@ -1,0 +1,21 @@
+[0.236s] Invoking command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_view': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_view -- -j8 -l8
+[0.258s] -- Found ament_cmake_auto: 0.9.12 (/opt/ros/foxy/share/ament_cmake_auto/cmake)
+[0.278s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[0.450s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[0.545s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.546s] -- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+[0.628s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.667s] -- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+[0.667s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.889s] -- Setting yaml-cpp_DIR to: '/opt/ros/foxy/share/yaml_cpp_vendor/cmake/../../../opt/yaml_cpp_vendor/lib/cmake/yaml-cpp'
+[1.115s] CMake Error at /opt/ros/foxy/share/ament_cmake_target_dependencies/cmake/ament_target_dependencies.cmake:42 (message):
+[1.115s]   ament_target_dependencies() the first argument must be a valid target name
+[1.117s] Call Stack (most recent call first):
+[1.117s]   CMakeLists.txt:35 (ament_target_dependencies)
+[1.119s] 
+[1.119s] 
+[1.119s] -- Configuring incomplete, errors occurred!
+[1.120s] See also "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_view/CMakeFiles/CMakeOutput.log".
+[1.120s] See also "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_view/CMakeFiles/CMakeError.log".
+[1.121s] make: *** [Makefile:680: cmake_check_build_system] Error 1
+[1.446s] Invoked command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_view' returned '2': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_view -- -j8 -l8

@@ -1,6 +1,5 @@
 file(REMOVE_RECURSE
   "CMakeFiles/split_sync_images.dir/src/split_sync_images.cpp.o"
-  "CMakeFiles/split_sync_images.dir/src/split_sync_images.cpp.o.d"
   "split_sync_images"
   "split_sync_images.pdb"
 )

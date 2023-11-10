@@ -1,6 +1,5 @@
 file(REMOVE_RECURSE
   "CMakeFiles/image_proc_exe.dir/src/image_proc.cpp.o"
-  "CMakeFiles/image_proc_exe.dir/src/image_proc.cpp.o.d"
   "image_proc"
   "image_proc.pdb"
 )
