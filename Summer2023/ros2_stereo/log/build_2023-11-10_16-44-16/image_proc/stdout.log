@@ -1,0 +1,119 @@
+-- The C compiler identification is GNU 9.4.0
+-- The CXX compiler identification is GNU 9.4.0
+-- Check for working C compiler: /usr/bin/cc
+-- Check for working C compiler: /usr/bin/cc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Check for working CXX compiler: /usr/bin/c++
+-- Check for working CXX compiler: /usr/bin/c++ -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found ament_cmake_auto: 0.9.12 (/opt/ros/foxy/share/ament_cmake_auto/cmake)
+-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") 
+-- Using PYTHON_EXECUTABLE: /usr/bin/python3
+-- Override CMake install command with custom implementation using symlinks instead of copying resources
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "1.1.1f")  
+-- Found FastRTPS: /opt/ros/foxy/include  
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+-- Using RMW implementation 'rmw_fastrtps_cpp' as default
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+-- Looking for pthread_create in pthreads
+-- Looking for pthread_create in pthreads - not found
+-- Looking for pthread_create in pthread
+-- Looking for pthread_create in pthread - found
+-- Found Threads: TRUE  
+-- Found OpenCV: /usr (found version "4.2.0") 
+-- Found ament_lint_auto: 0.9.8 (/opt/ros/foxy/share/ament_lint_auto/cmake)
+-- Added test 'copyright' to check source files copyright and LICENSE
+-- Added test 'cppcheck' to perform static code analysis on C / C++ code
+-- Configured cppcheck include dirs: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/image_proc/include
+-- Configured cppcheck exclude dirs and/or files: 
+-- Added test 'cpplint' to check C / C++ code against the Google style
+-- Configured cpplint exclude dirs and/or files: 
+-- Added test 'flake8' to check Python code syntax and style conventions
+-- Added test 'lint_cmake' to check CMake code style
+-- Added test 'pep257' to check Python code against some of the style conventions in PEP 257
+-- Added test 'uncrustify' to check C / C++ code style
+-- Configured uncrustify additional arguments: 
+-- Added test 'xmllint' to check XML markup files
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_proc
+[35m[1mScanning dependencies of target image_proc[0m
+[  6%] [32mBuilding CXX object CMakeFiles/image_proc.dir/src/image_proc/processor.cpp.o[0m
+[ 13%] [32m[1mLinking CXX shared library libimage_proc.so[0m
+[ 13%] Built target image_proc
+[35m[1mScanning dependencies of target rectify[0m
+[ 20%] [32mBuilding CXX object CMakeFiles/rectify.dir/src/rectify.cpp.o[0m
+[ 26%] [32m[1mLinking CXX shared library librectify.so[0m
+[ 26%] Built target rectify
+[35m[1mScanning dependencies of target debayer[0m
+[ 33%] [32mBuilding CXX object CMakeFiles/debayer.dir/src/edge_aware.cpp.o[0m
+[ 40%] [32mBuilding CXX object CMakeFiles/debayer.dir/src/debayer.cpp.o[0m
+[ 46%] [32m[1mLinking CXX shared library libdebayer.so[0m
+[ 46%] Built target debayer
+[35m[1mScanning dependencies of target resize[0m
+[ 53%] [32mBuilding CXX object CMakeFiles/resize.dir/src/resize.cpp.o[0m
+[ 60%] [32m[1mLinking CXX shared library libresize.so[0m
+[ 60%] Built target resize
+[35m[1mScanning dependencies of target crop_decimate[0m
+[ 66%] [32mBuilding CXX object CMakeFiles/crop_decimate.dir/src/crop_decimate.cpp.o[0m
+[ 73%] [32m[1mLinking CXX shared library libcrop_decimate.so[0m
+[ 73%] Built target crop_decimate
+[35m[1mScanning dependencies of target crop_non_zero[0m
+[ 80%] [32mBuilding CXX object CMakeFiles/crop_non_zero.dir/src/crop_non_zero.cpp.o[0m
+[ 86%] [32m[1mLinking CXX shared library libcrop_non_zero.so[0m
+[ 86%] Built target crop_non_zero
+[35m[1mScanning dependencies of target image_proc_exe[0m
+[ 93%] [32mBuilding CXX object CMakeFiles/image_proc_exe.dir/src/image_proc.cpp.o[0m
+[100%] [32m[1mLinking CXX executable image_proc[0m
+[100%] Built target image_proc_exe
+-- Install configuration: ""
+-- Execute custom install script
+-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/bin/image_proc
+-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/include/image_proc/crop_decimate.hpp
+-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/include/image_proc/crop_non_zero.hpp
+-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/include/image_proc/debayer.hpp
+-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/include/image_proc/edge_aware.hpp
+-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/include/image_proc/processor.hpp
+-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/include/image_proc/rectify.hpp
+-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/include/image_proc/resize.hpp
+-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/image_proc/environment/library_path.sh
+-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/image_proc/environment/library_path.dsv
+-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/lib/libimage_proc.so
+-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/lib/librectify.so
+-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/lib/libdebayer.so
+-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/lib/libresize.so
+-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/lib/libcrop_decimate.so
+-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/lib/libcrop_non_zero.so
+-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/lib/image_proc/image_proc
+-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/image_proc/launch/image_proc.launch.py
+-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/ament_index/resource_index/package_run_dependencies/image_proc
+-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/ament_index/resource_index/parent_prefix_path/image_proc
+-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/image_proc/environment/ament_prefix_path.sh
+-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/image_proc/environment/ament_prefix_path.dsv
+-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/image_proc/environment/path.sh
+-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/image_proc/environment/path.dsv
+-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/image_proc/local_setup.bash
+-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/image_proc/local_setup.sh
+-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/image_proc/local_setup.zsh
+-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/image_proc/local_setup.dsv
+-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/image_proc/package.dsv
+-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/ament_index/resource_index/packages/image_proc
+-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/ament_index/resource_index/rclcpp_components/image_proc
+-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/image_proc/cmake/ament_cmake_export_dependencies-extras.cmake
+-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/image_proc/cmake/ament_cmake_export_include_directories-extras.cmake
+-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/image_proc/cmake/ament_cmake_export_libraries-extras.cmake
+-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/image_proc/cmake/image_procConfig.cmake
+-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/image_proc/cmake/image_procConfig-version.cmake
+-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/image_proc/package.xml

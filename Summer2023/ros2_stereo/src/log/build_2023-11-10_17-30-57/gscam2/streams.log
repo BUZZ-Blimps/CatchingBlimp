@@ -1,0 +1,27 @@
+[0.173s] Invoking command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/build/gscam2': AMENT_PREFIX_PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/install/ros2_shared:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/install/ros2_shared:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc:/opt/ros/foxy /usr/bin/cmake /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/gscam2 -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/install/gscam2
+[0.192s] -- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)
+[0.210s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[0.393s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[0.399s] -- Found camera_calibration_parsers: 2.4.0 (/opt/ros/foxy/share/camera_calibration_parsers/cmake)
+[0.432s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.433s] -- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+[0.536s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.579s] -- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+[0.580s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.836s] -- Setting yaml-cpp_DIR to: '/opt/ros/foxy/share/yaml_cpp_vendor/cmake/../../../opt/yaml_cpp_vendor/lib/cmake/yaml-cpp'
+[0.837s] -- Found camera_info_manager: 2.4.0 (/opt/ros/foxy/share/camera_info_manager/cmake)
+[0.882s] -- Found class_loader: 2.0.3 (/opt/ros/foxy/share/class_loader/cmake)
+[0.886s] -- Found rclcpp_components: 2.4.3 (/opt/ros/foxy/share/rclcpp_components/cmake)
+[0.929s] -- Found rclpy: 1.0.13 (/opt/ros/foxy/share/rclpy/cmake)
+[0.930s] -- Found ros2_shared: 0.1.0 (/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/install/ros2_shared/share/ros2_shared/cmake)
+[0.931s] CMake Error at /opt/ros/foxy/share/ament_cmake_target_dependencies/cmake/ament_target_dependencies.cmake:66 (message):
+[0.932s]   ament_target_dependencies() PUBLIC keyword is only allowed before the
+[0.933s]   package names
+[0.933s] Call Stack (most recent call first):
+[0.933s]   CMakeLists.txt:58 (ament_target_dependencies)
+[0.934s] 
+[0.934s] 
+[0.935s] -- Configuring incomplete, errors occurred!
+[0.935s] See also "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/build/gscam2/CMakeFiles/CMakeOutput.log".
+[0.935s] See also "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/build/gscam2/CMakeFiles/CMakeError.log".
+[1.325s] Invoked command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/build/gscam2' returned '1': AMENT_PREFIX_PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/install/ros2_shared:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/install/ros2_shared:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc:/opt/ros/foxy /usr/bin/cmake /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/gscam2 -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/install/gscam2

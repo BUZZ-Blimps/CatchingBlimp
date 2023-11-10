@@ -1,0 +1,50 @@
+[0.614s] Invoking command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_proc': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_proc -- -j8 -l8
+[0.664s] [ 13%] Built target image_proc
+[0.694s] [ 26%] Built target rectify
+[0.741s] [ 46%] Built target debayer
+[0.771s] [ 60%] Built target resize
+[0.801s] [ 73%] Built target crop_decimate
+[0.829s] [ 86%] Built target crop_non_zero
+[0.859s] [100%] Built target image_proc_exe
+[1.001s] Invoked command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_proc' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_proc -- -j8 -l8
+[1.239s] Invoking command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_proc': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --install /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_proc
+[1.246s] -- Install configuration: ""
+[1.246s] -- Execute custom install script
+[1.246s] -- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/bin/image_proc
+[1.248s] -- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/include/image_proc/crop_decimate.hpp
+[1.248s] -- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/include/image_proc/crop_non_zero.hpp
+[1.249s] -- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/include/image_proc/debayer.hpp
+[1.249s] -- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/include/image_proc/edge_aware.hpp
+[1.250s] -- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/include/image_proc/processor.hpp
+[1.251s] -- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/include/image_proc/rectify.hpp
+[1.251s] -- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/include/image_proc/resize.hpp
+[1.251s] -- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/image_proc/environment/library_path.sh
+[1.252s] -- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/image_proc/environment/library_path.dsv
+[1.252s] -- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/lib/libimage_proc.so
+[1.252s] -- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/lib/librectify.so
+[1.253s] -- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/lib/libdebayer.so
+[1.253s] -- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/lib/libresize.so
+[1.254s] -- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/lib/libcrop_decimate.so
+[1.254s] -- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/lib/libcrop_non_zero.so
+[1.257s] -- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/lib/image_proc/image_proc
+[1.258s] -- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/image_proc/launch/image_proc.launch.py
+[1.261s] -- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/ament_index/resource_index/package_run_dependencies/image_proc
+[1.262s] -- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/ament_index/resource_index/parent_prefix_path/image_proc
+[1.263s] -- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/image_proc/environment/ament_prefix_path.sh
+[1.264s] -- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/image_proc/environment/ament_prefix_path.dsv
+[1.264s] -- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/image_proc/environment/path.sh
+[1.264s] -- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/image_proc/environment/path.dsv
+[1.265s] -- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/image_proc/local_setup.bash
+[1.266s] -- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/image_proc/local_setup.sh
+[1.266s] -- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/image_proc/local_setup.zsh
+[1.266s] -- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/image_proc/local_setup.dsv
+[1.266s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/image_proc/package.dsv
+[1.270s] -- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/ament_index/resource_index/packages/image_proc
+[1.271s] -- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/ament_index/resource_index/rclcpp_components/image_proc
+[1.271s] -- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/image_proc/cmake/ament_cmake_export_dependencies-extras.cmake
+[1.272s] -- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/image_proc/cmake/ament_cmake_export_include_directories-extras.cmake
+[1.272s] -- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/image_proc/cmake/ament_cmake_export_libraries-extras.cmake
+[1.272s] -- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/image_proc/cmake/image_procConfig.cmake
+[1.273s] -- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/image_proc/cmake/image_procConfig-version.cmake
+[1.273s] -- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/image_proc/package.xml
+[1.686s] Invoked command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_proc' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --install /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_proc

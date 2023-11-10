@@ -1,0 +1,694 @@
+[2.048s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build']
+[2.048s] DEBUG:colcon:Parsed command line arguments: Namespace(allow_overriding=[], ament_cmake_args=None, base_paths=['.'], build_base='build', catkin_cmake_args=None, catkin_skip_building_tests=False, cmake_args=None, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, cmake_target=None, cmake_target_skip_unavailable=False, continue_on_error=False, event_handlers=None, executor='parallel', ignore_user_meta=False, install_base='install', log_base=None, log_level=None, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x7f2dbb520cd0>>, merge_install=False, metas=['./colcon.meta'], packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_end=None, packages_ignore=None, packages_ignore_regex=None, packages_select=None, packages_select_build_failed=False, packages_select_by_dep=None, packages_select_regex=None, packages_select_test_failures=False, packages_skip=None, packages_skip_build_finished=False, packages_skip_by_dep=None, packages_skip_regex=None, packages_skip_test_passed=False, packages_skip_up_to=None, packages_start=None, packages_up_to=None, packages_up_to_regex=None, parallel_workers=8, paths=None, symlink_install=False, test_result_base=None, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x7f2dbb520cd0>, verb_name='build', verb_parser=<colcon_defaults.argument_parser.defaults.DefaultArgumentsDecorator object at 0x7f2dbb50eb80>)
+[2.132s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[2.132s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[2.132s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[2.132s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[2.132s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[2.132s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[2.132s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo'
+[2.132s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[2.132s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[2.132s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[2.132s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[2.132s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[2.133s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[2.133s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[2.133s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[2.133s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[2.140s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[2.140s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[2.141s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[2.141s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[2.141s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[2.141s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[2.141s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[2.141s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[2.141s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[2.141s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[2.141s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[2.141s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[2.141s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[2.141s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[2.141s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ignore', 'ignore_ament_install']
+[2.142s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore'
+[2.142s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore_ament_install'
+[2.142s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_pkg']
+[2.142s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_pkg'
+[2.142s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_meta']
+[2.142s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_meta'
+[2.142s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ros']
+[2.142s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ros'
+[2.142s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['cmake', 'python']
+[2.142s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'cmake'
+[2.142s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python'
+[2.142s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['python_setup_py']
+[2.142s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python_setup_py'
+[2.142s] Level 1:colcon.colcon_core.package_identification:_identify(src/build) by extensions ['ignore', 'ignore_ament_install']
+[2.142s] Level 1:colcon.colcon_core.package_identification:_identify(src/build) by extension 'ignore'
+[2.142s] Level 1:colcon.colcon_core.package_identification:_identify(src/build) ignored
+[2.142s] Level 1:colcon.colcon_core.package_identification:_identify(src/gscam2) by extensions ['ignore', 'ignore_ament_install']
+[2.142s] Level 1:colcon.colcon_core.package_identification:_identify(src/gscam2) by extension 'ignore'
+[2.142s] Level 1:colcon.colcon_core.package_identification:_identify(src/gscam2) by extension 'ignore_ament_install'
+[2.142s] Level 1:colcon.colcon_core.package_identification:_identify(src/gscam2) by extensions ['colcon_pkg']
+[2.142s] Level 1:colcon.colcon_core.package_identification:_identify(src/gscam2) by extension 'colcon_pkg'
+[2.142s] Level 1:colcon.colcon_core.package_identification:_identify(src/gscam2) by extensions ['colcon_meta']
+[2.142s] Level 1:colcon.colcon_core.package_identification:_identify(src/gscam2) by extension 'colcon_meta'
+[2.142s] Level 1:colcon.colcon_core.package_identification:_identify(src/gscam2) by extensions ['ros']
+[2.142s] Level 1:colcon.colcon_core.package_identification:_identify(src/gscam2) by extension 'ros'
+[2.145s] DEBUG:colcon.colcon_core.package_identification:Package 'src/gscam2' with type 'ros.ament_cmake' and name 'gscam2'
+[2.145s] Level 1:colcon.colcon_core.package_identification:_identify(src/image_proc) by extensions ['ignore', 'ignore_ament_install']
+[2.145s] Level 1:colcon.colcon_core.package_identification:_identify(src/image_proc) by extension 'ignore'
+[2.145s] Level 1:colcon.colcon_core.package_identification:_identify(src/image_proc) by extension 'ignore_ament_install'
+[2.145s] Level 1:colcon.colcon_core.package_identification:_identify(src/image_proc) by extensions ['colcon_pkg']
+[2.145s] Level 1:colcon.colcon_core.package_identification:_identify(src/image_proc) by extension 'colcon_pkg'
+[2.145s] Level 1:colcon.colcon_core.package_identification:_identify(src/image_proc) by extensions ['colcon_meta']
+[2.145s] Level 1:colcon.colcon_core.package_identification:_identify(src/image_proc) by extension 'colcon_meta'
+[2.145s] Level 1:colcon.colcon_core.package_identification:_identify(src/image_proc) by extensions ['ros']
+[2.145s] Level 1:colcon.colcon_core.package_identification:_identify(src/image_proc) by extension 'ros'
+[2.146s] DEBUG:colcon.colcon_core.package_identification:Package 'src/image_proc' with type 'ros.ament_cmake' and name 'image_proc'
+[2.146s] Level 1:colcon.colcon_core.package_identification:_identify(src/image_view) by extensions ['ignore', 'ignore_ament_install']
+[2.146s] Level 1:colcon.colcon_core.package_identification:_identify(src/image_view) by extension 'ignore'
+[2.146s] Level 1:colcon.colcon_core.package_identification:_identify(src/image_view) by extension 'ignore_ament_install'
+[2.146s] Level 1:colcon.colcon_core.package_identification:_identify(src/image_view) by extensions ['colcon_pkg']
+[2.146s] Level 1:colcon.colcon_core.package_identification:_identify(src/image_view) by extension 'colcon_pkg'
+[2.146s] Level 1:colcon.colcon_core.package_identification:_identify(src/image_view) by extensions ['colcon_meta']
+[2.146s] Level 1:colcon.colcon_core.package_identification:_identify(src/image_view) by extension 'colcon_meta'
+[2.146s] Level 1:colcon.colcon_core.package_identification:_identify(src/image_view) by extensions ['ros']
+[2.147s] Level 1:colcon.colcon_core.package_identification:_identify(src/image_view) by extension 'ros'
+[2.147s] DEBUG:colcon.colcon_core.package_identification:Package 'src/image_view' with type 'ros.ament_cmake' and name 'image_view'
+[2.148s] Level 1:colcon.colcon_core.package_identification:_identify(src/install) by extensions ['ignore', 'ignore_ament_install']
+[2.148s] Level 1:colcon.colcon_core.package_identification:_identify(src/install) by extension 'ignore'
+[2.148s] Level 1:colcon.colcon_core.package_identification:_identify(src/install) ignored
+[2.148s] Level 1:colcon.colcon_core.package_identification:_identify(src/log) by extensions ['ignore', 'ignore_ament_install']
+[2.148s] Level 1:colcon.colcon_core.package_identification:_identify(src/log) by extension 'ignore'
+[2.148s] Level 1:colcon.colcon_core.package_identification:_identify(src/log) ignored
+[2.148s] Level 1:colcon.colcon_core.package_identification:_identify(src/opencv_telemetry) by extensions ['ignore', 'ignore_ament_install']
+[2.148s] Level 1:colcon.colcon_core.package_identification:_identify(src/opencv_telemetry) by extension 'ignore'
+[2.148s] Level 1:colcon.colcon_core.package_identification:_identify(src/opencv_telemetry) by extension 'ignore_ament_install'
+[2.148s] Level 1:colcon.colcon_core.package_identification:_identify(src/opencv_telemetry) by extensions ['colcon_pkg']
+[2.148s] Level 1:colcon.colcon_core.package_identification:_identify(src/opencv_telemetry) by extension 'colcon_pkg'
+[2.148s] Level 1:colcon.colcon_core.package_identification:_identify(src/opencv_telemetry) by extensions ['colcon_meta']
+[2.148s] Level 1:colcon.colcon_core.package_identification:_identify(src/opencv_telemetry) by extension 'colcon_meta'
+[2.148s] Level 1:colcon.colcon_core.package_identification:_identify(src/opencv_telemetry) by extensions ['ros']
+[2.148s] Level 1:colcon.colcon_core.package_identification:_identify(src/opencv_telemetry) by extension 'ros'
+[2.149s] DEBUG:colcon.colcon_core.package_identification:Package 'src/opencv_telemetry' with type 'ros.ament_cmake' and name 'opencv_telemetry'
+[2.149s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros2_shared) by extensions ['ignore', 'ignore_ament_install']
+[2.149s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros2_shared) by extension 'ignore'
+[2.149s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros2_shared) by extension 'ignore_ament_install'
+[2.149s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros2_shared) by extensions ['colcon_pkg']
+[2.149s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros2_shared) by extension 'colcon_pkg'
+[2.149s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros2_shared) by extensions ['colcon_meta']
+[2.149s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros2_shared) by extension 'colcon_meta'
+[2.149s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros2_shared) by extensions ['ros']
+[2.149s] Level 1:colcon.colcon_core.package_identification:_identify(src/ros2_shared) by extension 'ros'
+[2.150s] DEBUG:colcon.colcon_core.package_identification:Package 'src/ros2_shared' with type 'ros.ament_cmake' and name 'ros2_shared'
+[2.150s] Level 1:colcon.colcon_core.package_identification:_identify(src/stereo_combined) by extensions ['ignore', 'ignore_ament_install']
+[2.150s] Level 1:colcon.colcon_core.package_identification:_identify(src/stereo_combined) by extension 'ignore'
+[2.150s] Level 1:colcon.colcon_core.package_identification:_identify(src/stereo_combined) by extension 'ignore_ament_install'
+[2.150s] Level 1:colcon.colcon_core.package_identification:_identify(src/stereo_combined) by extensions ['colcon_pkg']
+[2.150s] Level 1:colcon.colcon_core.package_identification:_identify(src/stereo_combined) by extension 'colcon_pkg'
+[2.150s] Level 1:colcon.colcon_core.package_identification:_identify(src/stereo_combined) by extensions ['colcon_meta']
+[2.150s] Level 1:colcon.colcon_core.package_identification:_identify(src/stereo_combined) by extension 'colcon_meta'
+[2.150s] Level 1:colcon.colcon_core.package_identification:_identify(src/stereo_combined) by extensions ['ros']
+[2.150s] Level 1:colcon.colcon_core.package_identification:_identify(src/stereo_combined) by extension 'ros'
+[2.151s] DEBUG:colcon.colcon_core.package_identification:Package 'src/stereo_combined' with type 'ros.ament_cmake' and name 'stereo_combined'
+[2.151s] Level 1:colcon.colcon_core.package_identification:_identify(src/stereo_image_proc) by extensions ['ignore', 'ignore_ament_install']
+[2.151s] Level 1:colcon.colcon_core.package_identification:_identify(src/stereo_image_proc) by extension 'ignore'
+[2.151s] Level 1:colcon.colcon_core.package_identification:_identify(src/stereo_image_proc) by extension 'ignore_ament_install'
+[2.151s] Level 1:colcon.colcon_core.package_identification:_identify(src/stereo_image_proc) by extensions ['colcon_pkg']
+[2.151s] Level 1:colcon.colcon_core.package_identification:_identify(src/stereo_image_proc) by extension 'colcon_pkg'
+[2.151s] Level 1:colcon.colcon_core.package_identification:_identify(src/stereo_image_proc) by extensions ['colcon_meta']
+[2.151s] Level 1:colcon.colcon_core.package_identification:_identify(src/stereo_image_proc) by extension 'colcon_meta'
+[2.151s] Level 1:colcon.colcon_core.package_identification:_identify(src/stereo_image_proc) by extensions ['ros']
+[2.151s] Level 1:colcon.colcon_core.package_identification:_identify(src/stereo_image_proc) by extension 'ros'
+[2.152s] DEBUG:colcon.colcon_core.package_identification:Package 'src/stereo_image_proc' with type 'ros.ament_cmake' and name 'stereo_image_proc'
+[2.152s] Level 1:colcon.colcon_core.package_identification:_identify(src/yolo_msgs) by extensions ['ignore', 'ignore_ament_install']
+[2.152s] Level 1:colcon.colcon_core.package_identification:_identify(src/yolo_msgs) by extension 'ignore'
+[2.153s] Level 1:colcon.colcon_core.package_identification:_identify(src/yolo_msgs) by extension 'ignore_ament_install'
+[2.153s] Level 1:colcon.colcon_core.package_identification:_identify(src/yolo_msgs) by extensions ['colcon_pkg']
+[2.153s] Level 1:colcon.colcon_core.package_identification:_identify(src/yolo_msgs) by extension 'colcon_pkg'
+[2.153s] Level 1:colcon.colcon_core.package_identification:_identify(src/yolo_msgs) by extensions ['colcon_meta']
+[2.153s] Level 1:colcon.colcon_core.package_identification:_identify(src/yolo_msgs) by extension 'colcon_meta'
+[2.153s] Level 1:colcon.colcon_core.package_identification:_identify(src/yolo_msgs) by extensions ['ros']
+[2.153s] Level 1:colcon.colcon_core.package_identification:_identify(src/yolo_msgs) by extension 'ros'
+[2.153s] DEBUG:colcon.colcon_core.package_identification:Package 'src/yolo_msgs' with type 'ros.ament_cmake' and name 'yolo_msgs'
+[2.153s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[2.153s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[2.153s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[2.153s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[2.153s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[2.344s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[2.344s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[2.422s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 8 installed packages in /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install
+[2.458s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 266 installed packages in /opt/ros/foxy
+[2.459s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[2.587s] Level 5:colcon.colcon_core.verb:set package 'image_proc' build argument 'cmake_args' from command line to 'None'
+[2.587s] Level 5:colcon.colcon_core.verb:set package 'image_proc' build argument 'cmake_target' from command line to 'None'
+[2.588s] Level 5:colcon.colcon_core.verb:set package 'image_proc' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[2.588s] Level 5:colcon.colcon_core.verb:set package 'image_proc' build argument 'cmake_clean_cache' from command line to 'False'
+[2.588s] Level 5:colcon.colcon_core.verb:set package 'image_proc' build argument 'cmake_clean_first' from command line to 'False'
+[2.588s] Level 5:colcon.colcon_core.verb:set package 'image_proc' build argument 'cmake_force_configure' from command line to 'False'
+[2.588s] Level 5:colcon.colcon_core.verb:set package 'image_proc' build argument 'ament_cmake_args' from command line to 'None'
+[2.588s] Level 5:colcon.colcon_core.verb:set package 'image_proc' build argument 'catkin_cmake_args' from command line to 'None'
+[2.588s] Level 5:colcon.colcon_core.verb:set package 'image_proc' build argument 'catkin_skip_building_tests' from command line to 'False'
+[2.588s] DEBUG:colcon.colcon_core.verb:Building package 'image_proc' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_proc', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc', 'merge_install': False, 'path': '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/image_proc', 'symlink_install': False, 'test_result_base': None}
+[2.623s] Level 5:colcon.colcon_core.verb:set package 'image_view' build argument 'cmake_args' from command line to 'None'
+[2.623s] Level 5:colcon.colcon_core.verb:set package 'image_view' build argument 'cmake_target' from command line to 'None'
+[2.623s] Level 5:colcon.colcon_core.verb:set package 'image_view' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[2.623s] Level 5:colcon.colcon_core.verb:set package 'image_view' build argument 'cmake_clean_cache' from command line to 'False'
+[2.623s] Level 5:colcon.colcon_core.verb:set package 'image_view' build argument 'cmake_clean_first' from command line to 'False'
+[2.623s] Level 5:colcon.colcon_core.verb:set package 'image_view' build argument 'cmake_force_configure' from command line to 'False'
+[2.623s] Level 5:colcon.colcon_core.verb:set package 'image_view' build argument 'ament_cmake_args' from command line to 'None'
+[2.623s] Level 5:colcon.colcon_core.verb:set package 'image_view' build argument 'catkin_cmake_args' from command line to 'None'
+[2.623s] Level 5:colcon.colcon_core.verb:set package 'image_view' build argument 'catkin_skip_building_tests' from command line to 'False'
+[2.623s] DEBUG:colcon.colcon_core.verb:Building package 'image_view' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_view', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view', 'merge_install': False, 'path': '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/image_view', 'symlink_install': False, 'test_result_base': None}
+[2.659s] Level 5:colcon.colcon_core.verb:set package 'opencv_telemetry' build argument 'cmake_args' from command line to 'None'
+[2.659s] Level 5:colcon.colcon_core.verb:set package 'opencv_telemetry' build argument 'cmake_target' from command line to 'None'
+[2.659s] Level 5:colcon.colcon_core.verb:set package 'opencv_telemetry' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[2.659s] Level 5:colcon.colcon_core.verb:set package 'opencv_telemetry' build argument 'cmake_clean_cache' from command line to 'False'
+[2.659s] Level 5:colcon.colcon_core.verb:set package 'opencv_telemetry' build argument 'cmake_clean_first' from command line to 'False'
+[2.660s] Level 5:colcon.colcon_core.verb:set package 'opencv_telemetry' build argument 'cmake_force_configure' from command line to 'False'
+[2.660s] Level 5:colcon.colcon_core.verb:set package 'opencv_telemetry' build argument 'ament_cmake_args' from command line to 'None'
+[2.660s] Level 5:colcon.colcon_core.verb:set package 'opencv_telemetry' build argument 'catkin_cmake_args' from command line to 'None'
+[2.660s] Level 5:colcon.colcon_core.verb:set package 'opencv_telemetry' build argument 'catkin_skip_building_tests' from command line to 'False'
+[2.660s] DEBUG:colcon.colcon_core.verb:Building package 'opencv_telemetry' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry', 'merge_install': False, 'path': '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry', 'symlink_install': False, 'test_result_base': None}
+[2.695s] Level 5:colcon.colcon_core.verb:set package 'ros2_shared' build argument 'cmake_args' from command line to 'None'
+[2.695s] Level 5:colcon.colcon_core.verb:set package 'ros2_shared' build argument 'cmake_target' from command line to 'None'
+[2.695s] Level 5:colcon.colcon_core.verb:set package 'ros2_shared' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[2.695s] Level 5:colcon.colcon_core.verb:set package 'ros2_shared' build argument 'cmake_clean_cache' from command line to 'False'
+[2.695s] Level 5:colcon.colcon_core.verb:set package 'ros2_shared' build argument 'cmake_clean_first' from command line to 'False'
+[2.695s] Level 5:colcon.colcon_core.verb:set package 'ros2_shared' build argument 'cmake_force_configure' from command line to 'False'
+[2.695s] Level 5:colcon.colcon_core.verb:set package 'ros2_shared' build argument 'ament_cmake_args' from command line to 'None'
+[2.695s] Level 5:colcon.colcon_core.verb:set package 'ros2_shared' build argument 'catkin_cmake_args' from command line to 'None'
+[2.695s] Level 5:colcon.colcon_core.verb:set package 'ros2_shared' build argument 'catkin_skip_building_tests' from command line to 'False'
+[2.695s] DEBUG:colcon.colcon_core.verb:Building package 'ros2_shared' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/ros2_shared', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared', 'merge_install': False, 'path': '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/ros2_shared', 'symlink_install': False, 'test_result_base': None}
+[2.730s] Level 5:colcon.colcon_core.verb:set package 'yolo_msgs' build argument 'cmake_args' from command line to 'None'
+[2.730s] Level 5:colcon.colcon_core.verb:set package 'yolo_msgs' build argument 'cmake_target' from command line to 'None'
+[2.730s] Level 5:colcon.colcon_core.verb:set package 'yolo_msgs' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[2.730s] Level 5:colcon.colcon_core.verb:set package 'yolo_msgs' build argument 'cmake_clean_cache' from command line to 'False'
+[2.730s] Level 5:colcon.colcon_core.verb:set package 'yolo_msgs' build argument 'cmake_clean_first' from command line to 'False'
+[2.730s] Level 5:colcon.colcon_core.verb:set package 'yolo_msgs' build argument 'cmake_force_configure' from command line to 'False'
+[2.730s] Level 5:colcon.colcon_core.verb:set package 'yolo_msgs' build argument 'ament_cmake_args' from command line to 'None'
+[2.730s] Level 5:colcon.colcon_core.verb:set package 'yolo_msgs' build argument 'catkin_cmake_args' from command line to 'None'
+[2.730s] Level 5:colcon.colcon_core.verb:set package 'yolo_msgs' build argument 'catkin_skip_building_tests' from command line to 'False'
+[2.730s] DEBUG:colcon.colcon_core.verb:Building package 'yolo_msgs' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/yolo_msgs', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs', 'merge_install': False, 'path': '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/yolo_msgs', 'symlink_install': False, 'test_result_base': None}
+[2.766s] Level 5:colcon.colcon_core.verb:set package 'gscam2' build argument 'cmake_args' from command line to 'None'
+[2.766s] Level 5:colcon.colcon_core.verb:set package 'gscam2' build argument 'cmake_target' from command line to 'None'
+[2.766s] Level 5:colcon.colcon_core.verb:set package 'gscam2' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[2.766s] Level 5:colcon.colcon_core.verb:set package 'gscam2' build argument 'cmake_clean_cache' from command line to 'False'
+[2.766s] Level 5:colcon.colcon_core.verb:set package 'gscam2' build argument 'cmake_clean_first' from command line to 'False'
+[2.766s] Level 5:colcon.colcon_core.verb:set package 'gscam2' build argument 'cmake_force_configure' from command line to 'False'
+[2.766s] Level 5:colcon.colcon_core.verb:set package 'gscam2' build argument 'ament_cmake_args' from command line to 'None'
+[2.766s] Level 5:colcon.colcon_core.verb:set package 'gscam2' build argument 'catkin_cmake_args' from command line to 'None'
+[2.766s] Level 5:colcon.colcon_core.verb:set package 'gscam2' build argument 'catkin_skip_building_tests' from command line to 'False'
+[2.766s] DEBUG:colcon.colcon_core.verb:Building package 'gscam2' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/gscam2', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2', 'merge_install': False, 'path': '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/gscam2', 'symlink_install': False, 'test_result_base': None}
+[2.802s] Level 5:colcon.colcon_core.verb:set package 'stereo_combined' build argument 'cmake_args' from command line to 'None'
+[2.802s] Level 5:colcon.colcon_core.verb:set package 'stereo_combined' build argument 'cmake_target' from command line to 'None'
+[2.802s] Level 5:colcon.colcon_core.verb:set package 'stereo_combined' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[2.802s] Level 5:colcon.colcon_core.verb:set package 'stereo_combined' build argument 'cmake_clean_cache' from command line to 'False'
+[2.802s] Level 5:colcon.colcon_core.verb:set package 'stereo_combined' build argument 'cmake_clean_first' from command line to 'False'
+[2.802s] Level 5:colcon.colcon_core.verb:set package 'stereo_combined' build argument 'cmake_force_configure' from command line to 'False'
+[2.802s] Level 5:colcon.colcon_core.verb:set package 'stereo_combined' build argument 'ament_cmake_args' from command line to 'None'
+[2.802s] Level 5:colcon.colcon_core.verb:set package 'stereo_combined' build argument 'catkin_cmake_args' from command line to 'None'
+[2.802s] Level 5:colcon.colcon_core.verb:set package 'stereo_combined' build argument 'catkin_skip_building_tests' from command line to 'False'
+[2.802s] DEBUG:colcon.colcon_core.verb:Building package 'stereo_combined' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined', 'merge_install': False, 'path': '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined', 'symlink_install': False, 'test_result_base': None}
+[2.838s] Level 5:colcon.colcon_core.verb:set package 'stereo_image_proc' build argument 'cmake_args' from command line to 'None'
+[2.838s] Level 5:colcon.colcon_core.verb:set package 'stereo_image_proc' build argument 'cmake_target' from command line to 'None'
+[2.838s] Level 5:colcon.colcon_core.verb:set package 'stereo_image_proc' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[2.838s] Level 5:colcon.colcon_core.verb:set package 'stereo_image_proc' build argument 'cmake_clean_cache' from command line to 'False'
+[2.838s] Level 5:colcon.colcon_core.verb:set package 'stereo_image_proc' build argument 'cmake_clean_first' from command line to 'False'
+[2.838s] Level 5:colcon.colcon_core.verb:set package 'stereo_image_proc' build argument 'cmake_force_configure' from command line to 'False'
+[2.838s] Level 5:colcon.colcon_core.verb:set package 'stereo_image_proc' build argument 'ament_cmake_args' from command line to 'None'
+[2.838s] Level 5:colcon.colcon_core.verb:set package 'stereo_image_proc' build argument 'catkin_cmake_args' from command line to 'None'
+[2.838s] Level 5:colcon.colcon_core.verb:set package 'stereo_image_proc' build argument 'catkin_skip_building_tests' from command line to 'False'
+[2.838s] DEBUG:colcon.colcon_core.verb:Building package 'stereo_image_proc' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_image_proc', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc', 'merge_install': False, 'path': '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_image_proc', 'symlink_install': False, 'test_result_base': None}
+[2.874s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[2.917s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[2.917s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/image_proc' with build type 'ament_cmake'
+[2.917s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/image_proc'
+[2.955s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[2.955s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[2.955s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[3.068s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/yolo_msgs' with build type 'ament_cmake'
+[3.068s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/yolo_msgs'
+[3.106s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[3.106s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[3.219s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/ros2_shared' with build type 'ament_cmake'
+[3.219s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/ros2_shared'
+[3.256s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[3.256s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[3.368s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/image_view' with build type 'ament_cmake'
+[3.368s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/image_view'
+[3.406s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[3.406s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[3.518s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry' with build type 'ament_cmake'
+[3.519s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry'
+[3.556s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[3.556s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[3.675s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_proc': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/image_proc -DCMAKE_INSTALL_PREFIX=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc
+[3.677s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/yolo_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/yolo_msgs -DCMAKE_INSTALL_PREFIX=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs
+[3.681s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/ros2_shared': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/ros2_shared -DCMAKE_INSTALL_PREFIX=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared
+[3.684s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_view': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/image_view -DCMAKE_INSTALL_PREFIX=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view
+[3.690s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry -DCMAKE_INSTALL_PREFIX=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry
+[4.241s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/ros2_shared' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/ros2_shared -DCMAKE_INSTALL_PREFIX=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared
+[4.244s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/ros2_shared': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/ros2_shared -- -j8 -l8
+[4.275s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/ros2_shared' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/ros2_shared -- -j8 -l8
+[4.302s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/ros2_shared': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --install /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/ros2_shared
+[4.323s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(ros2_shared)
+[4.324s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/ros2_shared' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --install /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/ros2_shared
+[4.365s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared' for CMake module files
+[4.366s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared' for CMake config files
+[4.366s] Level 1:colcon.colcon_core.shell:create_environment_hook('ros2_shared', 'cmake_prefix_path')
+[4.406s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared/share/ros2_shared/hook/cmake_prefix_path.ps1'
+[4.407s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared/share/ros2_shared/hook/cmake_prefix_path.dsv'
+[4.407s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared/share/ros2_shared/hook/cmake_prefix_path.sh'
+[4.408s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared/bin'
+[4.408s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared/lib/pkgconfig/ros2_shared.pc'
+[4.408s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared/lib/python3.8/site-packages'
+[4.408s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared/bin'
+[4.461s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared/share/ros2_shared/package.ps1'
+[4.461s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared/share/ros2_shared/package.dsv'
+[4.462s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared/share/ros2_shared/package.sh'
+[4.462s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared/share/ros2_shared/package.bash'
+[4.463s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared/share/ros2_shared/package.zsh'
+[4.463s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared/share/colcon-core/packages/ros2_shared)
+[4.523s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(ros2_shared)
+[4.562s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared' for CMake module files
+[4.562s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared' for CMake config files
+[4.563s] Level 1:colcon.colcon_core.shell:create_environment_hook('ros2_shared', 'cmake_prefix_path')
+[4.602s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared/share/ros2_shared/hook/cmake_prefix_path.ps1'
+[4.602s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared/share/ros2_shared/hook/cmake_prefix_path.dsv'
+[4.602s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared/share/ros2_shared/hook/cmake_prefix_path.sh'
+[4.603s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared/bin'
+[4.603s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared/lib/pkgconfig/ros2_shared.pc'
+[4.603s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared/lib/python3.8/site-packages'
+[4.603s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared/bin'
+[4.642s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared/share/ros2_shared/package.ps1'
+[4.642s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared/share/ros2_shared/package.dsv'
+[4.643s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared/share/ros2_shared/package.sh'
+[4.643s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared/share/ros2_shared/package.bash'
+[4.643s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared/share/ros2_shared/package.zsh'
+[4.643s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared/share/colcon-core/packages/ros2_shared)
+[4.644s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/gscam2' with build type 'ament_cmake'
+[4.644s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/gscam2'
+[4.688s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[4.689s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[4.814s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/yolo_msgs' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/yolo_msgs -DCMAKE_INSTALL_PREFIX=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs
+[4.814s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/yolo_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/yolo_msgs -- -j8 -l8
+[4.817s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/gscam2': AMENT_PREFIX_PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc:/opt/ros/foxy /usr/bin/cmake /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/gscam2 -DCMAKE_INSTALL_PREFIX=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2
+[4.847s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_proc' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/image_proc -DCMAKE_INSTALL_PREFIX=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc
+[4.848s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_proc': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_proc -- -j8 -l8
+[5.022s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/yolo_msgs' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/yolo_msgs -- -j8 -l8
+[5.085s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/yolo_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --install /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/yolo_msgs
+[5.088s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_proc' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_proc -- -j8 -l8
+[5.122s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_proc': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --install /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_proc
+[5.146s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(image_proc)
+[5.150s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_proc' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --install /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_proc
+[5.191s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc' for CMake module files
+[5.191s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc' for CMake config files
+[5.191s] Level 1:colcon.colcon_core.shell:create_environment_hook('image_proc', 'cmake_prefix_path')
+[5.231s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/image_proc/hook/cmake_prefix_path.ps1'
+[5.231s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/image_proc/hook/cmake_prefix_path.dsv'
+[5.231s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/image_proc/hook/cmake_prefix_path.sh'
+[5.232s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/lib'
+[5.232s] Level 1:colcon.colcon_core.shell:create_environment_hook('image_proc', 'ld_library_path_lib')
+[5.271s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/image_proc/hook/ld_library_path_lib.ps1'
+[5.271s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/image_proc/hook/ld_library_path_lib.dsv'
+[5.271s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/image_proc/hook/ld_library_path_lib.sh'
+[5.271s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/bin'
+[5.272s] Level 1:colcon.colcon_core.shell:create_environment_hook('image_proc', 'path')
+[5.312s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/image_proc/hook/path.ps1'
+[5.312s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/image_proc/hook/path.dsv'
+[5.313s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/image_proc/hook/path.sh'
+[5.313s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/lib/pkgconfig/image_proc.pc'
+[5.313s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/lib/python3.8/site-packages'
+[5.313s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/bin'
+[5.313s] Level 1:colcon.colcon_core.shell:create_environment_hook('image_proc', 'pythonscriptspath')
+[5.351s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/image_proc/hook/pythonscriptspath.ps1'
+[5.352s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/image_proc/hook/pythonscriptspath.dsv'
+[5.352s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/image_proc/hook/pythonscriptspath.sh'
+[5.391s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/image_proc/package.ps1'
+[5.391s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/image_proc/package.dsv'
+[5.392s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/image_proc/package.sh'
+[5.392s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/image_proc/package.bash'
+[5.393s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/image_proc/package.zsh'
+[5.393s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/colcon-core/packages/image_proc)
+[5.396s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(yolo_msgs)
+[5.397s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/yolo_msgs' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --install /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/yolo_msgs
+[5.439s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs' for CMake module files
+[5.439s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs' for CMake config files
+[5.439s] Level 1:colcon.colcon_core.shell:create_environment_hook('yolo_msgs', 'cmake_prefix_path')
+[5.477s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/hook/cmake_prefix_path.ps1'
+[5.477s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/hook/cmake_prefix_path.dsv'
+[5.477s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/hook/cmake_prefix_path.sh'
+[5.478s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/lib'
+[5.478s] Level 1:colcon.colcon_core.shell:create_environment_hook('yolo_msgs', 'ld_library_path_lib')
+[5.515s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/hook/ld_library_path_lib.ps1'
+[5.515s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/hook/ld_library_path_lib.dsv'
+[5.516s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/hook/ld_library_path_lib.sh'
+[5.516s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/bin'
+[5.516s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/lib/pkgconfig/yolo_msgs.pc'
+[5.516s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/lib/python3.8/site-packages'
+[5.516s] Level 1:colcon.colcon_core.shell:create_environment_hook('yolo_msgs', 'pythonpath')
+[5.553s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/hook/pythonpath.ps1'
+[5.554s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/hook/pythonpath.dsv'
+[5.554s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/hook/pythonpath.sh'
+[5.554s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/bin'
+[5.591s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/package.ps1'
+[5.591s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/package.dsv'
+[5.592s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/package.sh'
+[5.592s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/package.bash'
+[5.592s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/package.zsh'
+[5.593s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/colcon-core/packages/yolo_msgs)
+[5.596s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_view' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/image_view -DCMAKE_INSTALL_PREFIX=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view
+[5.597s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_view': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_view -- -j8 -l8
+[5.600s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry -DCMAKE_INSTALL_PREFIX=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry
+[5.602s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry -- -j8 -l8
+[5.646s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(image_proc)
+[5.688s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc' for CMake module files
+[5.688s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc' for CMake config files
+[5.688s] Level 1:colcon.colcon_core.shell:create_environment_hook('image_proc', 'cmake_prefix_path')
+[5.732s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/image_proc/hook/cmake_prefix_path.ps1'
+[5.732s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/image_proc/hook/cmake_prefix_path.dsv'
+[5.732s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/image_proc/hook/cmake_prefix_path.sh'
+[5.733s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/lib'
+[5.733s] Level 1:colcon.colcon_core.shell:create_environment_hook('image_proc', 'ld_library_path_lib')
+[5.774s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/image_proc/hook/ld_library_path_lib.ps1'
+[5.775s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/image_proc/hook/ld_library_path_lib.dsv'
+[5.775s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/image_proc/hook/ld_library_path_lib.sh'
+[5.775s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/bin'
+[5.776s] Level 1:colcon.colcon_core.shell:create_environment_hook('image_proc', 'path')
+[5.818s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/image_proc/hook/path.ps1'
+[5.818s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/image_proc/hook/path.dsv'
+[5.819s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/image_proc/hook/path.sh'
+[5.819s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/lib/pkgconfig/image_proc.pc'
+[5.819s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/lib/python3.8/site-packages'
+[5.819s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/bin'
+[5.819s] Level 1:colcon.colcon_core.shell:create_environment_hook('image_proc', 'pythonscriptspath')
+[5.866s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/image_proc/hook/pythonscriptspath.ps1'
+[5.867s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/image_proc/hook/pythonscriptspath.dsv'
+[5.867s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/image_proc/hook/pythonscriptspath.sh'
+[5.904s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/image_proc/package.ps1'
+[5.905s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/image_proc/package.dsv'
+[5.905s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/image_proc/package.sh'
+[5.906s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/image_proc/package.bash'
+[5.906s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/image_proc/package.zsh'
+[5.906s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/share/colcon-core/packages/image_proc)
+[5.949s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(yolo_msgs)
+[5.987s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs' for CMake module files
+[5.987s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs' for CMake config files
+[5.987s] Level 1:colcon.colcon_core.shell:create_environment_hook('yolo_msgs', 'cmake_prefix_path')
+[6.025s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/hook/cmake_prefix_path.ps1'
+[6.025s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/hook/cmake_prefix_path.dsv'
+[6.026s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/hook/cmake_prefix_path.sh'
+[6.026s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/lib'
+[6.026s] Level 1:colcon.colcon_core.shell:create_environment_hook('yolo_msgs', 'ld_library_path_lib')
+[6.064s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/hook/ld_library_path_lib.ps1'
+[6.064s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/hook/ld_library_path_lib.dsv'
+[6.064s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/hook/ld_library_path_lib.sh'
+[6.065s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/bin'
+[6.065s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/lib/pkgconfig/yolo_msgs.pc'
+[6.065s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/lib/python3.8/site-packages'
+[6.065s] Level 1:colcon.colcon_core.shell:create_environment_hook('yolo_msgs', 'pythonpath')
+[6.102s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/hook/pythonpath.ps1'
+[6.102s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/hook/pythonpath.dsv'
+[6.103s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/hook/pythonpath.sh'
+[6.103s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/bin'
+[6.141s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/package.ps1'
+[6.141s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/package.dsv'
+[6.142s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/package.sh'
+[6.142s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/package.bash'
+[6.142s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/package.zsh'
+[6.143s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/colcon-core/packages/yolo_msgs)
+[6.143s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined' with build type 'ament_cmake'
+[6.143s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined'
+[6.181s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[6.181s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[6.299s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_image_proc' with build type 'ament_cmake'
+[6.299s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_image_proc'
+[6.339s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[6.339s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[6.456s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_view' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_view -- -j8 -l8
+[6.459s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/gscam2' returned '0': AMENT_PREFIX_PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc:/opt/ros/foxy /usr/bin/cmake /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/gscam2 -DCMAKE_INSTALL_PREFIX=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2
+[6.461s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/gscam2': AMENT_PREFIX_PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc:/opt/ros/foxy /usr/bin/cmake --build /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/gscam2 -- -j8 -l8
+[6.463s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry -- -j8 -l8
+[6.469s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined': CMAKE_PREFIX_PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view:/opt/ros/foxy LD_LIBRARY_PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/lib:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/lib:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/lib:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib /usr/bin/cmake /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined -DCMAKE_INSTALL_PREFIX=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined
+[6.472s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_image_proc': CMAKE_PREFIX_PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view:/opt/ros/foxy LD_LIBRARY_PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/lib:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/lib:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/lib:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib /usr/bin/cmake /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_image_proc -DCMAKE_INSTALL_PREFIX=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc
+[6.496s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_view': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --install /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_view
+[6.518s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(image_view)
+[6.539s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_view' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --install /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_view
+[6.567s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view' for CMake module files
+[6.568s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view' for CMake config files
+[6.568s] Level 1:colcon.colcon_core.shell:create_environment_hook('image_view', 'cmake_prefix_path')
+[6.611s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/hook/cmake_prefix_path.ps1'
+[6.612s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/hook/cmake_prefix_path.dsv'
+[6.612s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/hook/cmake_prefix_path.sh'
+[6.613s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/lib'
+[6.613s] Level 1:colcon.colcon_core.shell:create_environment_hook('image_view', 'ld_library_path_lib')
+[6.653s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/hook/ld_library_path_lib.ps1'
+[6.654s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/hook/ld_library_path_lib.dsv'
+[6.654s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/hook/ld_library_path_lib.sh'
+[6.654s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/bin'
+[6.654s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/lib/pkgconfig/image_view.pc'
+[6.654s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/lib/python3.8/site-packages'
+[6.655s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/bin'
+[6.701s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/package.ps1'
+[6.702s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/package.dsv'
+[6.702s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/package.sh'
+[6.703s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/package.bash'
+[6.703s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/package.zsh'
+[6.703s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/colcon-core/packages/image_view)
+[6.732s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --install /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry
+[6.883s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(image_view)
+[6.925s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view' for CMake module files
+[6.926s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view' for CMake config files
+[6.926s] Level 1:colcon.colcon_core.shell:create_environment_hook('image_view', 'cmake_prefix_path')
+[6.966s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/hook/cmake_prefix_path.ps1'
+[6.967s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/hook/cmake_prefix_path.dsv'
+[6.967s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/hook/cmake_prefix_path.sh'
+[6.967s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/lib'
+[6.968s] Level 1:colcon.colcon_core.shell:create_environment_hook('image_view', 'ld_library_path_lib')
+[7.007s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/hook/ld_library_path_lib.ps1'
+[7.008s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/hook/ld_library_path_lib.dsv'
+[7.008s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/hook/ld_library_path_lib.sh'
+[7.008s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/bin'
+[7.008s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/lib/pkgconfig/image_view.pc'
+[7.008s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/lib/python3.8/site-packages'
+[7.009s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/bin'
+[7.049s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/package.ps1'
+[7.049s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/package.dsv'
+[7.050s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/package.sh'
+[7.050s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/package.bash'
+[7.051s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/image_view/package.zsh'
+[7.051s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/share/colcon-core/packages/image_view)
+[7.052s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(opencv_telemetry)
+[7.053s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --install /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry
+[7.093s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry' for CMake module files
+[7.094s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry' for CMake config files
+[7.094s] Level 1:colcon.colcon_core.shell:create_environment_hook('opencv_telemetry', 'cmake_prefix_path')
+[7.150s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/hook/cmake_prefix_path.ps1'
+[7.151s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/hook/cmake_prefix_path.dsv'
+[7.151s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/hook/cmake_prefix_path.sh'
+[7.152s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib'
+[7.152s] Level 1:colcon.colcon_core.shell:create_environment_hook('opencv_telemetry', 'ld_library_path_lib')
+[7.195s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/hook/ld_library_path_lib.ps1'
+[7.195s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/hook/ld_library_path_lib.dsv'
+[7.195s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/hook/ld_library_path_lib.sh'
+[7.196s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/libresized_plugins.so'
+[7.196s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/bin'
+[7.196s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/pkgconfig/opencv_telemetry.pc'
+[7.196s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/python3.8/site-packages'
+[7.196s] Level 1:colcon.colcon_core.shell:create_environment_hook('opencv_telemetry', 'pythonpath')
+[7.240s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/hook/pythonpath.ps1'
+[7.240s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/hook/pythonpath.dsv'
+[7.240s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/hook/pythonpath.sh'
+[7.241s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/bin'
+[7.284s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/package.ps1'
+[7.285s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/package.dsv'
+[7.285s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/package.sh'
+[7.285s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/package.bash'
+[7.286s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/package.zsh'
+[7.286s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/colcon-core/packages/opencv_telemetry)
+[7.389s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(opencv_telemetry)
+[7.436s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry' for CMake module files
+[7.437s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry' for CMake config files
+[7.437s] Level 1:colcon.colcon_core.shell:create_environment_hook('opencv_telemetry', 'cmake_prefix_path')
+[7.485s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/hook/cmake_prefix_path.ps1'
+[7.486s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/hook/cmake_prefix_path.dsv'
+[7.486s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/hook/cmake_prefix_path.sh'
+[7.487s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib'
+[7.487s] Level 1:colcon.colcon_core.shell:create_environment_hook('opencv_telemetry', 'ld_library_path_lib')
+[7.531s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/hook/ld_library_path_lib.ps1'
+[7.532s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/hook/ld_library_path_lib.dsv'
+[7.532s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/hook/ld_library_path_lib.sh'
+[7.533s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/libresized_plugins.so'
+[7.533s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/bin'
+[7.533s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/pkgconfig/opencv_telemetry.pc'
+[7.533s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/python3.8/site-packages'
+[7.533s] Level 1:colcon.colcon_core.shell:create_environment_hook('opencv_telemetry', 'pythonpath')
+[7.579s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/hook/pythonpath.ps1'
+[7.580s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/hook/pythonpath.dsv'
+[7.580s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/hook/pythonpath.sh'
+[7.581s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/bin'
+[7.629s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/package.ps1'
+[7.630s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/package.dsv'
+[7.631s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/package.sh'
+[7.631s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/package.bash'
+[7.631s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/package.zsh'
+[7.632s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/colcon-core/packages/opencv_telemetry)
+[7.875s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_image_proc' returned '0': CMAKE_PREFIX_PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view:/opt/ros/foxy LD_LIBRARY_PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/lib:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/lib:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/lib:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib /usr/bin/cmake /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_image_proc -DCMAKE_INSTALL_PREFIX=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc
+[7.876s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_image_proc': CMAKE_PREFIX_PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view:/opt/ros/foxy LD_LIBRARY_PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/lib:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/lib:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/lib:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib /usr/bin/cmake --build /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_image_proc -- -j8 -l8
+[7.949s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined' returned '0': CMAKE_PREFIX_PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view:/opt/ros/foxy LD_LIBRARY_PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/lib:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/lib:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/lib:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib /usr/bin/cmake /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined -DCMAKE_INSTALL_PREFIX=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined
+[7.950s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined': CMAKE_PREFIX_PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view:/opt/ros/foxy LD_LIBRARY_PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/lib:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/lib:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/lib:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib /usr/bin/cmake --build /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined -- -j8 -l8
+[7.957s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_image_proc' returned '0': CMAKE_PREFIX_PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view:/opt/ros/foxy LD_LIBRARY_PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/lib:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/lib:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/lib:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib /usr/bin/cmake --build /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_image_proc -- -j8 -l8
+[7.987s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_image_proc': CMAKE_PREFIX_PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view:/opt/ros/foxy LD_LIBRARY_PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/lib:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/lib:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/lib:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib /usr/bin/cmake --install /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_image_proc
+[8.013s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(stereo_image_proc)
+[8.021s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_image_proc' returned '0': CMAKE_PREFIX_PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view:/opt/ros/foxy LD_LIBRARY_PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/lib:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/lib:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/lib:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib /usr/bin/cmake --install /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_image_proc
+[8.055s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc' for CMake module files
+[8.056s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc' for CMake config files
+[8.056s] Level 1:colcon.colcon_core.shell:create_environment_hook('stereo_image_proc', 'cmake_prefix_path')
+[8.095s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/hook/cmake_prefix_path.ps1'
+[8.095s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/hook/cmake_prefix_path.dsv'
+[8.095s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/hook/cmake_prefix_path.sh'
+[8.096s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/lib'
+[8.096s] Level 1:colcon.colcon_core.shell:create_environment_hook('stereo_image_proc', 'ld_library_path_lib')
+[8.138s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/hook/ld_library_path_lib.ps1'
+[8.139s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/hook/ld_library_path_lib.dsv'
+[8.139s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/hook/ld_library_path_lib.sh'
+[8.139s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/bin'
+[8.139s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/lib/pkgconfig/stereo_image_proc.pc'
+[8.139s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/lib/python3.8/site-packages'
+[8.140s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/bin'
+[8.181s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/package.ps1'
+[8.181s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/package.dsv'
+[8.182s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/package.sh'
+[8.182s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/package.bash'
+[8.182s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/package.zsh'
+[8.183s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/share/colcon-core/packages/stereo_image_proc)
+[8.188s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined' returned '0': CMAKE_PREFIX_PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view:/opt/ros/foxy LD_LIBRARY_PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/lib:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/lib:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/lib:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib /usr/bin/cmake --build /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined -- -j8 -l8
+[8.253s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(stereo_image_proc)
+[8.293s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc' for CMake module files
+[8.294s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc' for CMake config files
+[8.294s] Level 1:colcon.colcon_core.shell:create_environment_hook('stereo_image_proc', 'cmake_prefix_path')
+[8.332s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/hook/cmake_prefix_path.ps1'
+[8.333s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/hook/cmake_prefix_path.dsv'
+[8.333s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/hook/cmake_prefix_path.sh'
+[8.334s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/lib'
+[8.334s] Level 1:colcon.colcon_core.shell:create_environment_hook('stereo_image_proc', 'ld_library_path_lib')
+[8.377s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/hook/ld_library_path_lib.ps1'
+[8.377s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/hook/ld_library_path_lib.dsv'
+[8.377s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/hook/ld_library_path_lib.sh'
+[8.378s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/bin'
+[8.378s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/lib/pkgconfig/stereo_image_proc.pc'
+[8.378s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/lib/python3.8/site-packages'
+[8.378s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/bin'
+[8.419s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/package.ps1'
+[8.419s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/package.dsv'
+[8.420s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/package.sh'
+[8.420s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/package.bash'
+[8.420s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/share/stereo_image_proc/package.zsh'
+[8.421s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/share/colcon-core/packages/stereo_image_proc)
+[8.424s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined': CMAKE_PREFIX_PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view:/opt/ros/foxy LD_LIBRARY_PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/lib:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/lib:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/lib:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib /usr/bin/cmake --install /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined
+[8.486s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(stereo_combined)
+[8.487s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined' returned '0': CMAKE_PREFIX_PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view:/opt/ros/foxy LD_LIBRARY_PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/lib:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc/lib:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc/lib:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib /usr/bin/cmake --install /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined
+[8.527s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined' for CMake module files
+[8.528s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined' for CMake config files
+[8.528s] Level 1:colcon.colcon_core.shell:create_environment_hook('stereo_combined', 'cmake_prefix_path')
+[8.567s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined/hook/cmake_prefix_path.ps1'
+[8.568s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined/hook/cmake_prefix_path.dsv'
+[8.568s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined/hook/cmake_prefix_path.sh'
+[8.568s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/lib'
+[8.568s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/bin'
+[8.569s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/lib/pkgconfig/stereo_combined.pc'
+[8.569s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/lib/python3.8/site-packages'
+[8.569s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/bin'
+[8.612s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined/package.ps1'
+[8.612s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined/package.dsv'
+[8.613s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined/package.sh'
+[8.613s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined/package.bash'
+[8.613s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined/package.zsh'
+[8.614s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/colcon-core/packages/stereo_combined)
+[8.678s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(stereo_combined)
+[8.720s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined' for CMake module files
+[8.720s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined' for CMake config files
+[8.720s] Level 1:colcon.colcon_core.shell:create_environment_hook('stereo_combined', 'cmake_prefix_path')
+[8.760s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined/hook/cmake_prefix_path.ps1'
+[8.760s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined/hook/cmake_prefix_path.dsv'
+[8.761s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined/hook/cmake_prefix_path.sh'
+[8.761s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/lib'
+[8.761s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/bin'
+[8.761s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/lib/pkgconfig/stereo_combined.pc'
+[8.761s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/lib/python3.8/site-packages'
+[8.761s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/bin'
+[8.800s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined/package.ps1'
+[8.801s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined/package.dsv'
+[8.801s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined/package.sh'
+[8.802s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined/package.bash'
+[8.802s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/stereo_combined/package.zsh'
+[8.803s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined/share/colcon-core/packages/stereo_combined)
+[14.172s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/gscam2' returned '0': AMENT_PREFIX_PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc:/opt/ros/foxy /usr/bin/cmake --build /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/gscam2 -- -j8 -l8
+[14.194s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/gscam2': AMENT_PREFIX_PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc:/opt/ros/foxy /usr/bin/cmake --install /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/gscam2
+[14.406s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(gscam2)
+[14.407s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/gscam2' returned '0': AMENT_PREFIX_PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc:/opt/ros/foxy /usr/bin/cmake --install /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/gscam2
+[14.444s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2' for CMake module files
+[14.444s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2' for CMake config files
+[14.444s] Level 1:colcon.colcon_core.shell:create_environment_hook('gscam2', 'cmake_prefix_path')
+[14.488s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/hook/cmake_prefix_path.ps1'
+[14.489s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/hook/cmake_prefix_path.dsv'
+[14.489s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/hook/cmake_prefix_path.sh'
+[14.489s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/lib'
+[14.489s] Level 1:colcon.colcon_core.shell:create_environment_hook('gscam2', 'ld_library_path_lib')
+[14.526s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/hook/ld_library_path_lib.ps1'
+[14.526s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/hook/ld_library_path_lib.dsv'
+[14.526s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/hook/ld_library_path_lib.sh'
+[14.526s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/bin'
+[14.526s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/lib/pkgconfig/gscam2.pc'
+[14.526s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/lib/python3.8/site-packages'
+[14.527s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/bin'
+[14.563s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/package.ps1'
+[14.564s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/package.dsv'
+[14.564s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/package.sh'
+[14.564s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/package.bash'
+[14.565s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/package.zsh'
+[14.565s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/colcon-core/packages/gscam2)
+[14.625s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(gscam2)
+[14.661s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2' for CMake module files
+[14.662s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2' for CMake config files
+[14.662s] Level 1:colcon.colcon_core.shell:create_environment_hook('gscam2', 'cmake_prefix_path')
+[14.698s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/hook/cmake_prefix_path.ps1'
+[14.698s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/hook/cmake_prefix_path.dsv'
+[14.699s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/hook/cmake_prefix_path.sh'
+[14.699s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/lib'
+[14.699s] Level 1:colcon.colcon_core.shell:create_environment_hook('gscam2', 'ld_library_path_lib')
+[14.735s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/hook/ld_library_path_lib.ps1'
+[14.735s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/hook/ld_library_path_lib.dsv'
+[14.736s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/hook/ld_library_path_lib.sh'
+[14.736s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/bin'
+[14.736s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/lib/pkgconfig/gscam2.pc'
+[14.736s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/lib/python3.8/site-packages'
+[14.736s] Level 1:colcon.colcon_core.environment:checking '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/bin'
+[14.773s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/package.ps1'
+[14.773s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/package.dsv'
+[14.774s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/package.sh'
+[14.774s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/package.bash'
+[14.774s] INFO:colcon.colcon_core.shell:Creating package script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/package.zsh'
+[14.775s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/colcon-core/packages/gscam2)
+[14.775s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[14.775s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[14.775s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[14.775s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[14.817s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[14.817s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[14.817s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[14.828s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[14.865s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/local_setup.ps1'
+[14.866s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/_local_setup_util_ps1.py'
+[14.867s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/setup.ps1'
+[14.904s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/local_setup.sh'
+[14.904s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/_local_setup_util_sh.py'
+[14.905s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/setup.sh'
+[14.942s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/local_setup.bash'
+[14.942s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/setup.bash'
+[14.980s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/local_setup.zsh'
+[14.980s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/setup.zsh'

@@ -1,0 +1,4 @@
+source;share/gscam2/local_setup.bash
+source;share/gscam2/local_setup.dsv
+source;share/gscam2/local_setup.sh
+source;share/gscam2/local_setup.zsh

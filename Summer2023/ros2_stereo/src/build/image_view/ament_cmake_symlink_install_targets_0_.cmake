@@ -1,0 +1,1 @@
+ament_cmake_symlink_install_targets("TARGET_FILES" "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/build/image_view/libimage_view_nodes.so" "TARGETS" "image_view_nodes" "ARCHIVE_DESTINATION" "lib" "LIBRARY_DESTINATION" "lib" "RUNTIME_DESTINATION" "bin")

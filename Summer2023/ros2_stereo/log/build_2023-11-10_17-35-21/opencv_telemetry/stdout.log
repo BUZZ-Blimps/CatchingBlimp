@@ -1,0 +1,476 @@
+-- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)
+-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") 
+-- Using PYTHON_EXECUTABLE: /usr/bin/python3
+-- Override CMake install command with custom implementation using symlinks instead of copying resources
+-- Found cv_bridge: 3.0.7 (/opt/ros/foxy/share/cv_bridge/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found image_transport: 2.4.0 (/opt/ros/foxy/share/image_transport/cmake)
+-- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+-- Using RMW implementation 'rmw_fastrtps_cpp' as default
+-- Found rosidl_default_generators: 1.0.1 (/opt/ros/foxy/share/rosidl_default_generators/cmake)
+-- Found camera_info_manager: 2.4.0 (/opt/ros/foxy/share/camera_info_manager/cmake)
+-- Setting yaml-cpp_DIR to: '/opt/ros/foxy/share/yaml_cpp_vendor/cmake/../../../opt/yaml_cpp_vendor/lib/cmake/yaml-cpp'
+-- Found PythonInterp: /usr/bin/python3 (found version "3.8.10") 
+-- Found ament_cmake_ros: 0.9.2 (/opt/ros/foxy/share/ament_cmake_ros/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3.5") 
+-- Found python_cmake_module: 0.8.1 (/opt/ros/foxy/share/python_cmake_module/cmake)
+-- Using PYTHON_EXECUTABLE: /usr/bin/python3
+-- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.8
+-- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.8.so
+-- Found ament_lint_auto: 0.9.8 (/opt/ros/foxy/share/ament_lint_auto/cmake)
+-- Added test 'copyright' to check source files copyright and LICENSE
+-- Added test 'cppcheck' to perform static code analysis on C / C++ code
+-- Configured cppcheck include dirs: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/opencv_telemetry/include
+-- Configured cppcheck exclude dirs and/or files: 
+-- Added test 'cpplint' to check C / C++ code against the Google style
+-- Configured cpplint exclude dirs and/or files: 
+-- Added test 'flake8' to check Python code syntax and style conventions
+-- Added test 'lint_cmake' to check CMake code style
+-- Added test 'pep257' to check Python code against some of the style conventions in PEP 257
+-- Added test 'uncrustify' to check C / C++ code style
+-- Configured uncrustify additional arguments: 
+-- Added test 'xmllint' to check XML markup files
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry
+[  2%] Built target opencv_telemetry__cpp
+[  9%] Built target opencv_telemetry__rosidl_generator_c
+[ 14%] Built target split_sync_images
+[ 19%] Built target opencv_subscriber
+[ 24%] Built target minimal_opencv_ros2_node
+[ 31%] Built target opencv_telemetry__rosidl_typesupport_cpp
+[ 41%] Built target opencv_telemetry__rosidl_typesupport_fastrtps_cpp
+[ 46%] Built target opencv_telemetry__rosidl_typesupport_introspection_cpp
+[ 53%] Built target opencv_telemetry__rosidl_typesupport_introspection_c
+[ 60%] Built target opencv_telemetry__rosidl_typesupport_c
+[ 68%] Built target opencv_telemetry__rosidl_typesupport_fastrtps_c
+[ 68%] Built target opencv_telemetry
+[ 70%] Built target opencv_telemetry__py
+[ 80%] Built target resized_plugins
+[ 85%] Built target opencv_telemetry__python
+[ 95%] Built target opencv_telemetry__rosidl_typesupport_c__pyext
+[ 97%] Built target opencv_telemetry__rosidl_typesupport_fastrtps_c__pyext
+[100%] Built target opencv_telemetry__rosidl_typesupport_introspection_c__pyext
+-- Install configuration: ""
+-- Execute custom install script
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/ament_index/resource_index/rosidl_interfaces/opencv_telemetry
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/detail/resized_image__functions.h
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/detail/resized_image__struct.h
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/detail/resized_image__type_support.h
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/resized_image.h
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/rosidl_generator_c__visibility_control.h
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/environment/library_path.sh
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/environment/library_path.dsv
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/detail/resized_image__rosidl_typesupport_fastrtps_c.h
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/libopencv_telemetry__rosidl_typesupport_fastrtps_c.so
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/detail/resized_image__rosidl_typesupport_fastrtps_cpp.hpp
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/libopencv_telemetry__rosidl_typesupport_fastrtps_cpp.so
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/detail/resized_image__rosidl_typesupport_introspection_c.h
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/rosidl_typesupport_introspection_c__visibility_control.h
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/detail/resized_image__builder.hpp
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/detail/resized_image__struct.hpp
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/detail/resized_image__traits.hpp
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/detail/resized_image__type_support.hpp
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/resized_image.hpp
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/rosidl_generator_cpp__visibility_control.hpp
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/msg/detail/resized_image__rosidl_typesupport_introspection_cpp.hpp
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/environment/pythonpath.sh
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/environment/pythonpath.dsv
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/python3.8/site-packages/opencv_telemetry/__init__.py
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/python3.8/site-packages/opencv_telemetry/msg/__init__.py
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/python3.8/site-packages/opencv_telemetry/msg/_resized_image.py
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/python3.8/site-packages/opencv_telemetry/opencv_telemetry_s__rosidl_typesupport_fastrtps_c.cpython-38-x86_64-linux-gnu.so
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/python3.8/site-packages/opencv_telemetry/opencv_telemetry_s__rosidl_typesupport_introspection_c.cpython-38-x86_64-linux-gnu.so
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/python3.8/site-packages/opencv_telemetry/opencv_telemetry_s__rosidl_typesupport_c.cpython-38-x86_64-linux-gnu.so
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/libopencv_telemetry__python.so
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/msg/ResizedImage.idl
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/msg/ResizedImage.msg
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//resized_plugins.xml
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/opencv_telemetry/opencv_subscriber
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry//libresized_plugins.so
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/opencv_telemetry/minimal_opencv_ros2_node
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/opencv_telemetry/split_sync_images
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/resized_publisher.hpp
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/include/opencv_telemetry/resized_subscriber.hpp
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//launch/split_node.launch.py
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata.tar.gz
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/left-0000.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/left-0001.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/left-0002.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/left-0003.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/left-0004.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/left-0005.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/left-0006.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/left-0007.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/left-0008.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/left-0009.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/left-0010.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/left-0011.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/left-0012.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/left-0013.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/left-0014.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/left-0015.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/left-0016.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/left-0017.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/left-0018.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/left-0019.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/left-0020.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/left-0021.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/left-0022.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/left-0023.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/left-0024.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/left-0025.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/left-0026.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/left-0027.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/left-0028.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/left-0029.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/left-0030.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/left-0031.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/left-0032.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/left-0033.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/left-0034.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/left-0035.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/left-0036.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/left-0037.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/left-0038.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/left-0039.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/left-0040.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/left-0041.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/left-0042.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/left-0043.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/left-0044.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/left-0045.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/left-0046.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/left-0047.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/left-0048.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/left-0049.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/left-0050.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/left.yaml
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/ost.txt
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/right-0000.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/right-0001.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/right-0002.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/right-0003.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/right-0004.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/right-0005.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/right-0006.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/right-0007.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/right-0008.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/right-0009.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/right-0010.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/right-0011.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/right-0012.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/right-0013.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/right-0014.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/right-0015.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/right-0016.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/right-0017.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/right-0018.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/right-0019.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/right-0020.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/right-0021.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/right-0022.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/right-0023.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/right-0024.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/right-0025.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/right-0026.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/right-0027.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/right-0028.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/right-0029.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/right-0030.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/right-0031.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/right-0032.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/right-0033.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/right-0034.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/right-0035.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/right-0036.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/right-0037.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/right-0038.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/right-0039.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/right-0040.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/right-0041.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/right-0042.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/right-0043.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/right-0044.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/right-0045.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/right-0046.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/right-0047.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/right-0048.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/right-0049.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/right-0050.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibration_data_test_flight/calibrationdata/right.yaml
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata.tar.gz
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/left-0000.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/left-0001.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/left-0002.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/left-0003.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/left-0004.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/left-0005.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/left-0006.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/left-0007.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/left-0008.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/left-0009.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/left-0010.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/left-0011.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/left-0012.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/left-0013.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/left-0014.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/left-0015.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/left-0016.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/left-0017.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/left-0018.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/left-0019.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/left-0020.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/left-0021.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/left-0022.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/left-0023.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/left-0024.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/left-0025.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/left-0026.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/left-0027.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/left-0028.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/left-0029.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/left-0030.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/left-0031.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/left-0032.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/left-0033.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/left-0034.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/left-0035.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/left-0036.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/left-0037.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/left-0038.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/left-0039.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/left-0040.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/left-0041.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/left-0042.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/left-0043.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/left-0044.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/left-0045.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/left-0046.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/left-0047.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/left-0048.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/left-0049.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/left-0050.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/left-0051.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/left-0052.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/left-0053.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/left-0054.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/left.yaml
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/ost.txt
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/right-0000.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/right-0001.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/right-0002.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/right-0003.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/right-0004.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/right-0005.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/right-0006.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/right-0007.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/right-0008.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/right-0009.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/right-0010.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/right-0011.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/right-0012.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/right-0013.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/right-0014.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/right-0015.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/right-0016.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/right-0017.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/right-0018.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/right-0019.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/right-0020.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/right-0021.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/right-0022.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/right-0023.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/right-0024.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/right-0025.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/right-0026.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/right-0027.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/right-0028.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/right-0029.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/right-0030.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/right-0031.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/right-0032.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/right-0033.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/right-0034.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/right-0035.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/right-0036.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/right-0037.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/right-0038.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/right-0039.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/right-0040.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/right-0041.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/right-0042.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/right-0043.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/right-0044.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/right-0045.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/right-0046.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/right-0047.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/right-0048.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/right-0049.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/right-0050.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/right-0051.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/right-0052.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/right-0053.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/right-0054.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test1/right.yaml
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/left-0000.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/left-0001.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/left-0002.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/left-0003.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/left-0004.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/left-0005.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/left-0006.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/left-0007.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/left-0008.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/left-0009.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/left-0010.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/left-0011.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/left-0012.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/left-0013.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/left-0014.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/left-0015.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/left-0016.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/left-0017.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/left-0018.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/left-0019.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/left-0020.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/left-0021.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/left-0022.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/left-0023.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/left-0024.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/left-0025.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/left-0026.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/left-0027.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/left-0028.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/left-0029.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/left-0030.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/left-0031.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/left-0032.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/left-0033.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/left-0034.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/left-0035.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/left-0036.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/left-0037.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/left-0038.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/left-0039.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/left-0040.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/left-0041.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/left-0042.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/left-0043.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/left-0044.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/left-0045.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/left-0046.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/left-0047.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/left-0048.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/left-0049.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/left-0050.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/left.yaml
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/ost.txt
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/right-0000.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/right-0001.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/right-0002.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/right-0003.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/right-0004.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/right-0005.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/right-0006.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/right-0007.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/right-0008.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/right-0009.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/right-0010.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/right-0011.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/right-0012.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/right-0013.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/right-0014.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/right-0015.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/right-0016.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/right-0017.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/right-0018.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/right-0019.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/right-0020.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/right-0021.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/right-0022.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/right-0023.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/right-0024.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/right-0025.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/right-0026.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/right-0027.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/right-0028.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/right-0029.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/right-0030.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/right-0031.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/right-0032.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/right-0033.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/right-0034.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/right-0035.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/right-0036.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/right-0037.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/right-0038.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/right-0039.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/right-0040.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/right-0041.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/right-0042.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/right-0043.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/right-0044.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/right-0045.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/right-0046.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/right-0047.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/right-0048.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/right-0049.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/right-0050.png
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/calibrationdata_test2/right.yaml
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/camera1_elp_left.yaml
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/camera1_elp_right.yaml
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/camera3_elp_left.yaml
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/camera3_elp_right.yaml
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/camera5_elp_left.yaml
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/camera5_elp_right.yaml
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/elp_left.yaml
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/elp_right.yaml
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/temp/elp_left.yaml
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry//calibration/temp/elp_right.yaml
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/ament_index/resource_index/package_run_dependencies/opencv_telemetry
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/ament_index/resource_index/parent_prefix_path/opencv_telemetry
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/environment/ament_prefix_path.sh
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/environment/ament_prefix_path.dsv
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/environment/path.sh
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/environment/path.dsv
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/local_setup.bash
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/local_setup.sh
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/local_setup.zsh
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/local_setup.dsv
+-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/package.dsv
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/ament_index/resource_index/packages/opencv_telemetry
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/ament_index/resource_index/opencv_telemetry__pluginlib__plugin/opencv_telemetry
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/rosidl_cmake-extras.cmake
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/ament_cmake_export_dependencies-extras.cmake
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/ament_cmake_export_libraries-extras.cmake
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/ament_cmake_export_targets-extras.cmake
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/ament_cmake_export_include_directories-extras.cmake
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/opencv_telemetryConfig.cmake
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/opencv_telemetryConfig-version.cmake
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/package.xml
+-- Up-to-date: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/libopencv_telemetry__rosidl_generator_c.so
+-- Up-to-date: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/libopencv_telemetry__rosidl_typesupport_introspection_c.so
+-- Up-to-date: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/libopencv_telemetry__rosidl_typesupport_c.so
+-- Up-to-date: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/libopencv_telemetry__rosidl_typesupport_introspection_cpp.so
+-- Up-to-date: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/libopencv_telemetry__rosidl_typesupport_cpp.so
+Compiling '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/lib/python3.8/site-packages/opencv_telemetry/__init__.py'...
+-- Up-to-date: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/opencv_telemetry__rosidl_generator_cExport.cmake
+-- Installing: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/opencv_telemetry__rosidl_generator_cExport-noconfig.cmake
+-- Up-to-date: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/opencv_telemetry__rosidl_typesupport_introspection_cExport.cmake
+-- Installing: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/opencv_telemetry__rosidl_typesupport_introspection_cExport-noconfig.cmake
+-- Up-to-date: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/opencv_telemetry__rosidl_typesupport_cExport.cmake
+-- Installing: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/opencv_telemetry__rosidl_typesupport_cExport-noconfig.cmake
+-- Up-to-date: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/opencv_telemetry__rosidl_generator_cppExport.cmake
+-- Up-to-date: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/opencv_telemetry__rosidl_typesupport_introspection_cppExport.cmake
+-- Installing: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/opencv_telemetry__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+-- Up-to-date: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/opencv_telemetry__rosidl_typesupport_cppExport.cmake
+-- Installing: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry/share/opencv_telemetry/cmake/opencv_telemetry__rosidl_typesupport_cppExport-noconfig.cmake

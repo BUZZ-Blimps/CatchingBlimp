@@ -1,0 +1,146 @@
+-- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)
+-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") 
+-- Using PYTHON_EXECUTABLE: /usr/bin/python3
+-- Override CMake install command with custom implementation using symlinks instead of copying resources
+-- Found std_msgs: 2.0.5 (/opt/ros/foxy/share/std_msgs/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found rosidl_default_generators: 1.0.1 (/opt/ros/foxy/share/rosidl_default_generators/cmake)
+-- Found ament_lint_auto: 0.9.8 (/opt/ros/foxy/share/ament_lint_auto/cmake)
+-- Found PythonInterp: /usr/bin/python3 (found version "3.8.10") 
+-- Found ament_cmake_ros: 0.9.2 (/opt/ros/foxy/share/ament_cmake_ros/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3.5") 
+-- Found python_cmake_module: 0.8.1 (/opt/ros/foxy/share/python_cmake_module/cmake)
+-- Using PYTHON_EXECUTABLE: /usr/bin/python3
+-- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.8
+-- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.8.so
+-- Added test 'copyright' to check source files copyright and LICENSE
+-- Added test 'lint_cmake' to check CMake code style
+-- Added test 'xmllint' to check XML markup files
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/yolo_msgs
+[ 10%] Built target yolo_msgs__rosidl_generator_c
+[ 12%] Built target yolo_msgs__cpp
+[ 23%] Built target yolo_msgs__rosidl_typesupport_introspection_cpp
+[ 36%] Built target yolo_msgs__rosidl_typesupport_cpp
+[ 44%] Built target yolo_msgs__rosidl_typesupport_fastrtps_cpp
+[ 55%] Built target yolo_msgs__rosidl_typesupport_c
+[ 65%] Built target yolo_msgs__rosidl_typesupport_introspection_c
+[ 76%] Built target yolo_msgs__rosidl_typesupport_fastrtps_c
+[ 76%] Built target yolo_msgs
+[ 78%] Built target yolo_msgs__py
+[ 87%] Built target yolo_msgs__python
+[ 93%] Built target yolo_msgs__rosidl_typesupport_introspection_c__pyext
+[ 95%] Built target yolo_msgs__rosidl_typesupport_fastrtps_c__pyext
+[100%] Built target yolo_msgs__rosidl_typesupport_c__pyext
+-- Install configuration: ""
+-- Execute custom install script
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/ament_index/resource_index/rosidl_interfaces/yolo_msgs
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/bounding_box.h
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/bounding_boxes.h
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_box__functions.h
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_box__struct.h
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_box__type_support.h
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_boxes__functions.h
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_boxes__struct.h
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_boxes__type_support.h
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/object_count__functions.h
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/object_count__struct.h
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/object_count__type_support.h
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/object_count.h
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/rosidl_generator_c__visibility_control.h
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/environment/library_path.sh
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/environment/library_path.dsv
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_box__rosidl_typesupport_fastrtps_c.h
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_boxes__rosidl_typesupport_fastrtps_c.h
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/object_count__rosidl_typesupport_fastrtps_c.h
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/lib/libyolo_msgs__rosidl_typesupport_fastrtps_c.so
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_box__rosidl_typesupport_fastrtps_cpp.hpp
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_boxes__rosidl_typesupport_fastrtps_cpp.hpp
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/object_count__rosidl_typesupport_fastrtps_cpp.hpp
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/lib/libyolo_msgs__rosidl_typesupport_fastrtps_cpp.so
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_box__rosidl_typesupport_introspection_c.h
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_boxes__rosidl_typesupport_introspection_c.h
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/object_count__rosidl_typesupport_introspection_c.h
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/rosidl_typesupport_introspection_c__visibility_control.h
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/bounding_box.hpp
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/bounding_boxes.hpp
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_box__builder.hpp
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_box__struct.hpp
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_box__traits.hpp
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_box__type_support.hpp
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_boxes__builder.hpp
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_boxes__struct.hpp
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_boxes__traits.hpp
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_boxes__type_support.hpp
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/object_count__builder.hpp
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/object_count__struct.hpp
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/object_count__traits.hpp
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/object_count__type_support.hpp
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/object_count.hpp
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/rosidl_generator_cpp__visibility_control.hpp
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_box__rosidl_typesupport_introspection_cpp.hpp
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/bounding_boxes__rosidl_typesupport_introspection_cpp.hpp
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/include/yolo_msgs/msg/detail/object_count__rosidl_typesupport_introspection_cpp.hpp
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/environment/pythonpath.sh
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/environment/pythonpath.dsv
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/lib/python3.8/site-packages/yolo_msgs/__init__.py
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/lib/python3.8/site-packages/yolo_msgs/msg/__init__.py
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/lib/python3.8/site-packages/yolo_msgs/msg/_bounding_box.py
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/lib/python3.8/site-packages/yolo_msgs/msg/_bounding_boxes.py
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/lib/python3.8/site-packages/yolo_msgs/msg/_object_count.py
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/lib/python3.8/site-packages/yolo_msgs/yolo_msgs_s__rosidl_typesupport_fastrtps_c.cpython-38-x86_64-linux-gnu.so
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/lib/python3.8/site-packages/yolo_msgs/yolo_msgs_s__rosidl_typesupport_introspection_c.cpython-38-x86_64-linux-gnu.so
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/lib/python3.8/site-packages/yolo_msgs/yolo_msgs_s__rosidl_typesupport_c.cpython-38-x86_64-linux-gnu.so
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/lib/libyolo_msgs__python.so
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/msg/BoundingBox.idl
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/msg/BoundingBoxes.idl
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/msg/ObjectCount.idl
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/msg/BoundingBox.msg
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/msg/BoundingBoxes.msg
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/msg/ObjectCount.msg
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/ament_index/resource_index/package_run_dependencies/yolo_msgs
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/ament_index/resource_index/parent_prefix_path/yolo_msgs
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/environment/ament_prefix_path.sh
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/environment/ament_prefix_path.dsv
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/environment/path.sh
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/environment/path.dsv
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/local_setup.bash
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/local_setup.sh
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/local_setup.zsh
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/local_setup.dsv
+-- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/package.dsv
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/ament_index/resource_index/packages/yolo_msgs
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/cmake/rosidl_cmake-extras.cmake
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/cmake/ament_cmake_export_dependencies-extras.cmake
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/cmake/ament_cmake_export_libraries-extras.cmake
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/cmake/ament_cmake_export_targets-extras.cmake
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/cmake/ament_cmake_export_include_directories-extras.cmake
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/cmake/yolo_msgsConfig.cmake
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/cmake/yolo_msgsConfig-version.cmake
+-- Up-to-date symlink: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/package.xml
+-- Up-to-date: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/lib/libyolo_msgs__rosidl_generator_c.so
+-- Up-to-date: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/lib/libyolo_msgs__rosidl_typesupport_introspection_c.so
+-- Up-to-date: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/lib/libyolo_msgs__rosidl_typesupport_c.so
+-- Up-to-date: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/lib/libyolo_msgs__rosidl_typesupport_introspection_cpp.so
+-- Up-to-date: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/lib/libyolo_msgs__rosidl_typesupport_cpp.so
+Compiling '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/lib/python3.8/site-packages/yolo_msgs/__init__.py'...
+-- Up-to-date: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/cmake/yolo_msgs__rosidl_generator_cExport.cmake
+-- Installing: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/cmake/yolo_msgs__rosidl_generator_cExport-noconfig.cmake
+-- Up-to-date: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/cmake/yolo_msgs__rosidl_typesupport_introspection_cExport.cmake
+-- Installing: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/cmake/yolo_msgs__rosidl_typesupport_introspection_cExport-noconfig.cmake
+-- Up-to-date: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/cmake/yolo_msgs__rosidl_typesupport_cExport.cmake
+-- Installing: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/cmake/yolo_msgs__rosidl_typesupport_cExport-noconfig.cmake
+-- Up-to-date: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/cmake/yolo_msgs__rosidl_generator_cppExport.cmake
+-- Up-to-date: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/cmake/yolo_msgs__rosidl_typesupport_introspection_cppExport.cmake
+-- Installing: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/cmake/yolo_msgs__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+-- Up-to-date: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/cmake/yolo_msgs__rosidl_typesupport_cppExport.cmake
+-- Installing: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs/share/yolo_msgs/cmake/yolo_msgs__rosidl_typesupport_cppExport-noconfig.cmake

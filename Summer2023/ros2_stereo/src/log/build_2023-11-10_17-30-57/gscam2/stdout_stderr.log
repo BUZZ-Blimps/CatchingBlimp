@@ -1,0 +1,25 @@
+-- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)
+-- Using PYTHON_EXECUTABLE: /usr/bin/python3
+-- Override CMake install command with custom implementation using symlinks instead of copying resources
+-- Found camera_calibration_parsers: 2.4.0 (/opt/ros/foxy/share/camera_calibration_parsers/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+-- Using RMW implementation 'rmw_fastrtps_cpp' as default
+-- Setting yaml-cpp_DIR to: '/opt/ros/foxy/share/yaml_cpp_vendor/cmake/../../../opt/yaml_cpp_vendor/lib/cmake/yaml-cpp'
+-- Found camera_info_manager: 2.4.0 (/opt/ros/foxy/share/camera_info_manager/cmake)
+-- Found class_loader: 2.0.3 (/opt/ros/foxy/share/class_loader/cmake)
+-- Found rclcpp_components: 2.4.3 (/opt/ros/foxy/share/rclcpp_components/cmake)
+-- Found rclpy: 1.0.13 (/opt/ros/foxy/share/rclpy/cmake)
+-- Found ros2_shared: 0.1.0 (/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/install/ros2_shared/share/ros2_shared/cmake)
+CMake Error at /opt/ros/foxy/share/ament_cmake_target_dependencies/cmake/ament_target_dependencies.cmake:66 (message):
+  ament_target_dependencies() PUBLIC keyword is only allowed before the
+  package names
+Call Stack (most recent call first):
+  CMakeLists.txt:58 (ament_target_dependencies)
+
+
+-- Configuring incomplete, errors occurred!
+See also "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/build/gscam2/CMakeFiles/CMakeOutput.log".
+See also "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/build/gscam2/CMakeFiles/CMakeError.log".

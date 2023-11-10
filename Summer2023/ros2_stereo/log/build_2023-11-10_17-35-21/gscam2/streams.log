@@ -1,0 +1,105 @@
+[0.173s] Invoking command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/gscam2': AMENT_PREFIX_PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc:/opt/ros/foxy /usr/bin/cmake /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/gscam2 -DCMAKE_INSTALL_PREFIX=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2
+[0.189s] -- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)
+[0.210s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[0.378s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[0.385s] -- Found camera_calibration_parsers: 2.4.0 (/opt/ros/foxy/share/camera_calibration_parsers/cmake)
+[0.418s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.421s] -- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+[0.524s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.564s] -- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+[0.566s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.799s] -- Setting yaml-cpp_DIR to: '/opt/ros/foxy/share/yaml_cpp_vendor/cmake/../../../opt/yaml_cpp_vendor/lib/cmake/yaml-cpp'
+[0.799s] -- Found camera_info_manager: 2.4.0 (/opt/ros/foxy/share/camera_info_manager/cmake)
+[0.845s] -- Found class_loader: 2.0.3 (/opt/ros/foxy/share/class_loader/cmake)
+[0.847s] -- Found rclcpp_components: 2.4.3 (/opt/ros/foxy/share/rclcpp_components/cmake)
+[0.887s] -- Found rclpy: 1.0.13 (/opt/ros/foxy/share/rclpy/cmake)
+[0.887s] -- Found ros2_shared: 0.1.0 (/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared/share/ros2_shared/cmake)
+[1.062s] -- Found ament_lint_auto: 0.9.8 (/opt/ros/foxy/share/ament_lint_auto/cmake)
+[1.116s] -- Found gtest sources under '/opt/ros/foxy/src/gtest_vendor': C++ tests using 'Google Test' will be built
+[1.129s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[1.130s] -- Configured cppcheck include dirs: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/gscam2/include
+[1.131s] -- Configured cppcheck exclude dirs and/or files: 
+[1.131s] -- Added test 'flake8' to check Python code syntax and style conventions
+[1.131s] -- Added test 'lint_cmake' to check CMake code style
+[1.131s] -- Added test 'pep257' to check Python code against some of the style conventions in PEP 257
+[1.131s] -- Added test 'uncrustify' to check C / C++ code style
+[1.131s] -- Configured uncrustify additional arguments: 
+[1.131s] -- Added test 'xmllint' to check XML markup files
+[1.136s] -- Configuring done
+[1.187s] -- Generating done
+[1.188s] -- Build files have been written to: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/gscam2
+[1.814s] Invoked command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/gscam2' returned '0': AMENT_PREFIX_PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc:/opt/ros/foxy /usr/bin/cmake /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/gscam2 -DCMAKE_INSTALL_PREFIX=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2
+[1.817s] Invoking command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/gscam2': AMENT_PREFIX_PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc:/opt/ros/foxy /usr/bin/cmake --build /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/gscam2 -- -j8 -l8
+[1.853s] [35m[1mScanning dependencies of target gscam_node[0m
+[1.854s] [35m[1mScanning dependencies of target gtest_main[0m
+[1.862s] [35m[1mScanning dependencies of target gtest[0m
+[1.869s] [  7%] [32mBuilding CXX object gtest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o[0m
+[1.870s] [35m[1mScanning dependencies of target subscriber_node[0m
+[1.895s] [ 14%] [32mBuilding CXX object gtest/CMakeFiles/gtest.dir/src/gtest-all.cc.o[0m
+[1.901s] [ 21%] [32mBuilding CXX object CMakeFiles/gscam_node.dir/src/gscam_node.cpp.o[0m
+[1.959s] [ 28%] [32mBuilding CXX object CMakeFiles/subscriber_node.dir/src/subscriber_node.cpp.o[0m
+[2.434s] [ 35%] [32m[1mLinking CXX static library libgtest_main.a[0m
+[2.471s] [ 35%] Built target gtest_main
+[4.504s] [ 42%] [32m[1mLinking CXX static library libgtest.a[0m
+[4.543s] [ 42%] Built target gtest
+[5.269s] [ 50%] [32m[1mLinking CXX shared library libgscam_node.so[0m
+[5.447s] [ 50%] Built target gscam_node
+[5.455s] [35m[1mScanning dependencies of target smoke_test[0m
+[5.455s] [35m[1mScanning dependencies of target gscam_main[0m
+[5.481s] [ 57%] [32mBuilding CXX object CMakeFiles/gscam_main.dir/src/gscam_main.cpp.o[0m
+[5.485s] [ 64%] [32mBuilding CXX object CMakeFiles/smoke_test.dir/test/smoke_test.cpp.o[0m
+[5.790s] [ 71%] [32m[1mLinking CXX shared library libsubscriber_node.so[0m
+[5.967s] [ 71%] Built target subscriber_node
+[5.975s] [35m[1mScanning dependencies of target ipc_test_main[0m
+[6.002s] [ 78%] [32mBuilding CXX object CMakeFiles/ipc_test_main.dir/src/ipc_test_main.cpp.o[0m
+[6.802s] [ 85%] [32m[1mLinking CXX executable gscam_main[0m
+[6.954s] [ 85%] Built target gscam_main
+[7.375s] [ 92%] [32m[1mLinking CXX executable ipc_test_main[0m
+[7.531s] [ 92%] Built target ipc_test_main
+[9.238s] [100%] [32m[1mLinking CXX executable smoke_test[0m
+[9.518s] [100%] Built target smoke_test
+[9.527s] Invoked command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/gscam2' returned '0': AMENT_PREFIX_PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc:/opt/ros/foxy /usr/bin/cmake --build /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/gscam2 -- -j8 -l8
+[9.550s] Invoking command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/gscam2': AMENT_PREFIX_PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc:/opt/ros/foxy /usr/bin/cmake --install /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/gscam2
+[9.555s] -- Install configuration: ""
+[9.556s] -- Execute custom install script
+[9.556s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/environment/library_path.sh
+[9.562s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/environment/library_path.dsv
+[9.569s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/ament_index/resource_index/package_run_dependencies/gscam2
+[9.575s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/ament_index/resource_index/parent_prefix_path/gscam2
+[9.581s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/environment/ament_prefix_path.sh
+[9.587s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/environment/ament_prefix_path.dsv
+[9.593s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/environment/path.sh
+[9.599s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/environment/path.dsv
+[9.606s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/local_setup.bash
+[9.612s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/local_setup.sh
+[9.618s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/local_setup.zsh
+[9.624s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/local_setup.dsv
+[9.630s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/package.dsv
+[9.637s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/ament_index/resource_index/packages/gscam2
+[9.644s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/ament_index/resource_index/rclcpp_components/gscam2
+[9.650s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/cmake/ament_cmake_export_dependencies-extras.cmake
+[9.656s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/cmake/ament_cmake_export_include_directories-extras.cmake
+[9.662s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/cmake/ament_cmake_export_targets-extras.cmake
+[9.669s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/cmake/ament_cmake_export_libraries-extras.cmake
+[9.675s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/cmake/gscam2Config.cmake
+[9.682s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/cmake/gscam2Config-version.cmake
+[9.688s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/package.xml
+[9.695s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/include/gscam2/gscam_node.hpp
+[9.701s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/include/gscam2/subscriber_node.hpp
+[9.708s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/lib/gscam2/gscam_main
+[9.714s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/lib/gscam2/ipc_test_main
+[9.721s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/cfg/my_camera.ini
+[9.727s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/cfg/params.yaml
+[9.733s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/cfg/workaround_params.yaml
+[9.739s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/launch/composition_launch.py
+[9.745s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/launch/container_param_launch.py
+[9.751s] -- Symlinking: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/launch/node_param_launch.py
+[9.757s] -- Installing: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/cmake/export_gscam_nodeExport.cmake
+[9.757s] -- Installing: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/cmake/export_gscam_nodeExport-noconfig.cmake
+[9.758s] -- Installing: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/cmake/export_subscriber_nodeExport.cmake
+[9.758s] -- Installing: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/share/gscam2/cmake/export_subscriber_nodeExport-noconfig.cmake
+[9.758s] -- Installing: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/lib/libgscam_node.so
+[9.759s] -- Set runtime path of "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/lib/libgscam_node.so" to ""
+[9.759s] -- Installing: /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/lib/libsubscriber_node.so
+[9.761s] -- Set runtime path of "/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/gscam2/lib/libsubscriber_node.so" to ""
+[9.762s] Invoked command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/gscam2' returned '0': AMENT_PREFIX_PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/ros2_shared:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_image_proc:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/stereo_combined:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/yolo_msgs:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/opencv_telemetry:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_view:/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/install/image_proc:/opt/ros/foxy /usr/bin/cmake --install /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/gscam2
