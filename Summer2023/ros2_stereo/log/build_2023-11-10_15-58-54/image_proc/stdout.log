@@ -1,7 +1,0 @@
-[ 13%] Built target image_proc
-[ 26%] Built target rectify
-[ 46%] Built target debayer
-[ 60%] Built target resize
-[ 73%] Built target crop_decimate
-[ 86%] Built target crop_non_zero
-[ 93%] [32m[1mLinking CXX executable image_proc[0m

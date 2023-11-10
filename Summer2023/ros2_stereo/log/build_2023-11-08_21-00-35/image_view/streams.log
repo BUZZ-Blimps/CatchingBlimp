@@ -1,9 +1,0 @@
-[0.036s] Invoking command in '/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/image_view': CMAKE_PREFIX_PATH=/opt/ros/foxy /home/corelab/.local/bin/cmake --build /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/image_view -- -j16 -l16
-[0.083s] [ 36%] Built target image_view_nodes
-[0.098s] [ 47%] Built target image_view
-[0.099s] [ 57%] Built target disparity_view
-[0.099s] [ 68%] Built target video_recorder
-[0.103s] [ 78%] Built target extract_images
-[0.103s] [ 89%] Built target image_saver
-[0.104s] [100%] Built target stereo_view
-[0.142s] Invoked command in '/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/image_view' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /home/corelab/.local/bin/cmake --build /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/image_view -- -j16 -l16

@@ -1,5 +1,0 @@
-[ 50%] Built target disparity_node
-[ 50%] Built target point_cloud_node
-[ 62%] [32mBuilding CXX object CMakeFiles/stereo_image_proc.dir/src/stereo_image_proc/disparity_node.cpp.o[0m
-[ 75%] [32m[1mLinking CXX shared library libstereo_image_proc.so[0m
-[100%] Built target stereo_image_proc

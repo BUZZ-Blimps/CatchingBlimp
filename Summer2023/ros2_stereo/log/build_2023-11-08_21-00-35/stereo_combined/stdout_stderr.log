@@ -1,8 +1,0 @@
-[31mCMake Error at CMakeLists.txt:58:
-  Parse error.  Expected "(", got identifier with text "launch".
-
-[0m
--- Configuring incomplete, errors occurred!
-See also "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined/CMakeFiles/CMakeOutput.log".
-See also "/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/stereo_combined/CMakeFiles/CMakeError.log".
-make: *** [Makefile:294: cmake_check_build_system] Error 1

@@ -1,5 +1,0 @@
-[31mCMake Error at CMakeLists.txt:58:
-  Parse error.  Expected "(", got identifier with text "launch".
-
-[0m
-make: *** [Makefile:294: cmake_check_build_system] Error 1

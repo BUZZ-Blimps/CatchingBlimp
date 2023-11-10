@@ -1,3 +1,0 @@
-/usr/bin/ld: warning: libopencv_imgproc.so.4.2, needed by /opt/ros/foxy/lib/libcv_bridge.so, may conflict with libopencv_imgproc.so.407
-/usr/bin/ld: warning: libopencv_core.so.4.2, needed by /opt/ros/foxy/lib/libcv_bridge.so, may conflict with libopencv_core.so.407
-/usr/bin/ld: warning: libopencv_calib3d.so.4.2, needed by /opt/ros/foxy/lib/libimage_geometry.so, may conflict with libopencv_calib3d.so.407

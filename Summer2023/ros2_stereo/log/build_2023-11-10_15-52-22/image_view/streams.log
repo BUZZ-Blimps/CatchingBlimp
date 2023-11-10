@@ -1,5 +1,0 @@
-[0.106s] Invoking command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_view': /usr/bin/cmake --build /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_view -- -j8 -l8
-[0.123s] CMake Error: The current CMakeCache.txt directory /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_view/CMakeCache.txt is different than the directory /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/image_view where CMakeCache.txt was created. This may result in binaries being created in the wrong place. If you are not sure, reedit the CMakeCache.txt
-[0.125s] make: /home/corelab/.local/lib/python3.8/site-packages/cmake/data/bin/cmake: Command not found
-[0.125s] make: *** [Makefile:648: cmake_check_build_system] Error 127
-[0.133s] Invoked command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_view' returned '2': /usr/bin/cmake --build /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/image_view -- -j8 -l8

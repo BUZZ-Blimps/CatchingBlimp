@@ -1,7 +1,0 @@
-[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:[m[K In constructor ‘[01m[KStereoCombined::StereoCombined()[m[K’:
-[01m[K/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/src/stereo_combined/src/StereoCombined.cpp:59:9:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kqueue_size[m[K’ [[01;35m[K-Wunused-variable[m[K]
-   59 |     int [01;35m[Kqueue_size[m[K = this->declare_parameter("queue_size", 7);
-      |         [01;35m[K^~~~~~~~~~[m[K
-/usr/bin/ld: warning: libopencv_imgproc.so.4.2, needed by /opt/ros/foxy/lib/libcv_bridge.so, may conflict with libopencv_imgproc.so.407
-/usr/bin/ld: warning: libopencv_core.so.4.2, needed by /opt/ros/foxy/lib/libcv_bridge.so, may conflict with libopencv_core.so.407
-/usr/bin/ld: warning: libopencv_calib3d.so.4.2, needed by /opt/ros/foxy/lib/libimage_geometry.so, may conflict with libopencv_calib3d.so.407

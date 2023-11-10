@@ -1,9 +1,0 @@
-[0.049s] Invoking command in '/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/image_proc': CMAKE_PREFIX_PATH=/opt/ros/foxy /home/corelab/.local/bin/cmake --build /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/image_proc -- -j16 -l16
-[0.089s] [ 13%] Built target image_proc
-[0.100s] [ 26%] Built target rectify
-[0.114s] [ 46%] Built target debayer
-[0.127s] [ 60%] Built target resize
-[0.136s] [ 73%] Built target crop_decimate
-[0.145s] [ 86%] Built target crop_non_zero
-[0.155s] [100%] Built target image_proc_exe
-[0.170s] Invoked command in '/home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/image_proc' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /home/corelab/.local/bin/cmake --build /home/corelab/GitHub/CatchingBlimp/Summer2023/ros2_stereo/build/image_proc -- -j16 -l16

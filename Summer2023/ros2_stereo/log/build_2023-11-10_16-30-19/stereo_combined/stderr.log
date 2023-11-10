@@ -1,4 +1,0 @@
-CMake Error at CMakeLists.txt:4 (cmake_policy):
-  Policy "CMP0121" is not known to this version of CMake.
-
-

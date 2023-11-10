@@ -1,2 +1,0 @@
-Invoking command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry': /usr/bin/cmake --build /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry -- -j8 -l8
-Invoked command in '/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry' returned '2': /usr/bin/cmake --build /home/corelab/CatchingBlimp/Summer2023/ros2_stereo/build/opencv_telemetry -- -j8 -l8

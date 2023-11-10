@@ -1,3 +1,0 @@
-[01m[K/home/corelab/ros2_stereo/src/gscam2/src/gscam_node.cpp:28:3:[m[K [01;35m[Kwarning: [m[Kmulti-line comment [[01;35m[K-Wcomment[m[K]
-   28 |   [01;35m[K/[m[K/ CXT_MACRO_MEMBER(camera_info_url, std::string, "")        /* Location of camera info file  */ \
-      |   [01;35m[K^[m[K

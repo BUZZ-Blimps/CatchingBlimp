@@ -1,7 +1,0 @@
-[ 28%] Built target gtest_main
-[ 28%] Built target gtest
-[ 42%] Built target subscriber_node
-[ 57%] Built target gscam_node
-[100%] Built target gscam_main
-[100%] Built target smoke_test
-[100%] Built target ipc_test_main

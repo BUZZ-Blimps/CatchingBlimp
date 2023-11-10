@@ -1,6 +1,0 @@
-Invoking command in '/home/corelab/ros2_stereo/build/ros2_shared': CMAKE_PREFIX_PATH=/opt/ros/foxy /home/corelab/.local/bin/cmake /home/corelab/ros2_stereo/src/ros2_shared -DCMAKE_INSTALL_PREFIX=/home/corelab/ros2_stereo/install/ros2_shared
-Invoked command in '/home/corelab/ros2_stereo/build/ros2_shared' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /home/corelab/.local/bin/cmake /home/corelab/ros2_stereo/src/ros2_shared -DCMAKE_INSTALL_PREFIX=/home/corelab/ros2_stereo/install/ros2_shared
-Invoking command in '/home/corelab/ros2_stereo/build/ros2_shared': CMAKE_PREFIX_PATH=/opt/ros/foxy /home/corelab/.local/bin/cmake --build /home/corelab/ros2_stereo/build/ros2_shared -- -j16 -l16
-Invoked command in '/home/corelab/ros2_stereo/build/ros2_shared' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /home/corelab/.local/bin/cmake --build /home/corelab/ros2_stereo/build/ros2_shared -- -j16 -l16
-Invoking command in '/home/corelab/ros2_stereo/build/ros2_shared': CMAKE_PREFIX_PATH=/opt/ros/foxy /home/corelab/.local/bin/cmake --install /home/corelab/ros2_stereo/build/ros2_shared
-Invoked command in '/home/corelab/ros2_stereo/build/ros2_shared' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /home/corelab/.local/bin/cmake --install /home/corelab/ros2_stereo/build/ros2_shared

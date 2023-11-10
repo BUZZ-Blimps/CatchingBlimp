@@ -1,7 +1,0 @@
-[01m[K/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/image_proc/src/rectify.cpp:43:10:[m[K [01;31m[Kfatal error: [m[Ktracetools_image_pipeline/tracetools.h: No such file or directory
-   43 | #include [01;31m[K"tracetools_image_pipeline/tracetools.h"[m[K
-      |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
-compilation terminated.
-make[2]: *** [CMakeFiles/rectify.dir/build.make:63: CMakeFiles/rectify.dir/src/rectify.cpp.o] Error 1
-make[1]: *** [CMakeFiles/Makefile2:144: CMakeFiles/rectify.dir/all] Error 2
-make: *** [Makefile:141: all] Error 2
