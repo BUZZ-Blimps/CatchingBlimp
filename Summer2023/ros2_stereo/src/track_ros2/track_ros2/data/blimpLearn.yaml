@@ -1,0 +1,7 @@
+path: ../datasets/yolo_gameball_test1/
+train: train/images 
+val: valid/images
+
+nc: 3
+names: ['Balloon','Orange Goal','Yellow Goal']
+
