@@ -28,7 +28,7 @@
         <arg name="namespace" value="$(var blimp_name)"/>
     </include>
 
-    <include file="$(find-pkg-share track_ros2)/launch/track_ros2_node.launch.py">
+<!--     <include file="$(find-pkg-share track_ros2)/launch/track_ros2_node.launch.py">
         <arg name="namespace" value="$(var blimp_name)"/>
-    </include>
+    </include> -->
 </launch>

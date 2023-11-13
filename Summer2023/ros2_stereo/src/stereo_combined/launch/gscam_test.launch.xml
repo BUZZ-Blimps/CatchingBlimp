@@ -1,0 +1,13 @@
+<launch>
+    <!-- Arguments -->
+    <arg name="blimp_name" default="TurboBlimp" />
+    <arg name="camera_id" default="3" />
+
+    <!-- ros2 launch files-->
+    <!-- Makes blimp publish raw camera feed -->
+    <include file="$(find-pkg-share gscam2)/launch/node_param_launch.py">
+        <arg name="camera_name" value="$(var blimp_name)" />
+        <arg name="gscam_config" value="udpsrc port=300$(var camera_id) ! application/x-rtp, encoding-name=H264, payload=96 ! rtph264depay ! h264parse ! queue ! avdec_h264 ! videoconvert" />
+    </include>
+</launch>
+
