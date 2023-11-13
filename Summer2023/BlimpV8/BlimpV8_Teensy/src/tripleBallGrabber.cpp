@@ -10,6 +10,9 @@ TripleBallGrabber::TripleBallGrabber(int servoPin, int motorPin) {
   // Serial.println("Setup Comlete");
 }
 
+
+//68 degree sweep
+
 void TripleBallGrabber::openGrabber() {
   this->servo.write(15);  //15 or 151
   this->motor.write(1500);
@@ -17,7 +20,7 @@ void TripleBallGrabber::openGrabber() {
 }
 
 void TripleBallGrabber::closeGrabber() {
-  this->servo.write(135);
+  this->servo.write(83);
   this->motor.write(1500);
   this->state = 0;
 }

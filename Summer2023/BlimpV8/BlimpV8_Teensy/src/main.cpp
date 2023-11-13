@@ -784,7 +784,7 @@ void loop() {
             } else {
                 //normal mapping using max esc command 
                 // upCom = up_msg*2.0; //PID used and maxed out at 2m/s
-                upCom = -up_msg*500.0;
+                upCom = -up_msg*500.0; //up is negative
                 // upCom = -up_msg*500.0-0.5*pitch; //pitch correction? (pitch in degrees, conversion factor command/degree)
                 forwardCom = forward_msg*500.0;
                 translationCom = translation_msg*500.0;
@@ -986,12 +986,12 @@ void loop() {
                         //move up and down within the set boundry
                         if (actualBaro > CEIL_HEIGHT || !wasUp) {
                             if (wasUp) wasUp = false;
-                            upCom = -GAME_BALL_VERTICAL_SEARCH;
+                            upCom = GAME_BALL_VERTICAL_SEARCH; //down
                         }
 
                         if (actualBaro < FLOOR_HEIGHT || wasUp) {
                             if (!wasUp) wasUp = true;
-                            upCom = GAME_BALL_VERTICAL_SEARCH;
+                            upCom = -GAME_BALL_VERTICAL_SEARCH;  //up
                         }
                     } else {
                         //move to approaching game ball
@@ -1052,7 +1052,7 @@ void loop() {
                         // delay(300);
 
                         forwardCom = CATCHING_FORWARD_COM;
-                        upCom = CATCHING_UP_COM;
+                        upCom = -CATCHING_UP_COM;
                         yawCom = 0;
                         translationCom = 0;
 
@@ -1093,7 +1093,7 @@ void loop() {
                         }
 
                         forwardCom = CAUGHT_FORWARD_COM;
-                        upCom = CAUGHT_UP_COM;
+                        upCom = -CAUGHT_UP_COM;
                         yawCom = 0;
                     } else {
                         mode = searching;
@@ -1139,8 +1139,8 @@ void loop() {
                             //goal search behavior
                             //randomize the diretion selection
                             yawCom = GOAL_YAW_SEARCH*goalYawDirection;
-                            // upCom = goalPositionHold.calculate(GOAL_HEIGHT, actualBaro);
-                            upCom = GOAL_UP_VELOCITY;
+                            upCom = -goalPositionHold.calculate(GOAL_HEIGHT, actualBaro);  //go up to the goal
+                            // upCom = GOAL_UP_VELOCITY;
                             forwardCom = GOAL_FORWARD_SEARCH;
                         }
 

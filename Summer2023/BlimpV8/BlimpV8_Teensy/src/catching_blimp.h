@@ -61,7 +61,7 @@ if (uxr_millis() - init > MS) { X; init = uxr_millis();} \
 #define BLIMP_COLOR               red      //either red or blue
 #define GOAL_COLOR                orange    //either orange or yellow
 
-#define CEIL_HEIGHT_FROM_START    4
+#define CEIL_HEIGHT_FROM_START    4 //unused 
 
 //debug mode
 #define ZERO_MODE                 false
@@ -77,16 +77,16 @@ if (uxr_millis() - init > MS) { X; init = uxr_millis();} \
 #define GAME_BALL_WAIT_TIME_PENALTY   0    //should be set to 20, every catch assumed to be 20 seconds long  
 
 //number of catches attempted
-#define TOTAL_ATTEMPTS            5    // attempts at catching 
+#define TOTAL_ATTEMPTS            1    // attempts at catching 
 #define MAX_ATTEMPTS              5    //should be set to 5
 
 //flight area parameters
-#define CEIL_HEIGHT               8      //m
-#define FLOOR_HEIGHT              2.5    //m
+#define CEIL_HEIGHT               9      //m
+#define FLOOR_HEIGHT              1.5    //m
 
-#define MAX_HEIGHT                2    //m
-#define GOAL_HEIGHT               5.0    //m
-#define GOAL_HEIGHT_DEADBAND      0.3       //m
+#define MAX_HEIGHT                2    //m  (unused)
+#define GOAL_HEIGHT               7.0   //m
+#define GOAL_HEIGHT_DEADBAND      0.4   //m
 
 //distance triggers
 #define GOAL_DISTANCE_TRIGGER    1.3  //m distance for blimp to trigger goal score 	
@@ -104,7 +104,7 @@ if (uxr_millis() - init > MS) { X; init = uxr_millis();} \
 // the inputs are bounded from -2 to 2, yaw is maxed out at 120 deg/s
 #define GAME_BALL_YAW_SEARCH      -15  //deg/s
 #define GAME_BALL_FORWARD_SEARCH  130 //30% throttle 
-#define GAME_BALL_VERTICAL_SEARCH 10  //m/s
+#define GAME_BALL_VERTICAL_SEARCH 450  //m/s
 
 
 #define GAME_BALL_CLOSURE_COM     130  //approaching at 20% throttle cap
@@ -112,14 +112,14 @@ if (uxr_millis() - init > MS) { X; init = uxr_millis();} \
 #define GAME_BaLL_X_OFFSET        0   //offset magic number (TODO: reset)
 
 #define CATCHING_FORWARD_COM      280  //catching at 50% throttle 
-#define CATCHING_UP_COM           10  //damp out pitch
+#define CATCHING_UP_COM           40  //damp out pitch
 
 #define CAUGHT_FORWARD_COM        -220  //go back so that the game ball gets to the back 
 #define CAUGHT_UP_COM             -40
 
 #define GOAL_YAW_SEARCH           20   
 #define GOAL_FORWARD_SEARCH       150  //200 40% throttle
-#define GOAL_UP_VELOCITY          30
+#define GOAL_UP_VELOCITY          450
 
 #define GOAL_CLOSURE_COM          90  //forward command 25% throttle
 #define GOAL_X_OFFSET             80  
