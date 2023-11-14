@@ -84,8 +84,9 @@ void SplitImage::syncImageCallback(const sensor_msgs::msg::Image::SharedPtr msg)
     std::string rightFrame = cameraNs_ + "_right_optical_frame";
     try
     {
-        cvPtrLeft = cv_bridge::toCvCopy(msg, sensor_msgs::image_encodings::BGR8);
-        cvPtrRight = cv_bridge::toCvCopy(msg, sensor_msgs::image_encodings::BGR8);
+         // RCLCPP_ERROR(this->get_logger(), "uwuwuwuwuwuw");
+        cvPtrLeft = cv_bridge::toCvCopy(msg, sensor_msgs::image_encodings::RGB8);
+        cvPtrRight = cv_bridge::toCvCopy(msg, sensor_msgs::image_encodings::RGB8);
     }
     catch (cv_bridge::Exception &e)
     {

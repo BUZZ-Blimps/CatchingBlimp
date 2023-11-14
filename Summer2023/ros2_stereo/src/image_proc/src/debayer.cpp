@@ -128,7 +128,7 @@ void DebayerNode::imageCb(const sensor_msgs::msg::Image::ConstSharedPtr & raw_ms
     color_msg->header = raw_msg->header;
     color_msg->height = raw_msg->height;
     color_msg->width = raw_msg->width;
-    color_msg->encoding = bit_depth == 8 ? enc::BGR8 : enc::BGR16;
+    color_msg->encoding = bit_depth == 8 ? enc::RGB8 : enc::RGB16;
     color_msg->step = color_msg->width * 3 * (bit_depth / 8);
     color_msg->data.resize(color_msg->height * color_msg->step);
 
@@ -162,17 +162,17 @@ void DebayerNode::imageCb(const sensor_msgs::msg::Image::ConstSharedPtr & raw_ms
       int code = -1;
 
       if (raw_msg->encoding == enc::BAYER_RGGB8 || raw_msg->encoding == enc::BAYER_RGGB16) {
-        code = cv::COLOR_BayerBG2BGR;
+        code = cv::COLOR_BayerBG2RGB;
       } else if (raw_msg->encoding == enc::BAYER_BGGR8 || raw_msg->encoding == enc::BAYER_BGGR16) {
-        code = cv::COLOR_BayerRG2BGR;
+        code = cv::COLOR_BayerRG2RGB;
       } else if (raw_msg->encoding == enc::BAYER_GBRG8 || raw_msg->encoding == enc::BAYER_GBRG16) {
-        code = cv::COLOR_BayerGR2BGR;
+        code = cv::COLOR_BayerGR2RGB;
       } else if (raw_msg->encoding == enc::BAYER_GRBG8 || raw_msg->encoding == enc::BAYER_GRBG16) {
-        code = cv::COLOR_BayerGB2BGR;
+        code = cv::COLOR_BayerGB2RGB;
       }
 
       if (algorithm == debayer_vng_) {
-        code += cv::COLOR_BayerBG2BGR_VNG - cv::COLOR_BayerBG2BGR;
+        code += cv::COLOR_BayerBG2RGB_VNG - cv::COLOR_BayerBG2RGB;
       }
 
       cv::cvtColor(bayer, color, code);
@@ -184,7 +184,7 @@ void DebayerNode::imageCb(const sensor_msgs::msg::Image::ConstSharedPtr & raw_ms
     sensor_msgs::msg::Image::SharedPtr color_msg;
 
     try {
-      color_msg = cv_bridge::toCvCopy(raw_msg, enc::BGR8)->toImageMsg();
+      color_msg = cv_bridge::toCvCopy(raw_msg, enc::RGB8)->toImageMsg();
       pub_color_.publish(color_msg);
     } catch (cv_bridge::Exception & e) {
       RCLCPP_WARN(this->get_logger(), "cv_bridge conversion error: '%s'", e.what());
