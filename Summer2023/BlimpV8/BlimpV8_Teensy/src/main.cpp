@@ -837,6 +837,8 @@ void loop() {
             float tx = 0;
             float ty = 0;
             float tz = 0;
+            float temp_tx = 0;
+            float temp_ty = 0;
             // float area = 0;
 
             //new target (empty target)
@@ -1001,8 +1003,15 @@ void loop() {
                     }
                     break;
                 } case approach: {
+
                    //check if target is still valid
                     if (target.size() > 0) {
+                        //seeing a target
+                        //add memory
+                        temp_tx = tx;
+                        temp_ty = ty;
+                        catchMemoryTimer = millis();
+
                         // if (catches >= 1 && micros()/MICROS_TO_SEC - lastCatch >= MAX_SEARCH_WAIT_AFTER_ONE - (catches-1)*(GAME_BALL_WAIT_TIME_PENALTY)) {
                         //   catches = TOTAL_ATTEMPTS;
                         //   mode = goalSearch;
@@ -1040,8 +1049,16 @@ void loop() {
                             ballGrabber.closeGrabber();
                         }
 
+                        //if target is lost within 1 second
+                        //remember the previous info about where the ball is 
+                        } else if((millis()-catchMemoryTimer) < 1000 && target.size() == 0){
+                            yawCom = xPID.calculate(GAME_BaLL_X_OFFSET, temp_tx, dt/1000); 
+                            upCom = -yPID.calculate(GAME_BALL_APPROACH_ANGLE, temp_ty, dt/1000);  
+                            forwardCom = GAME_BALL_CLOSURE_COM;
+                            translationCom = 0;
                         } else {
                             //no target, look for another
+                            //maybe add some memory
                             mode = searching;
                             searchYawDirection = searchDirection();  //randomize the search direction
                         }

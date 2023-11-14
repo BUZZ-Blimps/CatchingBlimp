@@ -77,21 +77,21 @@ if (uxr_millis() - init > MS) { X; init = uxr_millis();} \
 #define GAME_BALL_WAIT_TIME_PENALTY   0    //should be set to 20, every catch assumed to be 20 seconds long  
 
 //number of catches attempted
-#define TOTAL_ATTEMPTS            1    // attempts at catching 
+#define TOTAL_ATTEMPTS            3    // attempts at catching 
 #define MAX_ATTEMPTS              5    //should be set to 5
 
 //flight area parameters
 #define CEIL_HEIGHT               9      //m
-#define FLOOR_HEIGHT              1.5    //m
+#define FLOOR_HEIGHT              0.5    //m
 
 #define MAX_HEIGHT                2    //m  (unused)
-#define GOAL_HEIGHT               7.0   //m
+#define GOAL_HEIGHT               7.5   //m
 #define GOAL_HEIGHT_DEADBAND      0.4   //m
 
 //distance triggers
 #define GOAL_DISTANCE_TRIGGER    1.3  //m distance for blimp to trigger goal score 	
 #define BALL_GATE_OPEN_TRIGGER   2    //m distance for blimp to open the gate 	
-#define BALL_CATCH_TRIGGER       1.2  //m distance for blimp to start the open-loop control
+#define BALL_CATCH_TRIGGER       1.5  //m distance for blimp to start the open-loop control
 #define AVOID_TRIGGER       2.3  //m distance for blimp to start the open-loop control
 
 
@@ -107,8 +107,8 @@ if (uxr_millis() - init > MS) { X; init = uxr_millis();} \
 #define GAME_BALL_VERTICAL_SEARCH 450  //m/s
 
 
-#define GAME_BALL_CLOSURE_COM     130  //approaching at 20% throttle cap
-#define GAME_BALL_APPROACH_ANGLE  40  //approach magic number (TODO: reset)
+#define GAME_BALL_CLOSURE_COM     150  //approaching at 20% throttle cap
+#define GAME_BALL_APPROACH_ANGLE  0  //approach magic number (TODO: reset)
 #define GAME_BaLL_X_OFFSET        0   //offset magic number (TODO: reset)
 
 #define CATCHING_FORWARD_COM      280  //catching at 50% throttle 
@@ -280,7 +280,7 @@ PID forwardPID(300, 0, 0);  //not used
 PID translationPID(300, 0, 0); //not used
 
 //Auto PID control (output fed into manual controller)
-PID yPID(0.5,0,0);    //TODO:retune these (can also be in pixels depends on which one performs better) 0.0075 for pixel PID
+PID yPID(1,0,0);    //TODO:retune these (can also be in pixels depends on which one performs better) 0.0075 for pixel PID
 PID xPID(0.036,0,0);       //TODO:retune these 0.162 for pixel PID
 
 //Goal positioning controller
@@ -343,6 +343,7 @@ float ground_pressure = 0;
 double approachTimeStart = 0;
 double approachTimeMax = 10000;   //ms
 
+double catchMemoryTimer = 0;
 double catchTimeStart = 0;
 double catchTime = 2300;        //ms
 

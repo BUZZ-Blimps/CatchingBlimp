@@ -182,6 +182,58 @@ DisparityNode::DisparityNode(const rclcpp::NodeOptions & options)
 
   // Describe int parameters
   std::map<std::string, std::pair<int, rcl_interfaces::msg::ParameterDescriptor>> int_params;
+  // add_param_to_map(
+  //   int_params,
+  //   "stereo_algorithm",
+  //   "Stereo algorithm: Block Matching (0) or Semi-Global Block Matching (1)",
+  //   0, 0, 1, 1);  // default, from, to, step
+  // add_param_to_map(
+  //   int_params,
+  //   "prefilter_size",
+  //   "Normalization window size in pixels (must be odd)",
+  //   11, 5, 255, 2);
+  // add_param_to_map(
+  //   int_params,
+  //   "prefilter_cap",
+  //   "Bound on normalized pixel values",
+  //   63, 1, 63, 1);
+  // add_param_to_map(
+  //   int_params,
+  //   "correlation_window_size",
+  //   "SAD correlation window width in pixels (must be odd)",
+  //   21, 5, 255, 2);
+  // add_param_to_map(
+  //   int_params,
+  //   "min_disparity",
+  //   "Disparity to begin search at in pixels",
+  //   8, -2048, 2048, 1);
+  // add_param_to_map(
+  //   int_params,
+  //   "disparity_range",
+  //   "Number of disparities to search in pixels (must be a multiple of 16)",
+  //   128, 32, 4096, 16);
+  // add_param_to_map(
+  //   int_params,
+  //   "texture_threshold",
+  //   "Filter out if SAD window response does not exceed texture threshold",
+  //   2175, 0, 10000, 1);
+  // add_param_to_map(
+  //   int_params,
+  //   "speckle_size",
+  //   "Reject regions smaller than this size in pixels",
+  //   138, 0, 1000, 1);
+  // add_param_to_map(
+  //   int_params,
+  //   "speckle_range",
+  //   "Maximum allowed difference between detected disparities",
+  //   31, 0, 31, 1);
+  // add_param_to_map(
+  //   int_params,
+  //   "disp12_max_diff",
+  //   "Maximum allowed difference in the left-right disparity check in pixels"
+  //   " (Semi-Global Block Matching only)",
+  //   5, 0, 128, 1);
+
   add_param_to_map(
     int_params,
     "stereo_algorithm",
@@ -191,48 +243,48 @@ DisparityNode::DisparityNode(const rclcpp::NodeOptions & options)
     int_params,
     "prefilter_size",
     "Normalization window size in pixels (must be odd)",
-    11, 5, 255, 2);
+    9, 5, 255, 2);
   add_param_to_map(
     int_params,
     "prefilter_cap",
     "Bound on normalized pixel values",
-    63, 1, 63, 1);
+    31, 1, 63, 1);
   add_param_to_map(
     int_params,
     "correlation_window_size",
     "SAD correlation window width in pixels (must be odd)",
-    21, 5, 255, 2);
+    15, 5, 255, 2);
   add_param_to_map(
     int_params,
     "min_disparity",
     "Disparity to begin search at in pixels",
-    0, -2048, 2048, 1);
+    12, -2048, 2048, 1);
   add_param_to_map(
     int_params,
     "disparity_range",
     "Number of disparities to search in pixels (must be a multiple of 16)",
-    128, 32, 4096, 16);
+    64, 32, 4096, 16);
   add_param_to_map(
     int_params,
     "texture_threshold",
     "Filter out if SAD window response does not exceed texture threshold",
-    2175, 0, 10000, 1);
+    10, 0, 10000, 1);
   add_param_to_map(
     int_params,
     "speckle_size",
     "Reject regions smaller than this size in pixels",
-    138, 0, 1000, 1);
+    100, 0, 1000, 1);
   add_param_to_map(
     int_params,
     "speckle_range",
     "Maximum allowed difference between detected disparities",
-    31, 0, 31, 1);
+    4, 0, 31, 1);
   add_param_to_map(
     int_params,
     "disp12_max_diff",
     "Maximum allowed difference in the left-right disparity check in pixels"
     " (Semi-Global Block Matching only)",
-    5, 0, 128, 1);
+    0, 0, 128, 1);
 
   // Describe double parameters
   std::map<std::string, std::pair<double, rcl_interfaces::msg::ParameterDescriptor>> double_params;
@@ -266,8 +318,6 @@ DisparityNode::DisparityNode(const rclcpp::NodeOptions & options)
 
   pub_disparity_ = create_publisher<stereo_msgs::msg::DisparityImage>("BurnCreamBlimp/disparity", 10);
 
-  // TODO(jacobperron): Replace this with a graph event.
-  //                    Only subscribe if there's a subscription listening to our publisher.
   connectCb();
 }
 
