@@ -1,1 +1,0 @@
-/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/build/yolo_msgs/ament_cmake_environment_hooks/local_setup.zsh

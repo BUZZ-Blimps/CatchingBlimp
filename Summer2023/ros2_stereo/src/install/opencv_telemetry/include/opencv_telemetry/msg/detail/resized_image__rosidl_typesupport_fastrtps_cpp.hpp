@@ -1,1 +1,0 @@
-/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/build/opencv_telemetry/rosidl_typesupport_fastrtps_cpp/opencv_telemetry/msg/detail/resized_image__rosidl_typesupport_fastrtps_cpp.hpp

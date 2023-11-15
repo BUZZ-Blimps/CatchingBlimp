@@ -1,1 +1,0 @@
-/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/build/yolo_msgs/rosidl_typesupport_fastrtps_c/yolo_msgs/msg/detail/bounding_box__rosidl_typesupport_fastrtps_c.h

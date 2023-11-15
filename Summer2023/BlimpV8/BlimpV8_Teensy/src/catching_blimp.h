@@ -82,7 +82,7 @@ if (uxr_millis() - init > MS) { X; init = uxr_millis();} \
 
 //flight area parameters
 #define CEIL_HEIGHT               9      //m
-#define FLOOR_HEIGHT              0.5    //m
+#define FLOOR_HEIGHT              0    //m
 
 #define MAX_HEIGHT                2    //m  (unused)
 #define GOAL_HEIGHT               7.5   //m
@@ -104,12 +104,12 @@ if (uxr_millis() - init > MS) { X; init = uxr_millis();} \
 // the inputs are bounded from -2 to 2, yaw is maxed out at 120 deg/s
 #define GAME_BALL_YAW_SEARCH      -15  //deg/s
 #define GAME_BALL_FORWARD_SEARCH  130 //30% throttle 
-#define GAME_BALL_VERTICAL_SEARCH 450  //m/s
+#define GAME_BALL_VERTICAL_SEARCH 50  //m/s
 
 
 #define GAME_BALL_CLOSURE_COM     150  //approaching at 20% throttle cap
 #define GAME_BALL_APPROACH_ANGLE  0  //approach magic number (TODO: reset)
-#define GAME_BaLL_X_OFFSET        0   //offset magic number (TODO: reset)
+#define GAME_BaLL_X_OFFSET        200   //offset magic number (TODO: reset)
 
 #define CATCHING_FORWARD_COM      280  //catching at 50% throttle 
 #define CATCHING_UP_COM           40  //damp out pitch
@@ -281,7 +281,7 @@ PID translationPID(300, 0, 0); //not used
 
 //Auto PID control (output fed into manual controller)
 PID yPID(1,0,0);    //TODO:retune these (can also be in pixels depends on which one performs better) 0.0075 for pixel PID
-PID xPID(0.036,0,0);       //TODO:retune these 0.162 for pixel PID
+PID xPID(0.045,0,0);       //TODO:retune these 0.162 for pixel PID
 
 //Goal positioning controller
 BangBang goalPositionHold(GOAL_HEIGHT_DEADBAND, GOAL_UP_VELOCITY); //Dead band, velocity to center itself
@@ -451,10 +451,10 @@ rcl_subscription_t pixels_subscription; //int64_multi_array
 // Define the name of the blimp/robot
 //std::string blimpNameSpace = "BurnCreamBlimp";
 //std::string blimpNameSpace = "SillyAhBlimp";
- std::string blimpNameSpace = "TurboBlimp";
+// std::string blimpNameSpace = "TurboBlimp";
 //std::string blimpNameSpace = "GameChamberBlimp";
 //std::string blimpNameSpace = "FiveGuysBlimp";
-//std::string blimpNameSpace = "SuperBeefBlimp";
+std::string blimpNameSpace = "SuperBeefBlimp";
 
 //message types: String Bool Float32 Float32 MultiArray
 //message topics : /auto /baseBarometer /blimpID /grabbing /killed /motorCommands /shooting /identify /imu /goal_color /state_machine

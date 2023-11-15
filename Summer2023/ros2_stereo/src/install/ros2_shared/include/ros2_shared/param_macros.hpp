@@ -1,1 +1,0 @@
-/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/ros2_shared/include/ros2_shared/param_macros.hpp

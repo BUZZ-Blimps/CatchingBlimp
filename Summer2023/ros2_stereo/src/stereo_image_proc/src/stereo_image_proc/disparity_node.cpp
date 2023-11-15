@@ -258,7 +258,7 @@ DisparityNode::DisparityNode(const rclcpp::NodeOptions & options)
     int_params,
     "min_disparity",
     "Disparity to begin search at in pixels",
-    12, -2048, 2048, 1);
+    9, -2048, 2048, 1);
   add_param_to_map(
     int_params,
     "disparity_range",

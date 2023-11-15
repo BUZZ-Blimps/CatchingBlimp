@@ -31,12 +31,12 @@ then
     platformio run --environment teensy40
 
     #Copy firmware.hex file to Orange Pi
-    scp /home/corelab/GitHub/CatchingBlimp/Summer2023/BlimpV8/BlimpV8_Teensy/.pio/build/teensy40/firmware.hex orangepi$1@orangepi$1:/home/orangepi$1/teensyCode/
+    sshpass -p 1234 scp /home/corelab/GitHub/CatchingBlimp/Summer2023/BlimpV8/BlimpV8_Teensy/.pio/build/teensy40/firmware.hex orangepi$1@orangepi$1:/home/orangepi$1/teensyCode/
 
     #Enter into the Orange Pi
     #Flash the Teensy (For some reason we have to do this twice)
     #Must press the button if the Teensy has never been flashed before
-    ssh orangepi$1@orangepi$1 "/home/orangepi$1/teensy_loader_cli/teensy_loader_cli -mmcu=TEENSY40 -s -w -v /home/orangepi$1/teensyCode/firmware.hex; /home/orangepi$1/teensy_loader_cli/teensy_loader_cli -mmcu=TEENSY40 -s -w -v /home/orangepi$1/teensyCode/firmware.hex"
+    sshpass -p 1234 ssh orangepi$1@orangepi$1 "/home/orangepi$1/teensy_loader_cli/teensy_loader_cli -mmcu=TEENSY40 -s -w -v /home/orangepi$1/teensyCode/firmware.hex; /home/orangepi$1/teensy_loader_cli/teensy_loader_cli -mmcu=TEENSY40 -s -w -v /home/orangepi$1/teensyCode/firmware.hex"
 
     # Doesn't work without password
     #sshpass -p 1234 ssh orangepi$1@orangepi$1 ./restartMicroros.sh

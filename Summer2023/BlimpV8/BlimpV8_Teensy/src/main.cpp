@@ -943,7 +943,7 @@ void loop() {
                     if (target.size() == 0) {
 
                         //keep ball grabber closed
-                        ballGrabber.closeGrabber();
+                        // ballGrabber.closeGrabber();
 
                         //use object avoidence
                         double avoidanceMinVal = 1000.0; // Initialize 
@@ -1060,6 +1060,7 @@ void loop() {
                             //no target, look for another
                             //maybe add some memory
                             mode = searching;
+                            ballGrabber.closeGrabber();
                             searchYawDirection = searchDirection();  //randomize the search direction
                         }
                         break;
@@ -1121,7 +1122,7 @@ void loop() {
                     if (catches >= TOTAL_ATTEMPTS) {
 
                         //keep ball grabber closed
-                        ballGrabber.closeGrabber();
+                        // ballGrabber.closeGrabber();
 
                         //use object avoidence
                         double avoidanceMinVal = 1000.0; // Initialize 
@@ -1167,6 +1168,7 @@ void loop() {
                     } else {
                         mode = searching;
                         searchYawDirection = searchDirection();  //randomize the search direction
+                        ballGrabber.closeGrabber();
                     }
                     break;
                 } case approachGoal: {
@@ -1182,6 +1184,7 @@ void loop() {
                     } else {
                         mode = goalSearch;
                         goalYawDirection = searchDirection();  //randomize search direction
+                        ballGrabber.closeGrabber();
                     }
                     break;
                 } case scoringStart: {
@@ -1218,7 +1221,7 @@ void loop() {
                 } case scored: {
                     if (true) {
 
-                        ballGrabber.closeGrabber();
+                        // ballGrabber.closeGrabber();
 
                         yawCom = 0;
                         forwardCom = SCORED_FORWARD_COM;
@@ -1330,6 +1333,7 @@ void loop() {
         //Serial.println(yekf.v);
 
         //gimbal + motor updates
+        ballGrabber.update();
         if (loop_time < 10 + firstMessageTime) {
             //filter base station data
             baroOffset.filter(baseBaro-BerryIMU.comp_press);

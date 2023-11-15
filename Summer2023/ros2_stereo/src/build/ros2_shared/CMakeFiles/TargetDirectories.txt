@@ -1,9 +1,0 @@
-/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/build/ros2_shared/CMakeFiles/install/strip.dir
-/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/build/ros2_shared/CMakeFiles/install/local.dir
-/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/build/ros2_shared/CMakeFiles/install.dir
-/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/build/ros2_shared/CMakeFiles/list_install_components.dir
-/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/build/ros2_shared/CMakeFiles/rebuild_cache.dir
-/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/build/ros2_shared/CMakeFiles/edit_cache.dir
-/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/build/ros2_shared/CMakeFiles/test.dir
-/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/build/ros2_shared/CMakeFiles/ros2_shared_uninstall.dir
-/home/corelab/CatchingBlimp/Summer2023/ros2_stereo/src/build/ros2_shared/CMakeFiles/uninstall.dir

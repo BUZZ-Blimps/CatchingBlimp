@@ -1,7 +1,0 @@
-CMake Error at /opt/ros/foxy/share/ament_cmake_target_dependencies/cmake/ament_target_dependencies.cmake:66 (message):
-  ament_target_dependencies() PUBLIC keyword is only allowed before the
-  package names
-Call Stack (most recent call first):
-  CMakeLists.txt:58 (ament_target_dependencies)
-
-
