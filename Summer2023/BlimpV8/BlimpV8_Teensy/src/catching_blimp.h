@@ -77,12 +77,12 @@ if (uxr_millis() - init > MS) { X; init = uxr_millis();} \
 #define GAME_BALL_WAIT_TIME_PENALTY   0    //should be set to 20, every catch assumed to be 20 seconds long  
 
 //number of catches attempted
-#define TOTAL_ATTEMPTS            3    // attempts at catching 
+#define TOTAL_ATTEMPTS            2    // attempts at catching 
 #define MAX_ATTEMPTS              5    //should be set to 5
 
 //flight area parameters
 #define CEIL_HEIGHT               9      //m
-#define FLOOR_HEIGHT              0    //m
+#define FLOOR_HEIGHT              3    //m
 
 #define MAX_HEIGHT                2    //m  (unused)
 #define GOAL_HEIGHT               7.5   //m
@@ -91,8 +91,8 @@ if (uxr_millis() - init > MS) { X; init = uxr_millis();} \
 //distance triggers
 #define GOAL_DISTANCE_TRIGGER    1.3  //m distance for blimp to trigger goal score 	
 #define BALL_GATE_OPEN_TRIGGER   2    //m distance for blimp to open the gate 	
-#define BALL_CATCH_TRIGGER       1.5  //m distance for blimp to start the open-loop control
-#define AVOID_TRIGGER       2.3  //m distance for blimp to start the open-loop control
+#define BALL_CATCH_TRIGGER       1.4  //m distance for blimp to start the open-loop control
+#define AVOID_TRIGGER       0.8  //m distance for blimp to start the open-loop control
 
 
 //object avoidence motor coms
@@ -107,12 +107,12 @@ if (uxr_millis() - init > MS) { X; init = uxr_millis();} \
 #define GAME_BALL_VERTICAL_SEARCH 50  //m/s
 
 
-#define GAME_BALL_CLOSURE_COM     150  //approaching at 20% throttle cap
-#define GAME_BALL_APPROACH_ANGLE  0  //approach magic number (TODO: reset)
-#define GAME_BaLL_X_OFFSET        200   //offset magic number (TODO: reset)
+#define GAME_BALL_CLOSURE_COM     110  //approaching at 20% throttle cap
+#define GAME_BALL_APPROACH_ANGLE  30  //approach magic number (TODO: reset)
+#define GAME_BaLL_X_OFFSET        60   //offset magic number (TODO: reset)
 
-#define CATCHING_FORWARD_COM      280  //catching at 50% throttle 
-#define CATCHING_UP_COM           40  //damp out pitch
+#define CATCHING_FORWARD_COM      300  //catching at 50% throttle 
+#define CATCHING_UP_COM           50  //damp out pitch
 
 #define CAUGHT_FORWARD_COM        -220  //go back so that the game ball gets to the back 
 #define CAUGHT_UP_COM             -40
@@ -158,6 +158,9 @@ if (uxr_millis() - init > MS) { X; init = uxr_millis();} \
 
 //motor timeout before entering lost state
 #define TEENSY_WAIT_TIME          2.0
+
+#define BALL_APPROACH_THRESHOLD   10000
+#define BALL_CATCH_THRESHOLD      62000
 
 //**************** TEENSY PINOUT ****************//
 #define L_Pitch                   2                    
@@ -280,8 +283,8 @@ PID forwardPID(300, 0, 0);  //not used
 PID translationPID(300, 0, 0); //not used
 
 //Auto PID control (output fed into manual controller)
-PID yPID(1,0,0);    //TODO:retune these (can also be in pixels depends on which one performs better) 0.0075 for pixel PID
-PID xPID(0.045,0,0);       //TODO:retune these 0.162 for pixel PID
+PID yPID(0.8,0,0);    //TODO:retune these (can also be in pixels depends on which one performs better) 0.0075 for pixel PID
+PID xPID(0.035,0,0);       //TODO:retune these 0.162 for pixel PID
 
 //Goal positioning controller
 BangBang goalPositionHold(GOAL_HEIGHT_DEADBAND, GOAL_UP_VELOCITY); //Dead band, velocity to center itself
@@ -315,8 +318,8 @@ float lastBaroLoopTick = 0.0;
 float lastOpticalLoopTick = 0.0;
 
 //global variables
-int state = lost;
-int mode = searching;
+int blimp_state = lost;
+int auto_state = searching;
 
 //blimp game parameters
 int blimpColor = BLIMP_COLOR;

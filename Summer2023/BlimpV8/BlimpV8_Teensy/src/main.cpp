@@ -57,15 +57,15 @@ void auto_subscription_callback(const void *msgin)
 {
     const std_msgs__msg__Bool *auto_msg = (const std_msgs__msg__Bool *)msgin;
     if (auto_msg->data) {
-        if (state == manual) {
+        if (blimp_state == manual) {
             publish_log("Activating Auto Mode");
         }
-        state = autonomous;
+        blimp_state = autonomous;
     } else {
-        if (state == autonomous) {
+        if (blimp_state == autonomous) {
             publish_log("Going Manual for a Bit...");
         }
-        state = manual;
+        blimp_state = manual;
     }
 }
 
@@ -102,9 +102,9 @@ void baro_subscription_callback(const void *msgin)
     //update last message time
     lastMsgTime = micros()/MICROS_TO_SEC;
 
-    //If teensy comes out of lost state, put it in manual control mode
-    if (state == lost) {
-        state = manual;
+    //If teensy comes out of lost blimp_state, put it in manual control mode
+    if (blimp_state == lost) {
+        blimp_state = manual;
     }
 }
 
@@ -456,7 +456,7 @@ void setup() {
 
 void update_agent_state() {
     //-------------------------MICRO ROS PUBLISHER and SUBSCRIBERS--------------------------------------
-    // publisher state machine
+    // publisher blimp_state machine
     // checking if the agent is available 
     switch (agent_state_) {
         case WAITING_AGENT:
@@ -488,7 +488,9 @@ void update_agent_state() {
 
 //Main loop
 void loop() {
-    //Update the microros agent state machine
+    double loop_time = micros()/MICROS_TO_SEC;
+
+    //Update the microros agent blimp_state machine
     update_agent_state();
 
     //Check to make sure the microROS agent is connected before doing anything else
@@ -513,23 +515,23 @@ void loop() {
     }
 
     //----------------------------------LOST---------------------------------------
-    //Switch to lost state if we lose connection to the base station
-    if (micros()/MICROS_TO_SEC - lastMsgTime > TEENSY_WAIT_TIME) {
-        state = lost;
+    //Switch to lost blimp_state if we lose connection to the base station
+    if (loop_time - lastMsgTime > TEENSY_WAIT_TIME) {
+        blimp_state = lost;
     }
 
-    //Log messages for lost state
-    if (state == lost && !last_lost) {
+    //Log messages for lost blimp_state
+    if (blimp_state == lost && !last_lost) {
         last_lost = true;
         publish_log("Lost Connection to Basestation");
-    } else if (state != lost && last_lost) {
+    } else if (blimp_state != lost && last_lost) {
         last_lost = false;
         publish_log("Connected to Basestation");
     }
 
     //----------------------------IMU LOOP-----------------------------------------
     //compute accel, gyro, madwick loop time at the set freqency
-    double loop_time = micros()/MICROS_TO_SEC;
+    
     double dt = loop_time-lastSensorFastLoopTick;
     if (dt >= 1.0/FAST_SENSOR_LOOP_FREQ) {
 
@@ -699,7 +701,7 @@ void loop() {
     //use same if statement structure
 
     //----------------------------STATE MACHINE LOOP-------------------------------
-    //compute state machine and motor control at specified frequency
+    //compute blimp_state machine and motor control at specified frequency
     dt = loop_time-lastStateLoopTick;
     if (dt >= 1.0/STATE_MACHINE_FREQ) {
 
@@ -768,8 +770,8 @@ void loop() {
         }
 
         //from base station
-        //compute state machine
-        if (state == manual) {
+        //compute blimp_state machine
+        if (blimp_state == manual) {
             //get manual data
             //all motor commands are between -1 and 1
             //set max yaw command to 120 deg/s
@@ -791,35 +793,35 @@ void loop() {
             }
 
             //check if shooting should be engaged
-            //this block switches the state to the oposite that it is currently in
+            //this block switches the blimp_state to the oposite that it is currently in
             if (shoot != shootCom) {
                 shoot = shootCom;
 
-                //change shoot state
+                //change shoot blimp_state
                 if (ballGrabber.state == 2) {
                     //stop shooting
-                    ballGrabber.closeGrabber();
+                    ballGrabber.closeGrabber(blimp_state);
                 } else {
                     //reset catch counter
                     catches = 0;
 
                     //go back to searching
-                    mode = searching;
+                    auto_state = searching;
                     searchYawDirection = searchDirection();  //randomize the search direction
 
                     //start shooting
-                    ballGrabber.shoot();
+                    ballGrabber.shoot(blimp_state);
                 }
             //check if grabbing should be engaged
-            //this block switches the state to the oposite that it is currently in
+            //this block switches the blimp_state to the oposite that it is currently in
             } else if (grab != grabCom) {
                 grab = grabCom;
 
-                //change grab state
+                //change grab blimp_state
                 if (ballGrabber.state == 0) {
-                    ballGrabber.openGrabber();
+                    ballGrabber.openGrabber(blimp_state);
                 } else {
-                    ballGrabber.closeGrabber();
+                    ballGrabber.closeGrabber(blimp_state);
 
                     //increase catch counter
                     catches++;
@@ -830,7 +832,7 @@ void loop() {
                     }
                 }
             }
-        } else if (state == autonomous) {
+        } else if (blimp_state == autonomous) {
             //filter target data
             // float tx = 0;
             // float ty = 0;
@@ -842,12 +844,12 @@ void loop() {
             // float area = 0;
 
             //new target (empty target)
-            std::vector<double> target;
+            std::vector<double> detected_target;
 
             //update targets data if any target exists
             //TODO: add area to verify distance 
             //balloon 
-            if (targets[2] != 1000 && (mode == searching || mode == approach || mode == catching)) {
+            if (targets[2] != 1000 && (auto_state == searching || auto_state == approach || auto_state == catching)) {
                 float rawZ = targets[2]; //balloon distance
                 //update filtered target coordinates (3D space, with center of camera as (0,0,0))
                 // tx = xFilter.filter(targets[0]); (3D)
@@ -856,9 +858,9 @@ void loop() {
                 ty = yFilter.filter(static_cast<float>(pixels[1]));
                 tz = zFilter.filter(rawZ);
                 // area = areaFilter.filter(target[0][3]);
-                target.push_back(tx);
-                target.push_back(ty);
-                target.push_back(tz);
+                detected_target.push_back(tx);
+                detected_target.push_back(ty);
+                detected_target.push_back(tz);
             } else {
                 //no target, set to default value
                 xFilter.filter(0);
@@ -869,7 +871,7 @@ void loop() {
 
             //orange goal
             //in goal scoring stages 
-            if (targets[5] != 1000 && goalColor == orange && (mode == goalSearch || mode == approachGoal || mode == scoringStart)) {
+            if (targets[5] != 1000 && goalColor == orange && (auto_state == goalSearch || auto_state == approachGoal || auto_state == scoringStart)) {
                 float rawZ = targets[5]; //balloon distance
                 //update filtered target coordinates (3D space, with center of camera as (0,0,0))
                 // tx = xFilter.filter(targets[3]);
@@ -878,9 +880,9 @@ void loop() {
                 ty = yFilter.filter(static_cast<float>(pixels[4])); 
                 tz = zFilter.filter(rawZ);
                 // area = areaFilter.filter(target[0][3]);
-                target.push_back(tx);
-                target.push_back(ty);
-                target.push_back(tz);
+                detected_target.push_back(tx);
+                detected_target.push_back(ty);
+                detected_target.push_back(tz);
             } else {
                 //no target, set to default value
                 xFilter.filter(0);
@@ -890,7 +892,7 @@ void loop() {
             }
 
             //yellow goal
-            if (targets[8] != 1000 && goalColor == yellow && (mode == goalSearch || mode == approachGoal || mode == scoringStart)) {
+            if (targets[8] != 1000 && goalColor == yellow && (auto_state == goalSearch || auto_state == approachGoal || auto_state == scoringStart)) {
                 float rawZ = targets[8]; //balloon distance
                 //update filtered target coordinates (3D space, with center of camera as (0,0,0))
                 // tx = xFilter.filter(targets[6]);
@@ -899,9 +901,9 @@ void loop() {
                 ty = yFilter.filter(static_cast<float>(pixels[7]));
                 tz = zFilter.filter(rawZ);
                 // area = areaFilter.filter(target[0][3]);
-                target.push_back(tx);
-                target.push_back(ty);
-                target.push_back(tz);
+                detected_target.push_back(tx);
+                detected_target.push_back(ty);
+                detected_target.push_back(tz);
             } else {
                 //no target, set to default value
                 xFilter.filter(0);
@@ -922,25 +924,25 @@ void loop() {
             // RCSOFTCHECK(rcl_publish(&debug_publisher, &debug_msg, NULL));
 
             //modes for autonomous behavior
-            switch (mode) {
-                //state machine
+            switch (auto_state) {
+                //blimp_state machine
                 case searching: {
                     //check if goal scoring should be attempted
                     if (catches >= 1 && ((micros()/MICROS_TO_SEC - lastCatch) >= (MAX_SEARCH_WAIT_AFTER_ONE - (catches-1)*GAME_BALL_WAIT_TIME_PENALTY))) {
                         catches = TOTAL_ATTEMPTS;
-                        mode = goalSearch;
+                        auto_state = goalSearch;
                         goalYawDirection = searchDirection();  //randomize search direction
                         break;
                     }
 
                     if (catches >= TOTAL_ATTEMPTS) {
-                        mode = goalSearch;
+                        auto_state = goalSearch;
                         goalYawDirection = searchDirection();  //randomize search direction
                         break;
                     }
 
                     //begin search pattern spinning around at different heights
-                    if (target.size() == 0) {
+                    if (detected_target.size() == 0) {
 
                         //keep ball grabber closed
                         // ballGrabber.closeGrabber();
@@ -977,7 +979,7 @@ void loop() {
                             upCom = upA;
 
                         } else {
-                            //search behavoir (no target)
+                            //search behavoir (no detected_target)
                             //spin in a small circle looking for a game ball
                             //randomize the diretion selection
                             yawCom = GAME_BALL_YAW_SEARCH*searchYawDirection;
@@ -997,7 +999,7 @@ void loop() {
                         }
                     } else {
                         //move to approaching game ball
-                        mode = approach;
+                        auto_state = approach;
                         //start approaching timer
                         approachTimeStart = millis();
                     }
@@ -1005,7 +1007,7 @@ void loop() {
                 } case approach: {
 
                    //check if target is still valid
-                    if (target.size() > 0) {
+                    if (detected_target.size() > 0 && pixels[2] > BALL_APPROACH_THRESHOLD) {
                         //seeing a target
                         //add memory
                         temp_tx = tx;
@@ -1032,11 +1034,11 @@ void loop() {
 
                         //check if the gate should be opened
                         if (tz < BALL_GATE_OPEN_TRIGGER) {
-                            ballGrabber.openGrabber();
+                            ballGrabber.openGrabber(blimp_state);
 
                             //check if the catching mode should be triggered
-                            if (tz < BALL_CATCH_TRIGGER && pixels[2] > 85000) {
-                                mode = catching;
+                            if (tz < BALL_CATCH_TRIGGER && pixels[2] > BALL_CATCH_THRESHOLD) {
+                                auto_state = catching;
 
                                 //start catching timer
                                 catchTimeStart = millis();
@@ -1046,55 +1048,55 @@ void loop() {
                             }
                         } else {
                             //make sure grabber is closed, no game ball is close enough to catch
-                            ballGrabber.closeGrabber();
+                            ballGrabber.closeGrabber(blimp_state);
                         }
 
                         //if target is lost within 1 second
                         //remember the previous info about where the ball is 
-                        } else if((millis()-catchMemoryTimer) < 1000 && target.size() == 0){
-                            yawCom = xPID.calculate(GAME_BaLL_X_OFFSET, temp_tx, dt/1000); 
-                            upCom = -yPID.calculate(GAME_BALL_APPROACH_ANGLE, temp_ty, dt/1000);  
-                            forwardCom = GAME_BALL_CLOSURE_COM;
-                            translationCom = 0;
-                        } else {
-                            //no target, look for another
-                            //maybe add some memory
-                            mode = searching;
-                            ballGrabber.closeGrabber();
-                            searchYawDirection = searchDirection();  //randomize the search direction
-                        }
-                        break;
+                    }
+                        // else if((millis()-catchMemoryTimer) < 1000 && target.size() == 0){
+                        //     yawCom = xPID.calculate(GAME_BaLL_X_OFFSET, temp_tx, dt/1000); 
+                        //     upCom = -yPID.calculate(GAME_BALL_APPROACH_ANGLE, temp_ty, dt/1000);  
+                        //     forwardCom = GAME_BALL_CLOSURE_COM;
+                        //     translationCom = 0;
+                        // } 
+                    else {
+                        //no target, look for another
+                        //maybe add some memory
+                        auto_state = searching;
+                        ballGrabber.closeGrabber(blimp_state);
+                        searchYawDirection = searchDirection();  //randomize the search direction
+                    }
+                    break;
                 } case catching: {
-                    if (true) {
-                        //wait for 0.3 second
-                        // delay(300);
+                    //wait for 0.3 second
+                    // delay(300);
 
-                        forwardCom = CATCHING_FORWARD_COM;
-                        upCom = -CATCHING_UP_COM;
-                        yawCom = 0;
-                        translationCom = 0;
+                    forwardCom = CATCHING_FORWARD_COM;
+                    upCom = -CATCHING_UP_COM;
+                    yawCom = 0;
+                    translationCom = 0;
 
-                        if (catchTimeStart < millis() - catchTime) {
-                            //catching ended, start caught timer
-                            mode = caught;
-                            caughtTimeStart = millis();
-                            ballGrabber.closeGrabber();
+                    if (catchTimeStart < millis() - catchTime) {
+                        //catching ended, start caught timer
+                        auto_state = caught;
+                        caughtTimeStart = millis();
+                        ballGrabber.closeGrabber(blimp_state);
 
-                            //increment number of catches
-                            catches = catches + 1;
+                        //increment number of catches
+                        catches = catches + 1;
 
-                            //start catch timmer
-                            lastCatch = micros()/MICROS_TO_SEC;
-                        }
+                        //start catch timmer
+                        lastCatch = micros()/MICROS_TO_SEC;
                     }
                     break;
                 } case caught: {
                     if (catches > 0) {
                         //if a target is seen right after the catch
-                        if (target.size() > 0) {
+                        if (detected_target.size() > 0) {
                             //approach next game ball if visible
                             if (catches < TOTAL_ATTEMPTS) {
-                                mode = searching;
+                                auto_state = searching;
                                 searchYawDirection = searchDirection();  //randomize the search direction
                             }
                         }
@@ -1102,10 +1104,10 @@ void loop() {
                         //decide if the blimp is going to game ball search or goal search
                         if (caughtTimeStart < millis() - caughtTime) {
                             if (catches >= TOTAL_ATTEMPTS) {
-                                mode = goalSearch;
+                                auto_state = goalSearch;
                                 goalYawDirection = searchDirection();  //randomize search direction
                             } else {
-                                mode = searching;
+                                auto_state = searching;
                                 searchYawDirection = searchDirection();  //randomize the search direction
                             }
                         }
@@ -1114,7 +1116,7 @@ void loop() {
                         upCom = -CAUGHT_UP_COM;
                         yawCom = 0;
                     } else {
-                        mode = searching;
+                        auto_state = searching;
                         searchYawDirection = searchDirection();  //randomize the search direction
                     }
                     break;
@@ -1162,29 +1164,29 @@ void loop() {
                             forwardCom = GOAL_FORWARD_SEARCH;
                         }
 
-                        if (target.size() > 0) {
-                            mode = approachGoal;
+                        if (detected_target.size() > 0) {
+                            auto_state = approachGoal;
                         }
                     } else {
-                        mode = searching;
+                        auto_state = searching;
                         searchYawDirection = searchDirection();  //randomize the search direction
-                        ballGrabber.closeGrabber();
+                        ballGrabber.closeGrabber(blimp_state);
                     }
                     break;
                 } case approachGoal: {
-                    if (target.size() > 0 && catches >= TOTAL_ATTEMPTS) {
+                    if (detected_target.size() > 0 && catches >= TOTAL_ATTEMPTS) {
                         yawCom = xPID.calculate(GOAL_X_OFFSET, tx, dt);
                         upCom = -yPID.calculate(GOAL_APPROACH_ANGLE, ty, dt);
                         forwardCom = GOAL_CLOSURE_COM;
 
-                        if ((tz < GOAL_DISTANCE_TRIGGER && goalColor == orange && pixels[5] > 203000) || (tz < GOAL_DISTANCE_TRIGGER && goalColor == yellow && pixels[8] > 203000)) {
+                        if ((tz < GOAL_DISTANCE_TRIGGER && goalColor == orange && pixels[5] > 8000) || (tz < GOAL_DISTANCE_TRIGGER && goalColor == yellow && pixels[8] > 8000)) {
                             scoreTimeStart = millis();
-                            mode = scoringStart;
+                            auto_state = scoringStart;
                         }
                     } else {
-                        mode = goalSearch;
+                        auto_state = goalSearch;
                         goalYawDirection = searchDirection();  //randomize search direction
-                        ballGrabber.closeGrabber();
+                        ballGrabber.closeGrabber(blimp_state);
                     }
                     break;
                 } case scoringStart: {
@@ -1195,7 +1197,7 @@ void loop() {
                         upCom = -SCORING_UP_COM;
 
                         if (scoreTimeStart < millis() - scoreTime) {
-                            mode = shooting;     
+                            auto_state = shooting;     
                             shootingTimeStart = millis();
                             break;
                         }
@@ -1207,13 +1209,13 @@ void loop() {
                         forwardCom = SHOOTING_FORWARD_COM;
                         upCom = -SHOOTING_UP_COM;
 
-                        ballGrabber.shoot();
+                        ballGrabber.shoot(blimp_state);
                         catches = 0;
 
                         if (shootingTimeStart < millis() - shootingTime) {
-                            ballGrabber.closeGrabber();
+                            ballGrabber.closeGrabber(blimp_state);
                             scoredTimeStart = millis();
-                            mode = scored;
+                            auto_state = scored;
                             break;
                         }
                     }
@@ -1228,7 +1230,7 @@ void loop() {
                         upCom = SCORED_UP_COM;
 
                         if (scoredTimeStart < millis() - scoredTime) {
-                            mode = searching;
+                            auto_state = searching;
                             searchYawDirection = searchDirection();  //randomize the search direction
                             break;
                         }
@@ -1249,8 +1251,8 @@ void loop() {
             yawCom = 0.0;
         }
 
-        //publish state machine info to Basestation
-        state_machine_msg.data = mode;
+        //publish blimp_state machine info to Basestation
+        state_machine_msg.data = auto_state;
         RCSOFTCHECK(rcl_publish(&state_machine_publisher, &state_machine_msg, NULL));
 
         //safty height 
@@ -1284,7 +1286,7 @@ void loop() {
         upMotor = upCom;
 
         if (USE_EST_VELOCITY_IN_MANUAL == true) {
-            //using kalman filters for the current velosity feedback for full-state feeback PID controllers
+            //using kalman filters for the current velosity feedback for full-blimp_state feeback PID controllers
             // forwardMotor = forwardPID.calculate(forwardCom, xekf.v, dt);  //extended filter
             // float forwardMotor = forwardPID.calculate(forwardCom, kal_vel.x_vel_est, dt);
             // translationMotor = translationPID.calculate(translationCom, yekf.v, dt); //extended filter
@@ -1346,14 +1348,14 @@ void loop() {
             leftGimbal.updateGimbal(leftReady && rightReady);
             rightGimbal.updateGimbal(leftReady && rightReady);
         } else {
-            if (state == manual && !MOTORS_OFF){
+            if (blimp_state == manual && !MOTORS_OFF) {
                 //forward, translation, up, yaw, roll
                 if (!ZERO_MODE) motorControl.update(forwardMotor, -translationMotor, upMotor, yawMotor, 0);
                 bool leftReady = leftGimbal.readyGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, 0, motorControl.upLeft, motorControl.forwardLeft);
                 bool rightReady = rightGimbal.readyGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, 0, motorControl.upRight, motorControl.forwardRight);
                 leftGimbal.updateGimbal(leftReady && rightReady);
                 rightGimbal.updateGimbal(leftReady && rightReady);
-            } else if (state == autonomous && !MOTORS_OFF) {
+            } else if (blimp_state == autonomous && !MOTORS_OFF) {
                 motorControl.update(forwardMotor, -translationMotor, upMotor, yawMotor, 0);
                 bool leftReady = leftGimbal.readyGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, motorControl.yawLeft, motorControl.upLeft, motorControl.forwardLeft);
                 bool rightReady = rightGimbal.readyGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, motorControl.yawRight, motorControl.upRight, motorControl.forwardRight); 
