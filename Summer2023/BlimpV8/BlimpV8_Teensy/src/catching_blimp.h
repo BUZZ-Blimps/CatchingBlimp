@@ -137,7 +137,7 @@ if (uxr_millis() - init > MS) { X; init = uxr_millis();} \
 #define SCORING_UP_COM            180
 
 #define SHOOTING_FORWARD_COM      400  //counter back motion 
-#define SHOOTING_UP_COM           150
+#define SHOOTING_UP_COM           170
 //counter moment (right now we do want to shoot up because ball sinks)
 
 #define SCORED_FORWARD_COM        -250
@@ -159,7 +159,7 @@ if (uxr_millis() - init > MS) { X; init = uxr_millis();} \
 //motor timeout before entering lost state
 #define TEENSY_WAIT_TIME          2.0
 
-#define BALL_APPROACH_THRESHOLD   10000
+#define BALL_APPROACH_THRESHOLD   2500
 #define BALL_CATCH_THRESHOLD      62000
 
 //**************** TEENSY PINOUT ****************//
@@ -454,10 +454,10 @@ rcl_subscription_t pixels_subscription; //int64_multi_array
 // Define the name of the blimp/robot
 //std::string blimpNameSpace = "BurnCreamBlimp";
 //std::string blimpNameSpace = "SillyAhBlimp";
-// std::string blimpNameSpace = "TurboBlimp";
+ std::string blimpNameSpace = "TurboBlimp";
 //std::string blimpNameSpace = "GameChamberBlimp";
 //std::string blimpNameSpace = "FiveGuysBlimp";
-std::string blimpNameSpace = "SuperBeefBlimp";
+//std::string blimpNameSpace = "SuperBeefBlimp";
 
 //message types: String Bool Float32 Float32 MultiArray
 //message topics : /auto /baseBarometer /blimpID /grabbing /killed /motorCommands /shooting /identify /imu /goal_color /state_machine

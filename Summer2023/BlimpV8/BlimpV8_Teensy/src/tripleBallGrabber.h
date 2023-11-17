@@ -22,8 +22,8 @@ class TripleBallGrabber {
     double moveRate;
     double lastCommandTime = 0; // [s]
 
-    const double moveRate_manual = 1000.0; // [deg/s]
-    const double moveRate_auto = 45.0; // [deg/s]
+    const double moveRate_fast = 180.0; // [deg/s]
+    const double moveRate_slow = 45.0; // [deg/s]
 
     const double angle_closed = 83; // [deg]
     const double angle_open = 20; // [deg]

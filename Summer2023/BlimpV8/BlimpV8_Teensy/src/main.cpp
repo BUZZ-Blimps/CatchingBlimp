@@ -942,7 +942,7 @@ void loop() {
                     }
 
                     //begin search pattern spinning around at different heights
-                    if (detected_target.size() == 0) {
+                    if (detected_target.size() == 0 || pixels[2] < 9000) {
 
                         //keep ball grabber closed
                         // ballGrabber.closeGrabber();
@@ -1005,6 +1005,10 @@ void loop() {
                     }
                     break;
                 } case approach: {
+                    //max time to approach
+                    if (approachTimeMax < millis() - approachTimeStart) {
+                        auto_state = searching;
+                    }
 
                    //check if target is still valid
                     if (detected_target.size() > 0 && pixels[2] > BALL_APPROACH_THRESHOLD) {
@@ -1051,15 +1055,16 @@ void loop() {
                             ballGrabber.closeGrabber(blimp_state);
                         }
 
-                        //if target is lost within 1 second
+                        //if target is lost within 2 second
                         //remember the previous info about where the ball is 
                     }
-                        // else if((millis()-catchMemoryTimer) < 1000 && target.size() == 0){
-                        //     yawCom = xPID.calculate(GAME_BaLL_X_OFFSET, temp_tx, dt/1000); 
-                        //     upCom = -yPID.calculate(GAME_BALL_APPROACH_ANGLE, temp_ty, dt/1000);  
-                        //     forwardCom = GAME_BALL_CLOSURE_COM;
-                        //     translationCom = 0;
-                        // } 
+                    else if((millis()-catchMemoryTimer) < 2000 && detected_target.size() == 0){
+                            yawCom = xPID.calculate(GAME_BaLL_X_OFFSET, temp_tx, dt/1000); 
+                            upCom = -yPID.calculate(GAME_BALL_APPROACH_ANGLE, temp_ty, dt/1000);  
+                            forwardCom = GAME_BALL_CLOSURE_COM;
+                            translationCom = 0;
+                    } 
+                    // after two seconds of losing the target, the target is still not detected
                     else {
                         //no target, look for another
                         //maybe add some memory

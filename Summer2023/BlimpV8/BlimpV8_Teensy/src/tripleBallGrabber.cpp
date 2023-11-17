@@ -1,5 +1,5 @@
 #include "tripleBallGrabber.h"
-#include "catching_blimp.h"
+// #include "catching_blimp.h"
 
 TripleBallGrabber::TripleBallGrabber(int servoPin, int motorPin) {
   this->servo.attach(servoPin);
@@ -9,7 +9,7 @@ TripleBallGrabber::TripleBallGrabber(int servoPin, int motorPin) {
   currentAngle = angle_closed;
   targetAngle = currentAngle;
   state = state_closed;
-  moveRate = moveRate_auto;
+  moveRate = moveRate_slow;
 
   this->servo.write(currentAngle);
   this->motor.write(1500);
@@ -24,7 +24,8 @@ void TripleBallGrabber::openGrabber(int blimp_state) {
 }
 
 void TripleBallGrabber::closeGrabber(int blimp_state) {
-  updateMoveRate(blimp_state);
+  //updateMoveRate(blimp_state);
+  moveRate = moveRate_fast; // Close fast, regardless of state
 
   targetAngle = angle_closed;
   this->motor.write(1500);
@@ -64,9 +65,9 @@ void TripleBallGrabber::shoot(int blimp_state) {
 }
 
 void TripleBallGrabber::updateMoveRate(int blimp_state){
-  if(blimp_state == blimpState::manual){
-    moveRate = moveRate_manual;
+  if(blimp_state == 0){ // blimpState::manual
+    moveRate = moveRate_fast;
   }else{
-    moveRate = moveRate_auto;
+    moveRate = moveRate_slow;
   }
 }
