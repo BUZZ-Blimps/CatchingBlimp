@@ -3,9 +3,11 @@
 
 class Gimbal {
     public:
-    Gimbal(int yawPin, int pitchPin, int motorPin,double newDeadband, double newTurnOnCom, double newMinCom, double newMaxCom, double newPhiOffset, double filter);
+    // Gimbal();
+    void gimbal_init(int yawPin, int pitchPin, int motorPin,double newDeadband, double newTurnOnCom, double newMinCom, double newMaxCom, double newPhiOffset, double filter);
     bool readyGimbal(bool debug, bool motors_off, double roll, double pitch, double yaw, double up, double forward);
     void updateGimbal(bool ready);
+    double servoThreshold;
 
     private:
     double motorCom(double command);
@@ -16,7 +18,6 @@ class Gimbal {
     double maxCom;
     double phiOffset;
     double filter;
-    double servoThreshold;
     double nextMotorCom;
 
 
@@ -28,6 +29,6 @@ class Gimbal {
     double thetaPos;
     double phiPos1;
 
-    double pi = 3.14159265;
+    double pi = 3.1415927;
 
 };

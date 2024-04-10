@@ -4,7 +4,7 @@
 // Error handle loop
 void error_loop() {
     while(1) {
-        delay(1000);
+        delay(100);
     }
 }
 
@@ -313,7 +313,7 @@ void destroy_entities() {
 }
 
 // Functions create_entities and destroy_entities can take several seconds.
-// In order to reduce this rebuild the library wif
+// In order to reduce this rebuild the library wifi
 // - UCLIENT_MAX_SESSION_CONNECTION_ATTEMPTS=3
 
 //pulse function for adding ultrasonic
@@ -452,6 +452,11 @@ void setup() {
 
     //time out
     firstMessageTime = micros()/MICROS_TO_SEC;
+    
+    //initialize
+    ballGrabber.ballgrabber_init(GATE_S, PWM_G);
+    leftGimbal.gimbal_init(L_Yaw, L_Pitch, PWM_L, 25, 30, MIN_MOTOR, MAX_MOTOR, 45, 0.5);
+    rightGimbal.gimbal_init(R_Yaw, R_Pitch, PWM_R, 25, 30, MIN_MOTOR, MAX_MOTOR, 135, 0.5);
 }
 
 void update_agent_state() {
@@ -517,6 +522,7 @@ void loop() {
     //----------------------------------LOST---------------------------------------
     //Switch to lost blimp_state if we lose connection to the base station
     if (loop_time - lastMsgTime > TEENSY_WAIT_TIME) {
+        publish_log("I am lost:(");
         blimp_state = lost;
     }
 
@@ -649,7 +655,7 @@ void loop() {
             height_msg.data = actualBaro;
             RCSOFTCHECK(rcl_publish(&height_publisher, &height_msg, NULL));
 
-        } else    {
+        } else {
             actualBaro = 1000;
         }
 
@@ -1281,23 +1287,29 @@ void loop() {
         yawMotor = yawPID.calculate(yawCom, yawRateFilter.last, dt);  
 
         if (abs(yawCom-yawRateFilter.last) < deadband) {
+           
             yawMotor = 0;
+
         } else {
+
             yawMotor = tanh(yawMotor)*abs(yawMotor);
+
         }
 
-        //TO DO: im prove velocity control
+        //TO DO: improve velocity control
         // upMotor = verticalPID.calculate(upCom, kf.v, dt); //up velocity from barometer
+        // What's up motor? :)
         upMotor = upCom;
 
         if (USE_EST_VELOCITY_IN_MANUAL == true) {
             //using kalman filters for the current velosity feedback for full-blimp_state feeback PID controllers
+
             // forwardMotor = forwardPID.calculate(forwardCom, xekf.v, dt);  //extended filter
             // float forwardMotor = forwardPID.calculate(forwardCom, kal_vel.x_vel_est, dt);
             // translationMotor = translationPID.calculate(translationCom, yekf.v, dt); //extended filter
             // float translationMotor = translationPID.calculate(translationCom, kal_vel.y_vel_est, dt); 
         } else{
-        //without PID
+            //without PID
             forwardMotor = forwardCom;
             translationMotor = translationCom;
         }
@@ -1341,6 +1353,7 @@ void loop() {
 
         //gimbal + motor updates
         ballGrabber.update();
+
         if (loop_time < 10 + firstMessageTime) {
             //filter base station data
             baroOffset.filter(baseBaro-BerryIMU.comp_press);

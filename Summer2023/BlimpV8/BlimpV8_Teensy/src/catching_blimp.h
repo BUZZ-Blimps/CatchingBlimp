@@ -48,6 +48,7 @@
 #include "tripleBallGrabber.h"
 #include "Gimbal.h"
 
+
 #define EXECUTE_EVERY_N_MS(MS, X)  do { \
 static volatile int64_t init = -1; \
 if (init == -1) { init = uxr_millis();} \
@@ -273,8 +274,8 @@ GyroEKF gyroEKF;
 
 //Gimbal leftGimbal(yawPin, pitchPin, motorPin, newDeadband, newTurnOnCom, newMinCom, newMaxCom);
 MotorControl motorControl;
-Gimbal leftGimbal(L_Yaw, L_Pitch, PWM_L, 25, 30, 1000, MAX_MOTOR, 45, 0.5);
-Gimbal rightGimbal(R_Yaw, R_Pitch, PWM_R, 25, 30, 1000, MAX_MOTOR, 135, 0.5);
+Gimbal leftGimbal;
+Gimbal rightGimbal;
 
 //Manual PID control
 PID verticalPID(350, 0, 0);  //not used for now due to baro reading malfunction
@@ -309,7 +310,7 @@ EMAFilter baroOffset(0.5);
 EMAFilter rollOffset(0.5);
 
 //ball grabber object
-TripleBallGrabber ballGrabber(GATE_S, PWM_G);
+TripleBallGrabber ballGrabber;
 
 //timing global variables for each update loop
 float lastSensorFastLoopTick = 0.0;
@@ -452,12 +453,12 @@ rcl_subscription_t pixels_subscription; //int64_multi_array
 
 //The following names can be commented/uncommented based on the blimp that is used
 // Define the name of the blimp/robot
-//std::string blimpNameSpace = "BurnCreamBlimp";
+std::string blimpNameSpace = "BurnCreamBlimp";
 //std::string blimpNameSpace = "SillyAhBlimp";
 // std::string blimpNameSpace = "TurboBlimp";
 //std::string blimpNameSpace = "GameChamberBlimp";
 //std::string blimpNameSpace = "FiveGuysBlimp";
-std::string blimpNameSpace = "SuperBeefBlimp";
+// std::string blimpNameSpace = "SuperBeefBlimp";
 
 //message types: String Bool Float32 Float32 MultiArray
 //message topics : /auto /baseBarometer /blimpID /grabbing /killed /motorCommands /shooting /identify /imu /goal_color /state_machine

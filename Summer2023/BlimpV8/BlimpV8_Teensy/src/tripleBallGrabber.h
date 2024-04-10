@@ -5,7 +5,8 @@
 
 class TripleBallGrabber {  
   public:
-    TripleBallGrabber(int servoPin, int motorPin);
+    TripleBallGrabber();
+    void ballgrabber_init(int servoPin, int motorPin);
     void openGrabber(int blimp_state);
     void closeGrabber(int blimp_state);
     void update();

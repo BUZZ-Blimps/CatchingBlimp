@@ -1,16 +1,17 @@
 #include "tripleBallGrabber.h"
 // #include "catching_blimp.h"
 
-TripleBallGrabber::TripleBallGrabber(int servoPin, int motorPin) {
-  this->servo.attach(servoPin);
-  this->motor.attach(motorPin);
-  
+TripleBallGrabber::TripleBallGrabber() {
   // Start closed
   currentAngle = angle_closed;
   targetAngle = currentAngle;
   state = state_closed;
   moveRate = moveRate_slow;
+}
 
+void TripleBallGrabber::ballgrabber_init(int servoPin, int motorPin){
+  this->servo.attach(servoPin);
+  this->motor.attach(motorPin);
   this->servo.write(currentAngle);
   this->motor.write(1500);
 }
