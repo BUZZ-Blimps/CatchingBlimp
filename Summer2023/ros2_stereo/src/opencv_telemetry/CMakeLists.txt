@@ -58,7 +58,9 @@ ament_target_dependencies(split_sync_images
 add_library(resized_plugins src/manifest.cpp src/resized_publisher.cpp src/resized_subscriber.cpp)
 ament_target_dependencies(resized_plugins
   "image_transport"
-  "OpenCV")
+  "OpenCV"
+  "cv_bridge"
+  "pluginlib")
 
 # add the publisher from video example
 add_executable(minimal_opencv_ros2_node src/minimal_opencv_ros2_node.cpp)
