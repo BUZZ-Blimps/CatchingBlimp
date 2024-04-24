@@ -7,8 +7,8 @@ git clone https://github.com/PaulStoffregen/teensy_loader_cli.git
 cd teensy_loader_cli.git
 
 # Install dependencies
-sudo apt get install gcc
-sudo apt get install libusb-dev
+sudo apt install gcc
+sudo apt install libusb-dev
 
 # Create teensy_loader_cli bash script
 # WARNING: POTENTIAL ERROR MAY OCCUR IF NOT USING LINUX
