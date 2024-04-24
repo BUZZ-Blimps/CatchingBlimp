@@ -12,8 +12,8 @@
 
 void BerryIMU_v3::BerryIMU_v3_Setup(){
   Wire.begin();        // Initialise i2c
-  Wire.setClock(400000);  //Change i2c bus speed to 400kHz
-  Serial.begin(115200); //Start serial for output set to 115200 Baud Rate
+  Wire.setClock(100000);  //Change i2c bus speed to 400kHz
+  // Serial.begin(115200); //Start serial for output set to 115200 Baud Rate
   ref_pressure_found = true;
 
   //Initialize the accelerometer

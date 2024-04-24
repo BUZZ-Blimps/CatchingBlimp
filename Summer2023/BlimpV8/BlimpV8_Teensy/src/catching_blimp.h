@@ -71,28 +71,28 @@ if (uxr_millis() - init > MS) { X; init = uxr_millis();} \
 
 //optional controllers
 #define USE_EST_VELOCITY_IN_MANUAL  false    //use false to turn off the velosity control to see the blimp's behavior 
-#define USE_OBJECT_AVOIDENCE      true     //use false to turn off the obstacle avoidance 
+#define USE_OBJECT_AVOIDENCE      false     //use false to turn off the obstacle avoidance 
 
 //catch search time after one
 #define MAX_SEARCH_WAIT_AFTER_ONE     80.0    //max searching 
 #define GAME_BALL_WAIT_TIME_PENALTY   0    //should be set to 20, every catch assumed to be 20 seconds long  
 
 //number of catches attempted
-#define TOTAL_ATTEMPTS            2    // attempts at catching 
+#define TOTAL_ATTEMPTS            4    // attempts at catching 
 #define MAX_ATTEMPTS              5    //should be set to 5
 
 //flight area parameters
-#define CEIL_HEIGHT               9      //m
-#define FLOOR_HEIGHT              5    //m
+#define CEIL_HEIGHT               6      //m
+#define FLOOR_HEIGHT              1    //m
 
 #define MAX_HEIGHT                2    //m  (unused)
-#define GOAL_HEIGHT               7.5   //m
+#define GOAL_HEIGHT               6.5   //m
 #define GOAL_HEIGHT_DEADBAND      0.4   //m
 
 //distance triggers
 #define GOAL_DISTANCE_TRIGGER    1.3  //m distance for blimp to trigger goal score 	
 #define BALL_GATE_OPEN_TRIGGER   2    //m distance for blimp to open the gate 	
-#define BALL_CATCH_TRIGGER       1.4  //m distance for blimp to start the open-loop control
+#define BALL_CATCH_TRIGGER       1.2  //m distance for blimp to start the open-loop control
 #define AVOID_TRIGGER       0.8  //m distance for blimp to start the open-loop control
 
 
@@ -103,9 +103,9 @@ if (uxr_millis() - init > MS) { X; init = uxr_millis();} \
 
 //autonomy tunning parameters
 // the inputs are bounded from -2 to 2, yaw is maxed out at 120 deg/s
-#define GAME_BALL_YAW_SEARCH      -15  //deg/s
-#define GAME_BALL_FORWARD_SEARCH  130 //30% throttle 
-#define GAME_BALL_VERTICAL_SEARCH 50  //m/s
+#define GAME_BALL_YAW_SEARCH      -15  // deg/s
+#define GAME_BALL_FORWARD_SEARCH  130 // 30% throttle 
+#define GAME_BALL_VERTICAL_SEARCH 50  // m/s
 
 
 #define GAME_BALL_CLOSURE_COM     110  //approaching at 20% throttle cap
@@ -135,10 +135,10 @@ if (uxr_millis() - init > MS) { X; init = uxr_millis();} \
 
 #define SCORING_YAW_COM           0
 #define SCORING_FORWARD_COM       400 //40% throttle
-#define SCORING_UP_COM            180
+#define SCORING_UP_COM            80
 
 #define SHOOTING_FORWARD_COM      400  //counter back motion 
-#define SHOOTING_UP_COM           170
+#define SHOOTING_UP_COM           100
 //counter moment (right now we do want to shoot up because ball sinks)
 
 #define SCORED_FORWARD_COM        -250
@@ -187,8 +187,8 @@ if (uxr_millis() - init > MS) { X; init = uxr_millis();} \
 #define MICROS_TO_SEC             1000000.0
 #define BUFFER_LEN                512
 #define MAX_TARGETS               100
-#define MIN_MOTOR                 1250
-#define MAX_MOTOR                 1850
+#define MIN_MOTOR                 1000
+#define MAX_MOTOR                 2000
 
 //-----States for blimp and grabber-----
 enum agentState {
@@ -408,7 +408,7 @@ float goalYawDirection = -1;
 //avoidance data (9 quadrants), targets data and pixel data (balloon, orange goal, yellow goal)
 //1000 means object is not present
 std::vector<double> avoidance = {1000.0, 1000.0, 1000.0, 1000.0, 1000.0, 1000.0, 1000.0, 1000.0, 1000.0};
-std::vector<double> targets = {1000.0, 1000.0, 1000.0, 1000.0, 1000.0, 1000.0, 1000.0, 1000.0, 1000.0};
+std::vector<double> targets = {1000.0, 1000.0, 1000.0};
 std::vector<int64_t> pixels = {1000, 1000, 0, 1000, 1000, 0, 1000, 1000, 0};
 
 //------------------MICRO ROS publishers/subscribers--------------
@@ -453,12 +453,12 @@ rcl_subscription_t pixels_subscription; //int64_multi_array
 
 //The following names can be commented/uncommented based on the blimp that is used
 // Define the name of the blimp/robot
-std::string blimpNameSpace = "BurnCreamBlimp";
+// std::string blimpNameSpace = "BurnCreamBlimp";
 //std::string blimpNameSpace = "SillyAhBlimp";
 // std::string blimpNameSpace = "TurboBlimp";
-//std::string blimpNameSpace = "GameChamberBlimp";
+// std::string blimpNameSpace = "GameChamberBlimp";
 //std::string blimpNameSpace = "FiveGuysBlimp";
-// std::string blimpNameSpace = "SuperBeefBlimp";
+std::string blimpNameSpace = "SuperBeefBlimp";
 
 //message types: String Bool Float32 Float32 MultiArray
 //message topics : /auto /baseBarometer /blimpID /grabbing /killed /motorCommands /shooting /identify /imu /goal_color /state_machine

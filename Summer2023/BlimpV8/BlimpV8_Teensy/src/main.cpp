@@ -186,8 +186,8 @@ void avoidance_subscription_callback(const void *msgin)
 void targets_subscription_callback(const void *msgin)
 {
     const std_msgs__msg__Float64MultiArray *targets_msg = (const std_msgs__msg__Float64MultiArray *)msgin;
-    //3 objects with xyz (9 elements in total)
-    for (size_t i = 0; i < 9; ++i) {
+    // object of interest with xyz (3 elements in total)
+    for (size_t i = 0; i < 3; ++i) {
         targets[i] = targets_msg->data.data[i];
     }
 }
@@ -649,10 +649,11 @@ void loop() {
 
         //compute the corrected height with base station baro data and offset
         if (baseBaro != 0) {
-            actualBaro = 44330 * (1 - pow(((BerryIMU.comp_press - baroCalibrationOffset)/baseBaro), (1/5.255))); //In meters Base Baro is the pressure
+            actualBaro = 44330 * (1 - pow(((BerryIMU.comp_press - baroCalibrationOffset)/baseBaro), (1/5.255))); // In meters Base Baro is the pressure
 
             //publish Height
             height_msg.data = actualBaro;
+            // height_msg.data = BerryIMU.comp_press;  //only for debug
             RCSOFTCHECK(rcl_publish(&height_publisher, &height_msg, NULL));
 
         } else {
@@ -852,12 +853,31 @@ void loop() {
             //new target (empty target)
             std::vector<double> detected_target;
 
+            if (targets[2] != 1000){
+                float rawZ = targets[2]; // distance
+                tx = xFilter.filter(static_cast<float>(targets[0]));
+                ty = yFilter.filter(static_cast<float>(targets[1]));
+                // tz = zFilter.filter(rawZ);
+                tz = rawZ;
+
+                detected_target.push_back(tx);
+                detected_target.push_back(ty);
+                detected_target.push_back(tz);
+            } else {
+                // no target, set to default value
+                xFilter.filter(0);
+                yFilter.filter(0);
+                // zFilter.filter(7);
+                // areaFilter.filter(0);
+            }
+            
+            /*
             //update targets data if any target exists
             //TODO: add area to verify distance 
             //balloon 
             if (targets[2] != 1000 && (auto_state == searching || auto_state == approach || auto_state == catching)) {
                 float rawZ = targets[2]; //balloon distance
-                //update filtered target coordinates (3D space, with center of camera as (0,0,0))
+                // update filtered target coordinates (3D space, with center of camera as (0,0,0))
                 // tx = xFilter.filter(targets[0]); (3D)
                 // ty = yFilter.filter(targets[1]);
                 tx = xFilter.filter(static_cast<float>(pixels[0]));
@@ -917,6 +937,8 @@ void loop() {
                 zFilter.filter(0);
                 // areaFilter.filter(0);
             }
+            */
+
 
             //test target message
 
@@ -948,7 +970,7 @@ void loop() {
                     }
 
                     //begin search pattern spinning around at different heights
-                    if (detected_target.size() == 0 || pixels[2] < 9000) {
+                    if (detected_target.size() == 0) {
 
                         //keep ball grabber closed
                         // ballGrabber.closeGrabber();
@@ -985,7 +1007,7 @@ void loop() {
                             upCom = upA;
 
                         } else {
-                            //search behavoir (no detected_target)
+                            //search behavior (no detected_target)
                             //spin in a small circle looking for a game ball
                             //randomize the diretion selection
                             yawCom = GAME_BALL_YAW_SEARCH*searchYawDirection;
@@ -994,15 +1016,16 @@ void loop() {
                         }
 
                         //move up and down within the set boundry
-                        if (actualBaro > CEIL_HEIGHT || !wasUp) {
-                            if (wasUp) wasUp = false;
+                        if (actualBaro > CEIL_HEIGHT) {
+                            // if (wasUp) wasUp = false;
                             upCom = GAME_BALL_VERTICAL_SEARCH; //down
                         }
 
-                        if (actualBaro < FLOOR_HEIGHT || wasUp) {
-                            if (!wasUp) wasUp = true;
+                        if (actualBaro < FLOOR_HEIGHT) {
+                            // if (!wasUp) wasUp = true;
                             upCom = -GAME_BALL_VERTICAL_SEARCH;  //up
                         }
+
                     } else {
                         //move to approaching game ball
                         auto_state = approach;
@@ -1011,13 +1034,13 @@ void loop() {
                     }
                     break;
                 } case approach: {
-                    //max time to approach
+                    // max time to approach
                     if (approachTimeMax < millis() - approachTimeStart) {
                         auto_state = searching;
                     }
 
                    //check if target is still valid
-                    if (detected_target.size() > 0 && pixels[2] > BALL_APPROACH_THRESHOLD) {
+                    if (detected_target.size() > 0) {
                         //seeing a target
                         //add memory
                         temp_tx = tx;
@@ -1047,7 +1070,7 @@ void loop() {
                             ballGrabber.openGrabber(blimp_state);
 
                             //check if the catching mode should be triggered
-                            if (tz < BALL_CATCH_TRIGGER && pixels[2] > BALL_CATCH_THRESHOLD) {
+                            if (tz < BALL_CATCH_TRIGGER) {
                                 auto_state = catching;
 
                                 //start catching timer
@@ -1061,10 +1084,10 @@ void loop() {
                             ballGrabber.closeGrabber(blimp_state);
                         }
 
-                        //if target is lost within 2 second
+                        //if target is lost within 1 second
                         //remember the previous info about where the ball is 
                     }
-                    else if((millis()-catchMemoryTimer) < 2000 && detected_target.size() == 0){
+                    else if((millis()-catchMemoryTimer) < 1000 && detected_target.size() == 0){
                             yawCom = xPID.calculate(GAME_BaLL_X_OFFSET, temp_tx, dt/1000); 
                             upCom = -yPID.calculate(GAME_BALL_APPROACH_ANGLE, temp_ty, dt/1000);  
                             forwardCom = GAME_BALL_CLOSURE_COM;
@@ -1178,6 +1201,7 @@ void loop() {
                         if (detected_target.size() > 0) {
                             auto_state = approachGoal;
                         }
+                        
                     } else {
                         auto_state = searching;
                         searchYawDirection = searchDirection();  //randomize the search direction
@@ -1190,7 +1214,7 @@ void loop() {
                         upCom = -yPID.calculate(GOAL_APPROACH_ANGLE, ty, dt);
                         forwardCom = GOAL_CLOSURE_COM;
 
-                        if ((tz < GOAL_DISTANCE_TRIGGER && goalColor == orange && pixels[5] > 8000) || (tz < GOAL_DISTANCE_TRIGGER && goalColor == yellow && pixels[8] > 8000)) {
+                        if ((tz < GOAL_DISTANCE_TRIGGER && goalColor == orange) || (tz < GOAL_DISTANCE_TRIGGER && goalColor == yellow)) {
                             scoreTimeStart = millis();
                             auto_state = scoringStart;
                         }
@@ -1234,7 +1258,7 @@ void loop() {
                 } case scored: {
                     if (true) {
 
-                        // ballGrabber.closeGrabber();
+                        // ballGrabber.closeGrabber(blimp_state);
 
                         yawCom = 0;
                         forwardCom = SCORED_FORWARD_COM;
@@ -1283,7 +1307,7 @@ void loop() {
         float translationMotor = 0.0;
 
         //hyperbolic tan for yaw "filtering"
-        float deadband = 1.0; //deadband for filteration
+        float deadband = 5; // deadband for filteration
         yawMotor = yawPID.calculate(yawCom, yawRateFilter.last, dt);  
 
         if (abs(yawCom-yawRateFilter.last) < deadband) {
