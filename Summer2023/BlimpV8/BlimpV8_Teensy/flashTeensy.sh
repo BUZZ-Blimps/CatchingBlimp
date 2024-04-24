@@ -1,46 +1,36 @@
-#/bin/bash
+#!/bin/bash
 
-if ( [ "$#" -gt 1 ] || [ "$#" -lt 1 ] );
-then
-    echo "Invalid number of arguments"
-elif ( [ "$1" -lt 1 ] || [ "$1" -gt 6 ] );
-then
-    echo "Invalid input value"
-elif ( [ "$#" -eq 1 ] );
-then
+echo "Starting the script..."
 
-    # Very Slow
-    #sshpass -p 1234 ssh orangepi$1@orangepi$1 ./stopMicroros.sh
-
-    sed -i '/std::string blimpNameSpace = /s/^\/\?\/\?/\/\//' "src/catching_blimp.h"
-    if [ "$1" = "1" ]; then
-    	sed -i "/std::string blimpNameSpace = \"BurnCreamBlimp\"/s/^\/\///" "src/catching_blimp.h"
-    elif [ "$1" = "2" ]; then
-    	sed -i "/std::string blimpNameSpace = \"SillyAhBlimp\"/s/^\/\///" "src/catching_blimp.h"
-    elif [ "$1" = "3" ]; then
-    	sed -i "/std::string blimpNameSpace = \"TurboBlimp\"/s/^\/\///" "src/catching_blimp.h"
-    elif [ "$1" = "4" ]; then
-    	sed -i "/std::string blimpNameSpace = \"GameChamberBlimp\"/s/^\/\///" "src/catching_blimp.h"
-    elif [ "$1" = "5" ]; then
-    	sed -i "/std::string blimpNameSpace = \"FiveGuysBlimp\"/s/^\/\///" "src/catching_blimp.h"
-    elif [ "$1" = "6" ]; then
-    	sed -i "/std::string blimpNameSpace = \"SuperBeefBlimp\"/s/^\/\///" "src/catching_blimp.h"
-    fi
-
-    #Build firmware.hex file
-    platformio run --environment teensy40
-
-    #Copy firmware.hex file to Orange Pi
-    sshpass -p 1234 scp /home/corelab/GitHub/CatchingBlimp/Summer2023/BlimpV8/BlimpV8_Teensy/.pio/build/teensy40/firmware.hex orangepi$1@orangepi$1:/home/orangepi$1/teensyCode/
-
-    #Enter into the Orange Pi
-    #Flash the Teensy (For some reason we have to do this twice)
-    #Must press the button if the Teensy has never been flashed before
-    sshpass -p 1234 ssh orangepi$1@orangepi$1 "/home/orangepi$1/teensy_loader_cli/teensy_loader_cli -mmcu=TEENSY40 -s -w -v /home/orangepi$1/teensyCode/firmware.hex; /home/orangepi$1/teensy_loader_cli/teensy_loader_cli -mmcu=TEENSY40 -s -w -v /home/orangepi$1/teensyCode/firmware.hex"
-
-    # Doesn't work without password
-    #sshpass -p 1234 ssh orangepi$1@orangepi$1 ./restartMicroros.sh
+if [ "$#" -ne 2 ]; then
+    echo "Usage: $0 <OrangePi Number> <Path to firmware.hex>"
+    exit 1
 fi
 
-#WARNING: IF THE BLIMP DOES NOT APPEAR ON THE BASE STATION, THEN SSH INTO THE PI AND CHECK THAT
-#	  MICROROS IS RUNNING
+orangePiNumber=$1
+hexFilePath=$2
+
+echo "Checking Orange Pi number validity..."
+if [ "$orangePiNumber" -lt 1 ] || [ "$orangePiNumber" -gt 6 ]; then
+    echo "Invalid Orange Pi number: $orangePiNumber"
+    exit 1
+fi
+
+echo "Updating the namespace in the source file..."
+sed -i '/std::string blimpNameSpace = /s/^\/\?\/\?/\/\//' "src/catching_blimp.h"
+case "$orangePiNumber" in
+    1) sed -i "/std::string blimpNameSpace = \"BurnCreamBlimp\"/s/^\/\///" "src/catching_blimp.h" ;;
+    2) sed -i "/std::string blimpNameSpace = \"SillyAhBlimp\"/s/^\/\///" "src/catching_blimp.h" ;;
+    3) sed -i "/std::string blimpNameSpace = \"TurboBlimp\"/s/^\/\///" "src/catching_blimp.h" ;;
+    4) sed -i "/std::string blimpNameSpace = \"GameChamberBlimp\"/s/^\/\///" "src/catching_blimp.h" ;;
+    5) sed -i "/std::string blimpNameSpace = \"FiveGuysBlimp\"/s/^\/\///" "src/catching_blimp.h" ;;
+    6) sed -i "/std::string blimpNameSpace = \"SuperBeefBlimp\"/s/^\/\///" "src/catching_blimp.h" ;;
+esac
+
+echo "Copying the firmware.hex file to the appropriate Orange Pi..."
+sshpass -p buzzblimps scp -o StrictHostKeyChecking=no "$hexFilePath" opi@192.168.0.10$orangePiNumber:/home/opi/teensyCode/
+
+echo "Flashing the Teensy on the Orange Pi..."
+sshpass -p buzzblimps ssh -o StrictHostKeyChecking=no opi@192.168.0.10$orangePiNumber " /home/opi/teensy_loader_cli/teensy_loader_cli -mmcu=TEENSY40 -s -w -v /home/opi/teensyCode/firmware.hex"
+
+echo "Script completed successfully."
