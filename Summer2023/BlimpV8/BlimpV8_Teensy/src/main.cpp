@@ -1020,12 +1020,46 @@ void loop() {
                             //upCom = 0;    //is overriden later, defined here as a safety net
                             // forwardCom = GAME_BALL_FORWARD_SEARCH;
                             
+                            // Timeline:
+                            // SearchingStart -> +18 seconds -> +20 seconds -> restart searching
+                            double elapsedSearchingTime = millis() - searchingTimeStart;
+                            std::string message = "elapsedSearchTime=" + std::to_string(elapsedSearchingTime) + "s.";
+                            if(elapsedSearchingTime < searchTime){
+                                backingUp = false;
+                                yawCom = GAME_BALL_YAW_SEARCH*searchYawDirection;
+                                forwardCom = GAME_BALL_FORWARD_SEARCH;
 
-                            // // Prolly hit a net
+                                if (actualBaro > CEIL_HEIGHT) {
+                                    upCom = GAME_BALL_VERTICAL_SEARCH; //down
+                                }else if (actualBaro < FLOOR_HEIGHT) {
+                                    upCom = -GAME_BALL_VERTICAL_SEARCH;  //up
+                                }else{
+                                    upCom = 0;
+                                }
+                            }else if(elapsedSearchingTime < searchTime + backupTime){
+                                if(!backingUp){
+                                    backingUp = true;
+                                    searchYawDirection = searchDirection();
+                                }   
+                                message += " Backup!";
+                                
+                                yawCom = 35*searchYawDirection;
+                                forwardCom = -240;
+                                upCom = -100;
+                            }else{
+                                message += " Reset!";
+                                searchingTimeStart = millis();
+                            }
+                            publish_log(message.c_str());
+
+                            // Prolly hit a net
                             // if (20000 < millis()- searchingTimeStart){
                             //     double backupTimer = millis();
 
+                            //     std::string message = "20+ seconds.";
+
                             //     if (2200 > millis() - backupTimer) {
+                            //         message += " first 2 seconds.";
                             //         searchYawDirection = searchDirection();
                             //         yawCom = 60*searchYawDirection;
                             //         upCom = -50;    //is overriden later, defined here as a safety net
@@ -1033,29 +1067,30 @@ void loop() {
                             //     }
 
                             //     searchingTimeStart = millis(); 
+                            //     publish_log(message.c_str());
                             // }
 
                             //move up and down within the set boundry
-                            if (actualBaro > CEIL_HEIGHT) {
-                                // if (wasUp) wasUp = false;
-                                yawCom = GAME_BALL_YAW_SEARCH*searchYawDirection;
-                                upCom = GAME_BALL_VERTICAL_SEARCH; //down
-                                forwardCom = GAME_BALL_FORWARD_SEARCH;
-                            }
+                            // if (actualBaro > CEIL_HEIGHT) {
+                            //     // if (wasUp) wasUp = false;
+                            //     yawCom = GAME_BALL_YAW_SEARCH*searchYawDirection;
+                            //     upCom = GAME_BALL_VERTICAL_SEARCH; //down
+                            //     forwardCom = GAME_BALL_FORWARD_SEARCH;
+                            // }
 
-                            if (actualBaro < FLOOR_HEIGHT) {
-                                // if (!wasUp) wasUp = true;
-                                yawCom = GAME_BALL_YAW_SEARCH*searchYawDirection;
-                                upCom = -GAME_BALL_VERTICAL_SEARCH;  //up
-                                forwardCom = GAME_BALL_FORWARD_SEARCH;
-                            }
+                            // if (actualBaro < FLOOR_HEIGHT) {
+                            //     // if (!wasUp) wasUp = true;
+                            //     yawCom = GAME_BALL_YAW_SEARCH*searchYawDirection;
+                            //     upCom = -GAME_BALL_VERTICAL_SEARCH;  //up
+                            //     forwardCom = GAME_BALL_FORWARD_SEARCH;
+                            // }
 
-                            if (actualBaro <= CEIL_HEIGHT && actualBaro >=FLOOR_HEIGHT) {
-                                // if (wasUp) wasUp = false;
-                                yawCom = GAME_BALL_YAW_SEARCH*searchYawDirection;
-                                upCom = 0;
-                                forwardCom = GAME_BALL_FORWARD_SEARCH;
-                            }
+                            // if (actualBaro <= CEIL_HEIGHT && actualBaro >=FLOOR_HEIGHT) {
+                            //     // if (wasUp) wasUp = false;
+                            //     yawCom = GAME_BALL_YAW_SEARCH*searchYawDirection;
+                            //     upCom = 0;
+                            //     forwardCom = GAME_BALL_FORWARD_SEARCH;
+                            // }
                         }
 
                     } else {
