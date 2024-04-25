@@ -37,6 +37,8 @@ case "$orangePiNumber" in
     6) sed -i "/std::string blimpNameSpace = \"SuperBeefBlimp\"/s/^\/\///" "src/catching_blimp.h" ;;
 esac
 
+platformio run --environment teensy40
+
 echo "Ensuring the teensyCode directory exists on the Orange Pi..."
 sshpass -p buzzblimps ssh -o StrictHostKeyChecking=no opi@192.168.0.10$orangePiNumber "mkdir -p /home/opi/teensy_loader_cli/teensyCode/"
 
