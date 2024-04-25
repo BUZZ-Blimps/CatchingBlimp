@@ -62,7 +62,7 @@ void TripleBallGrabber::shoot(int blimp_state) {
   targetAngle = angle_open;
   currentAngle = targetAngle;
   state = state_shooting;
-  this->motor.write(1850);
+  this->motor.write(2000);
 }
 
 void TripleBallGrabber::updateMoveRate(int blimp_state){

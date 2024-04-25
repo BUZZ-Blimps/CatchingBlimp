@@ -103,14 +103,14 @@ if (uxr_millis() - init > MS) { X; init = uxr_millis();} \
 
 //autonomy tunning parameters
 // the inputs are bounded from -2 to 2, yaw is maxed out at 120 deg/s
-#define GAME_BALL_YAW_SEARCH      -15  // deg/s
+#define GAME_BALL_YAW_SEARCH      -7  // deg/s
 #define GAME_BALL_FORWARD_SEARCH  130 // 30% throttle 
 #define GAME_BALL_VERTICAL_SEARCH 50  // m/s
 
 
 #define GAME_BALL_CLOSURE_COM     110  //approaching at 20% throttle cap
-#define GAME_BALL_APPROACH_ANGLE  30  //approach magic number (TODO: reset)
-#define GAME_BaLL_X_OFFSET        60   //offset magic number (TODO: reset)
+#define GAME_BALL_APPROACH_ANGLE  40  //approach magic number (TODO: reset)
+#define GAME_BaLL_X_OFFSET        40   //offset magic number (TODO: reset)
 
 #define CATCHING_FORWARD_COM      300  //catching at 50% throttle 
 #define CATCHING_UP_COM           50  //damp out pitch
@@ -344,6 +344,8 @@ float rotation = 0;
 float ground_pressure = 0;
 
 //timers for state machine
+double searchingTimeStart = 0.0;
+
 double approachTimeStart = 0;
 double approachTimeMax = 10000;   //ms
 
@@ -453,12 +455,12 @@ rcl_subscription_t pixels_subscription; //int64_multi_array
 
 //The following names can be commented/uncommented based on the blimp that is used
 // Define the name of the blimp/robot
- std::string blimpNameSpace = "BurnCreamBlimp";
+//  std::string blimpNameSpace = "BurnCreamBlimp";
 //std::string blimpNameSpace = "SillyAhBlimp";
-// std::string blimpNameSpace = "TurboBlimp";
-// std::string blimpNameSpace = "GameChamberBlimp";
+ std::string blimpNameSpace = "TurboBlimp";
+//std::string blimpNameSpace = "GameChamberBlimp";
 //std::string blimpNameSpace = "FiveGuysBlimp";
-//std::string blimpNameSpace = "SuperBeefBlimp";
+// std::string blimpNameSpace = "SuperBeefBlimp";
 
 //message types: String Bool Float32 Float32 MultiArray
 //message topics : /auto /baseBarometer /blimpID /grabbing /killed /motorCommands /shooting /identify /imu /goal_color /state_machine
