@@ -2,6 +2,16 @@
 
 echo "Starting the script..."
 
+# Check if sshpass is installed, if not, install it
+if ! command -v sshpass &> /dev/null; then
+    echo "sshpass could not be found, attempting to install it..."
+    sudo apt-get update && sudo apt-get install -y sshpass
+    if [ $? -ne 0 ]; then
+        echo "Failed to install sshpass, exiting."
+        exit 1
+    fi
+fi
+
 if [ "$#" -ne 2 ]; then
     echo "Usage: $0 <OrangePi Number> <Path to firmware.hex>"
     exit 1
@@ -27,10 +37,13 @@ case "$orangePiNumber" in
     6) sed -i "/std::string blimpNameSpace = \"SuperBeefBlimp\"/s/^\/\///" "src/catching_blimp.h" ;;
 esac
 
+echo "Ensuring the teensyCode directory exists on the Orange Pi..."
+sshpass -p buzzblimps ssh -o StrictHostKeyChecking=no opi@192.168.0.10$orangePiNumber "mkdir -p /home/opi/teensy_loader_cli/teensyCode/"
+
 echo "Copying the firmware.hex file to the appropriate Orange Pi..."
-sshpass -p buzzblimps scp -o StrictHostKeyChecking=no "$hexFilePath" opi@192.168.0.10$orangePiNumber:/home/opi/teensyCode/
+sshpass -p buzzblimps scp -o StrictHostKeyChecking=no "$hexFilePath" opi@192.168.0.10$orangePiNumber:/home/opi/teensy_loader_cli/teensyCode/
 
 echo "Flashing the Teensy on the Orange Pi..."
-sshpass -p buzzblimps ssh -o StrictHostKeyChecking=no opi@192.168.0.10$orangePiNumber " /home/opi/teensy_loader_cli/teensy_loader_cli -mmcu=TEENSY40 -s -w -v /home/opi/teensyCode/firmware.hex"
+sshpass -p buzzblimps ssh -o StrictHostKeyChecking=no opi@192.168.0.10$orangePiNumber "/home/opi/teensy_loader_cli/teensy_loader_cli -mmcu=TEENSY40 -s -w -v /home/opi/teensy_loader_cli/teensyCode/firmware.hex"
 
 echo "Script completed successfully."
