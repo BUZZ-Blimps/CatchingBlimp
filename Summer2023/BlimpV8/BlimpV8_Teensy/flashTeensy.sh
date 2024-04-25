@@ -28,11 +28,12 @@ fi
 
 echo "Updating the namespace in the source file..."
 sed -i '/std::string blimpNameSpace = /s/^\/\?\/\?/\/\//' "src/catching_blimp.h"
+
 case "$orangePiNumber" in
     1) sed -i "/std::string blimpNameSpace = \"BurnCreamBlimp\"/s/^\/\///" "src/catching_blimp.h" ;;
     2) sed -i "/std::string blimpNameSpace = \"SillyAhBlimp\"/s/^\/\///" "src/catching_blimp.h" ;;
     3) sed -i "/std::string blimpNameSpace = \"TurboBlimp\"/s/^\/\///" "src/catching_blimp.h" ;;
-    4) sed -i "/std::string blimpNameSpace = \"GameChamberBlimp\"/s/^\/\///" "src/catching_blimp.h" ;;
+    4) sed -i "/std::string blimpNameSpace = \"GravyLongWayBlimp\"/s/^\/\///" "src/catching_blimp.h" ;;
     5) sed -i "/std::string blimpNameSpace = \"GameChamberBlimp\"/s/^\/\///" "src/catching_blimp.h" ;;
     6) sed -i "/std::string blimpNameSpace = \"SuperBeefBlimp\"/s/^\/\///" "src/catching_blimp.h" ;;
 esac

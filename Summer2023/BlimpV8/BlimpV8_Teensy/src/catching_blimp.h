@@ -460,9 +460,9 @@ rcl_subscription_t pixels_subscription; //int64_multi_array
 // Define the name of the blimp/robot
 //  std::string blimpNameSpace = "BurnCreamBlimp";
 //std::string blimpNameSpace = "SillyAhBlimp";
-// std::string blimpNameSpace = "TurboBlimp";
-std::string blimpNameSpace = "GameChamberBlimp";
-//std::string blimpNameSpace = "FiveGuysBlimp";
+//std::string blimpNameSpace = "TurboBlimp";
+//std::string blimpNameSpace = "GameChamberBlimp";
+std::string blimpNameSpace = "GravyLongWayBlimp";
 // std::string blimpNameSpace = "SuperBeefBlimp";
 
 //message types: String Bool Float32 Float32 MultiArray
