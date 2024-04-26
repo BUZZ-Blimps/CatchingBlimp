@@ -52,6 +52,9 @@ esac
 
 platformio run --environment teensy40
 
+echo "Stopping the microros service before flashing..."
+sshpass -p buzzblimps ssh -o StrictHostKeyChecking=no opi@192.168.0.10$orangePiNumber "sudo systemctl stop microros"
+
 echo "Ensuring the teensyCode directory exists on the Orange Pi..."
 sshpass -p buzzblimps ssh -o StrictHostKeyChecking=no opi@192.168.0.10$orangePiNumber "mkdir -p /home/opi/teensy_loader_cli/teensyCode/"
 
@@ -63,5 +66,8 @@ sshpass -p buzzblimps scp -o StrictHostKeyChecking=no "$hexFilePath" opi@192.168
 
 echo "Flashing the Teensy on the Orange Pi..."
 sshpass -p buzzblimps ssh -o StrictHostKeyChecking=no opi@192.168.0.10$orangePiNumber " /home/opi/teensy_loader_cli/teensy_loader_cli -mmcu=TEENSY40 -s -w -v /home/opi/teensy_loader_cli/teensyCode/firmware.hex"
+
+echo "Restarting the microros service..."
+sshpass -p buzzblimps ssh -o StrictHostKeyChecking=no opi@192.168.0.10$orangePiNumber "sudo systemctl start microros"
 
 echo "Script completed successfully."
