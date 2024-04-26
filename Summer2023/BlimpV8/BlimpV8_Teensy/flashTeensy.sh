@@ -43,7 +43,10 @@ platformio run --environment teensy40
 echo "Ensuring the teensyCode directory exists on the Orange Pi..."
 sshpass -p buzzblimps ssh -o StrictHostKeyChecking=no opi@192.168.0.10$orangePiNumber "mkdir -p /home/opi/teensy_loader_cli/teensyCode/"
 
-echo "Copying the firmware.hex file to the appropriate Orange Pi..."
+echo "Removing the existing firmware.hex file from the Orange Pi..."
+sshpass -p buzzblimps ssh -o StrictHostKeyChecking=no opi@192.168.0.10$orangePiNumber "rm -f /home/opi/teensy_loader_cli/teensyCode/firmware.hex"
+
+echo "Copying the new firmware.hex file to the appropriate Orange Pi..."
 sshpass -p buzzblimps scp -o StrictHostKeyChecking=no "$hexFilePath" opi@192.168.0.10$orangePiNumber:/home/opi/teensy_loader_cli/teensyCode/
 
 echo "Flashing the Teensy on the Orange Pi..."
