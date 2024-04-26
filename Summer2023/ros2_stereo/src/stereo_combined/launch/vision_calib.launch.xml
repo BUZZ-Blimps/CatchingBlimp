@@ -17,8 +17,4 @@
         <arg name="calibration_file" value="camera$(var camera_id)"/>
         <arg name="camera_ns" value="$(var blimp_name)"/>
     </include>
-
-<!--     <node pkg="camera_calibration" exec="cameracalibrator" name="camera_calibration_node">
-
-    </node> -->
 </launch>

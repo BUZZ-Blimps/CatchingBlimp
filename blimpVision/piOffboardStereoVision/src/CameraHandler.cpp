@@ -151,6 +151,7 @@ bool CameraHandler::getRecentFrames(Mat* rawFrame, Mat* leftFrame, Mat* rightFra
         leftFrameTemp = leftFrameCopied;
         rightFrameTemp = rightFrameCopied;
         pthread_mutex_unlock(&mutex_newFrame);
+        
         // Return frames and true
         *rawFrame = rawFrameTemp;
         *leftFrame = leftFrameTemp;

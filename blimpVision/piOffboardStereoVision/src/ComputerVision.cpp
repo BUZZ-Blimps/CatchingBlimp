@@ -114,8 +114,8 @@ void ComputerVision::update(Mat imgL, Mat imgR, autoState mode, goalType goalCol
       // Ball Detection
       bool detectedBall = getBall(Ballx, Bally, Ballz, ballArea, imgL, imgR);
 
-      if(detectedBall){
-        if(true){
+      if(detectedBall) {
+        if(true) {
           //cout << "Balloon Data:" << endl;
           //cout << "X: " << Ballx << endl;
           //cout << "Y: " << Bally << endl;
@@ -130,7 +130,6 @@ void ComputerVision::update(Mat imgL, Mat imgR, autoState mode, goalType goalCol
         balloon.push_back(ballArea);
         balloons.push_back(balloon);
       }
-
   } else if (mode == goalSearch || mode == approachGoal || mode == scoringStart) {
       // Goal Detection
       getGoal(Goalx, Goaly, Goalz, goalArea, goalAngle, imgL, imgR);

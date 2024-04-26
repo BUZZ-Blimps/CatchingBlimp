@@ -164,8 +164,8 @@ void RectifyNode::imageCb(
   D.at<float>(0, 3) = info_msg->d[3];
   D.at<float>(0, 4) = info_msg->d[4];
 
-  cv::initUndistortRectifyMap(K,D,R,P,size,CV_16SC2,map_1,map_2);
-  cv::remap(resized_image,rect,map_1,map_2,interpolation);
+  cv::initUndistortRectifyMap(K, D, R, P, size, CV_16SC2, map_1, map_2);
+  cv::remap(resized_image, rect, map_1, map_2, interpolation);
   // model_.rectifyImage(resized_image, rect, interpolation);
 
 
