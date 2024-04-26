@@ -12,13 +12,25 @@ if ! command -v sshpass &> /dev/null; then
     fi
 fi
 
-if [ "$#" -ne 2 ]; then
-    echo "Usage: $0 <OrangePi Number> <Path to firmware.hex>"
+if [ "$#" -lt 1 ]; then
+    echo "Usage: $0 <OrangePi Number> [Path to firmware.hex]"
     exit 1
 fi
 
 orangePiNumber=$1
-hexFilePath=$2
+defaultHexPath=".pio/build/teensy40/firmware.hex"
+
+# Check if a path to firmware.hex was provided, otherwise use default
+if [ "$#" -eq 2 ]; then
+    hexFilePath=$2
+else
+    if [ -f "$defaultHexPath" ]; then
+        hexFilePath=$defaultHexPath
+    else
+        echo "No firmware.hex path provided and default file does not exist."
+        exit 1
+    fi
+fi
 
 echo "Checking Orange Pi number validity..."
 if [ "$orangePiNumber" -lt 1 ] || [ "$orangePiNumber" -gt 6 ]; then
