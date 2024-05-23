@@ -1,3 +1,17 @@
+/*
+Helpful commands:
+
+To make a file executable: chmod 755 <filename>
+
+To run the copy script: ./copyCodeToPi.sh <Orange Pi's IP>
+- For Orange Pi number #, the IP address will be: 192.168.0.10#
+- All laptops should also have the hostnames saved as opi#
+
+To ssh into Orange Pi number #: ssh opi@opi#
+
+To save an ssh password for Orange Pi number #: ssh-copy-id opi@opi#
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <errno.h>
