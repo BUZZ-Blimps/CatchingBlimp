@@ -30,13 +30,15 @@ typedef struct {
 #define L	0
 #define R	2
 #define BL	5
-#define BR	8
+#define BR	16
 
 // Far ranges = [70,528]
 const int pwm_lower = 80;
 const int pwm_upper = 510;
-const int B_pwm_lower = 150;
-const int B_pwm_upper = 200;
+// Far ranges for test bench purposes = [250-,350+]
+const int B_pwm_lower = 265;
+const int B_pwm_upper = 335;
+const int B_pwm_stop = 300;
 
 static pwm_info pwm_info_t;
 
@@ -68,6 +70,9 @@ int main (int argc, char *argv[]){
 	pwmSetClock(BR, pwm_info_t.div);
 	pwmWrite(BR, pwm_info_t.ccr);
 
+	pwmWrite(BL, B_pwm_stop);
+	pwmWrite(BR, B_pwm_stop);
+
 	printf("Zeroing in 1 second...\n");
 	delay(1000);
 	pwmWrite(L, pwm_lower);
@@ -85,7 +90,6 @@ int main (int argc, char *argv[]){
 			delay(5);
 		}
 		delay(1000);
-
 		printf("Sweeping down in 1 second...\n");
 		delay(1000);
 		for(int i=pwm_upper; i>=pwm_lower; i--){
@@ -96,15 +100,33 @@ int main (int argc, char *argv[]){
 			delay(5);
 		}
 		delay(1000);
-
 		printf("Sweeping up in 1 second...\n");
 		delay(1000);
-		for(int i=B_pwm_lower; i<=B_pwm_upper; i++){
+		for(int i=B_pwm_stop; i<=B_pwm_upper; i++){
 			int val = i;
 			printf("PWM Val: %d\n", val);
 			pwmWrite(BL, val);
 			pwmWrite(BR, val);
-			delay(25);
+			delay(150);
 		}
+		delay(2000);
+		pwmWrite(BL, B_pwm_stop);
+		pwmWrite(BR, B_pwm_stop);
+		delay(1000);
+		printf("Sweeping down in 1 second...\n");
+		delay(1000);
+		for(int i=B_pwm_stop; i>=B_pwm_lower; i--){
+			int val = i;
+			printf("PWM Val: %d\n", val);
+			pwmWrite(BL, val);
+			pwmWrite(BR, val);
+			delay(150);
+		}
+		delay(2000);
+		pwmWrite(BL, B_pwm_stop);
+		pwmWrite(BR, B_pwm_stop);
+		delay(1000);
+		printf("Restarting in 5 seconds");
+		delay(5000);
 	}
 }
