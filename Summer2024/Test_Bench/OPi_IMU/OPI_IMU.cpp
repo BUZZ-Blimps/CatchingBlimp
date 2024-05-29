@@ -75,25 +75,25 @@ struct i2c_smbus_ioctl_data
 
 void OPI_IMU::OPI_IMU_Setup(){
     const char *device;
-	device = "/dev/i2c-3"; 
+    device = "/dev/i2c-3"; 
 
     LIS3MDL = wiringPiI2CSetupInterface(device, LIS3MDL_ADDRESS);
     LSM6DSL = wiringPiI2CSetupInterface(device, LSM6DSL_ADDRESS);
     BM388 = wiringPiI2CSetupInterface(device, BM388_ADDRESS);
 
     wiringPiI2CWriteReg8(LSM6DSL, LSM6DSL_CTRL1_XL, 0b10011111);
-	wiringPiI2CWriteReg8(LSM6DSL, LSM6DSL_CTRL8_XL, 0b11001000);
-	wiringPiI2CWriteReg8(LSM6DSL, LSM6DSL_CTRL3_C, 0b01000100);
-	wiringPiI2CWriteReg8(LSM6DSL, LSM6DSL_CTRL2_G, 0b10011100);
+    wiringPiI2CWriteReg8(LSM6DSL, LSM6DSL_CTRL8_XL, 0b11001000);
+    wiringPiI2CWriteReg8(LSM6DSL, LSM6DSL_CTRL3_C, 0b01000100);
+    wiringPiI2CWriteReg8(LSM6DSL, LSM6DSL_CTRL2_G, 0b10011100);
 
-	wiringPiI2CWriteReg8(LIS3MDL, LIS3MDL_CTRL_REG1, 0b11011100);     // Temp sesnor enabled, High performance, ODR 80 Hz, FAST ODR disabled and Selft test disabled.
-	wiringPiI2CWriteReg8(LIS3MDL, LIS3MDL_CTRL_REG2, 0b00100000);     // +/- 8 gauss
-	wiringPiI2CWriteReg8(LIS3MDL, LIS3MDL_CTRL_REG3, 0b00000000); 
+    wiringPiI2CWriteReg8(LIS3MDL, LIS3MDL_CTRL_REG1, 0b11011100);     // Temp sesnor enabled, High performance, ODR 80 Hz, FAST ODR disabled and Selft test disabled.
+    wiringPiI2CWriteReg8(LIS3MDL, LIS3MDL_CTRL_REG2, 0b00100000);     // +/- 8 gauss
+    wiringPiI2CWriteReg8(LIS3MDL, LIS3MDL_CTRL_REG3, 0b00000000); 
 
-	wiringPiI2CWriteReg8(BM388,PWR_CTRL, 0b00110011);     // Enables pressure sensor, Enables temperature sensor, Normal mode
-	wiringPiI2CWriteReg8(BM388,OSR, 0b00001100);                 // x16 oversampling pressure measurement, x2 oversampling temp measurement
-	wiringPiI2CWriteReg8(BM388,ODR, 0x03);                 // Output data rate 25Hz
-	wiringPiI2CWriteReg8(BM388,CONFIG, 0b00000110);      // IIR filter coefficient of 63 
+    wiringPiI2CWriteReg8(BM388,PWR_CTRL, 0b00110011);     // Enables pressure sensor, Enables temperature sensor, Normal mode
+    wiringPiI2CWriteReg8(BM388,OSR, 0b00001100);                 // x16 oversampling pressure measurement, x2 oversampling temp measurement
+    wiringPiI2CWriteReg8(BM388,ODR, 0x03);                 // Output data rate 25Hz
+    wiringPiI2CWriteReg8(BM388,CONFIG, 0b00000110);      // IIR filter coefficient of 63 
 
     //Loading the calibration values
 	int out = wiringPiI2CReadRegBlock(BM388, NVM_PAR_T1_LSB, 21, buff_calib); 
@@ -196,7 +196,7 @@ void OPI_IMU::OPI_IMU_read(){
     }
 
     // Last 3 bytes are the temperature XLSB, LSB, MSB
-    float tempRaw = (int)(buff[3] | (buff[4] << 8) | (buff[5] << 16));
+    tempRaw = (int)(buff[3] | (buff[4] << 8) | (buff[5] << 16));
     comp_temp = temp_compensation(tempRaw);
     // comp_temp = temp_compensation(tempRaw);
     //Serial.println(comp_temp); //Temperature in deg C
@@ -221,36 +221,36 @@ void OPI_IMU::OPI_IMU_read(){
     //---------------------------------------------------------------------------------------
 }
 
-// void OPI_IMU::OPI_IMU_ROTATION(float rotation_angle){  //current: 180 degrees z axis rotation
-//     Eigen::Matrix3f Rz;
-//     Rz <<   cosf(rotation_angle/180*M_PI),-sinf(rotation_angle/180*M_PI),0,
-//             sinf(rotation_angle/180*M_PI),cosf(rotation_angle/180*M_PI),0,
-//             0,0,1; // 3X3 Matrix
+void OPI_IMU::OPI_IMU_ROTATION(float rotation_angle){  //current: 180 degrees z axis rotation
+    Eigen::Matrix3f Rz;
+    Rz <<   cosf(rotation_angle/180*M_PI),-sinf(rotation_angle/180*M_PI),0,
+            sinf(rotation_angle/180*M_PI),cosf(rotation_angle/180*M_PI),0,
+            0,0,1; // 3X3 Matrix
 
-//     Eigen::MatrixXd gyr_rate(3, 1);
-//     gyr_rate << gyr_rateXraw,
-//                 gyr_rateYraw,
-//                 gyr_rateZraw; 
+    Eigen::MatrixXf gyr_rate(3, 1);
+    gyr_rate << gyr_rateXraw,
+                gyr_rateYraw,
+                gyr_rateZraw; 
+        
+    Eigen::MatrixXf Acc_raw(3, 1);
+    Acc_raw <<  AccXraw,
+                AccYraw,
+                AccZraw; 
 
-//     Eigen::MatrixXd Acc_raw(3, 1);
-//     Acc_raw <<  AccXraw,
-//                 AccYraw,
-//                 AccZraw; 
+    Eigen::MatrixXf corrected_gyr_rate(3, 1);
+    corrected_gyr_rate = Rz*gyr_rate;
 
-//     Eigen::MatrixXd corrected_gyr_rate(3, 1);
-//     corrected_gyr_rate = Rz*gyr_rate;
+    Eigen::MatrixXf corrected_Acc_raw(3, 1);
+    corrected_Acc_raw = Rz*Acc_raw;
 
-//     Eigen::MatrixXd corrected_Acc_raw(3, 1);
-//     corrected_Acc_raw = Rz*Acc_raw;
+    this->AccXraw = corrected_Acc_raw(0);
+    this->AccYraw = corrected_Acc_raw(1);
+    this->AccZraw = corrected_Acc_raw(2);
 
-//     this->AccXraw = corrected_Acc_raw(0);
-//     this->AccYraw = corrected_Acc_raw(1);
-//     this->AccZraw = corrected_Acc_raw(2);
-
-//     this->gyr_rateXraw = corrected_gyr_rate(0);
-//     this->gyr_rateYraw = corrected_gyr_rate(1);
-//     this->gyr_rateZraw = corrected_gyr_rate(2);
-// }
+    this->gyr_rateXraw = corrected_gyr_rate(0);
+    this->gyr_rateYraw = corrected_gyr_rate(1);
+    this->gyr_rateZraw = corrected_gyr_rate(2);
+}
 
 
 float OPI_IMU::temp_compensation(float raw_temperature) {
@@ -289,7 +289,7 @@ static inline int i2c_smbus_access_bl (int fd, char rw, uint8_t command, int siz
   return ioctl (fd, I2C_SMBUS, &args) ;
 }
 
-int wiringPiI2CReadRegBlock (int fd, int reg, int num_bytes, uint8_t *buff)
+int OPI_IMU::wiringPiI2CReadRegBlock (int fd, int reg, int num_bytes, uint8_t *buff)
 {
   union i2c_smbus_data data;
   if (i2c_smbus_access_bl (fd, I2C_SMBUS_READ, reg, 6, &data))

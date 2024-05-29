@@ -1,1 +1,3 @@
 wiringOP: https://github.com/orangepi-xunlong/wiringOP/tree/next
+using /dev/i2c-3
+
