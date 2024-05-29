@@ -21,7 +21,7 @@ To save an ssh password for Orange Pi number #: ssh-copy-id opi@opi#
 #include "LIS3MDL.h"
 #include "BM388.h"
 #include <math.h>
-// #include "eigen3/Eigen/Dense"
+#include "eigen3/Eigen/Dense"
 // #include "BasicLinearAlgebra.h"
 // #include "ElementStorage.h"
 

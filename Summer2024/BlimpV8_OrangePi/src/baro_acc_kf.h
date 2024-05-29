@@ -1,7 +1,5 @@
 #pragma once
-#include "BasicLinearAlgebra.h"
-
-using namespace BLA;
+#include <eigen3/Eigen/Dense>
 
 class BaroAccKF {
   public:
@@ -15,9 +13,9 @@ class BaroAccKF {
   float b;
 
   private:
-  Matrix<4,1> Xkp;
-  Matrix<4,4> Pkp;
-  Matrix<4,4> Qkp;
+  Eigen::Vector4f Xkp;
+  Eigen::Matrix4f Pkp;
+  Eigen::Matrix4f Qkp;
 
   float lastAccelTime = 0.0;
   

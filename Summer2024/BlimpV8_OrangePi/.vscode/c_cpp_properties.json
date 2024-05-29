@@ -10,7 +10,6 @@
             "includePath": [
                 "/home/laptop-2/Documents/GitHub/CatchingBlimp/Summer2024/BlimpV8_OrangePi/include",
                 "/home/laptop-2/Documents/GitHub/CatchingBlimp/Summer2024/BlimpV8_OrangePi/src",
-                "/home/laptop-2/.platformio/packages/framework-arduinoteensy/libraries/Servo",
                 "/home/laptop-2/.platformio/packages/framework-arduinoteensy/libraries/Wire",
                 "/home/laptop-2/.platformio/packages/framework-arduinoteensy/libraries/Wire/utility",
                 "/home/laptop-2/Documents/GitHub/CatchingBlimp/Summer2024/BlimpV8_OrangePi/.pio/libdeps/teensy40/micro_ros_platformio/platform_code/arduino",
@@ -92,6 +91,7 @@
                 "/home/laptop-2/.platformio/packages/framework-arduinoteensy/libraries/ST7735_t3/src",
                 "/home/laptop-2/.platformio/packages/framework-arduinoteensy/libraries/SdFat/src",
                 "/home/laptop-2/.platformio/packages/framework-arduinoteensy/libraries/SerialFlash",
+                "/home/laptop-2/.platformio/packages/framework-arduinoteensy/libraries/Servo",
                 "/home/laptop-2/.platformio/packages/framework-arduinoteensy/libraries/ShiftPWM",
                 "/home/laptop-2/.platformio/packages/framework-arduinoteensy/libraries/Snooze/src",
                 "/home/laptop-2/.platformio/packages/framework-arduinoteensy/libraries/SoftPWM",
@@ -124,7 +124,6 @@
                 "path": [
                     "/home/laptop-2/Documents/GitHub/CatchingBlimp/Summer2024/BlimpV8_OrangePi/include",
                     "/home/laptop-2/Documents/GitHub/CatchingBlimp/Summer2024/BlimpV8_OrangePi/src",
-                    "/home/laptop-2/.platformio/packages/framework-arduinoteensy/libraries/Servo",
                     "/home/laptop-2/.platformio/packages/framework-arduinoteensy/libraries/Wire",
                     "/home/laptop-2/.platformio/packages/framework-arduinoteensy/libraries/Wire/utility",
                     "/home/laptop-2/Documents/GitHub/CatchingBlimp/Summer2024/BlimpV8_OrangePi/.pio/libdeps/teensy40/micro_ros_platformio/platform_code/arduino",
@@ -206,6 +205,7 @@
                     "/home/laptop-2/.platformio/packages/framework-arduinoteensy/libraries/ST7735_t3/src",
                     "/home/laptop-2/.platformio/packages/framework-arduinoteensy/libraries/SdFat/src",
                     "/home/laptop-2/.platformio/packages/framework-arduinoteensy/libraries/SerialFlash",
+                    "/home/laptop-2/.platformio/packages/framework-arduinoteensy/libraries/Servo",
                     "/home/laptop-2/.platformio/packages/framework-arduinoteensy/libraries/ShiftPWM",
                     "/home/laptop-2/.platformio/packages/framework-arduinoteensy/libraries/Snooze/src",
                     "/home/laptop-2/.platformio/packages/framework-arduinoteensy/libraries/SoftPWM",

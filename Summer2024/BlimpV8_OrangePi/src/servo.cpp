@@ -1,4 +1,5 @@
 #include "servo.h"
+#include <cstdio>
 
 
 void servo::servo_setup(int PIN){

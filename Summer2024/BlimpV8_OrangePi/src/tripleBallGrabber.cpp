@@ -1,4 +1,5 @@
 #include "tripleBallGrabber.h"
+#include <math.h>
 // #include "catching_blimp.h"
 
 TripleBallGrabber::TripleBallGrabber() {
@@ -10,9 +11,9 @@ TripleBallGrabber::TripleBallGrabber() {
 }
 
 void TripleBallGrabber::ballgrabber_init(int servoPin, int motorPin){
-  this->servo.servo_PIN(servoPin);
+  this->Servo.servo_PIN(servoPin);
   this->motor.brushless_PIN(motorPin);
-  this->servo.servo_angle(currentAngle);
+  this->Servo.servo_angle(currentAngle);
   this->motor.brushless_thrust(0);
 }
 
@@ -53,7 +54,7 @@ void TripleBallGrabber::update(){
   }
 
   currentAngle += deltaAngle;
-  this->servo.servo_angle(round(currentAngle));
+  this->Servo.servo_angle(round(currentAngle));
 }
 
 void TripleBallGrabber::shoot(int blimp_state) {

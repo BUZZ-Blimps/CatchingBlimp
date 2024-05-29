@@ -4,6 +4,7 @@
 
 #include "Madgwick_Filter.h"
 #include "vector"
+#include <math.h>
 
 Madgwick_Filter::Madgwick_Filter() {
   init_time = micros();

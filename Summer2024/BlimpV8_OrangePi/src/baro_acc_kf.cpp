@@ -18,14 +18,14 @@ BaroAccKF::BaroAccKF() {
 }
 
 void BaroAccKF::predict(float dt) {
-  Matrix<4,4> A = {1,dt,0,0,
+  Eigen::Matrix4d A = {1,dt,0,0,
                    0,1,dt,-dt,
                    0,0,1,0,
                    0,0,0,1};
 
   //Prediction Step
-  Matrix<4,1> Xk = A*Xkp;
-  Matrix<4,4> Pk = A*Pkp*~A+Qkp;
+  Eigen::Vector4d Xk = A*Xkp;
+  Eigen::Matrix4d Pk = A*Pkp*A.transpose()+Qkp;
 
   Xkp = Xk;
   Pkp = Pk;
@@ -37,23 +37,26 @@ void BaroAccKF::predict(float dt) {
 }
 
 void BaroAccKF::updateBaro(float baro) {
-  Matrix<1,4> H = {1,0,0,0};
-  Matrix<1,1> R = {0.36};   
-
+  Eigen::Vector4d H = {1,
+                       0,
+                       0,
+                       0};
+  H = H.transpose();
+  float R = {0.36};
   //update step
-  Matrix<1,1> y = {baro};
-  Matrix<1,1> V = y-H*Xkp;
-  Matrix<1,1> S = H*Pkp*~H+R;
+  float y = {baro};
+  float V = y-(H*Xkp)(0,0);
+  float S = (H*Pkp*(H.transpose()))(0,0)+R;
 
-  Matrix<1,1> S_inv = S;
-  bool is_nonsingular = Invert(S_inv);
+  float S_inv = S;
+  bool is_nonsingular = (1/S_inv);
   if (!is_nonsingular) {
     return;
   }
   
-  Matrix<4,1> K = Pkp*~H*S_inv;
+  Eigen::Vector4f K = Pkp*(H.transpose())(0,0)*S_inv;
   Xkp = Xkp+K*V;
-  Pkp = Pkp-K*S*~K;
+  Pkp = Pkp-K*S*(K.transpose());
 
   this->x = Xkp(0);
   this->v = Xkp(1);
@@ -63,23 +66,27 @@ void BaroAccKF::updateBaro(float baro) {
 
 void BaroAccKF::updateAccel(float acc) {
 
-  Matrix<1,4> H = {0, 0, 1, 0};
-  Matrix<1,1> R = {0.001};
+  Eigen::Vector4f H = {0, 
+                       0, 
+                       1, 
+                       0};
+  H = H.transpose();
+  float R = {0.001};
 
   //update step
-  Matrix<1,1> y = {acc};
-  Matrix<1,1> V = y-H*Xkp;
-  Matrix<1,1> S = H*Pkp*~H+R;
+  float y = {acc};
+  float V = y-(H*Xkp)(0,0);
+  float S = (H*Pkp*(H.transpose()))(0,0)+R;
 
-  Matrix<1,1> S_inv = S;
-  bool is_nonsingular = Invert(S_inv);
+  float S_inv = S;
+  bool is_nonsingular = (1/S_inv);
   if (!is_nonsingular) {
     return;
   }
   
-  Matrix<4,1> K = Pkp*~H*S_inv;
+  Eigen::Vector4d K = Pkp*(H.transpose())*S_inv;
   Xkp = Xkp+K*V;
-  Pkp = Pkp-K*S*~K;
+  Pkp = Pkp-K*S*(K.transpose());
 
   this->x = Xkp(0);
   this->v = Xkp(1);

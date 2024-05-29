@@ -18,7 +18,7 @@ class TripleBallGrabber {
     double targetAngle = 0; // [deg]
 
   private:
-    servo servo;
+    servo Servo;
     brushless motor;
     double moveRate;
     double lastCommandTime = 0; // [s]

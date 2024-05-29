@@ -3,7 +3,6 @@
 */
 
 #pragma once
-#include "Arduino.h"
 #include "vector"
 
 class Madgwick_Filter
