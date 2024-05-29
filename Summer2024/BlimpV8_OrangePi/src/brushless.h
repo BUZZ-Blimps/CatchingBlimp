@@ -1,5 +1,5 @@
 #pragma once
-#include "wiringPi.h"
+#include <wiringPi.h>
 
 class brushless{
     public:

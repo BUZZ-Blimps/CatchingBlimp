@@ -1,4 +1,3 @@
-#include <Arduino.h>
 #include <cmath>
 #include "PID.h"
 
@@ -35,6 +34,17 @@ void PID::setILimit(double iLimit) {
 
 void PID::setDLimit(double dLimit) {
     _d_limit = abs(dLimit);
+}
+
+double constrain(double x, double a, double b) {
+    if(x < a) {
+        return a;
+    }
+    else if(b < x) {
+        return b;
+    }
+    else
+        return x;
 }
 
 double PID::calculate(double setpoint, double pv, double dt) {
