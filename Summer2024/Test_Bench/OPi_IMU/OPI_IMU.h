@@ -1,7 +1,7 @@
 /*
  BerryIMU_v3.h 
 */
-#include "wiringPi.h"
+#include <stdint.h>
 #pragma once
 
 class OPI_IMU
