@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Arduino.h"
-#include "Servo.h"
+#include "servo.h"
+#include "brushless.h"
 
 class TripleBallGrabber {  
   public:
@@ -18,8 +18,8 @@ class TripleBallGrabber {
     double targetAngle = 0; // [deg]
 
   private:
-    Servo servo;
-    Servo motor;
+    servo servo;
+    brushless motor;
     double moveRate;
     double lastCommandTime = 0; // [s]
 

@@ -10,17 +10,17 @@ TripleBallGrabber::TripleBallGrabber() {
 }
 
 void TripleBallGrabber::ballgrabber_init(int servoPin, int motorPin){
-  this->servo.attach(servoPin);
-  this->motor.attach(motorPin);
-  this->servo.write(currentAngle);
-  this->motor.write(1500);
+  this->servo.servo_PIN(servoPin);
+  this->motor.brushless_PIN(motorPin);
+  this->servo.servo_angle(currentAngle);
+  this->motor.brushless_thrust(0);
 }
 
 void TripleBallGrabber::openGrabber(int blimp_state) {
   updateMoveRate(blimp_state);
 
   targetAngle = angle_open;
-  this->motor.write(1500);
+  this->motor.brushless_thrust(0);
   state = state_open;
 }
 
@@ -29,7 +29,7 @@ void TripleBallGrabber::closeGrabber(int blimp_state) {
   moveRate = moveRate_fast; // Close fast, regardless of state
 
   targetAngle = angle_closed;
-  this->motor.write(1500);
+  this->motor.brushless_thrust(0);
   state = state_closed;
 }
 
@@ -53,7 +53,7 @@ void TripleBallGrabber::update(){
   }
 
   currentAngle += deltaAngle;
-  this->servo.write(round(currentAngle));
+  this->servo.servo_angle(round(currentAngle));
 }
 
 void TripleBallGrabber::shoot(int blimp_state) {
@@ -62,7 +62,7 @@ void TripleBallGrabber::shoot(int blimp_state) {
   targetAngle = angle_open;
   currentAngle = targetAngle;
   state = state_shooting;
-  this->motor.write(2000);
+  this->motor.brushless_thrust(100);
 }
 
 void TripleBallGrabber::updateMoveRate(int blimp_state){

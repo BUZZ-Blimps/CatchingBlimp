@@ -5,7 +5,7 @@
 //https://www.pjrc.com/teensy/td_uart.html
 //TX pin 14
 //RX pin 15
-#include "Arduino.h"
+#include <math.h>
 #include "Optical_Flow.h"
 #define FOOTER 0xAA
 #define HEADER 0xFE

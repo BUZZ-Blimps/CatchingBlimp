@@ -16,6 +16,9 @@ class PID
         void setILimit(double iLimit);
         void setDLimit(double dLimit);
 
+        //Constraint Function to simplify math
+        double constrain(double x, double a, double b);
+
         // Returns the manipulated variable given a setpoint and current process value
         double calculate(double setpoint, double pv, double dt);
         void reset();

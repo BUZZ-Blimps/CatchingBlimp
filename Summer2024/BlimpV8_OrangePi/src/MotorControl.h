@@ -1,7 +1,5 @@
 #pragma once
 
-#include "Arduino.h"
-#include "Servo.h"
 #include "EMAFilter.h"
 
 class MotorControl {

@@ -4,7 +4,7 @@
 #pragma once
 
 #define HWSERIAL Serial3
-#include "Arduino.h"
+#include <wiringPi.h>
 #include <vector>
 
 class Optical_Flow

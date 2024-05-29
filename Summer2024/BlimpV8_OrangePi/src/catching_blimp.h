@@ -1,8 +1,6 @@
 #ifndef CATCHING_BLIMP_H
 #define CATCHING_BLIMP_H
 
-#include <Arduino.h>
-
 //C++ includes
 #include <chrono>
 #include <cstdlib>
@@ -47,8 +45,6 @@
 #include "gyro_ekf.h"
 #include "tripleBallGrabber.h"
 #include "Gimbal.h"
-#include "servo.h"
-#include "brushless.h"
 
 
 #define EXECUTE_EVERY_N_MS(MS, X)  do { \
