@@ -25,5 +25,5 @@ double brushless::brushless_thrust(double thrust){
 }
 
 double brushless::get_thrust(){
-    return((this->curr_thrust - 300));
+    return((this->curr_thrust - 300)*2);
 }
