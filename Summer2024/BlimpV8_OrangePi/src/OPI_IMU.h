@@ -1,16 +1,18 @@
 /*
  BerryIMU_v3.h 
 */
-
+#include <stdint.h>
 #pragma once
-#include "Arduino.h"
 
-class BerryIMU_v3
+class OPI_IMU
 {
   public:
-    void BerryIMU_v3_Setup();
-    void IMU_read();
-    void IMU_ROTATION(float rotation_angle);
+    void OPI_IMU_Setup();
+    void OPI_IMU_read();
+    void OPI_IMU_ROTATION(float rotation_angle);
+    int LIS3MDL;
+    int LSM6DSL;
+    int BM388;
     //Maybe low pass filter applied depending on settings selected
     float AccXraw; 
     float AccYraw; 
@@ -29,14 +31,14 @@ class BerryIMU_v3
     float ref_ground_press;
     float alt;
     float pressRaw;
+    float tempRaw;
 
   private:
     float temp_compensation(float raw_temperature);
     float press_compensation(float raw_pressure, float comp_temp);
-    void writeTo(int device, byte address, byte val);
-    void readFrom(int device, byte address, int num, byte buff[]);
-    byte buff[6];
-    byte buff_calib[21];
+    int wiringPiI2CReadRegBlock (int fd, int reg, int num_bytes, uint8_t *buff);
+    uint8_t buff[6];
+    uint8_t buff_calib[21];
     int accRaw[3];
     int magRaw[3];
     int gyrRaw[3];

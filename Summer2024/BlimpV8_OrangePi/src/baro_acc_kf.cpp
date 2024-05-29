@@ -1,27 +1,28 @@
 #include "baro_acc_kf.h"
 
 BaroAccKF::BaroAccKF() {
-  this->Xkp = {0,
+  this->Xkp  <<0,
                0,
                0,
-               0};
+               0;
                
-  this->Pkp = {2,0,0,0,
+  this->Pkp   <<2,0,0,0,
                0,2,0,0,
                0,0,2,0,
-               0,0,0,2};
+               0,0,0,2;
                
-  this->Qkp = {0.001,0,0,0,
+  this->Qkp  <<0.001,0,0,0,
                0,0.01,0,0,
                0,0,0.1,0,
-               0,0,0,0}; 
+               0,0,0,0; 
 }
 
 void BaroAccKF::predict(float dt) {
-  Eigen::Matrix4d A = {1,dt,0,0,
+  Eigen::Matrix4d A;
+  A << 1,dt,0,0,
                    0,1,dt,-dt,
                    0,0,1,0,
-                   0,0,0,1};
+                   0,0,0,1;
 
   //Prediction Step
   Eigen::Vector4d Xk = A*Xkp;
@@ -37,10 +38,11 @@ void BaroAccKF::predict(float dt) {
 }
 
 void BaroAccKF::updateBaro(float baro) {
-  Eigen::Vector4d H = {1,
+  Eigen::Vector4d H; 
+  H <<  1,
                        0,
                        0,
-                       0};
+                       0;
   H = H.transpose();
   float R = {0.36};
   //update step
@@ -66,10 +68,11 @@ void BaroAccKF::updateBaro(float baro) {
 
 void BaroAccKF::updateAccel(float acc) {
 
-  Eigen::Vector4f H = {0, 
+  Eigen::Vector4f H;
+  H << 0, 
                        0, 
                        1, 
-                       0};
+                       0;
   H = H.transpose();
   float R = {0.001};
 

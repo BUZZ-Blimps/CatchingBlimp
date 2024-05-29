@@ -351,7 +351,7 @@ void setup() {
     Serial1.begin(115200);
 
     //Start IMU
-    BerryIMU.BerryIMU_v3_Setup();
+    BerryIMU.OPI_IMU_Setup();
 
     //initialize messages
     //service message
@@ -544,8 +544,8 @@ void loop() {
         lastSensorFastLoopTick = loop_time;
 
         //read sensor values and update madgwick
-        BerryIMU.IMU_read();
-        BerryIMU.IMU_ROTATION(rotation); // Rotate IMU
+        BerryIMU.OPI_IMU_read();
+        BerryIMU.OPI_IMU_ROTATION(rotation); // Rotate IMU
         madgwick.Madgwick_Update(BerryIMU.gyr_rateXraw, BerryIMU.gyr_rateYraw, BerryIMU.gyr_rateZraw, BerryIMU.AccXraw, BerryIMU.AccYraw, BerryIMU.AccZraw);
 
         //publish imu data
@@ -642,7 +642,7 @@ void loop() {
         lastBaroLoopTick = loop_time;
 
         //get most current imu values
-        BerryIMU.IMU_read();
+        BerryIMU.OPI_IMU_read();
 
         //update kalman with uncorreced barometer data
         kf.updateBaro(BerryIMU.alt);

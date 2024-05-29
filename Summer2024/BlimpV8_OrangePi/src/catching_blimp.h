@@ -32,7 +32,7 @@
 
 //Includes for main.cpp
 #include "MotorControl.h"
-#include "BerryIMU_v3.h"
+#include "OPI_IMU.h"
 #include "Madgwick_Filter.h"
 #include "baro_acc_kf.h"
 #include "accelGCorrection.h"
@@ -260,7 +260,7 @@ void update_agent_state();
 
 //Global variables
 //sensor fusion objects
-BerryIMU_v3 BerryIMU;
+OPI_IMU BerryIMU;
 Madgwick_Filter madgwick;
 BaroAccKF kf;
 AccelGCorrection accelGCorrection;
