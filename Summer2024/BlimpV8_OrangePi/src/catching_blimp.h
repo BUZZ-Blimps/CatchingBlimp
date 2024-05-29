@@ -47,6 +47,8 @@
 #include "gyro_ekf.h"
 #include "tripleBallGrabber.h"
 #include "Gimbal.h"
+#include "servo.h"
+#include "brushless.h"
 
 
 #define EXECUTE_EVERY_N_MS(MS, X)  do { \
