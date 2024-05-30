@@ -10,7 +10,7 @@ GyroEKF::GyroEKF() {
                 0,0,0,0,0,0,0,0,0,
                 0,0,0,0,0,0,0,0,0,
                 0,0,0,0,0,0,0,0,0;
-//test
+
     this->Pkp <<1,0,0,0,0,0,0,0,0,
                 0,1,0,0,0,0,0,0,0,
                 0,0,1,0,0,0,0,0,0,
@@ -92,8 +92,7 @@ void GyroEKF::updateGyro(float gyrox, float gyroy, float gyroz) {
     return;
     }
 
-    Matrix2f S_inv = lu.inverse();
-    MatrixXf K(9,3); K = Pkp*H.transpose()*S_inv;
+    MatrixXf K(9,3); K = Pkp*H.transpose()*S.inverse();
     Xkp = Xkp+K*V;
     Pkp = Pkp-K*S*K.transpose();   
 }
@@ -123,9 +122,8 @@ void GyroEKF::updateAccel(float accx, float accy, float accz) {
     return;
     }
 
-    Matrix2f S_inv = lu.inverse();
 
-    MatrixXf K(9,2); K = Pkp*H.transpose()*S_inv;
+    MatrixXf K(9,2); K = Pkp*H.transpose()*S.inverse();
     Xkp = Xkp+K*V;
     Pkp = Pkp-K*S*K.transpose();   
 }
