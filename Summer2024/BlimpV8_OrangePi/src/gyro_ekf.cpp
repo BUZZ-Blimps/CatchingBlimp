@@ -86,13 +86,13 @@ void GyroEKF::updateGyro(float gyrox, float gyroy, float gyroz) {
     Vector3f V = y-H*Xkp;
     Matrix<float, 3, 3> S = H*Pkp*H.transpose()+R;
 
-    Matrix<float, 3, 3> S_inv = S;
-    Eigen::FullPivLU<Eigen::Matrix<float, 3, 3>> lu(S_inv);
+    Eigen::FullPivLU<Eigen::Matrix<float, 3, 3>> lu(S);
     bool is_nonsingular = lu.isInvertible(); // not actually inverting S??
     if (!is_nonsingular) {
     return;
     }
 
+    Matrix2f S_inv = lu.inverse();
     MatrixXf K(9,3); K = Pkp*H.transpose()*S_inv;
     Xkp = Xkp+K*V;
     Pkp = Pkp-K*S*K.transpose();   
@@ -117,12 +117,13 @@ void GyroEKF::updateAccel(float accx, float accy, float accz) {
     Vector2f V = y-H*Xkp;
     Matrix2f S = H*Pkp*H.transpose()+R;
 
-    Matrix2f S_inv = S;
-    FullPivLU<Matrix<float, 2, 2>> lu(S_inv);
+    FullPivLU<Matrix<float, 2, 2>> lu(S);
     bool is_nonsingular = lu.isInvertible();
     if (!is_nonsingular) {
     return;
     }
+
+    Matrix2f S_inv = lu.inverse();
 
     MatrixXf K(9,2); K = Pkp*H.transpose()*S_inv;
     Xkp = Xkp+K*V;

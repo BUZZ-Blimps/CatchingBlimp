@@ -6,6 +6,7 @@
 #define HWSERIAL Serial3
 #include <wiringPi.h>
 #include <vector>
+#include <stdint.h>
 
 class Optical_Flow
 {
