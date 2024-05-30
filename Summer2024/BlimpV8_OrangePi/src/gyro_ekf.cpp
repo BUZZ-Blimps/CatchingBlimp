@@ -1,5 +1,4 @@
 #include "gyro_ekf.h"
-#include "math.h"
 
 GyroEKF::GyroEKF() {
     this->Qkp <<0.000001,0,0,0,0,0,0,0,0,
@@ -85,10 +84,10 @@ void GyroEKF::updateGyro(float gyrox, float gyroy, float gyroz) {
     //update step
     Vector3f y; y<<gyrox, gyroy, gyroz;
     Vector3f V = y-H*Xkp;
-    Vector3f S = H*Pkp*H.transpose()+R;
+    Matrix<float, 3, 3> S = H*Pkp*H.transpose()+R;
 
-    Matrix3f S_inv = S;
-    FullPivLU<Matrix<float, 3, 3>> lu(S_inv);
+    Matrix<float, 3, 3> S_inv = S;
+    Eigen::FullPivLU<Eigen::Matrix<float, 3, 3>> lu(S_inv);
     bool is_nonsingular = lu.isInvertible(); // not actually inverting S??
     if (!is_nonsingular) {
     return;
