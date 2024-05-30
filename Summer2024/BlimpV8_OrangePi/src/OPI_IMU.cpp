@@ -134,7 +134,7 @@ void OPI_IMU::OPI_IMU_Setup(){
 
 }
 
-void OPI_IMU::OPI_IMU_read(){
+void OPI_IMU::IMU_read(){
     int out = wiringPiI2CReadRegBlock(LSM6DSL, LSM6DSL_OUT_X_L_XL, 6, buff); 
     if (out == -1) {
         printf("LSM6DSL I2C not working\n");
@@ -221,7 +221,7 @@ void OPI_IMU::OPI_IMU_read(){
     //---------------------------------------------------------------------------------------
 }
 
-void OPI_IMU::OPI_IMU_ROTATION(float rotation_angle){  //current: 180 degrees z axis rotation
+void OPI_IMU::IMU_ROTATION(float rotation_angle){  //current: 180 degrees z axis rotation
     Eigen::Matrix3f Rz;
     Rz <<   cosf(rotation_angle/180*M_PI),-sinf(rotation_angle/180*M_PI),0,
             sinf(rotation_angle/180*M_PI),cosf(rotation_angle/180*M_PI),0,

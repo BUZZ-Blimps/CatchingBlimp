@@ -1,4 +1,8 @@
 #include "baro_acc_kf.h"
+#include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <iostream>
 
 BaroAccKF::BaroAccKF() {
   this->Xkp  <<0,
@@ -18,15 +22,16 @@ BaroAccKF::BaroAccKF() {
 }
 
 void BaroAccKF::predict(float dt) {
-  Eigen::Matrix4d A;
+  Eigen::Matrix4f A;
   A << 1,dt,0,0,
                    0,1,dt,-dt,
                    0,0,1,0,
                    0,0,0,1;
 
   //Prediction Step
-  Eigen::Vector4d Xk = A*Xkp;
-  Eigen::Matrix4d Pk = A*Pkp*A.transpose()+Qkp;
+  Eigen::Vector4f Xk = A*Xkp;
+
+  Eigen::Matrix4f Pk = A*Pkp*A.transpose()+Qkp;
 
   Xkp = Xk;
   Pkp = Pk;
@@ -38,17 +43,15 @@ void BaroAccKF::predict(float dt) {
 }
 
 void BaroAccKF::updateBaro(float baro) {
-  Eigen::Vector4d H; 
-  H <<  1,
-                       0,
-                       0,
-                       0;
-  H = H.transpose();
-  float R = {0.36};
+  Eigen::RowVector4f H; 
+  H <<  1,0,0,0;
+  // Eigen::RowVector4f HTrans = H.transpose();
+  float R = 0.36;
+
   //update step
-  float y = {baro};
-  float V = y-(H*Xkp)(0,0);
-  float S = (H*Pkp*(H.transpose()))(0,0)+R;
+  float y = baro;
+  float V = y-(H*Xkp);
+  float S = H*Pkp*H.transpose()+R;
 
   float S_inv = S;
   bool is_nonsingular = (1/S_inv);
@@ -56,7 +59,7 @@ void BaroAccKF::updateBaro(float baro) {
     return;
   }
   
-  Eigen::Vector4f K = Pkp*(H.transpose())(0,0)*S_inv;
+  Eigen::Vector4f K = Pkp*(H.transpose())*S_inv;
   Xkp = Xkp+K*V;
   Pkp = Pkp-K*S*(K.transpose());
 
@@ -68,18 +71,15 @@ void BaroAccKF::updateBaro(float baro) {
 
 void BaroAccKF::updateAccel(float acc) {
 
-  Eigen::Vector4f H;
-  H << 0, 
-                       0, 
-                       1, 
-                       0;
-  H = H.transpose();
-  float R = {0.001};
+  Eigen::RowVector4f H;
+  H << 0, 0, 1, 0;
+
+  float R = 0.001;
 
   //update step
-  float y = {acc};
-  float V = y-(H*Xkp)(0,0);
-  float S = (H*Pkp*(H.transpose()))(0,0)+R;
+  float y = acc;
+  float V = y-(H*Xkp);
+  float S = (H*Pkp*(H.transpose()))+R;
 
   float S_inv = S;
   bool is_nonsingular = (1/S_inv);
@@ -87,7 +87,7 @@ void BaroAccKF::updateAccel(float acc) {
     return;
   }
   
-  Eigen::Vector4d K = Pkp*(H.transpose())*S_inv;
+  Eigen::Vector4f K = Pkp*(H.transpose())*S_inv;
   Xkp = Xkp+K*V;
   Pkp = Pkp-K*S*(K.transpose());
 

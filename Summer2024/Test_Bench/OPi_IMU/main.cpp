@@ -9,8 +9,8 @@ int main(){
     OPI_IMU imu;
     imu.OPI_IMU_Setup();
     while(1){
-        imu.OPI_IMU_read();
-        imu.OPI_IMU_ROTATION(0); // Rotate IMU
+        imu.IMU_read();
+        imu.IMU_ROTATION(0); // Rotate IMU
         printf("ROTATION 0 DEGREES\n");
         printf("========================\n");
         printf("AccYraw: %f\n", imu.AccYraw);
@@ -29,8 +29,8 @@ int main(){
         printf("pressRaw: %f\n\n\n\n", imu.pressRaw);
         delay(100);
 
-        imu.OPI_IMU_read();
-        imu.OPI_IMU_ROTATION(90); // Rotate IMU
+        imu.IMU_read();
+        imu.IMU_ROTATION(90); // Rotate IMU
         printf("ROTATION 90 DEGREES\n");
         printf("========================\n");
         printf("AccYraw: %f\n", imu.AccYraw);

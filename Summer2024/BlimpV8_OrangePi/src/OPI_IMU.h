@@ -8,8 +8,8 @@ class OPI_IMU
 {
   public:
     void OPI_IMU_Setup();
-    void OPI_IMU_read();
-    void OPI_IMU_ROTATION(float rotation_angle);
+    void IMU_read();
+    void IMU_ROTATION(float rotation_angle);
     int LIS3MDL;
     int LSM6DSL;
     int BM388;
