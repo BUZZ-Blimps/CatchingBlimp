@@ -1,7 +1,6 @@
 #pragma once
-#include "BasicLinearAlgebra.h"
 
-using namespace BLA;
+#include "Eigen/Dense"
 
 class OpticalEKF {
   public:
@@ -22,9 +21,9 @@ class OpticalEKF {
   float b = 0;
 
   private:
-  Matrix<7,1> Xkp;
-  Matrix<7,7> Pkp;
-  Matrix<7,7> Qkp;
+  Eigen::Matrix<float,7,1> Xkp;
+  Eigen::Matrix<float,7,7> Pkp;
+  Eigen::Matrix<float,7,7> Qkp;
 
   float a = 0.001;
   float b1 = 0;

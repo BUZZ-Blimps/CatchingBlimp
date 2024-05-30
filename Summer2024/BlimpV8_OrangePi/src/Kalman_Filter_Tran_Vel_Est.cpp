@@ -81,7 +81,7 @@ void Kalman_Filter_Tran_Vel_Est::update_vel_acc(float Ax, float Ay){
                                 0,0.00001;
 
   // Kn is a 8X2 Matrix (Kalman Gain)
-  Eigen::MatrixXf HPG_TR_accel(8,2);
+  Eigen::MatrixXf HPG_TR_accel(2,2);
   HPG_TR_accel << H_accel*Phat*H_accel_T+Rn_accel;
   Eigen::FullPivLU<Eigen::Matrix<float, 2, 2>> lu(HPG_TR_accel);
   bool is_nonsingular = lu.isInvertible(); 
@@ -90,7 +90,7 @@ void Kalman_Filter_Tran_Vel_Est::update_vel_acc(float Ax, float Ay){
   }
   //Invert changes the value internally and outputs a boolean
   Eigen::MatrixXf Kn_accel(8,2);
-  Kn_accel << Phat*H_accel_T*HPG_TR_accel;
+  Kn_accel << Phat*H_accel_T*HPG_TR_accel.inverse();
 
   //xhat and Phat accel
   xhat = xhat+(Kn_accel*(Zn_accel-H_accel*xhat));
@@ -139,7 +139,7 @@ void Kalman_Filter_Tran_Vel_Est::update_vel_optical(float flow_x, float flow_y){
                                   0,0.6;
 
   // Kn is a 8X2 Matrix (Kalman Gain)
-  Eigen::MatrixXf HPG_TR_optical(8,2);
+  Eigen::MatrixXf HPG_TR_optical(2,2);
   HPG_TR_optical << H_optical*Phat*H_optical_T+Rn_optical;
   Eigen::FullPivLU<Eigen::Matrix<float, 2, 2>> lu(HPG_TR_optical);
   bool is_nonsingular = lu.isInvertible(); 
@@ -148,7 +148,7 @@ void Kalman_Filter_Tran_Vel_Est::update_vel_optical(float flow_x, float flow_y){
   } 
   //Invert changes the value internally and outputs a boolean
   Eigen::MatrixXf Kn_optical(8,2);
-  Kn_optical << Phat*H_optical_T*HPG_TR_optical;
+  Kn_optical << Phat*H_optical_T*HPG_TR_optical.inverse();
 
   //xhat and Phat optical
   xhat = xhat+(Kn_optical*(Zn_optical-H_optical*xhat));
