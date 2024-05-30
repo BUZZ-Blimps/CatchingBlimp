@@ -45,7 +45,6 @@ void BaroAccKF::predict(float dt) {
 void BaroAccKF::updateBaro(float baro) {
   Eigen::RowVector4f H; 
   H <<  1,0,0,0;
-  // Eigen::RowVector4f HTrans = H.transpose();
   float R = 0.36;
 
   //update step
