@@ -1,8 +1,8 @@
 #include "gyro_ekf.h"
-#include "Arduino.h"
+#include "math.h"
 
 GyroEKF::GyroEKF() {
-    this->Qkp = {0.000001,0,0,0,0,0,0,0,0,
+    this->Qkp <<0.000001,0,0,0,0,0,0,0,0,
                 0,0.000001,0,0,0,0,0,0,0,
                 0,0,0.000001,0,0,0,0,0,0,
                 0,0,0,0.0001,0,0,0,0,0,
@@ -10,9 +10,9 @@ GyroEKF::GyroEKF() {
                 0,0,0,0,0,0.0001,0,0,0,
                 0,0,0,0,0,0,0,0,0,
                 0,0,0,0,0,0,0,0,0,
-                0,0,0,0,0,0,0,0,0};
+                0,0,0,0,0,0,0,0,0;
 
-    this->Pkp = {1,0,0,0,0,0,0,0,0,
+    this->Pkp <<1,0,0,0,0,0,0,0,0,
                 0,1,0,0,0,0,0,0,0,
                 0,0,1,0,0,0,0,0,0,
                 0,0,0,1,0,0,0,0,0,
@@ -20,9 +20,9 @@ GyroEKF::GyroEKF() {
                 0,0,0,0,0,1,0,0,0,
                 0,0,0,0,0,0,1,0,0,
                 0,0,0,0,0,0,0,1,0,
-                0,0,0,0,0,0,0,0,1};
+                0,0,0,0,0,0,0,0,1;
 
-    this->Xkp = {0,
+    this->Xkp <<0,
                 0,
                 0,
                 0,
@@ -30,12 +30,11 @@ GyroEKF::GyroEKF() {
                 0,
                 0,
                 0,
-                0};
+                0;
 }
 
 void GyroEKF::predict(float dt) {
-
-    Matrix<9,1> Xk = {Xkp(0) + (cos(Xkp(1))*(Xkp(3)-Xkp(6))+sin(Xkp(1))*(Xkp(5)-Xkp(8)))*dt,
+    VectorXf Xk(9); Xk <<Xkp(0) + (cos(Xkp(1))*(Xkp(3)-Xkp(6))+sin(Xkp(1))*(Xkp(5)-Xkp(8)))*dt,
         Xkp(1) + (Xkp(4)-Xkp(7))*dt,
         Xkp(2) + (-cos(Xkp(1))*(Xkp(3)-Xkp(6))+sin(Xkp(1))*(Xkp(4)-Xkp(7))+cos(Xkp(0))*cos(Xkp(1))*(Xkp(5)-Xkp(8)))*dt,
         Xkp(3),
@@ -43,9 +42,9 @@ void GyroEKF::predict(float dt) {
         Xkp(5),
         Xkp(6),
         Xkp(7),
-        Xkp(8)};
+        Xkp(8);
 
-    Matrix<9,9> Fj = {1,(-sin(Xkp(1))*(Xkp(3)-Xkp(6))+cos(Xkp(1))*(Xkp(5)-Xkp(8)))*dt,0,cos(Xkp(1))*dt,0,sin(Xkp(1))*dt,-cos(Xkp(1))*dt,0,-sin(Xkp(1)*dt),
+    MatrixXf Fj(9,9); Fj<<1,(-sin(Xkp(1))*(Xkp(3)-Xkp(6))+cos(Xkp(1))*(Xkp(5)-Xkp(8)))*dt,0,cos(Xkp(1))*dt,0,sin(Xkp(1))*dt,-cos(Xkp(1))*dt,0,-sin(Xkp(1)*dt),
                       0,1,0,0,dt,0,0,-dt,0,
                       (-sin(Xkp(0))*cos(Xkp(1))*(Xkp(5)-Xkp(8)))*dt,(sin(Xkp(1))*(Xkp(3)-Xkp(6))+cos(Xkp(1))*(Xkp(4)-Xkp(7))-cos(Xkp(0))*sin(Xkp(1))*(Xkp(5)-Xkp(8)))*dt,1,-cos(Xkp(1))*dt,sin(Xkp(1))*dt,cos(Xkp(0))*cos(Xkp(1))*dt,cos(Xkp(1))*dt,-sin(Xkp(1))*dt,-cos(Xkp(0))*cos(Xkp(1))*dt,
                       0,0,0,1,0,0,0,0,0,
@@ -53,9 +52,9 @@ void GyroEKF::predict(float dt) {
                       0,0,0,0,0,1,0,0,0,
                       0,0,0,0,0,0,1,0,0,
                       0,0,0,0,0,0,0,1,0,
-                      0,0,0,0,0,0,0,0,1};
+                      0,0,0,0,0,0,0,0,1;
 
-    Matrix<9,9> Pk = Fj*Pkp*~Fj+Qkp;
+    MatrixXf Pk(9,9); Pk = Fj*Pkp*Fj.transpose()+Qkp;
     Xkp = Xk;
     Pkp = Pk;
     
@@ -71,30 +70,33 @@ void GyroEKF::predict(float dt) {
 }
 
 void GyroEKF::updateGyro(float gyrox, float gyroy, float gyroz) {
-    Matrix<3,9> H = {0,0,0,1,0,0,0,0,0,
+
+    MatrixXf H(3,9); H<<0,0,0,1,0,0,0,0,0,
                      0,0,0,0,1,0,0,0,0,
-                     0,0,0,0,0,1,0,0,0};
+                     0,0,0,0,0,1,0,0,0;
+
 
     float r = 0.01;
 
-    Matrix<3,3> R = {r,0,0,
+    Matrix3f R; R<<r,0,0,
                      0,r,0,
-                     0,0,r};   
+                     0,0,r;
 
     //update step
-    Matrix<3,1> y = {gyrox, gyroy, gyroz};
-    Matrix<3,1> V = y-H*Xkp;
-    Matrix<3,3> S = H*Pkp*~H+R;
+    Vector3f y; y<<gyrox, gyroy, gyroz;
+    Vector3f V = y-H*Xkp;
+    Vector3f S = H*Pkp*H.transpose()+R;
 
-    Matrix<3,3> S_inv = S;
-    bool is_nonsingular = Invert(S_inv);
+    Matrix3f S_inv = S;
+    FullPivLU<Matrix<float, 3, 3>> lu(S_inv);
+    bool is_nonsingular = lu.isInvertible(); // not actually inverting S??
     if (!is_nonsingular) {
     return;
     }
 
-    Matrix<9,3> K = Pkp*~H*S_inv;
+    MatrixXf K(9,3); K = Pkp*H.transpose()*S_inv;
     Xkp = Xkp+K*V;
-    Pkp = Pkp-K*S*~K;   
+    Pkp = Pkp-K*S*K.transpose();   
 }
 
 void GyroEKF::updateAccel(float accx, float accy, float accz) {
@@ -103,26 +105,27 @@ void GyroEKF::updateAccel(float accx, float accy, float accz) {
     float phi = atan2(accy, sqrt(accx*accx+accz*accz));
     float theta = atan2(accx, sqrt(accy*accy+accz*accz));
 
-    Matrix<2,9> H = {1,0,0,0,0,0,0,0,0,
-                     0,1,0,0,0,0,0,0,0};
+    MatrixXf H(2,9); H<<1,0,0,0,0,0,0,0,0,
+                     0,1,0,0,0,0,0,0,0;
 
     float r = 0.01;
 
-    Matrix<2,2> R = {r,0,
-                     0,r};   
+    Matrix2f R; R<<r,0,
+                     0,r;
 
     //update step
-    Matrix<2,1> y = {phi, theta};
-    Matrix<2,1> V = y-H*Xkp;
-    Matrix<2,2> S = H*Pkp*~H+R;
+    Vector2f y; y<<phi,theta;
+    Vector2f V = y-H*Xkp;
+    Matrix2f S = H*Pkp*H.transpose()+R;
 
-    Matrix<2,2> S_inv = S;
-    bool is_nonsingular = Invert(S_inv);
+    Matrix2f S_inv = S;
+    FullPivLU<Matrix<float, 2, 2>> lu(S_inv);
+    bool is_nonsingular = lu.isInvertible();
     if (!is_nonsingular) {
     return;
     }
 
-    Matrix<9,2> K = Pkp*~H*S_inv;
+    MatrixXf K(9,2); K = Pkp*H.transpose()*S_inv;
     Xkp = Xkp+K*V;
-    Pkp = Pkp-K*S*~K;   
+    Pkp = Pkp-K*S*K.transpose();   
 }

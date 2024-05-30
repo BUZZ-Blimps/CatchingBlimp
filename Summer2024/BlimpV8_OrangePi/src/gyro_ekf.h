@@ -1,7 +1,7 @@
 #pragma once
-#include "BasicLinearAlgebra.h"
+#include <eigen3/Eigen/Dense>
 
-using namespace BLA;
+using namespace Eigen;
 
 class GyroEKF {
     public:
@@ -21,9 +21,9 @@ class GyroEKF {
     float yawRateB = 0;
 
     private:
-    Matrix<9,1> Xkp;
-    Matrix<9,9> Qkp;
-    Matrix<9,9> Pkp;
+    Matrix<float, 9, 1> Xkp;
+    Matrix<float, 9, 9> Qkp;
+    Matrix<float, 9, 9> Pkp;
 
     
 };

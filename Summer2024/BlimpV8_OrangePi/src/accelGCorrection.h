@@ -1,7 +1,7 @@
 #pragma once
-#include "BasicLinearAlgebra.h"
+#include <eigen3/Eigen/Dense>
 
-using namespace BLA;
+using namespace Eigen;
 
 class AccelGCorrection {
     public:
@@ -17,5 +17,5 @@ class AccelGCorrection {
     float agz = 0;
 
     private:
-    Matrix<3,1> g = {0,0,-9.81};
+    Eigen::Vector3f g;
 };
