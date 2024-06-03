@@ -82,7 +82,8 @@ void OpticalEKF::updateBaro(float baro) {
     }
     float S_inv = 1/S;
 
-    Matrix<7,1> K = Pkp*H.transpose()*S_inv;
+    Eigen::MatrixXf K(7,1);
+    K << Pkp*H.transpose()*S_inv;
     Xkp = Xkp+K*V;
     Pkp = Pkp-K*S*K.transpose();
 }
@@ -94,8 +95,8 @@ void OpticalEKF::updateOptical(float optical) {
 
     //update step
     float y = optical;
-    float V = y-H*Xkp;
-    float S = H*Pkp*H.transpose()+R;
+    float V = y-(H*Xkp)(0,0);
+    float S = (H*Pkp*H.transpose())(0,0)+R;
 
     bool is_nonsingular = S;
     if (!is_nonsingular) {
@@ -116,8 +117,8 @@ void OpticalEKF::updateGyroX(float gyrox) {
 
     //update step
     float y = gyrox;
-    float V = y-H*Xkp;
-    float S = H*Pkp*H.transpose()+R;
+    float V = y-(H*Xkp)(0,0);
+    float S = (H*Pkp*H.transpose())(0,0)+R;
 
     bool is_nonsingular = S;
     if (!is_nonsingular) {
@@ -138,8 +139,8 @@ void OpticalEKF::updateGyroZ(float gyroz) {
 
     //update step
     float y = gyroz;
-    float V = y-H*Xkp;
-    float S = H*Pkp*H.transpose()+R;
+    float V = y-(H*Xkp)(0,0);
+    float S = (H*Pkp*H.transpose())(0,0)+R;
 
     bool is_nonsingular = S;
     if (!is_nonsingular) {
@@ -160,8 +161,8 @@ void OpticalEKF::updateAccelx(float accx) {
 
     //update step
     float y = accx;
-    float V = y-H*Xkp;
-    float S = H*Pkp*H.transpose()+R;
+    float V = y-(H*Xkp)(0,0);
+    float S = (H*Pkp*H.transpose())(0,0)+R;
 
     bool is_nonsingular = S;
     if (!is_nonsingular) {

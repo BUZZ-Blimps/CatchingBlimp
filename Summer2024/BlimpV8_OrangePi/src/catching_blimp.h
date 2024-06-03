@@ -45,6 +45,7 @@
 #include "gyro_ekf.h"
 #include "tripleBallGrabber.h"
 #include "Gimbal.h"
+#include <wiringPi.h>
 
 
 #define EXECUTE_EVERY_N_MS(MS, X)  do { \
@@ -260,6 +261,10 @@ void update_agent_state();
 
 //Global variables
 //sensor fusion objects
+servo Servo_L;
+servo Servo_R;
+brushless Brushless_L;
+brushless Brushless_R;
 OPI_IMU BerryIMU;
 Madgwick_Filter madgwick;
 BaroAccKF kf;
