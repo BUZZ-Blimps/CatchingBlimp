@@ -4,6 +4,7 @@
 
 #include "Kalman_Filter_Tran_Vel_Est.h"
 #include "vector"
+#include <wiringPi.h>
 
 Kalman_Filter_Tran_Vel_Est::Kalman_Filter_Tran_Vel_Est() {
   // xhat = {x, y, xdot, ydot, xddot, yddot, xbias, ybias}

@@ -33,7 +33,7 @@ OpticalEKF::OpticalEKF(float a_new, float b1_new, float b2_new) {
 
 void OpticalEKF::predict(float dt) {
     Eigen::MatrixXf Fj(7,7);
-    F << 1,0,0,0,0,0,0,
+    Fj << 1,0,0,0,0,0,0,
                    0,1,0,0,0,0,0,
                    0,0,1,0,0,0,0,
                    0,0,0,1,0,0,0,
