@@ -19,24 +19,24 @@ int main(){
     brushless Brushless_R;
     Brushless_L.brushless_setup(5);
     Brushless_R.brushless_setup(16);
-    Brushless_L.brushless_thrust(0);
-    Brushless_R.brushless_thrust(0);
+    Brushless_L.brushless_thrust(1500);
+    Brushless_R.brushless_thrust(1500);
     delay(5000);
     while(1){
         printf("Sweeping up in 1 second...\n");
 		delay(1000);
-		for(int i=0; i<=180; i++){
-			int val = i;
-			printf("Servo angle: %d\n degrees", val);
+		for(float i=0; i<=180; i++){
+			float val = i;
+			printf("Servo angle: %f\n degrees", val);
 			Servo_L.servo_angle(i);
             Servo_R.servo_angle(180 - i);
 			delay(5);
         }
         printf("Sweeping down in 1 second...\n");
 		delay(1000);
-		for(int i=0; i<=180; i++){
-			int val = i;
-			printf("Servo angle: %d\n degrees", val);
+		for(float i=0; i<=180; i++){
+			float val = i;
+			printf("Servo angle: %f\n degrees", val);
 			Servo_L.servo_angle(180 - i);
             Servo_R.servo_angle(i);
 			delay(5);
@@ -44,28 +44,28 @@ int main(){
         delay(3000);
         printf("Forward thrust in 1 second...\n");
 		delay(1000);
-		for(int i=0; i<=70; i++){
-			int val = i;
-			printf("Brushless thrust: %d\n", val);
+		for(float i=1500; i<=1850; i+=10){
+			float val = i;
+			//printf("Brushless thrust: %f\n", val);
 			Brushless_L.brushless_thrust(i);
             Brushless_R.brushless_thrust(i);
 			delay(10);
         }
         delay(2000);
-        Brushless_L.brushless_thrust(0);
-        Brushless_R.brushless_thrust(0);
+        Brushless_L.brushless_thrust(1500);
+        Brushless_R.brushless_thrust(1500);
         printf("Backward thrust in 1 second...\n");
 		delay(1000);
-		for(int i=0; i>=-70; i--){
-			int val = i;
-			printf("Brushless thrust: %d\n", val);
+		for(float i=1500; i>=1150; i-=10){
+			float val = i;
+			//printf("Brushless thrust: %f\n", val);
 			Brushless_L.brushless_thrust(i);
             Brushless_R.brushless_thrust(i);
 			delay(10);
         }
         delay(2000);
-        Brushless_L.brushless_thrust(0);
-        Brushless_R.brushless_thrust(0);
+        Brushless_L.brushless_thrust(1500);
+        Brushless_R.brushless_thrust(1500);
         delay(3000);
     }
     return(1);

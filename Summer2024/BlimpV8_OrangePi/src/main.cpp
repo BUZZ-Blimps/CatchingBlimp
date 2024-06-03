@@ -343,12 +343,26 @@ float searchDirection() {
 //set up
 
 void setup() {
+    //old code
     //start serial connection
-    Serial.begin(115200);
-    set_microros_serial_transports(Serial); //to pi
+    //Serial.begin(115200);
+    //set_microros_serial_transports(Serial); //to pi
 
-    agent_state_ = WAITING_AGENT; //wait for connection
-    Serial1.begin(115200);
+    //agent_state_ = WAITING_AGENT; //wait for connection
+    //Serial1.begin(115200);
+    //old code
+
+    //Start Servos
+    Servo_L.servo_setup(0);
+    Servo_R.servo_setup(2);
+    Servo_L.servo_angle(0);
+    Servo_R.servo_angle(180);
+
+    //Start Brushless
+    Brushless_L.brushless_setup(5);
+    Brushless_R.brushless_setup(16);
+    Brushless_L.brushless_thrust(1500);
+    Brushless_R.brushless_thrust(1500);
 
     //Start IMU
     BerryIMU.OPI_IMU_Setup();

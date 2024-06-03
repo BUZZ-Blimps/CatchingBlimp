@@ -1,5 +1,6 @@
 #pragma once
 #include "servo.h"
+#include "brushless.h"
 
 class ServoWrapper{
     public:
@@ -18,6 +19,6 @@ class ServoWrapper{
     double targetMotorPos;
     double currentMotorPos;
 
-    servo motor;
+    brushless motor;
 
 };

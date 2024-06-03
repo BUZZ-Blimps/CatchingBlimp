@@ -1,5 +1,6 @@
 #pragma once
-#include "ServoWrapper.h"
+#include "servo.h"
+#include "brushless.h"
 
 class Gimbal {
     public:
@@ -22,9 +23,9 @@ class Gimbal {
 
 
     //attach to pin
-    ServoWrapper yawServo;
-    ServoWrapper pitchServo;
-    ServoWrapper motor;
+    servo yawServo;
+    servo pitchServo;
+    brushless motor;
 
     double thetaPos;
     double phiPos1;

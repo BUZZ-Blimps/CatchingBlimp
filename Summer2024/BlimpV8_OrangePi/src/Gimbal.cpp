@@ -34,14 +34,14 @@ void Gimbal::gimbal_init(int yawPin, int pitchPin, int motorPin,double newDeadba
   servoThreshold = 1000; // (degrees) Defines how close servos must be for brushless motors to activate
   
   //attach to pin
-  this->yawServo.attach(yawPin);
-  this->pitchServo.attach(pitchPin);
-  this->motor.attach(motorPin);
+  this->yawServo.servo_PIN(yawPin);
+  this->pitchServo.servo_PIN(pitchPin);
+  this->motor.brushless_PIN(motorPin);
   
   //initialize
-  this->yawServo.write(135);
-  this->pitchServo.write(phiOffset);
-  this->motor.write(1500);
+  this->yawServo.servo_angle(135);
+  this->pitchServo.servo_angle(phiOffset);
+  this->motor.brushless_thrust(1500);
 }
 
 bool Gimbal::readyGimbal(bool debug, bool motors_off, double roll, double pitch, double yaw, double up, double forward) {
@@ -160,8 +160,8 @@ bool Gimbal::readyGimbal(bool debug, bool motors_off, double roll, double pitch,
   phiPos1 = filter*phi + (1-filter)*phiPos1;
   
   if (abs(thrustf) >= deadband/2.0){ // Turn on motors
-    this->yawServo.write(135);
-    this->pitchServo.write(phi);
+    this->yawServo.servo_angle(135);
+    this->pitchServo.servo_angle(phi);
 
     if (!motors_off) {
       nextMotorCom = motorCom(thrustf); //mator mapping from "-1000 - 1000" to "1000 - 2000"
@@ -175,24 +175,24 @@ bool Gimbal::readyGimbal(bool debug, bool motors_off, double roll, double pitch,
 
     }else{
       nextMotorCom=motorCom(0);
-      this->motor.write(motorCom(0)); //write 1500
+      this->motor.brushless_thrust(motorCom(0)); //write 1500
     }
 
-    return (abs(yawServo.getServo()-thetaPos)<1000) && (abs(pitchServo.getServo()-phi)<1000); 
+    return (abs(yawServo.get_angle()-thetaPos)<1000) && (abs(pitchServo.get_angle()-phi)<1000); 
   
   } else {
     nextMotorCom=motorCom(0);
-    this->motor.write(motorCom(0)); //write 1500
+    this->motor.brushless_thrust(motorCom(0)); //write 1500
     return true; // Anti blocking mechanism
   }
 }
 
 void Gimbal::updateGimbal(bool ready){ // Actual turn on command for brushless motors
   if (ready){
-    this->motor.write(nextMotorCom); 
+    this->motor.brushless_thrust(nextMotorCom); 
     // Serial.println(nextMotorCom);
   }else {
-    this->motor.write(motorCom(0));
+    this->motor.brushless_thrust(motorCom(0));
   }
 }
 
@@ -219,6 +219,6 @@ double Gimbal::motorCom(double command) {
         adjustedCom = 1500;
     }
     //Serial.println(adjustedCom);
-    this->motor.write(adjustedCom);
+    this->motor.brushless_thrust(adjustedCom);
     return adjustedCom;
 }

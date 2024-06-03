@@ -8,13 +8,13 @@ void ServoWrapper::attach(int servoPin){
     maxMotorPos=180; // Subject to change with the addition of the 270 degree servos
     targetMotorPos=90; // arbitrary startup target
 
-    motor.servo_PIN(servoPin);
-    motor.servo_angle(targetMotorPos); // arbitrary initial position
+    motor.brushless_PIN(servoPin);
+    motor.brushless_angle(targetMotorPos); // arbitrary initial position
 }
 
 void ServoWrapper::write(double motorValue){
     updateApproximation();
-    motor.servo_angle(motorValue);
+    motor.brushless_angle(motorValue);
     targetMotorPos=motorValue;
     //Serial.print("New motor value: ");
     //Serial.println(String(motorValue));
