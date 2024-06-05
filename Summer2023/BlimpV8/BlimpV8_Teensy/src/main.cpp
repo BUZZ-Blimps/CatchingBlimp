@@ -814,8 +814,6 @@ void loop() {
 
                     //go back to searching
                     auto_state = searching;
-                    // searching timer
-                    searchingTimeStart = millis();
                     searchYawDirection = searchDirection();  //randomize the search direction
 
                     //start shooting
@@ -857,13 +855,13 @@ void loop() {
 
             if (targets[2] != 1000){
                 float rawZ = targets[2]; // distance
-                tx = xFilter.filter(static_cast<float>(targets[0]));
-                ty = yFilter.filter(static_cast<float>(targets[1]));
-                tz = zFilter.filter(rawZ);
+                // tx = xFilter.filter(static_cast<float>(targets[0]));
+                // ty = yFilter.filter(static_cast<float>(targets[1]));
+                // tz = zFilter.filter(rawZ);
                 
-                // tx = static_cast<float>(targets[0]);
-                // ty = static_cast<float>(targets[1]);
-                // tz = rawZ;
+                tx = static_cast<float>(targets[0]);
+                ty = static_cast<float>(targets[1]);
+                tz = rawZ;
 
                 detected_target.push_back(tx);
                 detected_target.push_back(ty);
@@ -872,7 +870,7 @@ void loop() {
                 // no target, set to default value
                 xFilter.filter(0);
                 yFilter.filter(0);
-                zFilter.filter(4);
+                // zFilter.filter(7);
                 // areaFilter.filter(0);
             }
             
@@ -960,7 +958,6 @@ void loop() {
             switch (auto_state) {
                 //blimp_state machine
                 case searching: {
-
                     //check if goal scoring should be attempted
                     if (catches >= 1 && ((micros()/MICROS_TO_SEC - lastCatch) >= (MAX_SEARCH_WAIT_AFTER_ONE - (catches-1)*GAME_BALL_WAIT_TIME_PENALTY))) {
                         catches = TOTAL_ATTEMPTS;
@@ -1016,46 +1013,20 @@ void loop() {
                             //search behavior (no detected_target)
                             //spin in a small circle looking for a game ball
                             //randomize the diretion selection
-                            // yawCom = GAME_BALL_YAW_SEARCH*searchYawDirection;
-                            //upCom = 0;    //is overriden later, defined here as a safety net
-                            // forwardCom = GAME_BALL_FORWARD_SEARCH;
-                            
+                            yawCom = GAME_BALL_YAW_SEARCH*searchYawDirection;
+                            upCom = 0;    //is overriden later, defined here as a safety net
+                            forwardCom = GAME_BALL_FORWARD_SEARCH;
+                        }
 
-                            // // Prolly hit a net
-                            // if (20000 < millis()- searchingTimeStart){
-                            //     double backupTimer = millis();
+                        //move up and down within the set boundry
+                        if (actualBaro > CEIL_HEIGHT) {
+                            // if (wasUp) wasUp = false;
+                            upCom = GAME_BALL_VERTICAL_SEARCH; //down
+                        }
 
-                            //     if (2200 > millis() - backupTimer) {
-                            //         searchYawDirection = searchDirection();
-                            //         yawCom = 60*searchYawDirection;
-                            //         upCom = -50;    //is overriden later, defined here as a safety net
-                            //         forwardCom = -200;
-                            //     }
-
-                            //     searchingTimeStart = millis(); 
-                            // }
-
-                            //move up and down within the set boundry
-                            if (actualBaro > CEIL_HEIGHT) {
-                                // if (wasUp) wasUp = false;
-                                yawCom = GAME_BALL_YAW_SEARCH*searchYawDirection;
-                                upCom = GAME_BALL_VERTICAL_SEARCH; //down
-                                forwardCom = GAME_BALL_FORWARD_SEARCH;
-                            }
-
-                            if (actualBaro < FLOOR_HEIGHT) {
-                                // if (!wasUp) wasUp = true;
-                                yawCom = GAME_BALL_YAW_SEARCH*searchYawDirection;
-                                upCom = -GAME_BALL_VERTICAL_SEARCH;  //up
-                                forwardCom = GAME_BALL_FORWARD_SEARCH;
-                            }
-
-                            if (actualBaro <= CEIL_HEIGHT && actualBaro >=FLOOR_HEIGHT) {
-                                // if (wasUp) wasUp = false;
-                                yawCom = GAME_BALL_YAW_SEARCH*searchYawDirection;
-                                upCom = 0;
-                                forwardCom = GAME_BALL_FORWARD_SEARCH;
-                            }
+                        if (actualBaro < FLOOR_HEIGHT) {
+                            // if (!wasUp) wasUp = true;
+                            upCom = -GAME_BALL_VERTICAL_SEARCH;  //up
                         }
 
                     } else {
@@ -1069,8 +1040,6 @@ void loop() {
                     // max time to approach
                     if (approachTimeMax < millis() - approachTimeStart) {
                         auto_state = searching;
-                        // searching timer
-                        searchingTimeStart = millis();
                     }
 
                    //check if target is still valid
@@ -1132,8 +1101,6 @@ void loop() {
                         //no target, look for another
                         //maybe add some memory
                         auto_state = searching;
-                        // searching timer
-                        searchingTimeStart = millis();
                         ballGrabber.closeGrabber(blimp_state);
                         searchYawDirection = searchDirection();  //randomize the search direction
                     }
@@ -1167,8 +1134,6 @@ void loop() {
                             //approach next game ball if visible
                             if (catches < TOTAL_ATTEMPTS) {
                                 auto_state = searching;
-                                // searching timer
-                                searchingTimeStart = millis();
                                 searchYawDirection = searchDirection();  //randomize the search direction
                             }
                         }
@@ -1180,8 +1145,6 @@ void loop() {
                                 goalYawDirection = searchDirection();  //randomize search direction
                             } else {
                                 auto_state = searching;
-                                // searching timer
-                                searchingTimeStart = millis();
                                 searchYawDirection = searchDirection();  //randomize the search direction
                             }
                         }
@@ -1191,8 +1154,6 @@ void loop() {
                         yawCom = 0;
                     } else {
                         auto_state = searching;
-                        // searching timer
-                        searchingTimeStart = millis();
                         searchYawDirection = searchDirection();  //randomize the search direction
                     }
                     break;
@@ -1246,8 +1207,6 @@ void loop() {
                         
                     } else {
                         auto_state = searching;
-                        // searching timer
-                        searchingTimeStart = millis();
                         searchYawDirection = searchDirection();  //randomize the search direction
                         ballGrabber.closeGrabber(blimp_state);
                     }
@@ -1310,8 +1269,6 @@ void loop() {
 
                         if (scoredTimeStart < millis() - scoredTime) {
                             auto_state = searching;
-                            // searching timer
-                            searchingTimeStart = millis();
                             searchYawDirection = searchDirection();  //randomize the search direction
                             break;
                         }
