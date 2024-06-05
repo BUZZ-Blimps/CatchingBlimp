@@ -82,7 +82,7 @@ if (uxr_millis() - init > MS) { X; init = uxr_millis();} \
 #define MAX_ATTEMPTS              5    //should be set to 5
 
 //flight area parameters
-#define CEIL_HEIGHT               4      //m
+#define CEIL_HEIGHT               6      //m
 #define FLOOR_HEIGHT              1    //m
 
 #define MAX_HEIGHT                2    //m  (unused)
@@ -459,12 +459,12 @@ rcl_subscription_t pixels_subscription; //int64_multi_array
 
 //The following names can be commented/uncommented based on the blimp that is used
 // Define the name of the blimp/robot
- std::string blimpNameSpace = "BurnCreamBlimp";
+// std::string blimpNameSpace = "BurnCreamBlimp";
 //std::string blimpNameSpace = "SillyAhBlimp";
 // std::string blimpNameSpace = "TurboBlimp";
 // std::string blimpNameSpace = "GameChamberBlimp";
 //std::string blimpNameSpace = "FiveGuysBlimp";
-//std::string blimpNameSpace = "SuperBeefBlimp";
+std::string blimpNameSpace = "SuperBeefBlimp";
 
 //message types: String Bool Float32 Float32 MultiArray
 //message topics : /auto /baseBarometer /blimpID /grabbing /killed /motorCommands /shooting /identify /imu /goal_color /state_machine

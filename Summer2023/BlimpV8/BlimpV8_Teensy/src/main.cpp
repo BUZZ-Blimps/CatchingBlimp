@@ -855,12 +855,9 @@ void loop() {
 
             if (targets[2] != 1000){
                 float rawZ = targets[2]; // distance
-                // tx = xFilter.filter(static_cast<float>(targets[0]));
-                // ty = yFilter.filter(static_cast<float>(targets[1]));
+                tx = xFilter.filter(static_cast<float>(targets[0]));
+                ty = yFilter.filter(static_cast<float>(targets[1]));
                 // tz = zFilter.filter(rawZ);
-                
-                tx = static_cast<float>(targets[0]);
-                ty = static_cast<float>(targets[1]);
                 tz = rawZ;
 
                 detected_target.push_back(tx);
