@@ -108,15 +108,15 @@ if (uxr_millis() - init > MS) { X; init = uxr_millis();} \
 #define GAME_BALL_VERTICAL_SEARCH 50  // m/s
 
 
-<<<<<<< HEAD
 #define GAME_BALL_CLOSURE_COM     180  //approaching at 20% throttle cap
 #define GAME_BALL_APPROACH_ANGLE  40  //approach magic number (TODO: reset)
 #define GAME_BaLL_X_OFFSET        80   //offset magic number (TODO: reset)
-=======
 #define GAME_BALL_CLOSURE_COM     110  //approaching at 20% throttle cap
 #define GAME_BALL_APPROACH_ANGLE  30  //approach magic number (TODO: reset)
 #define GAME_BaLL_X_OFFSET        60   //offset magic number (TODO: reset)
->>>>>>> parent of c5ee0c44 (new search behavior)
+#define GAME_BALL_CLOSURE_COM     110  //approaching at 20% throttle cap
+#define GAME_BALL_APPROACH_ANGLE  30  //approach magic number (TODO: reset)
+#define GAME_BaLL_X_OFFSET        60   //offset magic number (TODO: reset)
 
 #define CATCHING_FORWARD_COM      350  //catching at 50% throttle 
 #define CATCHING_UP_COM           50  //damp out pitch
@@ -460,11 +460,12 @@ rcl_subscription_t pixels_subscription; //int64_multi_array
 //The following names can be commented/uncommented based on the blimp that is used
 // Define the name of the blimp/robot
 // std::string blimpNameSpace = "BurnCreamBlimp";
+ std::string blimpNameSpace = "BurnCreamBlimp";
 //std::string blimpNameSpace = "SillyAhBlimp";
 // std::string blimpNameSpace = "TurboBlimp";
 // std::string blimpNameSpace = "GameChamberBlimp";
-//std::string blimpNameSpace = "FiveGuysBlimp";
-std::string blimpNameSpace = "SuperBeefBlimp";
+//std::string blimpNameSpace = "FiveGuysBlimp"
+//std::string blimpNameSpace = "SuperBeefBlimp";
 
 //message types: String Bool Float32 Float32 MultiArray
 //message topics : /auto /baseBarometer /blimpID /grabbing /killed /motorCommands /shooting /identify /imu /goal_color /state_machine
