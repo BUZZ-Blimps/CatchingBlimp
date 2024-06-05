@@ -105,7 +105,7 @@ if (uxr_millis() - init > MS) { X; init = uxr_millis();} \
 // the inputs are bounded from -2 to 2, yaw is maxed out at 120 deg/s
 #define GAME_BALL_YAW_SEARCH      -7  // deg/s
 #define GAME_BALL_FORWARD_SEARCH  130 // 30% throttle 
-#define GAME_BALL_VERTICAL_SEARCH 120  // m/s
+#define GAME_BALL_VERTICAL_SEARCH 50  // m/s
 
 
 #define GAME_BALL_CLOSURE_COM     180  //approaching at 20% throttle cap
@@ -345,9 +345,6 @@ float ground_pressure = 0;
 
 //timers for state machine
 double searchingTimeStart = 0.0;
-bool backingUp = false;
-double searchTime = 30000;
-double backupTime = 6000;
 
 double approachTimeStart = 0;
 double approachTimeMax = 10000;   //ms
@@ -460,9 +457,9 @@ rcl_subscription_t pixels_subscription; //int64_multi_array
 // Define the name of the blimp/robot
 //  std::string blimpNameSpace = "BurnCreamBlimp";
 //std::string blimpNameSpace = "SillyAhBlimp";
-//std::string blimpNameSpace = "TurboBlimp";
-//std::string blimpNameSpace = "GameChamberBlimp";
-std::string blimpNameSpace = "GravyLongWayBlimp";
+// std::string blimpNameSpace = "TurboBlimp";
+std::string blimpNameSpace = "GameChamberBlimp";
+//std::string blimpNameSpace = "FiveGuysBlimp";
 // std::string blimpNameSpace = "SuperBeefBlimp";
 
 //message types: String Bool Float32 Float32 MultiArray
