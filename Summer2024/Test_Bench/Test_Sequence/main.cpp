@@ -27,7 +27,7 @@ int main(){
 		delay(1000);
 		for(float i=0; i<=180; i++){
 			float val = i;
-			printf("Servo angle: %f\n degrees", val);
+			printf("Servo angle: %f\n", val);
 			Servo_L.servo_angle(i);
             Servo_R.servo_angle(180 - i);
 			delay(5);
@@ -36,7 +36,7 @@ int main(){
 		delay(1000);
 		for(float i=0; i<=180; i++){
 			float val = i;
-			printf("Servo angle: %f\n degrees", val);
+			printf("Servo angle: %f\n", val);
 			Servo_L.servo_angle(180 - i);
             Servo_R.servo_angle(i);
 			delay(5);
@@ -46,7 +46,7 @@ int main(){
 		delay(1000);
 		for(float i=1500; i<=1850; i+=10){
 			float val = i;
-			//printf("Brushless thrust: %f\n", val);
+			printf("Brushless thrust: %f\n", val);
 			Brushless_L.brushless_thrust(i);
             Brushless_R.brushless_thrust(i);
 			delay(10);
@@ -58,12 +58,59 @@ int main(){
 		delay(1000);
 		for(float i=1500; i>=1150; i-=10){
 			float val = i;
-			//printf("Brushless thrust: %f\n", val);
+			printf("Brushless thrust: %f\n", val);
 			Brushless_L.brushless_thrust(i);
             Brushless_R.brushless_thrust(i);
 			delay(10);
         }
         delay(2000);
+        Brushless_L.brushless_thrust(1500);
+        Brushless_R.brushless_thrust(1500);
+        printf("Bounds testing in 1 second...\n");
+        delay(1000);
+        for(int i=0; i<=5; i++){
+            int val;
+            int Bval;
+			if (i%2 == 0){
+                val = 5;
+                Bval = 1700;
+            }
+            else {
+                val = 175;
+                Bval = 1300;
+            }
+			printf("Servo angle: %d\n", val);
+			printf("Brushless thrust: %d\n", Bval);
+			Servo_L.servo_angle(180 - val);
+            Servo_R.servo_angle(val);
+            Brushless_L.brushless_thrust(Bval);
+            Brushless_R.brushless_thrust(Bval);
+			delay(1000);
+        }
+        printf("Going wild in 1 second...\n");
+		delay(1000);
+		for(float i=0; i<=30; i++){
+            int lb = 10;
+            int ub = 170;
+            int Lval = rand() % (ub - lb + 1) + lb;
+            int Rval = rand() % (ub - lb + 1) + lb;
+			printf("Left Servo angle: %d\n", Lval);
+            printf("Right Servo angle: %d\n", Rval);
+			Servo_L.servo_angle(180 - Lval);
+            Servo_R.servo_angle(Rval);
+            int Blb = 1150;
+            int Bub = 1850;
+            int BLval = rand() % (Bub - Blb + 1) + Blb;
+            int BRval = rand() % (Bub - Blb + 1) + Blb;
+			printf("Left Brushless thrust: %d\n", BLval);
+            printf("Right Brushless thrust: %d\n", BRval);
+            Brushless_L.brushless_thrust(BLval);
+            Brushless_R.brushless_thrust(BRval);
+			delay(1500);
+        }
+        printf("Resetting in 3 seconds...\n");
+        Servo_L.servo_angle(0);
+        Servo_R.servo_angle(180);
         Brushless_L.brushless_thrust(1500);
         Brushless_R.brushless_thrust(1500);
         delay(3000);

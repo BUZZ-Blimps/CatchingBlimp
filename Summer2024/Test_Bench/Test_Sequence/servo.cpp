@@ -1,4 +1,5 @@
 #include "servo.h"
+#include <cstdio>
 
 
 void servo::servo_setup(int PIN){
@@ -19,9 +20,15 @@ void servo::servo_PIN(int PIN){
 }
 
 double servo::servo_angle(double angle){
-    this->curr_angle = (angle*(1.5)) + 160; //Goes from 160 to 430
-    pwmWrite(this->pin, this->curr_angle);
-    return this->curr_angle;
+    if (0 <= angle && angle <= 180){
+        this->curr_angle = (angle*(1.5)) + 160;
+        pwmWrite(this->pin, this->curr_angle);
+        return this->curr_angle;
+    }
+    else {
+        printf("Servo angle out of range!\n");
+        return(this->curr_angle);
+    }
 }
 
 double servo::get_angle(){

@@ -20,17 +20,17 @@ void brushless::brushless_PIN(int PIN){
 }
 
 double brushless::brushless_thrust(double thrust){
-    if (1000<= thrust <= 2000){
+    if (1000 <= thrust && thrust <= 2000){
         this->curr_thrust = (thrust*0.1) + 150;
         pwmWrite(this->pin, this->curr_thrust);
         return this->curr_thrust;
     }
     else {
-        printf("Thrust out of range!");
+        printf("Thrust out of range!\n");
         return(this->curr_thrust);
     }
 }
 
 double brushless::get_thrust(){
-    return((this->curr_thrust - 300)*2);
+    return((this->curr_thrust - 150)*0.1);
 }

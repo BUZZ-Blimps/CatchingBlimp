@@ -855,7 +855,6 @@ void loop() {
             //new target (empty target)
             std::vector<double> detected_target;
 
-            //if a target is seen
             if (targets[2] != 1000){
                 float rawZ = targets[2]; // distance
                 tx = xFilter.filter(static_cast<float>(targets[0]));
@@ -869,7 +868,6 @@ void loop() {
                 detected_target.push_back(tx);
                 detected_target.push_back(ty);
                 detected_target.push_back(tz);
-                
             } else {
                 // no target, set to default value
                 xFilter.filter(0);
@@ -1174,7 +1172,6 @@ void loop() {
                         ballGrabber.closeGrabber(blimp_state);
                         searchYawDirection = searchDirection();  //randomize the search direction
                     }
-
                     break;
                 } case catching: {
                     //wait for 0.3 second
