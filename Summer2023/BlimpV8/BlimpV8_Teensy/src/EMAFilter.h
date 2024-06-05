@@ -2,15 +2,13 @@
 
 class EMAFilter {
     private:
-        double alpha;
-        bool initialized;
+    double alpha;
     
     public:
-        EMAFilter(double alpha);
-        EMAFilter();
-        void reset();
-        void setAlpha(double alpha);
-        void setInitial(double initial);
-        double filter(double current);
-        double last;
+    EMAFilter(double alpha);
+    EMAFilter();
+    void setAlpha(double alpha);
+    void setInitial(double initial);
+    double filter(double current);
+    double last;
 };
