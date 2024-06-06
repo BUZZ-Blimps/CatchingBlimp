@@ -10,13 +10,9 @@
 #include <vector>
 #include <string>
 
-//Micro ROS/ROS2 includes
-#include <micro_ros_platformio.h>
-#include <rcl/rcl.h>
-#include <rcl/error_handling.h>
-#include <rclc/rclc.h>
-#include <rclc/executor.h>
-#include <rmw_microros/rmw_microros.h>
+//ROS2 includes
+#include "rclcpp/rclcpp.hpp"
+#include "std_msgs/msg/string.hpp"
 
 //Message type includes
 #include <std_msgs/msg/string.h> //include the message type that needs to be published (teensy data)
@@ -47,6 +43,9 @@
 #include "gyro_ekf.h"
 #include "tripleBallGrabber.h"
 #include "Gimbal.h"
+
+using namespace std::chrono_literals;
+using std::placeholders::_1;
 
 
 #define EXECUTE_EVERY_N_MS(MS, X)  do { \
@@ -242,20 +241,19 @@ void publish_log(const char *message);
 // void client_callback(const void * msgin);
 // void send_request();
 // void receive_response();
-void timer_callback(rcl_timer_t * timer, int64_t last_call_time);
+void timer_callback();
 // void id_subscription_callback(const void *msgin);
-void auto_subscription_callback(const void *msgin);
-void baro_subscription_callback(const void *msgin);
-void calibrateBarometer_subscription_callback(const void *msgin);
-void kill_subscription_callback(const void *msgin);
-void shoot_subscription_callback(const void *msgin);
-void motor_subscription_callback(const void *msgin);
-void goal_color_subscription_callback(const void *msgin);
-void avoidance_subscription_callback(const void *msgin);
-void targets_subscription_callback(const void *msgin);
-void pixels_subscription_callback(const void *msgin);
+void auto_subscription_callback(const std_msgs::msg::Bool & msg) const;
+void baro_subscription_callback(const std_msgs::msg::Float64 & msg) const;
+void calibrateBarometer_subscription_callback(const std_msgs::msg::Bool & msg) const;
+void kill_subscription_callback(const std_msgs::msg::Bool & msg) const;
+void shoot_subscription_callback(const std_msgs::msg::Bool & msg) const;
+void motor_subscription_callback(const std_msgs::msg::Float64MultiArray & msg) const;
+void goal_color_subscription_callback(const std_msgs::msg::Int64 & msg) const;
+void avoidance_subscription_callback(const std_msgs::msg::Float64MultiArray & msg) const;
+void targets_subscription_callback(const std_msgs::msg::Float64MultiArray & msg) const;
+void pixels_subscription_callback(const std_msgs::msg::Int64MultiArray & msg) const;
 bool create_entities();
-void destroy_entities();
 void Pulse();
 void update_agent_state();
 
@@ -418,44 +416,38 @@ std::vector<int64_t> pixels = {1000, 1000, 0, 1000, 1000, 0, 1000, 1000, 0};
 
 //------------------MICRO ROS publishers/subscribers--------------
 //ROS node
-//executors
-rclc_executor_t executor_pub;
-rclc_executor_t executor_sub;
-// rclc_executor_t executor_srv;
-
-rclc_support_t support;
-rcl_allocator_t allocator;
-rcl_node_t node;
-rcl_timer_t timer;
 
 //ROS client
 // rcl_client_t client;
 // rmw_request_id_t req_id;
 
 //ROS publishers
-rcl_publisher_t identity_publisher; //string
-rcl_publisher_t imu_publisher;    //imu
-rcl_publisher_t debug_publisher;  //float64_multi_array
-rcl_publisher_t height_publisher; //float64
-rcl_publisher_t z_velocity_publisher; //float64
-rcl_publisher_t state_machine_publisher; //int64
+rclcpp::Publisher<std_msgs::msg::String>::SharedPtr identity_publisher;
+rclcpp::Publisher<sensor_msgs::msg::Imu>::SharedPtr imu_publisher;
+rclcpp::Publisher<std_msgs::msg::Float64MultiArray>::SharedPtr debug_publisher;
+rclcpp::Publisher<std_msgs::msg::Float64>::SharedPtr height_publisher;
+rclcpp::Publisher<std_msgs::msg::Float64>::SharedPtr z_velocity_publisher;
+rclcpp::Publisher<std_msgs::msg::Int64>::SharedPtr state_machine_publisher;
 
 //Teensy log message publisher
-rcl_publisher_t log_publisher;
+rclcpp::Publisher<std_msgs::msg::String>::SharedPtr log_publisher;
 
 //ROS subscribers
-rcl_subscription_t auto_subscription; //boolean
-rcl_subscription_t baseBarometer_subscription; //float64
-rcl_subscription_t calibrateBarometer_subscription; //boolean
-rcl_subscription_t grabber_subscription; //boolean
-rcl_subscription_t shooter_subscription; //boolean
-rcl_subscription_t motor_subscription; //float64_multi_array
-rcl_subscription_t kill_subscription; //boolean
-rcl_subscription_t goal_color_subscription; //int64
-rcl_subscription_t avoidance_subscription; //float64_multi_array
-rcl_subscription_t targets_subscription; //float64_multi_array
-rcl_subscription_t pixels_subscription; //int64_multi_array
+rclcpp::Subscription<std_msgs::msg::Bool>::SharedPtr auto_subscription;
+rclcpp::Subscription<std_msgs::msg::Float64>::SharedPtr baseBarometer_subscription;
+rclcpp::Subscription<std_msgs::msg::Bool>::SharedPtr calibrateBarometer_subscription;
+rclcpp::Subscription<std_msgs::msg::Bool>::SharedPtr grabber_subscription;
+rclcpp::Subscription<std_msgs::msg::Bool>::SharedPtr shooter_subscription;
+rclcpp::Subscription<std_msgs::msg::Float64MultiArray>::SharedPtr motor_subscription;
+rclcpp::Subscription<std_msgs::msg::Bool>::SharedPtr kill_subscription;
+rclcpp::Subscription<std_msgs::msg::Int64>::SharedPtr goal_color_subscription;
 
+rclcpp::Subscription<std_msgs::msg::Float64MultiArray>::SharedPtr targets_subscription;
+rclcpp::Subscription<std_msgs::msg::Int64MultiArray>::SharedPtr pixels_subscription;
+rclcpp::Subscription<std_msgs::msg::Float64MultiArray>::SharedPtr avoidance_subscription;
+
+//timer
+rclcpp::TimerBase::SharedPtr timer;
 //The following names can be commented/uncommented based on the blimp that is used
 // Define the name of the blimp/robot
 //  std::string blimpNameSpace = "BurnCreamBlimp";
@@ -474,34 +466,34 @@ std::string blimpNameSpace = "GravyLongWayBlimp";
 bool check = false;
 
 //boolean messages
-std_msgs__msg__Bool auto_msg;
-std_msgs__msg__Bool grab_msg;
-std_msgs__msg__Bool shoot_msg;
-std_msgs__msg__Bool kill_msg;
-std_msgs__msg__Bool calibration_msg;
+auto auto_msg = std_msgs::msg::Bool();
+auto grab_msg = std_msgs::msg::Bool();
+auto shoot_msg = std_msgs::msg::Bool();
+auto kill_msg = std_msgs::msg::Bool();
+auto calibration_msg = std_msgs::msg::Bool();
 
 //int64 message
-std_msgs__msg__Int64 goal_color_msg;
-std_msgs__msg__Int64 state_machine_msg;
+auto goal_color_msg = std_msgs::msg::Int64();
+auto state_machine_msg = std_msgs::msg::Int64();
 
 //float64 message
-std_msgs__msg__Float64  baro_msg;
-std_msgs__msg__Float64  height_msg;
-std_msgs__msg__Float64  z_velocity_msg;
+auto  baro_msg = std_msgs::msg::Float64();
+auto  height_msg = std_msgs::msg::Float64();
+auto  z_velocity_msg = std_msgs::msg::Float64();
 
 //float64multiarray and int64multiarray messages
-std_msgs__msg__Float64MultiArray motor_msg;
-std_msgs__msg__Float64MultiArray debug_msg;
-std_msgs__msg__Float64MultiArray avoidance_msg;
-std_msgs__msg__Float64MultiArray targets_msg;
-std_msgs__msg__Int64MultiArray pixels_msg;
+auto motor_msg = std_msgs::msg::Float64MultiArray();
+auto debug_msg = std_msgs::msg::Float64MultiArray();
+auto avoidance_msg = std_msgs::msg::Float64MultiArray();
+auto targets_msg = std_msgs::msg::Float64MultiArray();
+auto pixels_msg = std_msgs::msg::Int64MultiArray();
 
 //String messages
-std_msgs__msg__String identity_msg;
-std_msgs__msg__String log_msg;
+auto identity_msg = std_msgs::msg::String();
+auto log_msg = std_msgs::msg::String();
 
 //sensor message
-sensor_msgs__msg__Imu imu_msg;
+auto imu_msg = sensor_msgs::msg::Imu();
 
 int counter = 0;
 bool last_connected = false;

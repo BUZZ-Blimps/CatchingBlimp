@@ -206,7 +206,7 @@ void BerryIMU_v3::IMU_read(){
   readFrom(BM388_ADDRESS, PRESS_XLSB_7_0, 6, buff);
 
   // Last 3 bytes are the temperature XLSB, LSB, MSB
-  float tempRaw = (int)(buff[3] | (buff[4] << 8) | (buff[5] << 16));
+  tempRaw = (int)(buff[3] | (buff[4] << 8) | (buff[5] << 16));
   comp_temp = temp_compensation(tempRaw);
   //Serial.println(comp_temp); //Temperature in deg C
 

@@ -493,6 +493,7 @@ void update_agent_state() {
 
 //Main loop
 void loop() {
+
     double loop_time = micros()/MICROS_TO_SEC;
 
     //Update the microros agent blimp_state machine
@@ -546,6 +547,22 @@ void loop() {
         //read sensor values and update madgwick
         BerryIMU.IMU_read();
         BerryIMU.IMU_ROTATION(rotation); // Rotate IMU
+
+        printf("AccYraw: %f\n", BerryIMU.AccYraw);
+        printf("AccXraw: %f\n", BerryIMU.AccXraw);
+        printf("AccZraw: %f\n\n", BerryIMU.AccZraw);
+
+        printf("MagYraw: %f\n", BerryIMU.MagYraw);
+        printf("MagXraw: %f\n", BerryIMU.MagXraw);
+        printf("MagZraw: %f\n\n", BerryIMU.MagZraw);
+
+        printf("gyr_rateYraw: %f\n", BerryIMU.gyr_rateYraw);
+        printf("gyr_rateXraw: %f\n", BerryIMU.gyr_rateXraw);
+        printf("gyr_rateZraw: %f\n\n", BerryIMU.gyr_rateZraw);
+
+        printf("tempRaw: %f\n", BerryIMU.tempRaw);
+        printf("pressRaw: %f\n\n\n\n", BerryIMU.pressRaw);
+        
         madgwick.Madgwick_Update(BerryIMU.gyr_rateXraw, BerryIMU.gyr_rateYraw, BerryIMU.gyr_rateZraw, BerryIMU.AccXraw, BerryIMU.AccYraw, BerryIMU.AccZraw);
 
         //publish imu data

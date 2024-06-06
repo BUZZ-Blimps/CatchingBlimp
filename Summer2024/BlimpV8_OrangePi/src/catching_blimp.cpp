@@ -35,28 +35,24 @@ void error_loop() {
 //     RCSOFTCHECK(rcl_take_response(&client,&req_id, &res));
 // }
 
-//timer call back
-void timer_callback(rcl_timer_t * timer, int64_t last_call_time) {
-    RCLC_UNUSED(last_call_time);
-    if (timer != NULL) {
-        // snprintf(msg.data.data, BUFFER_LEN, "%s for the %dth time!", blimp_name_str, counter++);
-        RCSOFTCHECK(rcl_publish(&identity_publisher, &identity_msg, NULL));
-    }
+void timer_callback()
+{
+    RCLCPP_INFO(this->get_logger(), "Publishing: '%s'", message.data.c_str());
+    identity_publisher->publish(identity_msg);
 }
+rclcpp::TimerBase::SharedPtr timer;
 
 void publish_log(const char *message) {
     snprintf(log_msg.data.data, BUFFER_LEN, "%s", message);
     log_msg.data.size = strlen(log_msg.data.data);
     log_msg.data.capacity = BUFFER_LEN;
-    RCSOFTCHECK(rcl_publish(&log_publisher, &log_msg, NULL));
+    log_publisher->publish(log_msg)
 }
 
-//subscription massage callbacks
-//message topics : /auto /baseBarometer/grabbing /killed /motorCommands /shooting /
-void auto_subscription_callback(const void *msgin)
+void auto_subscription_callback(const std_msgs::msg::Bool & msg) const
 {
-    const std_msgs__msg__Bool *auto_msg = (const std_msgs__msg__Bool *)msgin;
-    if (auto_msg->data) {
+    RCLCPP_INFO(this->get_logger(), "I heard: '%s'", msg.data.c_str());
+    if (msg.data) {
         if (blimp_state == manual) {
             publish_log("Activating Auto Mode");
         }
@@ -69,12 +65,12 @@ void auto_subscription_callback(const void *msgin)
     }
 }
 
-void calibrateBarometer_subscription_callback(const void *msgin)
+
+void calibrateBarometer_subscription_callback(const std_msgs::msg::Bool & msg) const
 {
-    const std_msgs__msg__Bool *calibration_msg = (const std_msgs__msg__Bool *)msgin;
-    calibrateBaro = calibration_msg->data;
+    RCLCPP_INFO(this->get_logger(), "I heard: '%s'", msg.data.c_str());
+    calibrateBaro = msg.data;
     const char * boolAsConstCharPtr = calibrateBaro ? "true" : "false";
-    // publish_log(boolAsConstCharPtr);
 
     // Barometer Calibration
     if (calibrateBaro == true) {
@@ -93,11 +89,11 @@ void calibrateBarometer_subscription_callback(const void *msgin)
     }
 }
 
-void baro_subscription_callback(const void *msgin)
+void baro_subscription_callback(const std_msgs::msg::Float64 & msg) const
 {
-    const std_msgs__msg__Float64 *baro_msg = (const std_msgs__msg__Float64 *)msgin;
-    baseBaro = baro_msg->data;
-    
+    RCLCPP_INFO(this->get_logger(), "I heard: '%s'", msg.data.c_str());
+    baseBaro = msg.data;
+
     //heartbeat
     //update last message time
     lastMsgTime = micros()/MICROS_TO_SEC;
@@ -106,25 +102,28 @@ void baro_subscription_callback(const void *msgin)
     if (blimp_state == lost) {
         blimp_state = manual;
     }
+
+
 }
 
-void grab_subscription_callback(const void *msgin)
+void grab_subscription_callback(const std_msgs::msg::Bool & msg) const
 {
-    const std_msgs__msg__Bool *grab_msg = (const std_msgs__msg__Bool *)msgin;
-    if (grabCom == 0 && grab_msg->data) {
+    RCLCPP_INFO(this->get_logger(), "I heard: '%s'", msg.data.c_str());
+
+    if (grabCom == 0 && msg.data) {
         grabCom = 1;
         publish_log("Going for a catch...");
-    } else if (grabCom == 1 && !grab_msg->data) {
+    } else if (grabCom == 1 && !msg.data) {
         grabCom = 0;
         publish_log("Hopefully I got a balloon!");
     }
 }
 
-void kill_subscription_callback(const void *msgin)
+void kill_subscription_callback(const std_msgs::msg::Bool & msg) const
 {
-    const std_msgs__msg__Bool *kill_msg = (const std_msgs__msg__Bool *)msgin;
+    RCLCPP_INFO(this->get_logger(), "I heard: '%s'", msg.data.c_str());
 
-    if (kill_msg->data == true) {
+    if (msg.data == true) {
         publish_log("I'm ded xD");
         motorControl.update(0,0,0,0,0);
         bool leftReady = leftGimbal.readyGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, 0, 0, 0);
@@ -134,37 +133,39 @@ void kill_subscription_callback(const void *msgin)
     }
 }
 
-void shoot_subscription_callback(const void *msgin)
+void shoot_subscription_callback(const std_msgs::msg::Bool & msg) const
 {
-    const std_msgs__msg__Bool *shoot_msg = (const std_msgs__msg__Bool *)msgin;
-    if (shootCom == 0 && shoot_msg->data) {
+    RCLCPP_INFO(this->get_logger(), "I heard: '%s'", msg.data.c_str());
+
+    if (shootCom == 0 && msg.data) {
         shootCom = 1;
         publish_log("I'm shooting my shot...");
-    } else if (shootCom == 1 && !shoot_msg->data) {
+    } else if (shootCom == 1 && !msg.data) {
         shootCom = 0;
         publish_log("What a shot!");
     }
 }
 
-void motor_subscription_callback(const void *msgin)
+void motor_subscription_callback(const std_msgs::msg::Float64MultiArray & msg) const
 {
-    const std_msgs__msg__Float64MultiArray *motor_msg = (const std_msgs__msg__Float64MultiArray *)msgin;
+    RCLCPP_INFO(this->get_logger(), "I heard: '%s'", msg.data.c_str());
 
     //commands from basestation
-    forward_msg = motor_msg->data.data[3];
-    up_msg = motor_msg->data.data[1];
-    yaw_msg = motor_msg->data.data[0];
-    translation_msg = motor_msg->data.data[2];
+    forward_msg = msg.data.data[3];
+    up_msg = msg.data.data[1];
+    yaw_msg = msg.data.data[0];
+    translation_msg = msg.data.data[2];
 
     // char motorCommands[100];  // Size depending on the expected maximum length of your combined string
     // sprintf(motorCommands, "Teensy Motor Commands\nYaw: %.2f\nUp: %.2f\nTranslation: %.2f\nForward: %.2f\n", yaw_msg, up_msg, translation_msg, forward_msg);
     // publish_log(motorCommands);
 }
 
-void goal_color_subscription_callback(const void *msgin)
+void goal_color_subscription_callback(const std_msgs::msg::Int64 & msg) const
 {
-    const std_msgs__msg__Int64 *goal_color_msg = (const std_msgs__msg__Int64 *)msgin;
-    int goal_color = goal_color_msg->data;
+    RCLCPP_INFO(this->get_logger(), "I heard: '%s'", msg.data.c_str());
+
+    int goal_color = msg.data;
     if (goalColor != orange && goal_color == 0) {
         goalColor = orange;
         publish_log("Goal Color changed to Orange");
@@ -174,27 +175,30 @@ void goal_color_subscription_callback(const void *msgin)
     }
 }
 
-void avoidance_subscription_callback(const void *msgin)
+void avoidance_subscription_callback(const std_msgs::msg::Float64MultiArray & msg) const
 {
-    const std_msgs__msg__Float64MultiArray *avoidance_msg = (const std_msgs__msg__Float64MultiArray *)msgin;
+    RCLCPP_INFO(this->get_logger(), "I heard: '%s'", msg.data.c_str());
+
     //3 objects with xyz (9 elements in total)
     for (size_t i = 0; i < 9; ++i) {
-        avoidance[i] = avoidance_msg->data.data[i];
+        avoidance[i] = msg.data.data[i];
     }
 }
 
-void targets_subscription_callback(const void *msgin)
+void targets_subscription_callback(const std_msgs::msg::Float64MultiArray & msg) const
 {
-    const std_msgs__msg__Float64MultiArray *targets_msg = (const std_msgs__msg__Float64MultiArray *)msgin;
+    RCLCPP_INFO(this->get_logger(), "I heard: '%s'", msg.data.c_str());
+
     // object of interest with xyz (3 elements in total)
     for (size_t i = 0; i < 3; ++i) {
-        targets[i] = targets_msg->data.data[i];
+        targets[i] = msg.data.data[i];
     }
 }
 
-void pixels_subscription_callback(const void *msgin)
+void pixels_subscription_callback(const std_msgs::msg::Int64MultiArray & msg) const
 {
-    const std_msgs__msg__Int64MultiArray *pixels_msg = (const std_msgs__msg__Int64MultiArray *)msgin;
+    RCLCPP_INFO(this->get_logger(), "I heard: '%s'", msg.data.c_str());
+
     //3 objects with xyz (9 elements in total)
     for (size_t i = 0; i < 9; ++i) {
         pixels[i] = pixels_msg->data.data[i];
@@ -202,114 +206,35 @@ void pixels_subscription_callback(const void *msgin)
 }
 
 bool create_entities() {
-    allocator = rcl_get_default_allocator();
-
-    // create init_options
-    RCCHECK(rclc_support_init(&support, 0, NULL, &allocator));
-
-    // create node
-    RCCHECK(rclc_node_init_default(&node, blimpNameSpace.c_str(), "", &support)); //name the robot
-
-    //create client
-    // RCCHECK(rclc_client_init_default(&client, &node, ROSIDL_GET_SRV_TYPE_SUPPORT(test_msgs, srv, BasicTypes), "/BlimpID"));
-
     // create publishers (7 right now)
-    RCCHECK(rclc_publisher_init_default(&identity_publisher, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, String), "/identify"));
-    RCCHECK(rclc_publisher_init_default(&imu_publisher, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(sensor_msgs, msg, Imu), (blimpNameSpace + "/imu").c_str()));
-    RCCHECK(rclc_publisher_init_default(&debug_publisher, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Float64MultiArray ), (blimpNameSpace + "/debug").c_str()));
-    RCCHECK(rclc_publisher_init_default(&height_publisher, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Float64), (blimpNameSpace + "/height").c_str()));
-    RCCHECK(rclc_publisher_init_default(&z_velocity_publisher, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Float64), (blimpNameSpace + "/z_velocity").c_str()));
-    RCCHECK(rclc_publisher_init_default(&state_machine_publisher, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Int64), (blimpNameSpace + "/state_machine").c_str()));
-    RCCHECK(rclc_publisher_init_default(&log_publisher, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, String), (blimpNameSpace + "/log").c_str()));
+    identity_publisher = this->create_publisher<std_msgs::msg::String>("/identify", 10);
+    imu_publisher = this->create_publisher<sensor_msgs::msg::Imu>((blimpNameSpace + "/imu").c_str(), 10);
+    debug_publisher = this->create_publisher<std_msgs::msg::Float64MultiArray>((blimpNameSpace + "/debug").c_str(), 10);
+    height_publisher = this->create_publisher<std_msgs::msg::Float64>((blimpNameSpace + "/height").c_str(), 10);
+    z_velocity_publisher = this->create_publisher<std_msgs::msg::Float64>((blimpNameSpace + "/z_velocity").c_str(), 10);
+    state_machine_publisher = this->create_publisher<std_msgs::msg::Int64>((blimpNameSpace + "/state_machine").c_str(), 10);
+    log_publisher = this->create_publisher<std_msgs::msg::String>((blimpNameSpace + "/log").c_str(), 10);
 
     //create subscribers (10 right now)
     //Base station
-    RCCHECK(rclc_subscription_init_default(&auto_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Bool), (blimpNameSpace + "/auto").c_str()));
-    RCCHECK(rclc_subscription_init_default(&baseBarometer_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Float64), (blimpNameSpace + "/baseBarometer").c_str()));
-    RCCHECK(rclc_subscription_init_default(&calibrateBarometer_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Bool), (blimpNameSpace + "/calibrateBarometer").c_str()));
-    RCCHECK(rclc_subscription_init_default(&grabber_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Bool), (blimpNameSpace + "/grabbing").c_str()));
-    RCCHECK(rclc_subscription_init_default(&shooter_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Bool), (blimpNameSpace + "/shooting").c_str()));
-    RCCHECK(rclc_subscription_init_default(&motor_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Float64MultiArray), (blimpNameSpace + "/motorCommands").c_str()));
-    RCCHECK(rclc_subscription_init_default(&kill_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Bool), (blimpNameSpace + "/killed").c_str()));
-    RCCHECK(rclc_subscription_init_default(&goal_color_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Int64), (blimpNameSpace + "/goal_color").c_str()));
-
+    auto_subscription = this->create_subscription<std_msgs::msg::Bool>((blimpNameSpace + "/auto").c_str(), 10, std::bind(&blimp::auto_subscription_callback, this, _1));
+    baseBarometer_subscription = this->create_subscription<std_msgs::msg::Float64>((blimpNameSpace + "/baseBarometer").c_str(), 10, std::bind(&blimp::baro_subscription_callback, this, _1));
+    calibrateBarometer_subscription = this->create_subscription<std_msgs::msg::Bool>((blimpNameSpace + "/calibrateBarometer").c_str(), 10, std::bind(&blimp::calibrateBarometer_subscription_callback, this, _1));
+    grabber_subscription = this->create_subscription<std_msgs::msg::Bool>((blimpNameSpace + "/grabbing").c_str(), 10, std::bind(&blimp::grab_subscription_callback, this, _1));
+    shooter_subscription = this->create_subscription<std_msgs::msg::Bool>((blimpNameSpace + "/shooting").c_str(), 10, std::bind(&blimp::shoot_subscription_callback, this, _1));
+    motor_subscription = this->create_subscription<std_msgs::msg::Float64MultiArray>((blimpNameSpace + "/motorCommands").c_str(), 10, std::bind(&blimp::kill_subscription_callback, this, _1));
+    kill_subscription = this->create_subscription<std_msgs::msg::Bool>((blimpNameSpace + "/killed").c_str(), 10, std::bind(&blimp::motor_subscription_callback, this, _1));
+    goal_color_subscription = this->create_subscription<std_msgs::msg::Int64>((blimpNameSpace + "/goal_color").c_str(), 10, std::bind(&blimp::goal_color_subscription_callback, this, _1));
+    
     //Offboard ML
-    RCCHECK(rclc_subscription_init_default(&targets_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Float64MultiArray), (blimpNameSpace + "/targets").c_str()));
-    RCCHECK(rclc_subscription_init_default(&pixels_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Int64MultiArray), (blimpNameSpace + "/pixels").c_str()));
-    RCCHECK(rclc_subscription_init_default(&avoidance_subscription, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Float64MultiArray), (blimpNameSpace + "/avoidance").c_str()));
+    targets_subscription = this->create_subscription<std_msgs::msg::Float64MultiArray>((blimpNameSpace + "/targets").c_str(), 10, std::bind(&blimp::targets_subscription_callback, this, _1));
+    pixels_subscription = this->create_subscription<std_msgs::msg::Int64MultiArray>((blimpNameSpace + "/pixels").c_str(), 10, std::bind(&blimp::pixels_subscription_callback, this, _1));
+    avoidance_subscription = this->create_subscription<std_msgs::msg::Float64MultiArray>((blimpNameSpace + "/avoidance").c_str(), 10, std::bind(&blimp::avoidance_subscription_callback, this, _1));
 
-    // create heartbeat (identity) timer (period 1 second)
-    const unsigned int timer_period = 1000;
-    RCCHECK(rclc_timer_init_default(&timer, &support, RCL_MS_TO_NS(timer_period), timer_callback));
-
-    // create executor
-    executor_pub = rclc_executor_get_zero_initialized_executor();
-    executor_sub = rclc_executor_get_zero_initialized_executor();
-    // executor_srv = rclc_executor_get_zero_initialized_executor();
-
-    //init executors
-    // RCCHECK(rclc_executor_init(&executor_srv, &support.context, 1, &allocator));
-    RCCHECK(rclc_executor_init(&executor_pub, &support.context, 7, &allocator));
-    RCCHECK(rclc_executor_add_timer(&executor_pub, &timer));
-    RCCHECK(rclc_executor_init(&executor_sub, &support.context, 11, &allocator));
-
-    //add client  
-    // RCCHECK(rclc_executor_add_client(&executor_srv, &client, &res, client_callback));
-    // send_request();
-    // receive_response();
-
-    //add all subscriptions (9)
-    RCCHECK(rclc_executor_add_subscription(&executor_sub, &auto_subscription, &auto_msg, &auto_subscription_callback, ON_NEW_DATA));
-    RCCHECK(rclc_executor_add_subscription(&executor_sub, &baseBarometer_subscription, &baro_msg, &baro_subscription_callback, ON_NEW_DATA));
-    RCCHECK(rclc_executor_add_subscription(&executor_sub, &calibrateBarometer_subscription, &calibration_msg, &calibrateBarometer_subscription_callback, ON_NEW_DATA));
-    RCCHECK(rclc_executor_add_subscription(&executor_sub, &grabber_subscription, &grab_msg, &grab_subscription_callback, ON_NEW_DATA));
-    RCCHECK(rclc_executor_add_subscription(&executor_sub, &shooter_subscription, &shoot_msg, &shoot_subscription_callback, ON_NEW_DATA));
-    RCCHECK(rclc_executor_add_subscription(&executor_sub, &kill_subscription, &kill_msg, &kill_subscription_callback, ON_NEW_DATA));
-    RCCHECK(rclc_executor_add_subscription(&executor_sub, &motor_subscription, &motor_msg, &motor_subscription_callback, ON_NEW_DATA));
-    RCCHECK(rclc_executor_add_subscription(&executor_sub, &goal_color_subscription, &goal_color_msg, &goal_color_subscription_callback, ON_NEW_DATA));
-    RCCHECK(rclc_executor_add_subscription(&executor_sub, &targets_subscription, &targets_msg, &targets_subscription_callback, ON_NEW_DATA));
-    RCCHECK(rclc_executor_add_subscription(&executor_sub, &pixels_subscription, &pixels_msg, &pixels_subscription_callback, ON_NEW_DATA));
-    RCCHECK(rclc_executor_add_subscription(&executor_sub, &avoidance_subscription, &avoidance_msg, &avoidance_subscription_callback, ON_NEW_DATA));
+    timer = this->create_wall_timer(
+    1000ms, std::bind(&blimp::timer_callback, this));
 
     return true;
-}
-
-void destroy_entities() {
-    rmw_context_t * rmw_context = rcl_context_get_rmw_context(&support.context);
-    (void) rmw_uros_set_context_entity_destroy_session_timeout(rmw_context, 0);
-
-    //finish publishers
-    rcl_publisher_fini(&identity_publisher, &node);
-    rcl_publisher_fini(&imu_publisher, &node);
-    rcl_publisher_fini(&debug_publisher, &node);
-    rcl_publisher_fini(&height_publisher, &node);
-    rcl_publisher_fini(&z_velocity_publisher, &node);
-    rcl_publisher_fini(&state_machine_publisher, &node);
-    rcl_publisher_fini(&log_publisher, &node);
-
-    //finish subscriptions
-    rcl_subscription_fini(&auto_subscription, &node);
-    rcl_subscription_fini(&baseBarometer_subscription, &node);
-    rcl_subscription_fini(&calibrateBarometer_subscription, &node);
-    rcl_subscription_fini(&grabber_subscription, &node);
-    rcl_subscription_fini(&shooter_subscription, &node);
-    rcl_subscription_fini(&motor_subscription, &node); 
-    rcl_subscription_fini(&kill_subscription, &node);
-    rcl_subscription_fini(&goal_color_subscription, &node);
-    rcl_subscription_fini(&targets_subscription, &node);
-    rcl_subscription_fini(&pixels_subscription, &node);
-    rcl_subscription_fini(&avoidance_subscription, &node);
-
-    //finish client
-    // rcl_client_fini(&client, &node);
-
-    rcl_timer_fini(&timer);
-    // rclc_executor_fini(&executor_srv);
-    rclc_executor_fini(&executor_pub);
-    rclc_executor_fini(&executor_sub);
-
-    rcl_node_fini(&node);
-    rclc_support_fini(&support);
 }
 
 // Functions create_entities and destroy_entities can take several seconds.
