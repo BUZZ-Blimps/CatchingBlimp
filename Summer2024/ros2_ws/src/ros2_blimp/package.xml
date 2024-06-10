@@ -3,11 +3,16 @@
 <package format="3">
   <name>ros2_blimp</name>
   <version>0.0.0</version>
-  <description>TODO: Package description</description>
+  <description>blimps node</description>
   <maintainer email="buzzblimps@gmail.com">laptop-3</maintainer>
   <license>Apache-2.0</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <depend>rclcpp</depend>
+  <depend>std_msgs</depend>
+  <depend>geometry_msgs</depend>
+  <depend>sensor_msgs</depend>
 
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>

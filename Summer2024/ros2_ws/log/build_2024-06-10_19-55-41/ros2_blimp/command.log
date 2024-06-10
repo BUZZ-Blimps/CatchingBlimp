@@ -1,0 +1,2 @@
+Invoking command in '/home/laptop-3/ros2_ws/build/ros2_blimp': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/laptop-3/ros2_ws/src/ros2_blimp -DCMAKE_INSTALL_PREFIX=/home/laptop-3/ros2_ws/install/ros2_blimp
+Invoked command in '/home/laptop-3/ros2_ws/build/ros2_blimp' returned '1': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/laptop-3/ros2_ws/src/ros2_blimp -DCMAKE_INSTALL_PREFIX=/home/laptop-3/ros2_ws/install/ros2_blimp
