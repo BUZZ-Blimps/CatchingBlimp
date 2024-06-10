@@ -54,17 +54,158 @@ class blimp : public rclcpp::Node
       pixels_subscription = this->create_subscription<std_msgs::msg::Int64MultiArray>((blimpNameSpace + "/pixels").c_str(), 10, std::bind(&blimp::pixels_subscription_callback, this, _1));
       avoidance_subscription = this->create_subscription<std_msgs::msg::Float64MultiArray>((blimpNameSpace + "/avoidance").c_str(), 10, std::bind(&blimp::avoidance_subscription_callback, this, _1));
 
-      timer = this->create_wall_timer(
-      1000ms, std::bind(&blimp::timer_callback, this));
+      timer_imu = this->create_wall_timer(
+      10ms, std::bind(&blimp::imu_callback, this));
+
+      timer_baro = this->create_wall_timer(
+      20ms, std::bind(&blimp::baro_callback, this));
+
+      timer_state_machine = this->create_wall_timer(
+      33ms, std::bind(&blimp::state_machine_callback, this));
     }
 
   private:
-    void timer_callback()
+    void imu_callback()
+    {
+        //read sensor values and update madgwick
+        BerryIMU.IMU_read();
+        BerryIMU.IMU_ROTATION(rotation); // Rotate IMU
+        madgwick.Madgwick_Update(BerryIMU.gyr_rateXraw, BerryIMU.gyr_rateYraw, BerryIMU.gyr_rateZraw, BerryIMU.AccXraw, BerryIMU.AccYraw, BerryIMU.AccZraw);
+
+        //publish imu data
+        snprintf(imu_msg.header.frame_id.data, BUFFER_LEN, blimpNameSpace.c_str());
+        imu_msg.header.frame_id.size = strlen(imu_msg.header.frame_id.data);
+        imu_msg.header.frame_id.capacity = BUFFER_LEN;
+
+        unsigned int now = micros();
+        imu_msg.header.stamp.sec = (unsigned int)((double)now/1000000);
+        imu_msg.header.stamp.nanosec = (now % 1000000) * 1000;
+
+        //Estimated body orentation (quaternion)
+        imu_msg.orientation.w = madgwick.q1;
+        imu_msg.orientation.x = madgwick.q2;
+        imu_msg.orientation.y = madgwick.q3;
+        imu_msg.orientation.z = madgwick.q4;
+
+        //Estimated body frame angular velocity from gyro
+        imu_msg.angular_velocity.x = BerryIMU.gyr_rateXraw;
+        imu_msg.angular_velocity.y = BerryIMU.gyr_rateYraw;
+        imu_msg.angular_velocity.z = BerryIMU.gyr_rateZraw;
+
+        //Estimated body frame acceleration from accelerometer
+        imu_msg.linear_acceleration.x = BerryIMU.AccXraw;
+        imu_msg.linear_acceleration.y = BerryIMU.AccYraw;
+        imu_msg.linear_acceleration.z = BerryIMU.AccZraw;
+
+        RCSOFTCHECK(rcl_publish(&imu_publisher, &imu_msg, NULL));
+
+        //get orientation from madgwick
+        pitch = madgwick.pitch_final;
+        roll = madgwick.roll_final;
+        yaw = madgwick.yaw_final;
+
+        //compute the acceleration in the barometers vertical reference frame
+        accelGCorrection.updateData(BerryIMU.AccXraw, BerryIMU.AccYraw, BerryIMU.AccZraw, pitch, roll);
+
+        //run the prediction step of the vertical velecity kalman filter
+        kf.predict(dt);
+        // xekf.predict(dt);
+        // yekf.predict(dt);
+        gyroEKF.predict(dt);
+
+        //pre filter accel before updating vertical velocity kalman filter
+        verticalAccelFilter.filter(accelGCorrection.agz);
+
+        //update vertical velocity kalman filter acceleration
+        kf.updateAccel(verticalAccelFilter.last);
+
+        //update filtered yaw rate
+        yawRateFilter.filter(BerryIMU.gyr_rateZraw);
+
+        //perform gyro update
+        // gyroEKF.updateGyro(BerryIMU.gyr_rateXraw*3.14/180, BerryIMU.gyr_rateYraw*3.14/180, BerryIMU.gyr_rateZraw*3.14/180);
+        // gyroEKF.updateAccel(BerryIMU.AccXraw, BerryIMU.AccYraw, BerryIMU.AccZraw);
+
+        // xekf.updateAccelx(-accelGCorrection.agx);
+        // xekf.updateGyroX(gyroEKF.pitchRate - gyroEKF.pitchRateB);
+        // xekf.updateGyroZ(BerryIMU.gyr_rateZraw);
+
+        // yekf.updateAccelx(-accelGCorrection.agy);
+        // yekf.updateGyroX(gyroEKF.rollRate - gyroEKF.rollRateB);
+        // yekf.updateGyroZ(BerryIMU.gyr_rateZraw);
+
+        // Serial.print(">Z:");
+        // Serial.println(xekf.z);
+
+        // Serial.print(">Opt:");
+        // Serial.println(xekf.opt);
+
+        // Serial.print(">gyro x:");
+        // Serial.println(xekf.gyrox);
+
+        // Serial.print(">Ax:");
+        // Serial.println(xekf.ax);
+
+        // Serial.print(">Velocity:");
+        // Serial.println(xekf.v);
+
+        // Serial.print(">Yrate:");
+        // Serial.println(yawRateFilter.last);
+
+        // Serial.print(">zVel:");
+        // Serial.println(kf.v);
+
+        // kal_vel.predict_vel();
+        // kal_vel.update_vel_acc(-accelGCorrection.agx/9.81, -accelGCorrection.agy/9.81);
+        imu_publisher->publish(imu_msg);
+    }
+    rclcpp::TimerBase::SharedPtr timer_imu;
+
+
+    void baro_callback()
+    {
+        //get most current imu values
+        BerryIMU.IMU_read();
+
+        //update kalman with uncorreced barometer data
+        kf.updateBaro(BerryIMU.alt);
+
+        //compute the corrected height with base station baro data and offset
+        if (baseBaro != 0) {
+            actualBaro = 44330 * (1 - pow(((BerryIMU.comp_press - baroCalibrationOffset)/baseBaro), (1/5.255))); // In meters Base Baro is the pressure
+
+            //publish Height
+            height_msg.data = actualBaro;
+            // height_msg.data = BerryIMU.comp_press;  //only for debug
+            RCSOFTCHECK(rcl_publish(&height_publisher, &height_msg, NULL));
+
+        } else {
+            actualBaro = 1000;
+        }
+
+        // Add Z Velocity to a Message and Publish
+        z_velocity_msg.data = kf.v;
+
+        // if (check == false){
+        //   z_velocity_msg.data = 0;
+        // }else{
+        //   z_velocity_msg.data = 0;
+        // }
+
+
+        // xekf.updateBaro(CEIL_HEIGHT_FROM_START-actualBaro);
+        // yekf.updateBaro(CEIL_HEIGHT_FROM_START-actualBaro);
+        z_velocity_publisher->publish(z_velocity_msg);
+    }
+    rclcpp::TimerBase::SharedPtr timer_baro;
+
+
+    void state_machine_callback()
     {
       RCLCPP_INFO(this->get_logger(), "Publishing: '%s'", message.data.c_str());
       identity_publisher->publish(identity_msg);
     }
-    rclcpp::TimerBase::SharedPtr timer;
+    rclcpp::TimerBase::SharedPtr timer_state_machine;
 
     void publish_log(const char *message) {
         snprintf(log_msg.data.data, BUFFER_LEN, "%s", message);
