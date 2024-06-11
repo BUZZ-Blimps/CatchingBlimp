@@ -20,7 +20,7 @@ void brushless::brushless_PIN(int PIN){
 }
 
 double brushless::brushless_thrust(double thrust){
-    if (1000 <= thrust && thrust <= 2000){
+    if (700 <= thrust && thrust <= 2300){
         this->curr_thrust = (thrust*0.1) + 150;
         pwmWrite(this->pin, this->curr_thrust);
         return this->curr_thrust;

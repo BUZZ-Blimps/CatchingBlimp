@@ -19,7 +19,7 @@ void brushless::brushless_PIN(int PIN){
 }
 
 double brushless::brushless_thrust(double thrust){
-    this->curr_thrust = (thrust*0.5) + 300;
+    this->curr_thrust = (thrust*1.2) + 300;
     pwmWrite(this->pin, this->curr_thrust);
     return this->curr_thrust;
 }
