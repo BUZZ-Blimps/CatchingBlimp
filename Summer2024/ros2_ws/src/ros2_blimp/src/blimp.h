@@ -9,7 +9,7 @@
 
 #include "rclcpp/rclcpp.hpp"
 //Message type includes
-#include <std_msgs/msg/string.h> //include the message type that needs to be published (teensy data)
+#include <std_msgs/msg/string.hpp> //include the message type that needs to be published (teensy data)
 #include <geometry_msgs/msg/quaternion.h>
 #include <geometry_msgs/msg/vector3.h>
 #include <sensor_msgs/msg/imu.h>
@@ -234,40 +234,40 @@ public:
     Gimbal leftGimbal;
     Gimbal rightGimbal;
 
-    //Manual PID control
-    PID verticalPID(350, 0, 0);  //not used for now due to baro reading malfunction
-    PID yawPID(12.0, 0, 0);  //can also tune kd with a little overshoot induced
-    PID forwardPID(300, 0, 0);  //not used
-    PID translationPID(300, 0, 0); //not used
+    // //Manual PID control
+    // PID verticalPID(350, 0, 0);  //not used for now due to baro reading malfunction
+    // PID yawPID(12.0, 0, 0);  //can also tune kd with a little overshoot induced
+    // PID forwardPID(300, 0, 0);  //not used
+    // PID translationPID(300, 0, 0); //not used
 
-    //Auto PID control (output fed into manual controller)
-    PID yPID(0.8,0,0);    //TODO:retune these (can also be in pixels depends on which one performs better) 0.0075 for pixel PID
-    PID xPID(0.035,0,0);       //TODO:retune these 0.162 for pixel PID
+    // //Auto PID control (output fed into manual controller)
+    // PID yPID(0.8,0,0);    //TODO:retune these (can also be in pixels depends on which one performs better) 0.0075 for pixel PID
+    // PID xPID(0.035,0,0);       //TODO:retune these 0.162 for pixel PID
 
-    //Goal positioning controller
-    BangBang goalPositionHold(GOAL_HEIGHT_DEADBAND, GOAL_UP_VELOCITY); //Dead band, velocity to center itself
+    // //Goal positioning controller
+    // BangBang goalPositionHold(GOAL_HEIGHT_DEADBAND, GOAL_UP_VELOCITY); //Dead band, velocity to center itself
 
-    //pre process for accel before vertical kalman filter
-    EMAFilter verticalAccelFilter(0.05);
+    // //pre process for accel before vertical kalman filter
+    // EMAFilter verticalAccelFilter(0.05);
 
-    //filter on yaw gyro
-    EMAFilter yawRateFilter(0.2);
-    EMAFilter rollRateFilter(0.5);
+    // //filter on yaw gyro
+    // EMAFilter yawRateFilter(0.2);
+    // EMAFilter rollRateFilter(0.5);
 
-    //Low pass filter for computer vision parameters
-    EMAFilter xFilter(0.5);
-    EMAFilter yFilter(0.5);
-    EMAFilter zFilter(0.5);
-    EMAFilter areaFilter(0.5);
+    // //Low pass filter for computer vision parameters
+    // EMAFilter xFilter(0.5);
+    // EMAFilter yFilter(0.5);
+    // EMAFilter zFilter(0.5);
+    // EMAFilter areaFilter(0.5);
 
-    //baro offset computation from base station value
-    EMAFilter baroOffset(0.5);
+    // //baro offset computation from base station value
+    // EMAFilter baroOffset(0.5);
 
-    //roll offset computation from imu
-    EMAFilter rollOffset(0.5);
+    // //roll offset computation from imu
+    // EMAFilter rollOffset(0.5);
 
-    //ball grabber object
-    TripleBallGrabber ballGrabber;
+    // //ball grabber object
+    // TripleBallGrabber ballGrabber;
 
     //timing global variables for each update loop
     float lastSensorFastLoopTick = 0.0;
@@ -340,7 +340,7 @@ public:
     volatile unsigned long pulseInTimeBegin = micros();
     volatile unsigned long pulseInTimeEnd = micros();
     volatile bool newPulseDurationAvailable = false;
-    const byte interruptPin = 22;
+    const u_int8_t interruptPin = 22;
     float z_distance_m = 0;
 
     //avoidence data
@@ -395,34 +395,34 @@ public:
     bool check = false;
 
     //boolean messages
-    auto auto_msg = std_msgs::msg::Bool();
-    auto grab_msg = std_msgs::msg::Bool();
-    auto shoot_msg = std_msgs::msg::Bool();
-    auto kill_msg = std_msgs::msg::Bool();
-    auto calibration_msg = std_msgs::msg::Bool();
+    // auto auto_msg = std_msgs::msg::Bool();
+    // auto grab_msg = std_msgs::msg::Bool();
+    // auto shoot_msg = std_msgs::msg::Bool();
+    // auto kill_msg = std_msgs::msg::Bool();
+    // auto calibration_msg = std_msgs::msg::Bool();
 
     //int64 message
-    auto goal_color_msg = std_msgs::msg::Int64();
-    auto state_machine_msg = std_msgs::msg::Int64();
+    // auto goal_color_msg = std_msgs::msg::Int64();
+    // auto state_machine_msg = std_msgs::msg::Int64();
 
     //float64 message
-    auto baro_msg = std_msgs::msg::Float64();
-    auto height_msg = std_msgs::msg::Float64();
-    auto z_velocity_msg = std_msgs::msg::Float64();
+    // auto baro_msg = std_msgs::msg::Float64();
+    // auto height_msg = std_msgs::msg::Float64();
+    // auto z_velocity_msg = std_msgs::msg::Float64();
 
     //float64multiarray and int64multiarray messages
-    auto motor_msg = std_msgs::msg::Float64MultiArray();
-    auto debug_msg = std_msgs::msg::Float64MultiArray();
-    auto avoidance_msg = std_msgs::msg::Float64MultiArray();
-    auto targets_msg = std_msgs::msg::Float64MultiArray();
-    auto pixels_msg = std_msgs::msg::Float64MultiArray();
+    // auto motor_msg = std_msgs::msg::Float64MultiArray();
+    // auto debug_msg = std_msgs::msg::Float64MultiArray();
+    // auto avoidance_msg = std_msgs::msg::Float64MultiArray();
+    // auto targets_msg = std_msgs::msg::Float64MultiArray();
+    // auto pixels_msg = std_msgs::msg::Float64MultiArray();
 
     //String messages
-    auto identity_msg = std_msgs::msg::String();
-    auto log_msg = std_msgs::msg::String();
+    // auto identity_msg = std_msgs::msg::String();
+    // auto log_msg = std_msgs::msg::String();
 
     //sensor message
-    auto imu_msg = sensor_msgs::msg::Imu();
+    // auto imu_msg = sensor_msgs::msg::Imu();
 
     int counter = 0;
     bool last_connected = false;
@@ -437,7 +437,7 @@ public:
     void baro_callback();
     void state_machine_callback();
 
-    void auto_subscription_callback(const std_msgs::msg::Bool & msg) const;
+    void auto_subscription_callback(const std_msgs::msg::bool & msg) const;
     void calibrateBarometer_subscription_callback(const std_msgs::msg::Bool & msg) const;
     void baro_subscription_callback(const std_msgs::msg::Float64 & msg) const;
     void grab_subscription_callback(const std_msgs::msg::Bool & msg) const;
