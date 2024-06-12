@@ -19,14 +19,14 @@
 
 #include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/string.hpp"//include the message type that needs to be published (teensy data)
-#include <geometry_msgs/msg/quaternion.h>
-#include <geometry_msgs/msg/vector3.h>
-#include <sensor_msgs/msg/imu.h>
-#include <std_msgs/msg/bool.h>
-#include <std_msgs/msg/float64.h>
-#include <std_msgs/msg/int64.h>
-#include <std_msgs/msg/float64_multi_array.h>
-#include <std_msgs/msg/int64_multi_array.h>
+#include <geometry_msgs/msg/quaternion.hpp>
+#include <geometry_msgs/msg/vector3.hpp>
+#include <sensor_msgs/msg/imu.hpp>
+#include <std_msgs/msg/bool.hpp>
+#include <std_msgs/msg/float64.hpp>
+#include <std_msgs/msg/int64.hpp>
+#include <std_msgs/msg/float64_multi_array.hpp>
+#include <std_msgs/msg/int64_multi_array.hpp>
 
 
 using namespace std::chrono_literals;
@@ -50,7 +50,7 @@ private:
   {
     auto message = std_msgs::msg::Bool();
     message.data = true;
-    RCLCPP_INFO(this->get_logger(), "Publishing: '%s'", message.data.c_str());
+    // RCLCPP_INFO(this->get_logger(), "Publishing: '%s'", message.data);
     publisher_->publish(message);
   }
   rclcpp::TimerBase::SharedPtr timer_;

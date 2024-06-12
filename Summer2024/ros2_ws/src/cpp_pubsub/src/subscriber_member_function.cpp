@@ -17,14 +17,14 @@
 
 #include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/string.hpp"//include the message type that needs to be published (teensy data)
-#include <geometry_msgs/msg/quaternion.h>
-#include <geometry_msgs/msg/vector3.h>
-#include <sensor_msgs/msg/imu.h>
-#include <std_msgs/msg/bool.h>
-#include <std_msgs/msg/float64.h>
-#include <std_msgs/msg/int64.h>
-#include <std_msgs/msg/float64_multi_array.h>
-#include <std_msgs/msg/int64_multi_array.h>
+#include <geometry_msgs/msg/quaternion.hpp>
+#include <geometry_msgs/msg/vector3.hpp>
+#include <sensor_msgs/msg/imu.hpp>
+#include <std_msgs/msg/bool.hpp>
+#include <std_msgs/msg/float64.hpp>
+#include <std_msgs/msg/int64.hpp>
+#include <std_msgs/msg/float64_multi_array.hpp>
+#include <std_msgs/msg/int64_multi_array.hpp>
 
 
 using std::placeholders::_1;
@@ -35,16 +35,18 @@ public:
   MinimalSubscriber()
   : Node("minimal_subscriber")
   {
-    subscription_ = this->create_subscription<std_msgs::msg::String>(
+    subscription_ = this->create_subscription<std_msgs::msg::Bool>(
       "topic", 10, std::bind(&MinimalSubscriber::topic_callback, this, _1));
   }
 
 private:
-  void topic_callback(const std_msgs::msg::String & msg) const
+  void topic_callback(const std_msgs::msg::Bool & msg) const
   {
-    RCLCPP_INFO(this->get_logger(), "I heard: '%s'", msg.data.c_str());
+    if (msg.data){
+      RCLCPP_INFO(this->get_logger(), "True");
+    }
   }
-  rclcpp::Subscription<std_msgs::msg::String>::SharedPtr subscription_;
+  rclcpp::Subscription<std_msgs::msg::Bool>::SharedPtr subscription_;
 };
 
 int main(int argc, char * argv[])

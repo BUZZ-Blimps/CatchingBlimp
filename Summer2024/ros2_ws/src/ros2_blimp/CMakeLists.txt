@@ -12,8 +12,11 @@ find_package(std_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(sensor_msgs REQUIRED)
 
+
 add_executable(blimp_auto src/blimp.cpp)
-ament_target_dependencies(blimp_auto rclcpp std_msgs geometry_msgs sensor_msgs)
+target_link_libraries(blimp_auto ${catkin_LIBRARIES} -lwiringPi)
+
+ament_target_dependencies(blimp_auto rclcpp std_msgs geometry_msgs sensor_msgs wiringPi BlimpV8_OrangePi)
 
 install(TARGETS
   blimp_auto
