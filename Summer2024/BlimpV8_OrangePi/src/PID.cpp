@@ -36,7 +36,7 @@ void PID::setDLimit(double dLimit) {
     _d_limit = abs(dLimit);
 }
 
-double constrain(double x, double a, double b) {
+double PID::constrain(double x, double a, double b) {
     if(x < a) {
         return a;
     }
