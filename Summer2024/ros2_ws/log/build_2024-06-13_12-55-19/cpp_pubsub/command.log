@@ -1,0 +1,1 @@
+Invoking command in '/home/laptop-2/Documents/GitHub/CatchingBlimp/Summer2024/ros2_ws/build/cpp_pubsub': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/laptop-2/Documents/GitHub/CatchingBlimp/Summer2024/ros2_ws/src/cpp_pubsub -DCMAKE_INSTALL_PREFIX=/home/laptop-2/Documents/GitHub/CatchingBlimp/Summer2024/ros2_ws/install/cpp_pubsub

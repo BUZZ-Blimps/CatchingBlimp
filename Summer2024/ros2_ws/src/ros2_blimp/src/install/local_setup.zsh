@@ -1,28 +1,31 @@
-# generated from colcon_core/shell/template/prefix.sh.em
+# generated from colcon_zsh/shell/template/prefix.zsh.em
 
 # This script extends the environment with all packages contained in this
 # prefix path.
 
-# since a plain shell script can't determine its own path when being sourced
-# either use the provided COLCON_CURRENT_PREFIX
-# or fall back to the build time prefix (if it exists)
-_colcon_prefix_sh_COLCON_CURRENT_PREFIX="/home/laptop-2/Documents/GitHub/CatchingBlimp/Summer2024/ros2_ws/install"
+# a zsh script is able to determine its own path if necessary
 if [ -z "$COLCON_CURRENT_PREFIX" ]; then
-  if [ ! -d "$_colcon_prefix_sh_COLCON_CURRENT_PREFIX" ]; then
-    echo "The build time path \"$_colcon_prefix_sh_COLCON_CURRENT_PREFIX\" doesn't exist. Either source a script for a different shell or set the environment variable \"COLCON_CURRENT_PREFIX\" explicitly." 1>&2
-    unset _colcon_prefix_sh_COLCON_CURRENT_PREFIX
-    return 1
-  fi
+  _colcon_prefix_zsh_COLCON_CURRENT_PREFIX="$(builtin cd -q "`dirname "${(%):-%N}"`" > /dev/null && pwd)"
 else
-  _colcon_prefix_sh_COLCON_CURRENT_PREFIX="$COLCON_CURRENT_PREFIX"
+  _colcon_prefix_zsh_COLCON_CURRENT_PREFIX="$COLCON_CURRENT_PREFIX"
 fi
+
+# function to convert array-like strings into arrays
+# to workaround SH_WORD_SPLIT not being set
+_colcon_prefix_zsh_convert_to_array() {
+  local _listname=$1
+  local _dollar="$"
+  local _split="{="
+  local _to_array="(\"$_dollar$_split$_listname}\")"
+  eval $_listname=$_to_array
+}
 
 # function to prepend a value to a variable
 # which uses colons as separators
 # duplicates as well as trailing separators are avoided
 # first argument: the name of the result variable
 # second argument: the value to be prepended
-_colcon_prefix_sh_prepend_unique_value() {
+_colcon_prefix_zsh_prepend_unique_value() {
   # arguments
   _listname="$1"
   _value="$2"
@@ -30,11 +33,13 @@ _colcon_prefix_sh_prepend_unique_value() {
   # get values from variable
   eval _values=\"\$$_listname\"
   # backup the field separator
-  _colcon_prefix_sh_prepend_unique_value_IFS="$IFS"
+  _colcon_prefix_zsh_prepend_unique_value_IFS="$IFS"
   IFS=":"
   # start with the new value
   _all_values="$_value"
   _contained_value=""
+  # workaround SH_WORD_SPLIT not being set
+  _colcon_prefix_zsh_convert_to_array _values
   # iterate over existing values in the variable
   for _item in $_values; do
     # ignore empty strings
@@ -61,8 +66,8 @@ _colcon_prefix_sh_prepend_unique_value() {
   fi
   unset _contained_value
   # restore the field separator
-  IFS="$_colcon_prefix_sh_prepend_unique_value_IFS"
-  unset _colcon_prefix_sh_prepend_unique_value_IFS
+  IFS="$_colcon_prefix_zsh_prepend_unique_value_IFS"
+  unset _colcon_prefix_zsh_prepend_unique_value_IFS
   # export the updated variable
   eval export $_listname=\"$_all_values\"
   unset _all_values
@@ -73,8 +78,9 @@ _colcon_prefix_sh_prepend_unique_value() {
 }
 
 # add this prefix to the COLCON_PREFIX_PATH
-_colcon_prefix_sh_prepend_unique_value COLCON_PREFIX_PATH "$_colcon_prefix_sh_COLCON_CURRENT_PREFIX"
-unset _colcon_prefix_sh_prepend_unique_value
+_colcon_prefix_zsh_prepend_unique_value COLCON_PREFIX_PATH "$_colcon_prefix_zsh_COLCON_CURRENT_PREFIX"
+unset _colcon_prefix_zsh_prepend_unique_value
+unset _colcon_prefix_zsh_convert_to_array
 
 # check environment variable for custom Python executable
 if [ -n "$COLCON_PYTHON_EXECUTABLE" ]; then
@@ -110,19 +116,10 @@ _colcon_prefix_sh_source_script() {
 }
 
 # get all commands in topological order
-_colcon_ordered_commands="$($_colcon_python_executable "$_colcon_prefix_sh_COLCON_CURRENT_PREFIX/_local_setup_util_sh.py" sh)"
+_colcon_ordered_commands="$($_colcon_python_executable "$_colcon_prefix_zsh_COLCON_CURRENT_PREFIX/_local_setup_util_sh.py" sh zsh)"
 unset _colcon_python_executable
 if [ -n "$COLCON_TRACE" ]; then
-  echo "_colcon_prefix_sh_source_script() {
-    if [ -f \"\$1\" ]; then
-      if [ -n \"\$COLCON_TRACE\" ]; then
-        echo \"# . \\\"\$1\\\"\"
-      fi
-      . \"\$1\"
-    else
-      echo \"not found: \\\"\$1\\\"\" 1>&2
-    fi
-  }"
+  echo "$(declare -f _colcon_prefix_sh_source_script)"
   echo "# Execute generated script:"
   echo "# <<<"
   echo "${_colcon_ordered_commands}"
@@ -134,4 +131,4 @@ unset _colcon_ordered_commands
 
 unset _colcon_prefix_sh_source_script
 
-unset _colcon_prefix_sh_COLCON_CURRENT_PREFIX
+unset _colcon_prefix_zsh_COLCON_CURRENT_PREFIX
