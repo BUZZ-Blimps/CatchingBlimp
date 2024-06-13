@@ -2,7 +2,7 @@
 #include "servo.h"
 #include "brushless.h"
 
-class Gimbal {
+class Gimbal : public brushless, servo{
     public:
     // Gimbal();
     void gimbal_init(int yawPin, int pitchPin, int motorPin,double newDeadband, double newTurnOnCom, double newMinCom, double newMaxCom, double newPhiOffset, double filter);
