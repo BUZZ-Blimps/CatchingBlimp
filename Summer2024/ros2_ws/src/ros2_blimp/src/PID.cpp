@@ -36,15 +36,15 @@ void PID::setDLimit(double dLimit) {
     _d_limit = abs(dLimit);
 }
 
-double constrain(double x, double a, double b) {
+double PID::constrain(double x, double a, double b) {
     if(x < a) {
         return a;
     }
     else if(b < x) {
         return b;
-    }
-    else
+    } else {
         return x;
+    }
 }
 
 double PID::calculate(double setpoint, double pv, double dt) {
@@ -70,7 +70,7 @@ double PID::calculate(double setpoint, double pv, double dt) {
         d_out = _kd * derivative;
 
         if (_d_limit > 0) {
-            d_out = constrain(d_out, -1 * _d_limit, _d_limit);
+            d_out = PID::constrain(d_out, -1 * _d_limit, _d_limit);
         }
     }
 
