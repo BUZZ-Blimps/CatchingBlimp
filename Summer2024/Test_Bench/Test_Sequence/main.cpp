@@ -7,7 +7,20 @@
 
 #include "servo.h"
 #include "brushless.h"
+#include "OPI_IMU.h"
+#include "Gimbal.h"
 
+#define GIMBAL_DEBUG              false
+#define MOTORS_OFF                false
+#define L_Pitch                   2                    
+#define L_Yaw                     3              
+#define R_Pitch                   4                
+#define R_Yaw                     5  
+#define PWM_R                     6              
+#define PWM_G                     9              
+#define PWM_L                     14  
+#define MIN_MOTOR                 1000
+#define MAX_MOTOR                 2000
 
 int main(){
     servo Servo_L;
@@ -26,7 +39,21 @@ int main(){
     OPI_IMU imu;
     imu.OPI_IMU_Setup();
 
+    Gimbal leftGimbal;
+    Gimbal rightGimbal;
 
+    delay(5000);
+
+    printf("Initializing Gimbals");
+    leftGimbal.gimbal_init(L_Yaw, L_Pitch, PWM_L, 25, 30, MIN_MOTOR, MAX_MOTOR, 45, 0.5);
+    rightGimbal.gimbal_init(R_Yaw, R_Pitch, PWM_R, 25, 30, MIN_MOTOR, MAX_MOTOR, 135, 0.5);
+
+    delay(5000);
+
+    printf("Readying Gimbals");
+    bool leftReady = leftGimbal.readyGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, 0, 0, 0);
+    bool rightReady = rightGimbal.readyGimbal(GIMBAL_DEBUG, MOTORS_OFF, 0, 0, 0, 0, 0);
+    
     delay(5000);
     while(1){
         printf("Sweeping up in 1 second...\n");
