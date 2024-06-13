@@ -1,2 +1,2 @@
 main: main.cpp
-	gcc brushless.cpp servo.cpp main.cpp -lwiringPi -o test
+	g++ brushless.cpp servo.cpp OPI_IMU.cpp main.cpp -lm -lwiringPi -o test

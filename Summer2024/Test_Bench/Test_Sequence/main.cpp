@@ -3,6 +3,7 @@
 #include <errno.h>
 #include <string.h>
 #include <stdbool.h>
+#include "OPI_IMU.h"
 
 #include "servo.h"
 #include "brushless.h"
@@ -21,6 +22,11 @@ int main(){
     Brushless_R.brushless_setup(16);
     Brushless_L.brushless_thrust(1500);
     Brushless_R.brushless_thrust(1500);
+
+    OPI_IMU imu;
+    imu.OPI_IMU_Setup();
+
+
     delay(5000);
     while(1){
         printf("Sweeping up in 1 second...\n");
