@@ -12,11 +12,12 @@ find_package(std_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(sensor_msgs REQUIRED)
 
+set(SOURCE_FILES src/accelGCorrection.cpp src/BangBang.cpp src/baro_acc_kf.cpp src/OPI_IMU.cpp src/brushless.cpp src/EMAFilter.cpp src/Gimbal.cpp src/gyro_ekf.cpp src/Kalman_Filter_Tran_Vel_Est.cpp src/Madgwick_Filter.cpp src/MotorControl.cpp src/optical_ekf.cpp src/PID.cpp src/servo.cpp src/tripleBallGrabber.cpp src/blimp.cpp)
 
-add_executable(blimp_auto src/blimp.cpp)
+add_executable(blimp_auto ${SOURCE_FILES})
 target_link_libraries(blimp_auto ${catkin_LIBRARIES} -lwiringPi)
 
-ament_target_dependencies(blimp_auto rclcpp std_msgs geometry_msgs sensor_msgs wiringPi BlimpV8_OrangePi)
+ament_target_dependencies(blimp_auto rclcpp std_msgs geometry_msgs sensor_msgs)
 
 install(TARGETS
   blimp_auto
