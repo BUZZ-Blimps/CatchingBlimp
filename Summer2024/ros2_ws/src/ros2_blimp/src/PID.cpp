@@ -42,9 +42,9 @@ double PID::constrain(double x, double a, double b) {
     }
     else if(b < x) {
         return b;
-    } else {
-        return x;
     }
+    else
+        return x;
 }
 
 double PID::calculate(double setpoint, double pv, double dt) {
@@ -70,7 +70,7 @@ double PID::calculate(double setpoint, double pv, double dt) {
         d_out = _kd * derivative;
 
         if (_d_limit > 0) {
-            d_out = PID::constrain(d_out, -1 * _d_limit, _d_limit);
+            d_out = constrain(d_out, -1 * _d_limit, _d_limit);
         }
     }
 

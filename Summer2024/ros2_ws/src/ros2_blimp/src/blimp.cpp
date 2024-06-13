@@ -470,6 +470,26 @@ class blimp:public rclcpp::Node
 
             timer_ = this->create_wall_timer(
                 1000ms, std::bind(&blimp::timer_callback, this));
+
+            BerryIMU.OPI_IMU_Setup();
+            firstMessageTime = micros()/MICROS_TO_SEC;
+
+            // Start Servos
+            Servo_L.servo_setup(0);
+            Servo_R.servo_setup(2);
+            Servo_L.servo_angle(0);
+            Servo_R.servo_angle(180);
+
+            // initialize
+            ballGrabber.ballgrabber_init(GATE_S, PWM_G);
+            leftGimbal.gimbal_init(L_Yaw, L_Pitch, PWM_L, 25, 30, MIN_MOTOR, MAX_MOTOR, 45, 0.5);
+            rightGimbal.gimbal_init(R_Yaw, R_Pitch, PWM_R, 25, 30, MIN_MOTOR, MAX_MOTOR, 135, 0.5);
+
+            //Start Brushless
+            Brushless_L.brushless_setup(5);
+            Brushless_R.brushless_setup(16);
+            Brushless_L.brushless_thrust(1500);
+            Brushless_R.brushless_thrust(1500);
         }
         
 private: 

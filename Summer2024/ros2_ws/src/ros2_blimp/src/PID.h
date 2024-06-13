@@ -1,4 +1,5 @@
-#pragma once
+#ifndef _PID_H_
+#define _PID_H_
 
 class PID
 {
@@ -36,3 +37,5 @@ class PID
 
         bool _limit_output;
 };
+
+#endif
