@@ -1,15 +1,47 @@
 # Catching Blimp Repository
 
-## Links
-- [Current Teensy Code](/Summer2023/BlimpV8/BlimpV8_Teensy/)
-- [Vision Scripts](/scripts/Vision/)
-- [Older Documentation](/Summer2023)
 
-## Vision
-- To start vision, go to [/scripts/Vision/](/scripts/Vision/).
-- To edit which nodes are run for each blimp, edit script ```launchVisionGeneric.launch.xml```
-    - This script uses many include statements, which each run a ros2 launch file
-- To edit which blimps are started, edit script ```launchVision.launch.xml```
-    - This script references a new instance of ```launchVisionGeneric``` for each blimp, passing in the relevant parameters per blimp (blimp name, calibration file name)
-- To start the chosen blimps and nodes, run script ```./launchVision.sh```
-    - This automatically sources any necessary directories and then starts ```launchVision.launch.xml```
+This is the repo that houses all of the components that go into the CatchingBlimp platform. Currently we have the following structure to this repo:
+
+**BlimpCore**: The software and firmware that will run on the OrangePi aboard the blimp
+
+**VisionModule**: The vision library included as a part of the OnboardCode repo to modularly deploy computer vision models
+
+**TestBench**: The software test suite that will test and validate the blimp system for competition readiness   
+
+
+# Project Planning Guide
+
+This guide outlines the process for creating and managing issues in our GitHub repository. By following these best practices, we can ensure effective collaboration and efficient project management across software, hardware, and project management teams.
+
+## Creating an Issue
+
+When creating a new issue, please follow these steps:
+
+1. **Descriptive Title**: Provide a clear and concise title that summarizes the issue.
+2. **Issue Description**: In the issue description, include the following information:
+   - **Problem Statement**: Clearly describe the problem or task at hand.
+   - **Context**: Provide any relevant background information or context.
+   - **Steps to Reproduce** (for bugs): If reporting a bug, outline the steps to reproduce the issue.
+   - **Expected Behavior** (for bugs): Describe what you expected to happen.
+   - **Actual Behavior** (for bugs): Describe what actually happened.
+   - **Proposed Solution** (optional): If you have a suggested solution, outline it here.
+3. **Labels**: Apply the appropriate labels to categorize the issue:
+   - `basestation`: Base station related issue
+   - `bug`: Something isn't working as expected
+   - `cleanup`: Cleaning or organization required
+   - `documentation`: Improvements or additions to documentation
+   - `duplicate`: The issue or pull request already exists
+   - `enhancement`: New feature or request
+   - `good first issue`: Good for newcomers to the project
+   - `hardware`: Hardware team issue
+   - `help wanted`: Extra attention is needed
+   - `invalid`: The issue doesn't seem right or is not applicable
+   - `orangepi`: OrangePi related issue
+   - `question`: Further information is requested
+   - `software`: Software related issue
+   - `wontfix`: The issue will not be worked on
+4. **Assignee** (optional): If applicable, assign the issue to the relevant team member(s).
+5. **Milestone**: Set the appropriate milestone for the issue:
+   - **Thursday Datestamp**: Select the milestone with the nearest Thursday datestamp that falls within the next three weeks.
+   - `longterm`: For issues without a specific due date or those that are part of a long-term plan.
