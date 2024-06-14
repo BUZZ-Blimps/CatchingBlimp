@@ -1,3 +1,9 @@
 [submodule "CatchingBlimp_OnboardCode"]
 	path = CatchingBlimp_OnboardCode
 	url = https://github.com/SWAMP-Blimps/CatchingBlimp_OnboardCode.git
+[submodule "CatchingBlimp_TestBench"]
+	path = CatchingBlimp_TestBench
+	url = https://github.com/SWAMP-Blimps/CatchingBlimp_TestBench.git
+[submodule "CatchingBlimp_VisionModule"]
+	path = CatchingBlimp_VisionModule
+	url = https://github.com/SWAMP-Blimps/CatchingBlimp_VisionModule.git
