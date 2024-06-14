@@ -1,0 +1,12 @@
+[
+{
+  "directory": "/home/corelab-laptop2/GitHub/CatchingBlimp/blimpVision/CameraTuning/build",
+  "command": "/usr/bin/g++   -I/home/corelab-laptop2/GitHub/CatchingBlimp/blimpVision/CameraTuning/piTestCompileSrc -isystem /usr/include/opencv4  -g   -std=gnu++11 -o CMakeFiles/piTestCompile.dir/ComputerVision.cpp.o -c /home/corelab-laptop2/GitHub/CatchingBlimp/blimpVision/CameraTuning/piTestCompileSrc/ComputerVision.cpp",
+  "file": "/home/corelab-laptop2/GitHub/CatchingBlimp/blimpVision/CameraTuning/piTestCompileSrc/ComputerVision.cpp"
+},
+{
+  "directory": "/home/corelab-laptop2/GitHub/CatchingBlimp/blimpVision/CameraTuning/build",
+  "command": "/usr/bin/g++   -I/home/corelab-laptop2/GitHub/CatchingBlimp/blimpVision/CameraTuning/piTestCompileSrc -isystem /usr/include/opencv4  -g   -std=gnu++11 -o CMakeFiles/piTestCompile.dir/piTest.cpp.o -c /home/corelab-laptop2/GitHub/CatchingBlimp/blimpVision/CameraTuning/piTestCompileSrc/piTest.cpp",
+  "file": "/home/corelab-laptop2/GitHub/CatchingBlimp/blimpVision/CameraTuning/piTestCompileSrc/piTest.cpp"
+}
+]

@@ -1,0 +1,35 @@
+v4l2-ctl -d /dev/video0 -c white_balance_temperature_auto=0 -c white_balance_temperature=5800 -c exposure_auto=1 -c exposure_auto_priority=0 -c exposure_absolute=110
+
+
+---- CAM1 ----
+v4l2-ctl -d /dev/video0 -c white_balance_temperature_auto=1 -c exposure_auto=1 -c exposure_auto_priority=0 -c exposure_absolute=110
+
+v4l2-ctl -d /dev/video2 -c white_balance_temperature_auto=1 -c exposure_auto=1 -c exposure_auto_priority=0 -c exposure_absolute=110
+
+
+---- CAM2 ----
+v4l2-ctl -d /dev/video0 -c white_balance_temperature_auto=1 -c exposure_auto=1 -c exposure_auto_priority=0 -c exposure_absolute=110
+	    vector<Point2f> centers(contours.size());
+	    vector<float> radius(contours.size());
+
+
+-c exposure_absolute=50
+
+v4l2-ctl -l /dev/video0
+
+
+v4l2-ctl -d /dev/video0 -c white_balance_temperature_auto=1 -c exposure_auto_priority=1
+
+white_balance_temperature 0x0098091a (int)    : min=2800 max=6500 step=1 default=4600
+
+Day mask:
+Scalar balloonHSVLower(32,49,86);
+Scalar balloonHSVUpper(80,89,193);
+	
+Night mask
+Scalar balloonHSVLower(40,36,80);
+Scalar balloonHSVUpper(73,87,170);
+
+
+
+

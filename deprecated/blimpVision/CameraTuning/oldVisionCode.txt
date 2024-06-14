@@ -1,0 +1,260 @@
+  //get frame
+  Mat frame2;
+  cap >> frame2;
+
+  //split frame into two images, L and R
+  Mat imgL, imgR;
+
+  Rect left_roi(0, 0, frame2.cols/2, frame2.rows);
+  Rect right_roi (frame2.cols/2, 0, frame2.cols/2, frame2.rows);
+
+  Mat crop_left(frame2, left_roi);
+  Mat crop_right (frame2, right_roi);
+
+  crop_left.copyTo(imgL);
+  crop_right.copyTo(imgR);
+
+  //send left image to base
+  //TO BE COMPLETED
+
+  //reduce image size for rectification
+  Mat imgL_rect, imgR_rect;
+  resize(imgL, imgL_rect, Size(RECT_WIDTH, RECT_HEIGHT), INTER_LINEAR);
+  resize(imgR, imgR_rect, Size(RECT_WIDTH, RECT_HEIGHT), INTER_LINEAR);
+
+  Mat stereoImg;
+  add(imgL, imgR, stereoImg);
+
+  // Applying blur to reduce noise
+  Mat imgBlurredL;
+  GaussianBlur(imgL, imgBlurredL, Size(5, 5), 2);
+
+  Mat imgBlurredR;
+  GaussianBlur(imgR, imgBlurredR, Size(5, 5), 2);
+
+  namedWindow("stereoImg");
+  imshow("stereoImg",stereoImg);
+  waitKey(1);
+
+  namedWindow("imgL");
+  imshow("imgL",imgBlurredL);
+  waitKey(1);
+
+  namedWindow("imgR");
+  imshow("imgR",imgBlurredR);
+  waitKey(1);
+
+  // Initialize matrix for rectified stereo images
+  Mat Left_nice, Right_nice;
+
+  // Applying stereo image rectification on the left image
+  remap(imgBlurredL,
+        Left_nice,
+        Left_Stereo_Map1,
+        Left_Stereo_Map2,
+        INTER_LANCZOS4,
+        BORDER_CONSTANT,
+        0);
+
+  // Applying stereo image rectification on the right image
+  remap(imgBlurredR,
+        Right_nice,
+        Right_Stereo_Map1,
+        Right_Stereo_Map2,
+        INTER_LANCZOS4,
+        BORDER_CONSTANT,
+        0);
+
+  //Apply correction
+  Mat ball_CL, ball_CR;
+  Mat balloonCorrected_L, balloonCorrected_R;
+  Mat balloonCorrect_L = Mat::zeros(Left_nice.size(), Left_nice.type());
+  Mat balloonCorrect_R = Mat::zeros(Right_nice.size(), Right_nice.type());
+  balloonCorrect_L.setTo(B_CORRECTION);
+  balloonCorrect_R.setTo(B_CORRECTION);
+
+  add(Left_nice, balloonCorrect_L, ball_CL);
+  add(Right_nice, balloonCorrect_R, ball_CR);
+
+  //Apply HSV
+  Mat left_HSV, right_HSV;
+  cvtColor(ball_CL, left_HSV, cv::COLOR_BGR2HSV);
+  cvtColor(ball_CR, right_HSV, cv::COLOR_BGR2HSV);
+
+  //Isolate Ball
+  Mat bMask_L, bMask_R;
+  inRange(left_HSV, B_MIN, B_MAX, bMask_L);
+  inRange(right_HSV, B_MIN, B_MAX, bMask_R);
+
+  namedWindow("left_correct_sg");
+  imshow("left_correct_sg",bMask_L);
+  waitKey(1);
+
+  namedWindow("right_correct_sg");
+  imshow("right_correct_sg",bMask_R);
+  waitKey(1);
+
+  // Center detection with blob centroid
+  Moments m_L = moments(bMask_L, true);
+  Point p_L(m_L.m10/m_L.m00, m_L.m01/m_L.m00);
+
+  Moments m_R = moments(bMask_R, true);
+  Point p_R(m_R.m10/m_R.m00, m_R.m01/m_R.m00);
+
+  //cout << Mat(p_L) << endl;
+  //cout << Mat(p_R) << endl;
+
+  namedWindow("Left center");
+  circle(bMask_L, p_L, 5, Scalar(128,128,128), -1);
+  imshow("Left center",bMask_L);
+  waitKey(1);
+
+  namedWindow("Right center");
+  circle(bMask_R, p_R, 5, Scalar(128,128,128), -1);
+  imshow("Right center",bMask_R);
+  waitKey(1);
+
+  //Calculate dist
+  double disparity = abs(p_L.x - p_R.x);
+
+  double distance = (F * BASELINE) / disparity;
+
+  cout << distance << endl;
+
+  Mat left_correct_sg, right_correct_sg;
+  cvtColor(Left_nice, left_correct_sg, cv::COLOR_BGR2GRAY);
+  cvtColor(Right_nice, right_correct_sg, cv::COLOR_BGR2GRAY);
+
+  cv::Mat _disparity;
+  cv::Ptr<cv::StereoBM> stereo_bm = cv::StereoBM::create(16, 9); // adjust parameters as needed
+  stereo_bm->compute(left_correct_sg, right_correct_sg, _disparity);
+
+  // Disparity testing:
+  vector<vector<Point> > contoursA;
+  vector<Vec4i> heirarchyA;
+
+  //inRange(stereoImg, B_MIN, B_MAX, bMask_R);
+  //findContours(stereoImg, contoursA, heirarchyA, RETR_TREE, CHAIN_APPROX_SIMPLE);
+
+  cout << "bruh" << endl;
+
+  vector<Point> largestContour;
+  float largestArea = 0;
+  int largestIndex = 0;
+
+  for (unsigned int i = 0; i < contoursA.size(); i++) {
+      double area = contourArea(contoursA[i]);
+      if (heirarchyA[i][3] == -1 && (area > AVOID_AREA)) {
+
+          if (area > largestArea) {
+              largestArea = area;
+              largestContour = contoursA[i];
+              largestIndex = i;
+          }
+      }
+  }
+
+  namedWindow("Stereo");
+  drawContours(stereoImg, contoursA, largestIndex, Scalar(0, 0, 255), 10);
+  imshow("Stereo", stereoImg);
+  waitKey(1);
+  
+  Mat disparity_normalized;
+  normalize(_disparity, disparity_normalized, 0, 255, cv::NORM_MINMAX, CV_32F);
+
+  namedWindow("disparity_normalized");
+  drawContours(disparity_normalized,contoursA, largestIndex, Scalar(0, 0, 255), 10);
+  imshow("disparity_normalized",disparity_normalized);
+  waitKey(1);
+  
+
+  // Need to filter out noise from the ball itself
+
+  /*
+  //shrink to disparity size
+  Mat left_small_correct, right_small_correct;
+  resize(Left_nice, left_small_correct, Size(DISP_WIDTH, DISP_HEIGHT), INTER_LINEAR);
+  resize(Right_nice, right_small_correct, Size(DISP_WIDTH, DISP_HEIGHT), INTER_LINEAR);
+
+  //Colorvision
+  Mat balloonCorrected_L;
+  Mat balloonCorrectL = Mat::zeros(left_small_correct.size(), left_small_correct.type());
+  balloonCorrectL.setTo(B_CORRECTION);
+  add(left_small_correct,balloonCorrectL, balloonCorrected_L);
+
+  Mat balloonCorrected_R;
+  Mat balloonCorrectR = Mat::zeros(right_small_correct.size(), right_small_correct.type());
+  balloonCorrectR.setTo(B_CORRECTION);
+  add(right_small_correct,balloonCorrectR, balloonCorrected_R);
+
+  //Convert to HSV
+  Mat left_correct_sg, right_correct_sg;
+  cvtColor(balloonCorrected_L, left_correct_sg, cv::COLOR_BGR2HSV);
+  cvtColor(balloonCorrected_R, right_correct_sg, cv::COLOR_BGR2HSV);
+
+  //Find Ball
+  Mat bMask_L;
+  Mat bMask_R;
+  inRange(left_correct_sg, B_MIN, B_MAX, bMask_L);
+  inRange(right_correct_sg, B_MIN, B_MAX, bMask_R);
+
+  //Find Contours
+  vector<vector<Point> > contoursL;
+  vector<Vec4i> heirarchyL;
+
+  vector<vector<Point> > contoursR;
+  vector<Vec4i> heirarchyR;
+
+  cout << "Debug1" << endl;
+
+  findContours(bMask_L, contoursL, heirarchyL, RETR_TREE, CHAIN_APPROX_SIMPLE);
+  findContours(bMask_R, contoursR, heirarchyR, RETR_TREE, CHAIN_APPROX_SIMPLE);
+
+  cout << "Debug2" << endl;
+
+  vector<Point> largestContourL;
+  float largestAreaL = 0;
+  Rect bounding_rect_L;
+  int biggestIndex_L = 0;
+
+  vector<Point> largestContourR;
+  float largestAreaR = 0;
+  Rect bounding_rect_R;
+  int biggestIndex_R = 0;
+
+  for (unsigned int i = 0; i < contoursL.size(); i++) {
+    double area = contourArea(contoursL[i]);
+    if (area > largestAreaL) {
+        largestAreaL = area;
+        largestContourL = contoursL[i];
+        biggestIndex_L = i;
+
+        bounding_rect_L = boundingRect(contoursL[i]);
+    }
+  }
+
+  for (unsigned int i = 0; i < contoursR.size(); i++) {
+    double area = contourArea(contoursR[i]);
+
+    if (area > largestAreaR) {
+      largestAreaR = area;
+      largestContourR = contoursR[i];
+      biggestIndex_R = i;
+
+      bounding_rect_R = boundingRect(contoursR[i]);
+    }
+  }
+
+  namedWindow("left_correct_sg");
+  drawContours(left_correct_sg,contoursR,biggestIndex_L,Scalar(255, 255, 255), -1);
+  rectangle(left_correct_sg, bounding_rect_L, Scalar(0, 255, 0), 2);
+  imshow("left_correct_sg",left_correct_sg);
+  waitKey(1);
+
+  namedWindow("right_correct_sg");
+  drawContours(right_correct_sg,contoursL,biggestIndex_R,Scalar(255, 255, 255), -1);
+  rectangle(right_correct_sg, bounding_rect_R, Scalar(0, 255, 0), 2);
+  imshow("right_correct_sg",right_correct_sg);
+  waitKey(1);
+
+  */

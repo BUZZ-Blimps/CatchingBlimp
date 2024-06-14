@@ -1,0 +1,3 @@
+[submodule "CatchingBlimp_OnboardCode"]
+	path = CatchingBlimp_OnboardCode
+	url = https://github.com/SWAMP-Blimps/CatchingBlimp_OnboardCode.git

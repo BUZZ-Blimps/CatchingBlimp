@@ -1,0 +1,10 @@
+{
+    "cmake.configureOnOpen": true,
+    "C_Cpp.errorSquiggles": "enabled",
+    "files.associations": {
+        "iostream": "cpp",
+        "functional": "cpp",
+        "system_error": "cpp",
+        "stdexcept": "cpp"
+    }
+}
