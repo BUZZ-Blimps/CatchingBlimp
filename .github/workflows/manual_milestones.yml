@@ -1,7 +1,6 @@
 name: Delete Complete Milestones and Create New Milestone
 on:
-    schedule:
-        - cron: "0 0 * * 4" # Run every Thursday at midnight UTC
+    [push]
 
 jobs:
     delete-and-create-milestone:
