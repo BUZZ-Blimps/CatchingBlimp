@@ -55,10 +55,13 @@ jobs:
             const day = String(newMilestoneDate.getDate()).padStart(2, '0');
             const year = String(newMilestoneDate.getFullYear()).slice(-2);
 
+           // Debug: Print the formatted date string
+            console.log(`Formatted date for new milestone: ${month}-${day}-${year}some text here`);
+
+
             const newMilestoneTitle = `${month}-${day}-${year}`;
 
-            // Debug: Print the formatted date string
-            console.log(`Formatted date for new milestone: ${newMilestoneTitle}`);
+           
 
             await octokit.request('POST /repos/{owner}/{repo}/milestones', {
               owner,
