@@ -1,79 +1,32 @@
-name: Manage Milestones
-
+name: Delete Complete Milestones and Create New Milestone
 on:
-  schedule:
-    - cron: '0 3 * * 5' # Runs at 03:00 UTC on Fridays (10:00 PM EST on Thursdays)
-  workflow_dispatch: # Allows manual trigger
+    [push]
 
 jobs:
-  manage-milestones:
-    runs-on: ubuntu-latest
+    delete-and-create-milestone:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout repository
+                uses: actions/checkout@v2
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+            - name: Delete Complete Milestones
+                run: |
+                    # Fetch all milestones
+                    milestones=$(curl -s -H "Authorization: token ${{ secrets.RUNNER_TOKEN }}" \
+                        "https://api.github.com/repos/SWAMP-Blimps/CatchingBlimp/milestones?state=closed")
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
+                    # Loop through milestones and delete fully complete ones
+                    for milestone in $(echo "$milestones" | jq -r '.[] | select(.closed_issues == .open_issues) | .number'); do
+                        curl -X DELETE -H "Authorization: token ${{ secrets.RUNNER_TOKEN }}" \
+                            "https://api.github.com/repos/SWAMP-Blimps/CatchingBlimp/milestones/$milestone"
+                    done
 
-      - name: Install dependencies
-        run: npm install @octokit/core
+            - name: Create New Milestone
+                run: |
+                    # Calculate the date 2 weeks from today
+                    new_milestone_date=$(date -d "+2 weeks" +%m-%d-%y)
 
-      - name: Run milestone management script
-        env:
-          GH_TOKEN: ${{ secrets.RUNNER_TOKEN }}
-        run: |
-          node -e "
-          const { Octokit } = require('@octokit/core');
-          const octokit = new Octokit({ auth: process.env.GH_TOKEN });
-
-          const owner = 'SWAMP-Blimps';
-          const repo = 'CatchingBlimp';
-
-          async function manageMilestones() {
-            // Fetch all milestones
-            const milestones = await octokit.request('GET /repos/{owner}/{repo}/milestones', { owner, repo });
-
-            // Delete completed milestones
-            for (const milestone of milestones.data) {
-              if (milestone.open_issues === 0 && milestone.closed_issues > 0) {
-                await octokit.request('DELETE /repos/{owner}/{repo}/milestones/{milestone_number}', {
-                  owner,
-                  repo,
-                  milestone_number: milestone.number
-                });
-                console.log(`Deleted milestone: ${milestone.title}`);
-              }
-            }
-
-            // Create new milestone for 2 weeks from today
-            const today = new Date();
-            const newMilestoneDate = new Date(today);
-            newMilestoneDate.setDate(today.getDate() + 14);
-
-            const month = String(newMilestoneDate.getMonth() + 1).padStart(2, '0');
-            const day = String(newMilestoneDate.getDate()).padStart(2, '0');
-            const year = String(newMilestoneDate.getFullYear()).slice(-2);
-
-            const newMilestoneTitle = `${month}-${day}-${year}`;
-
-            // Debug: Print the formatted date string
-            console.log(`Formatted date for new milestone: ${newMilestoneTitle}`);
-
-            await octokit.request('POST /repos/{owner}/{repo}/milestones', {
-              owner,
-              repo,
-              title: newMilestoneTitle,
-              due_on: newMilestoneDate.toISOString()
-            });
-
-            console.log(`Created new milestone: ${newMilestoneTitle}`);
-          }
-
-          manageMilestones().catch(err => {
-            console.error('Error managing milestones:', err);
-            process.exit(1);
-          });
-          "
+                    # Create the new milestone
+                    curl -X POST -H "Authorization: token ${{ secrets.RUNNER_TOKEN }}" \
+                        -d '{"title": "New Milestone", "due_on": "'"$new_milestone_date"'"}' \
+                        "https://api.github.com/repos/SWAMP-Blimps/CatchingBlimp/milestones"
