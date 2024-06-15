@@ -27,7 +27,7 @@ jobs:
                     new_milestone_date=$(date -d "+2 weeks 13:00:00 CST" +%Y-%m-%dT%H:%M:%SZ)
 
                     # Create the new milestone
-                    new_milestone_title=$(date -d "+2 weeks" +%m-%d-%y)
+                    new_milestone_title=$(TZ=America/New_York date -d "+2 weeks" +%m-%d-%y)
                     curl -X POST -H "Authorization: token ${{ secrets.RUNNER_TOKEN }}" \
                         -d '{"title": "'"$new_milestone_title"'", "due_on": "'"$new_milestone_date"'"}' \
                         "https://api.github.com/repos/SWAMP-Blimps/CatchingBlimp/milestones"
