@@ -15,4 +15,4 @@ jobs:
 
     - name: Copy Markdown files to docs
       run: |
-        python doc_gen.py
+        python .github/workflows/doc_gen.py
