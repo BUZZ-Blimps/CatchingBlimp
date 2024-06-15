@@ -1,6 +1,7 @@
 name: Delete Complete Milestones and Create New Milestone
 on:
-    [push]
+    schedule:
+        - cron: "0 0 * * 4" # Run every Thursday at midnight UTC
 
 jobs:
     delete-and-create-milestone:
@@ -24,9 +25,10 @@ jobs:
             - name: Create New Milestone
               run: |
                     # Calculate the date 2 weeks from today
-                    new_milestone_date=$(date -d "+2 weeks" +%m-%d-%y)
+                    new_milestone_date=$(date -d "+2 weeks" +%Y-%m-%d)
 
                     # Create the new milestone
+                    new_milestone_title=$(date -d "+2 weeks" +%m-%d-%y)
                     curl -X POST -H "Authorization: token ${{ secrets.RUNNER_TOKEN }}" \
-                        -d '{"title": "New Milestone", "due_on": "'"$new_milestone_date"'"}' \
+                        -d '{"title": "'"$new_milestone_title"'", "due_on": "'"$new_milestone_date"'"}' \
                         "https://api.github.com/repos/SWAMP-Blimps/CatchingBlimp/milestones"
