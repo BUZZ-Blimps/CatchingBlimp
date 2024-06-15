@@ -7,10 +7,10 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Checkout repository
-                uses: actions/checkout@v2
+              uses: actions/checkout@v2
 
             - name: Delete Complete Milestones
-                run: |
+              run: |
                     # Fetch all milestones
                     milestones=$(curl -s -H "Authorization: token ${{ secrets.RUNNER_TOKEN }}" \
                         "https://api.github.com/repos/SWAMP-Blimps/CatchingBlimp/milestones?state=closed")
@@ -22,7 +22,7 @@ jobs:
                     done
 
             - name: Create New Milestone
-                run: |
+              run: |
                     # Calculate the date 2 weeks from today
                     new_milestone_date=$(date -d "+2 weeks" +%m-%d-%y)
 
