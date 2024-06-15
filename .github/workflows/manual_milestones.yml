@@ -57,6 +57,9 @@ jobs:
 
             const newMilestoneTitle = `${month}-${day}-${year}`;
 
+            // Debug: Print the formatted date string
+            console.log(`Formatted date for new milestone: ${newMilestoneTitle}`);
+
             await octokit.request('POST /repos/{owner}/{repo}/milestones', {
               owner,
               repo,
