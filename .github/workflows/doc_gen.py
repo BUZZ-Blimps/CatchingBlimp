@@ -12,6 +12,6 @@ def copy_markdown_files(src_dir, dest_dir):
                 shutil.copy2(src_path, dest_path)
 
 # Usage
-repo_root = "/path/to/repo/root"
+repo_root = "../../"
 docs_dir = os.path.join(repo_root, "docs")
 copy_markdown_files(repo_root, docs_dir)
