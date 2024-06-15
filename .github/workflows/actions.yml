@@ -5,17 +5,14 @@ on:
 
 jobs:
     close-and-open-milestones:
-        runs-on: self-hosted
+        runs-on: ubuntu-latest
 
         steps:
-            - name: Checkout repository
-                uses: actions/checkout@v2
+            - name: Checkout
+              uses: actions/checkout@v4.1.7
 
             - name: Close old and completed milestones
-                run: |
-                    # Close completed milestones
-                    # Replace <repository> with your repository name
-                    # Replace <token> with a personal access token with the `repo` scope
+              run: | 
                     curl -X PATCH \
                         -H "Authorization: token ${{ secrets.RUNNER_TOKEN }}" \
                         -H "Accept: application/vnd.github.v3+json" \
@@ -23,10 +20,7 @@ jobs:
                         -d '{"state": "closed"}'
 
             - name: Open new milestone
-                run: |
-                    # Open a new milestone for two weeks from now
-                    # Replace <repository> with your repository name
-                    # Replace <token> with a personal access token with the `repo` scope
+              run: |
                     curl -X POST \
                         -H "Authorization: token ${{ secrets.RUNNER_TOKEN }}" \
                         -H "Accept: application/vnd.github.v3+json" \
