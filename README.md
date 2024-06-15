@@ -9,6 +9,11 @@ This is the repo that houses all of the components that go into the CatchingBlim
 
 **TestBench**: The software test suite that will test and validate the blimp system for competition readiness   
 
+**configuration**: useful scripts to setup orangePis, dev laptops, vision, basestation, and more
+
+**documentation**: all documentation and processes for the CatchingBlimp architecture
+
+**deprecated**: old code that is kept got the sake of quick and easy access
 
 # Project Planning Guide
 
@@ -45,3 +50,5 @@ When creating a new issue, please follow these steps:
 5. **Milestone**: Set the appropriate milestone for the issue:
    - **Thursday Datestamp**: Select the milestone with the nearest Thursday datestamp that falls within the next three weeks.
    - `longterm`: For issues without a specific due date or those that are part of a long-term plan.
+
+
