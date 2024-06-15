@@ -1,0 +1,23 @@
+name: Close and Open Milestones
+on:
+    schedule:
+        - cron: "0 22 * * 4" # Every Thursday at 10 PM
+
+jobs:
+    close-and-open-milestones:
+        runs-on: self-hosted
+
+        steps:
+        - name: Close Milestones
+          uses: MrGossett/github-action-milestone-closer@v1
+          env:
+            GITHUB_TOKEN: ${{ secrets.RUNNER_TOKEN }}
+            
+        - name: Create Milestones
+          uses: MrGossett/github-action-milestone-schedule@v1
+          env:
+            GITHUB_TOKEN: ${{ secrets.RUNNER_TOKEN }}
+          with:
+            recurrence: 'FREQ=WEEKLY;INTERVAL=2;BYDAY=TH;DTSTART=20240614T220000Z'
+            format: '01-02-06'
+            count: 1
