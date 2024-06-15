@@ -5,19 +5,30 @@ on:
 
 jobs:
     close-and-open-milestones:
-        runs-on: ubuntu-latest
+        runs-on: self-hosted
 
         steps:
-        - name: Close Milestones
-          uses: MrGossett/github-action-milestone-closer@v1
-          env:
-            GITHUB_TOKEN: ${{ secrets.RUNNER_TOKEN }}
-            
-        - name: Create Milestones
-          uses: MrGossett/github-action-milestone-schedule@v1
-          env:
-            GITHUB_TOKEN: ${{ secrets.RUNNER_TOKEN }}
-          with:
-            recurrence: 'FREQ=WEEKLY;INTERVAL=2;BYDAY=TH;DTSTART=20240614T220000Z'
-            format: '01-02-06'
-            count: 1
+            - name: Checkout repository
+                uses: actions/checkout@v2
+
+            - name: Close old and completed milestones
+                run: |
+                    # Close completed milestones
+                    # Replace <repository> with your repository name
+                    # Replace <token> with a personal access token with the `repo` scope
+                    curl -X PATCH \
+                        -H "Authorization: token ${{ secrets.RUNNER_TOKEN }}" \
+                        -H "Accept: application/vnd.github.v3+json" \
+                        https://api.github.com/repos/SWAMP-Blimps/CatchingBlimp/milestones?state=all \
+                        -d '{"state": "closed"}'
+
+            - name: Open new milestone
+                run: |
+                    # Open a new milestone for two weeks from now
+                    # Replace <repository> with your repository name
+                    # Replace <token> with a personal access token with the `repo` scope
+                    curl -X POST \
+                        -H "Authorization: token ${{ secrets.RUNNER_TOKEN }}" \
+                        -H "Accept: application/vnd.github.v3+json" \
+                        https://api.github.com/repos/SWAMP-Blimps/CatchingBlimp/milestones \
+                        -d '{"title": "New Milestone", "state": "open", "due_on": "$(date -v+2w -u +%Y-%m-%dT%H:%M:%SZ)"}'
