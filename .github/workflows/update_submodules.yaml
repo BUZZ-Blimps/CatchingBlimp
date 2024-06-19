@@ -1,14 +1,14 @@
 name: Update Submodules
 
 on:
-  push
+  workflow_dispatch:
 
 jobs:
   update-submodules:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout main repository
+    - name: Checkout parent repository
       uses: actions/checkout@v2
       with:
         token: ${{ secrets.RUNNER_TOKEN }}
