@@ -1,0 +1,28 @@
+name: Update Submodules
+
+on:
+  schedule:
+    - cron: '0 * * * *' # Runs every hour
+
+jobs:
+  update-submodules:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout main repository
+      uses: actions/checkout@v2
+      with:
+        token: ${{ secrets.RUNNER_TOKEN }}
+        submodules: true
+
+    - name: Update submodules
+      run: |
+        git submodule update --init --recursive
+        git submodule foreach git pull origin main
+
+    - name: Commit and push changes
+      run: |
+        git config --global user.email "github-actions@github.com"
+        git config --global user.name "GitHub Actions"
+        git commit -am "Update submodules" || echo "No changes to commit"
+        git push
