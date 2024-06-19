@@ -1,8 +1,7 @@
 name: Update Submodules
 
 on:
-  schedule:
-    - cron: '0 * * * *' # Runs every hour
+  push
 
 jobs:
   update-submodules:
