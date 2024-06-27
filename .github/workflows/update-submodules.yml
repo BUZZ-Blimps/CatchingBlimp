@@ -16,9 +16,12 @@ jobs:
 
     - name: Update submodules
       run: |
+        git fetch
+        git pull
         git submodule foreach git config pull.rebase true
         git submodule update --init --recursive
         git submodule foreach git pull origin main
+        git add .
 
     - name: Commit and push changes
       run: |
