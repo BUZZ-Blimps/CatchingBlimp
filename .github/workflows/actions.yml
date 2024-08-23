@@ -35,7 +35,7 @@ jobs:
             - name: Create New Milestone
               run: |
                     # Calculate the date 2 weeks from today
-                    new_milestone_date=$(date -d "+2 weeks 13:00:00 CST" +%Y-%m-%dT%H:%M:%SZ)
+                    new_milestone_date=$(date -d "+2 weeks 10:00:00 CST" +%Y-%m-%dT%H:%M:%SZ)
 
                     # Create the new milestone
                     new_milestone_title=$(TZ=America/New_York date -d "+2 weeks" +%m-%d-%y)
