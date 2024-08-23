@@ -16,7 +16,7 @@ jobs:
               run: |
                     # Get all open milestones
                     open_milestones=$(curl -s -H "Authorization: token ${{ secrets.RUNNER_TOKEN }}" \
-                        "https://api.github.com/repos/SWAMP-Blimps/CatchingBlimp/milestones?state=open")
+                        "https://api.github.com/repos/BUZZ-Blimps/CatchingBlimp/milestones?state=open")
 
                     # Loop through each milestone
                     for milestone in $(echo "$open_milestones" | jq -r '.[] | @base64'); do
@@ -29,7 +29,7 @@ jobs:
                             milestone_number=$(echo "$milestone" | base64 --decode | jq -r '.number')
                             curl -X PATCH -H "Authorization: token ${{ secrets.RUNNER_TOKEN }}" \
                                 -d '{"state": "closed"}' \
-                                "https://api.github.com/repos/SWAMP-Blimps/CatchingBlimp/milestones/$milestone_number"
+                                "https://api.github.com/repos/BUZZ-Blimps/CatchingBlimp/milestones/$milestone_number"
                         fi
                     done
             - name: Create New Milestone
@@ -41,4 +41,4 @@ jobs:
                     new_milestone_title=$(TZ=America/New_York date -d "+2 weeks" +%m-%d-%y)
                     curl -X POST -H "Authorization: token ${{ secrets.RUNNER_TOKEN }}" \
                         -d '{"title": "'"$new_milestone_title"'", "due_on": "'"$new_milestone_date"'"}' \
-                        "https://api.github.com/repos/SWAMP-Blimps/CatchingBlimp/milestones"
+                        "https://api.github.com/repos/BUZZ-Blimps/CatchingBlimp/milestones"
