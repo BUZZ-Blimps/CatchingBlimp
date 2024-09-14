@@ -1,9 +1,9 @@
 [submodule "BlimpCore"]
 	path = BlimpCore
-	url = https://github.com/SWAMP-Blimps/BlimpCore.git
+	url = https://github.com/BUZZ-Blimps/BlimpCore.git
 [submodule "TestBench"]
 	path = TestBench
-	url = https://github.com/SWAMP-Blimps/TestBench.git
+	url = https://github.com/BUZZ-Blimps/TestBench.git
 [submodule "VisionModule"]
 	path = VisionModule
-	url = https://github.com/SWAMP-Blimps/VisionModule.git
+	url = https://github.com/BUZZ-Blimps/VisionModule.git
