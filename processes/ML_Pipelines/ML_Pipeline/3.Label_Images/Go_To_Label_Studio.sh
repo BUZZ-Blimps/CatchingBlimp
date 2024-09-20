@@ -6,4 +6,4 @@ label-studio
 # http://192.168.0.202:8080/projects/?page=1
 # Username: swampblimps@gmail.com
 # Password: BuceesBobEvans23!
-# newPassword: BuceesBobEvans1234
+# newPassword: BuceesBobEvans1234!
