@@ -1,0 +1,15 @@
+[Unit]
+Description=OPi vision service
+Requires=network.target
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/bin/bash /root/run_blimp_vision.sh
+WorkingDirectory=/root
+User=root
+StandardOutput=syslog
+StandardError=syslog
+
+[Install]
+WantedBy=multi-user.target

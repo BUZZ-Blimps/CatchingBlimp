@@ -1,0 +1,15 @@
+[Unit]
+Description=OPi catching blimp autonomy service
+Requires=network.target
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/bin/bash /root/run_catching_blimp.sh
+WorkingDirectory=/root
+User=root
+StandardOutput=syslog
+StandardError=syslog
+
+[Install]
+WantedBy=multi-user.target
