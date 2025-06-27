@@ -19,6 +19,12 @@ This is the repo that houses all of the components that go into the CatchingBlim
 
 This guide outlines the process for creating and managing issues in our GitHub repository. By following these best practices, we can ensure effective collaboration and efficient project management across software, hardware, and project management teams.
 
+# Turning on a blimp (Updated 6.27.2025)
+1. Plug in the battery.
+2. Open a terminal
+3. `ssh root@opi#` Replace # with the opi number.
+4. `./run_catching_blimp.sh` To run controls. 
+
 ## Creating an Issue
 
 When creating a new issue, please follow these steps:
